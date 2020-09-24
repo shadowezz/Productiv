@@ -42,7 +42,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        ModelPerson expectedModelPerson = new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
         expectedModelPerson.setPerson(modelPerson.getFilteredPersonList().get(0), editedPerson);
 
         assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
@@ -63,7 +64,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        ModelPerson expectedModelPerson = new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
         expectedModelPerson.setPerson(lastPerson, editedPerson);
 
         assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
@@ -76,7 +78,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        ModelPerson expectedModelPerson = new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
 
         assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
     }
@@ -92,7 +95,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
 
-        ModelPerson expectedModelPerson = new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
         expectedModelPerson.setPerson(modelPerson.getFilteredPersonList().get(0), editedPerson);
 
         assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
