@@ -1,7 +1,7 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.person;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.person.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
