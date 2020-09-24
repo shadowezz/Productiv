@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.ModelPerson.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,13 +20,13 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.ModelPerson;
+import seedu.address.model.person.person.Address;
+import seedu.address.model.person.person.Email;
+import seedu.address.model.person.person.Name;
+import seedu.address.model.person.person.Person;
+import seedu.address.model.person.person.Phone;
+import seedu.address.model.person.person.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -68,9 +68,9 @@ public class EditCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+    public CommandResult execute(ModelPerson modelPerson) throws CommandException {
+        requireNonNull(modelPerson);
+        List<Person> lastShownList = modelPerson.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -79,12 +79,12 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!personToEdit.isSamePerson(editedPerson) && modelPerson.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelPerson.setPerson(personToEdit, editedPerson);
+        modelPerson.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 

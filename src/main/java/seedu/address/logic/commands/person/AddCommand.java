@@ -10,8 +10,8 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.ModelPerson;
+import seedu.address.model.person.person.Person;
 
 /**
  * Adds a person to the address book.
@@ -49,14 +49,14 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
+    public CommandResult execute(ModelPerson modelPerson) throws CommandException {
+        requireNonNull(modelPerson);
 
-        if (model.hasPerson(toAdd)) {
+        if (modelPerson.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.addPerson(toAdd);
+        modelPerson.addPerson(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
