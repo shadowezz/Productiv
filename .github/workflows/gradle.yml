@@ -3,10 +3,10 @@ name: Java CI
 on:
   push:
     paths-ignore:
-      - '**/*.md'
+      - 'docs/**'
   pull_request:
     paths-ignore:
-      - '**/*.md'
+      - 'docs/**'
 
 jobs:
   build:
