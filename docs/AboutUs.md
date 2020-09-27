@@ -9,12 +9,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Clara Adora
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/claraadora.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/claraadora)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Project Advisor
@@ -29,14 +28,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Chrystal Quek
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/chrystalquek.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/chrystalquek)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities:
 
 ### Gabriel Tan
 
