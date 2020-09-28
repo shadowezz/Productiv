@@ -4,25 +4,25 @@ public enum ModeEnum {
     DASHBOARD {
         @Override
         public String toString() {
-            return "dashboard";
+            return "Dashboard";
         }
     },
     DELIVERABLE {
         @Override
         public String toString() {
-            return "deliverable";
+            return "Deliverable";
         }
     },
     MEETING {
         @Override
         public String toString() {
-            return "meeting";
+            return "Meeting";
         }
     },
     PERSON {
         @Override
         public String toString() {
-            return "contact";
+            return "Contact";
         }
     }
 }

@@ -45,7 +45,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -116,6 +116,19 @@ public class MainWindow extends UiPart<Stage> {
     public void switchMode(ModeEnum mode) {
         assert mode == null : "Mode should not be null";
         this.mode = mode;
+        listPanelPlaceholder.getChildren().clear(); // remove current list
+        switch (mode) {
+        case PERSON:
+            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            break;
+        default:
+            assert true : "Something wrong with mode";
+        }
+    }
+
+    // TODO define switch tabs here
+    public void switchPerson() {
+        switchMode(ModeEnum.PERSON);
     }
 
     /**
@@ -123,7 +136,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerPartsPerson() {
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -198,7 +211,6 @@ public class MainWindow extends UiPart<Stage> {
                     assert true : "Something wrong with mode";
                 }
             }
-
 
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
