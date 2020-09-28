@@ -237,63 +237,392 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * has a need to manage a significant number of contacts
+* has a need to manage a meeting schedule
+* has a need to oversee the development of the product
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Used in a corporate setting, our application integrates both a meeting schedule and a contact list for the user to 
+manage their product’s development more comprehensively and conveniently.
 
 
 ### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+Priorities: 
+* `* * *` - High (must have)
+* `* *` - Medium (nice to have)
+* `*` - Low (unlikely to have) 
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​                               | I want to …​                     | So that I can…​                                                         |
+| -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
+| **Deliverables** |
+| `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
+| `* * *`  | Product Manager                          | change the description of the deliverables                                  |                                    |
+| `* * *`  | Product Manager                          | mark these deliverables as completed                                        | refer back to them when needed     |
+| `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
+| `* *`    | Product Manager                          | tag deliverables as delayed and change the deadlines                        |                                    |
+| `* *`    | Product Manager                          | change the person-in-charge of deliverables                                 | locate a person easily             |
+| `* *`    | Product Manager                          | undo my action / be prompted before any action                              | Minimise mistakes made             |
+| `* *`    | Product Manager                          | view the overall completion percentage of the project                       | know whether we are on track (completed deliverables / total deliverables) |
+| `* *`    | Product Manager                          | package deliverables into different iterations                              | retrieve the relevant deliverables easily |
+| `* *`    | Product Manager                          | easily know who and how to contact the person-in-charge                     | contact the person when the progress of a deliverable is behind schedule |
+| `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
+| `* *`    | Product Manager                          | be notified when my product’s development is close to tagline / past deadline / too slow |                       |
+| `* *`    | Product Manager                          | pin different parts of the project according to their urgency               |                                    |
+| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  |                                    |
+| **Contacts** |
+| `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
+| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | 
+| `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
+| `* *`    | Product Manager                          | customise fields of information                                             | keep any data that i want          |
+| `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contact |
+| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
+| **Meetings** |
+| `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
+| `* * *`  | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
+| `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
+| `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
+| `* *`    | Product Manager                          | see a calendar view of my meetings                                          | know my available slots to schedule new meetings |
+| `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
+| **Communication** |
+| `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
+| `*`      | Product Manager                          | can view contacts of people involved in a product                           | communicate with relevant people                          |
+| `*`      | Product Manager                          | can check the product’s completion stage                                    | quickly communicate any needs to the Dev Team and/or stakeholders |
 
-*{More to be added}*
+
+
+
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+#### Mode
+
+**Use case: `UC01 - Switch Mode`**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to switch the mode.
+2. User enters the command to switch mode into the input box.
+3. Productiv switches to the expected mode.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. Produtiv detects an error in the command.
+     
+     * 2a1. Productiv displays an error message
+     
+     * 2a2. User enters the command again
+     
+     * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
+     
+       Use case resumes from step 3.
+
+
+#### CONTACT
+**Use case: `UC10 - Add a contact`**
+
+**Precondition(s):**
+* **`User is in the Contact mode`**
+
+**MSS**
+
+1. User adds contact
+    Use case ends
+    
+**Extensions**
+
+* 1a. Invalid input
+    
+    * 1a1. Productiv shows an error message
+      
+      Use case ends2
+
+      
+**Use case: `UC12 - Edit a contact`**
+
+**Precondition(s):**
+* **`User is in the Contact mode`**
+* **`Contact to edit exists`**
+
+**MSS**
+
+1. User requests to list contacts
+1. Productiv shows list of contacts
+1. User edits a specific contact in the list
+1. Productiv edits contact details
 
     Use case ends.
 
 **Extensions**
 
 * 2a. The list is empty.
-
-  Use case ends.
-
+  
+  * Use case ends
+     
 * 3a. The given index is invalid.
+    
+    * 3a1. Productiv shows an error message.
+    
+      Use case resumes at step 2
+      
+* 4a. The given input is invalid
+    
+    * 4a1 Productiv shows an error message
+      
+      Use case resumes at step 2
 
-    * 3a1. AddressBook shows an error message.
+**Use case: `UC11 - Delete a contact`**
 
-      Use case resumes at step 2.
+**Precondition(s):**
+* **`User is in the Contact mode`** 
+* **`Contact to delete exists`**
 
+**Guarantee(s):** 
+* **`Deleted contacts will not have its data in Productiv`**
+* **`Deleted contacts cannot be retrieved back`**
+
+**MSS**
+
+1. User requests to list contacts
+1. Productiv shows list of contacts
+1. User requests to delete a specific contact in the list
+1. Productiv deletes the contact
+   User case ends.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+  
+  * Use case ends
+     
+* 3a. The given index is invalid.
+    
+    * 3a1. Productiv shows an error message.
+    
+      Use case resumes at step 2
+      
+
+
+
+#### DELIVERABLES
+
+**Use case: `UC20 - Add Deliverable`**
+
+**Precondition(s):**
+* **`User is in the Deliverable mode`** 
+
+**MSS**
+
+1. User chooses to add a deliverable.
+1. User enters the command to add a deliverable into the input box.
+1. Productiv adds the deliverable for tracking.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. Produtiv detects an error in the command.
+    
+    * 2a1. Productiv displays an error message
+    
+    * 2a2. User enters the command again
+    
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+**Use case: `UC21 - Edit Deliverable`**
+
+**Precondition(s):**
+* **`User is in the Deliverable mode`** 
+* **`Deliverable to edit exists`**
+
+**MSS**
+
+1. User chooses to edit a deliverable.
+1. User enters the command to edit a deliverable into the input box.
+1. Productiv edits the deliverable.
+   
+   Use case ends.
+
+**Extensions**
+
+* 2a. Produtiv detects an error in the command.
+    
+    * 2a1. Productiv displays an error message
+    
+    * 2a2. User enters the command again
+    
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+
+**Use case: `UC22 - Mark Deliverable Completed`**
+
+**Precondition(s):**
+* **`User is in the Deliverable mode`** 
+* **`Deliverable to mark complete exists`**
+
+**MSS**
+
+1. User chooses to mark a deliverable as completed.
+1. User enters the command to mark a deliverable as complete into the input box.
+1. Productiv marks the deliverable as done.
+
+    Use case ends
+
+
+**Extensions**
+
+* 2a. Produtiv detects an error in the command.
+    
+    * 2a1. Productiv displays an error message
+    
+    * 2a2. User enters the command again
+    
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+**Use case: `UC23 - Delete Deliverable`**
+
+**Precondition(s):**
+* **`User is in the Deliverable mode`** 
+* **`Deliverable to delete exists`**
+
+**Guarantee(s):** 
+* **`Deleted deliverables will not have its data in Productiv`**
+* **`Deleted deliverables cannot be retrieved back`**
+
+
+**MSS**
+1. User chooses to delete a deliverable.
+1. User enters the command to delete a deliverable into the input box.
+1. Productiv prompts the user to confirm deletion.
+1. User accepts confirmation.
+1. Productiv deletes the deliverable.
+    Use case ends.
+
+**Extensions**
+
+* 2a. Produtiv detects an error in the command.
+    
+    * 2a1. Productiv displays an error message
+    
+    * 2a2. User enters the command again
+    
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+* 4a. User declines confirmation.
+
+    * 4a1. Productiv cancels the deletion process.
+    
+      Use case ends
+
+#### MEETING
+**Use case: `UC30 - Add a meeting`**
+
+**Precondition(s):**
+* **`User is in the meeting mode`**
+
+**MSS**
+
+1. User adds meeting
+    Use case ends
+    
+**Extensions**
+
+* 1a. Invalid input
+    
+    * 1a1. Productiv shows an error message
+      
+      Use case ends2
+      
+**Use case: `UC31 - Edit a meeting`**
+
+**Precondition(s):**
+* **`User is in the meeting mode`** 
+* **`Meeting to edit exists`**
+
+**MSS**
+
+1. User requests to list meetings
+1. Productiv shows list of meetings
+1. User edits a specific meeting in the list
+1. Productiv edits meeting details
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+  
+  * Use case ends
+     
+* 3a. The given index is invalid.
+    
+    * 3a1. Productiv shows an error message.
+    
+      Use case resumes at step 2
+      
+* 4a. The given input is invalid
+    
+    * 4a1 Productiv shows an error message
+      
+      Use case resumes at step 2
+      
+**Use case: `UC32 - Delete a meeting`**
+
+**Precondition(s):**
+* **`User is in the meeting mode`** 
+* **`Meeting to delete exists`**
+
+**Guarantee(s):** 
+* **`Deleted meeting will not have its data in Productiv`**
+* **`Deleted meeting cannot be retrieved back`**
+
+**MSS**
+
+1. User requests to list meetings
+1. Productiv shows list of meetings
+1. User requests to delete a specific meeting in the list
+1. Productiv deletes the meeting
+   User case ends.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+  
+  * Use case ends
+     
+* 3a. The given index is invalid.
+    
+    * 3a1. Productiv shows an error message.
+    
+      Use case resumes at step 2
+      
 *{More to be added}*
+      
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. Should work on any mainstream OS as long as it has Java 11 or above installed.
+1. Should be able to hold up to 1000 contacts without any negative effects.
+1. Should be able to hold up to 1000 deliverables without any negative effects.
+1. Should be able to schedule meetings up to 2 years in advance.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 *{More to be added}*
 
@@ -301,6 +630,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Deliverables**: a thing able to be provided, especially as a product of a development process.
+* **CRUD**: Create, Read, Update and delete.
+
+*{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
 
