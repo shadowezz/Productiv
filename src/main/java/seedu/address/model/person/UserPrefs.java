@@ -11,6 +11,7 @@ import seedu.address.commons.core.GuiSettings;
 /**
  * Represents User's preferences.
  */
+// TODO store current mode
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();

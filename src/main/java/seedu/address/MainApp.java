@@ -13,8 +13,13 @@ import seedu.address.commons.core.Version;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.LogicMode;
+import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ModelPerson;
 import seedu.address.model.ModelPersonManager;
 import seedu.address.model.person.AddressBook;
@@ -41,9 +46,11 @@ public class MainApp extends Application {
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
-    protected LogicPerson logic;
+    protected LogicPerson logicPerson;
     protected StoragePerson storagePerson;
     protected ModelPerson modelPerson;
+
+    protected LogicMode logicMode;
     protected Config config;
 
     @Override
@@ -63,9 +70,13 @@ public class MainApp extends Application {
 
         modelPerson = initModelManager(storagePerson, userPrefs);
 
-        logic = new LogicPersonManager(modelPerson, storagePerson);
+        // TODO ensure that use same object userPrefs in creating models
 
-        ui = new UiManager(logic);
+        logicPerson = new LogicPersonManager(modelPerson, storagePerson);
+
+        logicMode = new LogicModeManager();
+
+        ui = new UiManager(logicMode, logicPerson);
     }
 
     /**

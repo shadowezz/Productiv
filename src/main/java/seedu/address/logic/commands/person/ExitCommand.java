@@ -1,6 +1,5 @@
 package seedu.address.logic.commands.person;
 
-import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.ModelPerson;
 
