@@ -21,18 +21,18 @@ public class LogicModeManager implements LogicMode {
         this.modeParser = new ModeParser();
     }
 
-    public CommandResult execute(String commandText, MainWindow mainWindow) throws CommandException, ParseException {
+    public CommandResult execute(String commandText) throws ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
         Command command = modeParser.parseCommand(commandText);
-        commandResult = command.execute(mainWindow);
+        commandResult = command.execute();
 
         return commandResult;
     }
 
-    public boolean isSwitchCommand(String commandText) {
-        return modeParser.isSwitchCommand(commandText);
+    public boolean isModeCommand(String commandText) {
+        return modeParser.isModeCommand(commandText);
     }
 
 }

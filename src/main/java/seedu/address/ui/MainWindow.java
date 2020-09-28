@@ -200,8 +200,8 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = null;
-            if (logicMode.isSwitchCommand(commandText)) {
-                commandResult = logicMode.execute(commandText, this);
+            if (logicMode.isModeCommand(commandText)) {
+                commandResult = logicMode.execute(commandText);
             } else {
                 switch (mode) {
                 case PERSON:
@@ -221,6 +221,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.getMode() != null) {
+                switchMode(commandResult.getMode());
             }
 
             return commandResult;

@@ -2,6 +2,7 @@ package seedu.address.logic.commands.mode;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.person.DeleteCommand;
 import seedu.address.ui.MainWindow;
 import seedu.address.ui.ModeEnum;
 
@@ -21,8 +22,14 @@ public class SwitchCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(MainWindow mainWindow) throws CommandException {
-        mainWindow.switchMode(mode);
+    public CommandResult execute() {
         return new CommandResult(String.format(MESSAGE_SUCCESS, mode));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof SwitchCommand // instanceof handles nulls
+                && mode.equals(((SwitchCommand) other).mode)); // state check
     }
 }

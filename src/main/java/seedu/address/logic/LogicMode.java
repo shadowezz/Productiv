@@ -13,7 +13,7 @@ public interface LogicMode {
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */
-    CommandResult execute(String commandText, MainWindow mainWindow) throws CommandException, ParseException;
+    CommandResult execute(String commandText) throws CommandException, ParseException;
 
-    public boolean isSwitchCommand(String commandText);
+    public boolean isModeCommand(String commandText);
 }
