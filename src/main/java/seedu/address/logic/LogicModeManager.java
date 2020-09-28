@@ -4,11 +4,9 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.mode.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.mode.ModeParser;
-import seedu.address.ui.MainWindow;
 
 /**
  * The main LogicManager of the app.
@@ -21,6 +19,7 @@ public class LogicModeManager implements LogicMode {
         this.modeParser = new ModeParser();
     }
 
+    @Override
     public CommandResult execute(String commandText) throws ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 

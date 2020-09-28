@@ -54,7 +54,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code LogicPerson}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode} and {@code LogicPerson}.
      */
     public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson) {
         super(FXML, primaryStage);
@@ -72,7 +72,7 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
 
-        mode = ModeEnum.PERSON;
+        mode = ModeEnum.PERSON; // default to contacts list first
     }
 
     public Stage getPrimaryStage() {
@@ -113,6 +113,10 @@ public class MainWindow extends UiPart<Stage> {
         });
     }
 
+    /**
+     * Change Ui according to current mode.
+     * @param mode the mode to change Ui to.
+     */
     public void switchMode(ModeEnum mode) {
         assert mode == null : "Mode should not be null";
         this.mode = mode;

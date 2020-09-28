@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.mode.ExitCommand.MESSAGE_EXIT_ACKNOWL
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.mode.ExitCommand;
 
 public class ExitCommandTest {
 

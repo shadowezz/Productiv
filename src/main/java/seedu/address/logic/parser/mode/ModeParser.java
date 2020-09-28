@@ -4,11 +4,9 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.Command;
+import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.mode.SwitchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -18,11 +16,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class ModeParser {
 
-    private String afterFirstWord(String userInput) throws ParseException {
+    private String afterFirstWord(String userInput, String usage) throws ParseException {
         final String[] words = userInput.split(" ");
 
         if (words.length <= 1) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, usage));
         }
         return String.join("", Arrays.copyOfRange(words, 1, words.length));
     }
@@ -47,7 +45,7 @@ public class ModeParser {
             return new HelpCommand();
 
         case SwitchCommand.COMMAND_WORD:
-            final String argument = afterFirstWord(userInput);
+            final String argument = afterFirstWord(userInput, SwitchCommand.MESSAGE_USAGE);
             return new SwitchCommandParser().parse(argument);
 
         default:
@@ -56,8 +54,15 @@ public class ModeParser {
 
     }
 
+    /**
+     * Checks if user input is a mode command.
+     *
+     * @param userInput full user input string
+     * @return whether the user input is a mode command
+     */
     public boolean isModeCommand(String userInput) {
-        return userInput.startsWith(SwitchCommand.COMMAND_WORD) || userInput.startsWith(ExitCommand.COMMAND_WORD) || userInput.startsWith(HelpCommand.COMMAND_WORD);
+        return userInput.startsWith(SwitchCommand.COMMAND_WORD) || userInput.startsWith(ExitCommand.COMMAND_WORD)
+                || userInput.startsWith(HelpCommand.COMMAND_WORD);
     }
 
 }

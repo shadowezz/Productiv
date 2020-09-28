@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.ui.ModeEnum;
+
 public class CommandResultTest {
     @Test
     public void equals() {
@@ -33,6 +35,9 @@ public class CommandResultTest {
 
         // different exit value -> returns false
         assertFalse(commandResult.equals(new CommandResult("feedback", false, true, null)));
+
+        // different mode value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", false, true, ModeEnum.PERSON)));
     }
 
     @Test
@@ -50,5 +55,9 @@ public class CommandResultTest {
 
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true, null).hashCode());
+
+        // different mode value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(),
+                new CommandResult("feedback", false, true, ModeEnum.PERSON).hashCode());
     }
 }

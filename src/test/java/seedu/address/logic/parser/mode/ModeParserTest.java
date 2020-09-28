@@ -2,35 +2,16 @@ package seedu.address.logic.parser.mode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.mode.SwitchCommand;
-import seedu.address.logic.commands.person.AddCommand;
-import seedu.address.logic.commands.person.ClearCommand;
-import seedu.address.logic.commands.person.DeleteCommand;
-import seedu.address.logic.commands.person.EditCommand;
-import seedu.address.logic.commands.person.EditCommand.EditPersonDescriptor;
-import seedu.address.logic.commands.person.FindCommand;
-import seedu.address.logic.commands.person.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.person.AddressBookParser;
-import seedu.address.model.person.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.person.Person;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.ModeUtil;
-import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.PersonUtil;
 import seedu.address.ui.ModeEnum;
 
 public class ModeParserTest {

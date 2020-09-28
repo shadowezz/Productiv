@@ -8,10 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.ui.ModeEnum;
 
-/**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
- * {@code switchCommand}.
- */
 public class SwitchCommandTest {
 
     @Test
@@ -43,5 +39,4 @@ public class SwitchCommandTest {
         // different mode -> returns false
         assertFalse(switchFirstCommand.equals(switchSecondCommand));
     }
-    
 }

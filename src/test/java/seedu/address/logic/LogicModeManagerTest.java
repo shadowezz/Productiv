@@ -1,7 +1,7 @@
 package seedu.address.logic;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -12,14 +12,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
-import seedu.address.logic.commands.person.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ModelPersonManager;
-import seedu.address.model.person.UserPrefs;
-import seedu.address.storage.StoragePersonManager;
-import seedu.address.storage.person.JsonAddressBookStorage;
-import seedu.address.storage.person.JsonUserPrefsStorage;
 import seedu.address.testutil.ModeUtil;
 import seedu.address.ui.ModeEnum;
 
@@ -38,8 +31,6 @@ class LogicModeManagerTest {
         assertParseException(invalidCommand, MESSAGE_UNKNOWN_COMMAND);
     }
 
-    // public void execute_commandExecutionError_throwsCommandException() {
-
     @Test
     public void execute_validCommand_success() throws Exception {
         String exitCommand = ExitCommand.COMMAND_WORD;
@@ -53,7 +44,8 @@ class LogicModeManagerTest {
      * - the internal model manager state is the same as that in {@code expectedModel} <br>
      * @see #assertCommandFailure(String, Class, String)
      */
-    private void assertCommandSuccess(String inputCommand, String expectedMessage) throws CommandException, ParseException {
+    private void assertCommandSuccess(String inputCommand, String expectedMessage)
+            throws CommandException, ParseException {
         CommandResult result = logicMode.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
     }
