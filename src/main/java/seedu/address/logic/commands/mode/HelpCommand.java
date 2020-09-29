@@ -1,8 +1,6 @@
-package seedu.address.logic.commands.person;
+package seedu.address.logic.commands.mode;
 
-import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.model.ModelPerson;
 
 /**
  * Format full help instructions for every command for display.
@@ -16,8 +14,7 @@ public class HelpCommand extends Command {
 
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
-    @Override
-    public CommandResult execute(ModelPerson modelPerson) {
-        return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+    public CommandResult execute() {
+        return new CommandResult(SHOWING_HELP_MESSAGE, true, false, null);
     }
 }
