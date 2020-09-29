@@ -51,7 +51,9 @@ public class Meeting {
         return contacts;
     }
 
-    public String getLocation() { return location; }
+    public String getLocation() {
+        return location;
+    }
 
     // TODO: Add missing methods from AddressBook
 
