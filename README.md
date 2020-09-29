@@ -3,12 +3,13 @@
 
 ![Ui](docs/images/Ui.png)
 
-Want to be **productive** in managing your **product**?  
-If yes, **Productiv** is the way to go!  
+Want to be **productive** in managing your **product**?
+
+If yes, **Productiv** is the way to go!
 
 **Productiv** can help you:
 * Manage your contacts, meetings, and deliverables
-* View your meetings and deliverables on a calendar 
+* View your meetings and deliverables on a calendar
 * Keep track of your product's progress
 
 ## Site Map
