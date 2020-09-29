@@ -2,8 +2,6 @@ package seedu.address.model.deliverable.deliverable;
 
 import java.util.Objects;
 
-import seedu.address.model.person.person.Person;
-
 /**
  * Represents a Deliverable in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -45,7 +43,7 @@ public class Deliverable {
             return true;
         }
 
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Deliverable)) {
             return false;
         }
 
@@ -57,6 +55,15 @@ public class Deliverable {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(number);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Deliverable")
+                .append(" Number: ")
+                .append(getNumber());
+        return builder.toString();
     }
 
 }
