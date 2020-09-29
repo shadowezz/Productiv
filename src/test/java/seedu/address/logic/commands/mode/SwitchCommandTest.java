@@ -6,7 +6,7 @@ import static seedu.address.logic.commands.mode.CommandTestUtil.assertCommandSuc
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.ui.ModeEnum;
+import seedu.address.commons.ModeEnum;
 
 public class SwitchCommandTest {
 

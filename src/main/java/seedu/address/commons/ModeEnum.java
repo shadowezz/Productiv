@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.commons;
 
 public enum ModeEnum {
     DASHBOARD {

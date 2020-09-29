@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
-import seedu.address.ui.ModeEnum;
+import seedu.address.commons.ModeEnum;
 
 /**
  * Represents the result of a command execution.

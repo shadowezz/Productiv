@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.mode.SwitchCommand;
-import seedu.address.ui.ModeEnum;
+import seedu.address.commons.ModeEnum;
 
 public class ModeUtil {
 

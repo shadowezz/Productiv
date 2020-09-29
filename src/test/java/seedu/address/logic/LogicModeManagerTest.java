@@ -14,7 +14,7 @@ import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.testutil.ModeUtil;
-import seedu.address.ui.ModeEnum;
+import seedu.address.commons.ModeEnum;
 
 class LogicModeManagerTest {
 

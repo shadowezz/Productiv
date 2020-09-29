@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.ui.ModeEnum;
+import seedu.address.commons.ModeEnum;
 
 public class CommandResultTest {
     @Test
