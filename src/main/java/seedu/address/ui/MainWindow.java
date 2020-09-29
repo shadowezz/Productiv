@@ -10,8 +10,10 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,7 +30,9 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private LogicPerson logic;
+    private ModeEnum mode;
+    private LogicMode logicMode;
+    private LogicPerson logicPerson;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
@@ -42,7 +46,7 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -51,21 +55,25 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode} and {@code LogicPerson}.
      */
-    public MainWindow(Stage primaryStage, LogicPerson logic) {
+    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
-        this.logic = logic;
+        this.logicMode = logicMode;
+        this.logicPerson = logicPerson;
 
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        // all managers' Gui points to same GuiSettings object so its fine
+        setWindowDefaultSize(logicPerson.getGuiSettings());
 
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        mode = ModeEnum.PERSON; // default to contacts list first
     }
 
     public Stage getPrimaryStage() {
@@ -107,16 +115,38 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Change Ui according to current mode.
+     * @param mode the mode to change Ui to.
+     */
+    public void switchMode(ModeEnum mode) {
+        assert mode == null : "Mode should not be null";
+        this.mode = mode;
+        listPanelPlaceholder.getChildren().clear(); // remove current list
+        switch (mode) {
+        case PERSON:
+            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            break;
+        default:
+            assert true : "Something wrong with mode";
+        }
+    }
+
+    // TODO define switch tabs here
+    public void switchPerson() {
+        switchMode(ModeEnum.PERSON);
+    }
+
+    /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    void fillInnerPartsPerson() {
+        personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
+        listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -158,7 +188,7 @@ public class MainWindow extends UiPart<Stage> {
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
+        logicPerson.setGuiSettings(guiSettings); // its just to save last guiSetting used
         helpWindow.hide();
         primaryStage.hide();
     }
@@ -174,7 +204,19 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logic.execute(commandText);
+            CommandResult commandResult = null;
+            if (logicMode.isModeCommand(commandText)) {
+                commandResult = logicMode.execute(commandText);
+            } else {
+                switch (mode) {
+                case PERSON:
+                    commandResult = logicPerson.execute(commandText);
+                    break;
+                default:
+                    assert true : "Something wrong with mode";
+                }
+            }
+
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
@@ -184,6 +226,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.getMode() != null) {
+                switchMode(commandResult.getMode());
             }
 
             return commandResult;
