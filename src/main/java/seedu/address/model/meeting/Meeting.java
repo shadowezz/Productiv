@@ -16,17 +16,19 @@ public class Meeting {
     private final String from;
     private final String to;
     private final String contacts;
+    private final String location;
 
     /**
      * Every field must be present and not null.
      */
-    public Meeting(String title, String description, String from, String to, String contacts) {
-        requireAllNonNull(title, description, from, to, contacts);
+    public Meeting(String title, String description, String from, String to, String contacts, String location) {
+        requireAllNonNull(title, description, from, to, contacts, location);
         this.title = title;
         this.description = description;
         this.from = from;
         this.to = to;
         this.contacts = contacts;
+        this.location = location;
     }
 
     public String getTitle() {
@@ -49,11 +51,13 @@ public class Meeting {
         return contacts;
     }
 
+    public String getLocation() { return location; }
+
     // TODO: Add missing methods from AddressBook
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, description, from, to, contacts);
+        return Objects.hash(title, description, from, to, contacts, location);
     }
 
     @Override
@@ -66,7 +70,11 @@ public class Meeting {
                 .append(getFrom())
                 .append(" From: ")
                 .append(getTo())
-                .append(" To: ");
+                .append(" To: ")
+                .append(getContacts())
+                .append(" Contacts: ")
+                .append(getLocation())
+                .append(" Location: ");
         return builder.toString();
     }
 
