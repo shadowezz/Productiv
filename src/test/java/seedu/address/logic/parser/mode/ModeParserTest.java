@@ -7,12 +7,12 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.ModeEnum;
 import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.mode.SwitchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.testutil.ModeUtil;
-import seedu.address.commons.ModeEnum;
 
 public class ModeParserTest {
 

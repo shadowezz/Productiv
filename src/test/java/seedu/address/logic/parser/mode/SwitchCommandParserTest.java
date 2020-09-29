@@ -6,8 +6,8 @@ import static seedu.address.logic.parser.mode.CommandParserTestUtil.assertParseS
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.mode.SwitchCommand;
 import seedu.address.commons.ModeEnum;
+import seedu.address.logic.commands.mode.SwitchCommand;
 
 class SwitchCommandParserTest {
 

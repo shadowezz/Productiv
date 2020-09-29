@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.mode;
 
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.commons.ModeEnum;
+import seedu.address.logic.commands.CommandResult;
 
 public class SwitchCommand extends Command {
 

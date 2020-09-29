@@ -2,10 +2,10 @@ package seedu.address.logic.parser.mode;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
+import seedu.address.commons.ModeEnum;
 import seedu.address.logic.commands.mode.SwitchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.commons.ModeEnum;
 
 /**
  * Parses input arguments and creates a new SwitchCommand object
