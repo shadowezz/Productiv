@@ -13,17 +13,23 @@ import seedu.address.commons.core.Version;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.LogicMeeting;
+import seedu.address.logic.LogicMeetingManager;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
+import seedu.address.model.ModelMeeting;
+import seedu.address.model.ModelMeetingManager;
 import seedu.address.model.ModelPerson;
 import seedu.address.model.ModelPersonManager;
+import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
 import seedu.address.model.person.ReadOnlyUserPrefs;
 import seedu.address.model.person.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.StorageMeeting;
 import seedu.address.storage.StoragePerson;
 import seedu.address.storage.StoragePersonManager;
 import seedu.address.storage.person.AddressBookStorage;
@@ -47,6 +53,10 @@ public class MainApp extends Application {
     protected StoragePerson storagePerson;
     protected ModelPerson modelPerson;
 
+    protected LogicMeeting logicMeeting;
+    protected StorageMeeting storageMeeting;
+    protected ModelMeeting modelMeeting;
+
     protected LogicMode logicMode;
     protected Config config;
 
@@ -67,11 +77,16 @@ public class MainApp extends Application {
 
         modelPerson = initModelManager(storagePerson, userPrefs);
 
+        // TODO: make init for model meeting
+        modelMeeting = new ModelMeetingManager(new MeetingBook());
+
         // TODO ensure that use same object userPrefs in creating models
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
 
         logicMode = new LogicModeManager();
+
+        logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
 
         ui = new UiManager(logicMode, logicPerson);
     }
