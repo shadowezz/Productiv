@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.ModelPerson;
-import seedu.address.model.person.AddressBook;
+import seedu.address.model.AddressBook;
 
 /**
  * Clears the address book.
