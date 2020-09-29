@@ -14,5 +14,5 @@ public interface LogicMeeting {
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
-    public boolean isMeetingCommand(String commandText);
+    boolean isMeetingCommand(String commandText);
 }
