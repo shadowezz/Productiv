@@ -31,6 +31,7 @@ public class UiManager implements Ui {
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
     public UiManager(LogicMode logicMode, LogicPerson logicPerson) {
+        // TODO use only a central logic object
         super();
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
