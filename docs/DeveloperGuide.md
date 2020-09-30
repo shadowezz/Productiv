@@ -274,7 +274,7 @@ Priorities:
 | `*`      | Product Manager                          | see the previous products I have handled and their reviews                  |                                    |
 | **Contacts** |
 | `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
-| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | 
+| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 |                                    |
 | `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
 | `* *`    | Product Manager                          | customise fields of information                                             | keep any data that i want          |
 | `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contact |
@@ -288,8 +288,8 @@ Priorities:
 | `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
 | **Communication** |
 | `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
-| `*`      | Product Manager                          | can view contacts of people involved in a product                           | communicate with relevant people                          |
-| `*`      | Product Manager                          | can check the product’s completion stage                                    | quickly communicate any needs to the Dev Team and/or stakeholders |
+| `*`      | Product Manager                          | view contacts of people involved in a product                               | communicate with relevant people                          |
+| `*`      | Product Manager                          | check the product’s completion stage                                        | quickly communicate any needs to the Dev Team and/or stakeholders |
 
 
 
