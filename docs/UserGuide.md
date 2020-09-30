@@ -72,8 +72,8 @@ Format: `switch MODE`
 * Subsequent commands will be with respect to managing the mode.
 
 Examples:
-* `switch meeting` 
-* `switch contact` 
+* `switch contact`
+* `switch meeting`
 
 ### Contact
 
