@@ -14,10 +14,4 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Person> getPersonList();
 
-    /**
-     * Returns an unmodifiable view of the deliverable list.
-     * This list will not contain any duplicate deliverables.
-     */
-//    ObservableList<Deliverable> getDeliverableList();
-
 }
