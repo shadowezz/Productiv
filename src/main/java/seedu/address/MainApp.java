@@ -25,6 +25,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.storage.StorageDeliverable;
 import seedu.address.storage.StoragePerson;
 import seedu.address.storage.StoragePersonManager;
 import seedu.address.storage.person.AddressBookStorage;
@@ -47,7 +48,8 @@ public class MainApp extends Application {
     protected LogicPerson logicPerson;
     protected StoragePerson storagePerson;
     protected ModelPerson modelPerson;
-//    protected ModelDeliverable modelDeliverable;
+    protected ModelDeliverable modelDeliverable;
+    protected StorageDeliverable storageDeliverable;
 
     protected LogicMode logicMode;
     protected Config config;
