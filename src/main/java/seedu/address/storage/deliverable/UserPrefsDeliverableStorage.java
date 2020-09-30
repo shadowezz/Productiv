@@ -10,6 +10,7 @@ import seedu.address.model.UserPrefsDeliverable;
 
 /**
  * Represents a storage for {@link UserPrefsDeliverable}.
+ * Not used.
  */
 public interface UserPrefsDeliverableStorage {
     /**

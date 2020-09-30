@@ -10,6 +10,7 @@ import seedu.address.commons.core.GuiSettings;
 
 /**
  * Represents User's preferences of deliverables section.
+ * Not used.
  */
 public class UserPrefsDeliverable implements ReadOnlyUserPrefsDeliverable {
 

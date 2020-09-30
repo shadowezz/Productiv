@@ -11,6 +11,7 @@ import seedu.address.model.UserPrefsDeliverable;
 
 /**
  * A class to access UserPrefsDeliverable stored in the hard disk as a json file
+ * Not used.
  */
 public class JsonUserPrefsDeliverableStorage implements UserPrefsDeliverableStorage{
 

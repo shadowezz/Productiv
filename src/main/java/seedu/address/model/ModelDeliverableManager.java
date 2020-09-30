@@ -20,60 +20,60 @@ public class ModelDeliverableManager implements ModelDeliverable {
 
     private static final Logger logger = LogsCenter.getLogger(ModelDeliverableManager.class);
     private final DeliverableBook deliverableBook;
-    private final UserPrefsDeliverable userPrefsDeliverable;
+    private final UserPrefs userPrefs;
     private final FilteredList<Deliverable> filteredDeliverables;
 
     /**
      * Initializes a ModelDeliverableManager with the given addressBook and userPrefs.
      */
-    public ModelDeliverableManager(ReadOnlyDeliverableBook deliverableBook, ReadOnlyUserPrefsDeliverable userPrefsDeliverable) {
+    public ModelDeliverableManager(ReadOnlyDeliverableBook deliverableBook, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(deliverableBook, userPrefsDeliverable);
+        requireAllNonNull(deliverableBook, userPrefs);
 
-        logger.fine("Initializing with deliverable book: " + deliverableBook + " and user prefs " + userPrefsDeliverable);
+        logger.fine("Initializing with deliverable book: " + deliverableBook + " and user prefs " + userPrefs);
 
         this.deliverableBook = new DeliverableBook(deliverableBook);
-        this.userPrefsDeliverable = new UserPrefsDeliverable(userPrefsDeliverable);
+        this.userPrefs = new UserPrefs(userPrefs);
         filteredDeliverables = new FilteredList<>(this.deliverableBook.getDeliverableList());
     }
 
     public ModelDeliverableManager() {
-        this(new DeliverableBook(), new UserPrefsDeliverable());
+        this(new DeliverableBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefsDeliverable userPrefsDeliverable) {
-        requireNonNull(userPrefsDeliverable);
-        this.userPrefsDeliverable.resetData(userPrefsDeliverable);
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
-    public ReadOnlyUserPrefsDeliverable getUserPrefsDeliverable() {
-        return userPrefsDeliverable;
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
     public GuiSettings getGuiSettings() {
-        return userPrefsDeliverable.getGuiSettings();
+        return userPrefs.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
-        userPrefsDeliverable.setGuiSettings(guiSettings);
+        userPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
     public Path getDeliverableBookFilePath() {
-        return userPrefsDeliverable.getDeliverableBookFilePath();
+        return userPrefs.getDeliverableBookFilePath();
     }
 
     @Override
     public void setDeliverableBookFilePath(Path deliverableBookFilePath) {
         requireNonNull(deliverableBookFilePath);
-        userPrefsDeliverable.setDeliverableBookFilePath(deliverableBookFilePath);
+        userPrefs.setDeliverableBookFilePath(deliverableBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
@@ -139,7 +139,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
         // state check
         ModelDeliverableManager other = (ModelDeliverableManager) obj;
         return deliverableBook.equals(other.deliverableBook)
-                && userPrefsDeliverable.equals(other.userPrefsDeliverable)
+                && userPrefs.equals(other.userPrefs)
                 && filteredDeliverables.equals(other.filteredDeliverables);
     }
 }

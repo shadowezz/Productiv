@@ -8,10 +8,10 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyDeliverableBook;
-import seedu.address.model.ReadOnlyUserPrefsDeliverable;
-import seedu.address.model.UserPrefsDeliverable;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.storage.deliverable.DeliverableBookStorage;
-import seedu.address.storage.deliverable.UserPrefsDeliverableStorage;
+import seedu.address.storage.person.UserPrefsStorage;
 
 /**
  * Manages storage of DeliverableBook data in local storage.
@@ -20,30 +20,30 @@ public class StorageDeliverableManager implements StorageDeliverable {
 
     private static final Logger logger = LogsCenter.getLogger(StoragePersonManager.class);
     private DeliverableBookStorage deliverableBookStorage;
-    private UserPrefsDeliverableStorage userPrefsDeliverableStorage;
+    private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageDeliverableManager} with the given {@code DeliverableBookStorage} and {@code UserPrefsDeliverableStorage}.
+     * Creates a {@code StorageDeliverableManager} with the given {@code DeliverableBookStorage} and {@code UserPrefsStorage}.
      */
-    public StorageDeliverableManager(DeliverableBookStorage deliverableBookStorage, UserPrefsDeliverableStorage userPrefsDeliverableStorage) {
+    public StorageDeliverableManager(DeliverableBookStorage deliverableBookStorage, UserPrefsStorage userPrefsStorage) {
         this.deliverableBookStorage = deliverableBookStorage;
-        this.userPrefsDeliverableStorage = userPrefsDeliverableStorage;
+        this.userPrefsStorage = userPrefsStorage;
     }
 
     // ================ UserPrefs methods ==============================
     @Override
-    public Path getUserPrefsDeliverableFilePath() {
-        return userPrefsDeliverableStorage.getUserPrefsDeliverableFilePath();
+    public Path getUserPrefsFilePath() {
+        return userPrefsStorage.getUserPrefsFilePath();
     }
 
     @Override
-    public Optional<UserPrefsDeliverable> readUserPrefsDeliverable() throws DataConversionException, IOException {
-        return userPrefsDeliverableStorage.readUserPrefsDeliverable();
+    public Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException {
+        return userPrefsStorage.readUserPrefs();
     }
 
     @Override
-    public void saveUserPrefsDeliverable(ReadOnlyUserPrefsDeliverable userPrefsDeliverable) throws IOException {
-        userPrefsDeliverableStorage.saveUserPrefsDeliverable(userPrefsDeliverable);
+    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
+        userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
     // ================ AddressBook methods ==============================

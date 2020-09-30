@@ -5,7 +5,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.DeliverableBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.person.person.Address;
 import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
@@ -40,12 +43,32 @@ public class SampleDataUtil {
         };
     }
 
+    public static Deliverable[] getSampleDeliverables() {
+        return new Deliverable[] {
+                new Deliverable(1),
+                new Deliverable(2),
+                new Deliverable(3),
+                new Deliverable(4),
+                new Deliverable(5),
+                new Deliverable(6),
+                new Deliverable(7),
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
         return sampleAb;
+    }
+
+    public static ReadOnlyDeliverableBook getSampleDeliverableBook() {
+        DeliverableBook sampleDb = new DeliverableBook();
+        for (Deliverable sampleDeliverable : getSampleDeliverables()) {
+            sampleDb.addDeliverable(sampleDeliverable);
+        }
+        return sampleDb;
     }
 
     /**

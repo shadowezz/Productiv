@@ -17,17 +17,23 @@ import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
+import seedu.address.model.DeliverableBook;
 import seedu.address.model.ModelDeliverable;
+import seedu.address.model.ModelDeliverableManager;
 import seedu.address.model.ModelPerson;
 import seedu.address.model.ModelPersonManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyDeliverableBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.StorageDeliverable;
+import seedu.address.storage.StorageDeliverableManager;
 import seedu.address.storage.StoragePerson;
 import seedu.address.storage.StoragePersonManager;
+import seedu.address.storage.deliverable.DeliverableBookStorage;
+import seedu.address.storage.deliverable.JsonDeliverableBookStorage;
 import seedu.address.storage.person.AddressBookStorage;
 import seedu.address.storage.person.JsonAddressBookStorage;
 import seedu.address.storage.person.JsonUserPrefsStorage;
@@ -65,12 +71,13 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(userPrefs.getDeliverableBookFilePath());
         storagePerson = new StoragePersonManager(addressBookStorage, userPrefsStorage);
-
+        storageDeliverable = new StorageDeliverableManager(deliverableBookStorage, userPrefsStorage);
         initLogging(config);
 
         modelPerson = initModelManager(storagePerson, userPrefs);
-
+        modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
         // TODO ensure that use same object userPrefs in creating models
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
@@ -103,6 +110,31 @@ public class MainApp extends Application {
         }
 
         return new ModelPersonManager(initialData, userPrefs);
+    }
+
+    /**
+     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
+     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
+     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     */
+    private ModelDeliverable initDeliverableModelManager(StorageDeliverable storageDeliverable, ReadOnlyUserPrefs userPrefs) {
+        Optional<ReadOnlyDeliverableBook> deliverableBookOptional;
+        ReadOnlyDeliverableBook initialData;
+        try {
+            deliverableBookOptional = storageDeliverable.readDeliverableBook();
+            if (!deliverableBookOptional.isPresent()) {
+                logger.info("Data file for deliverable not found. Will be starting with a sample DeliverableBook");
+            }
+            initialData = deliverableBookOptional.orElseGet(SampleDataUtil::getSampleDeliverableBook);
+        } catch (DataConversionException e) {
+            logger.warning("Data file for deliverable not in the correct format. Will be starting with an empty DeliverableBook");
+            initialData = new DeliverableBook();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the deliverable file. Will be starting with an empty DeliverableBook");
+            initialData = new DeliverableBook();
+        }
+
+        return new ModelDeliverableManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -188,6 +220,8 @@ public class MainApp extends Application {
         logger.info("============================ [ Stopping Address Book ] =============================");
         try {
             storagePerson.saveUserPrefs(modelPerson.getUserPrefs());
+            // for testing
+            storageDeliverable.saveDeliverableBook(modelDeliverable.getDeliverableBook());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }

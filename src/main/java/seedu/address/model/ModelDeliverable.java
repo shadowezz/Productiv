@@ -15,14 +15,14 @@ public interface ModelDeliverable {
     Predicate<Deliverable> PREDICATE_SHOW_ALL_DELIVERABLES = unused -> true;
 
     /**
-     * Replaces user prefs data for deliverable with the data in {@code userPrefsDeliverable}.
+     * Replaces user prefs data with the data in {@code userPrefs}.
      */
-    void setUserPrefs(ReadOnlyUserPrefsDeliverable userPrefsDeliverable);
+    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
 
     /**
-     * Returns the user prefs for deliverable.
+     * Returns the user prefs.
      */
-    ReadOnlyUserPrefsDeliverable getUserPrefsDeliverable();
+    ReadOnlyUserPrefs getUserPrefs();
 
     /**
      * Returns the user prefs' GUI settings.

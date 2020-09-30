@@ -6,20 +6,20 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyDeliverableBook;
-import seedu.address.model.ReadOnlyUserPrefsDeliverable;
-import seedu.address.model.UserPrefsDeliverable;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.storage.deliverable.DeliverableBookStorage;
-import seedu.address.storage.deliverable.UserPrefsDeliverableStorage;
+import seedu.address.storage.person.UserPrefsStorage;
 
 /**
  * API of the Storage component for Deliverable
  */
-public interface StorageDeliverable extends DeliverableBookStorage, UserPrefsDeliverableStorage {
+public interface StorageDeliverable extends DeliverableBookStorage, UserPrefsStorage {
     @Override
-    Optional<UserPrefsDeliverable> readUserPrefsDeliverable() throws DataConversionException, IOException;
+    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
 
     @Override
-    void saveUserPrefsDeliverable(ReadOnlyUserPrefsDeliverable userPrefsDeliverable) throws IOException;
+    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
     Path getDeliverableBookFilePath();
