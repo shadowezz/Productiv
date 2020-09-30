@@ -7,7 +7,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ModelDeliverable;
+import seedu.address.model.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
@@ -24,19 +25,19 @@ public interface LogicDeliverable {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the MeetingBook.
+     * Returns the DeliverableBook.
      *
-     * @see ModelDeliverable#getMeetingBook()
+     * @see ModelDeliverable#getDeliverableBook()
      */
-    ReadOnlyAddressBook getMeetingBook();
+    ReadOnlyDeliverableBook getDeliverableBook();
 
     /** Returns an unmodifiable view of the filtered list of deliverables */
     ObservableList<Deliverable> getFilteredDeliverableList();
 
     /**
-     * Returns the user prefs' meeting book file path.
+     * Returns the user prefs' deliverable book file path.
      */
-    Path getMeetingBookFilePath();
+    Path getDeliverableBookFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

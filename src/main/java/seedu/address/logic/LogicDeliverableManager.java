@@ -1,5 +1,6 @@
 package seedu.address.logic;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
@@ -8,9 +9,13 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.deliverable.Command;
+import seedu.address.logic.parser.deliverable.DeliverableBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ModelDeliverable;
+import seedu.address.model.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.storage.StorageDeliverable;
 
 
 /**
@@ -18,36 +23,60 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  */
 public class LogicDeliverableManager implements LogicDeliverable {
 
-    public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
+    public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to deliverable file: ";
     private final Logger logger = LogsCenter.getLogger(LogicDeliverableManager.class);
+    private final ModelDeliverable modelDeliverable;
+    private final StorageDeliverable storageDeliverable;
+    private final DeliverableBookParser deliverableBookParser;
 
-    @Override
-    public CommandResult execute(String commandText) throws CommandException, ParseException {
-        return null;
+    /**
+     * Constructs a {@code LogicDeliverableManager} with the given {@code ModelDeliverable} and {@code StorageDeliverable}.
+     */
+    public LogicDeliverableManager(ModelDeliverable modelDeliverable, StorageDeliverable storageDeliverable) {
+        this.modelDeliverable = modelDeliverable;
+        this.storageDeliverable = storageDeliverable;
+        this.deliverableBookParser = new DeliverableBookParser();
     }
 
     @Override
-    public ReadOnlyAddressBook getMeetingBook() {
-        return null;
+    public CommandResult execute(String commandText) throws CommandException, ParseException {
+        logger.info("----------------[USER COMMAND][" + commandText + "]");
+
+        CommandResult commandResult;
+        Command command = deliverableBookParser.parseCommand(commandText);
+        commandResult = command.execute(modelDeliverable);
+
+        try {
+            storageDeliverable.saveDeliverableBook(modelDeliverable.getDeliverableBook());
+        } catch (IOException ioe) {
+            throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
+        }
+
+        return commandResult;
+    }
+
+    @Override
+    public ReadOnlyDeliverableBook getDeliverableBook() {
+        return modelDeliverable.getDeliverableBook();
     }
 
     @Override
     public ObservableList<Deliverable> getFilteredDeliverableList() {
-        return null;
+        return modelDeliverable.getFilteredDeliverableList();
     }
 
     @Override
-    public Path getMeetingBookFilePath() {
-        return null;
+    public Path getDeliverableBookFilePath() {
+        return modelDeliverable.getDeliverableBookFilePath();
     }
 
     @Override
     public GuiSettings getGuiSettings() {
-        return null;
+        return modelDeliverable.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
-
+        modelDeliverable.setGuiSettings(guiSettings);
     }
 }
