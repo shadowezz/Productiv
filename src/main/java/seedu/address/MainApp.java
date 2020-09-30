@@ -17,6 +17,7 @@ import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
+import seedu.address.model.ModelDeliverable;
 import seedu.address.model.ModelPerson;
 import seedu.address.model.ModelPersonManager;
 import seedu.address.model.AddressBook;
@@ -46,6 +47,7 @@ public class MainApp extends Application {
     protected LogicPerson logicPerson;
     protected StoragePerson storagePerson;
     protected ModelPerson modelPerson;
+//    protected ModelDeliverable modelDeliverable;
 
     protected LogicMode logicMode;
     protected Config config;
