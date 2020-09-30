@@ -15,14 +15,14 @@ public interface ModelDeliverable {
     Predicate<Deliverable> PREDICATE_SHOW_ALL_DELIVERABLES = unused -> true;
 
     /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
+     * Replaces user prefs data for deliverable with the data in {@code userPrefsDeliverable}.
      */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    void setUserPrefs(ReadOnlyUserPrefsDeliverable userPrefsDeliverable);
 
     /**
-     * Returns the user prefs.
+     * Returns the user prefs for deliverable.
      */
-    ReadOnlyUserPrefs getUserPrefs();
+    ReadOnlyUserPrefsDeliverable getUserPrefsDeliverable();
 
     /**
      * Returns the user prefs' GUI settings.
@@ -49,8 +49,8 @@ public interface ModelDeliverable {
      */
     void setDeliverableBook(ReadOnlyDeliverableBook deliverableBook);
 
-    /** Returns the MeetingBook */
-    ReadOnlyAddressBook getMeetingBook();
+    /** Returns the DeliverableBook */
+    ReadOnlyDeliverableBook getDeliverableBook();
 
     /**
      * Returns true if a deliverable with the same identity as {@code deliverable} exists in the deliverable book.
