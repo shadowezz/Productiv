@@ -13,6 +13,8 @@ import seedu.address.commons.core.Version;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.LogicDeliverable;
+import seedu.address.logic.LogicDeliverableManager;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
@@ -56,7 +58,7 @@ public class MainApp extends Application {
     protected ModelPerson modelPerson;
     protected ModelDeliverable modelDeliverable;
     protected StorageDeliverable storageDeliverable;
-
+    protected LogicDeliverable logicDeliverable;
     protected LogicMode logicMode;
     protected Config config;
 
@@ -81,10 +83,10 @@ public class MainApp extends Application {
         // TODO ensure that use same object userPrefs in creating models
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
-
+        logicDeliverable = new LogicDeliverableManager(modelDeliverable, storageDeliverable);
         logicMode = new LogicModeManager();
 
-        ui = new UiManager(logicMode, logicPerson);
+        ui = new UiManager(logicMode, logicPerson, logicDeliverable);
     }
 
     /**

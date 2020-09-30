@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.LogicDeliverable;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
@@ -33,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private ModeEnum mode;
     private LogicMode logicMode;
     private LogicPerson logicPerson;
+    private LogicDeliverable logicDeliverable;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
@@ -55,15 +57,16 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode} and {@code LogicPerson}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode}, {@code LogicPerson} and {@code LogicDeliverable}.
      */
-    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson) {
+    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson, LogicDeliverable logicDeliverable) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
+        this.logicDeliverable = logicDeliverable;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -119,12 +122,15 @@ public class MainWindow extends UiPart<Stage> {
      * @param mode the mode to change Ui to.
      */
     public void switchMode(ModeEnum mode) {
-        assert mode == null : "Mode should not be null";
+        assert mode != null : "Mode should not be null";
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
         switch (mode) {
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            break;
+        case DELIVERABLE:
+//            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             break;
         default:
             assert true : "Something wrong with mode";
@@ -212,6 +218,8 @@ public class MainWindow extends UiPart<Stage> {
                 case PERSON:
                     commandResult = logicPerson.execute(commandText);
                     break;
+                case DELIVERABLE:
+                    commandResult = logicDeliverable.execute(commandText);
                 default:
                     assert true : "Something wrong with mode";
                 }

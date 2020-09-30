@@ -15,7 +15,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a deliverable to the deliverable book. "
             + "Parameters: "
             + PREFIX_NUMBER + "NUMBER ";
     public static final String MESSAGE_SUCCESS = "New deliverable added: %1$s";

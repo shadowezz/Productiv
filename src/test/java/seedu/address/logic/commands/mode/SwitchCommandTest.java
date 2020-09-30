@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.mode.CommandTestUtil.assertCommandSuc
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.ModeEnum;
+import seedu.address.logic.commands.CommandResult;
 
 public class SwitchCommandTest {
 
@@ -14,7 +15,7 @@ public class SwitchCommandTest {
     public void execute_validMode_success() {
         SwitchCommand switchCommand = new SwitchCommand(ModeEnum.PERSON);
         String expectedMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.PERSON);
-        assertCommandSuccess(switchCommand, expectedMessage);
+        assertCommandSuccess(switchCommand, new CommandResult(expectedMessage, false, false, ModeEnum.PERSON));
         // TODO add more modes here
     }
 
