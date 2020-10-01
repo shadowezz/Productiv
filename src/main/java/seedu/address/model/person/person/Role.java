@@ -14,7 +14,7 @@ public class Role {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Role should only be a " + getStringJoinedBySeparator(Arrays.stream(RoleEnum.values())
-                    .map(role -> role.toString() + " (" + role.getArgument() + ")"), " or ");;
+                    .map(role -> role.getArgument() + " (" + role.toString() + ")"), " or ");
     public static final String VALIDATION_REGEX =
             getStringJoinedBySeparator(Arrays.stream(RoleEnum.values()).map(role -> role.getArgument()), "|");
     public final RoleEnum value;
