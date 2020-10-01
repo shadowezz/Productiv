@@ -38,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private DeliverableListPanel deliverableListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -77,6 +78,9 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         mode = ModeEnum.PERSON; // default to contacts list first
+
+        // not sure if this should be here
+        deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
     }
 
     public Stage getPrimaryStage() {
@@ -125,12 +129,17 @@ public class MainWindow extends UiPart<Stage> {
         assert mode != null : "Mode should not be null";
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
+        statusbarPlaceholder.getChildren().clear(); // remove current status bar
         switch (mode) {
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             break;
         case DELIVERABLE:
-//            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
+            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             break;
         default:
             assert true : "Something wrong with mode";
@@ -142,6 +151,10 @@ public class MainWindow extends UiPart<Stage> {
         switchMode(ModeEnum.PERSON);
     }
 
+    public void switchDeliverable() {
+        switchMode(ModeEnum.DELIVERABLE);
+
+    }
     /**
      * Fills up all the placeholders of this window.
      */

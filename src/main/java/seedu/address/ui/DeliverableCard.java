@@ -5,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.person.person.Person;
 
 /**
  * An UI component that displays information of a {@code Deliverable}.
@@ -23,7 +22,7 @@ public class DeliverableCard extends UiPart<Region> {
 
     public final Deliverable deliverable;
 
-    @javafx.fxml.FXML
+    @FXML
     private HBox cardPane;
     @FXML
     private Label name;
