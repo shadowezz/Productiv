@@ -1,8 +1,5 @@
 package seedu.address.model.meeting;
 
-import seedu.address.model.meeting.Meeting;
-import seedu.address.model.meeting.MeetingBook;
-
 /**
  * The API of the Model component.
  */

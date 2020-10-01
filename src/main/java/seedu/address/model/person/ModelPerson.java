@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.person.ReadOnlyAddressBook;
 import seedu.address.model.person.person.Person;
 
 /**
