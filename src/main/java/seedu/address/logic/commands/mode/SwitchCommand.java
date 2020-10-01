@@ -1,20 +1,31 @@
 package seedu.address.logic.commands.mode;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.ModeEnum;
 import seedu.address.logic.commands.CommandResult;
 
+/**
+ * Switches the mode of the application.
+ */
 public class SwitchCommand extends Command {
 
     public static final String COMMAND_WORD = "switch";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches mode. Parameters: deliverable or meeting or"
-            + " "
-            + "contact"
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches mode. Parameters: "
+            + ModeEnum.getModeOptions()
             + " \n"
             + "Example: " + COMMAND_WORD + " contact";
+
     public static final String MESSAGE_SUCCESS = "Mode switched to: %1$s";
+
     private final ModeEnum mode;
 
+    /**
+     * Creates a SwitchCommand to switch the specified {@code ModeEnum}
+     */
     public SwitchCommand(ModeEnum mode) {
+        requireNonNull(mode);
         this.mode = mode;
     }
 

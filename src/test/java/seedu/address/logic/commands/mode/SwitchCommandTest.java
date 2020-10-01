@@ -13,9 +13,21 @@ public class SwitchCommandTest {
 
     @Test
     public void execute_validMode_success() {
-        SwitchCommand switchCommand = new SwitchCommand(ModeEnum.PERSON);
-        String expectedMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.PERSON);
-        assertCommandSuccess(switchCommand, new CommandResult(expectedMessage, false, false, ModeEnum.PERSON));
+        SwitchCommand switchPersonCommand = new SwitchCommand(ModeEnum.PERSON);
+        String expectedPersonMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.PERSON);
+        assertCommandSuccess(switchPersonCommand, new CommandResult(expectedPersonMessage, false, false,
+                ModeEnum.PERSON));
+
+        SwitchCommand switchDeliverableCommand = new SwitchCommand(ModeEnum.DELIVERABLE);
+        String expectedDeliverableMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.DELIVERABLE);
+        assertCommandSuccess(switchDeliverableCommand, new CommandResult(expectedDeliverableMessage, false, false,
+                ModeEnum.DELIVERABLE));
+
+        SwitchCommand switchMeetingCommand = new SwitchCommand(ModeEnum.MEETING);
+        String expectedMeetingMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.MEETING);
+        assertCommandSuccess(switchMeetingCommand, new CommandResult(expectedMeetingMessage, false, false,
+                ModeEnum.MEETING));
+
         // TODO add more modes here
     }
 

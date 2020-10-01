@@ -24,16 +24,9 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
         }
 
-        ModeEnum mode = null;
+        ModeEnum mode = ModeEnum.getEnumByArgument(trimmedArgs);
 
-        switch (args) {
-        case "contact":
-            mode = ModeEnum.PERSON;
-            break;
-        case "deliverable":
-            mode = ModeEnum.DELIVERABLE;
-            break;
-        default:
+        if (mode == null) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
         }

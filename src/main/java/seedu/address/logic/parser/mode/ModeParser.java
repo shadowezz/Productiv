@@ -1,30 +1,18 @@
 package seedu.address.logic.parser.mode;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-
-import java.util.Arrays;
 
 import seedu.address.logic.commands.mode.Command;
 import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.mode.SwitchCommand;
+import seedu.address.logic.parser.TokenizedUserInput;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses user input.
  */
 public class ModeParser {
-
-    private String afterFirstWord(String userInput, String usage) throws ParseException {
-        final String[] words = userInput.split(" ");
-
-        if (words.length <= 1) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, usage));
-        }
-        return String.join("", Arrays.copyOfRange(words, 1, words.length));
-    }
-
     /**
      * Parses user input into command for execution.
      *
@@ -33,8 +21,9 @@ public class ModeParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
-
-        final String commandWord = userInput.split(" ")[0];
+        TokenizedUserInput tokenizedUserInput = TokenizedUserInput.getCommandWordArgumentsFromUserInput(userInput);
+        String commandWord = tokenizedUserInput.getCommandWord();
+        String arguments = tokenizedUserInput.getArguments();
 
         switch (commandWord) {
 
@@ -45,8 +34,7 @@ public class ModeParser {
             return new HelpCommand();
 
         case SwitchCommand.COMMAND_WORD:
-            final String argument = afterFirstWord(userInput, SwitchCommand.MESSAGE_USAGE);
-            return new SwitchCommandParser().parse(argument);
+            return new SwitchCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
