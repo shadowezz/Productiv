@@ -12,7 +12,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.person.person.tag.Tag;
+import seedu.address.model.person.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.

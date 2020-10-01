@@ -32,7 +32,7 @@ class RoleTest {
         assertFalse(Role.isValidRole("9011p041")); // alphabets within digits
         assertFalse(Role.isValidRole("9312 1534")); // spaces within digits
 
-        // valid Role numbers
+        // valid Roles
         assertTrue(Role.isValidRole("stk"));
         assertTrue(Role.isValidRole("dev"));
     }

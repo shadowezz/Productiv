@@ -26,7 +26,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.person.person.tag.Tag;
+import seedu.address.model.person.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -100,7 +100,7 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
+        Role updatedRole = personToEdit.getRole();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedRole);
     }
@@ -133,7 +133,6 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
-        private Role role;
 
         public EditPersonDescriptor() {}
 
@@ -147,7 +146,6 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
-            setRole(toCopy.role);
         }
 
         /**
@@ -206,14 +204,6 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
-        public void setRole(Role role) {
-            this.role = role;
-        }
-
-        public Optional<Role> getRole() {
-            return Optional.ofNullable(role);
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -233,8 +223,7 @@ public class EditCommand extends Command {
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
                     && getAddress().equals(e.getAddress())
-                    && getTags().equals(e.getTags())
-                    && getRole().equals(e.getRole());
+                    && getTags().equals(e.getTags());
         }
     }
 }
