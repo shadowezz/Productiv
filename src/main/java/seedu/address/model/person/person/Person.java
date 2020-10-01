@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.person.tag.Tag; //TODO
+import seedu.address.model.person.tag.Tag;
 
 /**
  * Represents a Person in the address book.

@@ -2,9 +2,9 @@ package seedu.address.model.person.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+import static seedu.address.commons.util.StringUtil.getStringJoinedBySeparator;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  * Represents a Person's role in the address book.
@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 public class Role {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Role should only be a " + getMessageConstraints();
-    public static final String VALIDATION_REGEX = getValidationRegex();
+            "Role should only be a " + getStringJoinedBySeparator(Arrays.stream(RoleEnum.values())
+                    .map(role -> role.toString() + " (" + role.getArgument() + ")"), " or ");;
+    public static final String VALIDATION_REGEX =
+            getStringJoinedBySeparator(Arrays.stream(RoleEnum.values()).map(role -> role.getArgument()), "|");
     public final RoleEnum value;
 
     /**
@@ -25,16 +27,9 @@ public class Role {
     public Role(String role) {
         requireNonNull(role);
         checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
-        value = Arrays.stream(RoleEnum.values()).filter(x -> x.getArgument().equals((role))).findFirst().get();
-    }
-
-    private static final String getMessageConstraints() {
-        return Arrays.stream(RoleEnum.values()).map(role -> role.toString() + " (" + role.getArgument() + ")")
-                .collect(Collectors.joining(" or "));
-    }
-
-    private static final String getValidationRegex() {
-        return Arrays.stream(RoleEnum.values()).map(role -> role.getArgument()).collect(Collectors.joining("|"));
+        RoleEnum roleEnum = RoleEnum.getEnumByArgument(role);
+        requireNonNull(roleEnum);
+        value = roleEnum;
     }
 
     /**

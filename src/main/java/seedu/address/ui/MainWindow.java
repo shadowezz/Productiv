@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -80,9 +82,6 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         mode = ModeEnum.PERSON; // default to contacts list first
-
-        // not sure if this should be here
-        deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
     }
 
     public Stage getPrimaryStage() {
@@ -128,7 +127,7 @@ public class MainWindow extends UiPart<Stage> {
      * @param mode the mode to change Ui to.
      */
     public void switchMode(ModeEnum mode) {
-        assert mode != null : "Mode should not be null";
+        requireNonNull(mode);
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
@@ -144,11 +143,15 @@ public class MainWindow extends UiPart<Stage> {
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             break;
         default:
-            assert true : "Something wrong with mode";
+            assert false : "from default: " + ModeEnum.getModeOptions();
         }
     }
 
     // TODO define switch tabs here
+
+    /**
+     * Switches to contact mode.
+     */
     public void switchPerson() {
         switchMode(ModeEnum.PERSON);
     }
@@ -163,9 +166,11 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerPartsPerson() {
+    void fillInnerParts() {
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -240,9 +245,11 @@ public class MainWindow extends UiPart<Stage> {
                     commandResult = logicDeliverable.execute(commandText);
                     break;
                 default:
-                    assert true : "Something wrong with mode";
+                    assert false : "from default: " + ModeEnum.getModeOptions();
                 }
             }
+
+            requireNonNull(commandResult);
 
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());

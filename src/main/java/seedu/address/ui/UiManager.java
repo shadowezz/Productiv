@@ -50,7 +50,7 @@ public class UiManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerPartsPerson(); // TODO change to dashboard. for now default to contact list
+            mainWindow.fillInnerParts(); // TODO change to dashboard. for now default to contact list
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
