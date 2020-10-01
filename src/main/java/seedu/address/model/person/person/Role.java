@@ -29,7 +29,8 @@ public class Role {
     }
 
     private static final String getMessageConstraints() {
-        return Arrays.stream(RoleEnum.values()).map(role -> role.toString() + " (" + role.getArgument() + ")").collect(Collectors.joining(" or "));
+        return Arrays.stream(RoleEnum.values()).map(role -> role.toString() + " (" + role.getArgument() + ")")
+                .collect(Collectors.joining(" or "));
     }
 
     private static final String getValidationRegex() {

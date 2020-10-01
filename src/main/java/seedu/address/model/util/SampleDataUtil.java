@@ -58,11 +58,4 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Role getRole(String str) {
-        return new Role(str);
-    }
-
 }
