@@ -3,6 +3,7 @@ package seedu.address.model.person.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
@@ -11,24 +12,9 @@ import java.util.stream.Collectors;
  */
 public class Role {
 
-    public enum RoleEnum {
-        DEVELOPER {
-            @Override
-            public String toString() {
-                return "dev";
-            }
-        },
-        STAKEHOLDER {
-            @Override
-            public String toString() {
-                return "stk";
-            }
-        }
-    }
-
     public static final String MESSAGE_CONSTRAINTS =
-            "Role should only be a developer (" + RoleEnum.DEVELOPER + ") or stakeholder (" + RoleEnum.STAKEHOLDER +")";
-    public static final String VALIDATION_REGEX = RoleEnum.DEVELOPER + "|" + RoleEnum.STAKEHOLDER;
+            "Role should only be a " + getMessageConstraints();
+    public static final String VALIDATION_REGEX = getValidationRegex();
     public final RoleEnum value;
 
     /**
@@ -39,7 +25,15 @@ public class Role {
     public Role(String role) {
         requireNonNull(role);
         checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
-        value = Enum.valueOf(RoleEnum.class, role);
+        value = Arrays.stream(RoleEnum.values()).filter(x -> x.getArgument().equals((role))).findFirst().get();
+    }
+
+    private static final String getMessageConstraints() {
+        return Arrays.stream(RoleEnum.values()).map(role -> role.toString() + " (" + role.getArgument() + ")").collect(Collectors.joining(" or "));
+    }
+
+    private static final String getValidationRegex() {
+        return Arrays.stream(RoleEnum.values()).map(role -> role.getArgument()).collect(Collectors.joining("|"));
     }
 
     /**
