@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.LogicDeliverable;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 
@@ -25,16 +26,18 @@ public class UiManager implements Ui {
 
     private LogicMode logicMode;
     private LogicPerson logicPerson;
+    private LogicDeliverable logicDeliverable;
     private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public UiManager(LogicMode logicMode, LogicPerson logicPerson) {
+    public UiManager(LogicMode logicMode, LogicPerson logicPerson, LogicDeliverable logicDeliverable) {
         // TODO use only a central logic object
         super();
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
+        this.logicDeliverable = logicDeliverable;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson);
+            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerPartsPerson(); // TODO change to dashboard. for now default to contact list
 

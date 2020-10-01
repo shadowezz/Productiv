@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.LogicDeliverable;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
@@ -33,9 +34,11 @@ public class MainWindow extends UiPart<Stage> {
     private ModeEnum mode;
     private LogicMode logicMode;
     private LogicPerson logicPerson;
+    private LogicDeliverable logicDeliverable;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private DeliverableListPanel deliverableListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -55,15 +58,18 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode} and {@code LogicPerson}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode},
+     * {@code LogicPerson} and {@code LogicDeliverable}.
      */
-    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson) {
+    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
+                      LogicDeliverable logicDeliverable) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
+        this.logicDeliverable = logicDeliverable;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -74,6 +80,9 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         mode = ModeEnum.PERSON; // default to contacts list first
+
+        // not sure if this should be here
+        deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
     }
 
     public Stage getPrimaryStage() {
@@ -119,12 +128,20 @@ public class MainWindow extends UiPart<Stage> {
      * @param mode the mode to change Ui to.
      */
     public void switchMode(ModeEnum mode) {
-        assert mode == null : "Mode should not be null";
+        assert mode != null : "Mode should not be null";
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
+        statusbarPlaceholder.getChildren().clear(); // remove current status bar
         switch (mode) {
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            break;
+        case DELIVERABLE:
+            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             break;
         default:
             assert true : "Something wrong with mode";
@@ -136,6 +153,13 @@ public class MainWindow extends UiPart<Stage> {
         switchMode(ModeEnum.PERSON);
     }
 
+    /**
+     * Switches to deliverable mode.
+     */
+    public void switchDeliverable() {
+        switchMode(ModeEnum.DELIVERABLE);
+
+    }
     /**
      * Fills up all the placeholders of this window.
      */
@@ -211,6 +235,9 @@ public class MainWindow extends UiPart<Stage> {
                 switch (mode) {
                 case PERSON:
                     commandResult = logicPerson.execute(commandText);
+                    break;
+                case DELIVERABLE:
+                    commandResult = logicDeliverable.execute(commandText);
                     break;
                 default:
                     assert true : "Something wrong with mode";

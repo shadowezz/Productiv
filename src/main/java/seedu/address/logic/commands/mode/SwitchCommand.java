@@ -20,7 +20,7 @@ public class SwitchCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        return new CommandResult(String.format(MESSAGE_SUCCESS, mode));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, mode), false, false, mode);
     }
 
     @Override
