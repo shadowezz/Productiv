@@ -19,12 +19,12 @@ import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
+import seedu.address.model.AddressBook;
 import seedu.address.model.DeliverableBook;
 import seedu.address.model.ModelDeliverable;
 import seedu.address.model.ModelDeliverableManager;
 import seedu.address.model.ModelPerson;
 import seedu.address.model.ModelPersonManager;
-import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyDeliverableBook;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -73,7 +73,8 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(userPrefs.getDeliverableBookFilePath());
+        DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(
+                userPrefs.getDeliverableBookFilePath());
         storagePerson = new StoragePersonManager(addressBookStorage, userPrefsStorage);
         storageDeliverable = new StorageDeliverableManager(deliverableBookStorage, userPrefsStorage);
         initLogging(config);
@@ -119,7 +120,8 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private ModelDeliverable initDeliverableModelManager(StorageDeliverable storageDeliverable, ReadOnlyUserPrefs userPrefs) {
+    private ModelDeliverable initDeliverableModelManager(StorageDeliverable storageDeliverable,
+                                                         ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyDeliverableBook> deliverableBookOptional;
         ReadOnlyDeliverableBook initialData;
         try {
@@ -129,10 +131,12 @@ public class MainApp extends Application {
             }
             initialData = deliverableBookOptional.orElseGet(SampleDataUtil::getSampleDeliverableBook);
         } catch (DataConversionException e) {
-            logger.warning("Data file for deliverable not in the correct format. Will be starting with an empty DeliverableBook");
+            logger.warning("Data file for deliverable not in the correct format. "
+                    + "Will be starting with an empty DeliverableBook");
             initialData = new DeliverableBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the deliverable file. Will be starting with an empty DeliverableBook");
+            logger.warning("Problem while reading from the deliverable file. "
+                    + "Will be starting with an empty DeliverableBook");
             initialData = new DeliverableBook();
         }
 

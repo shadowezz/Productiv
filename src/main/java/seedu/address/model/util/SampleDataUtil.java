@@ -45,13 +45,13 @@ public class SampleDataUtil {
 
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
-                new Deliverable(1),
-                new Deliverable(2),
-                new Deliverable(3),
-                new Deliverable(4),
-                new Deliverable(5),
-                new Deliverable(6),
-                new Deliverable(7),
+            new Deliverable(1),
+            new Deliverable(2),
+            new Deliverable(3),
+            new Deliverable(4),
+            new Deliverable(5),
+            new Deliverable(6),
+            new Deliverable(7),
         };
     }
 

@@ -76,7 +76,8 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
     /**
      * Replaces the given deliverable {@code target} in the list with {@code editedDeliverable}.
      * {@code target} must exist in the deliverable book.
-     * The deliverable identity of {@code editedDeliverable} must not be the same as another existing deliverable in the deliverable book.
+     * The deliverable identity of {@code editedDeliverable} must not be the same as
+     * another existing deliverable in the deliverable book.
      */
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireNonNull(editedDeliverable);

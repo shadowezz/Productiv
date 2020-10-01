@@ -13,10 +13,10 @@ import seedu.address.testutil.DeliverableBuilder;
 public class DeliverableTest {
 
     //Not implemented yet
-//    @Test
-//    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-//
-//    }
+    @Test
+    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
+        assertFalse(false);
+    }
 
     @Test
     public void isSameDeliverable() {

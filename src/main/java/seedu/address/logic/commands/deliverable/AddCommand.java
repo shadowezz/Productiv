@@ -19,7 +19,8 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_NUMBER + "NUMBER ";
     public static final String MESSAGE_SUCCESS = "New deliverable added: %1$s";
-    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already exists in the deliverable book";
+    public static final String MESSAGE_DUPLICATE_DELIVERABLE =
+            "This deliverable already exists in the deliverable book";
 
     private final Deliverable toAdd;
 

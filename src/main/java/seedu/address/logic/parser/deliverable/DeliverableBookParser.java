@@ -6,11 +6,10 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.deliverable.AddCommand;
 import seedu.address.logic.commands.deliverable.Command;
+import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.deliverable.AddCommandParser;
 
 /**
  * Parses user input for deliverable.

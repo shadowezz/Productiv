@@ -58,9 +58,11 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode}, {@code LogicPerson} and {@code LogicDeliverable}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode},
+     * {@code LogicPerson} and {@code LogicDeliverable}.
      */
-    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson, LogicDeliverable logicDeliverable) {
+    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
+                      LogicDeliverable logicDeliverable) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -151,6 +153,9 @@ public class MainWindow extends UiPart<Stage> {
         switchMode(ModeEnum.PERSON);
     }
 
+    /**
+     * Switches to deliverable mode.
+     */
     public void switchDeliverable() {
         switchMode(ModeEnum.DELIVERABLE);
 
@@ -233,6 +238,7 @@ public class MainWindow extends UiPart<Stage> {
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
+                    break;
                 default:
                     assert true : "Something wrong with mode";
                 }

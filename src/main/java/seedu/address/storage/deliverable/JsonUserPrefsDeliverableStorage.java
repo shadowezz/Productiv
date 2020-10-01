@@ -13,7 +13,7 @@ import seedu.address.model.UserPrefsDeliverable;
  * A class to access UserPrefsDeliverable stored in the hard disk as a json file
  * Not used.
  */
-public class JsonUserPrefsDeliverableStorage implements UserPrefsDeliverableStorage{
+public class JsonUserPrefsDeliverableStorage implements UserPrefsDeliverableStorage {
 
     private Path filePath;
 
@@ -36,7 +36,8 @@ public class JsonUserPrefsDeliverableStorage implements UserPrefsDeliverableStor
      * @param prefsDeliverableFilePath location of the data. Cannot be null.
      * @throws DataConversionException if the file format is not as expected.
      */
-    public Optional<UserPrefsDeliverable> readUserPrefsDeliverable(Path prefsDeliverableFilePath) throws DataConversionException {
+    public Optional<UserPrefsDeliverable> readUserPrefsDeliverable(Path prefsDeliverableFilePath)
+            throws DataConversionException {
         return JsonUtil.readJsonFile(prefsDeliverableFilePath, UserPrefsDeliverable.class);
     }
 

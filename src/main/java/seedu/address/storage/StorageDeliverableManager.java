@@ -23,7 +23,8 @@ public class StorageDeliverableManager implements StorageDeliverable {
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageDeliverableManager} with the given {@code DeliverableBookStorage} and {@code UserPrefsStorage}.
+     * Creates a {@code StorageDeliverableManager} with the given {@code DeliverableBookStorage}
+     * and {@code UserPrefsStorage}.
      */
     public StorageDeliverableManager(DeliverableBookStorage deliverableBookStorage, UserPrefsStorage userPrefsStorage) {
         this.deliverableBookStorage = deliverableBookStorage;
@@ -59,7 +60,8 @@ public class StorageDeliverableManager implements StorageDeliverable {
     }
 
     @Override
-    public Optional<ReadOnlyDeliverableBook> readDeliverableBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyDeliverableBook> readDeliverableBook(Path filePath)
+            throws DataConversionException, IOException {
         logger.fine("Attempting to read data from deliverable file: " + filePath);
         return deliverableBookStorage.readDeliverableBook(filePath);
     }

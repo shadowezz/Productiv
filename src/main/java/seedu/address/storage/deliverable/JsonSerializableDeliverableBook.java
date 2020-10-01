@@ -37,7 +37,8 @@ public class JsonSerializableDeliverableBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableDeliverableBook}.
      */
     public JsonSerializableDeliverableBook(ReadOnlyDeliverableBook source) {
-        deliverables.addAll(source.getDeliverableList().stream().map(JsonAdaptedDeliverable::new).collect(Collectors.toList()));
+        deliverables.addAll(source.getDeliverableList().stream().map(JsonAdaptedDeliverable::new)
+                .collect(Collectors.toList()));
     }
 
     /**

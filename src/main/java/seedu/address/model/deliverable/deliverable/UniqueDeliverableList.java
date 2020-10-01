@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.exceptions.DeliverableNotFoundException;
 import seedu.address.model.deliverable.deliverable.exceptions.DuplicateDeliverableException;
 
-public class UniqueDeliverableList implements Iterable<Deliverable>{
+public class UniqueDeliverableList implements Iterable<Deliverable> {
 
     private final ObservableList<Deliverable> internalList = FXCollections.observableArrayList();
     private final ObservableList<Deliverable> internalUnmodifiableList =
@@ -40,7 +40,8 @@ public class UniqueDeliverableList implements Iterable<Deliverable>{
     /**
      * Replaces the deliverable {@code target} in the list with {@code editedDeliverable}.
      * {@code target} must exist in the list.
-     * The deliverable identity of {@code editedDeliverable} must not be the same as another existing deliverable in the list.
+     * The deliverable identity of {@code editedDeliverable} must not be the same as
+     * another existing deliverable in the list.
      */
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireAllNonNull(target, editedDeliverable);

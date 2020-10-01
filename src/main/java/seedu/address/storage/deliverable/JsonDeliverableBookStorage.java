@@ -45,7 +45,8 @@ public class JsonDeliverableBookStorage implements DeliverableBookStorage {
      * @throws DataConversionException if the file is not in the correct format.
      */
     @Override
-    public Optional<ReadOnlyDeliverableBook> readDeliverableBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyDeliverableBook> readDeliverableBook(Path filePath)
+            throws DataConversionException, IOException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableDeliverableBook> jsonDeliverableBook = JsonUtil.readJsonFile(

@@ -8,8 +8,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.deliverable.Command;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.deliverable.DeliverableBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ModelDeliverable;
@@ -30,7 +30,8 @@ public class LogicDeliverableManager implements LogicDeliverable {
     private final DeliverableBookParser deliverableBookParser;
 
     /**
-     * Constructs a {@code LogicDeliverableManager} with the given {@code ModelDeliverable} and {@code StorageDeliverable}.
+     * Constructs a {@code LogicDeliverableManager} with the given {@code ModelDeliverable}
+     * and {@code StorageDeliverable}.
      */
     public LogicDeliverableManager(ModelDeliverable modelDeliverable, StorageDeliverable storageDeliverable) {
         this.modelDeliverable = modelDeliverable;
