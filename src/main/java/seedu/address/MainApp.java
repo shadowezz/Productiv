@@ -15,6 +15,8 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.LogicDeliverable;
 import seedu.address.logic.LogicDeliverableManager;
+import seedu.address.logic.LogicMeeting;
+import seedu.address.logic.LogicMeetingManager;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicModeManager;
 import seedu.address.logic.LogicPerson;
@@ -25,6 +27,9 @@ import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.ModelDeliverableManager;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
+import seedu.address.model.meeting.MeetingBook;
+import seedu.address.model.meeting.ModelMeeting;
+import seedu.address.model.meeting.ModelMeetingManager;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ModelPerson;
 import seedu.address.model.person.ModelPersonManager;
@@ -36,6 +41,7 @@ import seedu.address.storage.deliverable.DeliverableBookStorage;
 import seedu.address.storage.deliverable.JsonDeliverableBookStorage;
 import seedu.address.storage.deliverable.StorageDeliverable;
 import seedu.address.storage.deliverable.StorageDeliverableManager;
+import seedu.address.storage.meeting.StorageMeeting;
 import seedu.address.storage.person.AddressBookStorage;
 import seedu.address.storage.person.JsonAddressBookStorage;
 import seedu.address.storage.person.StoragePerson;
@@ -56,9 +62,15 @@ public class MainApp extends Application {
     protected LogicPerson logicPerson;
     protected StoragePerson storagePerson;
     protected ModelPerson modelPerson;
+
     protected ModelDeliverable modelDeliverable;
     protected StorageDeliverable storageDeliverable;
     protected LogicDeliverable logicDeliverable;
+
+    protected LogicMeeting logicMeeting;
+    protected StorageMeeting storageMeeting;
+    protected ModelMeeting modelMeeting;
+
     protected LogicMode logicMode;
     protected Config config;
 
@@ -80,14 +92,21 @@ public class MainApp extends Application {
         initLogging(config);
 
         modelPerson = initModelManager(storagePerson, userPrefs);
+
         modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
+
+        // TODO: make init for model meeting
+        modelMeeting = new ModelMeetingManager(new MeetingBook());
+
         // TODO ensure that use same object userPrefs in creating models
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
         logicDeliverable = new LogicDeliverableManager(modelDeliverable, storageDeliverable);
+        logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
         logicMode = new LogicModeManager();
 
         ui = new UiManager(logicMode, logicPerson, logicDeliverable);
+
     }
 
     /**
