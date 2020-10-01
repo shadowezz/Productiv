@@ -250,13 +250,13 @@ manage their product’s development more comprehensively and conveniently.
 
 ### EPIC
 
-| No | EPIC                                                                                                                                       | 
-|----|--------------------------------------------------------------------------------------------------------------------------------------------|
-|A   | As a Product Manager, I can track my product’s development so that I can work better towards production deadlines.                         |
-|B   | As a Product Manager, I can manage my stakeholder/dev team contacts                                                                        |
-|C   | As a Product Manager, I can organise my meetings with stakeholders                                                                         |
-|D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended |
-|E   | As a bridge between Dev Team and Stakeholders, I can communicate better                                                                    |
+| No | EPIC                                                                                                                                        | 
+|----|---------------------------------------------------------------------------------------------------------------------------------------------|
+|A   | As a Product Manager, I can track my product’s development so that I can work better towards production deadlines.                          |
+|B   | As a Product Manager, I can manage my stakeholder/dev team contacts.                                                                        |
+|C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
+|D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
+|E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
 
 ### User stories
 
@@ -281,10 +281,10 @@ Priorities:
 | `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
 | `* *`    | Product Manager                          | be notified when my product’s development is close to tagline / past deadline / too slow |                       |
 | `* *`    | Product Manager                          | pin different parts of the project according to their urgency               |                                    |
-| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  | remember and retrieve important information |
+| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  |                                    |
 | **EPIC B** |
 | `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
-| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 |                                    |
+| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | remember and retrieve important information  |
 | `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
 | `* *`    | Product Manager                          | customise fields of information                                             | keep any data that I want          |
 | `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contacts |
@@ -297,7 +297,7 @@ Priorities:
 | `* *`    | Product Manager                          | see a calendar view of my meetings                                          | know my available slots to schedule new meetings |
 | `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
 | **EPIC D** |
-| `* *`    | Product Manager                          | view helpful popup                                                          | easily access the relevant instructions |
+| `* *`    | Product Manager                          | view a helpful popup                                                        | easily access the relevant instructions |
 | `* *`    | Product Manager                          | receive feedback from the app                                               | know the system has registered my action correctly or not |
 | `* *`    | Product Manager                          | view and easily navigate within the shortcut reference                      | locate technical solutions quickly |
 | **EPIC E** |
