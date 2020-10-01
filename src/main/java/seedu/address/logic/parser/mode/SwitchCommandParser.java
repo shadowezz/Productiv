@@ -30,6 +30,9 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
         case "contact":
             mode = ModeEnum.PERSON;
             break;
+        case "deliverable":
+            mode = ModeEnum.DELIVERABLE;
+            break;
         default:
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));

@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.meeting;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -7,16 +7,19 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyAddressBook;
-import seedu.address.model.person.ReadOnlyUserPrefs;
-import seedu.address.model.person.UserPrefs;
+import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.person.AddressBookStorage;
-import seedu.address.storage.person.UserPrefsStorage;
+import seedu.address.storage.person.StoragePersonManager;
 
 /**
  * Manages storage of AddressBook data in local storage.
  */
-public class StoragePersonManager implements StoragePerson {
+
+// TODO: Change to meeting book
+public class StorageMeetingManager implements StorageMeeting {
 
     private static final Logger logger = LogsCenter.getLogger(StoragePersonManager.class);
     private AddressBookStorage addressBookStorage;
@@ -25,7 +28,7 @@ public class StoragePersonManager implements StoragePerson {
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
-    public StoragePersonManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageMeetingManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;

@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -11,10 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.AddressBook;
-import seedu.address.model.person.ReadOnlyAddressBook;
-import seedu.address.model.person.ReadOnlyUserPrefs;
-import seedu.address.model.person.UserPrefs;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.person.Person;
 
 /**

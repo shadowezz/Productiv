@@ -30,6 +30,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Contact" onAction="#switchPerson">
           </Menu>
+          <Menu mnemonicParsing="false" text="Deliverable" onAction="#switchDeliverable">
+          </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
