@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.deliverable;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -7,18 +7,17 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.storage.deliverable.DeliverableBookStorage;
-import seedu.address.storage.person.UserPrefsStorage;
+import seedu.address.storage.UserPrefsStorage;
 
 /**
  * Manages storage of DeliverableBook data in local storage.
  */
 public class StorageDeliverableManager implements StorageDeliverable {
 
-    private static final Logger logger = LogsCenter.getLogger(StoragePersonManager.class);
+    private static final Logger logger = LogsCenter.getLogger(StorageDeliverableManager.class);
     private DeliverableBookStorage deliverableBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
@@ -47,7 +46,7 @@ public class StorageDeliverableManager implements StorageDeliverable {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
-    // ================ AddressBook methods ==============================
+    // ================ DeliverableBook methods ==============================
 
     @Override
     public Path getDeliverableBookFilePath() {

@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.DeliverableBook;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.DeliverableBook;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 
 /**
  * Represents a storage for {@link DeliverableBook}.

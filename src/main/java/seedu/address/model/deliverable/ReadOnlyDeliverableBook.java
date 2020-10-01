@@ -1,10 +1,10 @@
-package seedu.address.model;
+package seedu.address.model.deliverable;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of an deliverable book
  */
 public interface ReadOnlyDeliverableBook {
     /**

@@ -12,10 +12,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.person.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.person.AddressBookParser;
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.ModelPerson;
+import seedu.address.model.person.ReadOnlyAddressBook;
 import seedu.address.model.person.person.Person;
-import seedu.address.storage.StoragePerson;
+import seedu.address.storage.person.StoragePerson;
 
 /**
  * The main LogicManager of the app.

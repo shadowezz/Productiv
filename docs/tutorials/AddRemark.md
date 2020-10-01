@@ -25,7 +25,7 @@ For now, let’s keep `RemarkCommand` as simple as possible and print some outpu
 ``` java
 package seedu.address.logic.commands;
 
-import seedu.address.model.ModelPerson.Model;
+import seedu.address.model.person.ModelPerson.Model;
 
 /**
  * Changes the remark of an existing person in the address book.

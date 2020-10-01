@@ -75,8 +75,8 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code deliverables}.
+     * {@code deliverables} must not contain duplicate deliverables.
      */
     public void setDeliverables(List<Deliverable> deliverables) {
         requireAllNonNull(deliverables);

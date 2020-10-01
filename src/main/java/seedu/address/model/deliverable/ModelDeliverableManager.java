@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.deliverable;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
@@ -111,7 +113,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
         deliverableBook.setDeliverable(target, editedDeliverable);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Deliverable List Accessors =============================================================
 
     @Override
     public ObservableList<Deliverable> getFilteredDeliverableList() {

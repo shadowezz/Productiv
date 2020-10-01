@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.DeliverableBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.person.AddressBook;
+import seedu.address.model.deliverable.DeliverableBook;
+import seedu.address.model.person.ReadOnlyAddressBook;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.person.person.Address;
 import seedu.address.model.person.person.Email;

@@ -7,8 +7,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ModelDeliverable;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.ModelDeliverable;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**

@@ -1,15 +1,14 @@
-package seedu.address.storage;
+package seedu.address.storage.deliverable;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.storage.deliverable.DeliverableBookStorage;
-import seedu.address.storage.person.UserPrefsStorage;
+import seedu.address.storage.UserPrefsStorage;
 
 /**
  * API of the Storage component for Deliverable

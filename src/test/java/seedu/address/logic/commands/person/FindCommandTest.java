@@ -15,8 +15,8 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ModelPersonManager;
+import seedu.address.model.person.ModelPerson;
+import seedu.address.model.person.ModelPersonManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.person.NameContainsKeywordsPredicate;
 

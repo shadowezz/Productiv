@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.DeliverableBook;
-import seedu.address.model.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.DeliverableBook;
+import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 
@@ -19,12 +19,12 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  */
 @JsonRootName(value = "deliverablebook")
 public class JsonSerializableDeliverableBook {
-    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "Deliverables list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "Deliverables list contains duplicate deliverable(s).";
 
     private final List<JsonAdaptedDeliverable> deliverables = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableDeliverableBook} with the given persons.
+     * Constructs a {@code JsonSerializableDeliverableBook} with the given deliverables.
      */
     @JsonCreator
     public JsonSerializableDeliverableBook(@JsonProperty("deliverables") List<JsonAdaptedDeliverable> deliverables) {

@@ -5,11 +5,11 @@ import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_NUMBER;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ModelDeliverable;
+import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
- * Adds a deliverable to the address book.
+ * Adds a deliverable to the deliverable book.
  */
 public class AddCommand extends Command {
 

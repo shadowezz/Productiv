@@ -2,7 +2,7 @@ package seedu.address.logic.commands.deliverable;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ModelDeliverable;
+import seedu.address.model.deliverable.ModelDeliverable;
 
 /**
  * Represents a command for deliverable with hidden internal logic and the ability to be executed.

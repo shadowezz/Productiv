@@ -1,10 +1,11 @@
-package seedu.address.model;
+package seedu.address.model.person;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.person.Person;
 
 /**

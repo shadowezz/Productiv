@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.deliverable;
 
 import static java.util.Objects.requireNonNull;
 
@@ -67,7 +67,7 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
 
     /**
      * Adds a deliverable to the deliverable book.
-     * The person must not already exist in the address book.
+     * The deliverable must not already exist in the deliverable book.
      */
     public void addDeliverable(Deliverable p) {
         deliverables.add(p);
