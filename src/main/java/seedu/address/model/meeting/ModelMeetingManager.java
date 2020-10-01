@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.meeting.meeting.Meeting;
 
 // TODO: Need to check and fix
 public class ModelMeetingManager implements ModelMeeting {

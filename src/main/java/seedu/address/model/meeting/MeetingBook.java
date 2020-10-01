@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import seedu.address.model.meeting.meeting.Meeting;
+
 public class MeetingBook {
     // TODO: Discuss whether there is a need for meeting, address, contact, etc books
     // TODO: Change after discussion
