@@ -248,6 +248,16 @@ _{Explain here how the data archiving feature will be implemented}_
 manage their product’s development more comprehensively and conveniently.
 
 
+### EPIC
+
+| No | EPIC                                                                                                                                       | 
+|----|--------------------------------------------------------------------------------------------------------------------------------------------|
+|A   | As a Product Manager, I can track my product’s development so that I can work better towards production deadlines.                         |
+|B   | As a Product Manager, I can manage my stakeholder/dev team contacts                                                                        |
+|C   | As a Product Manager, I can organise my meetings with stakeholders                                                                         |
+|D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended |
+|E   | As a bridge between Dev Team and Stakeholders, I can communicate better                                                                    |
+
 ### User stories
 
 Priorities: 
@@ -255,40 +265,44 @@ Priorities:
 * `* *` - Medium (nice to have)
 * `*` - Low (unlikely to have) 
 
-| Priority | As a …​                               | I want to …​                     | So that I can…​                                                         |
+| Priority | As a …​                               | I want to …​                                                             | So that I can…​                 |
 | -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
-| **Deliverables** |
+| **EPIC A** |
 | `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
-| `* * *`  | Product Manager                          | change the description of the deliverables                                  |                                    |
-| `* * *`  | Product Manager                          | mark these deliverables as completed                                        | refer back to them when needed     |
+| `* * *`  | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
+| `* * *`  | Product Manager                          | mark deliverables as completed                                              | refer back to them when needed     |
 | `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
 | `* *`    | Product Manager                          | tag deliverables as delayed and change the deadlines                        |                                    |
-| `* *`    | Product Manager                          | change the person-in-charge of deliverables                                 | locate a person easily             |
-| `* *`    | Product Manager                          | undo my action / be prompted before any action                              | Minimise mistakes made             |
-| `* *`    | Product Manager                          | view the overall completion percentage of the project                       | know whether we are on track (completed deliverables / total deliverables) |
+| `* *`    | Product Manager                          | change the person-in-charge of deliverables                                 | locate the right person easily     |
+| `* *`    | Product Manager                          | undo my action / be prompted before any action                              | minimise mistakes made             |
+| `* *`    | Product Manager                          | view the overall completion percentage of the project                       | know whether we are on track (e.g _`completed deliverables` out of `total deliverables`_) |
 | `* *`    | Product Manager                          | package deliverables into different iterations                              | retrieve the relevant deliverables easily |
 | `* *`    | Product Manager                          | easily know who and how to contact the person-in-charge                     | contact the person when the progress of a deliverable is behind schedule |
 | `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
 | `* *`    | Product Manager                          | be notified when my product’s development is close to tagline / past deadline / too slow |                       |
 | `* *`    | Product Manager                          | pin different parts of the project according to their urgency               |                                    |
-| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  |                                    |
-| **Contacts** |
+| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  | remember and retrieve important information |
+| **EPIC B** |
 | `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
 | `* * *`  | Product Manager                          | view my contacts and their relevant details                                 |                                    |
 | `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
-| `* *`    | Product Manager                          | customise fields of information                                             | keep any data that i want          |
-| `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contact |
+| `* *`    | Product Manager                          | customise fields of information                                             | keep any data that I want          |
+| `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contacts |
 | `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
-| **Meetings** |
+| **EPIC C** |
 | `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
 | `* * *`  | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
 | `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
 | `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
 | `* *`    | Product Manager                          | see a calendar view of my meetings                                          | know my available slots to schedule new meetings |
 | `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
-| **Communication** |
+| **EPIC D** |
+| `* *`    | Product Manager                          | view helpful popup                                                          | easily access the relevant instructions |
+| `* *`    | Product Manager                          | receive feedback from the app                                               | know the system has registered my action correctly or not |
+| `* *`    | Product Manager                          | view and easily navigate within the shortcut reference                      | locate technical solutions quickly |
+| **EPIC E** |
 | `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
-| `*`      | Product Manager                          | view contacts of people involved in a product                               | communicate with relevant people                          |
+| `*`      | Product Manager                          | view contacts of people involved in a product                               | communicate with relevant people   |
 | `*`      | Product Manager                          | check the product’s completion stage                                        | quickly communicate any needs to the Dev Team and/or stakeholders |
 
 
@@ -317,7 +331,7 @@ Priorities:
      
      * 2a1. Productiv displays an error message
      
-     * 2a2. User enters the command again
+     * 2a2. User enters the command again.
      
      * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
      
@@ -325,6 +339,7 @@ Priorities:
 
 
 #### CONTACT
+
 **Use case: `UC10 - Add a contact`**
 
 **Precondition(s):**
@@ -332,19 +347,19 @@ Priorities:
 
 **MSS**
 
-1. User adds contact
-    Use case ends
+1. User adds contact.
+    Use case ends.
     
 **Extensions**
 
-* 1a. Invalid input
+* 1a. Invalid input.
     
-    * 1a1. Productiv shows an error message
+    * 1a1. Productiv shows an error message.
       
-      Use case ends2
+      Use case ends.
 
       
-**Use case: `UC12 - Edit a contact`**
+**Use case: `UC11 - Edit a contact`**
 
 **Precondition(s):**
 * **`User is in the Contact mode`**
@@ -352,10 +367,10 @@ Priorities:
 
 **MSS**
 
-1. User requests to list contacts
-1. Productiv shows list of contacts
-1. User edits a specific contact in the list
-1. Productiv edits contact details
+1. User requests to list contacts.
+1. Productiv shows list of contacts.
+1. User edits a specific contact in the list.
+1. Productiv edits contact details.
 
     Use case ends.
 
@@ -363,21 +378,21 @@ Priorities:
 
 * 2a. The list is empty.
   
-  * Use case ends
+  * Use case ends.
      
 * 3a. The given index is invalid.
     
     * 3a1. Productiv shows an error message.
     
-      Use case resumes at step 2
+      Use case resumes at step 2.
       
-* 4a. The given input is invalid
+* 4a. The given input is invalid.
     
-    * 4a1 Productiv shows an error message
+    * 4a1 Productiv shows an error message.
       
-      Use case resumes at step 2
+      Use case resumes at step 2.
 
-**Use case: `UC11 - Delete a contact`**
+**Use case: `UC12 - Delete a contact`**
 
 **Precondition(s):**
 * **`User is in the Contact mode`** 
@@ -389,10 +404,10 @@ Priorities:
 
 **MSS**
 
-1. User requests to list contacts
-1. Productiv shows list of contacts
-1. User requests to delete a specific contact in the list
-1. Productiv deletes the contact
+1. User requests to list contacts.
+1. Productiv shows list of contacts.
+1. User requests to delete a specific contact in the list.
+1. Productiv deletes the contact.
    User case ends.
 
     Use case ends.
@@ -401,13 +416,13 @@ Priorities:
 
 * 2a. The list is empty.
   
-  * Use case ends
+  * Use case ends.
      
 * 3a. The given index is invalid.
     
     * 3a1. Productiv shows an error message.
     
-      Use case resumes at step 2
+      Use case resumes at step 2.
       
 
 
@@ -431,9 +446,9 @@ Priorities:
 
 * 2a. Produtiv detects an error in the command.
     
-    * 2a1. Productiv displays an error message
+    * 2a1. Productiv displays an error message.
     
-    * 2a2. User enters the command again
+    * 2a2. User enters the command again.
     
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -457,9 +472,9 @@ Priorities:
 
 * 2a. Produtiv detects an error in the command.
     
-    * 2a1. Productiv displays an error message
+    * 2a1. Productiv displays an error message.
     
-    * 2a2. User enters the command again
+    * 2a2. User enters the command again.
     
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -484,9 +499,9 @@ Priorities:
 
 * 2a. Produtiv detects an error in the command.
     
-    * 2a1. Productiv displays an error message
+    * 2a1. Productiv displays an error message.
     
-    * 2a2. User enters the command again
+    * 2a2. User enters the command again.
     
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -515,9 +530,9 @@ Priorities:
 
 * 2a. Produtiv detects an error in the command.
     
-    * 2a1. Productiv displays an error message
+    * 2a1. Productiv displays an error message.
     
-    * 2a2. User enters the command again
+    * 2a2. User enters the command again.
     
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -527,9 +542,10 @@ Priorities:
 
     * 4a1. Productiv cancels the deletion process.
     
-      Use case ends
+      Use case ends.
 
 #### MEETING
+
 **Use case: `UC30 - Add a meeting`**
 
 **Precondition(s):**
@@ -537,16 +553,16 @@ Priorities:
 
 **MSS**
 
-1. User adds meeting
-    Use case ends
+1. User adds meeting.
+    Use case ends.
     
 **Extensions**
 
-* 1a. Invalid input
+* 1a. Invalid input.
     
-    * 1a1. Productiv shows an error message
+    * 1a1. Productiv shows an error message.
       
-      Use case ends2
+      Use case ends.
       
 **Use case: `UC31 - Edit a meeting`**
 
@@ -556,10 +572,10 @@ Priorities:
 
 **MSS**
 
-1. User requests to list meetings
-1. Productiv shows list of meetings
-1. User edits a specific meeting in the list
-1. Productiv edits meeting details
+1. User requests to list meetings.
+1. Productiv shows list of meetings.
+1. User edits a specific meeting in the list.
+1. Productiv edits meeting details.
 
     Use case ends.
 
@@ -567,19 +583,19 @@ Priorities:
 
 * 2a. The list is empty.
   
-  * Use case ends
+  * Use case ends.
      
 * 3a. The given index is invalid.
     
     * 3a1. Productiv shows an error message.
     
-      Use case resumes at step 2
+      Use case resumes at step 2.
       
-* 4a. The given input is invalid
+* 4a. The given input is invalid.
     
-    * 4a1 Productiv shows an error message
+    * 4a1 Productiv shows an error message.
       
-      Use case resumes at step 2
+      Use case resumes at step 2.
       
 **Use case: `UC32 - Delete a meeting`**
 
@@ -593,10 +609,10 @@ Priorities:
 
 **MSS**
 
-1. User requests to list meetings
-1. Productiv shows list of meetings
-1. User requests to delete a specific meeting in the list
-1. Productiv deletes the meeting
+1. User requests to list meetings.
+1. Productiv shows list of meetings.
+1. User requests to delete a specific meeting in the list.
+1. Productiv deletes the meeting.
    User case ends.
 
     Use case ends.
@@ -605,13 +621,13 @@ Priorities:
 
 * 2a. The list is empty.
   
-  * Use case ends
+  * Use case ends.
      
 * 3a. The given index is invalid.
     
     * 3a1. Productiv shows an error message.
     
-      Use case resumes at step 2
+      Use case resumes at step 2.
       
 *{More to be added}*
       
@@ -628,9 +644,8 @@ Priorities:
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Deliverables**: a thing able to be provided, especially as a product of a development process.
+* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Deliverable**: a thing able to be provided, especially as a product of a development process.
 * **CRUD**: Create, Read, Update and delete.
 
 *{More to be added}*
