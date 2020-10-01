@@ -1,21 +1,19 @@
-package seedu.address.storage;
+package seedu.address.storage.person;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyAddressBook;
-import seedu.address.model.person.ReadOnlyUserPrefs;
-import seedu.address.model.person.UserPrefs;
-import seedu.address.storage.person.AddressBookStorage;
-import seedu.address.storage.person.UserPrefsStorage;
+import seedu.address.storage.UserPrefsStorage;
 
 /**
  * API of the Storage component
  */
-// TODO: build and change to MeetingBookStorage
-public interface StorageMeeting extends AddressBookStorage, UserPrefsStorage {
+public interface StoragePerson extends AddressBookStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;

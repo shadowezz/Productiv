@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.meeting;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -6,8 +6,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.meeting.Meeting;
-import seedu.address.model.meeting.MeetingBook;
 
 // TODO: Need to check and fix
 public class ModelMeetingManager implements ModelMeeting {

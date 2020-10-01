@@ -4,8 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ModelMeeting;
 import seedu.address.model.meeting.Meeting;
+import seedu.address.model.meeting.ModelMeeting;
 
 public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
