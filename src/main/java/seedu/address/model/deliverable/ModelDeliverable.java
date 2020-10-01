@@ -73,7 +73,8 @@ public interface ModelDeliverable {
     /**
      * Replaces the given deliverable {@code target} with {@code editedDeliverable}.
      * {@code target} must exist in the deliverable book.
-     * The deliverable identity of {@code editedDeliverable} must not be the same as another existing deliverable in the deliverable book.
+     * The deliverable identity of {@code editedDeliverable} must not be the same as
+     * another existing deliverable in the deliverable book.
      */
     void setDeliverable(Deliverable target, Deliverable editedDeliverable);
 
