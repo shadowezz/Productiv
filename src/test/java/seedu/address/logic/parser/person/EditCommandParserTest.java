@@ -24,9 +24,9 @@ import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_AM
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.person.CommandParserTestUtil.assertParseFailure;
+import static seedu.address.logic.parser.person.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
@@ -40,7 +40,7 @@ import seedu.address.model.person.person.Address;
 import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Phone;
-import seedu.address.model.person.person.tag.Tag;
+import seedu.address.model.person.tag.Tag;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {

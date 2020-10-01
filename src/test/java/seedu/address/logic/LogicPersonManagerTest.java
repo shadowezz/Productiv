@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.ADDRESS_DESC_A
 import static seedu.address.logic.commands.person.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.PHONE_DESC_AMY;
+import static seedu.address.logic.commands.person.CommandTestUtil.ROLE_DESC_STK;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -22,14 +23,14 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.logic.commands.person.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ModelPersonManager;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ModelPerson;
+import seedu.address.model.person.ModelPersonManager;
 import seedu.address.model.person.ReadOnlyAddressBook;
-import seedu.address.model.person.UserPrefs;
 import seedu.address.model.person.person.Person;
-import seedu.address.storage.StoragePersonManager;
+import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.person.JsonAddressBookStorage;
-import seedu.address.storage.person.JsonUserPrefsStorage;
+import seedu.address.storage.person.StoragePersonManager;
 import seedu.address.testutil.PersonBuilder;
 
 public class LogicPersonManagerTest {
@@ -79,7 +80,7 @@ public class LogicPersonManagerTest {
         logic = new LogicPersonManager(modelPerson, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+        String addCommand = AddCommand.COMMAND_WORD + ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY;
         Person expectedPerson = new PersonBuilder(AMY).withTags().build();
         ModelPersonManager expectedModel = new ModelPersonManager();

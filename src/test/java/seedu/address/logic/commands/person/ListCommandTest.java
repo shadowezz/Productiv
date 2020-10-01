@@ -8,9 +8,9 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ModelPersonManager;
-import seedu.address.model.person.UserPrefs;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.person.ModelPerson;
+import seedu.address.model.person.ModelPersonManager;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
