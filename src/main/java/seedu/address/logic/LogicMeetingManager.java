@@ -8,8 +8,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.meeting.MeetingBookParser;
-import seedu.address.model.ModelMeeting;
-import seedu.address.storage.StorageMeeting;
+import seedu.address.model.meeting.ModelMeeting;
+import seedu.address.storage.meeting.StorageMeeting;
 
 /**
  * Manages the logic for the meeting feature.

@@ -3,7 +3,7 @@ package seedu.address.logic.commands.person;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.model.ModelPerson;
+import seedu.address.model.person.ModelPerson;
 import seedu.address.model.person.AddressBook;
 
 /**

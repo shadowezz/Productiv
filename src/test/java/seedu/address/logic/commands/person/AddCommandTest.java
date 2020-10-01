@@ -17,10 +17,10 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ModelPerson;
+import seedu.address.model.person.ModelPerson;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
-import seedu.address.model.person.ReadOnlyUserPrefs;
+import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.person.Person;
 import seedu.address.testutil.PersonBuilder;
 

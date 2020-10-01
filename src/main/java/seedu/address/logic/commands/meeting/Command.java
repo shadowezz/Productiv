@@ -2,7 +2,7 @@ package seedu.address.logic.commands.meeting;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ModelMeeting;
+import seedu.address.model.meeting.ModelMeeting;
 
 /**
  * Represents a meeting command with hidden internal logic and the ability to be executed.

@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.meeting;
 
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingBook;
