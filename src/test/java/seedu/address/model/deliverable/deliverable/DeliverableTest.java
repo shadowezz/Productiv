@@ -27,11 +27,11 @@ public class DeliverableTest {
         assertFalse(HOMEPAGE.isSameDeliverable(null));
 
         // different number -> returns false
-        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withNumber(3).build();
+        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Build home page").build();
         assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
 
         // same number -> returns true
-        Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withNumber(1).build();
+        Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withTitle("Implement navigation").build();
         assertTrue(HOMEPAGE.isSameDeliverable(editedNavigation));
     }
 
@@ -54,7 +54,7 @@ public class DeliverableTest {
         assertFalse(HOMEPAGE.equals(NAVIGATION));
 
         // different number -> returns false
-        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withNumber(3).build();
+        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Build home page").build();
         assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
 
     }
