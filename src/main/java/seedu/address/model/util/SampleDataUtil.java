@@ -6,7 +6,10 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Description;
+import seedu.address.model.deliverable.deliverable.Title;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
 import seedu.address.model.person.person.Address;
@@ -46,13 +49,12 @@ public class SampleDataUtil {
 
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
-            new Deliverable(1),
-            new Deliverable(2),
-            new Deliverable(3),
-            new Deliverable(4),
-            new Deliverable(5),
-            new Deliverable(6),
-            new Deliverable(7),
+            new Deliverable(new Title("Settle login screens"), new Description("Include forget password option"),
+                new Deadline("04-11-2020 15:00"), "2,4"),
+            new Deliverable(new Title("Settle profile page"), new Description("Include change password option"),
+                new Deadline("15-11-2020 12:00"), "1,2,3"),
+            new Deliverable(new Title("Finalise v1.1 app design"), new Description("Include forget password option"),
+                new Deadline("12-12-2020 23:59"), "2,5"),
         };
     }
 
