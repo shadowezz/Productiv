@@ -16,8 +16,8 @@ import java.util.Optional;
 //import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.meeting.ModelMeeting;
 //import seedu.address.model.meeting.meeting.Contacts;
@@ -29,9 +29,7 @@ import seedu.address.model.meeting.meeting.Meeting;
 //import seedu.address.model.meeting.meeting.To;
 
 
-
-
-public class EditCommand extends Command{
+public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the meeting.";
@@ -47,7 +45,7 @@ public class EditCommand extends Command{
     private final EditMeetingDescriptor editMeetingDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index                 of the person in the filtered person list to edit
      * @param editMeetingDescriptor details to edit the person with
      */
     public EditCommand(Index index, EditMeetingDescriptor editMeetingDescriptor) {
@@ -63,7 +61,7 @@ public class EditCommand extends Command{
         requireNonNull(modelMeeting);
 
         //TODO: Add getFilteredMeetingList
-//        List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
+        //List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
         List<Meeting> lastShownList = new ArrayList<Meeting>();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
@@ -78,8 +76,8 @@ public class EditCommand extends Command{
         }
 
         //TODO: implement setMeeting and updateFilteredMeetingList
-//        modelMeeting.setMeeting(meetingToEdit, editedMeeting);
-//        modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_Meeting);
+        //modelMeeting.setMeeting(meetingToEdit, editedMeeting);
+        //modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_Meeting);
 
 
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
@@ -127,9 +125,14 @@ public class EditCommand extends Command{
         private String contacts;
         private String location;
 
-        public EditMeetingDescriptor() {}
+        public EditMeetingDescriptor() {
+        }
 
-        public EditMeetingDescriptor (EditMeetingDescriptor toCopy){
+        /**
+         * Copy attributes from meeting to be edited.
+         * @param toCopy meeting to be edited.
+         */
+        public EditMeetingDescriptor(EditMeetingDescriptor toCopy) {
             setTitle(toCopy.title);
             setDescription(toCopy.description);
             setFrom(toCopy.from);
@@ -146,49 +149,50 @@ public class EditCommand extends Command{
             this.title = title;
         }
 
-        public Optional<String> getTitle(){
+        public Optional<String> getTitle() {
             return Optional.ofNullable(this.title);
         }
 
-        public void setDescription(String description){
+        public void setDescription(String description) {
             this.description = description;
         }
 
-        public Optional<String> getDescription(){
+        public Optional<String> getDescription() {
             return Optional.ofNullable(this.description);
         }
 
-        public void setFrom(String from){
+        public void setFrom(String from) {
             this.from = from;
         }
 
-        public Optional<String> getFrom(){
+        public Optional<String> getFrom() {
             return Optional.ofNullable(this.from);
         }
 
-        public void setTo(String to){
+        public void setTo(String to) {
             this.to = to;
         }
 
-        public Optional<String> getTo(){
+        public Optional<String> getTo() {
             return Optional.ofNullable(this.to);
         }
 
-        public void setContacts(String contact){
+        public void setContacts(String contact) {
             this.contacts = contact;
         }
 
-        public Optional<String> getContacts(){
+        public Optional<String> getContacts() {
             return Optional.ofNullable(this.contacts);
         }
 
-        public void setLocation(String location){
+        public void setLocation(String location) {
             this.location = location;
         }
 
-        public Optional<String> getLocation(){
+        public Optional<String> getLocation() {
             return Optional.ofNullable(this.location);
         }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
