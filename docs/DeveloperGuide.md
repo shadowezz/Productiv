@@ -269,9 +269,9 @@ Priorities:
 | -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
 | **EPIC A** |
 | `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
-| `* * *`  | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
 | `* * *`  | Product Manager                          | mark deliverables as completed                                              | refer back to them when needed     |
 | `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
+| `* *`    | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
 | `* *`    | Product Manager                          | tag deliverables as delayed and change the deadlines                        |                                    |
 | `* *`    | Product Manager                          | change the person-in-charge of deliverables                                 | locate the right person easily     |
 | `* *`    | Product Manager                          | undo my action / be prompted before any action                              | minimise mistakes made             |
@@ -285,14 +285,14 @@ Priorities:
 | **EPIC B** |
 | `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
 | `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | remember and retrieve important information  |
-| `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
+| `* *`    | Product Manager                          | change the description my contacts                                                            | keep them up-to-date               |
 | `* *`    | Product Manager                          | customise fields of information                                             | keep any data that I want          |
 | `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contacts |
 | `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
 | **EPIC C** |
 | `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
-| `* * *`  | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
 | `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
+| `* *`    | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
 | `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
 | `* *`    | Product Manager                          | see a calendar view of my meetings                                          | know my available slots to schedule new meetings |
 | `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
