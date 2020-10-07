@@ -53,6 +53,12 @@ public class MainWindow extends UiPart<Stage> {
     private Button helpButton;
 
     @FXML
+    private Button deliverableButton;
+
+    @FXML
+    private Button personButton;
+
+    @FXML
     private StackPane listPanelPlaceholder;
 
     @FXML
@@ -84,6 +90,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         mode = ModeEnum.PERSON; // default to contacts list first
+        setUnderlineButton(personButton);
     }
 
     public Stage getPrimaryStage() {
@@ -127,15 +134,23 @@ public class MainWindow extends UiPart<Stage> {
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
             listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(deliverableButton);
             break;
         default:
             assert false : "from default: " + ModeEnum.getModeOptions();
         }
+    }
+
+    private void setUnderlineButton(Button button) {
+        personButton.setUnderline(false);
+        deliverableButton.setUnderline(false);
+        button.setUnderline(true);
     }
 
     // TODO define switch tabs here

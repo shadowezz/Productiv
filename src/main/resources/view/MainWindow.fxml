@@ -27,11 +27,11 @@
       </stylesheets>
 
       <VBox>
-        <HBox fx:id="menuBar" VBox.vgrow="NEVER">
+        <HBox id="navBar" fx:id="navBar" VBox.vgrow="NEVER">
           <HBox HBox.hgrow="NEVER">
             <Button fx:id="deliverableButton" mnemonicParsing="false" onAction="#switchDeliverable" text="Deliverables">
             </Button>
-            <Button fx:id="contactButton" mnemonicParsing="false" onAction="#switchPerson" text="Contacts">
+            <Button fx:id="personButton" mnemonicParsing="false" onAction="#switchPerson" text="Contacts">
             </Button>
           </HBox>
           <Region HBox.hgrow="ALWAYS"/>
