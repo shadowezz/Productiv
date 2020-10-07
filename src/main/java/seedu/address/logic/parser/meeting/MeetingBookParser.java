@@ -3,29 +3,22 @@ package seedu.address.logic.parser.meeting;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
-import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.meeting.Command;
-import seedu.address.logic.commands.mode.SwitchCommand;
+import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses user input.
+ * Parses user input for meeting.
  */
-
-// TODO: Check if MeetingParser (instead of AddCommandParser etc) should implement Parser
 public class MeetingBookParser {
-
-    // TODO: Move the function to higher hierarchy to be used by other parsers
-    private String afterFirstWord(String userInput, String usage) throws ParseException {
-        final String[] words = userInput.split(" ");
-
-        if (words.length <= 1) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, usage));
-        }
-        return String.join("", Arrays.copyOfRange(words, 1, words.length));
-    }
+    /**
+     * Used for initial separation of command word and args.
+     */
+    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -35,14 +28,18 @@ public class MeetingBookParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
+        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
+        if (!matcher.matches()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+        }
 
-        final String commandWord = userInput.split(" ")[0];
+        final String commandWord = matcher.group("commandWord");
+        final String arguments = matcher.group("arguments");
 
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            final String argument = afterFirstWord(userInput, SwitchCommand.MESSAGE_USAGE);
-            return new AddCommandParser().parse(argument);
+            return new AddCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
