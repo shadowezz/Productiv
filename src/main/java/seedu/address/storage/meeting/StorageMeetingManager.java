@@ -9,28 +9,25 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.ReadOnlyAddressBook;
+import seedu.address.model.meeting.ReadOnlyMeetingBook;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.storage.person.AddressBookStorage;
 import seedu.address.storage.person.StoragePersonManager;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of MeetingBook data in local storage.
  */
-
-// TODO: Change to meeting book
 public class StorageMeetingManager implements StorageMeeting {
 
     private static final Logger logger = LogsCenter.getLogger(StoragePersonManager.class);
-    private AddressBookStorage addressBookStorage;
+    private MeetingBookStorage meetingBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code MeetingBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageMeetingManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageMeetingManager(MeetingBookStorage meetingBookStorage, UserPrefsStorage userPrefsStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.meetingBookStorage = meetingBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -52,33 +49,32 @@ public class StorageMeetingManager implements StorageMeeting {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ MeetingBook methods ==============================
 
-    @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getMeetingBookFilePath() {
+        return meetingBookStorage.getMeetingBookFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyMeetingBook> readMeetingBook() throws DataConversionException, IOException {
+        return readMeetingBook(meetingBookStorage.getMeetingBookFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyMeetingBook> readMeetingBook(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return meetingBookStorage.readMeetingBook(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveMeetingBook(ReadOnlyMeetingBook meetingBook) throws IOException {
+        saveMeetingBook(meetingBook, meetingBookStorage.getMeetingBookFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+    public void saveMeetingBook(ReadOnlyMeetingBook meetingBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        meetingBookStorage.saveMeetingBook(meetingBook, filePath);
     }
 
 }
