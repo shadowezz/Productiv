@@ -1,17 +1,14 @@
 package seedu.address.ui;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
 
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.ModeEnum;
@@ -129,6 +126,7 @@ public class MainWindow extends UiPart<Stage> {
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
+        resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
