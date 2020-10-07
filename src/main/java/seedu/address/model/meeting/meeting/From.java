@@ -8,14 +8,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class From {
     public static final String MESSAGE_CONSTRAINTS =
-            "froms should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Froms should be in the format of MM/DD/YYYY or MM/DD/YYYY HH:mm, and should not be blank."
+                    + "Note: Single digit month, day, and minute can start with a leading zero.";
 
     /*
      * Format should be MM/DD/YYYY or MM/DD/YY HH:mm
      * Single digit month, day, and minute can start with a leading zero.
+     * Solution below adapted from https://stackoverflow.com/a/51231
      */
-
-    //Solution below adapted from https://stackoverflow.com/a/51231
     public static final String VALIDATION_REGEX = "[0-9]{2}/[0-9]{2}/[0-9]{4} [0-23]{2}:[0-59]{2}";
 
     public final String value;
