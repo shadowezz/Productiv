@@ -15,6 +15,7 @@ import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.LogicDeliverable;
+import seedu.address.logic.LogicMeeting;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
@@ -36,10 +37,12 @@ public class MainWindow extends UiPart<Stage> {
     private LogicMode logicMode;
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
+    private LogicMeeting logicMeeting;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
+    private MeetingListPanel meetingListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -51,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Button deliverableButton;
+
+    @FXML
+    private Button meetingButton;
 
     @FXML
     private Button personButton;
@@ -69,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
      * {@code LogicPerson} and {@code LogicDeliverable}.
      */
     public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
-                      LogicDeliverable logicDeliverable) {
+                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -77,6 +83,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
+        this.logicMeeting = logicMeeting;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -140,6 +147,12 @@ public class MainWindow extends UiPart<Stage> {
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             setUnderlineButton(deliverableButton);
             break;
+        case MEETING:
+            listPanelPlaceholder.getChildren().add(meetingListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicMeeting.getMeetingBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(meetingButton);
+            break;
         default:
             assert false : "from default: " + ModeEnum.getModeOptions();
         }
@@ -148,6 +161,7 @@ public class MainWindow extends UiPart<Stage> {
     private void setUnderlineButton(Button button) {
         personButton.setUnderline(false);
         deliverableButton.setUnderline(false);
+        meetingButton.setUnderline(false);
         button.setUnderline(true);
     }
 
@@ -165,7 +179,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     public void switchDeliverable() {
         switchMode(ModeEnum.DELIVERABLE);
+    }
 
+    /**
+     * Switches to meeting mode.
+     */
+    public void switchMeeting() {
+        switchMode(ModeEnum.MEETING);
     }
     /**
      * Fills up all the placeholders of this window.
@@ -175,6 +195,7 @@ public class MainWindow extends UiPart<Stage> {
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
+        meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -247,6 +268,9 @@ public class MainWindow extends UiPart<Stage> {
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
+                    break;
+                case MEETING:
+                    commandResult = logicMeeting.execute(commandText);
                     break;
                 default:
                     assert false : "from default: " + ModeEnum.getModeOptions();

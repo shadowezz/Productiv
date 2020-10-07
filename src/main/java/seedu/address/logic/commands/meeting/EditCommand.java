@@ -20,13 +20,13 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.meeting.ModelMeeting;
-//import seedu.address.model.meeting.meeting.Contacts;
-//import seedu.address.model.meeting.meeting.Description;
-//import seedu.address.model.meeting.meeting.From;
-//import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.meeting.meeting.Contacts;
+import seedu.address.model.meeting.meeting.Description;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-//import seedu.address.model.meeting.meeting.Title;
-//import seedu.address.model.meeting.meeting.To;
+import seedu.address.model.meeting.meeting.Title;
+import seedu.address.model.meeting.meeting.To;
 
 
 public class EditCommand extends Command {
@@ -86,14 +86,16 @@ public class EditCommand extends Command {
     private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
         assert meetingToEdit != null;
 
-        String updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());
-        String updatedDesc = editMeetingDescriptor.getDescription().orElse(meetingToEdit.getDescription());
-        String updatedFrom = editMeetingDescriptor.getFrom().orElse(meetingToEdit.getFrom());
-        String updatedTo = editMeetingDescriptor.getTo().orElse(meetingToEdit.getTo());
-        String updatedContacts = editMeetingDescriptor.getContacts().orElse(meetingToEdit.getContacts());
-        String updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
+        // String updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());
+        // String updatedDesc = editMeetingDescriptor.getDescription().orElse(meetingToEdit.getDescription());
+        // String updatedFrom = editMeetingDescriptor.getFrom().orElse(meetingToEdit.getFrom());
+        // String updatedTo = editMeetingDescriptor.getTo().orElse(meetingToEdit.getTo());
+        // String updatedContacts = editMeetingDescriptor.getContacts().orElse(meetingToEdit.getContacts());
+        // String updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
 
-        return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
+        // return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
+        return new Meeting(new Title("A"), new Description("B"), new From("2"),
+                new To("3"), new Contacts("1,2,3"), new Location("SG"));
     }
 
     @Override

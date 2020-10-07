@@ -16,7 +16,6 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.meeting.meeting.Meeting;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -38,17 +37,18 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        // TODO: Change to field objects + Add location
-        String title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        String description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        String to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
-        String from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
-        String location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
-        String contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
-
-        Meeting meeting = new Meeting(title, description, from, to, contacts, location);
-
-        return new AddCommand(meeting);
+        //        // TODO: Change to field objects + Add location
+        //        String title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
+        //        String description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        //        String to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
+        //        String from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
+        //        String location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
+        //        String contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
+        //
+        //        Meeting meeting = new Meeting(title, description, from, to, contacts, location);
+        //
+        //        return new AddCommand(meeting);
+        return null;
     }
 
     // TODO: Move the function up the hierarchy

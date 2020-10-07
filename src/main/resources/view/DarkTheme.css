@@ -1,6 +1,6 @@
 .background {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    background-color: #383838; /* Used in the default.html file */
+    -fx-background-color: white;
+    background-color: white; /* Used in the default.html file */
 }
 
 .label {
@@ -41,7 +41,7 @@
 
 .table-view {
     -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
+    -fx-control-inner-background: #ffffff;
     -fx-background-color: #ffffff;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
@@ -137,8 +137,8 @@
 }
 
 .pane-with-border {
-     -fx-background-color: white;
-     -fx-border-color: white;
+     -fx-background-color: derive(white, 20%);
+     -fx-border-color: derive(white, 10%);
      -fx-border-top-width: 1px;
 }
 
@@ -237,7 +237,7 @@
 }
 
 .dialog-pane:header *.header-panel {
-    -fx-background-color: derive(#f5f5f5, 100%);
+    -fx-background-color: #f5f5f5;
 }
 
 .dialog-pane:header *.header-panel *.label {
