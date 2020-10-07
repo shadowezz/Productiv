@@ -17,7 +17,7 @@ public class Title {
      * The first character of the address must not be a whitespace,
      * " " (a blank string) is not a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s]";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
     public final String value;
 
     /**
