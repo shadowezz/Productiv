@@ -4,7 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.meeting.meeting.*;
+import seedu.address.model.meeting.meeting.Contacts;
+import seedu.address.model.meeting.meeting.Description;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.meeting.meeting.Meeting;
+import seedu.address.model.meeting.meeting.Title;
+import seedu.address.model.meeting.meeting.To;
+
 
 /**
  * Jackson-friendly version of {@link Meeting}.
@@ -63,7 +70,8 @@ public class JsonAdaptedMeeting {
 
         // Description
         if (description == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
         }
         if (!Description.isValidDescription(description)) {
             throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
@@ -90,7 +98,8 @@ public class JsonAdaptedMeeting {
 
         // Contacts
         if (contacts == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Contacts.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Contacts.class.getSimpleName()));
         }
         if (!Contacts.isValidContacts(contacts)) {
             throw new IllegalValueException(Contacts.MESSAGE_CONSTRAINTS);

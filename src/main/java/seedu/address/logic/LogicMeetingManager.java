@@ -47,9 +47,9 @@ public class LogicMeetingManager implements LogicMeeting {
 
         try {
             storageMeeting.saveMeetingBook(modelMeeting.getMeetingBook());
-         } catch (IOException ioe) {
+        } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
-         }
+        }
 
         return commandResult;
     }

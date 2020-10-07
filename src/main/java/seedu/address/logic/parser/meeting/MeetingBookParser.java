@@ -3,15 +3,12 @@ package seedu.address.logic.parser.meeting;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.commands.mode.HelpCommand;
-import seedu.address.logic.commands.mode.SwitchCommand;
 import seedu.address.logic.commands.person.AddCommand;
-import seedu.address.logic.parser.TokenizedUserInput;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**

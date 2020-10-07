@@ -6,16 +6,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import seedu.address.logic.parser.DateParser;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 /**
  * Represents a Meeting's to in the meeting book.
  */
 public class To {
     public static final String MESSAGE_CONSTRAINTS =
             "Tos should be in the format of MM/DD/YYYY or MM/DD/YYYY HH:mm, and should not be blank."
-                    + "Note: Single digit month, day, and minute can start with a leading zero."; ;
+                    + "Note: Single digit month, day, and minute can start with a leading zero.";
 
     /*
      * Format should be MM/DD/YYYY or MM/DD/YY HH:mm
@@ -28,7 +25,7 @@ public class To {
 
     public final Date value;
 
-    public final String valueString; 
+    public final String valueString;
 
     /**
      * Constructs a {@code To}.
@@ -36,13 +33,13 @@ public class To {
      * @param to A valid To.
      */
 
-//    // Todo: Discuss with team
-//    public To(String to) throws ParseException {
-//        requireNonNull(to);
-//        checkArgument(isValidTo(to), MESSAGE_CONSTRAINTS);
-//        valueString = to;
-//        value = DateParser.parseDate(to);
-//    }
+    //    // Todo: Discuss with team
+    //    public To(String to) throws ParseException {
+    //        requireNonNull(to);
+    //        checkArgument(isValidTo(to), MESSAGE_CONSTRAINTS);
+    //        valueString = to;
+    //        value = DateParser.parseDate(to);
+    //    }
 
     // Todo: Discuss with team
     public To(String to) {

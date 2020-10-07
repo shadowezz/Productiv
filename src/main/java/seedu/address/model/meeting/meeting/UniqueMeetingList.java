@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
 import seedu.address.model.meeting.meeting.exceptions.DuplicateMeetingException;
+import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
 
 public class UniqueMeetingList implements Iterable<Meeting> {
 

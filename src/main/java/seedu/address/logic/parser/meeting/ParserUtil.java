@@ -2,16 +2,12 @@ package seedu.address.logic.parser.meeting;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
-import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Title;
 import seedu.address.model.meeting.meeting.To;
