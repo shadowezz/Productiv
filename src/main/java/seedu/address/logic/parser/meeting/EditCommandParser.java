@@ -42,28 +42,30 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         EditMeetingDescriptor editMeetingDescriptor = new EditMeetingDescriptor();
-        if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
-            editMeetingDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
-        }
-        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            editMeetingDescriptor.setDescription(ParserUtil.parseDescription(
-                    argMultimap.getValue(PREFIX_DESCRIPTION).get()));
-        }
-        if (argMultimap.getValue(PREFIX_FROM).isPresent()) {
-            editMeetingDescriptor.setFrom(ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get()));
-        }
-        if (argMultimap.getValue(PREFIX_TO).isPresent()) {
-            editMeetingDescriptor.setTo(ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get()));
-        }
-        if (argMultimap.getValue(PREFIX_CONTACTS).isPresent()) {
-            editMeetingDescriptor.setContacts(ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
-            editMeetingDescriptor.setLocation(ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get()));
-        }
-        if (!editMeetingDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
-        }
+        //        if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
+        //            editMeetingDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
+        //        }
+        //        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
+        //            editMeetingDescriptor.setDescription(ParserUtil.parseDescription(
+        //                    argMultimap.getValue(PREFIX_DESCRIPTION).get()));
+        //        }
+        //        if (argMultimap.getValue(PREFIX_FROM).isPresent()) {
+        //            editMeetingDescriptor.setFrom(ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get()));
+        //        }
+        //        if (argMultimap.getValue(PREFIX_TO).isPresent()) {
+        //            editMeetingDescriptor.setTo(ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get()));
+        //        }
+        //        if (argMultimap.getValue(PREFIX_CONTACTS).isPresent()) {
+        //            editMeetingDescriptor.setContacts(ParserUtil.parseContacts(argMultimap.
+        //            getValue(PREFIX_CONTACTS).get()));
+        //        }
+        //        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
+        //            editMeetingDescriptor.setLocation(ParserUtil.parseLocation(argMultimap.
+        //            getValue(PREFIX_LOCATION).get()));
+        //        }
+        //        if (!editMeetingDescriptor.isAnyFieldEdited()) {
+        //            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+        //        }
 
         return new EditCommand(index, editMeetingDescriptor);
     }
