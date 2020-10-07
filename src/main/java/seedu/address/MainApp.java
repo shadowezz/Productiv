@@ -30,6 +30,7 @@ import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.ModelMeetingManager;
+import seedu.address.model.meeting.ReadOnlyMeetingBook;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ModelPerson;
 import seedu.address.model.person.ModelPersonManager;
@@ -42,6 +43,10 @@ import seedu.address.storage.deliverable.JsonDeliverableBookStorage;
 import seedu.address.storage.deliverable.StorageDeliverable;
 import seedu.address.storage.deliverable.StorageDeliverableManager;
 import seedu.address.storage.meeting.StorageMeeting;
+import seedu.address.storage.meeting.MeetingBookStorage;
+import seedu.address.storage.meeting.JsonMeetingBookStorage;
+import seedu.address.storage.meeting.StorageMeeting;
+import seedu.address.storage.meeting.StorageMeetingManager;
 import seedu.address.storage.person.AddressBookStorage;
 import seedu.address.storage.person.JsonAddressBookStorage;
 import seedu.address.storage.person.StoragePerson;
@@ -84,28 +89,28 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
+
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(
                 userPrefs.getDeliverableBookFilePath());
+        MeetingBookStorage meetingBookStorage = new JsonMeetingBookStorage(
+                userPrefs.getMeetingBookFilePath());
+
         storagePerson = new StoragePersonManager(addressBookStorage, userPrefsStorage);
         storageDeliverable = new StorageDeliverableManager(deliverableBookStorage, userPrefsStorage);
         initLogging(config);
+        storageMeeting = new StorageMeetingManager(meetingBookStorage, userPrefsStorage);
 
         modelPerson = initModelManager(storagePerson, userPrefs);
-
         modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
-
-        // TODO: make init for model meeting
-        modelMeeting = new ModelMeetingManager(new MeetingBook());
-
-        // TODO ensure that use same object userPrefs in creating models
+        modelMeeting = initMeetingModelManager(storageMeeting, userPrefs);
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
         logicDeliverable = new LogicDeliverableManager(modelDeliverable, storageDeliverable);
         logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
         logicMode = new LogicModeManager();
 
-        ui = new UiManager(logicMode, logicPerson, logicDeliverable);
+        ui = new UiManager(logicMode, logicPerson, logicDeliverable, logicMeeting);
 
     }
 
@@ -160,6 +165,35 @@ public class MainApp extends Application {
         }
 
         return new ModelDeliverableManager(initialData, userPrefs);
+    }
+
+    /**
+     * Returns a {@code ModelManager} with the data from {@code storage}'s meeting book and {@code userPrefs}. <br>
+     * The data from the sample meeting book will be used instead if {@code storage}'s meeting book is not found,
+     * or an empty meeting book will be used instead if errors occur when reading {@code storage}'s meeting book.
+     */
+    private ModelMeeting initMeetingModelManager(StorageMeeting storageMeeting,
+                                                 ReadOnlyUserPrefs userPrefs) {
+        Optional<ReadOnlyMeetingBook> meetingBookOptional;
+        ReadOnlyMeetingBook initialData;
+
+        try {
+            meetingBookOptional = storageMeeting.readMeetingBook();
+            if (!meetingBookOptional.isPresent()) {
+                logger.info("Data file for meeting not found. Will be starting with a sample MeetingBook");
+            }
+            initialData = meetingBookOptional.orElseGet(SampleDataUtil::getSampleMeetingBook);
+        } catch (DataConversionException e) {
+            logger.warning("Data file for meeting not in the correct format. "
+                    + "Will be starting with an empty MeetingBook");
+            initialData = new MeetingBook();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the meeting file. "
+                    + "Will be starting with an empty MeetingBook");
+            initialData = new MeetingBook();
+        }
+
+        return new ModelMeetingManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -247,6 +281,7 @@ public class MainApp extends Application {
             storagePerson.saveUserPrefs(modelPerson.getUserPrefs());
             // for testing
             storageDeliverable.saveDeliverableBook(modelDeliverable.getDeliverableBook());
+            storageMeeting.saveMeetingBook(modelMeeting.getMeetingBook());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }
