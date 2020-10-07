@@ -11,6 +11,7 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.LogicDeliverable;
+import seedu.address.logic.LogicMeeting;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 
@@ -27,17 +28,20 @@ public class UiManager implements Ui {
     private LogicMode logicMode;
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
+    private LogicMeeting logicMeeting;
     private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public UiManager(LogicMode logicMode, LogicPerson logicPerson, LogicDeliverable logicDeliverable) {
+    public UiManager(LogicMode logicMode, LogicPerson logicPerson,
+                     LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         // TODO use only a central logic object
         super();
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
+        this.logicMeeting = logicMeeting;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable);
+            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable, logicMeeting);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts(); // TODO change to dashboard. for now default to contact list
 
