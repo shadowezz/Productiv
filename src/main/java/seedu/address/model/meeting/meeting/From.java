@@ -3,12 +3,18 @@ package seedu.address.model.meeting.meeting;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import seedu.address.logic.parser.DateParser;
+import seedu.address.logic.parser.exceptions.ParseException;
+
 /**
  * Represents a Meeting's from in the meeting book.
  */
 public class From {
     public static final String MESSAGE_CONSTRAINTS =
-            "Froms should be in the format of MM/DD/YYYY or MM/DD/YYYY HH:mm, and should not be blank."
+            "From should be in the format of MM/DD/YYYY or MM/DD/YYYY HH:mm, and should not be blank."
                     + "Note: Single digit month, day, and minute can start with a leading zero.";
 
     /*
@@ -16,19 +22,30 @@ public class From {
      * Single digit month, day, and minute can start with a leading zero.
      * Solution below adapted from https://stackoverflow.com/a/51231
      */
-    public static final String VALIDATION_REGEX = "[0-9]{2}/[0-9]{2}/[0-9]{4} [0-23]{2}:[0-59]{2}";
+    // TODO: change back
+    // public static final String VALIDATION_REGEX = "[0-9]{2}/[0-9]{2}/[0-9]{4} [0-23]{2}:[0-59]{2}";
+    public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    public final Date value;
+    public final String valueString; 
 
     /**
      * Constructs a {@code from}.
      *
      * @param from A valid from.
      */
+//    public From(String from) throws ParseException {
+//        requireNonNull(from);
+//        checkArgument(isValidFrom(from), MESSAGE_CONSTRAINTS);
+//        valueString = from;
+//        value = DateParser.parseDate(from);
+//    }
+
     public From(String from) {
         requireNonNull(from);
         checkArgument(isValidFrom(from), MESSAGE_CONSTRAINTS);
-        value = from;
+        valueString = from;
+        value = new Date();
     }
 
     /**
@@ -38,9 +55,10 @@ public class From {
         return test.matches(VALIDATION_REGEX);
     }
 
+    // ToDo: Discuss with team
     @Override
     public String toString() {
-        return value;
+        return new SimpleDateFormat("MMM d yyyy").format(value);
     }
 
     @Override
