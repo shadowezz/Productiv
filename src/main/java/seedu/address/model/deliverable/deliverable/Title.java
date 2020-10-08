@@ -47,8 +47,8 @@ public class Title {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof seedu.address.model.deliverable.deliverable.Title // instanceof handles nulls
-                && title.equals(((seedu.address.model.deliverable.deliverable.Title) other).title)); // state check
+                || (other instanceof Title) // instanceof handles nulls
+                && title.equals((((Title) other).title)); // state check
     }
 
     @Override

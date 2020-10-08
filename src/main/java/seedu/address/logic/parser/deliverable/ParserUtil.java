@@ -71,7 +71,7 @@ public class ParserUtil {
     public static Deadline parseDeadline(String deadline) throws ParseException {
         requireNonNull(deadline);
         if (deadline.equals("NIL")) {
-            return new Deadline("00-00-0000 00:00");
+            return new Deadline(deadline);
         }
         String trimmedDeadline = deadline.trim();
         if (!Deadline.isValidDeadline(trimmedDeadline)) {
