@@ -19,18 +19,33 @@ public class Deliverable {
     // Data fields
     private final Description description;
     private final Deadline deadline;
+    private final boolean isComplete;
 
     // TODO: Amend this to Person[] and point to respective contacts.
     private final String contacts;
 
     /**
-     * Only title field must be present.
+     * Only title field must be present. Used when adding new deliverable.
      */
     public Deliverable(Title title, Description description, Deadline deadline, String contacts) {
         requireAllNonNull(title);
         this.title = title;
         this.description = description;
         this.deadline = deadline;
+        this.isComplete = false;
+        this.contacts = contacts;
+    }
+
+    /**
+     * Used when editing or completing existing deliverable.
+     */
+    public Deliverable(Title title, Description description, Deadline deadline,
+                       boolean isComplete, String contacts) {
+        requireAllNonNull(title);
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
+        this.isComplete = isComplete;
         this.contacts = contacts;
     }
 
@@ -44,6 +59,10 @@ public class Deliverable {
 
     public Deadline getDeadline() {
         return deadline;
+    }
+
+    public boolean getCompletionStatus() {
+        return isComplete;
     }
 
     public String getContacts() {
@@ -81,13 +100,14 @@ public class Deliverable {
         return otherDeliverable.getTitle().equals(getTitle())
                 && otherDeliverable.getDescription().equals(getDescription())
                 && otherDeliverable.getDeadline().equals(getDeadline())
-                && otherDeliverable.getContacts().equals(getContacts());
+                && otherDeliverable.getContacts().equals(getContacts())
+                && otherDeliverable.getCompletionStatus() == getCompletionStatus();
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, description, deadline, contacts);
+        return Objects.hash(title, description, deadline, contacts, isComplete);
     }
 
     @Override
