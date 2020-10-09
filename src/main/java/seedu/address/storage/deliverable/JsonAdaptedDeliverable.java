@@ -66,7 +66,7 @@ public class JsonAdaptedDeliverable {
         }
         final Description modelDescription = new Description(description);
 
-        if (!Deadline.isValidDeadline(deadline)) {
+        if (!Deadline.isValidDeadline(deadline) && !deadline.equals("NIL")) {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
         }
         final Deadline modelDeadline = new Deadline(deadline);
@@ -74,7 +74,7 @@ public class JsonAdaptedDeliverable {
         final boolean modelIsComplete;
         if (!isComplete.equals(Boolean.toString(true)) && !isComplete.equals(Boolean.toString(false))) {
             throw new IllegalValueException("isComplete can only be true or false.");
-        } else if (!isComplete.equals(Boolean.toString(true))) {
+        } else if (isComplete.equals(Boolean.toString(true))) {
             modelIsComplete = true;
         } else {
             modelIsComplete = false;
