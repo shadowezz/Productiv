@@ -16,8 +16,8 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.Description;
-import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Parses input arguments and creates a new AddCommand object for deliverable

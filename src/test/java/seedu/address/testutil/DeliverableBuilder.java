@@ -2,8 +2,8 @@ package seedu.address.testutil;
 
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.Description;
-import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * A utility class to help with building Deliverable objects.

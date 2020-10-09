@@ -3,8 +3,15 @@ package seedu.address.logic.parser.meeting;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.util.Description;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.meeting.meeting.Contacts;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.util.Title;
+import seedu.address.model.meeting.meeting.To;
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -31,11 +38,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-
-    // TODO: Change to object fields
-    public static String parseTitle(String title) throws ParseException {
+    public static Title parseTitle(String title) throws ParseException {
         requireNonNull(title);
-        return title;
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
     }
 
     /**
@@ -44,9 +53,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static String parseDescription(String description) throws ParseException {
+    public static Description parseDescription(String description) throws ParseException {
         requireNonNull(description);
-        return description;
+        String trimmedDescription = description.trim();
+        if (!Title.isValidTitle(trimmedDescription)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
     }
 
     /**
@@ -55,9 +68,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static String parseTo(String to) throws ParseException {
+    public static To parseTo(String to) throws ParseException {
         requireNonNull(to);
-        return to;
+        String trimmedTo = to.trim();
+        if (!To.isValidTo(trimmedTo)) {
+            throw new ParseException(To.MESSAGE_CONSTRAINTS);
+        }
+        return new To(trimmedTo);
     }
 
     /**
@@ -66,9 +83,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static String parseFrom(String from) throws ParseException {
+    public static From parseFrom(String from) throws ParseException {
         requireNonNull(from);
-        return from;
+        String trimmedFrom = from.trim();
+        if (!From.isValidFrom(trimmedFrom)) {
+            throw new ParseException(From.MESSAGE_CONSTRAINTS);
+        }
+        return new From(trimmedFrom);
     }
 
     /**
@@ -77,9 +98,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static String parseContacts(String contacts) throws ParseException {
+    public static Contacts parseContacts(String contacts) throws ParseException {
         requireNonNull(contacts);
-        return contacts;
+        String trimmedContacts = contacts.trim();
+        if (!Contacts.isValidContacts(trimmedContacts)) {
+            throw new ParseException(Contacts.MESSAGE_CONSTRAINTS);
+        }
+        return new Contacts(trimmedContacts);
     }
 
     /**
@@ -88,8 +113,12 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code location} is invalid.
      */
-    public static String parseLocation(String location) throws ParseException {
+    public static Location parseLocation(String location) throws ParseException {
         requireNonNull(location);
-        return location;
+        String trimmedLocation = location.trim();
+        if (!Location.isValidLocation(trimmedLocation)) {
+            throw new ParseException(Location.MESSAGE_CONSTRAINTS);
+        }
+        return new Location(trimmedLocation);
     }
 }

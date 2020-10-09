@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.Description;
-import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Jackson-friendly version of {@link Deliverable}.
@@ -37,7 +37,7 @@ public class JsonAdaptedDeliverable {
      * Converts a given {@code Deliverable} into this class for Jackson use.
      */
     public JsonAdaptedDeliverable(Deliverable source) {
-        title = source.getTitle().title;
+        title = source.getTitle().value;
         description = source.getDescription().value;
         deadline = source.getDeadline().value;
         contacts = source.getContacts();
