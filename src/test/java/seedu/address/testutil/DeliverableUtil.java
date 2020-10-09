@@ -25,7 +25,7 @@ public class DeliverableUtil {
      */
     public static String getDeliverableDetails(Deliverable deliverable) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_TITLE + deliverable.getTitle().title + " ");
+        sb.append(PREFIX_TITLE + deliverable.getTitle().value + " ");
         sb.append(PREFIX_DESCRIPTION + deliverable.getDescription().value + " ");
         sb.append(PREFIX_DEADLINE + deliverable.getDeadline().value + " ");
         sb.append(PREFIX_CONTACTS + deliverable.getContacts());

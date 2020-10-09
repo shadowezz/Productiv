@@ -43,7 +43,7 @@ public class DeliverableCard extends UiPart<Region> {
         super(FXML);
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
-        title.setText(deliverable.getTitle().title);
+        title.setText(deliverable.getTitle().value);
         description.setText("Description: " + deliverable.getDescription().value);
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
