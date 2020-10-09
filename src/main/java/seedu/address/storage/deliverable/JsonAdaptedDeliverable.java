@@ -20,17 +20,20 @@ public class JsonAdaptedDeliverable {
     private final String description;
     private final String deadline;
     private final String contacts;
+    private final String isComplete;
 
     /**
      * Constructs a {@code JsonAdaptedDeliverable} with the given deliverable details
      */
     @JsonCreator
     public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("description") String description,
-                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts) {
+                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts,
+                                  @JsonProperty("isComplete") String isComplete) {
         this.title = title;
         this.description = description;
         this.deadline = deadline;
         this.contacts = contacts;
+        this.isComplete = isComplete;
     }
 
     /**
@@ -41,6 +44,7 @@ public class JsonAdaptedDeliverable {
         description = source.getDescription().value;
         deadline = source.getDeadline().value;
         contacts = source.getContacts();
+        isComplete = Boolean.toString(source.getCompletionStatus());
     }
 
     /**
@@ -67,6 +71,15 @@ public class JsonAdaptedDeliverable {
         }
         final Deadline modelDeadline = new Deadline(deadline);
 
-        return new Deliverable(modelTitle, modelDescription, modelDeadline, contacts);
+        final boolean modelIsComplete;
+        if (!isComplete.equals(Boolean.toString(true)) && !isComplete.equals(Boolean.toString(false))) {
+            throw new IllegalValueException("isComplete can only be true or false.");
+        } else if (!isComplete.equals(Boolean.toString(true))) {
+            modelIsComplete = true;
+        } else {
+            modelIsComplete = false;
+        }
+
+        return new Deliverable(modelTitle, modelDescription, modelDeadline, modelIsComplete, contacts);
     }
 }
