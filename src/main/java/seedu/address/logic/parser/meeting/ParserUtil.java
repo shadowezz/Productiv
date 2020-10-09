@@ -3,15 +3,14 @@ package seedu.address.logic.parser.meeting;
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.util.Description;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
-import seedu.address.model.util.Title;
 import seedu.address.model.meeting.meeting.To;
-
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

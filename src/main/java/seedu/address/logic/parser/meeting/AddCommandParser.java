@@ -20,9 +20,9 @@ import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.util.Title;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Parses input arguments and creates a new AddCommand object

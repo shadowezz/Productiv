@@ -12,13 +12,12 @@ import seedu.address.model.util.Title;
  * corresponding field value of the deliverable.
  */
 public class EditDeliverableDescriptor {
-    
     private Title title;
     private Description description;
     private Deadline deadline;
     private boolean isComplete;
     private String contacts;
-    
+
     public EditDeliverableDescriptor() {}
 
     /**
@@ -100,6 +99,4 @@ public class EditDeliverableDescriptor {
                 && getContacts().equals(e.getContacts())
                 && getCompletionStatus().equals(e.getCompletionStatus());
     }
-    
-    
 }

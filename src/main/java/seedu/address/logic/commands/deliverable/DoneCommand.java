@@ -21,17 +21,19 @@ import seedu.address.model.util.Title;
 public class DoneCommand extends Command {
 
     public static final String COMMAND_WORD = "done";
-    private static final boolean COMPLETED = true;
+    public static final boolean COMPLETED = true;
+    public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as done: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Marks as done the deliverable identified by the index number used in the displayed deliverable list\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as done: %1$s";
-
     private final Index targetIndex;
 
-
+    /**
+     * Construct command given index of deliverable to complete.
+     * @param targetIndex specified index of deliverable to complete.
+     */
     public DoneCommand(Index targetIndex) {
         requireNonNull(targetIndex);
         this.targetIndex = targetIndex;

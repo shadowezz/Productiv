@@ -3,15 +3,14 @@ package seedu.address.storage.meeting;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import seedu.address.model.util.Description;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.util.Title;
 import seedu.address.model.meeting.meeting.To;
-
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Jackson-friendly version of {@link Meeting}.

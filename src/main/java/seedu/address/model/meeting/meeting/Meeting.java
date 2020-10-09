@@ -2,10 +2,10 @@ package seedu.address.model.meeting.meeting;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Objects;
+
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
-
-import java.util.Objects;
 
 /**
  * Represents a Meeting in the meeting book.
