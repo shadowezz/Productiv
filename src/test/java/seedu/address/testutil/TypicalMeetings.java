@@ -19,12 +19,12 @@ import java.util.List;
 
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.Title;
 import seedu.address.model.meeting.meeting.To;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 public class TypicalMeetings {
 

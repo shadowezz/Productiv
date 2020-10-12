@@ -1,11 +1,12 @@
 package seedu.address.testutil;
 
 import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
+
 import seedu.address.model.meeting.meeting.To;
 
 
