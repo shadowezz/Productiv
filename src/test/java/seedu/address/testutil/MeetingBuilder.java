@@ -12,8 +12,8 @@ import seedu.address.model.meeting.meeting.To;
 public class MeetingBuilder {
 
     public static final String DEFAULT_TITLE = "Test";
-    public static final String DEFAULT_DESCRIPTION = "Refine functional requirements " +
-            "with business associates";
+    public static final String DEFAULT_DESCRIPTION = "Refine functional requirements "
+            + "with business associates";
     public static final String DEFAULT_FROM = "12-12-2020 08:00";
     public static final String DEFAULT_TO = "12-12-2020 09:00";
     public static final String DEFAULT_CONTACTS = "3,6,9";
@@ -26,6 +26,9 @@ public class MeetingBuilder {
     private Contacts contacts;
     private Location location;
 
+    /**
+     * Constructor for Meeting builder, instantiate to use default attributes.
+     */
     public MeetingBuilder() {
         this.title = new Title(DEFAULT_TITLE);
         this.description = new Description(DEFAULT_DESCRIPTION);
@@ -35,6 +38,11 @@ public class MeetingBuilder {
         this.location = new Location(DEFAULT_LOCATION);
     }
 
+    /**
+     * Copies meeting attributes into builder.
+     *
+     * @param meetingToCopy specified meeting to build.
+     */
     public MeetingBuilder(Meeting meetingToCopy) {
         this.title = meetingToCopy.getTitle();
         this.description = meetingToCopy.getDescription();
@@ -93,7 +101,7 @@ public class MeetingBuilder {
     }
 
 
-    public Meeting build(){
+    public Meeting build() {
         return new Meeting(title, description, from, to, contacts, location);
     }
 

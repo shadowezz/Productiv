@@ -1,7 +1,17 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.meeting.CommandTestUtil.*;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACTS_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACTS_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_DESCRIPTION_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_DESCRIPTION_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_B;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,20 +42,20 @@ public class TypicalMeetings {
     public static final String CONTACTS_D = "6,7,8";
     public static final String LOCATION_D = "Somewhere";
 
-//    public static final String TITLE_E = "Mid v1.2";
-//    public static final String DESCRIPTION_E = "NIL";
-//    public static final String FROM_E = "12-24-2020 08:00";
-//    public static final String TO_E = "NIL";
-//    public static final String CONTACTS_E = "NIL";
-//    public static final String LOCATION_E = "NIL";
+    //    public static final String TITLE_E = "Mid v1.2";
+    //    public static final String DESCRIPTION_E = "NIL";
+    //    public static final String FROM_E = "12-24-2020 08:00";
+    //    public static final String TO_E = "NIL";
+    //    public static final String CONTACTS_E = "NIL";
+    //    public static final String LOCATION_E = "NIL";
 
     public static final Meeting MEETING_A =
             new Meeting(new Title(VALID_TITLE_A), new Description(VALID_DESCRIPTION_A), new From(VALID_FROM_A),
                     new To(VALID_TO_A), new Contacts(VALID_CONTACTS_A), new Location(VALID_LOCATION_A));
 
     public static final Meeting MEETING_B =
-            new Meeting(new Title(VALID_TITLE_B), new Description(VALID_DESCRIPTION_B), new From(VALID_FROM_B), new To(VALID_TO_B),
-                    new Contacts(VALID_CONTACTS_B), new Location(VALID_LOCATION_B));
+            new Meeting(new Title(VALID_TITLE_B), new Description(VALID_DESCRIPTION_B), new From(VALID_FROM_B),
+                    new To(VALID_TO_B), new Contacts(VALID_CONTACTS_B), new Location(VALID_LOCATION_B));
 
     public static final Meeting MEETING_C =
             new Meeting(new Title(TITLE_C), new Description(DESCRIPTION_C), new From(FROM_C),
@@ -55,9 +65,9 @@ public class TypicalMeetings {
             new Meeting(new Title(TITLE_D), new Description(DESCRIPTION_D), new From(FROM_D), new To(TO_D),
                     new Contacts(CONTACTS_D), new Location(LOCATION_D));
 
-//    public static final Meeting MEETING_E =
-//            new Meeting(new Title(TITLE_E), new Description(DESCRIPTION_E), new From(FROM_E), new To(TO_E),
-//                    new Contacts(CONTACTS_E), new Location(LOCATION_E));
+    //    public static final Meeting MEETING_E =
+    //            new Meeting(new Title(TITLE_E), new Description(DESCRIPTION_E), new From(FROM_E), new To(TO_E),
+    //                    new Contacts(CONTACTS_E), new Location(LOCATION_E));
 
 
 

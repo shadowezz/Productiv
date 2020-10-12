@@ -2,7 +2,6 @@ package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -25,6 +24,7 @@ public class DeleteCommand extends Command {
 
     /**
      * Construct command given index of meeting to delete.
+     *
      * @param targetIndex specified index of meeting to delete.
      */
     public DeleteCommand(Index targetIndex) {

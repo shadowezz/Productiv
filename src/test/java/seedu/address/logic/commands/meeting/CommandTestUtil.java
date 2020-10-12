@@ -2,13 +2,13 @@ package seedu.address.logic.commands.meeting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_CONTACTS;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ public class CommandTestUtil {
     public static final String VALID_FROM_B = "01-01-2020 12:00";
     public static final String VALID_TO_A = "02-01-2020 14:00";
     public static final String VALID_TO_B = "02-01-2020 12:00";
-    ;
+
     public static final String VALID_CONTACTS_A = "1,2,3";
     public static final String VALID_CONTACTS_B = "4,5,6";
     public static final String VALID_LOCATION_A = "Singapore";
@@ -63,17 +63,17 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-//    public static final Meeting DESC_A;
-//    public static final Meeting DESC_B;
-//
-//    static {
-//        DESC_A = new MeetingBuilder().withTitle(VALID_TITLE_A)
-//                .withDescription(VALID_DESCRIPTION_A).withFrom(VALID_FROM_A).withTo(VALID_TO_A)
-//                .withContacts(VALID_CONTACTS_A).withLocation(VALID_LOCATION_A).build();
-//        DESC_B = new MeetingBuilder().withTitle(VALID_TITLE_B)
-//                .withDescription(VALID_DESCRIPTION_B).withFrom(VALID_FROM_B).withTo(VALID_TO_B)
-//                .withContacts(VALID_CONTACTS_B).withLocation(VALID_LOCATION_B).build();
-//    }
+    //    public static final Meeting DESC_A;
+    //    public static final Meeting DESC_B;
+    //
+    //    static {
+    //        DESC_A = new MeetingBuilder().withTitle(VALID_TITLE_A)
+    //                .withDescription(VALID_DESCRIPTION_A).withFrom(VALID_FROM_A).withTo(VALID_TO_A)
+    //                .withContacts(VALID_CONTACTS_A).withLocation(VALID_LOCATION_A).build();
+    //        DESC_B = new MeetingBuilder().withTitle(VALID_TITLE_B)
+    //                .withDescription(VALID_DESCRIPTION_B).withFrom(VALID_FROM_B).withTo(VALID_TO_B)
+    //                .withContacts(VALID_CONTACTS_B).withLocation(VALID_LOCATION_B).build();
+    //    }
 
     /**
      * Executes the given {@code command}, confirms that <br>

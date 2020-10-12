@@ -1,21 +1,25 @@
 package seedu.address.logic.commands.meeting;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
+import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_DELETE_MEETING_SUCCESS;
+import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_MEETING_DISPLAYED_INDEX;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalMeetings.getTypicalMeeting;
+import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.meeting.ModelMeeting;
-import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.ModelMeetingManager;
+import seedu.address.model.meeting.meeting.Meeting;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.*;
-import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_DELETE_MEETING_SUCCESS;
-import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_MEETING_DISPLAYED_INDEX;
-import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
-import static seedu.address.testutil.TypicalMeetings.getTypicalMeeting;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 
 public class DeleteCommandTest {
 
@@ -28,7 +32,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(MESSAGE_DELETE_MEETING_SUCCESS, meetingToDelete);
 
-        ModelMeetingManager expectedModel= new ModelMeetingManager(modelMeeting.getMeetingBook(), new UserPrefs());
+        ModelMeetingManager expectedModel = new ModelMeetingManager(modelMeeting.getMeetingBook(), new UserPrefs());
         expectedModel.deleteMeeting(meetingToDelete);
 
         assertCommandSuccess(deleteCommand, modelMeeting, expectedMessage, expectedModel);

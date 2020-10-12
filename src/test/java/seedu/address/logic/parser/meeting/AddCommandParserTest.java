@@ -24,19 +24,19 @@ package seedu.address.logic.parser.meeting;
 //import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_B;
 //import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseFailure;
 //import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalMeetings.MEETING_B;
+//import static seedu.address.testutil.TypicalMeetings.MEETING_B;
 //import static seedu.address.testutil.TypicalMeetings.MEETING_E;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.meeting.AddCommand;
-import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
-import seedu.address.model.meeting.meeting.From;
-import seedu.address.model.meeting.meeting.Location;
-import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.Title;
-import seedu.address.model.meeting.meeting.To;
-import seedu.address.testutil.MeetingBuilder;
+//import org.junit.jupiter.api.Test;
+//import seedu.address.logic.commands.meeting.AddCommand;
+//import seedu.address.model.meeting.meeting.Contacts;
+//import seedu.address.model.meeting.meeting.Description;
+//import seedu.address.model.meeting.meeting.From;
+//import seedu.address.model.meeting.meeting.Location;
+//import seedu.address.model.meeting.meeting.Meeting;
+//import seedu.address.model.meeting.meeting.Title;
+//import seedu.address.model.meeting.meeting.To;
+//import seedu.address.testutil.MeetingBuilder;
 
 class AddCommandParserTest {
 
