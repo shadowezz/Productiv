@@ -1,14 +1,15 @@
-package seedu.address.model.meeting.meeting;
+package seedu.address.model.deliverable.deliverable;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Meeting's description in the meeting book.
+ * Represents a Deliverable's description in the deliverable book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Description can take any values, and it should not be blank";
+
+    public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values, and it should not be blank";
 
     /*
      * The first character of the description must not be a whitespace,
@@ -30,7 +31,7 @@ public class Description {
     }
 
     /**
-     * Returns true if a given string is a valid description.
+     * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDescription(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -43,9 +44,9 @@ public class Description {
 
     @Override
     public boolean equals(Object other) {
-        return other == this
-                || (other instanceof Description
-                && value.equals(((Description) other).value));
+        return other == this // short circuit if same object
+            || (other instanceof Description) // instanceof handles nulls
+            && value.equals((((Description) other).value)); // state check
     }
 
     @Override

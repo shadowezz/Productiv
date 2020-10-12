@@ -1,7 +1,10 @@
 package seedu.address.logic.parser.deliverable;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_NUMBER;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
 
 import java.util.stream.Stream;
 
@@ -11,8 +14,10 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Parses input arguments and creates a new AddCommand object for deliverable
@@ -24,18 +29,22 @@ public class AddCommandParser implements Parser<AddCommand> {
      * and returns an AddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    @Override
-    public AddCommand parse(String userInput) throws ParseException {
+    public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_NUMBER);
+                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESCRIPTION, PREFIX_DEADLINE, PREFIX_CONTACTS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NUMBER)
+        if (arePrefixesAbsent(argMultimap, PREFIX_TITLE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        int number = Integer.parseInt(argMultimap.getValue(PREFIX_NUMBER).get());
-        Deliverable deliverable = new Deliverable(number);
+        Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
+        Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
+        String contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
+
+        Deliverable deliverable = new Deliverable(title, description, deadline, contacts);
+
         return new AddCommand(deliverable);
     }
 
@@ -43,7 +52,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    private static boolean arePrefixesAbsent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).get().equals("NIL"));
     }
 }
