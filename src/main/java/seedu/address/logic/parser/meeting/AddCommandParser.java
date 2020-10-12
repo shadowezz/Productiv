@@ -16,7 +16,13 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.meeting.meeting.Contacts;
+import seedu.address.model.meeting.meeting.Description;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
+import seedu.address.model.meeting.meeting.Title;
+import seedu.address.model.meeting.meeting.To;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -33,18 +39,17 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESCRIPTION, PREFIX_TO, PREFIX_FROM,
                         PREFIX_CONTACTS, PREFIX_LOCATION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DESCRIPTION, PREFIX_TO, PREFIX_FROM, PREFIX_CONTACTS)
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_FROM)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        // TODO: Change to field objects + Add location
-        String title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        String description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        String to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
-        String from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
-        String location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
-        String contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
+        Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
+        Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        From from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
+        To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
+        Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
+        Contacts contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
 
         Meeting meeting = new Meeting(title, description, from, to, contacts, location);
 
