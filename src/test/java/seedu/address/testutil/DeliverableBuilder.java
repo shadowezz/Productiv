@@ -2,8 +2,8 @@ package seedu.address.testutil;
 
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.Description;
-import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * A utility class to help with building Deliverable objects.
@@ -13,12 +13,14 @@ public class DeliverableBuilder {
     public static final String DEFAULT_TITLE = "Login screen";
     public static final String DEFAULT_DESCRIPTION = "Must include username and password fields";
     public static final String DEFAULT_DEADLINE = "12-12-2020 23:59";
+    public static final boolean DEFAULT_IS_COMPLETE = false;
     public static final String DEFAULT_CONTACTS = "2,4";
 
     private Title title;
     private Description description;
     private Deadline deadline;
     private String contacts;
+    private boolean isComplete;
 
     /**
      * Creates a {@code DeliverableBuilder} with the default details.
@@ -28,6 +30,7 @@ public class DeliverableBuilder {
         description = new Description(DEFAULT_DESCRIPTION);
         deadline = new Deadline(DEFAULT_DEADLINE);
         contacts = DEFAULT_CONTACTS;
+        isComplete = DEFAULT_IS_COMPLETE;
     }
 
     /**
@@ -38,6 +41,7 @@ public class DeliverableBuilder {
         description = deliverableToCopy.getDescription();
         deadline = deliverableToCopy.getDeadline();
         contacts = deliverableToCopy.getContacts();
+        isComplete = deliverableToCopy.getCompletionStatus();
     }
 
     /**
@@ -72,8 +76,16 @@ public class DeliverableBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code isComplete} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
+        return this;
+    }
+
     public Deliverable build() {
-        return new Deliverable(title, description, deadline, contacts);
+        return new Deliverable(title, description, deadline, isComplete, contacts);
     }
 
 }

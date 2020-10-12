@@ -35,6 +35,8 @@ public class DeliverableCard extends UiPart<Region> {
     private Label deadline;
     @FXML
     private Label contacts;
+    @FXML
+    private Label isCompleted;
 
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
@@ -43,10 +45,11 @@ public class DeliverableCard extends UiPart<Region> {
         super(FXML);
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
-        title.setText(deliverable.getTitle().title);
+        title.setText(deliverable.getTitle().value);
         description.setText("Description: " + deliverable.getDescription().value);
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
+        isCompleted.setText("Completion status: " + deliverable.getCompletionStatus());
     }
 
     @Override

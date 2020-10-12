@@ -21,12 +21,12 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.Title;
 import seedu.address.model.meeting.meeting.To;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 
 public class EditCommand extends Command {

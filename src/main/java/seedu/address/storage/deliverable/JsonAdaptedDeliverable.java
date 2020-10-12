@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.Description;
-import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Jackson-friendly version of {@link Deliverable}.
@@ -20,27 +20,31 @@ public class JsonAdaptedDeliverable {
     private final String description;
     private final String deadline;
     private final String contacts;
+    private final String isComplete;
 
     /**
      * Constructs a {@code JsonAdaptedDeliverable} with the given deliverable details
      */
     @JsonCreator
     public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("description") String description,
-                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts) {
+                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts,
+                                  @JsonProperty("isComplete") String isComplete) {
         this.title = title;
         this.description = description;
         this.deadline = deadline;
         this.contacts = contacts;
+        this.isComplete = isComplete;
     }
 
     /**
      * Converts a given {@code Deliverable} into this class for Jackson use.
      */
     public JsonAdaptedDeliverable(Deliverable source) {
-        title = source.getTitle().title;
+        title = source.getTitle().value;
         description = source.getDescription().value;
         deadline = source.getDeadline().value;
         contacts = source.getContacts();
+        isComplete = Boolean.toString(source.getCompletionStatus());
     }
 
     /**
@@ -62,11 +66,20 @@ public class JsonAdaptedDeliverable {
         }
         final Description modelDescription = new Description(description);
 
-        if (!Deadline.isValidDeadline(deadline)) {
+        if (!Deadline.isValidDeadline(deadline) && !deadline.equals("NIL")) {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
         }
         final Deadline modelDeadline = new Deadline(deadline);
 
-        return new Deliverable(modelTitle, modelDescription, modelDeadline, contacts);
+        final boolean modelIsComplete;
+        if (!isComplete.equals(Boolean.toString(true)) && !isComplete.equals(Boolean.toString(false))) {
+            throw new IllegalValueException("isComplete can only be true or false.");
+        } else if (isComplete.equals(Boolean.toString(true))) {
+            modelIsComplete = true;
+        } else {
+            modelIsComplete = false;
+        }
+
+        return new Deliverable(modelTitle, modelDescription, modelDeadline, modelIsComplete, contacts);
     }
 }

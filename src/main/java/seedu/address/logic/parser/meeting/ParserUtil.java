@@ -6,12 +6,11 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
-import seedu.address.model.meeting.meeting.Title;
 import seedu.address.model.meeting.meeting.To;
-
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

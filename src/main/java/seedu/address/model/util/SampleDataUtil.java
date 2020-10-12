@@ -13,11 +13,9 @@ import seedu.address.model.deliverable.deliverable.Title;
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ReadOnlyMeetingBook;
 import seedu.address.model.meeting.meeting.Contacts;
-import seedu.address.model.meeting.meeting.Description;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.Title;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
@@ -59,11 +57,11 @@ public class SampleDataUtil {
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
             new Deliverable(new Title("Settle login screens"), new Description("Include forget password option"),
-                new Deadline("04-11-2020 15:00"), "2,4"),
+                new Deadline("04-11-2020 15:00"), true, "2,4"),
             new Deliverable(new Title("Settle profile page"), new Description("Include change password option"),
-                new Deadline("15-11-2020 12:00"), "1,2,3"),
+                new Deadline("15-11-2020 12:00"), true, "1,2,3"),
             new Deliverable(new Title("Finalise v1.1 app design"), new Description("Include forget password option"),
-                new Deadline("12-12-2020 23:59"), "2,5"),
+                new Deadline("12-12-2020 23:59"), false, "2,5"),
         };
     }
 
