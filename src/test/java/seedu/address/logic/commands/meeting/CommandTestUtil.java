@@ -26,8 +26,8 @@ import seedu.address.model.meeting.meeting.TitleContainsKeywordsPredicate;
 
 public class CommandTestUtil {
 
-    public static final String VALID_TITLE_A = "Meeting 1";
-    public static final String VALID_TITLE_B = "Meeting 2";
+    public static final String VALID_TITLE_A = "Meeting1";
+    public static final String VALID_TITLE_B = "Meeting2";
     public static final String VALID_DESCRIPTION_A = "With business associates";
     public static final String VALID_DESCRIPTION_B = "With product designers";
     public static final String VALID_FROM_A = "01-01-2020 14:00";
