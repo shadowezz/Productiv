@@ -33,15 +33,20 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESCRIPTION, PREFIX_DEADLINE, PREFIX_CONTACTS);
 
-        if (arePrefixesAbsent(argMultimap, PREFIX_TITLE)
-                || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
-        String contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
+        Description description = argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
+                ? Description.createEmptyDescription()
+                : ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        Deadline deadline = argMultimap.getValue(PREFIX_DEADLINE).isEmpty()
+                ? Deadline.createEmptyDeadline()
+                : ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
+        String contacts = argMultimap.getValue(PREFIX_CONTACTS).isEmpty()
+                ? "NIL"
+                : ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
 
         Deliverable deliverable = new Deliverable(title, description, deadline, contacts);
 
@@ -52,7 +57,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private static boolean arePrefixesAbsent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).get().equals("NIL"));
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
