@@ -6,7 +6,17 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
+import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Description;
+import seedu.address.model.deliverable.deliverable.Title;
+import seedu.address.model.meeting.MeetingBook;
+import seedu.address.model.meeting.ReadOnlyMeetingBook;
+import seedu.address.model.meeting.meeting.Contacts;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.meeting.meeting.Meeting;
+import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
 import seedu.address.model.person.person.Address;
@@ -46,13 +56,27 @@ public class SampleDataUtil {
 
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
-            new Deliverable(1),
-            new Deliverable(2),
-            new Deliverable(3),
-            new Deliverable(4),
-            new Deliverable(5),
-            new Deliverable(6),
-            new Deliverable(7),
+            new Deliverable(new Title("Settle login screens"), new Description("Include forget password option"),
+                new Deadline("04-11-2020 15:00"), true, "2,4"),
+            new Deliverable(new Title("Settle profile page"), new Description("Include change password option"),
+                new Deadline("15-11-2020 12:00"), true, "1,2,3"),
+            new Deliverable(new Title("Finalise v1.1 app design"), new Description("Include forget password option"),
+                new Deadline("12-12-2020 23:59"), false, "2,5"),
+        };
+    }
+
+    public static Meeting[] getSampleMeetings() {
+        return new Meeting[] {
+            new Meeting(new Title("Meeting 1"), new Description("With business associates"),
+                new From("01-01-2020 12:00"),
+                new To("01-01-2020 14:00"),
+                new Contacts("1,2,3"),
+                new Location("Singapore")),
+            new Meeting(new Title("Meeting 2"), new Description("With product designers"),
+                new From("02-01-2020 12:00"),
+                new To("02-01-2020 14:00"),
+                new Contacts("4,5,6"),
+                new Location("Jakarta"))
         };
     }
 
@@ -70,6 +94,14 @@ public class SampleDataUtil {
             sampleDb.addDeliverable(sampleDeliverable);
         }
         return sampleDb;
+    }
+
+    public static ReadOnlyMeetingBook getSampleMeetingBook() {
+        MeetingBook sampleMb = new MeetingBook();
+        for (Meeting sampleMeeting : getSampleMeetings()) {
+            sampleMb.addMeeting(sampleMeeting);
+        }
+        return sampleMb;
     }
 
     /**

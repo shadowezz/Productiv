@@ -25,7 +25,7 @@ import seedu.address.model.person.person.Role;
 import seedu.address.model.person.tag.Tag;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddCommand object for person
  */
 public class AddCommandParser implements Parser<AddCommand> {
 

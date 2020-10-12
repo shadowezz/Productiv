@@ -113,6 +113,11 @@ public class ModelDeliverableManager implements ModelDeliverable {
         deliverableBook.setDeliverable(target, editedDeliverable);
     }
 
+    @Override
+    public void completeDeliverable(Deliverable target) {
+
+    }
+
     //=========== Filtered Deliverable List Accessors =============================================================
 
     @Override

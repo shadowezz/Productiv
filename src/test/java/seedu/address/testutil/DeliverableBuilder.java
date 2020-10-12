@@ -1,40 +1,91 @@
 package seedu.address.testutil;
 
+import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * A utility class to help with building Deliverable objects.
  */
 public class DeliverableBuilder {
 
-    public static final int DEFAULT_NUMBER = 1;
+    public static final String DEFAULT_TITLE = "Login screen";
+    public static final String DEFAULT_DESCRIPTION = "Must include username and password fields";
+    public static final String DEFAULT_DEADLINE = "12-12-2020 23:59";
+    public static final boolean DEFAULT_IS_COMPLETE = false;
+    public static final String DEFAULT_CONTACTS = "2,4";
 
-    private int number;
+    private Title title;
+    private Description description;
+    private Deadline deadline;
+    private String contacts;
+    private boolean isComplete;
 
     /**
      * Creates a {@code DeliverableBuilder} with the default details.
      */
     public DeliverableBuilder() {
-        number = DEFAULT_NUMBER;
+        title = new Title(DEFAULT_TITLE);
+        description = new Description(DEFAULT_DESCRIPTION);
+        deadline = new Deadline(DEFAULT_DEADLINE);
+        contacts = DEFAULT_CONTACTS;
+        isComplete = DEFAULT_IS_COMPLETE;
     }
 
     /**
      * Initializes the DeliverableBuilder with the data of {@code deliverableToCopy}.
      */
     public DeliverableBuilder(Deliverable deliverableToCopy) {
-        number = deliverableToCopy.getNumber();
+        title = deliverableToCopy.getTitle();
+        description = deliverableToCopy.getDescription();
+        deadline = deliverableToCopy.getDeadline();
+        contacts = deliverableToCopy.getContacts();
+        isComplete = deliverableToCopy.getCompletionStatus();
     }
 
     /**
-     * Sets the number of the {@code Deliverable} that we are building.
+     * Sets the {@code Title} of the {@code Deliverable} that we are building.
      */
-    public DeliverableBuilder withNumber(int number) {
-        this.number = number;
+    public DeliverableBuilder withTitle(String title) {
+        this.title = new Title(title);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Description} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withDescription(String description) {
+        this.description = new Description(description);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Deadline} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withDeadline(String deadline) {
+        this.deadline = new Deadline(deadline);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Contacts} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withContacts(String contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
+    /**
+     * Sets the {@code isComplete} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
         return this;
     }
 
     public Deliverable build() {
-        return new Deliverable(number);
+        return new Deliverable(title, description, deadline, isComplete, contacts);
     }
 
 }

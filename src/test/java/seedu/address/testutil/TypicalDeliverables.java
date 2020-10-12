@@ -10,8 +10,18 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  * A utility class containing a list of {@code Deliverable} objects to be used in tests.
  */
 public class TypicalDeliverables {
-    public static final Deliverable HOMEPAGE = new DeliverableBuilder().withNumber(1).build();
-    public static final Deliverable NAVIGATION = new DeliverableBuilder().withNumber(2).build();
+    public static final Deliverable HOMEPAGE = new DeliverableBuilder().withTitle("Build home page")
+            .withDescription("Include company description.")
+            .withDeadline("12-11-2020 20:00")
+            .withContacts("3")
+            .withIsComplete(false)
+            .build();
+    public static final Deliverable NAVIGATION = new DeliverableBuilder().withTitle("Implement navigation")
+            .withDescription("Include about us tab")
+            .withDeadline("12-07-2020 20:00")
+            .withContacts("5,6")
+            .withIsComplete(true)
+            .build();;
 
     private TypicalDeliverables() {} //prevents instantiation
 

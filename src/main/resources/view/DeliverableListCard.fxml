@@ -24,8 +24,12 @@
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+                <Label fx:id="title" text="\$first" styleClass="cell_big_label" />
             </HBox>
+            <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
+            <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+            <Label fx:id="contacts" styleClass="cell_small_label" text="\$contacts" />
+            <Label fx:id="isCompleted" styleClass="cell_small_label" text="\$isCompleted" />
         </VBox>
     </GridPane>
 </HBox>
