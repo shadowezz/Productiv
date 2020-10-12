@@ -16,7 +16,6 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 

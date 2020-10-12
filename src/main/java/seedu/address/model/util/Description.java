@@ -3,8 +3,6 @@ package seedu.address.model.util;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import seedu.address.model.deliverable.deliverable.Deadline;
-
 /**
  * Represents a Deliverable's description in the deliverable book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
