@@ -49,7 +49,13 @@ public class DeliverableCard extends UiPart<Region> {
         description.setText("Description: " + deliverable.getDescription().value);
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
-        isCompleted.setText("Completion status: " + deliverable.getCompletionStatus());
+        if (deliverable.getIsComplete()) {
+            isCompleted.setText("completed");
+            isCompleted.setStyle("-fx-background-color: #32cd32");
+        } else {
+            isCompleted.setText("on-going");
+            isCompleted.setStyle("-fx-background-color: #ffa500");
+        }
     }
 
     @Override
