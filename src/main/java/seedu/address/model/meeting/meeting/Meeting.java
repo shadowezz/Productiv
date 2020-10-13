@@ -66,12 +66,12 @@ public class Meeting {
         }
 
         return otherMeeting != null
-                && otherMeeting.getTitle() == getTitle()
-                && otherMeeting.getDescription() == getDescription()
-                && otherMeeting.getFrom() == getFrom()
-                && otherMeeting.getTo() == getTo()
-                && otherMeeting.getContacts() == getContacts()
-                && otherMeeting.getLocation() == getLocation();
+                && otherMeeting.getTitle().equals(getTitle())
+                && otherMeeting.getDescription().equals(getDescription())
+                && otherMeeting.getFrom().equals(getFrom())
+                && otherMeeting.getTo().equals(getTo())
+                && otherMeeting.getContacts().equals(getContacts())
+                && otherMeeting.getLocation().equals(getLocation());
     }
 
     /**
@@ -88,12 +88,12 @@ public class Meeting {
         }
 
         Meeting otherMeeting = (Meeting) other;
-        return otherMeeting.getTitle() == getTitle()
-                && otherMeeting.getDescription() == getDescription()
-                && otherMeeting.getFrom() == getFrom()
-                && otherMeeting.getTo() == getTo()
-                && otherMeeting.getContacts() == getContacts()
-                && otherMeeting.getLocation() == getLocation();
+        return otherMeeting.getTitle().equals(getTitle())
+                && otherMeeting.getDescription().equals(getDescription())
+                && otherMeeting.getFrom().equals(getFrom())
+                && otherMeeting.getTo().equals(getTo())
+                && otherMeeting.getContacts().equals(getContacts())
+                && otherMeeting.getLocation().equals(getLocation());
     }
 
     @Override

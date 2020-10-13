@@ -55,7 +55,7 @@ public class ParserUtil {
     public static Description parseDescription(String description) throws ParseException {
         requireNonNull(description);
         String trimmedDescription = description.trim();
-        if (!Title.isValidTitle(trimmedDescription)) {
+        if (!Description.isValidDescription(trimmedDescription)) {
             throw new ParseException(Title.MESSAGE_CONSTRAINTS);
         }
         return new Description(trimmedDescription);
