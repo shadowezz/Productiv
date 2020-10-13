@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.CommandResult;
@@ -21,13 +22,13 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
             + "Parameters: "
-            + "ROLE "
+            + PREFIX_ROLE + "ROLE "
             + PREFIX_NAME + "NAME "
             + "[" + PREFIX_PHONE + "PHONE] "
             + PREFIX_EMAIL + "EMAIL "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + RoleEnum.STAKEHOLDER.getArgument() + " "
+            + PREFIX_ROLE + "stk "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "

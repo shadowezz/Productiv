@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -34,15 +35,15 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                ArgumentTokenizer.tokenize(args, PREFIX_ROLE, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_EMAIL)
-                || argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_ROLE, PREFIX_NAME, PREFIX_EMAIL)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Role role = ParserUtil.parseRole(argMultimap.getPreamble());
+        Role role = ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = argMultimap.getValue(PREFIX_PHONE).isEmpty()
                 ? Phone.createEmptyPhone()
