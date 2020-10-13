@@ -35,7 +35,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         tags = new HashSet<>();
-        role = new Role(DEFAULT_ROLE);
+        role = Role.getRole(DEFAULT_ROLE);
     }
 
     /**
@@ -85,7 +85,7 @@ public class PersonBuilder {
      * Sets the {@code Role} of the {@code Person} that we are building.
      */
     public PersonBuilder withRole(String role) {
-        this.role = new Role(role);
+        this.role = Role.getRole(role);
         return this;
     }
 

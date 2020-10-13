@@ -56,7 +56,7 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        role = source.getRole().value.getArgument();
+        role = source.getRole().getArgument();
     }
 
     /**
@@ -102,7 +102,7 @@ class JsonAdaptedPerson {
         if (!Role.isValidRole(role)) {
             throw new IllegalValueException(Role.MESSAGE_CONSTRAINTS);
         }
-        final Role modelRole = new Role(role);
+        final Role modelRole = Role.getRole(role);
 
         return new Person(modelName, modelPhone, modelEmail, modelTags, modelRole);
     }

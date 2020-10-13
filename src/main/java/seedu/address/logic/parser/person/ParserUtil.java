@@ -119,6 +119,6 @@ public class ParserUtil {
         if (!Role.isValidRole(trimmedRole)) {
             throw new ParseException(Role.MESSAGE_CONSTRAINTS);
         }
-        return new Role(trimmedRole);
+        return Role.getRole(trimmedRole);
     }
 }
