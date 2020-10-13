@@ -22,8 +22,17 @@ public class Phone {
      */
     public Phone(String phone) {
         requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        if (!phone.equals("NIL")) {
+            checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        }
         value = phone;
+    }
+
+    /**
+     * Constructs an empty phone number.
+     */
+    public static Phone createEmptyPhone() {
+        return new Phone("NIL");
     }
 
     /**
