@@ -31,6 +31,13 @@ public class Description {
     }
 
     /**
+     * Constructs an empty description.
+     */
+    public static Description createEmptyDescription() {
+        return new Description("NIL");
+    }
+
+    /**
      * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDescription(String test) {

@@ -37,6 +37,13 @@ public class Deadline {
     }
 
     /**
+     * Constructs an empty deadline.
+     */
+    public static Deadline createEmptyDeadline() {
+        return new Deadline("NIL");
+    }
+
+    /**
      * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDeadline(String test) {
