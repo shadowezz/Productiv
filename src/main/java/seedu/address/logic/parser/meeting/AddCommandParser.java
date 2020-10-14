@@ -21,14 +21,13 @@ import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
-
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -45,12 +44,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        OptionalDescription description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
         From from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
         To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
-        Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION).get());
-        Contacts contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
-
+        Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION));
+        Contacts contacts =  ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
         Meeting meeting = new Meeting(title, description, from, to, contacts, location);
 
         return new AddCommand(meeting);
