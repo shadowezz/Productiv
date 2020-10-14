@@ -9,6 +9,7 @@ import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
 import seedu.address.model.person.tag.Tag;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -20,12 +21,14 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ROLE = "stk";
+    public static final String DEFAULT_DESCRIPTION = "End user";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Set<Tag> tags;
     private Role role;
+    private Description description;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -36,6 +39,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         tags = new HashSet<>();
         role = Role.getRole(DEFAULT_ROLE);
+        description = new Description(DEFAULT_DESCRIPTION);
     }
 
     /**
@@ -47,6 +51,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         tags = new HashSet<>(personToCopy.getTags());
         role = personToCopy.getRole();
+        description = personToCopy.getDescription();
     }
 
     /**
@@ -82,6 +87,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Description} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withDescription(String description) {
+        this.description = new Description(description);
+        return this;
+    }
+
+    /**
      * Sets the {@code Role} of the {@code Person} that we are building.
      */
     public PersonBuilder withRole(String role) {
@@ -90,7 +103,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, tags, role);
+        return new Person(name, phone, email, tags, role, description);
     }
 
 }

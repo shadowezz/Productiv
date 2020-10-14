@@ -16,6 +16,7 @@ import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
 import seedu.address.model.person.tag.Tag;
+import seedu.address.model.util.Description;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -29,6 +30,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String role;
+    private final String description;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -36,7 +38,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
              @JsonProperty("email") String email,
-             @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("role") String role) {
+             @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("role") String role,
+             @JsonProperty("description") String description) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -44,6 +47,7 @@ class JsonAdaptedPerson {
             this.tagged.addAll(tagged);
         }
         this.role = role;
+        this.description = description;
     }
 
     /**
@@ -57,6 +61,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         role = source.getRole().getArgument();
+        description = source.getDescription().value;
     }
 
     /**
@@ -104,7 +109,15 @@ class JsonAdaptedPerson {
         }
         final Role modelRole = Role.getRole(role);
 
-        return new Person(modelName, modelPhone, modelEmail, modelTags, modelRole);
+        if (description == null && !description.equals("NIL")) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName()));
+        }
+        if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        }
+        final Description modelDescription = new Description(description);
+
+        return new Person(modelName, modelPhone, modelEmail, modelTags, modelRole, modelDescription);
     }
 
 }

@@ -4,11 +4,13 @@
     "phone": "94351253",
     "email": "alice@example.com",
     "tagged": [ "friends" ],
+    "description": "End user",
     "role": "stk"
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
-    "role": "stk"
+    "role": "stk",
+    "description": "NIL"
   } ]
 }
