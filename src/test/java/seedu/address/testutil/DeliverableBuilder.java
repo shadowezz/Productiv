@@ -41,7 +41,7 @@ public class DeliverableBuilder {
         description = deliverableToCopy.getDescription();
         deadline = deliverableToCopy.getDeadline();
         contacts = deliverableToCopy.getContacts();
-        isComplete = deliverableToCopy.getCompletionStatus();
+        isComplete = deliverableToCopy.getIsComplete();
     }
 
     /**
