@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 
-import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.person.AddCommand;
@@ -21,7 +20,6 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.person.tag.Tag;
 import seedu.address.model.util.Description;
 
 /**

@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BO
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_ROLE_DEV;
-import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 

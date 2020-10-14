@@ -28,7 +28,6 @@ import seedu.address.logic.commands.person.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Phone;
-import seedu.address.model.person.tag.Tag;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 public class EditCommandParserTest {

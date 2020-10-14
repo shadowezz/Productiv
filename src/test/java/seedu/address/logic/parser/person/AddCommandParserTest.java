@@ -31,7 +31,6 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.person.tag.Tag;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -59,8 +58,8 @@ public class AddCommandParserTest {
 
         // multiple descriptions - last description accepted
         // TODO
-//        assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_AMY
-//                + DESCRIPTION_DESC_AMY + DESCRIPTION_DESC_BOB + TAG_DESC_FRIEND , new AddCommand(expectedPerson));
+        // assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_AMY
+        //        + DESCRIPTION_DESC_AMY + DESCRIPTION_DESC_BOB + TAG_DESC_FRIEND , new AddCommand(expectedPerson));
     }
 
     @Test
@@ -71,9 +70,9 @@ public class AddCommandParserTest {
                 new AddCommand(expectedPersonWithoutPhone));
 
         // TODO
-//        Person expectedPersonWithoutDescription = new PersonBuilder(AMY).withDescription("NIL").build();
-//        assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND,
-//                new AddCommand(expectedPersonWithoutDescription));
+        // Person expectedPersonWithoutDescription = new PersonBuilder(AMY).withDescription("NIL").build();
+        //      assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_AMY + EMAIL_DESC_AMY + TAG_DESC_FRIEND,
+        //          new AddCommand(expectedPersonWithoutDescription));
 
     }
 
