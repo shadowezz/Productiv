@@ -4,6 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
+import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 

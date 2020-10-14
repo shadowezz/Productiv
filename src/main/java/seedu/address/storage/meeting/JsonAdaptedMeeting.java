@@ -6,12 +6,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
@@ -73,8 +72,8 @@ public class JsonAdaptedMeeting {
         final Title modelTitle = new Title(title);
 
         // Description
-        if (description.isPresent() && !Description.isValidDescription(description.get())) {
-            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
+            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
         }
         final OptionalDescription modelDescription = new OptionalDescription(description);
 
@@ -98,7 +97,7 @@ public class JsonAdaptedMeeting {
 
         // Contacts
         if (contacts.isPresent() && !Contacts.isValidContacts(contacts.get())) {
-            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Contacts.MESSAGE_CONSTRAINTS);
         }
         final Contacts modelContacts = new Contacts(contacts);
 

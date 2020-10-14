@@ -1,5 +1,6 @@
-package seedu.address.model.meeting.meeting;
+package seedu.address.model.util;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Optional;
@@ -36,6 +37,17 @@ public class Contacts {
             checkArgument(isValidContacts(contacts.get()), MESSAGE_CONSTRAINTS);
         }
         value = contacts;
+    }
+
+    /**
+     * Constructs a {@code Contacts}.
+     *
+     * @param contacts A valid Optional of contact name strings.
+     */
+    public Contacts(String contacts) {
+        requireNonNull(contacts);
+        checkArgument(isValidContacts(contacts), MESSAGE_CONSTRAINTS);
+        value = Optional.of(contacts);
     }
 
     /**

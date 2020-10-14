@@ -1,5 +1,6 @@
 package seedu.address.model.meeting.meeting;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Optional;
@@ -33,6 +34,17 @@ public class Location {
             checkArgument(isValidLocation(location.get()), MESSAGE_CONSTRAINTS);
         }
         value = location;
+    }
+
+    /**
+     * Constructs an {@code Location}.
+     *
+     * @param location A valid location.
+     */
+    public Location(String location) {
+        requireNonNull(location);
+        checkArgument(isValidLocation(location), MESSAGE_CONSTRAINTS);
+        value = Optional.of(location);
     }
 
     /**

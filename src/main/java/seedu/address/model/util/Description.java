@@ -7,6 +7,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Deliverable's description in the deliverable book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
  */
+
+// TODO: to be deprecated
 public class Description {
 
     public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values, and it should not be blank";
