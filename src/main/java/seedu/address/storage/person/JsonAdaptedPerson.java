@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,7 +27,6 @@ class JsonAdaptedPerson {
     private final String name;
     private final String phone;
     private final String email;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
     private final String role;
     private final String description;
 
@@ -37,15 +35,12 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-             @JsonProperty("email") String email,
-             @JsonProperty("tagged") List<JsonAdaptedTag> tagged, @JsonProperty("role") String role,
-             @JsonProperty("description") String description) {
+                             @JsonProperty("email") String email,
+                             @JsonProperty("role") String role,
+                             @JsonProperty("description") String description) {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        if (tagged != null) {
-            this.tagged.addAll(tagged);
-        }
         this.role = role;
         this.description = description;
     }
@@ -57,9 +52,6 @@ class JsonAdaptedPerson {
         name = source.getName().fullName;
         phone = source.getPhone().value;
         email = source.getEmail().value;
-        tagged.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
         role = source.getRole().getArgument();
         description = source.getDescription().value;
     }
@@ -71,9 +63,6 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
-        }
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -117,7 +106,7 @@ class JsonAdaptedPerson {
         }
         final Description modelDescription = new Description(description);
 
-        return new Person(modelName, modelPhone, modelEmail, modelTags, modelRole, modelDescription);
+        return new Person(modelName, modelPhone, modelEmail, modelRole, modelDescription);
     }
 
 }

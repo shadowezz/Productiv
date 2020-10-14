@@ -83,7 +83,7 @@ public class LogicPersonManagerTest {
         String addCommand =
                 AddCommand.COMMAND_WORD + ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                         + DESCRIPTION_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).withTags().build();
+        Person expectedPerson = new PersonBuilder(AMY).build();
         ModelPersonManager expectedModel = new ModelPersonManager();
         expectedModel.addPerson(expectedPerson);
         String expectedMessage = LogicPersonManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

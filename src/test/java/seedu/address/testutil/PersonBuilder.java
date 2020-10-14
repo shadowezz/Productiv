@@ -26,7 +26,6 @@ public class PersonBuilder {
     private Name name;
     private Phone phone;
     private Email email;
-    private Set<Tag> tags;
     private Role role;
     private Description description;
 
@@ -37,7 +36,6 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        tags = new HashSet<>();
         role = Role.getRole(DEFAULT_ROLE);
         description = new Description(DEFAULT_DESCRIPTION);
     }
@@ -49,7 +47,6 @@ public class PersonBuilder {
         name = personToCopy.getName();
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
-        tags = new HashSet<>(personToCopy.getTags());
         role = personToCopy.getRole();
         description = personToCopy.getDescription();
     }
@@ -59,14 +56,6 @@ public class PersonBuilder {
      */
     public PersonBuilder withName(String name) {
         this.name = new Name(name);
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
-     */
-    public PersonBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
 
@@ -103,7 +92,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, tags, role, description);
+        return new Person(name, phone, email, role, description);
     }
 
 }

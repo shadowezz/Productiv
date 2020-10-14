@@ -22,19 +22,17 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Set<Tag> tags = new HashSet<>();
     private final Role role;
     private final Description description;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Set<Tag> tags, Role role, Description description) {
-        requireAllNonNull(name, phone, email, tags, role);
+    public Person(Name name, Phone phone, Email email, Role role, Description description) {
+        requireAllNonNull(name, phone, email, role);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.tags.addAll(tags);
         this.role = role;
         this.description = description;
     }
@@ -49,14 +47,6 @@ public class Person {
 
     public Email getEmail() {
         return email;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     public Role getRole() {
@@ -100,14 +90,13 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getDescription().equals(getDescription())
-                && otherPerson.getTags().equals(getTags())
                 && otherPerson.getRole().equals(getRole());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, tags, role, description);
+        return Objects.hash(name, phone, email, role, description);
     }
 
     @Override
@@ -120,10 +109,8 @@ public class Person {
                 .append(getPhone())
                 .append(" Email: ")
                 .append(getEmail())
-                .append(" Tags: ")
                 .append(" Description: ")
                 .append(getDescription());
-        getTags().forEach(builder::append);
         return builder.toString();
     }
 

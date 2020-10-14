@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
-import static seedu.address.logic.parser.person.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -38,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ROLE, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                        PREFIX_DESCRIPTION, PREFIX_TAG);
+                        PREFIX_DESCRIPTION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ROLE, PREFIX_NAME, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -54,9 +53,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Description description = argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
                 ? Description.createEmptyDescription()
                 : ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, tagList, role, description);
+        Person person = new Person(name, phone, email, role, description);
 
         return new AddCommand(person);
     }
