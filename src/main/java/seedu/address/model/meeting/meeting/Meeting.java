@@ -23,7 +23,8 @@ public class Meeting {
     /**
      * Every field must be present and not null.
      */
-    public Meeting(Title title, OptionalDescription description, From from, To to, Contacts contacts, Location location) {
+    public Meeting(Title title, OptionalDescription description, From from, To to,
+                   Contacts contacts, Location location) {
         requireAllNonNull(title, description, from, to, contacts, location);
         this.title = title;
         this.description = description;

@@ -48,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         From from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
         To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION));
-        Contacts contacts =  ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
+        Contacts contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
         Meeting meeting = new Meeting(title, description, from, to, contacts, location);
 
         return new AddCommand(meeting);

@@ -13,6 +13,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
@@ -28,17 +29,17 @@ public class CommandTestUtil {
 
     public static final String VALID_TITLE_A = "Meeting1";
     public static final String VALID_TITLE_B = "Meeting2";
-    public static final String VALID_DESCRIPTION_A = "With business associates";
-    public static final String VALID_DESCRIPTION_B = "With product designers";
+    public static final Optional<String> VALID_DESCRIPTION_A = Optional.of("With business associates");
+    public static final Optional<String> VALID_DESCRIPTION_B = Optional.of("With product designers");
     public static final String VALID_FROM_A = "01-01-2020 14:00";
     public static final String VALID_FROM_B = "01-01-2020 12:00";
     public static final String VALID_TO_A = "02-01-2020 14:00";
     public static final String VALID_TO_B = "02-01-2020 12:00";
 
-    public static final String VALID_CONTACTS_A = "1,2,3";
-    public static final String VALID_CONTACTS_B = "4,5,6";
-    public static final String VALID_LOCATION_A = "Singapore";
-    public static final String VALID_LOCATION_B = "Jarkata";
+    public static final Optional<String> VALID_CONTACTS_A = Optional.of("1,2,3");
+    public static final Optional<String> VALID_CONTACTS_B = Optional.of("4,5,6");
+    public static final Optional<String> VALID_LOCATION_A = Optional.of("Singapore");
+    public static final Optional<String> VALID_LOCATION_B = Optional.of("Jarkata");
 
     public static final String TITLE_DESC_A = " " + PREFIX_TITLE + VALID_TITLE_A;
     public static final String TITLE_DESC_B = " " + PREFIX_TITLE + VALID_TITLE_B;
