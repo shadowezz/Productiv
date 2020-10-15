@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.person.Person;
+import seedu.address.model.person.person.Role;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -50,6 +51,11 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         description.setText(person.getDescription().toString());
         role.setText(person.getRole().toString());
+        if (person.getRole().equals(Role.DEVELOPER)) {
+            role.setStyle("-fx-background-color: #32cd32");
+        } else {
+            role.setStyle("-fx-background-color: #ffa500");
+        }
     }
 
     @Override

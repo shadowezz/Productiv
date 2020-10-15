@@ -26,7 +26,7 @@
                 </Label>
                 <Label fx:id="title" text="\$first" styleClass="cell_big_label" />
             </HBox>
-            <Label fx:id="isCompleted" />
+            <Label fx:id="isCompleted" styleClass="tag_label" />
             <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
             <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
             <Label fx:id="contacts" styleClass="cell_small_label" text="\$contacts" />
