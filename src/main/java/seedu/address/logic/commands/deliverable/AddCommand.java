@@ -1,10 +1,7 @@
 package seedu.address.logic.commands.deliverable;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.deliverable.CliSyntax.*;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -21,11 +18,13 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a deliverable to the deliverable book. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
+            + PREFIX_MILESTONE + "MILESTONE "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_DEADLINE + "DEADLINE] "
             + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Login screen "
+            + PREFIX_MILESTONE + "1.0 "
             + PREFIX_DESCRIPTION + "Must include username and password fields "
             + PREFIX_DEADLINE + "12-12-2020 23:59 "
             + PREFIX_CONTACTS + "2,4";

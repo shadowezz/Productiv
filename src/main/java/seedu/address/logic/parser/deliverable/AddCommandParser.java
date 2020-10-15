@@ -1,10 +1,7 @@
 package seedu.address.logic.parser.deliverable;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.deliverable.CliSyntax.*;
 
 import java.util.stream.Stream;
 
@@ -16,6 +13,7 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
@@ -30,14 +28,15 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESCRIPTION, PREFIX_DEADLINE, PREFIX_CONTACTS);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_MILESTONE,
+                PREFIX_DESCRIPTION, PREFIX_DEADLINE, PREFIX_CONTACTS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_MILESTONE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
+        Milestone milestone = ParserUtil.parseMilestone(argMultimap.getValue(PREFIX_MILESTONE).get());
         Description description = argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
                 ? Description.createEmptyDescription()
                 : ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
@@ -48,7 +47,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? "NIL"
                 : ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
 
-        Deliverable deliverable = new Deliverable(title, description, deadline, contacts);
+        Deliverable deliverable = new Deliverable(title, milestone, description, deadline, contacts);
 
         return new AddCommand(deliverable);
     }
