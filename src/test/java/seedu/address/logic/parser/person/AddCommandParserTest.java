@@ -59,7 +59,7 @@ public class AddCommandParserTest {
                 + DESCRIPTION_DESC_BOB, new AddCommand(expectedPerson));
 
         // multiple descriptions - last description accepted
-         assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+        assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + DESCRIPTION_DESC_AMY + DESCRIPTION_DESC_BOB, new AddCommand(expectedPerson));
     }
 
@@ -70,9 +70,9 @@ public class AddCommandParserTest {
                 ROLE_DESC_STK + NAME_DESC_AMY + EMAIL_DESC_AMY + DESCRIPTION_DESC_AMY,
                 new AddCommand(expectedPersonWithoutPhone));
 
-         Person expectedPersonWithoutDescription = new PersonBuilder(AMY).withDescription().build();
-              assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY,
-                  new AddCommand(expectedPersonWithoutDescription));
+        Person expectedPersonWithoutDescription = new PersonBuilder(AMY).withDescription().build();
+        assertParseSuccess(parser, ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY,
+                new AddCommand(expectedPersonWithoutDescription));
     }
 
     @Test

@@ -1,13 +1,8 @@
 package seedu.address.model.person.person;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-
-import java.util.Optional;
-
-import javax.swing.text.html.Option;
 
 import org.junit.jupiter.api.Test;
 
