@@ -1,15 +1,17 @@
 package seedu.address.storage.meeting;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -19,19 +21,21 @@ public class JsonAdaptedMeeting {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Meeting's %s field is missing!";
 
     private final String title;
-    private final String description;
+    private final Optional<String> description;
     private final String from;
     private final String to;
-    private final String contacts;
-    private final String location;
+    private final Optional<String> contacts;
+    private final Optional<String> location;
 
     /**
      * Constructs a {@code JsonAdaptedMeeting} with the given meeting details.
      */
     @JsonCreator
-    public JsonAdaptedMeeting(@JsonProperty("title") String title, @JsonProperty("description") String description,
+    public JsonAdaptedMeeting(@JsonProperty("title") String title,
+                              @JsonProperty("description") Optional<String> description,
                              @JsonProperty("from") String from, @JsonProperty("to") String to,
-                             @JsonProperty("contacts") String contacts, @JsonProperty("location") String location) {
+                             @JsonProperty("contacts") Optional<String> contacts,
+                              @JsonProperty("location") Optional<String> location) {
         this.title = title;
         this.description = description;
         this.from = from;
@@ -68,14 +72,10 @@ public class JsonAdaptedMeeting {
         final Title modelTitle = new Title(title);
 
         // Description
-        if (description == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Description.class.getSimpleName()));
+        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
+            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
         }
-        if (!Description.isValidDescription(description)) {
-            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
-        }
-        final Description modelDescription = new Description(description);
+        final OptionalDescription modelDescription = new OptionalDescription(description);
 
         // From
         if (from == null) {
@@ -96,22 +96,15 @@ public class JsonAdaptedMeeting {
         final To modelTo = new To(to);
 
         // Contacts
-        if (contacts == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Contacts.class.getSimpleName()));
-        }
-        if (!Contacts.isValidContacts(contacts)) {
+        if (contacts.isPresent() && !Contacts.isValidContacts(contacts.get())) {
             throw new IllegalValueException(Contacts.MESSAGE_CONSTRAINTS);
         }
         final Contacts modelContacts = new Contacts(contacts);
 
         // Location
-        if (location == null) {
+        if (location.isPresent() && !Location.isValidLocation(location.get())) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Location.class.getSimpleName()));
-        }
-        if (!Location.isValidLocation(location)) {
-            throw new IllegalValueException(Location.MESSAGE_CONSTRAINTS);
         }
         final Location modelLocation = new Location(location);
 

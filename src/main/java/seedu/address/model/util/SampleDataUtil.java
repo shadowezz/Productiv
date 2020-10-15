@@ -6,7 +6,6 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ReadOnlyMeetingBook;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
@@ -53,12 +52,12 @@ public class SampleDataUtil {
 
     public static Meeting[] getSampleMeetings() {
         return new Meeting[] {
-            new Meeting(new Title("Meeting 1"), new Description("With business associates"),
+            new Meeting(new Title("Meeting 1"), new OptionalDescription("With business associates"),
                 new From("01-01-2020 12:00"),
                 new To("01-01-2020 14:00"),
                 new Contacts("1,2,3"),
                 new Location("Singapore")),
-            new Meeting(new Title("Meeting 2"), new Description("With product designers"),
+            new Meeting(new Title("Meeting 2"), new OptionalDescription("With product designers"),
                 new From("02-01-2020 12:00"),
                 new To("02-01-2020 14:00"),
                 new Contacts("4,5,6"),
