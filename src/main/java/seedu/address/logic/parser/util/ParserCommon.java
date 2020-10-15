@@ -10,7 +10,7 @@ import seedu.address.model.util.Title;
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
-public class ParserUtil {
+public class ParserCommon {
 
     /**
      * Parses a {@code Optional<String> description} into a {@code Description}.
@@ -26,7 +26,7 @@ public class ParserUtil {
         if (!OptionalDescription.isValidDescription(trimmedDescription)) {
             throw new ParseException(Title.MESSAGE_CONSTRAINTS);
         }
-        return new OptionalDescription(Optional.ofNullable(trimmedDescription));
+        return new OptionalDescription(trimmedDescription);
     }
 
     /**
@@ -43,6 +43,6 @@ public class ParserUtil {
         if (!Contacts.isValidContacts(trimmedContacts)) {
             throw new ParseException(Contacts.MESSAGE_CONSTRAINTS);
         }
-        return new Contacts(Optional.ofNullable(trimmedContacts));
+        return new Contacts(trimmedContacts);
     }
 }

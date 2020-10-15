@@ -1,7 +1,5 @@
 package seedu.address.testutil;
 
-import java.util.Optional;
-
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
@@ -10,17 +8,15 @@ import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
-
-
 public class MeetingBuilder {
 
     public static final String DEFAULT_TITLE = "Test";
-    public static final Optional<String> DEFAULT_DESCRIPTION = Optional.of("Refine functional requirements"
-            + "with business associates");
+    public static final String DEFAULT_DESCRIPTION = "Refine functional requirements"
+            + "with business associates";
     public static final String DEFAULT_FROM = "12-12-2020 08:00";
     public static final String DEFAULT_TO = "12-12-2020 09:00";
-    public static final Optional<String> DEFAULT_CONTACTS = Optional.of("3,6,9");
-    public static final Optional<String> DEFAULT_LOCATION = Optional.of("Singapore");
+    public static final String DEFAULT_CONTACTS = "3,6,9";
+    public static final String DEFAULT_LOCATION = "Singapore";
 
     private Title title;
     private OptionalDescription description;
@@ -67,7 +63,7 @@ public class MeetingBuilder {
      * Sets the {@code Description} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withDescription(String description) {
-        this.description = new OptionalDescription(Optional.ofNullable(description));
+        this.description = new OptionalDescription(description);
         return this;
     }
 
@@ -91,7 +87,7 @@ public class MeetingBuilder {
      * Sets the {@code Contacts} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withContacts(String contacts) {
-        this.contacts = new Contacts(Optional.ofNullable(contacts));
+        this.contacts = new Contacts(contacts);
         return this;
     }
 
@@ -99,7 +95,7 @@ public class MeetingBuilder {
      * Sets the {@code Location} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withLocation(String location) {
-        this.location = new Location(Optional.ofNullable(location));
+        this.location = new Location(location);
         return this;
     }
 

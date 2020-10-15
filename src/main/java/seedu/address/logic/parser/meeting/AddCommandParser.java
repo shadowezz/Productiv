@@ -16,6 +16,7 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserCommon;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
@@ -44,11 +45,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        OptionalDescription description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
+        OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
         From from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
         To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION));
-        Contacts contacts = ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
+        Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
         Meeting meeting = new Meeting(title, description, from, to, contacts, location);
 
         return new AddCommand(meeting);

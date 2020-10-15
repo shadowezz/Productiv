@@ -1,7 +1,6 @@
 package seedu.address.model.util;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -65,16 +64,16 @@ public class SampleDataUtil {
 
     public static Meeting[] getSampleMeetings() {
         return new Meeting[] {
-            new Meeting(new Title("Meeting 1"), new OptionalDescription(Optional.of("With business associates")),
+            new Meeting(new Title("Meeting 1"), new OptionalDescription("With business associates"),
                 new From("01-01-2020 12:00"),
                 new To("01-01-2020 14:00"),
-                new Contacts(Optional.of("1,2,3")),
-                new Location(Optional.of("Singapore"))),
-            new Meeting(new Title("Meeting 2"), new OptionalDescription(Optional.of("With product designers")),
+                new Contacts("1,2,3"),
+                new Location("Singapore")),
+            new Meeting(new Title("Meeting 2"), new OptionalDescription("With product designers"),
                 new From("02-01-2020 12:00"),
                 new To("02-01-2020 14:00"),
-                new Contacts(Optional.of("4,5,6")),
-                new Location(Optional.of("Jakarta")))
+                new Contacts("4,5,6"),
+                new Location("Jakarta"))
         };
     }
 

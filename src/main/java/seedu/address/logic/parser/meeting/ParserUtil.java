@@ -10,8 +10,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -49,23 +47,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static OptionalDescription parseDescription(Optional<String> description) throws ParseException {
-        if (description.isEmpty()) {
-            return new OptionalDescription(description);
-        }
-        String trimmedDescription = description.get().trim();
-        if (!OptionalDescription.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
-        }
-        return new OptionalDescription(Optional.ofNullable(trimmedDescription));
-    }
-
-    /**
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -99,23 +80,6 @@ public class ParserUtil {
      * Parses a {@code String address} into an {@code Address}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static Contacts parseContacts(Optional<String> contacts) throws ParseException {
-        if (contacts.isEmpty()) {
-            return new Contacts(contacts);
-        }
-        String trimmedContacts = contacts.get().trim();
-        if (!Contacts.isValidContacts(trimmedContacts)) {
-            throw new ParseException(Contacts.MESSAGE_CONSTRAINTS);
-        }
-        return new Contacts(Optional.ofNullable(trimmedContacts));
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
      * @throws ParseException if the given {@code location} is invalid.
      */
     public static Location parseLocation(Optional<String> location) throws ParseException {
@@ -126,6 +90,6 @@ public class ParserUtil {
         if (!Location.isValidLocation(trimmedLocation)) {
             throw new ParseException(Location.MESSAGE_CONSTRAINTS);
         }
-        return new Location(Optional.ofNullable(trimmedLocation));
+        return new Location(trimmedLocation);
     }
 }

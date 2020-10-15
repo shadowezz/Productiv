@@ -94,8 +94,8 @@ public class EditCommand extends Command {
         // String updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
 
         // return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
-        return new Meeting(new Title("A"), new OptionalDescription(Optional.of("B")), new From("2"),
-                new To("3"), new Contacts(Optional.of("1,2,3")), new Location(Optional.of("SG")));
+        return new Meeting(new Title("A"), new OptionalDescription("B"), new From("2"),
+                new To("3"), new Contacts("1,2,3"), new Location("SG"));
     }
 
     @Override
