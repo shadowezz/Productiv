@@ -17,12 +17,12 @@ import seedu.address.model.person.person.Role;
 
 public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
+    private static final Optional<String> INVALID_PHONE = Optional.of("+651234");
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_ROLE = "friend";
 
     private static final String VALID_NAME = BENSON.getName().toString();
-    private static final String VALID_PHONE = BENSON.getPhone().toString();
+    private static final Optional<String> VALID_PHONE = Optional.of(BENSON.getPhone().toString());
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
     private static final Optional<String> VALID_DESCRIPTION = Optional.of(BENSON.getDescription().toString());
     private static final String VALID_ROLE = BENSON.getRole().getArgument();

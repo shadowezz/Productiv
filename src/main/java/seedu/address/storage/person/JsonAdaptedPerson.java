@@ -21,7 +21,7 @@ class JsonAdaptedPerson {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
     private final String name;
-    private final String phone;
+    private final Optional<String> phone;
     private final String email;
     private final String role;
     private final Optional<String> description;
@@ -30,7 +30,7 @@ class JsonAdaptedPerson {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
+    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") Optional<String> phone,
                              @JsonProperty("email") String email,
                              @JsonProperty("role") String role,
                              @JsonProperty("description") Optional<String> description) {
@@ -70,7 +70,7 @@ class JsonAdaptedPerson {
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone) && !phone.equals("NIL")) {
+        if (phone.isPresent() && !Phone.isValidPhone(phone.get())) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
         }
         final Phone modelPhone = new Phone(phone);

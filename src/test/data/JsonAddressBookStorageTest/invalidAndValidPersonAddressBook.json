@@ -1,14 +1,18 @@
 {
   "persons": [ {
     "name": "Valid Person",
-    "phone": "9482424",
+    "phone": {
+      "value": "9482424"
+    },
     "email": "hans@example.com",
     "description": {
       "value" : null
     }
   }, {
     "name": "Person With Invalid Phone Field",
-    "phone": "948asdf2424",
+    "phone": {
+      "value": "948asdf2424"
+    },
     "email": "hans@example.com",
     "description": {
       "value" : null

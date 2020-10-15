@@ -63,7 +63,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_optionalFieldsMissing_success() {
-        Person expectedPersonWithoutPhone = new PersonBuilder(AMY).withPhone("NIL").build();
+        Person expectedPersonWithoutPhone = new PersonBuilder(AMY).withPhone().build();
         assertParseSuccess(parser,
                 ROLE_DESC_STK + NAME_DESC_AMY + EMAIL_DESC_AMY + DESCRIPTION_DESC_AMY,
                 new AddCommand(expectedPersonWithoutPhone));

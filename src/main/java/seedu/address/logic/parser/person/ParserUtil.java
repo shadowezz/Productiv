@@ -2,6 +2,8 @@ package seedu.address.logic.parser.person;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -52,13 +54,26 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
+    public static Phone parsePhone(Optional<String> phone) throws ParseException {
         requireNonNull(phone);
-        String trimmedPhone = phone.trim();
+        if (phone.isEmpty()) {
+            return new Phone(phone);
+        }
+        String trimmedPhone = phone.get().trim();
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
         return new Phone(trimmedPhone);
+    }
+
+    /**
+     * Parses a {@code String phone} into a {@code Phone}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code phone} is invalid.
+     */
+    public static Phone parsePhone(String phone) throws ParseException {
+        return parsePhone(Optional.of(phone));
     }
 
     /**

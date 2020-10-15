@@ -5,25 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
 import org.junit.jupiter.api.Test;
 
 public class PhoneTest {
 
     @Test
-    public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Phone(null));
-    }
-
-    @Test
     public void constructor_invalidPhone_throwsIllegalArgumentException() {
         String invalidPhone = "";
         assertThrows(IllegalArgumentException.class, () -> new Phone(invalidPhone));
-    }
-
-    @Test
-    public void constructor_emptyPhone_sucess() {
-        String emptyPhone = "NIL";
-        assertEquals(Phone.createEmptyPhone(), new Phone(emptyPhone));
     }
 
     @Test
