@@ -14,12 +14,14 @@ import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
+import seedu.address.model.util.OptionalDescription;
 
 public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";
     private static final Optional<String> INVALID_PHONE = Optional.of("+651234");
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_ROLE = "friend";
+    private static final Optional<String> INVALID_DESCRIPTION = Optional.of(" ");
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final Optional<String> VALID_PHONE = Optional.of(BENSON.getPhone().toString());
@@ -98,6 +100,23 @@ public class JsonAdaptedPersonTest {
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, INVALID_ROLE,
                         VALID_DESCRIPTION);
         String expectedMessage = Role.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidDescription_throwsIllegalValueException() {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ROLE,
+                        INVALID_DESCRIPTION);
+        String expectedMessage = OptionalDescription.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullDescription_throwsIllegalValueException() {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ROLE, null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, OptionalDescription.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 

@@ -24,7 +24,7 @@ public class ParserCommon {
         }
         String trimmedDescription = description.get().trim();
         if (!OptionalDescription.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+            throw new ParseException(OptionalDescription.MESSAGE_CONSTRAINTS);
         }
         return new OptionalDescription(trimmedDescription);
     }

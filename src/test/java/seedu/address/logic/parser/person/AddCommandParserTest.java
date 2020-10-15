@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.DESCRIPTION_DE
 import static seedu.address.logic.commands.person.CommandTestUtil.DESCRIPTION_DESC_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.EMAIL_DESC_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.person.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.person.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.person.CommandTestUtil.INVALID_PHONE_DESC;
@@ -31,6 +32,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -113,6 +115,10 @@ public class AddCommandParserTest {
         // invalid role
         assertParseFailure(parser, INVALID_ROLE_DESC + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + DESCRIPTION_DESC_BOB, Role.MESSAGE_CONSTRAINTS);
+
+        // invalid description
+        assertParseFailure(parser, ROLE_DESC_STK + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + INVALID_DESCRIPTION_DESC, OptionalDescription.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, ROLE_DESC_STK + INVALID_NAME_DESC + PHONE_DESC_BOB + INVALID_EMAIL_DESC

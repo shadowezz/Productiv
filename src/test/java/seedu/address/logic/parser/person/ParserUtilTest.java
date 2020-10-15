@@ -128,5 +128,3 @@ public class ParserUtilTest {
         assertEquals(expectedRole, ParserUtil.parseRole(roleWithWhitespace));
     }
 }
-
-// TODO

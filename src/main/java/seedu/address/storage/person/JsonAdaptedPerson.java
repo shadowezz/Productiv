@@ -91,10 +91,10 @@ class JsonAdaptedPerson {
         }
         final Role modelRole = Role.getRole(role);
 
-//        if (description == null) {
-//            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-//                    OptionalDescription.class.getSimpleName()));
-//        }
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    OptionalDescription.class.getSimpleName()));
+        }
         if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
             throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
         }
