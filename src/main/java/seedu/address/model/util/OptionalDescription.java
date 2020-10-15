@@ -62,8 +62,8 @@ public class OptionalDescription {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Description) // instanceof handles nulls
-                && value.equals((((Description) other).value)); // state check
+                || (other instanceof OptionalDescription) // instanceof handles nulls
+                && value.equals((((OptionalDescription) other).value)); // state check
     }
 
     @Override
