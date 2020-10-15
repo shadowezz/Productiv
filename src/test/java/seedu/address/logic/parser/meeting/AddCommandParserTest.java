@@ -29,7 +29,7 @@ package seedu.address.logic.parser.meeting;
 
 //import org.junit.jupiter.api.Test;
 //import seedu.address.logic.commands.meeting.AddCommand;
-//import seedu.address.model.meeting.meeting.Contacts;
+//import seedu.address.model.util.Contacts;
 //import seedu.address.model.meeting.meeting.Description;
 //import seedu.address.model.meeting.meeting.From;
 //import seedu.address.model.meeting.meeting.Location;

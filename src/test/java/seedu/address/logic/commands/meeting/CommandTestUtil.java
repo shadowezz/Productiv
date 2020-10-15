@@ -38,7 +38,7 @@ public class CommandTestUtil {
     public static final String VALID_CONTACTS_A = "1,2,3";
     public static final String VALID_CONTACTS_B = "4,5,6";
     public static final String VALID_LOCATION_A = "Singapore";
-    public static final String VALID_LOCATION_B = "Jarkata";
+    public static final String VALID_LOCATION_B = "Jakarta";
 
     public static final String TITLE_DESC_A = " " + PREFIX_TITLE + VALID_TITLE_A;
     public static final String TITLE_DESC_B = " " + PREFIX_TITLE + VALID_TITLE_B;

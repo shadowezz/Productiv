@@ -20,12 +20,12 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.meeting.ModelMeeting;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 
@@ -94,7 +94,7 @@ public class EditCommand extends Command {
         // String updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
 
         // return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
-        return new Meeting(new Title("A"), new Description("B"), new From("2"),
+        return new Meeting(new Title("A"), new OptionalDescription("B"), new From("2"),
                 new To("3"), new Contacts("1,2,3"), new Location("SG"));
     }
 

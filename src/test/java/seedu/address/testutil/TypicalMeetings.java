@@ -18,12 +18,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.meeting.MeetingBook;
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 public class TypicalMeetings {
@@ -50,19 +50,19 @@ public class TypicalMeetings {
     //    public static final String LOCATION_E = "NIL";
 
     public static final Meeting MEETING_A =
-            new Meeting(new Title(VALID_TITLE_A), new Description(VALID_DESCRIPTION_A), new From(VALID_FROM_A),
+            new Meeting(new Title(VALID_TITLE_A), new OptionalDescription(VALID_DESCRIPTION_A), new From(VALID_FROM_A),
                     new To(VALID_TO_A), new Contacts(VALID_CONTACTS_A), new Location(VALID_LOCATION_A));
 
     public static final Meeting MEETING_B =
-            new Meeting(new Title(VALID_TITLE_B), new Description(VALID_DESCRIPTION_B), new From(VALID_FROM_B),
+            new Meeting(new Title(VALID_TITLE_B), new OptionalDescription(VALID_DESCRIPTION_B), new From(VALID_FROM_B),
                     new To(VALID_TO_B), new Contacts(VALID_CONTACTS_B), new Location(VALID_LOCATION_B));
 
     public static final Meeting MEETING_C =
-            new Meeting(new Title(TITLE_C), new Description(DESCRIPTION_C), new From(FROM_C),
+            new Meeting(new Title(TITLE_C), new OptionalDescription(DESCRIPTION_C), new From(FROM_C),
                     new To(TO_C), new Contacts(CONTACTS_C), new Location(LOCATION_C));
 
     public static final Meeting MEETING_D =
-            new Meeting(new Title(TITLE_D), new Description(DESCRIPTION_D), new From(FROM_D), new To(TO_D),
+            new Meeting(new Title(TITLE_D), new OptionalDescription(DESCRIPTION_D), new From(FROM_D), new To(TO_D),
                     new Contacts(CONTACTS_D), new Location(LOCATION_D));
 
     //    public static final Meeting MEETING_E =
