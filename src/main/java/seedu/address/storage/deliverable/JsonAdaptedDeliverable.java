@@ -67,7 +67,8 @@ public class JsonAdaptedDeliverable {
         final Title modelTitle = new Title(title);
 
         if (milestone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Milestone.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Milestone.class.getSimpleName()));
         }
         if (!Milestone.isValidMilestone(milestone)) {
             throw new IllegalValueException(Milestone.MESSAGE_CONSTRAINTS);

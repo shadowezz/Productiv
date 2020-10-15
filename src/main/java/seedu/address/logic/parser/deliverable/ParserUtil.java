@@ -45,6 +45,12 @@ public class ParserUtil {
         return new Title(trimmedTitle);
     }
 
+    /**
+     * Parses a {@code String milestone} into a {@code Milestone}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException
+     */
     public static Milestone parseMilestone(String milestone) throws ParseException {
         requireNonNull(milestone);
         String trimmedMilestone = milestone.trim();

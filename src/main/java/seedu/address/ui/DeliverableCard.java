@@ -38,8 +38,6 @@ public class DeliverableCard extends UiPart<Region> {
     private Label contacts;
     @FXML
     private FlowPane tags;
-//    @FXML
-//    private Label isCompleted;
 
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
@@ -49,7 +47,6 @@ public class DeliverableCard extends UiPart<Region> {
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
         title.setText(deliverable.getTitle().value);
-        Label milestone = new Label(deliverable.getMilestone().toString());
         description.setText("Description: " + deliverable.getDescription().value);
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
@@ -62,6 +59,7 @@ public class DeliverableCard extends UiPart<Region> {
             isCompleted.setStyle("-fx-background-color: #ffa500");
         }
         tags.getChildren().add(isCompleted);
+        Label milestone = new Label(deliverable.getMilestone().toString());
         tags.getChildren().add(milestone);
     }
 

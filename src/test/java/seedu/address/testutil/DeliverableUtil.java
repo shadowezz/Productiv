@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_MILESTONE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
 
 import seedu.address.logic.commands.person.AddCommand;
@@ -26,6 +27,7 @@ public class DeliverableUtil {
     public static String getDeliverableDetails(Deliverable deliverable) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + deliverable.getTitle().value + " ");
+        sb.append(PREFIX_MILESTONE + deliverable.getMilestone().value + " ");
         sb.append(PREFIX_DESCRIPTION + deliverable.getDescription().value + " ");
         sb.append(PREFIX_DEADLINE + deliverable.getDeadline().value + " ");
         sb.append(PREFIX_CONTACTS + deliverable.getContacts());

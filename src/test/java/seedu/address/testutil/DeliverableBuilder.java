@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
@@ -11,12 +12,14 @@ import seedu.address.model.util.Title;
 public class DeliverableBuilder {
 
     public static final String DEFAULT_TITLE = "Login screen";
+    public static final String DEFAULT_MILESTONE = "1.0";
     public static final String DEFAULT_DESCRIPTION = "Must include username and password fields";
     public static final String DEFAULT_DEADLINE = "12-12-2020 23:59";
     public static final boolean DEFAULT_IS_COMPLETE = false;
     public static final String DEFAULT_CONTACTS = "2,4";
 
     private Title title;
+    private Milestone milestone;
     private Description description;
     private Deadline deadline;
     private String contacts;
@@ -27,6 +30,7 @@ public class DeliverableBuilder {
      */
     public DeliverableBuilder() {
         title = new Title(DEFAULT_TITLE);
+        milestone = new Milestone(DEFAULT_MILESTONE);
         description = new Description(DEFAULT_DESCRIPTION);
         deadline = new Deadline(DEFAULT_DEADLINE);
         contacts = DEFAULT_CONTACTS;
@@ -38,6 +42,7 @@ public class DeliverableBuilder {
      */
     public DeliverableBuilder(Deliverable deliverableToCopy) {
         title = deliverableToCopy.getTitle();
+        milestone = deliverableToCopy.getMilestone();
         description = deliverableToCopy.getDescription();
         deadline = deliverableToCopy.getDeadline();
         contacts = deliverableToCopy.getContacts();
@@ -49,6 +54,14 @@ public class DeliverableBuilder {
      */
     public DeliverableBuilder withTitle(String title) {
         this.title = new Title(title);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Milestone} of the {@code Deliverable} that we are building.
+     */
+    public DeliverableBuilder withMilestone(String milestone) {
+        this.milestone = new Milestone(milestone);
         return this;
     }
 
@@ -85,7 +98,7 @@ public class DeliverableBuilder {
     }
 
     public Deliverable build() {
-        return new Deliverable(title, description, deadline, isComplete, contacts);
+        return new Deliverable(title, milestone, description, deadline, isComplete, contacts);
     }
 
 }
