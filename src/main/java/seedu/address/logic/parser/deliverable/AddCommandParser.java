@@ -1,7 +1,11 @@
 package seedu.address.logic.parser.deliverable;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.deliverable.CliSyntax.*;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_MILESTONE;
+import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
 
 import java.util.stream.Stream;
 

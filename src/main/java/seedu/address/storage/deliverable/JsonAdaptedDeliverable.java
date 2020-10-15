@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
@@ -17,6 +18,7 @@ public class JsonAdaptedDeliverable {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Deliverable's %s field is missing!";
 
     private final String title;
+    private final String milestone;
     private final String description;
     private final String deadline;
     private final String contacts;
@@ -26,10 +28,12 @@ public class JsonAdaptedDeliverable {
      * Constructs a {@code JsonAdaptedDeliverable} with the given deliverable details
      */
     @JsonCreator
-    public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("description") String description,
-                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts,
+    public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("milestone") String milestone,
+                                  @JsonProperty("description") String description,
+                                  @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts,
                                   @JsonProperty("isComplete") String isComplete) {
         this.title = title;
+        this.milestone = milestone;
         this.description = description;
         this.deadline = deadline;
         this.contacts = contacts;
@@ -41,6 +45,7 @@ public class JsonAdaptedDeliverable {
      */
     public JsonAdaptedDeliverable(Deliverable source) {
         title = source.getTitle().value;
+        milestone = source.getMilestone().value;
         description = source.getDescription().value;
         deadline = source.getDeadline().value;
         contacts = source.getContacts();
@@ -61,6 +66,14 @@ public class JsonAdaptedDeliverable {
         }
         final Title modelTitle = new Title(title);
 
+        if (milestone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Milestone.class.getSimpleName()));
+        }
+        if (!Milestone.isValidMilestone(milestone)) {
+            throw new IllegalValueException(Milestone.MESSAGE_CONSTRAINTS);
+        }
+        final Milestone modelMilestone = new Milestone(milestone);
+
         if (!Description.isValidDescription(description)) {
             throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
@@ -80,6 +93,6 @@ public class JsonAdaptedDeliverable {
             modelIsComplete = false;
         }
 
-        return new Deliverable(modelTitle, modelDescription, modelDeadline, modelIsComplete, contacts);
+        return new Deliverable(modelTitle, modelMilestone, modelDescription, modelDeadline, modelIsComplete, contacts);
     }
 }

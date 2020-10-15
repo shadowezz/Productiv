@@ -30,7 +30,7 @@ public class Milestone {
     public Milestone(String milestone) {
         requireNonNull(milestone);
         checkArgument(isValidMilestone(milestone), MESSAGE_CONSTRAINTS);
-        value = PREFIX + milestone;
+        value = milestone;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Milestone {
 
     @Override
     public String toString() {
-        return value;
+        return PREFIX + value;
     }
 
     @Override
