@@ -3,13 +3,17 @@
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "description": "End user",
-    "role": "stk"
+    "role": "stk",
+    "description": {
+      "value" : "End user"
+    }
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
     "role": "stk",
-    "description": "NIL"
+    "description": {
+      "value" : null
+    }
   } ]
 }

@@ -15,12 +15,13 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserCommon;
 import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * Parses input arguments and creates a new AddCommand object for person
@@ -48,9 +49,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? Phone.createEmptyPhone()
                 : ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Description description = argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
-                ? Description.createEmptyDescription()
-                : ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
 
         Person person = new Person(name, phone, email, role, description);
 

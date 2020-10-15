@@ -2,6 +2,7 @@ package seedu.address.model.person.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_DESCRIPTION_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
@@ -79,6 +80,10 @@ public class PersonTest {
 
         // different role -> returns false
         editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_DEV).build();
+        assertFalse(ALICE.equals(editedAlice));
+
+        // different description -> returns false
+        editedAlice = new PersonBuilder(ALICE).withDescription(VALID_DESCRIPTION_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 }

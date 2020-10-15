@@ -4,7 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * Represents a Person in the address book.
@@ -19,12 +19,12 @@ public class Person {
 
     // Data fields
     private final Role role;
-    private final Description description;
+    private final OptionalDescription description;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Role role, Description description) {
+    public Person(Name name, Phone phone, Email email, Role role, OptionalDescription description) {
         requireAllNonNull(name, phone, email, role);
         this.name = name;
         this.phone = phone;
@@ -49,7 +49,7 @@ public class Person {
         return role;
     }
 
-    public Description getDescription() {
+    public OptionalDescription getDescription() {
         return description;
     }
 

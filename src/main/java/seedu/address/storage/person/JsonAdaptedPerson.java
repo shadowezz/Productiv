@@ -1,5 +1,7 @@
 package seedu.address.storage.person;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,7 +11,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -22,7 +24,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String role;
-    private final String description;
+    private final Optional<String> description;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -31,7 +33,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email,
                              @JsonProperty("role") String role,
-                             @JsonProperty("description") String description) {
+                             @JsonProperty("description") Optional<String> description) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -89,14 +91,15 @@ class JsonAdaptedPerson {
         }
         final Role modelRole = Role.getRole(role);
 
-        if (description == null && !description.equals("NIL")) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Description.class.getSimpleName()));
+//        if (description == null) {
+//            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+//                    OptionalDescription.class.getSimpleName()));
+//        }
+        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
+            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
         }
-        if (!Description.isValidDescription(description)) {
-            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
-        }
-        final Description modelDescription = new Description(description);
+
+        final OptionalDescription modelDescription = new OptionalDescription(description);
 
         return new Person(modelName, modelPhone, modelEmail, modelRole, modelDescription);
     }

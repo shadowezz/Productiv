@@ -1,11 +1,13 @@
 package seedu.address.testutil;
 
+import java.util.Optional;
+
 import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * A utility class to help with building Person objects.
@@ -22,7 +24,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Role role;
-    private Description description;
+    private OptionalDescription description;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -32,7 +34,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         role = Role.getRole(DEFAULT_ROLE);
-        description = new Description(DEFAULT_DESCRIPTION);
+        description = new OptionalDescription(DEFAULT_DESCRIPTION);
     }
 
     /**
@@ -74,7 +76,15 @@ public class PersonBuilder {
      * Sets the {@code Description} of the {@code Person} that we are building.
      */
     public PersonBuilder withDescription(String description) {
-        this.description = new Description(description);
+        this.description = new OptionalDescription(description);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Description} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withDescription() {
+        this.description = new OptionalDescription(Optional.empty());
         return this;
     }
 

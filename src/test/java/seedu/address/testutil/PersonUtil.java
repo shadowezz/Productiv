@@ -31,7 +31,7 @@ public class PersonUtil {
         sb.append(PREFIX_NAME + person.getName().fullName + " ");
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
-        sb.append(PREFIX_DESCRIPTION + person.getDescription().value + " ");
+        person.getDescription().value.ifPresent(description -> sb.append(PREFIX_DESCRIPTION + description + " "));
         return sb.toString();
     }
 
@@ -44,7 +44,7 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESCRIPTION)
-                .append(description.value).append(" "));
+                .append(description.value.orElse("")).append(" "));
         return sb.toString();
     }
 }

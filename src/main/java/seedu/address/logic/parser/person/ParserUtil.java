@@ -76,25 +76,6 @@ public class ParserUtil {
         return new Email(trimmedEmail);
     }
 
-
-    /**
-     * Parses a {@code String description} into a {@code Description}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code description} is invalid.
-     */
-    public static Description parseDescription(String description) throws ParseException {
-        requireNonNull(description);
-        if (description.equals("NIL")) {
-            return new Description(description);
-        }
-        String trimmedDescription = description.trim();
-        if (!Description.isValidDescription(trimmedDescription)) {
-            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
-        }
-        return new Description(trimmedDescription);
-    }
-
     /**
      * Parses a {@code String role} into a {@code Role}.
      * Leading and trailing whitespaces will be trimmed.

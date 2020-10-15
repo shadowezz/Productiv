@@ -21,7 +21,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -92,7 +92,8 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Description updatedDescription = editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
+        OptionalDescription updatedDescription =
+                editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
         Role updatedRole = personToEdit.getRole();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedRole, updatedDescription);
@@ -124,7 +125,7 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
-        private Description description;
+        private OptionalDescription description;
 
         public EditPersonDescriptor() {}
 
@@ -170,11 +171,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public void setDescription(Description description) {
+        public void setDescription(OptionalDescription description) {
             this.description = description;
         }
 
-        public Optional<Description> getDescription() {
+        public Optional<OptionalDescription> getDescription() {
             return Optional.ofNullable(description);
         }
 

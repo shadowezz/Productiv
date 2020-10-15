@@ -5,6 +5,8 @@ import static seedu.address.storage.person.JsonAdaptedPerson.MISSING_FIELD_MESSA
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -22,7 +24,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_DESCRIPTION = BENSON.getDescription().toString();
+    private static final Optional<String> VALID_DESCRIPTION = Optional.of(BENSON.getDescription().toString());
     private static final String VALID_ROLE = BENSON.getRole().getArgument();
 
     @Test
