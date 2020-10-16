@@ -10,13 +10,13 @@ class RoleTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Role(null));
+        assertThrows(NullPointerException.class, () -> Role.getRole(null));
     }
 
     @Test
     public void constructor_invalidRole_throwsIllegalArgumentException() {
         String invalidRole = "";
-        assertThrows(IllegalArgumentException.class, () -> new Role(invalidRole));
+        assertThrows(IllegalArgumentException.class, () -> Role.getRole(invalidRole));
     }
 
     @Test

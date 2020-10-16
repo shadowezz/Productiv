@@ -61,7 +61,7 @@ public class Deliverable {
         return deadline;
     }
 
-    public boolean getCompletionStatus() {
+    public boolean getIsComplete() {
         return isComplete;
     }
 
@@ -101,7 +101,7 @@ public class Deliverable {
                 && otherDeliverable.getDescription().equals(getDescription())
                 && otherDeliverable.getDeadline().equals(getDeadline())
                 && otherDeliverable.getContacts().equals(getContacts())
-                && otherDeliverable.getCompletionStatus() == getCompletionStatus();
+                && otherDeliverable.getIsComplete() == getIsComplete();
     }
 
     @Override

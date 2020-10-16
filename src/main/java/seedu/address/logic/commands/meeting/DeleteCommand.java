@@ -2,7 +2,6 @@ package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -25,6 +24,7 @@ public class DeleteCommand extends Command {
 
     /**
      * Construct command given index of meeting to delete.
+     *
      * @param targetIndex specified index of meeting to delete.
      */
     public DeleteCommand(Index targetIndex) {
@@ -36,17 +36,13 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(ModelMeeting modelMeeting) throws CommandException {
         requireNonNull(modelMeeting);
-        //TODO: Add getFilteredMeetingList
-        //List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
-        List<Meeting> lastShownList = new ArrayList<Meeting>();
-
+        List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_MEETING_DISPLAYED_INDEX);
         }
 
         Meeting meetingToDelete = lastShownList.get(targetIndex.getZeroBased());
-        //TODO: Add deleteMeeting method here.
-        //modelMeeting.deleteMeeting(meetingToDelete);
+        modelMeeting.deleteMeeting(meetingToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_MEETING_SUCCESS, meetingToDelete));
     }
 
