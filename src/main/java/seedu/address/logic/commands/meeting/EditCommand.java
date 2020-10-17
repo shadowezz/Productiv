@@ -1,19 +1,16 @@
 package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_DESCRIPTION;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
-//import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_CONTACTS;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_CONTACTS;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
+import static seedu.address.model.meeting.ModelMeeting.PREDICATE_SHOW_ALL_MEETINGS;
 
-//import java.util.Collections;
-//import java.util.HashSet;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-//import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -32,7 +29,19 @@ import seedu.address.model.util.Title;
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the meeting.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
+            + "by the index number used in the displayed person list. "
+            + "Existing values will be overwritten by the input values.\n"
+            + "Parameters: INDEX (must be a positive integer) "
+            + "[" + PREFIX_TITLE + "TITLE] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_FROM + "FROM] "
+            + "[" + PREFIX_TO + "TO] "
+            + "[" + PREFIX_CONTACTS + "CONTACTS] "
+            + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "Example: " + COMMAND_WORD + " 1 "
+            + PREFIX_TITLE + "Discuss ALL features "
+            + PREFIX_FROM + "2020-12-31 09:00";
 
 
     public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Person: %1$s";
@@ -60,9 +69,7 @@ public class EditCommand extends Command {
     public CommandResult execute(ModelMeeting modelMeeting) throws CommandException {
         requireNonNull(modelMeeting);
 
-        //TODO: Add getFilteredMeetingList
-        //List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
-        List<Meeting> lastShownList = new ArrayList<Meeting>();
+        List<Meeting> lastShownList = modelMeeting.getFilteredMeetingList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
         }
@@ -70,14 +77,12 @@ public class EditCommand extends Command {
         Meeting meetingToEdit = lastShownList.get(targetIndex.getZeroBased());
         Meeting editedMeeting = createEditedMeeting(meetingToEdit, editMeetingDescriptor);
 
-        //TODO: throw exception if meetingToEdit.isSameMeeting(editedMeeting) makes no changes
-        if (modelMeeting.hasMeeting(editedMeeting)) {
+        if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
         }
 
-        //TODO: implement setMeeting and updateFilteredMeetingList
-        //modelMeeting.setMeeting(meetingToEdit, editedMeeting);
-        //modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_Meeting);
+        modelMeeting.setMeeting(meetingToEdit, editedMeeting);
+        modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
 
 
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
@@ -86,16 +91,22 @@ public class EditCommand extends Command {
     private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
         assert meetingToEdit != null;
 
-        // String updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());
-        // String updatedDesc = editMeetingDescriptor.getDescription().orElse(meetingToEdit.getDescription());
-        // String updatedFrom = editMeetingDescriptor.getFrom().orElse(meetingToEdit.getFrom());
-        // String updatedTo = editMeetingDescriptor.getTo().orElse(meetingToEdit.getTo());
-        // String updatedContacts = editMeetingDescriptor.getContacts().orElse(meetingToEdit.getContacts());
-        // String updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
+        Title updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());
 
-        // return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
-        return new Meeting(new Title("A"), new OptionalDescription("B"), new From("2"),
-                new To("3"), new Contacts("1,2,3"), new Location("SG"));
+        // Description takes optional String
+        OptionalDescription updatedDesc = editMeetingDescriptor.getDescription()
+                .orElse(meetingToEdit.getDescription());
+
+        From updatedFrom = editMeetingDescriptor.getFrom().orElse(meetingToEdit.getFrom());
+        To updatedTo = editMeetingDescriptor.getTo().orElse(meetingToEdit.getTo());
+
+        // Contacts takes optional String
+        Contacts updatedContacts = editMeetingDescriptor.getContacts().orElse(meetingToEdit.getContacts());
+
+        // Location takes optional String
+        Location updatedLocation = editMeetingDescriptor.getLocation().orElse(meetingToEdit.getLocation());
+
+        return new Meeting(updatedTitle, updatedDesc, updatedFrom, updatedTo, updatedContacts, updatedLocation);
     }
 
     @Override
@@ -120,18 +131,19 @@ public class EditCommand extends Command {
      *
      */
     public static class EditMeetingDescriptor {
-        private String title;
-        private String description;
-        private String from;
-        private String to;
-        private String contacts;
-        private String location;
+        private Title title;
+        private OptionalDescription description;
+        private From from;
+        private To to;
+        private Contacts contacts;
+        private Location location;
 
         public EditMeetingDescriptor() {
         }
 
         /**
          * Copy attributes from meeting to be edited.
+         *
          * @param toCopy meeting to be edited.
          */
         public EditMeetingDescriptor(EditMeetingDescriptor toCopy) {
@@ -147,51 +159,53 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyNonNull(title, description, from, to, contacts, location);
         }
 
-        public void setTitle(String title) {
+        public void setTitle(Title title) {
             this.title = title;
         }
 
-        public Optional<String> getTitle() {
+        public Optional<Title> getTitle() {
             return Optional.ofNullable(this.title);
         }
 
-        public void setDescription(String description) {
+        //TODO: does this work?
+        public void setDescription(OptionalDescription description) {
             this.description = description;
         }
 
-        public Optional<String> getDescription() {
-            return Optional.ofNullable(this.description);
+        //TODO: does this work?
+        public Optional<OptionalDescription> getDescription() {
+            return Optional.ofNullable(description);
         }
 
-        public void setFrom(String from) {
+        public void setFrom(From from) {
             this.from = from;
         }
 
-        public Optional<String> getFrom() {
+        public Optional<From> getFrom() {
             return Optional.ofNullable(this.from);
         }
 
-        public void setTo(String to) {
+        public void setTo(To to) {
             this.to = to;
         }
 
-        public Optional<String> getTo() {
+        public Optional<To> getTo() {
             return Optional.ofNullable(this.to);
         }
 
-        public void setContacts(String contact) {
+        public void setContacts(Contacts contact) {
             this.contacts = contact;
         }
 
-        public Optional<String> getContacts() {
+        public Optional<Contacts> getContacts() {
             return Optional.ofNullable(this.contacts);
         }
 
-        public void setLocation(String location) {
+        public void setLocation(Location location) {
             this.location = location;
         }
 
-        public Optional<String> getLocation() {
+        public Optional<Location> getLocation() {
             return Optional.ofNullable(this.location);
         }
 
