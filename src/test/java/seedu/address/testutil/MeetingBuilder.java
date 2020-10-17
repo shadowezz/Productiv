@@ -1,19 +1,17 @@
 package seedu.address.testutil;
 
-import seedu.address.model.meeting.meeting.Contacts;
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
-
-
 
 public class MeetingBuilder {
 
     public static final String DEFAULT_TITLE = "Test";
-    public static final String DEFAULT_DESCRIPTION = "Refine functional requirements "
+    public static final String DEFAULT_DESCRIPTION = "Refine functional requirements"
             + "with business associates";
     public static final String DEFAULT_FROM = "12-12-2020 08:00";
     public static final String DEFAULT_TO = "12-12-2020 09:00";
@@ -21,7 +19,7 @@ public class MeetingBuilder {
     public static final String DEFAULT_LOCATION = "Singapore";
 
     private Title title;
-    private Description description;
+    private OptionalDescription description;
     private From from;
     private To to;
     private Contacts contacts;
@@ -32,7 +30,7 @@ public class MeetingBuilder {
      */
     public MeetingBuilder() {
         this.title = new Title(DEFAULT_TITLE);
-        this.description = new Description(DEFAULT_DESCRIPTION);
+        this.description = new OptionalDescription(DEFAULT_DESCRIPTION);
         this.from = new From(DEFAULT_FROM);
         this.to = new To(DEFAULT_TO);
         this.contacts = new Contacts(DEFAULT_CONTACTS);
@@ -65,7 +63,7 @@ public class MeetingBuilder {
      * Sets the {@code Description} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withDescription(String description) {
-        this.description = new Description(description);
+        this.description = new OptionalDescription(description);
         return this;
     }
 

@@ -47,11 +47,11 @@ public class MeetingCard extends UiPart<Region> {
         this.meeting = meeting;
         id.setText(displayedIndex + ". ");
         title.setText(meeting.getTitle().value);
-        description.setText(meeting.getDescription().value);
+        description.setText(meeting.getDescription().toString());
         from.setText(meeting.getFrom().valueString);
         to.setText(meeting.getTo().valueString);
-        contacts.setText(meeting.getContacts().value);
-        loc.setText(meeting.getLocation().value);
+        contacts.setText(meeting.getContacts().toString());
+        loc.setText(meeting.getLocation().toString());
     }
 
     @Override

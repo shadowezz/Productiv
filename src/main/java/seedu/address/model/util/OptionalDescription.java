@@ -3,14 +3,17 @@ package seedu.address.model.util;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.util.Optional;
+
 /**
  * Represents a Deliverable's description in the deliverable book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDescription(String)}
  */
 
-// TODO: to be deprecated
-public class Description {
+// TODO: to be renamed
+public class OptionalDescription {
 
+    public static final String EMPTY_DESCRIPTION_FIELD = "-";
     public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values, and it should not be blank";
 
     /*
@@ -19,24 +22,29 @@ public class Description {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String value;
+    public final Optional<String> value;
 
     /**
      * Constructs a {@code Description}.
      *
      * @param description A valid description.
      */
-    public Description(String description) {
-        requireNonNull(description);
-        checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
+    public OptionalDescription(Optional<String> description) {
+        if (description.isPresent()) {
+            checkArgument(isValidDescription(description.get()), MESSAGE_CONSTRAINTS);
+        }
         value = description;
     }
 
     /**
-     * Constructs an empty description.
+     * Constructs a {@code Description}.
+     *
+     * @param description A valid description.
      */
-    public static Description createEmptyDescription() {
-        return new Description("NIL");
+    public OptionalDescription(String description) {
+        requireNonNull(description);
+        checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
+        value = Optional.of(description);
     }
 
     /**
@@ -48,14 +56,14 @@ public class Description {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse(EMPTY_DESCRIPTION_FIELD);
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof Description) // instanceof handles nulls
-            && value.equals((((Description) other).value)); // state check
+                || (other instanceof OptionalDescription) // instanceof handles nulls
+                && value.equals((((OptionalDescription) other).value)); // state check
     }
 
     @Override

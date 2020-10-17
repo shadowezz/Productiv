@@ -4,7 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -14,7 +15,7 @@ import seedu.address.model.util.Title;
 public class Meeting {
 
     private final Title title;
-    private final Description description;
+    private final OptionalDescription description;
     private final From from;
     private final To to;
     private final Contacts contacts;
@@ -23,7 +24,8 @@ public class Meeting {
     /**
      * Every field must be present and not null.
      */
-    public Meeting(Title title, Description description, From from, To to, Contacts contacts, Location location) {
+    public Meeting(Title title, OptionalDescription description, From from, To to,
+                   Contacts contacts, Location location) {
         requireAllNonNull(title, description, from, to, contacts, location);
         this.title = title;
         this.description = description;
@@ -37,7 +39,7 @@ public class Meeting {
         return title;
     }
 
-    public Description getDescription() {
+    public OptionalDescription getDescription() {
         return description;
     }
 

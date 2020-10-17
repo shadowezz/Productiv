@@ -1,12 +1,15 @@
-package seedu.address.model.meeting.meeting;
+package seedu.address.model.util;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.util.Optional;
 
 /**
  * Represents a Meeting's contacts in the meeting book.
  */
 public class Contacts {
+    public static final String EMPTY_CONTACTS_FIELD = "-";
     public static final String MESSAGE_CONSTRAINTS =
             "Contacts can only take numerical values separated with commas";
 
@@ -19,17 +22,32 @@ public class Contacts {
      */
     public static final String VALIDATION_REGEX = "(\\d+)(,\\s*\\d+)*";
 
-    public final String value;
+    /*
+     * Represents the value of Contacts.
+     */
+    public final Optional<String> value;
 
     /**
-     * Constructs a {@code Contact}.
+     * Constructs a {@code Contacts}.
      *
-     * @param contacts A valid contacts.
+     * @param contacts A valid Optional of contact name strings.
+     */
+    public Contacts(Optional<String> contacts) {
+        if (contacts.isPresent()) {
+            checkArgument(isValidContacts(contacts.get()), MESSAGE_CONSTRAINTS);
+        }
+        value = contacts;
+    }
+
+    /**
+     * Constructs a {@code Contacts}.
+     *
+     * @param contacts A valid Optional of contact name strings.
      */
     public Contacts(String contacts) {
         requireNonNull(contacts);
         checkArgument(isValidContacts(contacts), MESSAGE_CONSTRAINTS);
-        value = contacts;
+        value = Optional.of(contacts);
     }
 
     /**
@@ -41,7 +59,7 @@ public class Contacts {
 
     @Override
     public String toString() {
-        return value;
+        return value.orElse(EMPTY_CONTACTS_FIELD);
     }
 
     @Override
