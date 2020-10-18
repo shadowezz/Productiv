@@ -21,8 +21,7 @@ import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.TitleContainsKeywordsPredicate;
-//import seedu.address.testutil.EditPersonDescriptorBuilder;
-//import seedu.address.testutil.MeetingBuilder;
+import seedu.address.testutil.EditMeetingDescriptorBuilder;
 
 public class CommandTestUtil {
 
@@ -63,17 +62,17 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    //    public static final Meeting DESC_A;
-    //    public static final Meeting DESC_B;
-    //
-    //    static {
-    //        DESC_A = new MeetingBuilder().withTitle(VALID_TITLE_A)
-    //                .withDescription(VALID_DESCRIPTION_A).withFrom(VALID_FROM_A).withTo(VALID_TO_A)
-    //                .withContacts(VALID_CONTACTS_A).withLocation(VALID_LOCATION_A).build();
-    //        DESC_B = new MeetingBuilder().withTitle(VALID_TITLE_B)
-    //                .withDescription(VALID_DESCRIPTION_B).withFrom(VALID_FROM_B).withTo(VALID_TO_B)
-    //                .withContacts(VALID_CONTACTS_B).withLocation(VALID_LOCATION_B).build();
-    //    }
+    public static final EditCommand.EditMeetingDescriptor DESC_MEETING_A;
+    public static final EditCommand.EditMeetingDescriptor DESC_MEETING_B;
+
+    static {
+        DESC_MEETING_A = new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_A)
+                .withDescription(VALID_DESCRIPTION_A).withFrom(VALID_FROM_A).withTo(VALID_TO_A)
+                .withContacts(VALID_CONTACTS_A).withLocation(VALID_LOCATION_A).build();
+        DESC_MEETING_B = new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_B)
+                .withDescription(VALID_DESCRIPTION_B).withFrom(VALID_FROM_B).withTo(VALID_TO_B)
+                .withContacts(VALID_CONTACTS_B).withLocation(VALID_LOCATION_B).build();
+    }
 
     /**
      * Executes the given {@code command}, confirms that <br>
