@@ -3,6 +3,7 @@ package seedu.address.model.meeting.meeting;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,12 +11,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.meeting.meeting.exceptions.DuplicateMeetingException;
 import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
+import seedu.address.model.meeting.util.MeetingComparator;
 
 public class UniqueMeetingList implements Iterable<Meeting> {
 
     private final ObservableList<Meeting> internalList = FXCollections.observableArrayList();
     private final ObservableList<Meeting> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+    private final MeetingComparator meetingComparator = new MeetingComparator();
 
     /**
      * Returns true if the list contains an equivalent meeting as the given argument.
@@ -35,6 +38,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
             throw new DuplicateMeetingException();
         }
         internalList.add(toAdd);
+        sortList();
     }
 
     /**
@@ -56,6 +60,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
         }
 
         internalList.set(index, editedMeeting);
+        sortList();
     }
 
     /**
@@ -72,6 +77,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     public void setMeetings(UniqueMeetingList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+        sortList();
     }
 
     /**
@@ -85,6 +91,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
         }
 
         internalList.setAll(meetings);
+        sortList();
     }
 
     /**
@@ -94,8 +101,17 @@ public class UniqueMeetingList implements Iterable<Meeting> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Sort the list by From's value
+     *
+     */
+    public void sortList() {
+        Collections.sort(internalList, meetingComparator);
+    }
+
     @Override
     public Iterator<Meeting> iterator() {
+        Collections.sort(internalList, new MeetingComparator());
         return internalList.iterator();
     }
 
