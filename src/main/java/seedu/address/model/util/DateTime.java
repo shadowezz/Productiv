@@ -88,6 +88,15 @@ public class DateTime implements Comparable<DateTime> {
     }
 
     /**
+     * Returns the LocalDateTime value object.
+     *
+     * @return the value of DateTime.
+     */
+    public Optional<LocalDateTime> getLocalDateTime() {
+        return value;
+    }
+
+    /**
      * Returns true if a given string is a valid DateTime.
      *
      * @param test string to test.
