@@ -2,6 +2,7 @@ package seedu.address.model.meeting.meeting;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import seedu.address.model.util.Contacts;
@@ -45,6 +46,10 @@ public class Meeting {
 
     public From getFrom() {
         return from;
+    }
+
+    public LocalDateTime getFromLocalDateTime() {
+        return from.getLocalDateTime().get();
     }
 
     public To getTo() {
