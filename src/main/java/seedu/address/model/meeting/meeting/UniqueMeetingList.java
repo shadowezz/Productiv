@@ -111,7 +111,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
 
     @Override
     public Iterator<Meeting> iterator() {
-        Collections.sort(internalList, new MeetingComparator());
+        sortList();
         return internalList.iterator();
     }
 
