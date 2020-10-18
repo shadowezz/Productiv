@@ -2,12 +2,21 @@ package seedu.address.logic.commands.meeting;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.*;
-import static seedu.address.testutil.TypicalIndexes.*;
-import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.DESC_MEETING_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.DESC_MEETING_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
 import static seedu.address.logic.commands.meeting.EditCommand.EditMeetingDescriptor;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.meeting.MeetingBook;
@@ -161,7 +170,5 @@ class EditCommandTest {
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_MEETING_B)));
     }
-
-
 
 }

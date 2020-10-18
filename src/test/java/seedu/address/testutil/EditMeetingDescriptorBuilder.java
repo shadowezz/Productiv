@@ -1,8 +1,13 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.meeting.EditCommand.EditMeetingDescriptor;
-import seedu.address.model.meeting.meeting.*;
-import seedu.address.model.util.*;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.meeting.meeting.Meeting;
+import seedu.address.model.meeting.meeting.To;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Title;
 
 public class EditMeetingDescriptorBuilder {
     private EditMeetingDescriptor descriptor;

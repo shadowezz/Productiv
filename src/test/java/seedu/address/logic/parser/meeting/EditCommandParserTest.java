@@ -2,8 +2,23 @@ package seedu.address.logic.parser.meeting;
 
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.CONTACTS_DESC_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.CONTACTS_DESC_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_FROM_DESC;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.LOCATION_DESC_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.TITLE_DESC_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.TO_DESC_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.TO_DESC_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACTS_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACTS_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_B;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_A;
+import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_B;
 import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.*;
 import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
