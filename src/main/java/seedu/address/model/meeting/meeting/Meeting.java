@@ -111,18 +111,18 @@ public class Meeting {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getTitle())
-                .append(" Title: ")
-                .append(getDescription())
+        builder.append(" Title: ")
+                .append(getTitle())
                 .append(" Description: ")
-                .append(getFrom())
+                .append(getDescription())
                 .append(" From: ")
-                .append(getTo())
+                .append(getFrom())
                 .append(" To: ")
-                .append(getContacts())
+                .append(getTo())
                 .append(" Contacts: ")
-                .append(getLocation())
-                .append(" Location: ");
+                .append(getContacts())
+                .append(" Location: ")
+                .append(getLocation());
         return builder.toString();
     }
 
