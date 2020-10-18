@@ -1,7 +1,12 @@
 package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.meeting.CliSyntax.*;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_CONTACTS;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_LOCATION;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
