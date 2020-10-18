@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.deliverable.deliverable.Deliverable;
@@ -37,7 +36,9 @@ public class DeliverableCard extends UiPart<Region> {
     @FXML
     private Label contacts;
     @FXML
-    private FlowPane tags;
+    private Label milestone;
+    @FXML
+    private Label isCompleted;
 
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
@@ -50,7 +51,6 @@ public class DeliverableCard extends UiPart<Region> {
         description.setText("Description: " + deliverable.getDescription().value);
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
-        Label isCompleted = new Label();
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
             isCompleted.setStyle("-fx-background-color: #32cd32");
@@ -58,9 +58,7 @@ public class DeliverableCard extends UiPart<Region> {
             isCompleted.setText("on-going");
             isCompleted.setStyle("-fx-background-color: #ffa500");
         }
-        tags.getChildren().add(isCompleted);
-        Label milestone = new Label(deliverable.getMilestone().toString());
-        tags.getChildren().add(milestone);
+        milestone.setText(deliverable.getMilestone().toString());
     }
 
     @Override
