@@ -29,8 +29,8 @@ import seedu.address.model.util.Title;
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the meeting identified "
+            + "by the index number used in the displayed meeting list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
@@ -44,9 +44,9 @@ public class EditCommand extends Command {
             + PREFIX_FROM + "2020-12-31 09:00";
 
 
-    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting book.";
     public static final String MESSAGE_INVALID_MEETING_DISPLAYED_INDEX = "Invalid Meeting index.";
 
 
@@ -54,8 +54,8 @@ public class EditCommand extends Command {
     private final EditMeetingDescriptor editMeetingDescriptor;
 
     /**
-     * @param index                 of the person in the filtered person list to edit
-     * @param editMeetingDescriptor details to edit the person with
+     * @param index                 of the meeting in the filtered person list to edit
+     * @param editMeetingDescriptor details to edit the meeting with
      */
     public EditCommand(Index index, EditMeetingDescriptor editMeetingDescriptor) {
         requireNonNull(index);
@@ -167,12 +167,10 @@ public class EditCommand extends Command {
             return Optional.ofNullable(this.title);
         }
 
-        //TODO: does this work?
         public void setDescription(OptionalDescription description) {
             this.description = description;
         }
 
-        //TODO: does this work?
         public Optional<OptionalDescription> getDescription() {
             return Optional.ofNullable(description);
         }
