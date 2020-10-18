@@ -8,9 +8,9 @@ import seedu.address.model.util.DateTime;
 public class From extends DateTime {
 
     /**
-     * Constructs a {@code To}.
+     * Constructs a {@code From}.
      *
-     * @param from A valid To.
+     * @param from A valid From.
      */
     public From(String from) {
         super(from);
