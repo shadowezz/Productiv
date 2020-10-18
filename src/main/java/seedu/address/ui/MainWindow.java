@@ -21,6 +21,10 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.deliverable.deliverable.Deadline;
+import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.util.Description;
+import seedu.address.model.util.Title;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -43,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
     private MeetingListPanel meetingListPanel;
+    private DeliverableDetailsPanel deliverableDetailsPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -63,6 +68,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane listPanelPlaceholder;
+
+    @FXML
+    private StackPane detailsPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -131,6 +139,7 @@ public class MainWindow extends UiPart<Stage> {
     public void switchMode(ModeEnum mode) {
         requireNonNull(mode);
         this.mode = mode;
+        detailsPanelPlaceholder.getChildren().clear(); // clear details panel
         listPanelPlaceholder.getChildren().clear(); // remove current list
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
         resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
@@ -142,6 +151,7 @@ public class MainWindow extends UiPart<Stage> {
             setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
+            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot()); // test
             listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -191,6 +201,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+
+        deliverableDetailsPanel = new DeliverableDetailsPanel();
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
@@ -292,6 +304,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
+                detailsPanelPlaceholder.getChildren().clear();
+                deliverableDetailsPanel = new DeliverableDetailsPanel(new Deliverable(new Title("hello"),
+                        new Description("NIL"), new Deadline("NIL"), "hello"));
+                detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
 
             return commandResult;
