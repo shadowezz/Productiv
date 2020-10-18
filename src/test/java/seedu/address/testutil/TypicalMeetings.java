@@ -83,6 +83,6 @@ public class TypicalMeetings {
     }
 
     public static List<Meeting> getTypicalMeeting() {
-        return new ArrayList<>(Arrays.asList(MEETING_A, MEETING_B));
+        return new ArrayList<>(Arrays.asList(MEETING_B, MEETING_A));
     }
 }
