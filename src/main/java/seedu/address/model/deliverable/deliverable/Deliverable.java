@@ -17,6 +17,7 @@ public class Deliverable {
     private final Title title;
 
     // Data fields
+    private final Milestone milestone;
     private final Description description;
     private final Deadline deadline;
     private final boolean isComplete;
@@ -27,9 +28,11 @@ public class Deliverable {
     /**
      * Only title field must be present. Used when adding new deliverable.
      */
-    public Deliverable(Title title, Description description, Deadline deadline, String contacts) {
+    public Deliverable(Title title, Milestone milestone, Description description,
+                       Deadline deadline, String contacts) {
         requireAllNonNull(title);
         this.title = title;
+        this.milestone = milestone;
         this.description = description;
         this.deadline = deadline;
         this.isComplete = false;
@@ -39,10 +42,11 @@ public class Deliverable {
     /**
      * Used when editing or completing existing deliverable.
      */
-    public Deliverable(Title title, Description description, Deadline deadline,
+    public Deliverable(Title title, Milestone milestone, Description description, Deadline deadline,
                        boolean isComplete, String contacts) {
         requireAllNonNull(title);
         this.title = title;
+        this.milestone = milestone;
         this.description = description;
         this.deadline = deadline;
         this.isComplete = isComplete;
@@ -51,6 +55,10 @@ public class Deliverable {
 
     public Title getTitle() {
         return title;
+    }
+
+    public Milestone getMilestone() {
+        return milestone;
     }
 
     public Description getDescription() {
@@ -98,6 +106,7 @@ public class Deliverable {
 
         Deliverable otherDeliverable = (Deliverable) other;
         return otherDeliverable.getTitle().equals(getTitle())
+                && otherDeliverable.getMilestone().equals(getMilestone())
                 && otherDeliverable.getDescription().equals(getDescription())
                 && otherDeliverable.getDeadline().equals(getDeadline())
                 && otherDeliverable.getContacts().equals(getContacts())
@@ -107,7 +116,7 @@ public class Deliverable {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, description, deadline, contacts, isComplete);
+        return Objects.hash(title, milestone, description, deadline, contacts, isComplete);
 
     }
 
@@ -115,6 +124,8 @@ public class Deliverable {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
+                .append(" Milestone: ")
+                .append(getMilestone())
                 .append(" Description: ")
                 .append(getDescription())
                 .append(" Deadline: ")

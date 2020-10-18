@@ -36,6 +36,8 @@ public class DeliverableCard extends UiPart<Region> {
     @FXML
     private Label contacts;
     @FXML
+    private Label milestone;
+    @FXML
     private Label isCompleted;
 
     /**
@@ -56,6 +58,7 @@ public class DeliverableCard extends UiPart<Region> {
             isCompleted.setText("on-going");
             isCompleted.setStyle("-fx-background-color: #ffa500");
         }
+        milestone.setText(deliverable.getMilestone().toString());
     }
 
     @Override
