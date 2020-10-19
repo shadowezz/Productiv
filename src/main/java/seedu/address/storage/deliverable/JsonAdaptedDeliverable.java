@@ -32,7 +32,7 @@ public class JsonAdaptedDeliverable {
      */
     @JsonCreator
     public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("milestone") String milestone,
-                                  @JsonProperty("description") Optional<String> description, 
+                                  @JsonProperty("description") Optional<String> description,
                                   @JsonProperty("deadline") String deadline,
                                   @JsonProperty("contacts") Optional<String> contacts,
                                   @JsonProperty("isComplete") String isComplete) {
