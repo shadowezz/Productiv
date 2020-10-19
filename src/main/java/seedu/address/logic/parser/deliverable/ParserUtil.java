@@ -68,9 +68,6 @@ public class ParserUtil {
      */
     public static Description parseDescription(String description) throws ParseException {
         requireNonNull(description);
-        if (description.equals("NIL")) {
-            return new Description(description);
-        }
         String trimmedDescription = description.trim();
         if (!Description.isValidDescription(trimmedDescription)) {
             throw new ParseException(Description.MESSAGE_CONSTRAINTS);
@@ -86,22 +83,10 @@ public class ParserUtil {
      */
     public static Deadline parseDeadline(String deadline) throws ParseException {
         requireNonNull(deadline);
-        if (deadline.equals("NIL")) {
-            return new Deadline(deadline);
-        }
         String trimmedDeadline = deadline.trim();
         if (!Deadline.isValidDeadline(trimmedDeadline)) {
             throw new ParseException(Deadline.MESSAGE_CONSTRAINTS);
         }
         return new Deadline(trimmedDeadline);
     }
-
-    /**
-     * Trims leading and trailing whitespaces.
-     */
-    public static String parseContacts(String contacts) {
-        requireNonNull(contacts);
-        return contacts.trim();
-    }
-
 }

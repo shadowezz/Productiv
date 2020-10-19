@@ -43,14 +43,14 @@ public class SampleDataUtil {
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
             new Deliverable(new Title("Settle login screens"), new Milestone("1.1"),
-                new Description("Include forget password option"),
-                new Deadline("04-11-2020 15:00"), true, "2,4"),
+                new OptionalDescription("Include forget password option"),
+                new Deadline("04-11-2020 15:00"), true, new Contacts("2,4")),
             new Deliverable(new Title("Settle profile page"), new Milestone("1.2"),
-                new Description("Include change password option"),
-                new Deadline("15-11-2020 12:00"), true, "1,2,3"),
+                new OptionalDescription("Include change password option"),
+                new Deadline("15-11-2020 12:00"), true, new Contacts("1,2,3")),
             new Deliverable(new Title("Finalise v1.1 app design"), new Milestone("1.2.1"),
-                new Description("Include forget password option"),
-                new Deadline("12-12-2020 23:59"), false, "2,5"),
+                new OptionalDescription("Include forget password option"),
+                new Deadline("12-12-2020 23:59"), false, new Contacts("2,5")),
         };
     }
 

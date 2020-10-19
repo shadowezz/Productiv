@@ -3,7 +3,8 @@ package seedu.address.testutil;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -20,9 +21,9 @@ public class DeliverableBuilder {
 
     private Title title;
     private Milestone milestone;
-    private Description description;
+    private OptionalDescription description;
     private Deadline deadline;
-    private String contacts;
+    private Contacts contacts;
     private boolean isComplete;
 
     /**
@@ -31,9 +32,9 @@ public class DeliverableBuilder {
     public DeliverableBuilder() {
         title = new Title(DEFAULT_TITLE);
         milestone = new Milestone(DEFAULT_MILESTONE);
-        description = new Description(DEFAULT_DESCRIPTION);
+        description = new OptionalDescription(DEFAULT_DESCRIPTION);
         deadline = new Deadline(DEFAULT_DEADLINE);
-        contacts = DEFAULT_CONTACTS;
+        contacts = new Contacts(DEFAULT_CONTACTS);
         isComplete = DEFAULT_IS_COMPLETE;
     }
 
@@ -69,7 +70,7 @@ public class DeliverableBuilder {
      * Sets the {@code Description} of the {@code Deliverable} that we are building.
      */
     public DeliverableBuilder withDescription(String description) {
-        this.description = new Description(description);
+        this.description = new OptionalDescription(description);
         return this;
     }
 
@@ -85,7 +86,7 @@ public class DeliverableBuilder {
      * Sets the {@code Contacts} of the {@code Deliverable} that we are building.
      */
     public DeliverableBuilder withContacts(String contacts) {
-        this.contacts = contacts;
+        this.contacts = new Contacts(contacts);
         return this;
     }
 

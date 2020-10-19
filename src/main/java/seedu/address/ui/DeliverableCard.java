@@ -48,7 +48,7 @@ public class DeliverableCard extends UiPart<Region> {
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
         title.setText(deliverable.getTitle().value);
-        description.setText("Description: " + deliverable.getDescription().value);
+        description.setText("Description: " + deliverable.getDescription().toString());
         deadline.setText("Deadline: " + deliverable.getDeadline().value);
         contacts.setText("Contacts: " + deliverable.getContacts());
         if (deliverable.getIsComplete()) {
