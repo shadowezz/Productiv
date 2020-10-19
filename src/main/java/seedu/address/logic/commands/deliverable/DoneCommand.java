@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
@@ -57,10 +58,11 @@ public class DoneCommand extends Command {
 
     private Deliverable createCompletedDeliverable(Deliverable deliverableToComplete) {
         Title title = deliverableToComplete.getTitle();
+        Milestone milestone = deliverableToComplete.getMilestone();
         Description description = deliverableToComplete.getDescription();
         Deadline deadline = deliverableToComplete.getDeadline();
         String contacts = deliverableToComplete.getContacts();
-        return new Deliverable(title, description, deadline, COMPLETED, contacts);
+        return new Deliverable(title, milestone, description, deadline, COMPLETED, contacts);
     }
 
 

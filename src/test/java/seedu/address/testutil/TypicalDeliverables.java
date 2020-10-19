@@ -11,12 +11,14 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  */
 public class TypicalDeliverables {
     public static final Deliverable HOMEPAGE = new DeliverableBuilder().withTitle("Build home page")
+            .withMilestone("1.0")
             .withDescription("Include company description.")
             .withDeadline("12-11-2020 20:00")
             .withContacts("3")
             .withIsComplete(false)
             .build();
     public static final Deliverable NAVIGATION = new DeliverableBuilder().withTitle("Implement navigation")
+            .withMilestone("1.1")
             .withDescription("Include about us tab")
             .withDeadline("12-07-2020 20:00")
             .withContacts("5,6")

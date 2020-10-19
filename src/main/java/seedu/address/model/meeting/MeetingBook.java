@@ -27,6 +27,14 @@ public class MeetingBook implements ReadOnlyMeetingBook {
     public MeetingBook(ReadOnlyMeetingBook toBeCopied) {
         this();
         resetData(toBeCopied);
+        sortMeetings();
+    }
+
+    /**
+     * Sorts the content of the meeting list by From in ascending order.
+     */
+    public void sortMeetings() {
+        this.meetings.sortList();
     }
 
     /**
