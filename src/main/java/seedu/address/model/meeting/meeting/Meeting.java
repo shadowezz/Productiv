@@ -2,6 +2,7 @@ package seedu.address.model.meeting.meeting;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import seedu.address.model.util.Contacts;
@@ -45,6 +46,10 @@ public class Meeting {
 
     public From getFrom() {
         return from;
+    }
+
+    public LocalDateTime getFromLocalDateTime() {
+        return from.getLocalDateTime().get();
     }
 
     public To getTo() {
@@ -106,18 +111,18 @@ public class Meeting {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getTitle())
-                .append(" Title: ")
-                .append(getDescription())
+        builder.append(" Title: ")
+                .append(getTitle())
                 .append(" Description: ")
-                .append(getFrom())
+                .append(getDescription())
                 .append(" From: ")
-                .append(getTo())
+                .append(getFrom())
                 .append(" To: ")
-                .append(getContacts())
+                .append(getTo())
                 .append(" Contacts: ")
-                .append(getLocation())
-                .append(" Location: ");
+                .append(getContacts())
+                .append(" Location: ")
+                .append(getLocation());
         return builder.toString();
     }
 

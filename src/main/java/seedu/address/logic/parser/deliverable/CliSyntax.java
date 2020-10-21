@@ -9,8 +9,9 @@ public class CliSyntax {
 
     /* Prefix definitions */
     public static final Prefix PREFIX_TITLE = new Prefix("t/");
-    public static final Prefix PREFIX_DESCRIPTION = new Prefix("desc/");
-    public static final Prefix PREFIX_DEADLINE = new Prefix("dead/");
+    public static final Prefix PREFIX_MILESTONE = new Prefix("m/");
+    public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
+    public static final Prefix PREFIX_DEADLINE = new Prefix("by/");
     public static final Prefix PREFIX_CONTACTS = new Prefix("c/");
 
 }

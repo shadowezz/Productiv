@@ -37,8 +37,8 @@ public class TypicalMeetings {
 
     public static final String TITLE_D = "Mid v1.2";
     public static final String DESCRIPTION_D = "Discuss features";
-    public static final String FROM_D = "12-24-2020 08:00";
-    public static final String TO_D = "12-24-2020 08:00";
+    public static final String FROM_D = "12-12-2020 08:00";
+    public static final String TO_D = "12-12-2020 08:00";
     public static final String CONTACTS_D = "6,7,8";
     public static final String LOCATION_D = "Somewhere";
 
@@ -83,6 +83,6 @@ public class TypicalMeetings {
     }
 
     public static List<Meeting> getTypicalMeeting() {
-        return new ArrayList<>(Arrays.asList(MEETING_A, MEETING_B));
+        return new ArrayList<>(Arrays.asList(MEETING_B, MEETING_A));
     }
 }

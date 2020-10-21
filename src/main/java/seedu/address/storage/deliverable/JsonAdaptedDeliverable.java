@@ -1,12 +1,16 @@
 package seedu.address.storage.deliverable;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.util.Description;
+import seedu.address.model.deliverable.deliverable.Milestone;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -17,19 +21,23 @@ public class JsonAdaptedDeliverable {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Deliverable's %s field is missing!";
 
     private final String title;
-    private final String description;
+    private final String milestone;
+    private final Optional<String> description;
     private final String deadline;
-    private final String contacts;
+    private final Optional<String> contacts;
     private final String isComplete;
 
     /**
      * Constructs a {@code JsonAdaptedDeliverable} with the given deliverable details
      */
     @JsonCreator
-    public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("description") String description,
-                             @JsonProperty("deadline") String deadline, @JsonProperty("contacts") String contacts,
+    public JsonAdaptedDeliverable(@JsonProperty("title") String title, @JsonProperty("milestone") String milestone,
+                                  @JsonProperty("description") Optional<String> description,
+                                  @JsonProperty("deadline") String deadline,
+                                  @JsonProperty("contacts") Optional<String> contacts,
                                   @JsonProperty("isComplete") String isComplete) {
         this.title = title;
+        this.milestone = milestone;
         this.description = description;
         this.deadline = deadline;
         this.contacts = contacts;
@@ -41,9 +49,10 @@ public class JsonAdaptedDeliverable {
      */
     public JsonAdaptedDeliverable(Deliverable source) {
         title = source.getTitle().value;
+        milestone = source.getMilestone().value;
         description = source.getDescription().value;
         deadline = source.getDeadline().value;
-        contacts = source.getContacts();
+        contacts = source.getContacts().value;
         isComplete = Boolean.toString(source.getIsComplete());
     }
 
@@ -61,10 +70,19 @@ public class JsonAdaptedDeliverable {
         }
         final Title modelTitle = new Title(title);
 
-        if (!Description.isValidDescription(description)) {
-            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        if (milestone == null) {
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Milestone.class.getSimpleName()));
         }
-        final Description modelDescription = new Description(description);
+        if (!Milestone.isValidMilestone(milestone)) {
+            throw new IllegalValueException(Milestone.MESSAGE_CONSTRAINTS);
+        }
+        final Milestone modelMilestone = new Milestone(milestone);
+
+        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
+            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
+        }
+        final OptionalDescription modelDescription = new OptionalDescription(description);
 
         if (!Deadline.isValidDeadline(deadline) && !deadline.equals("NIL")) {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);
@@ -80,6 +98,12 @@ public class JsonAdaptedDeliverable {
             modelIsComplete = false;
         }
 
-        return new Deliverable(modelTitle, modelDescription, modelDeadline, modelIsComplete, contacts);
+        if (contacts.isPresent() && !Contacts.isValidContacts(contacts.get())) {
+            throw new IllegalValueException(Contacts.MESSAGE_CONSTRAINTS);
+        }
+        final Contacts modelContacts = new Contacts(contacts);
+
+        return new Deliverable(
+                modelTitle, modelMilestone, modelDescription, modelDeadline, modelIsComplete, modelContacts);
     }
 }

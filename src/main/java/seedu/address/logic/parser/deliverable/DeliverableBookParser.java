@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import seedu.address.logic.commands.deliverable.AddCommand;
 import seedu.address.logic.commands.deliverable.Command;
 import seedu.address.logic.commands.deliverable.DoneCommand;
+import seedu.address.logic.commands.deliverable.EditCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.DeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -45,6 +46,8 @@ public class DeliverableBookParser {
             return new DeleteCommandParser().parse(arguments);
         case DoneCommand.COMMAND_WORD:
             return new DoneCommandParser().parse(arguments);
+        case EditCommand.COMMAND_WORD:
+            return new EditCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

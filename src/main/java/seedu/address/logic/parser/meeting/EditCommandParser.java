@@ -16,6 +16,7 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserCommon;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -42,30 +43,39 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         EditMeetingDescriptor editMeetingDescriptor = new EditMeetingDescriptor();
-        //        if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
-        //            editMeetingDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
-        //        }
-        //        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-        //            editMeetingDescriptor.setDescription(ParserUtil.parseDescription(
-        //                    argMultimap.getValue(PREFIX_DESCRIPTION).get()));
-        //        }
-        //        if (argMultimap.getValue(PREFIX_FROM).isPresent()) {
-        //            editMeetingDescriptor.setFrom(ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get()));
-        //        }
-        //        if (argMultimap.getValue(PREFIX_TO).isPresent()) {
-        //            editMeetingDescriptor.setTo(ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get()));
-        //        }
-        //        if (argMultimap.getValue(PREFIX_CONTACTS).isPresent()) {
-        //            editMeetingDescriptor.setContacts(ParserUtil.parseContacts(argMultimap.
-        //            getValue(PREFIX_CONTACTS).get()));
-        //        }
-        //        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
-        //            editMeetingDescriptor.setLocation(ParserUtil.parseLocation(argMultimap.
-        //            getValue(PREFIX_LOCATION).get()));
-        //        }
-        //        if (!editMeetingDescriptor.isAnyFieldEdited()) {
-        //            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
-        //        }
+        if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
+            editMeetingDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
+        }
+
+        // Description takes optional String
+        if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
+            editMeetingDescriptor.setDescription(ParserCommon.parseDescription(
+                    argMultimap.getValue(PREFIX_DESCRIPTION)));
+        }
+
+        if (argMultimap.getValue(PREFIX_FROM).isPresent()) {
+            editMeetingDescriptor.setFrom(ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get()));
+        }
+
+        if (argMultimap.getValue(PREFIX_TO).isPresent()) {
+            editMeetingDescriptor.setTo(ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get()));
+        }
+
+        // Contacts takes optional String
+        if (argMultimap.getValue(PREFIX_CONTACTS).isPresent()) {
+            editMeetingDescriptor.setContacts(ParserCommon.parseContacts(argMultimap
+                    .getValue(PREFIX_CONTACTS)));
+        }
+
+        // Location takes optional String
+        if (argMultimap.getValue(PREFIX_LOCATION).isPresent()) {
+            editMeetingDescriptor.setLocation(ParserUtil.parseLocation(argMultimap
+                    .getValue(PREFIX_LOCATION)));
+        }
+
+        if (!editMeetingDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+        }
 
         return new EditCommand(index, editMeetingDescriptor);
     }
