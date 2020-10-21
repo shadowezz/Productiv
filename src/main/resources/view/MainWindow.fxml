@@ -59,7 +59,6 @@
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
-            <Label fx:id="testing" text="No details displayed now."/>
             <StackPane fx:id="detailsPanelPlaceholder" VBox.vgrow="ALWAYS" />
           </VBox>
         </HBox>

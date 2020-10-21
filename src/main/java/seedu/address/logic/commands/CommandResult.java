@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 import seedu.address.commons.ModeEnum;
+import seedu.address.model.util.Item;
 
 /**
  * Represents the result of a command execution.
@@ -20,6 +21,8 @@ public class CommandResult {
     private final boolean exit;
 
     private final ModeEnum mode;
+
+    private Item itemViewed;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -39,6 +42,11 @@ public class CommandResult {
         this(feedbackToUser, false, false, null);
     }
 
+    public CommandResult(String feedbackToUser, Item itemViewed) {
+        this(feedbackToUser, false, false, null);
+        this.itemViewed = itemViewed;
+    }
+
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
@@ -53,6 +61,10 @@ public class CommandResult {
 
     public ModeEnum getMode() {
         return mode;
+    }
+
+    public Item getItemViewed() {
+        return this.itemViewed;
     }
 
     @Override

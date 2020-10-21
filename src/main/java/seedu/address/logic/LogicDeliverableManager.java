@@ -67,6 +67,11 @@ public class LogicDeliverableManager implements LogicDeliverable {
     }
 
     @Override
+    public Deliverable getDeliverableInView() {
+        return modelDeliverable.getDeliverableInView();
+    }
+
+    @Override
     public Path getDeliverableBookFilePath() {
         return modelDeliverable.getDeliverableBookFilePath();
     }

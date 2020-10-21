@@ -11,9 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.util.SampleDataUtil;
 
 /**
  * Represents the in-memory model of the meeting book data
@@ -24,6 +26,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     private final DeliverableBook deliverableBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Deliverable> filteredDeliverables;
+    private Deliverable deliverableInView;
 
     /**
      * Initializes a ModelDeliverableManager with the given addressBook and userPrefs.
@@ -114,8 +117,13 @@ public class ModelDeliverableManager implements ModelDeliverable {
     }
 
     @Override
-    public void completeDeliverable(Deliverable target) {
+    public Deliverable getDeliverableInView() {
+        return deliverableInView;
+    }
 
+    @Override
+    public void setDeliverableInView(Deliverable deliverableInView) {
+        this.deliverableInView = deliverableInView;
     }
 
     //=========== Filtered Deliverable List Accessors =============================================================

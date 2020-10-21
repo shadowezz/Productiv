@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="title" text="Title: " />
+    <Label fx:id="testing" text="No deliverables displayed now." visible="false"/>
+    <Label fx:id="title" text="Title: "  />
     <Label fx:id="description" text="Description: " />
     <Label fx:id="deadline" text="Deadline: " />
     <Label fx:id="contact" text="Contact: " />

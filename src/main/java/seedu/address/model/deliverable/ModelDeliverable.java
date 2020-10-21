@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
@@ -78,11 +79,9 @@ public interface ModelDeliverable {
      */
     void setDeliverable(Deliverable target, Deliverable editedDeliverable);
 
-    /**
-     * Completes the given deliverable.
-     * The deliverable must exist in the deliverable book.
-     */
-    void completeDeliverable(Deliverable target);
+    Deliverable getDeliverableInView();
+
+    void setDeliverableInView(Deliverable deliverableInView);
 
     /** Returns an unmodifiable view of the filtered deliverable list */
     ObservableList<Deliverable> getFilteredDeliverableList();

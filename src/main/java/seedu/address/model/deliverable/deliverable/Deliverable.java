@@ -5,13 +5,14 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.util.Description;
+import seedu.address.model.util.Item;
 import seedu.address.model.util.Title;
 
 /**
  * Represents a Deliverable in the deliverable book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Deliverable {
+public class Deliverable extends Item {
 
     // Identity fields
     private final Title title;

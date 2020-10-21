@@ -24,6 +24,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.util.Description;
+import seedu.address.model.util.Item;
 import seedu.address.model.util.Title;
 
 /**
@@ -202,7 +203,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        deliverableDetailsPanel = new DeliverableDetailsPanel();
+        deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
+//        deliverableDetailsPanel = new DeliverableDetailsPanel();
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
@@ -259,6 +261,22 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    private void handleDisplay(Item itemToView) {
+        assert itemToView != null;
+        if (itemToView instanceof Deliverable) {
+            Deliverable deliverableToDisplay = (Deliverable) itemToView;
+            detailsPanelPlaceholder.getChildren().clear();
+            deliverableDetailsPanel = new DeliverableDetailsPanel(deliverableToDisplay);
+            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
+        }
+    }
+
+    private void updateDetailsPanel() {
+        deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
+        detailsPanelPlaceholder.getChildren().clear();
+        detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
+    }
+
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
     }
@@ -304,11 +322,12 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
-                detailsPanelPlaceholder.getChildren().clear();
-                deliverableDetailsPanel = new DeliverableDetailsPanel(new Deliverable(new Title("hello"),
-                        new Description("NIL"), new Deadline("NIL"), "hello"));
-                detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
+
+//            if (commandResult.getItemViewed() != null) {
+//                handleDisplay(commandResult.getItemViewed());
+//            }
+            updateDetailsPanel();
 
             return commandResult;
         } catch (CommandException | ParseException e) {
