@@ -15,7 +15,7 @@ import seedu.address.model.util.Title;
  */
 public class Meeting {
 
-    public final static String INCORRECT_FROM_AND_TO_ORDER = "From date should be earlier than To date.";
+    public static final String INCORRECT_FROM_AND_TO_ORDER = "From date should be earlier than To date.";
 
     private final Title title;
     private final OptionalDescription description;
@@ -44,6 +44,9 @@ public class Meeting {
         this.location = location;
     }
 
+    /**
+     * Returns true if From is earlier than To chronologically.
+     */
     public static boolean isValidFromAndTo (From from, To to) {
         LocalDateTime dateFrom = from.getLocalDateTime().get();
         LocalDateTime dateTo = to.getLocalDateTime().get();
