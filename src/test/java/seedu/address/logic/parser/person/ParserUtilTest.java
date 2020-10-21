@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.person.ParserUtil.MESSAGE_INVALID_INDEX
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -15,12 +17,12 @@ import seedu.address.model.person.person.Role;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
+    private static final Optional<String> INVALID_PHONE = Optional.of("+651234");
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_ROLE = "friend";
 
     private static final String VALID_NAME = "Rachel Walker";
-    private static final String VALID_PHONE = "123456";
+    private static final Optional<String> VALID_PHONE = Optional.of("123456");
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_ROLE = "stk";
 
@@ -48,7 +50,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName(null));
     }
 
     @Test
@@ -82,14 +84,14 @@ public class ParserUtilTest {
 
     @Test
     public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
-        String phoneWithWhitespace = WHITESPACE + VALID_PHONE + WHITESPACE;
+        Optional<String> phoneWithWhitespace = Optional.of(WHITESPACE + VALID_PHONE.get() + WHITESPACE);
         Phone expectedPhone = new Phone(VALID_PHONE);
         assertEquals(expectedPhone, ParserUtil.parsePhone(phoneWithWhitespace));
     }
 
     @Test
     public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail(null));
     }
 
     @Test

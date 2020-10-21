@@ -6,7 +6,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.VALID_DESCRIPT
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.person.CommandTestUtil.VALID_ROLE_DEV;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_ROLE_BOB;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
@@ -34,17 +34,17 @@ public class PersonTest {
 
         // same name, same phone, different attributes -> returns true
         editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB)
-                .withRole(VALID_ROLE_DEV).build();
+                .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // same name, same email, different attributes -> returns true
         editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB)
-                .withRole(VALID_ROLE_DEV).build();
+                .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // same name, same phone, same email, different attributes -> returns true
         editedAlice = new PersonBuilder(ALICE)
-                .withRole(VALID_ROLE_DEV).build();
+                .withDescription(VALID_DESCRIPTION_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
     }
 
@@ -79,7 +79,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different role -> returns false
-        editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_DEV).build();
+        editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different description -> returns false
