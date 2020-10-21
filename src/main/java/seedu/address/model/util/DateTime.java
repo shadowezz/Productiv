@@ -12,13 +12,10 @@ import java.time.format.DateTimeFormatter;
 public class DateTime implements Comparable<DateTime> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
     public static final String DATE_REGEX = "(([0-2]\\d)|(3[0-1]))-((0[1-9])|(1[0-2]))-(\\d{4})";
-    public static final String MESSAGE_CONSTRAINTS_PATTERN =
-            "Dates should be in the format of DD-MM-YYYY or DD-MM-YYYY HH:mm, "
-                    + "and should not be blank. Note: Single digit month, day, and "
+    public static final String MESSAGE_CONSTRAINTS =
+            "Dates should be in the format of DD-MM-YYYY HH:mm, "
+                    + "and should be within the calendar range. Note: Single digit month, day, and "
                     + "minute must start with a leading zero.";
-    public static final String MESSAGE_CONSTRAINTS_RANGE =
-            "Dates should be within the correct range. E.g 29-02-2020 is not accepted.";
-
 
     public static final String VALIDATION_REGEX = String.format("%s(\\s(%s))",
             DATE_REGEX, TIME_REGEX);
@@ -37,8 +34,7 @@ public class DateTime implements Comparable<DateTime> {
         requireNonNull(date);
 
         // Check for constraints
-        checkArgument(isValidDateTimePattern(date), MESSAGE_CONSTRAINTS_PATTERN);
-        checkArgument(isValidDateTimeRange(date), MESSAGE_CONSTRAINTS_RANGE);
+        checkArgument(isValidDateTime(date), MESSAGE_CONSTRAINTS);
 
         //Parse value
         this.value = LocalDateTime.parse(date, DATE_TIME_FORMATTER);
@@ -49,9 +45,20 @@ public class DateTime implements Comparable<DateTime> {
      *
      * @return the value of DateTime.
      */
-    public Optional<LocalDateTime> getLocalDateTime() {
-        return value;
+    public LocalDateTime getLocalDateTime() {
+        return this.value;
     }
+
+    /**
+     * Returns true if a given string is a valid DateTime.
+     *
+     * @param test string to test.
+     * @return result of match.
+     */
+    public static boolean isValidDateTime(String test) {
+        return isValidDateTimePattern(test) && isValidDateTimeRange(test);
+    }
+
 
     /**
      * Returns true if a given string is a valid DateTime.

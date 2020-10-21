@@ -50,8 +50,8 @@ public class JsonAdaptedMeeting {
     public JsonAdaptedMeeting(Meeting source) {
         title = source.getTitle().value;
         description = source.getDescription().value;
-        from = source.getFrom().valueString;
-        to = source.getTo().valueString;
+        from = source.getFrom().toString();
+        to = source.getTo().toString();
         contacts = source.getContacts().value;
         location = source.getLocation().value;
     }

@@ -40,13 +40,13 @@ class DateTimeTest {
     void parseFail() {
         // Fail pattern
         // E.g Missing digit, missing date
-        assertExceptionMessage(INVALID_SAMPLE_A, DateTime.MESSAGE_CONSTRAINTS_PATTERN);
-        assertExceptionMessage(INVALID_SAMPLE_B, DateTime.MESSAGE_CONSTRAINTS_PATTERN);
+        assertExceptionMessage(INVALID_SAMPLE_A, DateTime.MESSAGE_CONSTRAINTS);
+        assertExceptionMessage(INVALID_SAMPLE_B, DateTime.MESSAGE_CONSTRAINTS);
 
         // Fail Range
         // E.g Months with too many days 29-02-2019
-        assertExceptionMessage(INVALID_SAMPLE_C, DateTime.MESSAGE_CONSTRAINTS_RANGE);
-        assertExceptionMessage(INVALID_SAMPLE_D, DateTime.MESSAGE_CONSTRAINTS_RANGE);
+        assertExceptionMessage(INVALID_SAMPLE_C, DateTime.MESSAGE_CONSTRAINTS);
+        assertExceptionMessage(INVALID_SAMPLE_D, DateTime.MESSAGE_CONSTRAINTS);
 
 
     }
