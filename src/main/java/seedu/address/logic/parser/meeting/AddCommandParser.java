@@ -60,6 +60,8 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(e.getMessage());
         }
 
+        assert Meeting.isValidFromAndTo(meeting.getFrom(), meeting.getTo()) : "From should be earlier than To";
+
         return new AddCommand(meeting);
 
     }

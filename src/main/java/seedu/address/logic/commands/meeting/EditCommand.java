@@ -85,6 +85,9 @@ public class EditCommand extends Command {
             throw new CommandException(e.getMessage());
         }
 
+        assert Meeting.isValidFromAndTo(editedMeeting.getFrom(), editedMeeting.getTo())
+                : "From should be earlier than To";
+
         if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
         }
