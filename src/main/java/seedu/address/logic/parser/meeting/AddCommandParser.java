@@ -29,6 +29,7 @@ import seedu.address.model.util.Title;
  * Parses input arguments and creates a new AddCommand object
  */
 public class AddCommandParser implements Parser<AddCommand> {
+
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -50,9 +51,17 @@ public class AddCommandParser implements Parser<AddCommand> {
         To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
         Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
         Location location = ParserUtil.parseLocation(argMultimap.getValue(PREFIX_LOCATION));
-        Meeting meeting = new Meeting(title, description, from, to, contacts, location);
+
+        Meeting meeting;
+
+        try {
+            meeting = new Meeting(title, description, from, to, contacts, location);
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(e.getMessage());
+        }
 
         return new AddCommand(meeting);
+
     }
 
     // TODO: Move the function up the hierarchy
