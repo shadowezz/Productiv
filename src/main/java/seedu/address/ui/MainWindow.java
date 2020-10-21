@@ -53,6 +53,9 @@ public class MainWindow extends UiPart<Stage> {
     private Button helpButton;
 
     @FXML
+    private Button dashboardButton;
+
+    @FXML
     private Button deliverableButton;
 
     @FXML
@@ -135,6 +138,10 @@ public class MainWindow extends UiPart<Stage> {
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
         resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
+        case DASHBOARD:
+//            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            setUnderlineButton(dashboardButton);
+            break;
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
@@ -165,7 +172,12 @@ public class MainWindow extends UiPart<Stage> {
         button.setUnderline(true);
     }
 
-    // TODO define switch tabs here
+    /**
+     * Switches to dashboard mode.
+     */
+    public void switchDashboard() {
+        switchMode(ModeEnum.DASHBOARD);
+    }
 
     /**
      * Switches to contact mode.
@@ -187,6 +199,7 @@ public class MainWindow extends UiPart<Stage> {
     public void switchMeeting() {
         switchMode(ModeEnum.MEETING);
     }
+
     /**
      * Fills up all the placeholders of this window.
      */

@@ -25,6 +25,7 @@
       <VBox>
         <HBox id="navBar" fx:id="navBar" VBox.vgrow="NEVER">
           <HBox HBox.hgrow="NEVER">
+            <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchDashboard" text="Dashboard"/>
             <Button fx:id="deliverableButton" mnemonicParsing="false" onAction="#switchDeliverable" text="Deliverable"/>
             <Button fx:id="meetingButton" mnemonicParsing="false" onAction="#switchMeeting" text="Meeting"/>
             <Button fx:id="personButton" mnemonicParsing="false" onAction="#switchPerson" text="Contact"/>
