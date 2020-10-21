@@ -265,46 +265,42 @@ Priorities:
 * `* *` - Medium (nice to have)
 * `*` - Low (unlikely to have) 
 
-| Priority | As a …​                               | I want to …​                                                             | So that I can…​                 |
+| Priority | As a Product Manager…​                | I want to …​                                                             | So that I can…​                 |
 | -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
 | **EPIC A** |
 | `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
-| `* * *`  | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
 | `* * *`  | Product Manager                          | mark deliverables as completed                                              | refer back to them when needed     |
 | `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
-| `* *`    | Product Manager                          | tag deliverables as delayed and change the deadlines                        |                                    |
-| `* *`    | Product Manager                          | change the person-in-charge of deliverables                                 | locate the right person easily     |
-| `* *`    | Product Manager                          | undo my action / be prompted before any action                              | minimise mistakes made             |
-| `* *`    | Product Manager                          | view the overall completion percentage of the project                       | know whether we are on track (e.g _`completed deliverables` out of `total deliverables`_) |
-| `* *`    | Product Manager                          | package deliverables into different iterations                              | retrieve the relevant deliverables easily |
+| `* *`    | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
+| `* *`    | Product Manager                          | package deliverables into different milestones                              | retrieve the relevant deliverables easily |
 | `* *`    | Product Manager                          | easily know who and how to contact the person-in-charge                     | contact the person when the progress of a deliverable is behind schedule |
 | `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
-| `* *`    | Product Manager                          | be notified when my product’s development is close to tagline / past deadline / too slow |                       |
-| `* *`    | Product Manager                          | pin different parts of the project according to their urgency               |                                    |
-| `*`      | Product Manager                          | see the previous products I have handled and their reviews                  |                                    |
+| `* *`    | Product Manager                          | find a deliverable easily                                                   |                                    |
+| `* *`    | Product Manager                          | sort my deliverables by deadline                                            |                                    |
 | **EPIC B** |
-| `* * *`  | Product Manager                          | add a contact                                                               | store their details for future communication |
+| `* * *`  | Product Manager                          | add contacts                                                                | store their details for future communication |
+| `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
 | `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | remember and retrieve important information  |
-| `* * *`  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
-| `* *`    | Product Manager                          | customise fields of information                                             | keep any data that I want          |
-| `* *`    | Product Manager                          | pin contacts which I frequent                                               | easily search through my long list of contacts |
+| `* *  `  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
 | `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
+| `* *`    | Product Manager                          | sort my contacts by alphabetical order                                      |                                    |
+| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
 | **EPIC C** |
 | `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
-| `* * *`  | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
 | `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
+| `* *`    | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
 | `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
-| `* *`    | Product Manager                          | see a calendar view of my meetings                                          | know my available slots to schedule new meetings |
-| `* *`    | Product Manager                          | toggle between daily, weekly and monthly view                               | have both a macro and micro view of my schedule |
+| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
+| `* *`    | Product Manager                          | sort my meetings by alphabetical order                                      |                                    |
+| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
 | **EPIC D** |
 | `* *`    | Product Manager                          | view a helpful popup                                                        | easily access the relevant instructions |
 | `* *`    | Product Manager                          | receive feedback from the app                                               | know the system has registered my action correctly or not |
 | `* *`    | Product Manager                          | view and easily navigate within the shortcut reference                      | locate technical solutions quickly |
 | **EPIC E** |
-| `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
-| `*`      | Product Manager                          | view contacts of people involved in a product                               | communicate with relevant people   |
-| `*`      | Product Manager                          | check the product’s completion stage                                        | quickly communicate any needs to the Dev Team and/or stakeholders |
-
+| `* * *`  | Product Manager                          | Opening page                                                                | Enter the name of product and initialise Productiv       |
+| `*`      | Product Manager                          | see a calendar view of meetings                                             | know my available slots to schedule new meetings   |
+| `*`      | Product Manager                          | view the overall completion                                                 | know whether we are on track (completed deliverables/total deliverables) |
 
 
 
