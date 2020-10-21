@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test;
 
 class DateTimeTest {
 
-    public static final String VALID_SAMPLE_A = "30-11-2020 10:00";
-    public static final String VALID_SAMPLE_B = "28-02-2020 10:00";
-    public static final String VALID_SAMPLE_C = "28-02-2020 10:01";
+    public static final String VALID_SAMPLE_A = "30-11-9999 10:00";
+    public static final String VALID_SAMPLE_B = "28-02-0001 10:00";
+    public static final String VALID_SAMPLE_C = "29-02-1996 10:01";
     public static final String INVALID_SAMPLE_A = "01-1-2020 23:59";
     public static final String INVALID_SAMPLE_B = "01-01-2020";
-    public static final String INVALID_SAMPLE_C = "31-11-2020 23:00";
-    public static final String INVALID_SAMPLE_D = "29-02-2019 23:00";
+    public static final String INVALID_SAMPLE_C = "29-02-2019 23:00:59";
+    public static final String INVALID_SAMPLE_D = "31-11-2020 23:00";
+    public static final String INVALID_SAMPLE_E = "29-02-2019 23:00";
 
 
     @Test
@@ -39,14 +40,15 @@ class DateTimeTest {
     @Test
     void parseFail() {
         // Fail pattern
-        // E.g Missing digit, missing date
+        // E.g Missing digit, missing date, additional digits
         assertExceptionMessage(INVALID_SAMPLE_A, DateTime.MESSAGE_CONSTRAINTS);
         assertExceptionMessage(INVALID_SAMPLE_B, DateTime.MESSAGE_CONSTRAINTS);
+        assertExceptionMessage(INVALID_SAMPLE_C, DateTime.MESSAGE_CONSTRAINTS);
 
         // Fail Range
         // E.g Months with too many days 29-02-2019
-        assertExceptionMessage(INVALID_SAMPLE_C, DateTime.MESSAGE_CONSTRAINTS);
         assertExceptionMessage(INVALID_SAMPLE_D, DateTime.MESSAGE_CONSTRAINTS);
+        assertExceptionMessage(INVALID_SAMPLE_E, DateTime.MESSAGE_CONSTRAINTS);
 
 
     }
