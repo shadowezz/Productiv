@@ -3,16 +3,22 @@ package seedu.address.model.util;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTime implements Comparable<DateTime> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
     public static final String DATE_REGEX = "(([0-2]\\d)|(3[0-1]))-((0[1-9])|(1[0-2]))-(\\d{4})";
-    public static final String MESSAGE_CONSTRAINTS =
+    public static final String MESSAGE_CONSTRAINTS_PATTERN =
             "Dates should be in the format of DD-MM-YYYY or DD-MM-YYYY HH:mm, "
                     + "and should not be blank. Note: Single digit month, day, and "
                     + "minute must start with a leading zero.";
+    public static final String MESSAGE_CONSTRAINTS_RANGE =
+            "Dates should be within the correct range. E.g 29-02-2020 is not accepted.";
+
 
     public static final String VALIDATION_REGEX = String.format("%s(\\s(%s))",
             DATE_REGEX, TIME_REGEX);
@@ -31,11 +37,11 @@ public class DateTime implements Comparable<DateTime> {
         requireNonNull(date);
 
         // Check for constraints
-        checkArgument(isValidDateTime(date), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDateTimePattern(date), MESSAGE_CONSTRAINTS_PATTERN);
+        checkArgument(isValidDateTimeRange(date), MESSAGE_CONSTRAINTS_RANGE);
 
         //Parse value
         this.value = LocalDateTime.parse(date, DATE_TIME_FORMATTER);
-
     }
 
     /**
@@ -44,8 +50,25 @@ public class DateTime implements Comparable<DateTime> {
      * @param test string to test.
      * @return result of match.
      */
-    public static boolean isValidDateTime(String test) {
+    public static boolean isValidDateTimePattern(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if a given string is a valid DateTime.
+     *
+     * @param test string to test.
+     * @return result of match.
+     */
+    public static boolean isValidDateTimeRange(String test) {
+        try {
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            df.setLenient(false);
+            df.parse(test);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     @Override
