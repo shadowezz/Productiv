@@ -28,9 +28,9 @@ public class DeliverableUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + deliverable.getTitle().value + " ");
         sb.append(PREFIX_MILESTONE + deliverable.getMilestone().value + " ");
-        sb.append(PREFIX_DESCRIPTION + deliverable.getDescription().value + " ");
+        deliverable.getDescription().value.ifPresent(description -> sb.append(PREFIX_DESCRIPTION + description + " "));
         sb.append(PREFIX_DEADLINE + deliverable.getDeadline().value + " ");
-        sb.append(PREFIX_CONTACTS + deliverable.getContacts());
+        deliverable.getContacts().value.ifPresent(contacts -> sb.append(PREFIX_CONTACTS + contacts + " "));
         return sb.toString();
     }
 
