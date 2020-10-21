@@ -44,7 +44,7 @@ public class PersonTest {
 
         // same name, same phone, same email, different attributes -> returns true
         editedAlice = new PersonBuilder(ALICE)
-                .withDescription("wnjevjnkklfwe").build();
+                .withDescription(VALID_DESCRIPTION_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
     }
 
