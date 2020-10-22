@@ -133,6 +133,39 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### [In progress] Switch Mode feature
+
+#### Implementation
+
+Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
+Based on the current mode, the user input is passed to the relevant `LogicManager`. 
+Following that, the `LogicManager` will parse the user input and produce the relevant results.
+The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
+
+![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
+Figure <?> Switch Command Sequence Diagram (In Progress)
+
+The user input is passed to `LogicModeManager`. 
+`LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
+`MainWindow` then reflects the corresponding list in the user interface and
+will pass subsequent user inputs to the corresponding `LogicManager`.
+
+#### Design consideration:
+
+##### Aspect: Where mode is stored
+
+* **Alternative 1 (current choice):** Store mode in `MainWindow`
+  * Pros: Easy to implement.
+  * Cons: May violate Single Responsibility Principle.
+
+* **Alternative 2:** Store mode in a `LogicModeManager`
+  * Pros: Adheres to the Single Responsibility Principle better.
+  * Cons: `LogicModeManager` would need to have references to the other logic managers. 
+  It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
+
+_{more aspects and alternatives to be added}_
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
