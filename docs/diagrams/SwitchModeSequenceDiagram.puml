@@ -39,7 +39,7 @@ deactivate SwitchCommand
 SwitchCommandParser --> ModeParser
 deactivate SwitchCommandParser
 
-ModeParser --> LogicModeManager : s
+ModeParser --> LogicModeManager : command
 deactivate ModeParser
 
 destroy SwitchCommandParser

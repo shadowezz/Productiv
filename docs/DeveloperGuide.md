@@ -137,7 +137,7 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Implementation
 
-Productiv can be in different modes, such as dashboard, deliverable, meeting and contact mode. 
+Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
 Based on the current mode, the user input is passed to the relevant `LogicManager`. 
 Following that, the `LogicManager` will parse the user input and produce the relevant results.
 The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
@@ -145,7 +145,7 @@ The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
 Figure <?> Switch Command Sequence Diagram (In Progress)
 
-The user input is passed to LogicModeManager. 
+The user input is passed to `LogicModeManager`. 
 `LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
 `MainWindow` then reflects the corresponding list in the user interface and
 will pass subsequent user inputs to the corresponding `LogicManager`.
@@ -159,7 +159,7 @@ will pass subsequent user inputs to the corresponding `LogicManager`.
   * Cons: May violate Single Responsibility Principle.
 
 * **Alternative 2:** Store mode in a `LogicModeManager`
-  * Pros: Seems to follow the Single Responsibility Principle better.
+  * Pros: Adheres to the Single Responsibility Principle better.
   * Cons: `LogicModeManager` would need to have references to the other logic managers. 
   It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
 
