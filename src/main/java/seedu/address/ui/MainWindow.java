@@ -1,21 +1,21 @@
 package seedu.address.ui;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
 
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.LogicDeliverable;
+import seedu.address.logic.LogicMeeting;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
@@ -37,10 +37,12 @@ public class MainWindow extends UiPart<Stage> {
     private LogicMode logicMode;
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
+    private LogicMeeting logicMeeting;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
+    private MeetingListPanel meetingListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -48,7 +50,16 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private MenuItem helpMenuItem;
+    private Button helpButton;
+
+    @FXML
+    private Button deliverableButton;
+
+    @FXML
+    private Button meetingButton;
+
+    @FXML
+    private Button personButton;
 
     @FXML
     private StackPane listPanelPlaceholder;
@@ -64,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
      * {@code LogicPerson} and {@code LogicDeliverable}.
      */
     public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
-                      LogicDeliverable logicDeliverable) {
+                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -72,6 +83,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
+        this.logicMeeting = logicMeeting;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -82,6 +94,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         mode = ModeEnum.PERSON; // default to contacts list first
+        setUnderlineButton(personButton);
     }
 
     public Stage getPrimaryStage() {
@@ -89,37 +102,26 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setAccelerator(helpButton, KeyCombination.valueOf("F1"));
     }
 
     /**
-     * Sets the accelerator of a MenuItem.
+     * Sets the accelerator of a Button.
      * @param keyCombination the KeyCombination value of the accelerator
      */
-    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
-        menuItem.setAccelerator(keyCombination);
+    private void setAccelerator(Button button, KeyCombination keyCombination) {
+        requireNonNull(button);
+        Scene scene = button.getScene();
+        requireNonNull(scene);
 
-        /*
-         * TODO: the code below can be removed once the bug reported here
-         * https://bugs.openjdk.java.net/browse/JDK-8131666
-         * is fixed in later version of SDK.
-         *
-         * According to the bug report, TextInputControl (TextField, TextArea) will
-         * consume function-key events. Because CommandBox contains a TextField, and
-         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
-         * not work when the focus is in them because the key event is consumed by
-         * the TextInputControl(s).
-         *
-         * For now, we add following event filter to capture such key events and open
-         * help window purposely so to support accelerators even when focus is
-         * in CommandBox or ResultDisplay.
-         */
-        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
-            }
-        });
+        scene.getAccelerators().put(
+                keyCombination,
+                new Runnable() {
+                    @FXML public void run() {
+                        button.fire();
+                    }
+                }
+        );
     }
 
     /**
@@ -131,20 +133,36 @@ public class MainWindow extends UiPart<Stage> {
         this.mode = mode;
         listPanelPlaceholder.getChildren().clear(); // remove current list
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
+        resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
         case PERSON:
             listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
             listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(deliverableButton);
+            break;
+        case MEETING:
+            listPanelPlaceholder.getChildren().add(meetingListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicMeeting.getMeetingBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(meetingButton);
             break;
         default:
             assert false : "from default: " + ModeEnum.getModeOptions();
         }
+    }
+
+    private void setUnderlineButton(Button button) {
+        personButton.setUnderline(false);
+        deliverableButton.setUnderline(false);
+        meetingButton.setUnderline(false);
+        button.setUnderline(true);
     }
 
     // TODO define switch tabs here
@@ -161,7 +179,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     public void switchDeliverable() {
         switchMode(ModeEnum.DELIVERABLE);
+    }
 
+    /**
+     * Switches to meeting mode.
+     */
+    public void switchMeeting() {
+        switchMode(ModeEnum.MEETING);
     }
     /**
      * Fills up all the placeholders of this window.
@@ -171,6 +195,7 @@ public class MainWindow extends UiPart<Stage> {
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
+        meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -243,6 +268,9 @@ public class MainWindow extends UiPart<Stage> {
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
+                    break;
+                case MEETING:
+                    commandResult = logicMeeting.execute(commandText);
                     break;
                 default:
                     assert false : "from default: " + ModeEnum.getModeOptions();

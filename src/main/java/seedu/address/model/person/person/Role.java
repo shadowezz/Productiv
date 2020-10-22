@@ -10,26 +10,31 @@ import java.util.Arrays;
  * Represents a Person's role in the address book.
  * Guarantees: immutable;
  */
-public class Role {
+public enum Role {
+
+    DEVELOPER("Developer", "dev"),
+    STAKEHOLDER("Stakeholder", "stk");
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Role should only be a " + getStringJoinedBySeparator(Arrays.stream(RoleEnum.values())
+            "Role should only be a " + getStringJoinedBySeparator(Arrays.stream(Role.values())
                     .map(role -> role.getArgument() + " (" + role.toString() + ")"), " or ");
     public static final String VALIDATION_REGEX =
-            getStringJoinedBySeparator(Arrays.stream(RoleEnum.values()).map(role -> role.getArgument()), "|");
-    public final RoleEnum value;
+            getStringJoinedBySeparator(Arrays.stream(Role.values()).map(role -> role.getArgument()), "|");
 
-    /**
-     * Constructs a {@code Role}.
-     *
-     * @param role A valid role.
-     */
-    public Role(String role) {
+    private final String name;
+    private final String argument;
+
+    private Role(String name, String argument) {
+        this.name = name;
+        this.argument = argument;
+    }
+
+    public static Role getRole(String arg) {
+        requireNonNull(arg);
+        checkArgument(isValidRole(arg), MESSAGE_CONSTRAINTS);
+        Role role = Role.getEnumByArgument(arg);
         requireNonNull(role);
-        checkArgument(isValidRole(role), MESSAGE_CONSTRAINTS);
-        RoleEnum roleEnum = RoleEnum.getEnumByArgument(role);
-        requireNonNull(roleEnum);
-        value = roleEnum;
+        return role;
     }
 
     /**
@@ -39,21 +44,22 @@ public class Role {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public static Role getEnumByArgument(String argument) {
+        for (Role role : Role.values()) {
+            if (role.argument.equals(argument)) {
+                return role;
+            }
+        }
+        return null;
+    }
+
+    public String getArgument() {
+        return argument;
+    }
+
     @Override
     public String toString() {
-        return value.toString();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Role // instanceof handles nulls
-                && value.equals(((Role) other).value)); // state check
-    }
-
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+        return name;
     }
 
 }

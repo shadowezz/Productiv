@@ -10,6 +10,7 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  * An UI component that displays information of a {@code Deliverable}.
  */
 public class DeliverableCard extends UiPart<Region> {
+
     private static final String FXML = "DeliverableListCard.fxml";
 
     /**
@@ -25,9 +26,19 @@ public class DeliverableCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label title;
     @FXML
     private Label id;
+    @FXML
+    private Label description;
+    @FXML
+    private Label deadline;
+    @FXML
+    private Label contacts;
+    @FXML
+    private Label milestone;
+    @FXML
+    private Label isCompleted;
 
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
@@ -36,7 +47,18 @@ public class DeliverableCard extends UiPart<Region> {
         super(FXML);
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
-        name.setText("Deliverable " + deliverable.getNumber());
+        title.setText(deliverable.getTitle().value);
+        description.setText("Description: " + deliverable.getDescription().toString());
+        deadline.setText("Deadline: " + deliverable.getDeadline().value);
+        contacts.setText("Contacts: " + deliverable.getContacts());
+        if (deliverable.getIsComplete()) {
+            isCompleted.setText("completed");
+            isCompleted.setStyle("-fx-background-color: #32cd32");
+        } else {
+            isCompleted.setText("on-going");
+            isCompleted.setStyle("-fx-background-color: #ffa500");
+        }
+        milestone.setText(deliverable.getMilestone().toString());
     }
 
     @Override

@@ -2,12 +2,9 @@ package seedu.address.model.person.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
-import seedu.address.model.person.tag.Tag;
+import seedu.address.model.util.OptionalDescription;
 
 /**
  * Represents a Person in the address book.
@@ -21,21 +18,19 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
     private final Role role;
+    private final OptionalDescription description;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Role role) {
-        requireAllNonNull(name, phone, email, address, tags, role);
+    public Person(Name name, Phone phone, Email email, Role role, OptionalDescription description) {
+        requireAllNonNull(name, phone, email, role);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
         this.role = role;
+        this.description = description;
     }
 
     public Name getName() {
@@ -50,20 +45,12 @@ public class Person {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
-
     public Role getRole() {
         return role;
+    }
+
+    public OptionalDescription getDescription() {
+        return description;
     }
 
     /**
@@ -98,15 +85,14 @@ public class Person {
         return otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
-                && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getDescription().equals(getDescription())
                 && otherPerson.getRole().equals(getRole());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, role);
+        return Objects.hash(name, phone, email, role, description);
     }
 
     @Override
@@ -119,10 +105,8 @@ public class Person {
                 .append(getPhone())
                 .append(" Email: ")
                 .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(" Description: ")
+                .append(getDescription());
         return builder.toString();
     }
 

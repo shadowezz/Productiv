@@ -2,9 +2,15 @@ package seedu.address.logic.parser.meeting;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Optional;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.meeting.meeting.From;
+import seedu.address.model.meeting.meeting.Location;
+import seedu.address.model.meeting.meeting.To;
+import seedu.address.model.util.Title;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -31,22 +37,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-
-    // TODO: Change to object fields
-    public static String parseTitle(String title) throws ParseException {
+    public static Title parseTitle(String title) throws ParseException {
         requireNonNull(title);
-        return title;
-    }
-
-    /**
-     * Parses a {@code String phone} into a {@code Phone}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static String parseDescription(String description) throws ParseException {
-        requireNonNull(description);
-        return description;
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
     }
 
     /**
@@ -55,9 +52,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static String parseTo(String to) throws ParseException {
+    public static To parseTo(String to) throws ParseException {
         requireNonNull(to);
-        return to;
+        String trimmedTo = to.trim();
+        if (!To.isValidTo(trimmedTo)) {
+            throw new ParseException(To.MESSAGE_CONSTRAINTS);
+        }
+        return new To(trimmedTo);
     }
 
     /**
@@ -66,20 +67,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static String parseFrom(String from) throws ParseException {
+    public static From parseFrom(String from) throws ParseException {
         requireNonNull(from);
-        return from;
-    }
-
-    /**
-     * Parses a {@code String address} into an {@code Address}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code address} is invalid.
-     */
-    public static String parseContacts(String contacts) throws ParseException {
-        requireNonNull(contacts);
-        return contacts;
+        String trimmedFrom = from.trim();
+        if (!From.isValidFrom(trimmedFrom)) {
+            throw new ParseException(From.MESSAGE_CONSTRAINTS);
+        }
+        return new From(trimmedFrom);
     }
 
     /**
@@ -88,8 +82,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code location} is invalid.
      */
-    public static String parseLocation(String location) throws ParseException {
-        requireNonNull(location);
-        return location;
+    public static Location parseLocation(Optional<String> location) throws ParseException {
+        if (location.isEmpty()) {
+            return new Location(location);
+        }
+        String trimmedLocation = location.get().trim();
+        if (!Location.isValidLocation(trimmedLocation)) {
+            throw new ParseException(Location.MESSAGE_CONSTRAINTS);
+        }
+        return new Location(trimmedLocation);
     }
 }

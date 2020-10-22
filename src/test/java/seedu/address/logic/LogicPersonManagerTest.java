@@ -3,11 +3,11 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.person.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.address.logic.commands.person.CommandTestUtil.DESCRIPTION_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.PHONE_DESC_AMY;
-import static seedu.address.logic.commands.person.CommandTestUtil.ROLE_DESC_STK;
+import static seedu.address.logic.commands.person.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -80,9 +80,10 @@ public class LogicPersonManagerTest {
         logic = new LogicPersonManager(modelPerson, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).withTags().build();
+        String addCommand =
+                AddCommand.COMMAND_WORD + ROLE_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                        + DESCRIPTION_DESC_AMY;
+        Person expectedPerson = new PersonBuilder(AMY).build();
         ModelPersonManager expectedModel = new ModelPersonManager();
         expectedModel.addPerson(expectedPerson);
         String expectedMessage = LogicPersonManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
