@@ -66,7 +66,7 @@ Here are some example commands you can try:
 #### Viewing help: `help`
 
 Shows a message directing you to this User Guide.
-![help](images/helpMessage.jpg)
+![help](images/helpMessage.JPG)
 
 Format: `help`
 
