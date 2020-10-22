@@ -142,9 +142,9 @@ panel of the display window.
 
 The proposed view mechanism is facilitated by implementing the following operations:
 
-* `ModelDeliverable#setDeliverableInView()` — Changes the deliverable to be displayed
-* `ModelPerson#setContactInView()` — Changes the contact to be displayed
-* `ModelMeeting#setMeetingInView()` — Changes the meeting to be displayed
+* `ModelDeliverable#setDeliverableInView()` — Changes the `Deliverable` to be displayed
+* `ModelPerson#setContactInView()` — Changes the `Contact` to be displayed
+* `ModelMeeting#setMeetingInView()` — Changes the `Meeting` to be displayed
 
 Given below is an example usage scenario of how viewing a deliverable works.
 
