@@ -53,13 +53,12 @@ SwitchCommand -[hidden]-> LogicModeManager : result
 destroy SwitchCommand
 
 LogicModeManager --> MainWindow : result
+deactivate LogicModeManager
 
 MainWindow -> MainWindow: switchMode(mode)
 activate MainWindow
 MainWindow --> MainWindow
 
-
-deactivate LogicModeManager
 deactivate MainWindow
 [<--MainWindow
 
