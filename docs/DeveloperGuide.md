@@ -134,11 +134,10 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 ### [In Progress] \[DateTime\]
 
-#### Implementation
-The implementation allows users to parse and compare unique DateTimes. 
+#### Proposed Implementation
+The implementation allows users to parse and compare unique DateTime types. 
 
-#### Parsing
-To parse, dateTimes should be in the following format: **`dd-MM-yyyy HH:mm`** 
+To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
 * Single digits fields must include leading zero: `01-01-0101 01:10`.
 * Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
 
@@ -146,19 +145,15 @@ DateTime will throw a parsing error if
 * `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
 * `31-02-2020 00:00` Invalid range (e.g invalid leap year).
 
-
-#### Example
 The following is an example of how DateTime can be implemented into the model
 
 ![DateTimeClassDiagram](images/DateTimeClass.png)
-
 * DateTime is a class that can be used by all models.
 * From, To and Deadline are fields which extend from DateTime.
 
-### Usage
-DateTime can be used to compare with DateTime fields:
-* Enables deliverables to be sorted based on which meeting starts earlier.
-* DateTime can be used to identify clashes if there are any clashes between meetings.
+DateTime can be used to compare with other DateTime objects:
+* Enable deliverables to be sorted based on which one is due the earliest.
+* DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:
 * **Alternative 1 (current choice):** Throws error when invalid range is 
@@ -723,17 +718,20 @@ testers are expected to do more *exploratory* testing.
        Expected: The most recent window size and location is retained.
 
 1. Shutdown
+
     1. Click the window close button _OR_
     1. Enter input: `exit`, to close the program. 
     
 ### Switching Modes
 
 1. Via Mouse input
+
     1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
     Expected: Window displays list of saved `deliverables` or `meetings`.
 
 1. Via Command Line Input
-    1. Testcase: `switch deliverable` or `switch meeting`<br>
+
+    1. Test case: `switch deliverable` or `switch meeting`<br>
     Expected: Window displays list of saved `deliverables` or `meetings`.
     
     1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
@@ -741,7 +739,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding an item
 
-1. Adding an item to Contacts
+1. Adding a contact while in `Contact` mode
 
    1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -754,7 +752,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting an item
 
-1. Deleting an item
+1. Deleting a contact while in `contact` mode
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -770,12 +768,11 @@ testers are expected to do more *exploratory* testing.
 
 1. Data files are saved in a `data` folder.<br>
 3 JSON files are created:
-    * `Addressbook.json`
-    * `MeetingBook.json`
+    * `addressbook.json`
+    * `meetingBook.json`
     * `deliverablebook.json`
 
 All 3 files contain information stored by the user from their respective modes.
-
 
 1. Dealing with missing/corrupted data files
 
