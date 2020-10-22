@@ -277,13 +277,10 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
---------------------------------------------------------------------------------------------------------------------
-## Enhancements
+### [In Progress] \[DateTime\]
 
-### \[DateTime\]
-
-#### Enhancement
-The enhancement allows users to parse and compare unique DateTimes. 
+#### Implementation
+The implementation allows users to parse and compare unique DateTimes. 
 
 #### Parsing
 To parse, dateTimes should be in the following format: **`dd-MM-yyyy HH:mm`** 
@@ -295,7 +292,7 @@ DateTime will throw a parsing error if
 * `31-02-2020 00:00` Invalid range (e.g invalid leap year).
 
 
-#### Implementation
+#### Example
 The following is an example of how DateTime can be implemented into the model
 
 ![DateTimeClassDiagram](images/DateTimeClass.png)
@@ -307,6 +304,18 @@ The following is an example of how DateTime can be implemented into the model
 DateTime can be used to compare with DateTime fields:
 * Enables deliverables to be sorted based on which meeting starts earlier.
 * DateTime can be used to identify clashes if there are any clashes between meetings.
+
+#### Design consideration:
+* **Alternative 1 (current choice):** Throws error when invalid range is 
+given for dates
+  * E.g `29-02-2019` or `31-11-2020`.
+  * Pros: Notifies user he has made a mistake.
+  * Cons: Costs time to re-type the entire command.
+  
+  * **Alternative 2:** Individual command knows how to resolve overflow of dates. 
+    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -779,9 +788,22 @@ testers are expected to do more *exploratory* testing.
     1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
     Expected: Status bar throws error message.
 
+### Adding an item
+
+1. Adding an item to Contacts
+
+   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `add n/john`<br>
+      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+
+   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
+      Expected: Similar to previous.
+
 ### Deleting an item
 
-1. Deleting an item while all items are being shown
+1. Deleting an item
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -794,11 +816,17 @@ testers are expected to do more *exploratory* testing.
 
 
 ### Saving data
-1. Data files are saved in a `data` folder.
-    1. 3 json files are created: ``
+
+1. Data files are saved in a `data` folder.<br>
+3 JSON files are created:
+    * `Addressbook.json`
+    * `MeetingBook.json`
+    * `deliverablebook.json`
+
+All 3 files contain information stored by the user from their respective modes.
+
 
 1. Dealing with missing/corrupted data files
 
-   1. Missing data files
-
-1. _{ more test cases …​ }_
+   1. Missing data/corrupted files: delete `addressbook.json` file and start the jar file again<br> 
+   Expected: Data file should re-initialise a list of sample contacts
