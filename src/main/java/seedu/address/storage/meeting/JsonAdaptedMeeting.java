@@ -108,6 +108,14 @@ public class JsonAdaptedMeeting {
         }
         final Location modelLocation = new Location(location);
 
-        return new Meeting(modelTitle, modelDescription, modelFrom, modelTo, modelContacts, modelLocation);
+        Meeting meeting;
+
+        try {
+            meeting = new Meeting(modelTitle, modelDescription, modelFrom, modelTo, modelContacts, modelLocation);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalValueException(Meeting.INCORRECT_FROM_AND_TO_ORDER);
+        }
+
+        return meeting;
     }
 }
