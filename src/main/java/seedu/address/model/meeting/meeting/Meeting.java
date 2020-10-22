@@ -67,7 +67,7 @@ public class Meeting {
     }
 
     public LocalDateTime getFromLocalDateTime() {
-        return from.getLocalDateTime().get();
+        return from.getLocalDateTime();
     }
 
     public To getTo() {
