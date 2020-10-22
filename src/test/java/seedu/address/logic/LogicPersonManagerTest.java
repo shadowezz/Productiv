@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.DESCRIPTION_DE
 import static seedu.address.logic.commands.person.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.PHONE_DESC_AMY;
-import static seedu.address.logic.commands.person.CommandTestUtil.ROLE_DESC_STK;
+import static seedu.address.logic.commands.person.CommandTestUtil.ROLE_DESC_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -81,7 +81,7 @@ public class LogicPersonManagerTest {
 
         // Execute add command
         String addCommand =
-                AddCommand.COMMAND_WORD + ROLE_DESC_STK + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                AddCommand.COMMAND_WORD + ROLE_DESC_AMY + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
                         + DESCRIPTION_DESC_AMY;
         Person expectedPerson = new PersonBuilder(AMY).build();
         ModelPersonManager expectedModel = new ModelPersonManager();

@@ -16,9 +16,9 @@
       "value": "98765432"
     },
     "email" : "johnd@example.com",
-    "role": "stk",
+    "role": "dev",
     "description": {
-      "value" : "Admin personnel"
+      "value" : "Frontend engineer"
     }
   }, {
     "name" : "Carl Kurz",
@@ -28,22 +28,22 @@
     "email" : "heinz@example.com",
     "role": "stk",
     "description": {
-      "value" : null
+      "value" : "Business analyst"
     }
   }, {
     "name" : "Daniel Meier",
     "phone" : {
-      "value": "87652533"
+      "value": null
     },
     "email" : "cornelia@example.com",
-    "role": "stk",
+    "role": "dev",
     "description": {
-      "value" : null
+      "value" : "Backend engineer"
     }
   }, {
     "name" : "Elle Meyer",
     "phone" : {
-      "value": "9482224"
+      "value": null
     },
     "email" : "werner@example.com",
     "role": "stk",
@@ -58,17 +58,17 @@
     "email" : "lydia@example.com",
     "role": "stk",
     "description": {
-      "value" : null
+      "value" : "Product designer, Kurz work partner"
     }
   }, {
     "name" : "George Best",
     "phone" : {
-      "value": "9482442"
+      "value": null
     },
     "email" : "anna@example.com",
     "role": "stk",
     "description": {
-      "value" : null
+      "value" : "Secondary user"
     }
   } ]
 }

@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import java.util.Optional;
+
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deadline;
@@ -28,13 +30,13 @@ public class SampleDataUtil {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                     Role.getRole("stk"), new OptionalDescription("End user")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                    Role.getRole("stk"), new OptionalDescription("End user")),
+                    Role.getRole("dev"), new OptionalDescription("Frontend Engineer")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                    Role.getRole("stk"), new OptionalDescription("End user")),
-            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                    Role.getRole("stk"), new OptionalDescription("End user")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                    Role.getRole("stk"), new OptionalDescription("End user")),
+                    Role.getRole("stk"), new OptionalDescription("Business analyst")),
+            new Person(new Name("David Li"), new Phone(Optional.empty()), new Email("lidavid@example.com"),
+                    Role.getRole("dev"), new OptionalDescription("Backend Engineer")),
+            new Person(new Name("Irfan Ibrahim"), new Phone(Optional.empty()), new Email("irfan@example.com"),
+                    Role.getRole("stk"), new OptionalDescription(Optional.empty())),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                     Role.getRole("stk"), new OptionalDescription("End user"))
         };
@@ -43,14 +45,14 @@ public class SampleDataUtil {
     public static Deliverable[] getSampleDeliverables() {
         return new Deliverable[] {
             new Deliverable(new Title("Settle login screens"), new Milestone("1.1"),
-                new Description("Include forget password option"),
-                new Deadline("04-11-2020 15:00"), true, "2,4"),
+                new OptionalDescription("Include forget password option"),
+                new Deadline("04-11-2020 15:00"), true, new Contacts("2,4")),
             new Deliverable(new Title("Settle profile page"), new Milestone("1.2"),
-                new Description("Include change password option"),
-                new Deadline("15-11-2020 12:00"), true, "1,2,3"),
+                new OptionalDescription("Include change password option"),
+                new Deadline("15-11-2020 12:00"), true, new Contacts("1,2,3")),
             new Deliverable(new Title("Finalise v1.1 app design"), new Milestone("1.2.1"),
-                new Description("Include forget password option"),
-                new Deadline("12-12-2020 23:59"), false, "2,5"),
+                new OptionalDescription("Include forget password option"),
+                new Deadline("12-12-2020 23:59"), false, new Contacts("2,5")),
         };
     }
 

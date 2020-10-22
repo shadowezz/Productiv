@@ -4,7 +4,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -18,19 +19,17 @@ public class Deliverable {
 
     // Data fields
     private final Milestone milestone;
-    private final Description description;
+    private final OptionalDescription description;
     private final Deadline deadline;
     private final boolean isComplete;
-
-    // TODO: Amend this to Person[] and point to respective contacts.
-    private final String contacts;
+    private final Contacts contacts;
 
     /**
-     * Only title field must be present. Used when adding new deliverable.
+     * Only title and milestone field must be present. Used when adding new deliverable.
      */
-    public Deliverable(Title title, Milestone milestone, Description description,
-                       Deadline deadline, String contacts) {
-        requireAllNonNull(title);
+    public Deliverable(Title title, Milestone milestone, OptionalDescription description,
+                       Deadline deadline, Contacts contacts) {
+        requireAllNonNull(title, milestone);
         this.title = title;
         this.milestone = milestone;
         this.description = description;
@@ -42,8 +41,8 @@ public class Deliverable {
     /**
      * Used when editing or completing existing deliverable.
      */
-    public Deliverable(Title title, Milestone milestone, Description description, Deadline deadline,
-                       boolean isComplete, String contacts) {
+    public Deliverable(Title title, Milestone milestone, OptionalDescription description, Deadline deadline,
+                       boolean isComplete, Contacts contacts) {
         requireAllNonNull(title);
         this.title = title;
         this.milestone = milestone;
@@ -61,7 +60,7 @@ public class Deliverable {
         return milestone;
     }
 
-    public Description getDescription() {
+    public OptionalDescription getDescription() {
         return description;
     }
 
@@ -73,7 +72,7 @@ public class Deliverable {
         return isComplete;
     }
 
-    public String getContacts() {
+    public Contacts getContacts() {
         return contacts;
     }
 
