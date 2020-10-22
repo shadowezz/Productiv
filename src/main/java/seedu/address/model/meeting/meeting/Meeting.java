@@ -48,8 +48,8 @@ public class Meeting {
      * Returns true if From is earlier than To chronologically.
      */
     public static boolean isValidFromAndTo (From from, To to) {
-        LocalDateTime dateFrom = from.getLocalDateTime().get();
-        LocalDateTime dateTo = to.getLocalDateTime().get();
+        LocalDateTime dateFrom = from.getLocalDateTime();
+        LocalDateTime dateTo = to.getLocalDateTime();
 
         return dateFrom.compareTo(dateTo) <= 0;
     }
