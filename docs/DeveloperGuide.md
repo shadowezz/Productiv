@@ -217,6 +217,36 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+--------------------------------------------------------------------------------------------------------------------
+## Enhancements
+
+### \[DateTime\]
+
+#### Enhancement
+The enhancement allows users to parse and compare unique DateTimes. 
+
+#### Parsing
+To parse, dateTimes should be in the following format: **`dd-MM-yyyy HH:mm`** 
+* Single digits fields must include leading zero: `01-01-0101 01:10`.
+* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+
+DateTime will throw a parsing error if
+* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
+* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
+
+
+#### Implementation
+The following is an example of how DateTime can be implemented into the model
+
+![DateTimeClassDiagram](images/DateTimeClass.png)
+
+* DateTime is a common class in Model.
+* From, To and Deadline are attributes which extend from DateTime.
+
+### Usage
+DateTime can be used to compare with DateTime fields:
+* Enables deliverables to be sorted based on which meeting starts earlier.
+* DateTime can be used to identify clashes if there are any clashes between meetings.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -672,13 +702,26 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Shutdown
+    1. Click the window close button _OR_
+    1. Enter input: `exit`, to close the program. 
+    
+### Switching Modes
 
-### Deleting a person
+1. Via Mouse input
+    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
 
-1. Deleting a person while all persons are being shown
+1. Via Command Line Input
+    1. Testcase: `switch deliverable` or `switch meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
+    
+    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
+    Expected: Status bar throws error message.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+### Deleting an item
+
+1. Deleting an item while all items are being shown
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -689,12 +732,13 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
+1. Data files are saved in a `data` folder.
+    1. 3 json files are created: ``
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Missing data files
 
 1. _{ more test cases …​ }_
