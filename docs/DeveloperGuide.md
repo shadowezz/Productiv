@@ -156,7 +156,7 @@ The following sequence diagram shows how the view operation works:
 
 #### Design consideration:
 
-##### Aspect: How viewing executes
+##### Aspect: How view executes
 
 * **Alternative 1 (current choice):** Stores the item in view inside the respective model.
   * Pros: Ensures persistence as it can be referred to repeatedly.
