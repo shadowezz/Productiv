@@ -1,17 +1,22 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
+
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.logic.LogicDeliverable;
+import seedu.address.logic.LogicMeeting;
+import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,10 +33,16 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private LogicPerson logic;
+    private ModeEnum mode;
+    private LogicMode logicMode;
+    private LogicPerson logicPerson;
+    private LogicDeliverable logicDeliverable;
+    private LogicMeeting logicMeeting;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private DeliverableListPanel deliverableListPanel;
+    private MeetingListPanel meetingListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -39,10 +50,19 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private MenuItem helpMenuItem;
+    private Button helpButton;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private Button deliverableButton;
+
+    @FXML
+    private Button meetingButton;
+
+    @FXML
+    private Button personButton;
+
+    @FXML
+    private StackPane listPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -51,21 +71,30 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     /**
-     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode},
+     * {@code LogicPerson} and {@code LogicDeliverable}.
      */
-    public MainWindow(Stage primaryStage, LogicPerson logic) {
+    public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
+                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
-        this.logic = logic;
+        this.logicMode = logicMode;
+        this.logicPerson = logicPerson;
+        this.logicDeliverable = logicDeliverable;
+        this.logicMeeting = logicMeeting;
 
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        // all managers' Gui points to same GuiSettings object so its fine
+        setWindowDefaultSize(logicPerson.getGuiSettings());
 
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        mode = ModeEnum.PERSON; // default to contacts list first
+        setUnderlineButton(personButton);
     }
 
     public Stage getPrimaryStage() {
@@ -73,50 +102,105 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setAccelerator(helpButton, KeyCombination.valueOf("F1"));
     }
 
     /**
-     * Sets the accelerator of a MenuItem.
+     * Sets the accelerator of a Button.
      * @param keyCombination the KeyCombination value of the accelerator
      */
-    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
-        menuItem.setAccelerator(keyCombination);
+    private void setAccelerator(Button button, KeyCombination keyCombination) {
+        requireNonNull(button);
+        Scene scene = button.getScene();
+        requireNonNull(scene);
 
-        /*
-         * TODO: the code below can be removed once the bug reported here
-         * https://bugs.openjdk.java.net/browse/JDK-8131666
-         * is fixed in later version of SDK.
-         *
-         * According to the bug report, TextInputControl (TextField, TextArea) will
-         * consume function-key events. Because CommandBox contains a TextField, and
-         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
-         * not work when the focus is in them because the key event is consumed by
-         * the TextInputControl(s).
-         *
-         * For now, we add following event filter to capture such key events and open
-         * help window purposely so to support accelerators even when focus is
-         * in CommandBox or ResultDisplay.
-         */
-        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
-            }
-        });
+        scene.getAccelerators().put(
+                keyCombination,
+                new Runnable() {
+                    @FXML public void run() {
+                        button.fire();
+                    }
+                }
+        );
     }
 
+    /**
+     * Change Ui according to current mode.
+     * @param mode the mode to change Ui to.
+     */
+    public void switchMode(ModeEnum mode) {
+        requireNonNull(mode);
+        this.mode = mode;
+        listPanelPlaceholder.getChildren().clear(); // remove current list
+        statusbarPlaceholder.getChildren().clear(); // remove current status bar
+        resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
+        switch (mode) {
+        case PERSON:
+            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(personButton);
+            break;
+        case DELIVERABLE:
+            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(deliverableButton);
+            break;
+        case MEETING:
+            listPanelPlaceholder.getChildren().add(meetingListPanel.getRoot());
+            statusBarFooter = new StatusBarFooter(logicMeeting.getMeetingBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            setUnderlineButton(meetingButton);
+            break;
+        default:
+            assert false : "from default: " + ModeEnum.getModeOptions();
+        }
+    }
+
+    private void setUnderlineButton(Button button) {
+        personButton.setUnderline(false);
+        deliverableButton.setUnderline(false);
+        meetingButton.setUnderline(false);
+        button.setUnderline(true);
+    }
+
+    // TODO define switch tabs here
+
+    /**
+     * Switches to contact mode.
+     */
+    public void switchPerson() {
+        switchMode(ModeEnum.PERSON);
+    }
+
+    /**
+     * Switches to deliverable mode.
+     */
+    public void switchDeliverable() {
+        switchMode(ModeEnum.DELIVERABLE);
+    }
+
+    /**
+     * Switches to meeting mode.
+     */
+    public void switchMeeting() {
+        switchMode(ModeEnum.MEETING);
+    }
     /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
+        listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
+        meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -158,7 +242,7 @@ public class MainWindow extends UiPart<Stage> {
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
+        logicPerson.setGuiSettings(guiSettings); // its just to save last guiSetting used
         helpWindow.hide();
         primaryStage.hide();
     }
@@ -174,7 +258,27 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logic.execute(commandText);
+            CommandResult commandResult = null;
+            if (logicMode.isModeCommand(commandText)) {
+                commandResult = logicMode.execute(commandText);
+            } else {
+                switch (mode) {
+                case PERSON:
+                    commandResult = logicPerson.execute(commandText);
+                    break;
+                case DELIVERABLE:
+                    commandResult = logicDeliverable.execute(commandText);
+                    break;
+                case MEETING:
+                    commandResult = logicMeeting.execute(commandText);
+                    break;
+                default:
+                    assert false : "from default: " + ModeEnum.getModeOptions();
+                }
+            }
+
+            requireNonNull(commandResult);
+
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
@@ -184,6 +288,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.getMode() != null) {
+                switchMode(commandResult.getMode());
             }
 
             return commandResult;

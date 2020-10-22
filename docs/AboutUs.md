@@ -9,6 +9,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Cao Wenjie
+
+<img src="images/shadowezz.png" width="200px">
+
+[[github](https://github.com/shadowezz)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: In charge of "Deliverable" features and Quality Assurance (Testing)
+
 ### Clara Adora
 
 <img src="images/claraadora.png" width="200px">
@@ -16,17 +26,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/claraadora)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: In charge of "Meeting" features and Product Management
 
 ### Chrystal Quek
 
@@ -35,24 +36,24 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/chrystalquek)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities:
+* Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
 
-### Jean Doe
+### Gabriel Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/gabztcr.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/gabztcr)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: In charge of "Deliverable" features and Documentation
 
-### James Doe
+### Merlin Lim
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/merlinlim.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](https://github.com/MerlinLim)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: In charge of "Meeting" features and Documentation

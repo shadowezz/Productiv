@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.person.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.person.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.person.CommandTestUtil.showPersonAtIndex;
@@ -19,10 +18,10 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.person.EditCommand.EditPersonDescriptor;
-import seedu.address.model.ModelPerson;
-import seedu.address.model.ModelPersonManager;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.person.AddressBook;
-import seedu.address.model.person.UserPrefs;
+import seedu.address.model.person.ModelPerson;
+import seedu.address.model.person.ModelPersonManager;
 import seedu.address.model.person.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -55,11 +54,10 @@ public class EditCommandTest {
         Person lastPerson = modelPerson.getFilteredPersonList().get(indexLastPerson.getZeroBased());
 
         PersonBuilder personInList = new PersonBuilder(lastPerson);
-        Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+        Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB).build();
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
