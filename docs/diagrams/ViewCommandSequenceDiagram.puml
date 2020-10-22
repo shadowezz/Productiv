@@ -56,5 +56,4 @@ destroy ViewCommand
 
 [<-- DeliverableLogicManager : result
 deactivate DeliverableLogicManager
-
 @enduml
