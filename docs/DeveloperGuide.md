@@ -132,6 +132,41 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+### [In Progress] \[DateTime\]
+
+#### Proposed Implementation
+The implementation allows users to parse and compare unique DateTime types. 
+
+To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
+* Single digits fields must include leading zero: `01-01-0101 01:10`.
+* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+
+DateTime will throw a parsing error if
+* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
+* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
+
+The following is an example of how DateTime can be implemented into the model
+
+![DateTimeClassDiagram](images/DateTimeClass.png)
+* DateTime is a class that can be used by all models.
+* From, To and Deadline are fields which extend from DateTime.
+
+DateTime can be used to compare with other DateTime objects:
+* Enable deliverables to be sorted based on which one is due the earliest.
+* DateTime can be used to identify time clashes between different meetings.
+
+#### Design consideration:
+* **Alternative 1 (current choice):** Throws error when invalid range is 
+given for dates
+  * E.g `29-02-2019` or `31-11-2020`.
+  * Pros: Notifies user he has made a mistake.
+  * Cons: Costs time to re-type the entire command.
+  
+* **Alternative 2:** Command knows how to resolve overflow of dates. 
+    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * Pros: Saves time for the user if he had intended to select the last day of the month.
+    * Cons: The date specified may not be the intended input.
+
 ### \[Proposed\] Autosort feature
 
 #### Proposed Implementation
@@ -225,6 +260,7 @@ The following sequence diagram shows how the view operation works:
 * **Alternative 2:** Passes the item in view inside the Command Result to the UI component
   * Pros: Does not require an additional operation to fetch the item in view.
   * Cons: Inappropriate use of Command Result whose primary objective is to pass feedback to the user.
+
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -681,13 +717,42 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Shutdown
 
-### Deleting a person
+    1. Click the window close button _OR_
+    1. Enter input: `exit`, to close the program. 
+    
+### Switching Modes
 
-1. Deleting a person while all persons are being shown
+1. Via Mouse input
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
+
+1. Via Command Line Input
+
+    1. Test case: `switch deliverable` or `switch meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
+    
+    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
+    Expected: Status bar throws error message.
+
+### Adding an item
+
+1. Adding a contact while in `Contact` mode
+
+   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `add n/john`<br>
+      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+
+   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
+      Expected: Similar to previous.
+
+### Deleting an item
+
+1. Deleting a contact while in `contact` mode
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -698,12 +763,20 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
+1. Data files are saved in a `data` folder.<br>
+3 JSON files are created:
+    * `addressbook.json`
+    * `meetingBook.json`
+    * `deliverablebook.json`
+
+All 3 files contain information stored by the user from their respective modes.
+
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+   1. Missing data/corrupted files: delete `addressbook.json` file and start the jar file again<br> 
+   Expected: Data file should re-initialise a list of sample contacts
+   
+_{more to be added}_
