@@ -50,8 +50,8 @@ public class JsonAdaptedMeeting {
     public JsonAdaptedMeeting(Meeting source) {
         title = source.getTitle().value;
         description = source.getDescription().value;
-        from = source.getFrom().valueString;
-        to = source.getTo().valueString;
+        from = source.getFrom().toString();
+        to = source.getTo().toString();
         contacts = source.getContacts().value;
         location = source.getLocation().value;
     }
@@ -108,6 +108,14 @@ public class JsonAdaptedMeeting {
         }
         final Location modelLocation = new Location(location);
 
-        return new Meeting(modelTitle, modelDescription, modelFrom, modelTo, modelContacts, modelLocation);
+        Meeting meeting;
+
+        try {
+            meeting = new Meeting(modelTitle, modelDescription, modelFrom, modelTo, modelContacts, modelLocation);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalValueException(Meeting.INCORRECT_FROM_AND_TO_ORDER);
+        }
+
+        return meeting;
     }
 }
