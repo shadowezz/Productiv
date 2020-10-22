@@ -1,0 +1,59 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":DeliverableLogicManager" as DeliverableLogicManager LOGIC_COLOR_T2
+participant ":DeliverableBookParser" as DeliverableBookParser LOGIC_COLOR_T2
+participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR_T2
+participant "v:ViewCommand" as ViewCommand LOGIC_COLOR_T2
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelDeliverable" as ModelDeliverable MODEL_COLOR_T2
+end box
+
+[-> DeliverableLogicManager : execute("view 2")
+activate DeliverableLogicManager
+
+DeliverableLogicManager -> DeliverableBookParser : parseCommand("view 2")
+activate DeliverableBookParser
+
+create ViewCommandParser
+DeliverableBookParser -> ViewCommandParser
+activate ViewCommandParser
+
+ViewCommandParser --> DeliverableBookParser
+deactivate ViewCommandParser
+
+DeliverableBookParser -> ViewCommandParser : parse("view 2")
+activate ViewCommandParser
+
+create ViewCommand
+ViewCommandParser -> ViewCommand
+activate ViewCommand
+
+ViewCommand --> ViewCommandParser : v
+deactivate ViewCommand
+
+ViewCommandParser --> DeliverableBookParser : v
+deactivate ViewCommandParser
+
+DeliverableBookParser --> DeliverableLogicManager : v
+deactivate DeliverableBookParser
+
+DeliverableLogicManager -> ViewCommand : execute()
+activate ViewCommand
+
+ViewCommand -> ModelDeliverable : setDeliverableInView(deliverable)
+activate ModelDeliverable
+
+ModelDeliverable --> ViewCommand
+deactivate ModelDeliverable
+
+ViewCommand --> DeliverableLogicManager : result
+deactivate ViewCommand
+destroy ViewCommand
+
+[<-- DeliverableLogicManager : result
+deactivate DeliverableLogicManager
+@enduml
