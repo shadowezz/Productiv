@@ -75,6 +75,7 @@ Format: `help`
 Switches to either `contact`, `meeting` or `deliverable` mode.
 
 Format: `switch MODE`
+* Corresponding list of existing items will be displayed, e.g. `contact` mode will display all contacts.
 * Subsequent commands will be with respect to the `MODE`.
 
 Examples:
@@ -97,8 +98,8 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 Examples:
 * `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
 adds a developer with the name `Jordan Woods`, phone number `81234567` and email `jordanwoods@glutter.com`.
-* `add r/stk n/Betsy Crowe p/87654321`
-adds a stakeholder with the name `Betsy Crowe` and phone number `87654321`.
+* `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
+adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
 
 #### Editing a contact: `edit`
 
@@ -166,7 +167,7 @@ Format: `add t/TITLE m/MILESTONE [d/DESCRIPTION] [by/DEADLINE] [c/CONTACTS]`
 * `MILESTONE` is the milestone tagged to the deliverable.
 * `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
-* `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:MM format.
+* `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
 
@@ -225,8 +226,8 @@ Adds a meeting to the meeting list.
 Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
-* `FROM` is the start date time of the meeting in DD-MM-YYYY HH:MM format.
-* `TO` is the end date time of the meeting in DD-MM-YYYY HH:MM format.
+* `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
+* `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
 * `CONTACTS` represents the contacts involved in the meeting.
 * `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
 * `LOCATION` is the location of the meeting.
@@ -295,13 +296,13 @@ creates with the file that contains the data of your previous *Productiv* app.
 
 Action | Format, Examples
 --------|------------------
-**Switch** | `switch MODE` <br> e.g., `switch deliverable`
-**Add (Contact)** | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g., `add stk n/Jenny Ho r/stk e/jennyho@pmail.com`
-**Edit (Meeting)** | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g., `edit 2 l/Level 8 Meeting Room 1`
-**Mark Done (Deliverable)** | `done INDEX` <br> e.g., `done 2`
+**Switch** | `switch MODE` <br> e.g. `switch deliverable`
+**Add (Contact)** | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
+**Edit (Meeting)** | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
+**Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`
 **List** | `list`
-**Find** | `find KEYWORDS` <br> e.g., `find Bond James`
-**Delete** | `delete INDEX` <br> e.g., `delete 3`
+**Find** | `find KEYWORDS` <br> e.g. `find Bond James`
+**Delete** | `delete INDEX` <br> e.g. `delete 3`
 **Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`
