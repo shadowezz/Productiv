@@ -132,24 +132,31 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### Autosort Feature
-#### Description
+### \[Proposed\] Autosort feature
+
+#### Proposed Implementation
+
 Autosort allows users to view `Meeting`s, `Deliverable`s, and `Contact`s in a logical manner. Specifically, Autosort
 automatically sorts the abovementioned components by the following attributes: 
+
 * `Meeting`   - `From`'s `LocalDateTime` value in chronological order 
 * `Deadline`  - `Deadline`'s `LocalDateTime` value in chronological order 
 * `Contact`   - `Title`'s `String` value in alphabetical order 
+
 Autosort is faciliated by custom objects that implements `Comparator`.
-#### Implementation
-1. Upon addition of a new element
+
 The following sequence diagram shows how a list is autosorted upon an addition of a new element.
+
 ![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
-#### Design considerations 
-##### Algorithm
-1. Sorting algorithm (current choice): Sorts a list upon an addition or update of an element.
+
+#### Design consideration:
+
+##### Aspect: How autosorting executes
+
+* **Alternative 1 (current choice):** Sorts a list upon an addition or update of an element.
     * Pros: Error-free and easy to implement.
     * Cons: Relatively high time complexity i.e. O(nlogn).
-2. Binary search algorithm: Searches the correct index in the list to insert an element upon addition or update.
+* **Alternative 2:** Searches the correct index in the list to insert an element upon addition or update.
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
 
