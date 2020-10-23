@@ -18,6 +18,8 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
+    private Label milestone;
+    @FXML
     private Label description;
     @FXML
     private Label deadline;
@@ -31,12 +33,16 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
         assert deliverable != null;
         title.setText(deliverable.getTitle().value);
 //        title.setWrapText(true);
-        description.setText(deliverable.getDescription().value);
+        milestone.setText((deliverable.getMilestone().toString()));
+        description.setText(deliverable.getDescription().toString());
 //        description.setWrapText(true);
         deadline.setText(deliverable.getDeadline().value);
-        for (String contact : deliverable.getContacts().split(",")) {
-            contactList.getChildren().add(new Label("- " + contact));
-        }
+        deliverable.getContacts().value.ifPresentOrElse(contacts -> {
+            for (String contact : contacts.split(",")) {
+                contactList.getChildren().add(new Label("- " + contact));
+            }
+        }, () -> contactList.getChildren().add(new Label(deliverable.getContacts().toString())));
+
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
             isCompleted.setStyle("-fx-background-color: #32cd32");

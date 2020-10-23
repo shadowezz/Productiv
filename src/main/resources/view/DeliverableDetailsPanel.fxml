@@ -6,16 +6,18 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.FlowPane?>
 <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
           prefHeight="300" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <VBox>
         <children>
             <Label fx:id="title" styleClass="details_title" VBox.vgrow="ALWAYS" />
             <HBox spacing="5">
-                <children>
+                <FlowPane fx:id="tags">
                     <Label fx:id="deadline" styleClass="cell_small_label" VBox.vgrow="ALWAYS" />
                     <Label fx:id="isCompleted" styleClass="tag_label" VBox.vgrow="ALWAYS" />
-                </children>
+                    <Label fx:id="milestone" styleClass="tag_label" />
+                </FlowPane>
                 <padding>
                     <Insets bottom="40" />
                 </padding>

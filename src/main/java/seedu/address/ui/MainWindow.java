@@ -147,7 +147,6 @@ public class MainWindow extends UiPart<Stage> {
             setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
-//            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot()); // test
             listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
