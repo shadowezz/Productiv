@@ -259,25 +259,28 @@ public class MainWindow extends UiPart<Stage> {
         switch (mode) {
         //Todo
         case PERSON:
-            /**
+            /*
             if (logicPerson.getPersonInView() != null) {
                 personDetailsPanel = new PersonDetailsPanel(logicPerson.getPersonInView());
                 detailsPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
             }
-             **/
+            */
+            break;
         case DELIVERABLE:
             if (logicDeliverable.getDeliverableInView() != null) {
                 deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
                 detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
+            break;
         //Todo
         case MEETING:
-            /**
+            /*
             if (logicMeeting.getMeetingInView() != null) {
                 meetingDetailsPanel = new MeetingDetailsPanel(logicMeeting.getMeetingInView());
                 detailsPanelPlaceholder.getChildren().add(meetingDetailsPanel.getRoot());
             }
-             **/
+            */
+            break;
         default:
             assert false : "invalid mode type: " + ModeEnum.getModeOptions();
         }

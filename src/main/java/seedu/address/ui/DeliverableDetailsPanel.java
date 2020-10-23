@@ -2,15 +2,16 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
+/**
+ * Panel containing the expanded details of a deliverable.
+ */
 public class DeliverableDetailsPanel extends UiPart<Region> {
     private static final String FXML = "DeliverableDetailsPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(DeliverableDetailsPanel.class);
@@ -28,14 +29,17 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
     @FXML
     private Label isCompleted;
 
+    /**
+     * Creates a {@code DeliverableDetailsPanel} with the given {@code Deliverable}
+     */
     public DeliverableDetailsPanel(Deliverable deliverable) {
         super(FXML);
         assert deliverable != null;
         title.setText(deliverable.getTitle().value);
-//        title.setWrapText(true);
+        // title.setWrapText(true);
         milestone.setText((deliverable.getMilestone().toString()));
         description.setText(deliverable.getDescription().toString());
-//        description.setWrapText(true);
+        // description.setWrapText(true);
         deadline.setText(deliverable.getDeadline().value);
         deliverable.getContacts().value.ifPresentOrElse(contacts -> {
             for (String contact : contacts.split(",")) {

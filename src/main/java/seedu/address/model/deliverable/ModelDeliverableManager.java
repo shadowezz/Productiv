@@ -11,11 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.core.index.Index;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.util.SampleDataUtil;
 
 /**
  * Represents the in-memory model of the meeting book data
