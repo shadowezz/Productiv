@@ -45,6 +45,6 @@ public class ViewCommand extends Command {
 
         Deliverable deliverableToView = lastShownList.get(targetIndex.getZeroBased());
         modelDeliverable.setDeliverableInView(deliverableToView);
-        return new CommandResult(String.format(MESSAGE_VIEW_DELIVERABLE_SUCCESS, deliverableToView), deliverableToView);
+        return new CommandResult(String.format(MESSAGE_VIEW_DELIVERABLE_SUCCESS, deliverableToView));
     }
 }

@@ -102,11 +102,15 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void deleteDeliverable(Deliverable target) {
         deliverableBook.removeDeliverable(target);
+        if (deliverableInView.isSameDeliverable(target)) {
+            deliverableInView = null;
+        }
     }
 
     @Override
     public void addDeliverable(Deliverable deliverable) {
         deliverableBook.addDeliverable(deliverable);
+        setDeliverableInView(deliverable);
         updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
     }
 
@@ -114,6 +118,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireAllNonNull(target, editedDeliverable);
         deliverableBook.setDeliverable(target, editedDeliverable);
+        setDeliverableInView(editedDeliverable);
     }
 
     @Override

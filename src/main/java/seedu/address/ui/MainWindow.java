@@ -152,7 +152,7 @@ public class MainWindow extends UiPart<Stage> {
             setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
-            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot()); // test
+//            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot()); // test
             listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -203,8 +203,6 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
-//        deliverableDetailsPanel = new DeliverableDetailsPanel();
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
@@ -261,20 +259,39 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    private void handleDisplay(Item itemToView) {
-        assert itemToView != null;
-        if (itemToView instanceof Deliverable) {
-            Deliverable deliverableToDisplay = (Deliverable) itemToView;
-            detailsPanelPlaceholder.getChildren().clear();
-            deliverableDetailsPanel = new DeliverableDetailsPanel(deliverableToDisplay);
-            detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
-        }
-    }
-
     private void updateDetailsPanel() {
-        deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
         detailsPanelPlaceholder.getChildren().clear();
-        detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
+
+        switch (mode) {
+        //Todo
+        case PERSON:
+            /**
+            if (logicPerson.getPersonInView() != null) {
+                personDetailsPanel = new PersonDetailsPanel(logicPerson.getPersonInView());
+                detailsPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
+            }
+             **/
+        case DELIVERABLE:
+            if (logicDeliverable.getDeliverableInView() != null) {
+                deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
+                detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
+            }
+        //Todo
+        case MEETING:
+            /**
+            if (logicMeeting.getMeetingInView() != null) {
+                meetingDetailsPanel = new MeetingDetailsPanel(logicMeeting.getMeetingInView());
+                detailsPanelPlaceholder.getChildren().add(meetingDetailsPanel.getRoot());
+            }
+             **/
+        default:
+            assert false : "invalid mode type: " + ModeEnum.getModeOptions();
+        }
+
+
+
+
+
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -322,12 +339,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
+            } else {
+                updateDetailsPanel();
             }
 
-//            if (commandResult.getItemViewed() != null) {
-//                handleDisplay(commandResult.getItemViewed());
-//            }
-            updateDetailsPanel();
 
             return commandResult;
         } catch (CommandException | ParseException e) {

@@ -2,9 +2,12 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
@@ -19,21 +22,28 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
     @FXML
     private Label deadline;
     @FXML
-    private Label contact;
+    private VBox contactList;
+    @FXML
+    private Label isCompleted;
 
     public DeliverableDetailsPanel(Deliverable deliverable) {
         super(FXML);
-        if (deliverable == null) {
-            return;
-        }
+        assert deliverable != null;
         title.setText(deliverable.getTitle().value);
+//        title.setWrapText(true);
         description.setText(deliverable.getDescription().value);
+//        description.setWrapText(true);
         deadline.setText(deliverable.getDeadline().value);
-        contact.setText(deliverable.getContacts());
+        for (String contact : deliverable.getContacts().split(",")) {
+            contactList.getChildren().add(new Label("- " + contact));
+        }
+        if (deliverable.getIsComplete()) {
+            isCompleted.setText("completed");
+            isCompleted.setStyle("-fx-background-color: #32cd32");
+        } else {
+            isCompleted.setText("on-going");
+            isCompleted.setStyle("-fx-background-color: #ffa500");
+        }
 
-    }
-
-    public DeliverableDetailsPanel() {
-        super(FXML);
     }
 }

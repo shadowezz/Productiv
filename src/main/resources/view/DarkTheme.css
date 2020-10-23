@@ -324,3 +324,13 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+.details_title {
+    -fx-font-weight: bold;
+    -fx-font-size: 32;
+}
+
+.details_subheading {
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}

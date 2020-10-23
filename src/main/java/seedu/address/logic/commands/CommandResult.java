@@ -22,7 +22,6 @@ public class CommandResult {
 
     private final ModeEnum mode;
 
-    private Item itemViewed;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -42,11 +41,6 @@ public class CommandResult {
         this(feedbackToUser, false, false, null);
     }
 
-    public CommandResult(String feedbackToUser, Item itemViewed) {
-        this(feedbackToUser, false, false, null);
-        this.itemViewed = itemViewed;
-    }
-
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
@@ -63,9 +57,6 @@ public class CommandResult {
         return mode;
     }
 
-    public Item getItemViewed() {
-        return this.itemViewed;
-    }
 
     @Override
     public boolean equals(Object other) {

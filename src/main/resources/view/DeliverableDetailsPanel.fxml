@@ -2,11 +2,32 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="testing" text="No deliverables displayed now." visible="false"/>
-    <Label fx:id="title" text="Title: "  />
-    <Label fx:id="description" text="Description: " />
-    <Label fx:id="deadline" text="Deadline: " />
-    <Label fx:id="contact" text="Contact: " />
-</VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="300" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox>
+        <children>
+            <Label fx:id="title" styleClass="details_title" VBox.vgrow="ALWAYS" />
+            <HBox spacing="5">
+                <children>
+                    <Label fx:id="deadline" styleClass="cell_small_label" VBox.vgrow="ALWAYS" />
+                    <Label fx:id="isCompleted" styleClass="tag_label" VBox.vgrow="ALWAYS" />
+                </children>
+                <padding>
+                    <Insets bottom="40" />
+                </padding>
+            </HBox>
+            <Label text="Description" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
+            <Label fx:id="description" styleClass="cell_large_label" text="NIL" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="20" />
+                </padding>
+            </Label>
+            <Label text="Contacts" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
+            <VBox fx:id="contactList" styleClass="cell_large_label" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS"/>
+        </children>
+    </VBox>
+</ListView>
