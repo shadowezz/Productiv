@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.commands.meeting.DeleteCommand;
+import seedu.address.logic.commands.meeting.EditCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -44,6 +45,9 @@ public class MeetingBookParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
+
+        case EditCommand.COMMAND_WORD:
+            return new EditCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

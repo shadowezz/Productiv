@@ -26,11 +26,11 @@ public class DeliverableTest {
         // null -> returns false
         assertFalse(HOMEPAGE.isSameDeliverable(null));
 
-        // different title -> returns false
+        // different title, everything else same -> returns false
         Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Implement home page").build();
         assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
 
-        // same title -> returns true
+        // same title, different other attributes -> returns true
         Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withTitle("Build home page").build();
         assertTrue(HOMEPAGE.isSameDeliverable(editedNavigation));
     }
@@ -56,6 +56,14 @@ public class DeliverableTest {
         // different title -> returns false
         Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Implement home page").build();
         assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
+
+        // different milestone -> returns false
+
+        // different description -> returns false
+
+        // different deadline -> returns false
+
+        // different contacts -> returns false
 
     }
 }

@@ -2,6 +2,7 @@ package seedu.address.model.meeting.meeting;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import seedu.address.model.util.Contacts;
@@ -14,6 +15,8 @@ import seedu.address.model.util.Title;
  */
 public class Meeting {
 
+    public static final String INCORRECT_FROM_AND_TO_ORDER = "From date should be earlier than To date.";
+
     private final Title title;
     private final OptionalDescription description;
     private final From from;
@@ -25,14 +28,30 @@ public class Meeting {
      * Every field must be present and not null.
      */
     public Meeting(Title title, OptionalDescription description, From from, To to,
-                   Contacts contacts, Location location) {
+                   Contacts contacts, Location location) throws IllegalArgumentException {
+
         requireAllNonNull(title, description, from, to, contacts, location);
+
+        if (!isValidFromAndTo(from, to)) {
+            throw new IllegalArgumentException(INCORRECT_FROM_AND_TO_ORDER);
+        }
+
         this.title = title;
         this.description = description;
         this.from = from;
         this.to = to;
         this.contacts = contacts;
         this.location = location;
+    }
+
+    /**
+     * Returns true if From is earlier than To chronologically.
+     */
+    public static boolean isValidFromAndTo (From from, To to) {
+        LocalDateTime dateFrom = from.getLocalDateTime();
+        LocalDateTime dateTo = to.getLocalDateTime();
+
+        return dateFrom.compareTo(dateTo) <= 0;
     }
 
     public Title getTitle() {
@@ -45,6 +64,10 @@ public class Meeting {
 
     public From getFrom() {
         return from;
+    }
+
+    public LocalDateTime getFromLocalDateTime() {
+        return from.getLocalDateTime();
     }
 
     public To getTo() {
@@ -106,18 +129,18 @@ public class Meeting {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getTitle())
-                .append(" Title: ")
-                .append(getDescription())
+        builder.append(" Title: ")
+                .append(getTitle())
                 .append(" Description: ")
-                .append(getFrom())
+                .append(getDescription())
                 .append(" From: ")
-                .append(getTo())
+                .append(getFrom())
                 .append(" To: ")
-                .append(getContacts())
+                .append(getTo())
                 .append(" Contacts: ")
-                .append(getLocation())
-                .append(" Location: ");
+                .append(getContacts())
+                .append(" Location: ")
+                .append(getLocation());
         return builder.toString();
     }
 

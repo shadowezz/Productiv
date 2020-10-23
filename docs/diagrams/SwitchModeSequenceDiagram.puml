@@ -1,0 +1,65 @@
+@startuml
+!include style.puml
+
+box UI UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicModeManager" as LogicModeManager LOGIC_COLOR
+participant ":ModeParser" as ModeParser LOGIC_COLOR
+participant ":SwitchCommandParser" as SwitchCommandParser LOGIC_COLOR
+participant ":SwitchCommand" as SwitchCommand LOGIC_COLOR
+end box
+
+[-> MainWindow : executeCommand(switchMode)
+activate MainWindow
+
+MainWindow -> LogicModeManager : execute(switchMode)
+activate LogicModeManager
+
+LogicModeManager -> ModeParser : parseCommand(switchMode)
+activate ModeParser
+
+create SwitchCommandParser
+ModeParser -> SwitchCommandParser: SwitchCommandParser()
+activate SwitchCommandParser
+SwitchCommandParser --> ModeParser
+deactivate SwitchCommandParser
+
+ModeParser -> SwitchCommandParser: parse(arguments)
+activate SwitchCommandParser
+
+create SwitchCommand
+SwitchCommandParser -> SwitchCommand: SwitchCommand(arguments)
+activate SwitchCommand
+SwitchCommand --> SwitchCommandParser
+deactivate SwitchCommand
+
+SwitchCommandParser --> ModeParser
+deactivate SwitchCommandParser
+
+ModeParser --> LogicModeManager : command
+deactivate ModeParser
+
+destroy SwitchCommandParser
+
+LogicModeManager -> SwitchCommand : execute()
+activate SwitchCommand
+
+SwitchCommand --> LogicModeManager : result
+deactivate SwitchCommand
+SwitchCommand -[hidden]-> LogicModeManager : result
+destroy SwitchCommand
+
+LogicModeManager --> MainWindow : result
+deactivate LogicModeManager
+
+MainWindow -> MainWindow: switchMode(mode)
+activate MainWindow
+MainWindow --> MainWindow
+
+deactivate MainWindow
+[<--MainWindow
+
+@enduml

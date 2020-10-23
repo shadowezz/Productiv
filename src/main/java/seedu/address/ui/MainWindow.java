@@ -21,11 +21,6 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.deliverable.deliverable.Deadline;
-import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.util.Description;
-import seedu.address.model.util.Item;
-import seedu.address.model.util.Title;
 
 /**
  * The Main Window. Provides the basic application layout containing
