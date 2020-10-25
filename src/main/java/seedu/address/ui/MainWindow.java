@@ -63,10 +63,10 @@ public class MainWindow extends UiPart<Stage> {
     private Button personButton;
 
     @FXML
-    private StackPane listPanelPlaceholder;
+    private StackPane leftPanelPlaceholder;
 
     @FXML
-    private StackPane detailsPanelPlaceholder;
+    private StackPane rightPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -135,25 +135,25 @@ public class MainWindow extends UiPart<Stage> {
     public void switchMode(ModeEnum mode) {
         requireNonNull(mode);
         this.mode = mode;
-        detailsPanelPlaceholder.getChildren().clear(); // clear details panel
-        listPanelPlaceholder.getChildren().clear(); // remove current list
+        rightPanelPlaceholder.getChildren().clear(); // clear details panel
+        leftPanelPlaceholder.getChildren().clear(); // remove current list
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
         resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
         case PERSON:
-            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             setUnderlineButton(personButton);
             break;
         case DELIVERABLE:
-            listPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
+            leftPanelPlaceholder.getChildren().add(deliverableListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicDeliverable.getDeliverableBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             setUnderlineButton(deliverableButton);
             break;
         case MEETING:
-            listPanelPlaceholder.getChildren().add(meetingListPanel.getRoot());
+            leftPanelPlaceholder.getChildren().add(meetingListPanel.getRoot());
             statusBarFooter = new StatusBarFooter(logicMeeting.getMeetingBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
             setUnderlineButton(meetingButton);
@@ -198,7 +198,7 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
 
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
-        listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
         meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
@@ -253,8 +253,12 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Updates the details panel whenever a command is executed. This is not called after a switch command
+     * since the details panel should be left empty after a switch in mode has been made.
+     */
     private void updateDetailsPanel() {
-        detailsPanelPlaceholder.getChildren().clear();
+        rightPanelPlaceholder.getChildren().clear();
 
         switch (mode) {
         //Todo
@@ -269,7 +273,7 @@ public class MainWindow extends UiPart<Stage> {
         case DELIVERABLE:
             if (logicDeliverable.getDeliverableInView() != null) {
                 deliverableDetailsPanel = new DeliverableDetailsPanel(logicDeliverable.getDeliverableInView());
-                detailsPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
+                rightPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
             break;
         //Todo
@@ -284,11 +288,6 @@ public class MainWindow extends UiPart<Stage> {
         default:
             assert false : "invalid mode type: " + ModeEnum.getModeOptions();
         }
-
-
-
-
-
     }
 
     public PersonListPanel getPersonListPanel() {
