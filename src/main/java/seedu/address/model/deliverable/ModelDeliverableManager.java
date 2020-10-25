@@ -24,6 +24,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     private final DeliverableBook deliverableBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Deliverable> filteredDeliverables;
+    private Deliverable deliverableInView;
 
     /**
      * Initializes a ModelDeliverableManager with the given addressBook and userPrefs.
@@ -99,11 +100,15 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void deleteDeliverable(Deliverable target) {
         deliverableBook.removeDeliverable(target);
+        if (deliverableInView.isSameDeliverable(target)) {
+            deliverableInView = null;
+        }
     }
 
     @Override
     public void addDeliverable(Deliverable deliverable) {
         deliverableBook.addDeliverable(deliverable);
+        setDeliverableInView(deliverable);
         updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
     }
 
@@ -111,11 +116,17 @@ public class ModelDeliverableManager implements ModelDeliverable {
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireAllNonNull(target, editedDeliverable);
         deliverableBook.setDeliverable(target, editedDeliverable);
+        setDeliverableInView(editedDeliverable);
     }
 
     @Override
-    public void completeDeliverable(Deliverable target) {
+    public Deliverable getDeliverableInView() {
+        return deliverableInView;
+    }
 
+    @Override
+    public void setDeliverableInView(Deliverable deliverableInView) {
+        this.deliverableInView = deliverableInView;
     }
 
     //=========== Filtered Deliverable List Accessors =============================================================
