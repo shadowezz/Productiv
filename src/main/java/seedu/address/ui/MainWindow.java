@@ -40,6 +40,8 @@ public class MainWindow extends UiPart<Stage> {
     private LogicMeeting logicMeeting;
 
     // Independent Ui parts residing in this Ui container
+    private CalendarListPanel calendarListPanel;
+    private ProjectCompletionStatusPanel projectCompletionStatusPanel;
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
     private MeetingListPanel meetingListPanel;
@@ -52,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Button helpButton;
+
+    @FXML
+    private Button dashboardButton;
 
     @FXML
     private Button deliverableButton;
@@ -97,8 +102,8 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
 
-        mode = ModeEnum.PERSON; // default to contacts list first
-        setUnderlineButton(personButton);
+        mode = ModeEnum.DASHBOARD; // default to dashboard
+        setUnderlineButton(dashboardButton);
     }
 
     public Stage getPrimaryStage() {
@@ -140,6 +145,11 @@ public class MainWindow extends UiPart<Stage> {
         statusbarPlaceholder.getChildren().clear(); // remove current status bar
         resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
+        case DASHBOARD:
+            rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
+            leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
+            setUnderlineButton(dashboardButton);
+            break;
         case PERSON:
             leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
             StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
@@ -164,13 +174,19 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setUnderlineButton(Button button) {
+        dashboardButton.setUnderline(false);
         personButton.setUnderline(false);
         deliverableButton.setUnderline(false);
         meetingButton.setUnderline(false);
         button.setUnderline(true);
     }
 
-    // TODO define switch tabs here
+    /**
+     * Switches to dashboard mode.
+     */
+    public void switchDashboard() {
+        switchMode(ModeEnum.DASHBOARD);
+    }
 
     /**
      * Switches to contact mode.
@@ -192,14 +208,19 @@ public class MainWindow extends UiPart<Stage> {
     public void switchMeeting() {
         switchMode(ModeEnum.MEETING);
     }
+
     /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
 
-        personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
-        leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        calendarListPanel = new CalendarListPanel(logicDeliverable.getFilteredDeliverableList(),
+                logicMeeting.getFilteredMeetingList());
+        projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getFilteredDeliverableList());
+        leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
+        rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
+        personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
         meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
 
@@ -290,10 +311,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
@@ -302,7 +319,7 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = null;
-            if (logicMode.isModeCommand(commandText)) {
+            if (logicMode.isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
                 commandResult = logicMode.execute(commandText);
             } else {
                 switch (mode) {
