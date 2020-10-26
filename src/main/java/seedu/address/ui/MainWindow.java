@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
 import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,8 +22,6 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.meeting.meeting.Meeting;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -105,8 +102,8 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
 
-        mode = ModeEnum.PERSON; // default to contacts list first
-        setUnderlineButton(personButton);
+        mode = ModeEnum.DASHBOARD; // default to dashboard
+        setUnderlineButton(dashboardButton);
     }
 
     public Stage getPrimaryStage() {
@@ -216,15 +213,17 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
+        // this dosen't work cos calendar list currently not updated upon any edit to deliverables / meetings
+        // might need to reference calendarItems via models
         //        ObservableList<Object> calendarItems = FXCollections.observableArrayList();
         //        for (Deliverable d: logicDeliverable.getFilteredDeliverableList()) {
-        //            calendarItems.add(d); // TODO calendar list currently not updated upon any edit to deliverables
-        //            // might need to reference calendarItems via models
+        //            calendarItems.add(d);
         //        }
         calendarListPanel = new CalendarListPanel(FXCollections.observableArrayList());
+        // leftPanelPlaceholder.getChildren().add(deliverableCompletionStatus.getRoot());
+        rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
-        leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
         meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
@@ -314,10 +313,6 @@ public class MainWindow extends UiPart<Stage> {
         default:
             assert false : "invalid mode type: " + ModeEnum.getModeOptions();
         }
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**
