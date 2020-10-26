@@ -1,0 +1,67 @@
+@startuml
+!include style.puml
+
+box Model MODEL_COLOR_T1
+participant ":DeliverableModel" as Mod MODEL_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":TotalNumDeliverables" as Total LOGIC_COLOR
+participant ":NumCompletedDeliverables" as Com LOGIC_COLOR
+participant ":OCP" as OCP LOGIC_COLOR
+end box
+
+[-> Mod: add(deliverable)
+activate Mod
+Mod -> Total : add(1)
+activate Total
+Total -> OCP : update()
+activate OCP
+OCP --> Total
+deactivate OCP
+Total --> Mod
+deactivate Total
+[<-- Mod
+deactivate Mod
+
+[-> Mod: done(deliverable)
+activate Mod
+Mod -> Com : add(1)
+activate Com
+Com -> ":OCP" as OCP: update()
+activate OCP
+OCP --> Com
+deactivate OCP
+Com --> Mod
+deactivate Com
+[<-- Mod
+deactivate Mod
+
+[-> Mod: delete(deliverable)
+activate Mod
+
+opt isCompleted(deliverable)
+
+Mod -> Com : sub(1)
+activate Com
+Com -> ":OCP" as OCP: update()
+activate OCP
+OCP --> Com
+deactivate OCP
+Com --> Mod
+deactivate Com
+
+end
+
+Mod -> Total : sub(1)
+activate Total
+Total -> ":OCP" as OCP: update()
+activate OCP
+OCP --> Total
+deactivate OCP
+Total --> Mod
+deactivate Total
+
+[<-- Mod
+deactivate Mod
+@enduml
