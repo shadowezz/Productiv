@@ -21,6 +21,7 @@ public class CommandResult {
 
     private final ModeEnum mode;
 
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -54,6 +55,7 @@ public class CommandResult {
     public ModeEnum getMode() {
         return mode;
     }
+
 
     @Override
     public boolean equals(Object other) {

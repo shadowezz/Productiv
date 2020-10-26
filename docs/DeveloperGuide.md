@@ -132,90 +132,135 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+### [In Progress] \[DateTime\]
 
-### \[Proposed\] Undo/redo feature
+#### Proposed Implementation
+The implementation allows users to parse and compare unique DateTime types. 
+
+To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
+* Single digits fields must include leading zero: `01-01-0101 01:10`.
+* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+
+DateTime will throw a parsing error if
+* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
+* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
+
+The following is an example of how DateTime can be implemented into the model
+
+![DateTimeClassDiagram](images/DateTimeClass.png)
+* DateTime is a class that can be used by all models.
+* From, To and Deadline are fields which extend from DateTime.
+
+DateTime can be used to compare with other DateTime objects:
+* Enable deliverables to be sorted based on which one is due the earliest.
+* DateTime can be used to identify time clashes between different meetings.
+
+#### Design consideration:
+* **Alternative 1 (current choice):** Throws error when invalid range is 
+given for dates
+  * E.g `29-02-2019` or `31-11-2020`.
+  * Pros: Notifies user he has made a mistake.
+  * Cons: Costs time to re-type the entire command.
+  
+* **Alternative 2:** Command knows how to resolve overflow of dates. 
+    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * Pros: Saves time for the user if he had intended to select the last day of the month.
+    * Cons: The date specified may not be the intended input.
+
+### \[Proposed\] Autosort feature
 
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+Autosort allows users to view `Meeting`s, `Deliverable`s, and `Contact`s in a logical manner. Specifically, Autosort
+automatically sorts the abovementioned components by the following attributes: 
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+* `Meeting`   - `From`'s `LocalDateTime` value in chronological order 
+* `Deadline`  - `Deadline`'s `LocalDateTime` value in chronological order 
+* `Contact`   - `Title`'s `String` value in alphabetical order 
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+Autosort is faciliated by custom objects that implements `Comparator`.
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+The following sequence diagram shows how a list is autosorted upon an addition of a new element.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
+![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How undo & redo executes
+##### Aspect: How autosorting executes
 
-* **Alternative 1 (current choice):** Saves the entire address book.
+* **Alternative 1 (current choice):** Sorts a list upon an addition or update of an element.
+    * Pros: Error-free and easy to implement.
+    * Cons: Relatively high time complexity i.e. O(nlogn).
+* **Alternative 2:** Searches the correct index in the list to insert an element upon addition or update.
+    * Pros: Relatively low time complexity i.e. O(logn).
+    * Cons: Prone to error and difficult to implement.
+
+### [In progress] Switch Mode feature
+
+#### Implementation
+
+Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
+Based on the current mode, the user input is passed to the relevant `LogicManager`. 
+Following that, the `LogicManager` will parse the user input and produce the relevant results.
+The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
+
+![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
+Figure <?> Switch Command Sequence Diagram (In Progress)
+
+The user input is passed to `LogicModeManager`. 
+`LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
+`MainWindow` then reflects the corresponding list in the user interface and
+will pass subsequent user inputs to the corresponding `LogicManager`.
+
+#### Design consideration:
+
+##### Aspect: Where mode is stored
+
+* **Alternative 1 (current choice):** Store mode in `MainWindow`
   * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+  * Cons: May violate Single Responsibility Principle.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+* **Alternative 2:** Store mode in a `LogicModeManager`
+  * Pros: Adheres to the Single Responsibility Principle better.
+  * Cons: `LogicModeManager` would need to have references to the other logic managers. 
+  It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+### \[Proposed\] View feature
+
+#### Proposed Implementation
+
+The view feature allows users to view the details of a specific `Meeting`, `Deliverable` or `Contact` on the right
+panel of the display window.
+
+The proposed view mechanism is facilitated by implementing the following operations:
+
+* `ModelDeliverable#setDeliverableInView()` — Changes the `Deliverable` to be displayed
+* `ModelPerson#setContactInView()` — Changes the `Contact` to be displayed
+* `ModelMeeting#setMeetingInView()` — Changes the `Meeting` to be displayed
+
+Given below is an example usage scenario of how viewing a deliverable works.
+
+Step 1. The user executes `view 2` command to view the details of the second deliverable in the list of deliverables. The view command calls `ModelDeliverable#setDeliverableInView()` which updates the deliverable currently in view in the `ModelDeliverable`. This newly updated deliverable is then fetched and displayed to the user on the right panel.
+
+The following sequence diagram shows how the view operation works:
+
+![ViewCommandSequenceDiagram](images/ViewCommandSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How view executes
+
+* **Alternative 1 (current choice):** Stores the item in view inside the respective model.
+  * Pros: Ensures persistence as it can be referred to repeatedly.
+  * Cons: Requires another operation to fetch the item in view to be displayed.
+
+* **Alternative 2:** Passes the item in view inside the Command Result to the UI component
+  * Pros: Does not require an additional operation to fetch the item in view.
+  * Cons: Inappropriate use of Command Result whose primary objective is to pass feedback to the user.
+
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -672,13 +717,42 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Shutdown
 
-### Deleting a person
+    1. Click the window close button _OR_
+    1. Enter input: `exit`, to close the program. 
+    
+### Switching Modes
 
-1. Deleting a person while all persons are being shown
+1. Via Mouse input
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
+
+1. Via Command Line Input
+
+    1. Test case: `switch deliverable` or `switch meeting`<br>
+    Expected: Window displays list of saved `deliverables` or `meetings`.
+    
+    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
+    Expected: Status bar throws error message.
+
+### Adding an item
+
+1. Adding a contact while in `Contact` mode
+
+   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `add n/john`<br>
+      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+
+   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
+      Expected: Similar to previous.
+
+### Deleting an item
+
+1. Deleting a contact while in `contact` mode
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -689,12 +763,20 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
+1. Data files are saved in a `data` folder.<br>
+3 JSON files are created:
+    * `addressbook.json`
+    * `meetingBook.json`
+    * `deliverablebook.json`
+
+All 3 files contain information stored by the user from their respective modes.
+
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+   1. Missing data/corrupted files: delete `addressbook.json` file and start the jar file again<br> 
+   Expected: Data file should re-initialise a list of sample contacts
+   
+_{more to be added}_

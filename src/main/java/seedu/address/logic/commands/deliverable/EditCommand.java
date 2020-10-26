@@ -104,10 +104,13 @@ public class EditCommand extends Command {
 
         Deadline updatedDeadline = editDeliverableDescriptor.getDeadline().orElse(deliverableToEdit.getDeadline());
 
+        boolean updatedIsComplete = deliverableToEdit.getIsComplete();
+
         // Contacts takes optional String
         Contacts updatedContacts = editDeliverableDescriptor.getContacts().orElse(deliverableToEdit.getContacts());
 
-        return new Deliverable(updatedTitle, updatedMilestone, updatedDesc, updatedDeadline, updatedContacts);
+        return new Deliverable(
+                updatedTitle, updatedMilestone, updatedDesc, updatedDeadline, updatedIsComplete, updatedContacts);
     }
 
     @Override
@@ -137,6 +140,7 @@ public class EditCommand extends Command {
         private Milestone milestone;
         private OptionalDescription description;
         private Deadline deadline;
+        private boolean isComplete;
         private Contacts contacts;
 
         public EditDeliverableDescriptor() {
@@ -152,6 +156,7 @@ public class EditCommand extends Command {
             setMilestone(toCopy.milestone);
             setDescription(toCopy.description);
             setDeadline(toCopy.deadline);
+            setIsComplete(toCopy.isComplete);
             setContacts(toCopy.contacts);
         }
 
@@ -194,6 +199,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(deadline);
         }
 
+        public void setIsComplete(boolean isComplete) {
+            this.isComplete = isComplete;
+        }
+
+        public Optional<Boolean> getIsComplete() {
+            return Optional.ofNullable(this.isComplete);
+        }
+
         public void setContacts(Contacts contact) {
             this.contacts = contact;
         }
@@ -222,6 +235,7 @@ public class EditCommand extends Command {
                     && getMilestone().equals(e.getMilestone())
                     && getDescription().equals(e.getDescription())
                     && getDeadline().equals(e.getDeadline())
+                    && getIsComplete().equals(e.getIsComplete())
                     && getContacts().equals(e.getContacts());
         }
 

@@ -77,7 +77,16 @@ public class EditCommand extends Command {
         }
 
         Meeting meetingToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Meeting editedMeeting = createEditedMeeting(meetingToEdit, editMeetingDescriptor);
+        Meeting editedMeeting;
+
+        try {
+            editedMeeting = createEditedMeeting(meetingToEdit, editMeetingDescriptor);
+        } catch (IllegalArgumentException e) {
+            throw new CommandException(e.getMessage());
+        }
+
+        assert Meeting.isValidFromAndTo(editedMeeting.getFrom(), editedMeeting.getTo())
+                : "From should be earlier than To";
 
         if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
@@ -90,7 +99,8 @@ public class EditCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
     }
 
-    private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
+    private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor)
+            throws IllegalArgumentException {
         assert meetingToEdit != null;
 
         Title updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());

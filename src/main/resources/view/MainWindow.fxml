@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Region?>
+
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="Address App" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+         title="Address App" minWidth="700" minHeight="700" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -21,7 +22,6 @@
         <URL value="@DarkTheme.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
-
       <VBox>
         <HBox id="navBar" fx:id="navBar" VBox.vgrow="NEVER">
           <HBox HBox.hgrow="NEVER">
@@ -48,12 +48,24 @@
           </padding>
         </StackPane>
 
-        <VBox fx:id="list" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="listPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
+        <HBox fx:id="display" VBox.vgrow="ALWAYS">
+          <VBox minWidth="350">
+            <VBox fx:id="list" styleClass="pane-with-border" maxWidth="900" prefWidth="900" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+              </padding>
+              <StackPane fx:id="leftPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+            </VBox>
+          </VBox>
+          <HBox>
+            <VBox fx:id="details" styleClass="pane-with-border" maxWidth="900" prefWidth="900" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+              </padding>
+              <StackPane fx:id="rightPanelPlaceholder" maxWidth="900" prefWidth="900" VBox.vgrow="ALWAYS" />
+            </VBox>
+          </HBox>
+        </HBox>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
