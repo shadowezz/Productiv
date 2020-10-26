@@ -5,6 +5,8 @@ import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
 
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,6 +23,8 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.meeting.meeting.Meeting;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -40,6 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private LogicMeeting logicMeeting;
 
     // Independent Ui parts residing in this Ui container
+    private CalendarListPanel calendarListPanel;
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
     private MeetingListPanel meetingListPanel;
@@ -144,7 +149,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay.setFeedbackToUser(String.format(MESSAGE_SUCCESS, mode)); // if userinput is through clicking
         switch (mode) {
         case DASHBOARD:
-//            listPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
             setUnderlineButton(dashboardButton);
             break;
         case PERSON:
@@ -171,6 +176,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setUnderlineButton(Button button) {
+        dashboardButton.setUnderline(false);
         personButton.setUnderline(false);
         deliverableButton.setUnderline(false);
         meetingButton.setUnderline(false);
@@ -209,6 +215,13 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+
+        //        ObservableList<Object> calendarItems = FXCollections.observableArrayList();
+        //        for (Deliverable d: logicDeliverable.getFilteredDeliverableList()) {
+        //            calendarItems.add(d); // TODO calendar list currently not updated upon any edit to deliverables
+        //            // might need to reference calendarItems via models
+        //        }
+        calendarListPanel = new CalendarListPanel(FXCollections.observableArrayList());
 
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
         leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -315,7 +328,7 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = null;
-            if (logicMode.isModeCommand(commandText)) {
+            if (logicMode.isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
                 commandResult = logicMode.execute(commandText);
             } else {
                 switch (mode) {
