@@ -11,7 +11,6 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.person.person.Person;
 
 /**
  * Panel containing the list of persons.
