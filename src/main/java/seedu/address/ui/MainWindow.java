@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
 
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -42,6 +41,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private CalendarListPanel calendarListPanel;
+    private ProjectCompletionStatusPanel projectCompletionStatusPanel;
     private PersonListPanel personListPanel;
     private DeliverableListPanel deliverableListPanel;
     private MeetingListPanel meetingListPanel;
@@ -147,6 +147,7 @@ public class MainWindow extends UiPart<Stage> {
         switch (mode) {
         case DASHBOARD:
             rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
+            leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
             setUnderlineButton(dashboardButton);
             break;
         case PERSON:
@@ -213,18 +214,12 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        // this dosen't work cos calendar list currently not updated upon any edit to deliverables / meetings
-        // might need to reference calendarItems via models
-        //        ObservableList<Object> calendarItems = FXCollections.observableArrayList();
-        //        for (Deliverable d: logicDeliverable.getFilteredDeliverableList()) {
-        //            calendarItems.add(d);
-        //        }
-        calendarListPanel = new CalendarListPanel(FXCollections.observableArrayList());
-        // leftPanelPlaceholder.getChildren().add(deliverableCompletionStatus.getRoot());
+        calendarListPanel = new CalendarListPanel(logicDeliverable.getFilteredDeliverableList(), logicMeeting.getFilteredMeetingList());
+        projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getFilteredDeliverableList());
+        leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
         rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
         personListPanel = new PersonListPanel(logicPerson.getFilteredPersonList());
-
         deliverableListPanel = new DeliverableListPanel(logicDeliverable.getFilteredDeliverableList());
         meetingListPanel = new MeetingListPanel(logicMeeting.getFilteredMeetingList());
 

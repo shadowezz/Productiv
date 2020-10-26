@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -26,9 +27,14 @@ public class CalendarListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public CalendarListPanel(ObservableList<Object> itemList) {
+    public CalendarListPanel(ObservableList<Deliverable> deliverableList, ObservableList<Meeting> meetingList) {
         super(FXML);
-        itemListView.setItems(itemList);
+        // this dosen't work cos calendar list currently not updated upon any edit to deliverables / meetings
+        //        ObservableList<Object> calendarItems = FXCollections.observableArrayList();
+        //        for (Deliverable d: logicDeliverable.getFilteredDeliverableList()) {
+        //            calendarItems.add(d);
+        //        }
+        itemListView.setItems(FXCollections.observableArrayList());
         itemListView.setCellFactory(listView -> new ItemListViewCell());
     }
 
