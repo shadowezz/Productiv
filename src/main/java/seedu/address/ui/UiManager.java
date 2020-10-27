@@ -14,6 +14,7 @@ import seedu.address.logic.LogicDeliverable;
 import seedu.address.logic.LogicMeeting;
 import seedu.address.logic.LogicMode;
 import seedu.address.logic.LogicPerson;
+import seedu.address.model.calendar.Calendar;
 
 /**
  * The manager of the UI component.
@@ -29,19 +30,21 @@ public class UiManager implements Ui {
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
     private LogicMeeting logicMeeting;
+    private Calendar calendar;
     private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
     public UiManager(LogicMode logicMode, LogicPerson logicPerson,
-                     LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
+                     LogicDeliverable logicDeliverable, LogicMeeting logicMeeting, Calendar calendar) {
         // TODO use only a central logic object
         super();
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
+        this.calendar = calendar;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable, logicMeeting);
+            mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable, logicMeeting, calendar);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts(); // TODO change to dashboard. for now default to contact list
 
