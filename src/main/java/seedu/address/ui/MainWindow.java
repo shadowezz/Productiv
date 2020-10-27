@@ -21,6 +21,7 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.calendar.Calendar;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -38,6 +39,7 @@ public class MainWindow extends UiPart<Stage> {
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
     private LogicMeeting logicMeeting;
+    private Calendar calendar;
 
     // Independent Ui parts residing in this Ui container
     private CalendarListPanel calendarListPanel;
@@ -84,7 +86,7 @@ public class MainWindow extends UiPart<Stage> {
      * {@code LogicPerson} and {@code LogicDeliverable}.
      */
     public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
-                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
+                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting, Calendar calendar) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -93,6 +95,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
+        this.calendar = calendar;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -214,8 +217,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        calendarListPanel = new CalendarListPanel(logicDeliverable.getFilteredDeliverableList(),
-                logicMeeting.getFilteredMeetingList());
+        calendarListPanel = new CalendarListPanel(calendar.getTimeEvents());
         projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getFilteredDeliverableList());
         leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
         rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
@@ -328,9 +330,11 @@ public class MainWindow extends UiPart<Stage> {
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
+                    calendar.updateCalendarList();
                     break;
                 case MEETING:
                     commandResult = logicMeeting.execute(commandText);
+                    calendar.updateCalendarList();
                     break;
                 default:
                     assert false : "from default: " + ModeEnum.getModeOptions();
@@ -355,7 +359,6 @@ public class MainWindow extends UiPart<Stage> {
             } else {
                 updateDetailsPanel();
             }
-
 
             return commandResult;
         } catch (CommandException | ParseException e) {
