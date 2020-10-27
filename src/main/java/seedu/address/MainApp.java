@@ -23,6 +23,7 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.calendar.Calendar;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.ModelDeliverableManager;
@@ -74,6 +75,7 @@ public class MainApp extends Application {
     protected LogicMeeting logicMeeting;
     protected StorageMeeting storageMeeting;
     protected ModelMeeting modelMeeting;
+    protected Calendar calendar;
 
     protected LogicMode logicMode;
     protected Config config;
@@ -103,13 +105,15 @@ public class MainApp extends Application {
         modelPerson = initModelManager(storagePerson, userPrefs);
         modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
         modelMeeting = initMeetingModelManager(storageMeeting, userPrefs);
+        calendar = new Calendar(modelDeliverable.getFilteredDeliverableList(),
+                modelMeeting.getFilteredMeetingList());
 
         logicPerson = new LogicPersonManager(modelPerson, storagePerson);
         logicDeliverable = new LogicDeliverableManager(modelDeliverable, storageDeliverable);
         logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
         logicMode = new LogicModeManager();
 
-        ui = new UiManager(logicMode, logicPerson, logicDeliverable, logicMeeting);
+        ui = new UiManager(logicMode, logicPerson, logicDeliverable, logicMeeting, calendar);
 
     }
 
