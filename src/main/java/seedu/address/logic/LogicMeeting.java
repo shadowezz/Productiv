@@ -31,6 +31,11 @@ public interface LogicMeeting {
      */
     ReadOnlyMeetingBook getMeetingBook();
 
+    /**
+     * Returns the meeting that is currently in view.
+     */
+    Meeting getMeetingInView();
+
     /** Returns an unmodifiable view of the filtered list of Meetings */
     ObservableList<Meeting> getFilteredMeetingList();
 

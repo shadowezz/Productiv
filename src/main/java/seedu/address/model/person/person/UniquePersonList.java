@@ -3,6 +3,7 @@ package seedu.address.model.person.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.util.PersonComparator;
 
 /**
  * A list of persons that enforces uniqueness between its elements and does not allow nulls.
@@ -27,6 +29,7 @@ public class UniquePersonList implements Iterable<Person> {
     private final ObservableList<Person> internalList = FXCollections.observableArrayList();
     private final ObservableList<Person> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+    private final PersonComparator personComparator = new PersonComparator();
 
     /**
      * Returns true if the list contains an equivalent person as the given argument.
@@ -46,6 +49,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(toAdd);
+        sortList();
     }
 
     /**
@@ -66,6 +70,7 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         internalList.set(index, editedPerson);
+        sortList();
     }
 
     /**
@@ -82,6 +87,7 @@ public class UniquePersonList implements Iterable<Person> {
     public void setPersons(UniquePersonList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+        sortList();
     }
 
     /**
@@ -95,6 +101,7 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         internalList.setAll(persons);
+        sortList();
     }
 
     /**
@@ -104,8 +111,17 @@ public class UniquePersonList implements Iterable<Person> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Sort the list by Name's value
+     *
+     */
+    public void sortList() {
+        Collections.sort(internalList, personComparator);
+    }
+
     @Override
     public Iterator<Person> iterator() {
+        sortList();
         return internalList.iterator();
     }
 
