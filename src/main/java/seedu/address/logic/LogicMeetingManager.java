@@ -60,6 +60,11 @@ public class LogicMeetingManager implements LogicMeeting {
     }
 
     @Override
+    public Meeting getMeetingInView() {
+        return modelMeeting.getMeetingInView();
+    }
+
+    @Override
     public ObservableList<Meeting> getFilteredMeetingList() {
         return modelMeeting.getFilteredMeetingList();
     }
