@@ -2,8 +2,10 @@ package seedu.address.model.deliverable.deliverable;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+import seedu.address.model.event.TimeEvent;
 import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
@@ -12,7 +14,7 @@ import seedu.address.model.util.Title;
  * Represents a Deliverable in the deliverable book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Deliverable {
+public class Deliverable implements TimeEvent {
 
     // Identity fields
     private final Title title;
@@ -74,6 +76,12 @@ public class Deliverable {
 
     public Contacts getContacts() {
         return contacts;
+    }
+
+    @Override
+    public LocalDateTime getIndicatorTime() {
+        // TODO: use getter once Deadline extends DateTime + create a getter
+        return deadline.dateTimeValue;
     }
 
     /**
