@@ -15,10 +15,12 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserCommon;
 import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
-import seedu.address.model.util.Description;
+import seedu.address.model.util.Contacts;
+import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
 /**
@@ -41,15 +43,12 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Milestone milestone = ParserUtil.parseMilestone(argMultimap.getValue(PREFIX_MILESTONE).get());
-        Description description = argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
-                ? Description.createEmptyDescription()
-                : ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
+        OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
+
         Deadline deadline = argMultimap.getValue(PREFIX_DEADLINE).isEmpty()
                 ? Deadline.createEmptyDeadline()
                 : ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
-        String contacts = argMultimap.getValue(PREFIX_CONTACTS).isEmpty()
-                ? "NIL"
-                : ParserUtil.parseContacts(argMultimap.getValue(PREFIX_CONTACTS).get());
+        Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
 
         Deliverable deliverable = new Deliverable(title, milestone, description, deadline, contacts);
 

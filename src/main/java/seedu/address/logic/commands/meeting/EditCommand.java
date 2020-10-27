@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_CONTACTS;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
@@ -25,7 +26,9 @@ import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
 
-
+/**
+ * Edits the details of an existing meeting.
+ */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
@@ -46,15 +49,14 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting book.";
-    public static final String MESSAGE_INVALID_MEETING_DISPLAYED_INDEX = "Invalid Meeting index.";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists.";
 
 
     private final Index targetIndex;
     private final EditMeetingDescriptor editMeetingDescriptor;
 
     /**
-     * @param index                 of the meeting in the filtered person list to edit
+     * @param index                 of the meeting in the filtered meeting list to edit
      * @param editMeetingDescriptor details to edit the meeting with
      */
     public EditCommand(Index index, EditMeetingDescriptor editMeetingDescriptor) {
@@ -75,7 +77,16 @@ public class EditCommand extends Command {
         }
 
         Meeting meetingToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Meeting editedMeeting = createEditedMeeting(meetingToEdit, editMeetingDescriptor);
+        Meeting editedMeeting;
+
+        try {
+            editedMeeting = createEditedMeeting(meetingToEdit, editMeetingDescriptor);
+        } catch (IllegalArgumentException e) {
+            throw new CommandException(e.getMessage());
+        }
+
+        assert Meeting.isValidFromAndTo(editedMeeting.getFrom(), editedMeeting.getTo())
+                : "From should be earlier than To";
 
         if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
@@ -88,7 +99,8 @@ public class EditCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
     }
 
-    private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
+    private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor)
+            throws IllegalArgumentException {
         assert meetingToEdit != null;
 
         Title updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());

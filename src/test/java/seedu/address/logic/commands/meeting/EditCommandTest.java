@@ -2,6 +2,7 @@ package seedu.address.logic.commands.meeting;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.DESC_MEETING_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.DESC_MEETING_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_A;
@@ -126,7 +127,7 @@ class EditCommandTest {
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_B).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
-        assertCommandFailure(editCommand, modelMeeting, EditCommand.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, modelMeeting, MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
     }
 
     /**
@@ -143,7 +144,7 @@ class EditCommandTest {
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
                 new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_B).build());
 
-        assertCommandFailure(editCommand, modelMeeting, EditCommand.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, modelMeeting, MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
     }
 
     @Test

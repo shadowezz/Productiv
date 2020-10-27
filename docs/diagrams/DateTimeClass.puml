@@ -1,0 +1,23 @@
+@startuml
+!include style.puml
+
+Package Model <<Rectangle>> {
+Class Meeting MODEL_COLOR_T4
+Class From MODEL_COLOR_T3
+Class To MODEL_COLOR_T3
+
+Class Deliverable MODEL_COLOR_T4
+Class Deadline MODEL_COLOR_T3
+
+Class DateTime MODEL_COLOR_T2
+
+}
+
+Meeting *-- From
+Meeting *-- To
+Deliverable *-- Deadline
+
+From --|> DateTime
+To --|> DateTime
+Deadline --|> DateTime
+@enduml

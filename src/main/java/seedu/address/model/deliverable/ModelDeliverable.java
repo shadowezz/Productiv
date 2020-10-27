@@ -78,11 +78,9 @@ public interface ModelDeliverable {
      */
     void setDeliverable(Deliverable target, Deliverable editedDeliverable);
 
-    /**
-     * Completes the given deliverable.
-     * The deliverable must exist in the deliverable book.
-     */
-    void completeDeliverable(Deliverable target);
+    Deliverable getDeliverableInView();
+
+    void setDeliverableInView(Deliverable deliverableInView);
 
     /** Returns an unmodifiable view of the filtered deliverable list */
     ObservableList<Deliverable> getFilteredDeliverableList();

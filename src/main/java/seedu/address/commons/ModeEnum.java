@@ -14,7 +14,7 @@ public enum ModeEnum {
     private final String name;
     private final String argument;
 
-    private ModeEnum(String name, String argument) {
+    ModeEnum(String name, String argument) {
         this.name = name;
         this.argument = argument;
     }

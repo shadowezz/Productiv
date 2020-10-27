@@ -34,6 +34,9 @@ public interface LogicDeliverable {
     /** Returns an unmodifiable view of the filtered list of deliverables */
     ObservableList<Deliverable> getFilteredDeliverableList();
 
+    /** Returns the deliverable that is currently in view */
+    Deliverable getDeliverableInView();
+
     /**
      * Returns the user prefs' deliverable book file path.
      */

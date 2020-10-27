@@ -18,7 +18,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ModelPerson;
-import seedu.address.model.person.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.person.NameDescriptionContainsKeywordsPredicate;
 import seedu.address.model.person.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
@@ -33,10 +33,10 @@ public class CommandTestUtil {
     public static final String VALID_PHONE_BOB = "22222222";
     public static final String VALID_EMAIL_AMY = "amy@example.com";
     public static final String VALID_EMAIL_BOB = "bob@example.com";
-    public static final String VALID_ROLE_DEV = "dev";
-    public static final String VALID_ROLE_STK = "stk";
+    public static final String VALID_ROLE_AMY = "stk";
+    public static final String VALID_ROLE_BOB = "dev";
     public static final String VALID_DESCRIPTION_AMY = "End user";
-    public static final String VALID_DESCRIPTION_BOB = "Admin personnel";
+    public static final String VALID_DESCRIPTION_BOB = "Frontend engineer";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
     public static final String EMAIL_DESC_AMY = " " + PREFIX_EMAIL + VALID_EMAIL_AMY;
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
-    public static final String ROLE_DESC_DEV = " " + PREFIX_ROLE + VALID_ROLE_DEV;
-    public static final String ROLE_DESC_STK = " " + PREFIX_ROLE + VALID_ROLE_STK;
+    public static final String ROLE_DESC_AMY = " " + PREFIX_ROLE + VALID_ROLE_AMY;
+    public static final String ROLE_DESC_BOB = " " + PREFIX_ROLE + VALID_ROLE_BOB;
     public static final String DESCRIPTION_DESC_AMY = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_AMY;
     public static final String DESCRIPTION_DESC_BOB = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION_BOB;
 
@@ -121,7 +121,7 @@ public class CommandTestUtil {
 
         Person person = modelPerson.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String[] splitName = person.getName().fullName.split("\\s+");
-        modelPerson.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        modelPerson.updateFilteredPersonList(new NameDescriptionContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, modelPerson.getFilteredPersonList().size());
     }
