@@ -101,7 +101,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     public void deleteDeliverable(Deliverable target) {
         deliverableBook.removeDeliverable(target);
         if (deliverableInView.isSameDeliverable(target)) {
-            deliverableInView = null;
+            setDeliverableInView(null);
         }
     }
 
@@ -158,6 +158,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
         ModelDeliverableManager other = (ModelDeliverableManager) obj;
         return deliverableBook.equals(other.deliverableBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredDeliverables.equals(other.filteredDeliverables);
+                && filteredDeliverables.equals(other.filteredDeliverables)
+                && deliverableInView.equals(other.deliverableInView);
     }
 }
