@@ -10,11 +10,15 @@ import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.util.TimeEventComparator;
 
 public class Calendar {
+    private static TimeEventComparator timeEventComparator = new TimeEventComparator();
     private ObservableList<Meeting> meetings;
     private ObservableList<Deliverable> deliverables;
     private ObservableList<TimeEvent> calendarList;
-    private static TimeEventComparator timeEventComparator = new TimeEventComparator();
 
+    /**
+     * Creates a Calendar using the Deliverables and Meetings in the {@code deliverables}
+     * and {@code meetings} respectively
+     */
     public Calendar(ObservableList<Deliverable> deliverables, ObservableList<Meeting> meetings) {
         this.deliverables = deliverables;
         this.meetings = meetings;
@@ -22,6 +26,9 @@ public class Calendar {
         updateCalendarList();
     }
 
+    /**
+     * Updates the calendar list for every Meeting or Deliverable command execution.
+     */
     public void updateCalendarList() {
         this.calendarList.clear();
         this.calendarList.addAll(meetings);
