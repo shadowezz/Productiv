@@ -53,6 +53,12 @@ public interface ModelPerson {
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
 
+    /** Returns the person currently in view. */
+    Person getPersonInView();
+
+    /** Updates the person in view. */
+    void setPersonInView(Person person);
+
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */

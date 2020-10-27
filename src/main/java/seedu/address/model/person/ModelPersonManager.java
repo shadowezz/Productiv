@@ -24,6 +24,7 @@ public class ModelPersonManager implements ModelPerson {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private Person personInView;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -91,6 +92,16 @@ public class ModelPersonManager implements ModelPerson {
     }
 
     @Override
+    public Person getPersonInView() {
+        return personInView;
+    }
+
+    @Override
+    public void setPersonInView(Person person) {
+        this.personInView = person;
+    }
+
+    @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
@@ -99,19 +110,23 @@ public class ModelPersonManager implements ModelPerson {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+        if (personInView.isSamePerson(target)) {
+            setPersonInView(null);
+        }
     }
 
     @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
+        setPersonInView(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
+        setPersonInView(editedPerson);
     }
 
     //=========== Filtered Person List Accessors =============================================================
