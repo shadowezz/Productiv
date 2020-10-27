@@ -6,8 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.text.View;
-
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.commands.meeting.DeleteCommand;
 import seedu.address.logic.commands.meeting.EditCommand;

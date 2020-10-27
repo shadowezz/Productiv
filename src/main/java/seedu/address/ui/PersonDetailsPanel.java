@@ -12,7 +12,7 @@ import seedu.address.model.person.person.Role;
 /**
  * Panel containing the expanded contact details of a person.
  */
-public class PersonDetailsPanel extends UiPart<Region>{
+public class PersonDetailsPanel extends UiPart<Region> {
     private static final String FXML = "PersonDetailsPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonDetailsPanel.class);
 

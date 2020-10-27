@@ -110,7 +110,7 @@ public class ModelPersonManager implements ModelPerson {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
-        if (personInView.isSamePerson(target)) {
+        if (target.isSamePerson(personInView)) {
             setPersonInView(null);
         }
     }

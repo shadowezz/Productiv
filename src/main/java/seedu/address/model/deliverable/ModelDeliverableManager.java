@@ -100,7 +100,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void deleteDeliverable(Deliverable target) {
         deliverableBook.removeDeliverable(target);
-        if (deliverableInView.isSameDeliverable(target)) {
+        if (target.isSameDeliverable(deliverableInView)) {
             setDeliverableInView(null);
         }
     }

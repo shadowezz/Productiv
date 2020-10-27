@@ -110,7 +110,7 @@ public class ModelMeetingManager implements ModelMeeting {
     @Override
     public void deleteMeeting(Meeting target) {
         meetingBook.removeMeeting(target);
-        if (meetingInView.isSameMeeting(target)) {
+        if (target.isSameMeeting(meetingInView)) {
             setMeetingInView(null);
         }
     }
@@ -153,7 +153,6 @@ public class ModelMeetingManager implements ModelMeeting {
         ModelMeetingManager other = (ModelMeetingManager) obj;
         return meetingBook.equals(other.meetingBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredMeetings.equals(other.filteredMeetings)
-                && meetingInView.equals(other.meetingInView);
+                && filteredMeetings.equals(other.filteredMeetings);
     }
 }
