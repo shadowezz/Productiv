@@ -59,7 +59,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void addPerson_insertedIntoCorrectPosition() {
+    public void add_person_sortSuccess() {
         uniquePersonList.add(ALICE);
         uniquePersonList.add(BOB);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
@@ -120,7 +120,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void setPerson_retainCorrectPosition() {
+    public void setPerson_sortSuccess() {
         uniquePersonList.add(ALICE);
         uniquePersonList.add(BOB);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
@@ -149,7 +149,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void removePerson_retainCorrectPosition() {
+    public void removePerson_sortSuccess() {
         uniquePersonList.add(ALICE);
         uniquePersonList.add(CARL);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();

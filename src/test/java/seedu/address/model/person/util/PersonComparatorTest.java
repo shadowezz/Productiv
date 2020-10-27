@@ -25,6 +25,10 @@ public class PersonComparatorTest {
         Person editedAlice = new PersonBuilder(ALICE).withName("alice Pauline").build();
         assertTrue(personComparator.compare(ALICE, editedAlice) < 0);
 
+        // Alice Pauline > Alice
+        editedAlice = new PersonBuilder(ALICE).withName("Alice").build();
+        assertTrue(personComparator.compare(ALICE, editedAlice) > 0);
+
         // null Persons
         assertThrows(NullPointerException.class, () -> personComparator.compare(null, ALICE));
         assertThrows(NullPointerException.class, () -> personComparator.compare(ALICE, null));
