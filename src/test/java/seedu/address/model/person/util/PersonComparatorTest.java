@@ -12,7 +12,7 @@ import seedu.address.testutil.PersonBuilder;
 
 public class PersonComparatorTest {
 
-    PersonComparator personComparator = new PersonComparator();
+    private final PersonComparator personComparator = new PersonComparator();
 
     @Test
     public void isCorrectOrder() {
