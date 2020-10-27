@@ -52,6 +52,12 @@ public interface ModelMeeting {
     /** Returns the MeetingBook */
     ReadOnlyMeetingBook getMeetingBook();
 
+    /** Returns the meeting currently in view. */
+    Meeting getMeetingInView();
+
+    /** Updates the meeting currently in view */
+    void setMeetingInView(Meeting meetingInView);
+
     /**
      * Returns true if a deliverable with the same identity as {@code deliverable} exists in the deliverable book.
      */

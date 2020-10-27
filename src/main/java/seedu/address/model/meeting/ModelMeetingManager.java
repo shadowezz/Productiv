@@ -24,6 +24,7 @@ public class ModelMeetingManager implements ModelMeeting {
     private final MeetingBook meetingBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Meeting> filteredMeetings;
+    private Meeting meetingInView;
 
     /**
      * Initializes a ModelMeetingManager with the given meetingBook WITHOUT userPrefs.
@@ -90,14 +91,28 @@ public class ModelMeetingManager implements ModelMeeting {
     }
 
     @Override
+    public Meeting getMeetingInView() {
+        return meetingInView;
+    }
+
+    @Override
+    public void setMeetingInView(Meeting meetingInView) {
+        this.meetingInView = meetingInView;
+    }
+
+    @Override
     public void addMeeting(Meeting meeting) {
         meetingBook.addMeeting(meeting);
+        setMeetingInView(meeting);
         updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
     }
 
     @Override
     public void deleteMeeting(Meeting target) {
         meetingBook.removeMeeting(target);
+        if (target.isSameMeeting(meetingInView)) {
+            setMeetingInView(null);
+        }
     }
 
     @Override
@@ -110,6 +125,7 @@ public class ModelMeetingManager implements ModelMeeting {
     public void setMeeting(Meeting target, Meeting editedMeeting) {
         requireAllNonNull(target, editedMeeting);
         meetingBook.setMeeting(target, editedMeeting);
+        setMeetingInView(editedMeeting);
     }
 
     //=========== Filtered Meeting List Accessors =============================================================

@@ -25,8 +25,8 @@ public class ViewCommand extends Command {
     private final Index targetIndex;
 
     /**
-     * Construct command given index of deliverable to complete.
-     * @param targetIndex specified index of deliverable to complete.
+     * Construct command given index of deliverable to view.
+     * @param targetIndex specified index of deliverable to view.
      */
     public ViewCommand(Index targetIndex) {
         requireNonNull(targetIndex);

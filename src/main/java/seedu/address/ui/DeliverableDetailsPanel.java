@@ -36,10 +36,8 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
         super(FXML);
         assert deliverable != null;
         title.setText(deliverable.getTitle().value);
-        // title.setWrapText(true);
         milestone.setText((deliverable.getMilestone().toString()));
         description.setText(deliverable.getDescription().toString());
-        description.setWrapText(true);
         deadline.setText(deliverable.getDeadline().value);
         deliverable.getContacts().value.ifPresentOrElse(contacts -> {
             for (String contact : contacts.split(",")) {

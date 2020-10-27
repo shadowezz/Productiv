@@ -125,6 +125,16 @@ class AddCommandTest {
         }
 
         @Override
+        public Meeting getMeetingInView() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMeetingInView(Meeting meetingInView) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasMeeting(Meeting meeting) {
             throw new AssertionError("This method should not be called.");
         }
