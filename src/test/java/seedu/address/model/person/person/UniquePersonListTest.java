@@ -7,6 +7,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.VALID_DESCRIPT
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -55,6 +56,16 @@ public class UniquePersonListTest {
     public void add_duplicatePerson_throwsDuplicatePersonException() {
         uniquePersonList.add(ALICE);
         assertThrows(DuplicatePersonException.class, () -> uniquePersonList.add(ALICE));
+    }
+
+    @Test
+    public void add_person_sortSuccess() {
+        uniquePersonList.add(ALICE);
+        uniquePersonList.add(BOB);
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        expectedUniquePersonList.add(BOB);
+        expectedUniquePersonList.add(ALICE);
+        assertEquals(expectedUniquePersonList, uniquePersonList);
     }
 
     @Test
@@ -109,6 +120,17 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void setPerson_sortSuccess() {
+        uniquePersonList.add(ALICE);
+        uniquePersonList.add(BOB);
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        expectedUniquePersonList.add(BOB);
+        expectedUniquePersonList.add(CARL);
+        expectedUniquePersonList.setPerson(CARL, ALICE);
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+    }
+
+    @Test
     public void remove_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniquePersonList.remove(null));
     }
@@ -123,6 +145,18 @@ public class UniquePersonListTest {
         uniquePersonList.add(ALICE);
         uniquePersonList.remove(ALICE);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+    }
+
+    @Test
+    public void remove_person_sortSuccess() {
+        uniquePersonList.add(ALICE);
+        uniquePersonList.add(CARL);
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        expectedUniquePersonList.add(ALICE);
+        expectedUniquePersonList.add(BOB);
+        expectedUniquePersonList.add(CARL);
+        expectedUniquePersonList.remove(BOB);
         assertEquals(expectedUniquePersonList, uniquePersonList);
     }
 
