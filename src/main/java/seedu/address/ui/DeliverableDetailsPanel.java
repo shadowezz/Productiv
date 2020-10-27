@@ -38,7 +38,7 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
         title.setText(deliverable.getTitle().value);
         milestone.setText((deliverable.getMilestone().toString()));
         description.setText(deliverable.getDescription().toString());
-        deadline.setText(deliverable.getDeadline().value);
+        deadline.setText(deliverable.getDeadline().toString());
         deliverable.getContacts().value.ifPresentOrElse(contacts -> {
             for (String contact : contacts.split(",")) {
                 contactList.getChildren().add(new Label("- " + contact));
