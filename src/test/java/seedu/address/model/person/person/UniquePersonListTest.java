@@ -149,7 +149,7 @@ public class UniquePersonListTest {
     }
 
     @Test
-    public void removePerson_sortSuccess() {
+    public void remove_person_sortSuccess() {
         uniquePersonList.add(ALICE);
         uniquePersonList.add(CARL);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();
