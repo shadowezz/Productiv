@@ -1,5 +1,7 @@
 package seedu.address.model.person.util;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.util.Comparator;
 
 import seedu.address.model.person.person.Name;
@@ -13,6 +15,7 @@ public class PersonComparator implements Comparator<Person> {
      * Compares Persons by Name in ascending order.
      */
     public int compare(Person a, Person b) {
+        requireAllNonNull(a, b);
         Name aName = a.getName();
         Name bName = b.getName();
 
