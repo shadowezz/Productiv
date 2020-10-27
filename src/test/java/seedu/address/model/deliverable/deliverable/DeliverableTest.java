@@ -3,7 +3,7 @@ package seedu.address.model.deliverable.deliverable;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 //import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalDeliverables.HOMEPAGE;
+import static seedu.address.testutil.TypicalDeliverables.HOME_PAGE;
 import static seedu.address.testutil.TypicalDeliverables.NAVIGATION;
 
 import org.junit.jupiter.api.Test;
@@ -21,41 +21,41 @@ public class DeliverableTest {
     @Test
     public void isSameDeliverable() {
         // same object -> returns true
-        assertTrue(HOMEPAGE.isSameDeliverable(HOMEPAGE));
+        assertTrue(HOME_PAGE.isSameDeliverable(HOME_PAGE));
 
         // null -> returns false
-        assertFalse(HOMEPAGE.isSameDeliverable(null));
+        assertFalse(HOME_PAGE.isSameDeliverable(null));
 
         // different title, everything else same -> returns false
-        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Implement home page").build();
-        assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
+        Deliverable editedHomepage = new DeliverableBuilder(HOME_PAGE).withTitle("Implement home page").build();
+        assertFalse(HOME_PAGE.isSameDeliverable(editedHomepage));
 
         // same title, different other attributes -> returns true
         Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withTitle("Build home page").build();
-        assertTrue(HOMEPAGE.isSameDeliverable(editedNavigation));
+        assertTrue(HOME_PAGE.isSameDeliverable(editedNavigation));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Deliverable homepageCopy = new DeliverableBuilder(HOMEPAGE).build();
-        assertTrue(HOMEPAGE.equals(homepageCopy));
+        Deliverable homepageCopy = new DeliverableBuilder(HOME_PAGE).build();
+        assertTrue(HOME_PAGE.equals(homepageCopy));
 
         // same object -> returns true
-        assertTrue(HOMEPAGE.isSameDeliverable(HOMEPAGE));
+        assertTrue(HOME_PAGE.isSameDeliverable(HOME_PAGE));
 
         // null -> returns false
-        assertFalse(HOMEPAGE.equals(null));
+        assertFalse(HOME_PAGE.equals(null));
 
         // different type -> returns false
-        assertFalse(HOMEPAGE.equals(5));
+        assertFalse(HOME_PAGE.equals(5));
 
         // different deliverable -> returns false
-        assertFalse(HOMEPAGE.equals(NAVIGATION));
+        assertFalse(HOME_PAGE.equals(NAVIGATION));
 
         // different title -> returns false
-        Deliverable editedHomepage = new DeliverableBuilder(HOMEPAGE).withTitle("Implement home page").build();
-        assertFalse(HOMEPAGE.isSameDeliverable(editedHomepage));
+        Deliverable editedHomepage = new DeliverableBuilder(HOME_PAGE).withTitle("Implement home page").build();
+        assertFalse(HOME_PAGE.isSameDeliverable(editedHomepage));
 
         // different milestone -> returns false
 

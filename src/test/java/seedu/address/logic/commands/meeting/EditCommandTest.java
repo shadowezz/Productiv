@@ -12,8 +12,8 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommand
 import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
 import static seedu.address.logic.commands.meeting.EditCommand.EditMeetingDescriptor;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
 
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Meeting editedPerson = new MeetingBuilder().build();
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder(editedPerson).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEETING_SUCCESS, editedPerson);
 
@@ -70,8 +70,8 @@ class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditMeetingDescriptor());
-        Meeting editedMeeting = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST, new EditMeetingDescriptor());
+        Meeting editedMeeting = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting);
 
@@ -83,11 +83,11 @@ class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
+        showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
-        Meeting personInFilteredList = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Meeting personInFilteredList = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
         Meeting editedMeeting = new MeetingBuilder(personInFilteredList).withTitle(VALID_TITLE_B).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+        EditCommand editCommand = new EditCommand(INDEX_FIRST,
                 new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_B).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting);
@@ -101,21 +101,21 @@ class EditCommandTest {
 
     @Test
     public void execute_duplicateMeetingUnfilteredList_failure() {
-        Meeting firstMeeting = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Meeting firstMeeting = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder(firstMeeting).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_SECOND, descriptor);
 
         assertCommandFailure(editCommand, modelMeeting, EditCommand.MESSAGE_DUPLICATE_MEETING);
     }
 
     @Test
     public void execute_duplicateMeetingFilteredList_failure() {
-        showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
+        showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
         // edit meeting in filtered list into a duplicate in address book
         Meeting meetingInList = modelMeeting.getMeetingBook().getMeetingList()
-                .get(INDEX_SECOND_PERSON.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+                .get(INDEX_SECOND.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST,
                 new EditMeetingDescriptorBuilder(meetingInList).build());
 
         assertCommandFailure(editCommand, modelMeeting, EditCommand.MESSAGE_DUPLICATE_MEETING);
@@ -136,8 +136,8 @@ class EditCommandTest {
      */
     @Test
     public void execute_invalidMeetingIndexFilteredList_failure() {
-        showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        showMeetingAtIndex(modelMeeting, INDEX_FIRST);
+        Index outOfBoundIndex = INDEX_SECOND;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < modelMeeting.getMeetingBook().getMeetingList().size());
 
@@ -149,11 +149,11 @@ class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_MEETING_A);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST, DESC_MEETING_A);
 
         // same values -> returns true
         EditMeetingDescriptor copyDescriptor = new EditMeetingDescriptor(DESC_MEETING_A);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
+        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -166,10 +166,10 @@ class EditCommandTest {
         //        assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_MEETING_A)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND, DESC_MEETING_A)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_MEETING_B)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST, DESC_MEETING_B)));
     }
 
 }
