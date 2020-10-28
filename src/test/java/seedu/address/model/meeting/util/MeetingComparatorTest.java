@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class MeetingComparatorTest {
 
-    private MeetingComparator meetingComparator = new MeetingComparator();
+    private TimeEventComparator meetingComparator = new TimeEventComparator();
 
     @Test
     void compare_nullMeeting_throwsNullPointerException() {

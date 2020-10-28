@@ -80,8 +80,7 @@ public class Deliverable implements TimeEvent {
 
     @Override
     public LocalDateTime getIndicatorTime() {
-        // TODO: use getter once Deadline extends DateTime + create a getter
-        return deadline.dateTimeValue;
+        return deadline.getLocalDateTime();
     }
 
     /**
