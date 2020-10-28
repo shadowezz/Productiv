@@ -21,7 +21,6 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.calendar.Calendar;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -88,7 +87,7 @@ public class MainWindow extends UiPart<Stage> {
      * {@code LogicPerson} and {@code LogicDeliverable}.
      */
     public MainWindow(Stage primaryStage, LogicMode logicMode, LogicPerson logicPerson,
-                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting, Calendar calendar) {
+                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -97,7 +96,8 @@ public class MainWindow extends UiPart<Stage> {
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
-        this.calendar = calendar;
+        this.calendar = new Calendar(logicDeliverable.getFilteredDeliverableList(),
+                logicMeeting.getFilteredMeetingList());;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine

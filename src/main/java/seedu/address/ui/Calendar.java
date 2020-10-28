@@ -1,4 +1,4 @@
-package seedu.address.model.calendar;
+package seedu.address.ui;
 
 import java.util.Collections;
 
