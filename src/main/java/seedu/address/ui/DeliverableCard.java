@@ -42,7 +42,7 @@ public class DeliverableCard extends UiPart<Region> {
     public DeliverableCard(Deliverable deliverable, int displayedIndex) {
         super(FXML);
         this.deliverable = deliverable;
-        id.setText(displayedIndex + ". ");
+        id.setText(String.valueOf(displayedIndex));
         title.setText(deliverable.getTitle().value);
         deadline.setText(deliverable.getDeadline().value);
         if (deliverable.getIsComplete()) {
