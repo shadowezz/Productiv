@@ -32,7 +32,8 @@ public class FindCommand extends Command {
         requireNonNull(modelDeliverable);
         modelDeliverable.updateFilteredDeliverableList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_DELIVERABLES_LISTED_OVERVIEW, modelDeliverable.getFilteredDeliverableList().size()));
+                String.format(Messages.MESSAGE_DELIVERABLES_LISTED_OVERVIEW,
+                        modelDeliverable.getFilteredDeliverableList().size()));
     }
 
     @Override
