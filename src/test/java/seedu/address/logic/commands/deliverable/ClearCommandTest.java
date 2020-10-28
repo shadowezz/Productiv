@@ -14,7 +14,7 @@ import seedu.address.model.deliverable.ModelDeliverableManager;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyDeliverableBook_success() {
         ModelDeliverable modelDeliverable = new ModelDeliverableManager();
         ModelDeliverable expectedModelPerson = new ModelDeliverableManager();
 
@@ -22,7 +22,7 @@ public class ClearCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyAddressBook_success() {
+    public void execute_nonEmptyDeliverableBook_success() {
         ModelDeliverable modelPerson = new ModelDeliverableManager(getTypicalDeliverableBook(), new UserPrefs());
         ModelDeliverable expectedModelPerson = new ModelDeliverableManager(
                 getTypicalDeliverableBook(), new UserPrefs());

@@ -77,7 +77,6 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
     public void setDeliverables(UniqueDeliverableList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
-        sortList();
     }
 
     /**
