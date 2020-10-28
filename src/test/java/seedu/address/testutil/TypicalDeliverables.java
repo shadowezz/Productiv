@@ -6,6 +6,7 @@ import java.util.List;
 
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.deliverable.Deliverable;
+import seedu.address.model.util.TimeEventComparator;
 
 /**
  * A utility class containing a list of {@code Deliverable} objects to be used in tests.
@@ -50,6 +51,9 @@ public class TypicalDeliverables {
     }
 
     public static List<Deliverable> getTypicalDeliverables() {
-        return new ArrayList<>(Arrays.asList(HOME_PAGE, NAVIGATION, SORT_AND_FILTER));
+        ArrayList<Deliverable> deliverableArrayList =
+                new ArrayList<>(Arrays.asList(HOME_PAGE, NAVIGATION, SORT_AND_FILTER));
+        deliverableArrayList.sort(new TimeEventComparator());
+        return deliverableArrayList;
     }
 }

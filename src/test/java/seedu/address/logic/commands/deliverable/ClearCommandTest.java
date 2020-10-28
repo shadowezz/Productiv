@@ -16,18 +16,20 @@ public class ClearCommandTest {
     @Test
     public void execute_emptyDeliverableBook_success() {
         ModelDeliverable modelDeliverable = new ModelDeliverableManager();
-        ModelDeliverable expectedModelPerson = new ModelDeliverableManager();
+        ModelDeliverable expectedModelDeliverable = new ModelDeliverableManager();
 
-        assertCommandSuccess(new ClearCommand(), modelDeliverable, ClearCommand.MESSAGE_SUCCESS, expectedModelPerson);
+        assertCommandSuccess(
+                new ClearCommand(), modelDeliverable, ClearCommand.MESSAGE_SUCCESS, expectedModelDeliverable);
     }
 
     @Test
     public void execute_nonEmptyDeliverableBook_success() {
-        ModelDeliverable modelPerson = new ModelDeliverableManager(getTypicalDeliverableBook(), new UserPrefs());
-        ModelDeliverable expectedModelPerson = new ModelDeliverableManager(
+        ModelDeliverable modelDeliverable = new ModelDeliverableManager(getTypicalDeliverableBook(), new UserPrefs());
+        ModelDeliverable expectedModelDeliverable = new ModelDeliverableManager(
                 getTypicalDeliverableBook(), new UserPrefs());
-        expectedModelPerson.setDeliverableBook(new DeliverableBook());
+        expectedModelDeliverable.setDeliverableBook(new DeliverableBook());
 
-        assertCommandSuccess(new ClearCommand(), modelPerson, ClearCommand.MESSAGE_SUCCESS, expectedModelPerson);
+        assertCommandSuccess(
+                new ClearCommand(), modelDeliverable, ClearCommand.MESSAGE_SUCCESS, expectedModelDeliverable);
     }
 }

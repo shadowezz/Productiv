@@ -11,7 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.exceptions.DeliverableNotFoundException;
 import seedu.address.model.deliverable.deliverable.exceptions.DuplicateDeliverableException;
-import seedu.address.model.deliverable.util.TimeEventComparator;
+import seedu.address.model.util.TimeEventComparator;
 
 public class UniqueDeliverableList implements Iterable<Deliverable> {
 

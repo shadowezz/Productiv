@@ -11,7 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.meeting.meeting.exceptions.DuplicateMeetingException;
 import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
-import seedu.address.model.meeting.util.TimeEventComparator;
+import seedu.address.model.util.TimeEventComparator;
 
 public class UniqueMeetingList implements Iterable<Meeting> {
 

@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTIO
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_MILESTONE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
 
-import seedu.address.logic.commands.person.AddCommand;
+import seedu.address.logic.commands.deliverable.AddCommand;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
@@ -36,7 +36,7 @@ public class DeliverableUtil {
 
     // TODO
     /**
-     * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
+     * Returns the part of command string for the given {@code EditDeliverableDescriptor}'s details.
      */
     public static String getEditDeliverableDescriptorDetails() {
         return null;

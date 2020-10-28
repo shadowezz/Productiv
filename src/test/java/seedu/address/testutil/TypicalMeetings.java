@@ -19,7 +19,7 @@ import java.util.List;
 
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.util.TimeEventComparator;
+import seedu.address.model.util.TimeEventComparator;
 
 public class TypicalMeetings {
 

@@ -67,10 +67,6 @@ public class Meeting implements TimeEvent {
         return from;
     }
 
-    public LocalDateTime getFromLocalDateTime() {
-        return from.getLocalDateTime();
-    }
-
     @Override
     public LocalDateTime getIndicatorTime() {
         return from.getLocalDateTime();
