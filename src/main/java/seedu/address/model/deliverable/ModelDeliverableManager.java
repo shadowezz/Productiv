@@ -84,6 +84,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void setDeliverableBook(ReadOnlyDeliverableBook deliverableBook) {
         this.deliverableBook.resetData(deliverableBook);
+        setDeliverableInView(null);
     }
 
     @Override
@@ -140,6 +141,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     public void updateFilteredDeliverableList(Predicate<Deliverable> predicate) {
         requireNonNull(predicate);
         filteredDeliverables.setPredicate(predicate);
+        setDeliverableInView(null);
     }
 
     @Override

@@ -284,7 +284,6 @@ public class MainWindow extends UiPart<Stage> {
         rightPanelPlaceholder.getChildren().clear();
 
         switch (mode) {
-        //Todo
         case PERSON:
             if (logicPerson.getPersonInView() != null) {
                 personDetailsPanel = new PersonDetailsPanel(logicPerson.getPersonInView());

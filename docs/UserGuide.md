@@ -20,7 +20,7 @@ traditional GUI apps.
 
 1. Ensure you have Java `11` or above installed in your computer.
 
-1. Download the latest `Productiv.jar`. [Coming Soon]
+1. Download the latest `Productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
 1. Copy the `.jar` file to your preferred folder.
 
