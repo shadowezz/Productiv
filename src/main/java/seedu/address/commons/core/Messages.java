@@ -11,4 +11,5 @@ public class Messages {
     public static final String MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX = "Invalid deliverable index!";
     public static final String MESSAGE_INVALID_MEETING_DISPLAYED_INDEX = "Invalid meeting index!";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_DELIVERABLES_LISTED_OVERVIEW = "%1$d deliverables listed!";
 }
