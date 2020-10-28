@@ -94,8 +94,6 @@ public class EditCommand extends Command {
 
         modelMeeting.setMeeting(meetingToEdit, editedMeeting);
         modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
-
-
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
     }
 

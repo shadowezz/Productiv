@@ -24,7 +24,7 @@ public class AddCommand extends Command {
             + PREFIX_TITLE + "TITLE "
             + PREFIX_MILESTONE + "MILESTONE "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_DEADLINE + "DEADLINE] "
+            + PREFIX_DEADLINE + "DEADLINE "
             + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Login screen "
