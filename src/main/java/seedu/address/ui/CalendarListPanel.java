@@ -43,9 +43,9 @@ public class CalendarListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else if (timeEvent instanceof Deliverable) {
-                setGraphic(new DeliverableCard((Deliverable) timeEvent, getIndex() + 1).getRoot());
+                setGraphic(new CalendarDeliverableCard((Deliverable) timeEvent, getIndex() + 1).getRoot());
             } else if (timeEvent instanceof Meeting) {
-                setGraphic(new MeetingCard((Meeting) timeEvent, getIndex() + 1).getRoot());
+                setGraphic(new CalendarMeetingCard((Meeting) timeEvent, getIndex() + 1).getRoot());
             }
         }
     }
