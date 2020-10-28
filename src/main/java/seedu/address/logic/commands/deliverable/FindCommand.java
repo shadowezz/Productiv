@@ -8,7 +8,8 @@ import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.deliverable.TitleDescriptionContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
+ * Finds and lists all deliverables in deliverable book whose title and/or description
+ * contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {
