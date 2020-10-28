@@ -81,7 +81,6 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
      */
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireNonNull(editedDeliverable);
-
         deliverables.setDeliverable(target, editedDeliverable);
     }
 

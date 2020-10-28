@@ -12,9 +12,9 @@ import seedu.address.model.util.Title;
  */
 public class DeliverableBuilder {
 
-    public static final String DEFAULT_TITLE = "Login screen";
+    public static final String DEFAULT_TITLE = "Deliverable1";
     public static final String DEFAULT_MILESTONE = "1.0";
-    public static final String DEFAULT_DESCRIPTION = "Must include username and password fields";
+    public static final String DEFAULT_DESCRIPTION = "Finalise features";
     public static final String DEFAULT_DEADLINE = "12-12-2020 23:59";
     public static final boolean DEFAULT_IS_COMPLETE = false;
     public static final String DEFAULT_CONTACTS = "2,4";

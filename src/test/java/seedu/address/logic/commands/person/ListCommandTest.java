@@ -2,7 +2,7 @@ package seedu.address.logic.commands.person;
 
 import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.person.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +33,7 @@ public class ListCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showPersonAtIndex(modelPerson, INDEX_FIRST_PERSON);
+        showPersonAtIndex(modelPerson, INDEX_FIRST);
         assertCommandSuccess(new ListCommand(), modelPerson, ListCommand.MESSAGE_SUCCESS, expectedModelPerson);
     }
 }

@@ -6,7 +6,6 @@ import seedu.address.model.util.DateTime;
  * Represents a Meeting's from in the meeting book.
  */
 public class From extends DateTime {
-
     /**
      * Constructs a {@code From}.
      *
