@@ -80,7 +80,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing Productiv ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -114,9 +114,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelPerson} with the data from {@code storagePerson}'s address book and {@code userPrefs}. <br>
+     * The data from the sample address book will be used instead if {@code storagePerson}'s address book is not found,
+     * or an empty address book will be used instead if errors occur when reading {@code storagePerson}'s address book.
      */
     private ModelPerson initModelManager(StoragePerson storagePerson, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
@@ -139,9 +139,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelDeliverable} with the data from {@code storageDeliverable}'s deliverable book and {@code userPrefs}. <br>
+     * The data from the sample deliverable book will be used instead if {@code storageDeliverable}'s deliverable book is not found,
+     * or an empty deliverable book will be used instead if errors occur when reading {@code storageDeliverable}'s deliverable book.
      */
     private ModelDeliverable initDeliverableModelManager(StorageDeliverable storageDeliverable,
                                                          ReadOnlyUserPrefs userPrefs) {
@@ -167,9 +167,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s meeting book and {@code userPrefs}. <br>
-     * The data from the sample meeting book will be used instead if {@code storage}'s meeting book is not found,
-     * or an empty meeting book will be used instead if errors occur when reading {@code storage}'s meeting book.
+     * Returns a {@code ModelMeeting} with the data from {@code storageMeeting}'s meeting book and {@code userPrefs}. <br>
+     * The data from the sample meeting book will be used instead if {@code storageMeeting}'s meeting book is not found,
+     * or an empty meeting book will be used instead if errors occur when reading {@code storageMeeting}'s meeting book.
      */
     private ModelMeeting initMeetingModelManager(StorageMeeting storageMeeting,
                                                  ReadOnlyUserPrefs userPrefs) {
@@ -269,13 +269,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting Productiv " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping Productiv ] =============================");
         try {
             storagePerson.saveUserPrefs(modelPerson.getUserPrefs());
             // for testing

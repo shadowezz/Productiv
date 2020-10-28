@@ -112,7 +112,7 @@ class EditCommandTest {
     public void execute_duplicateMeetingFilteredList_failure() {
         showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
 
-        // edit meeting in filtered list into a duplicate in address book
+        // edit meeting in filtered list into a duplicate in meeting book
         Meeting meetingInList = modelMeeting.getMeetingBook().getMeetingList()
                 .get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
@@ -132,13 +132,13 @@ class EditCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of meeting book
      */
     @Test
     public void execute_invalidMeetingIndexFilteredList_failure() {
         showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
         Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of meeting book list
         assertTrue(outOfBoundIndex.getZeroBased() < modelMeeting.getMeetingBook().getMeetingList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,

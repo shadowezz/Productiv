@@ -58,7 +58,7 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
     //// deliverable-level operations
 
     /**
-     * Returns true if a deliverable with the same identity as {@code deliverable} exists in the address book.
+     * Returns true if a deliverable with the same identity as {@code deliverable} exists in the deliverable book.
      */
     public boolean hasDeliverable(Deliverable deliverable) {
         requireNonNull(deliverable);

@@ -63,7 +63,7 @@ public class MeetingBook implements ReadOnlyMeetingBook {
     }
 
     /**
-     * Returns true if a meeting with the same identity as {@code meeting} exists in the address book.
+     * Returns true if a meeting with the same identity as {@code meeting} exists in the meeting book.
      */
     public boolean hasMeeting(Meeting meeting) {
         requireNonNull(meeting);
