@@ -70,10 +70,6 @@ public class Deliverable implements TimeEvent {
         return deadline;
     }
 
-    public LocalDateTime getDeadlineLocalDateTime() {
-        return deadline.getLocalDateTime();
-    }
-
     public boolean getIsComplete() {
         return isComplete;
     }

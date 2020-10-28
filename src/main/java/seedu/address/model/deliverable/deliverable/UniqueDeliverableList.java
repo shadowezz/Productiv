@@ -11,14 +11,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.exceptions.DeliverableNotFoundException;
 import seedu.address.model.deliverable.deliverable.exceptions.DuplicateDeliverableException;
-import seedu.address.model.deliverable.util.DeliverableComparator;
+import seedu.address.model.deliverable.util.TimeEventComparator;
 
 public class UniqueDeliverableList implements Iterable<Deliverable> {
 
     private final ObservableList<Deliverable> internalList = FXCollections.observableArrayList();
     private final ObservableList<Deliverable> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
-    private final DeliverableComparator deliverableComparator = new DeliverableComparator();
+    private final TimeEventComparator timeEventComparator = new TimeEventComparator();
 
     /**
      * Returns true if the list contains an equivalent deliverable as the given argument.
@@ -105,7 +105,7 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
      * Sort the list chronologically according to Deadline.
      */
     public void sortList() {
-        Collections.sort(internalList, deliverableComparator);
+        Collections.sort(internalList, timeEventComparator);
     }
 
     @Override
