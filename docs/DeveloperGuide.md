@@ -269,8 +269,8 @@ The Overall Completion Percentage (OCP) feature is to be implemented in the Dash
 This feature allows users to have a quick overview of the progress of their product's development. OCP is given by the 
 formula*:
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-*OCP (%) = Number of Completed Deliverables / Total Number of Deliverables × 100*
+<div markdown="span" class="alert alert-primary">
+**_OCP (%) = Number of Completed Deliverables / Total Number of Deliverables × 100_**
 </div>
 
 \* If no deliverables are present, OCP will be set to **0%**.
