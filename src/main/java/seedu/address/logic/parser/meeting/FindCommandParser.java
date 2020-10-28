@@ -7,7 +7,7 @@ import java.util.Arrays;
 import seedu.address.logic.commands.meeting.FindCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.meeting.meeting.TitleContainsKeywordsPredicate;
+import seedu.address.model.meeting.meeting.TitleDescriptionContainsKeywordsPredicate;
 
 
 public class FindCommandParser implements Parser<FindCommand> {
@@ -26,6 +26,6 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new TitleContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindCommand(new TitleDescriptionContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 }

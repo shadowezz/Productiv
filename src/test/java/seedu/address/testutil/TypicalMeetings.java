@@ -24,7 +24,7 @@ import seedu.address.model.meeting.util.MeetingComparator;
 public class TypicalMeetings {
 
     public static final String TITLE_C = "Final";
-    public static final String DESCRIPTION_C = "Discuss final features";
+    public static final String DESCRIPTION_C = "Discussing final features";
     public static final String FROM_C = "12-12-2020 08:00";
     public static final String TO_C = "12-12-2020 10:00";
     public static final String CONTACTS_C = "3,2,1";
@@ -37,7 +37,7 @@ public class TypicalMeetings {
     public static final String CONTACTS_D = "6,7,8";
     public static final String LOCATION_D = "Somewhere";
 
-    public static final String TITLE_E = "Mid v1.2";
+    public static final String TITLE_E = "Mid v1.3";
     public static final String FROM_E = "12-12-2020 08:00";
     public static final String TO_E = "12-12-2020 09:00";
 
@@ -89,7 +89,7 @@ public class TypicalMeetings {
 
     public static List<Meeting> getTypicalMeeting() {
         ArrayList<Meeting> meetingArrayList =
-                new ArrayList<>(Arrays.asList(MEETING_B, MEETING_A, MEETING_C, MEETING_D, MEETING_E));
+                new ArrayList<>(Arrays.asList(MEETING_A, MEETING_B, MEETING_C, MEETING_D, MEETING_E));
         meetingArrayList.sort(new MeetingComparator());
         return meetingArrayList;
     }

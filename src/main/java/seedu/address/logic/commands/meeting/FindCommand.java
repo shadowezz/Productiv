@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.meeting.ModelMeeting;
-import seedu.address.model.meeting.meeting.TitleContainsKeywordsPredicate;
+import seedu.address.model.meeting.meeting.TitleDescriptionContainsKeywordsPredicate;
 
 /**
  * Finds and lists all meeting in address book whose name contains any of the argument keywords.
@@ -22,9 +22,9 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meetings listed!";
 
-    private final TitleContainsKeywordsPredicate predicate;
+    private final TitleDescriptionContainsKeywordsPredicate predicate;
 
-    public FindCommand(TitleContainsKeywordsPredicate predicate) {
+    public FindCommand(TitleDescriptionContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
 

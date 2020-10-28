@@ -20,13 +20,13 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.TitleContainsKeywordsPredicate;
+import seedu.address.model.meeting.meeting.TitleDescriptionContainsKeywordsPredicate;
 import seedu.address.testutil.EditMeetingDescriptorBuilder;
 
 public class CommandTestUtil {
 
-    public static final String VALID_TITLE_A = "Meeting1";
-    public static final String VALID_TITLE_B = "Meeting2";
+    public static final String VALID_TITLE_A = "Complete Release";
+    public static final String VALID_TITLE_B = "Finalise UG";
     public static final String VALID_DESCRIPTION_A = "With business associates";
     public static final String VALID_DESCRIPTION_B = "With product designers";
     public static final String VALID_FROM_A = "01-01-2020 14:00";
@@ -126,7 +126,8 @@ public class CommandTestUtil {
 
         Meeting meeting = modelMeeting.getFilteredMeetingList().get(targetIndex.getZeroBased());
         final String[] splitName = meeting.getTitle().value.split("\\s+");
-        modelMeeting.updateFilteredMeetingList(new TitleContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        modelMeeting.updateFilteredMeetingList(new TitleDescriptionContainsKeywordsPredicate(
+                Arrays.asList(splitName[0])));
 
         assertEquals(1, modelMeeting.getFilteredMeetingList().size());
     }
