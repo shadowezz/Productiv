@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.meeting.ClearCommand;
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.commands.meeting.DeleteCommand;
 import seedu.address.logic.commands.meeting.EditCommand;
@@ -54,6 +55,9 @@ public class MeetingBookParser {
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
+
+        case ClearCommand.COMMAND_WORD:
+            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
