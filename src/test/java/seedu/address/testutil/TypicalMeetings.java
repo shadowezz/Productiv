@@ -18,13 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.meeting.MeetingBook;
-import seedu.address.model.meeting.meeting.From;
-import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.meeting.To;
-import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
-import seedu.address.model.util.Title;
+import seedu.address.model.meeting.util.MeetingComparator;
 
 public class TypicalMeetings {
 
@@ -42,34 +37,44 @@ public class TypicalMeetings {
     public static final String CONTACTS_D = "6,7,8";
     public static final String LOCATION_D = "Somewhere";
 
-    //    public static final String TITLE_E = "Mid v1.2";
-    //    public static final String DESCRIPTION_E = "NIL";
-    //    public static final String FROM_E = "12-24-2020 08:00";
-    //    public static final String TO_E = "NIL";
-    //    public static final String CONTACTS_E = "NIL";
-    //    public static final String LOCATION_E = "NIL";
+    public static final String TITLE_E = "Mid v1.2";
+    public static final String FROM_E = "12-12-2020 08:00";
+    public static final String TO_E = "12-12-2020 09:00";
 
-    public static final Meeting MEETING_A =
-            new Meeting(new Title(VALID_TITLE_A), new OptionalDescription(VALID_DESCRIPTION_A), new From(VALID_FROM_A),
-                    new To(VALID_TO_A), new Contacts(VALID_CONTACTS_A), new Location(VALID_LOCATION_A));
+    public static final Meeting MEETING_A = new MeetingBuilder().withTitle(VALID_TITLE_A)
+            .withDescription(VALID_DESCRIPTION_A)
+            .withFrom(VALID_FROM_A)
+            .withTo(VALID_TO_A)
+            .withContacts(VALID_CONTACTS_A)
+            .withLocation(VALID_LOCATION_A).build();
 
-    public static final Meeting MEETING_B =
-            new Meeting(new Title(VALID_TITLE_B), new OptionalDescription(VALID_DESCRIPTION_B), new From(VALID_FROM_B),
-                    new To(VALID_TO_B), new Contacts(VALID_CONTACTS_B), new Location(VALID_LOCATION_B));
+    public static final Meeting MEETING_B = new MeetingBuilder().withTitle(VALID_TITLE_B)
+            .withDescription(VALID_DESCRIPTION_B)
+            .withFrom(VALID_FROM_B)
+            .withTo(VALID_TO_B)
+            .withContacts(VALID_CONTACTS_B)
+            .withLocation(VALID_LOCATION_B).build();
 
-    public static final Meeting MEETING_C =
-            new Meeting(new Title(TITLE_C), new OptionalDescription(DESCRIPTION_C), new From(FROM_C),
-                    new To(TO_C), new Contacts(CONTACTS_C), new Location(LOCATION_C));
+    public static final Meeting MEETING_C = new MeetingBuilder().withTitle(TITLE_C)
+            .withDescription(DESCRIPTION_C)
+            .withFrom(FROM_C)
+            .withTo(TO_C)
+            .withContacts(CONTACTS_C)
+            .withLocation(LOCATION_C).build();
 
-    public static final Meeting MEETING_D =
-            new Meeting(new Title(TITLE_D), new OptionalDescription(DESCRIPTION_D), new From(FROM_D), new To(TO_D),
-                    new Contacts(CONTACTS_D), new Location(LOCATION_D));
+    public static final Meeting MEETING_D = new MeetingBuilder().withTitle(TITLE_D)
+            .withDescription(DESCRIPTION_D)
+            .withFrom(FROM_D)
+            .withTo(TO_D)
+            .withContacts(CONTACTS_D)
+            .withLocation(LOCATION_D).build();
 
-    //    public static final Meeting MEETING_E =
-    //            new Meeting(new Title(TITLE_E), new Description(DESCRIPTION_E), new From(FROM_E), new To(TO_E),
-    //                    new Contacts(CONTACTS_E), new Location(LOCATION_E));
-
-
+    public static final Meeting MEETING_E = new MeetingBuilder().withTitle(TITLE_E)
+            .withDescription()
+            .withFrom(FROM_E)
+            .withTo(TO_E)
+            .withContacts()
+            .withLocation().build();
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.
@@ -83,6 +88,9 @@ public class TypicalMeetings {
     }
 
     public static List<Meeting> getTypicalMeeting() {
-        return new ArrayList<>(Arrays.asList(MEETING_B, MEETING_A));
+        ArrayList<Meeting> meetingArrayList =
+                new ArrayList<>(Arrays.asList(MEETING_B, MEETING_A, MEETING_C, MEETING_D, MEETING_E));
+        meetingArrayList.sort(new MeetingComparator());
+        return meetingArrayList;
     }
 }
