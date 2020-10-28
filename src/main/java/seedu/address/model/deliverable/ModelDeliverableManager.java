@@ -27,7 +27,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     private Deliverable deliverableInView;
 
     /**
-     * Initializes a ModelDeliverableManager with the given addressBook and userPrefs.
+     * Initializes a ModelDeliverableManager with the given deliverableBook and userPrefs.
      */
     public ModelDeliverableManager(ReadOnlyDeliverableBook deliverableBook, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -79,7 +79,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
         userPrefs.setDeliverableBookFilePath(deliverableBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== DeliverableBook ================================================================================
 
     @Override
     public void setDeliverableBook(ReadOnlyDeliverableBook deliverableBook) {

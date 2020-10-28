@@ -38,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
     private LogicMeeting logicMeeting;
+    private Calendar calendar;
 
     // Independent Ui parts residing in this Ui container
     private CalendarListPanel calendarListPanel;
@@ -95,6 +96,8 @@ public class MainWindow extends UiPart<Stage> {
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
+        this.calendar = new Calendar(logicDeliverable.getFilteredDeliverableList(),
+                logicMeeting.getFilteredMeetingList());;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -216,8 +219,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
 
-        calendarListPanel = new CalendarListPanel(logicDeliverable.getFilteredDeliverableList(),
-                logicMeeting.getFilteredMeetingList());
+        calendarListPanel = new CalendarListPanel(calendar.getTimeEvents());
         projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getFilteredDeliverableList());
         leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
         rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
@@ -325,9 +327,11 @@ public class MainWindow extends UiPart<Stage> {
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
+                    calendar.updateCalendarList();
                     break;
                 case MEETING:
                     commandResult = logicMeeting.execute(commandText);
+                    calendar.updateCalendarList();
                     break;
                 default:
                     assert false : "from default: " + ModeEnum.getModeOptions();
@@ -352,7 +356,6 @@ public class MainWindow extends UiPart<Stage> {
             } else {
                 updateDetailsPanel();
             }
-
 
             return commandResult;
         } catch (CommandException | ParseException e) {
