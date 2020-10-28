@@ -15,6 +15,7 @@ import seedu.address.logic.commands.deliverable.EditCommand;
 import seedu.address.logic.commands.deliverable.ListCommand;
 import seedu.address.logic.commands.deliverable.ViewCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
+import seedu.address.logic.commands.person.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -53,6 +54,8 @@ public class DeliverableBookParser {
             return new ViewCommandParser().parse(arguments);
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
+        case FindCommand.COMMAND_WORD:
+            return new FindCommandParser().parse(arguments);
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
         case ClearCommand.COMMAND_WORD:

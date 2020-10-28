@@ -6,6 +6,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 
+/**
+ * Clears the deliverable book.
+ */
 public class ClearCommand extends Command {
     public static final String COMMAND_WORD = "clear";
     public static final String MESSAGE_SUCCESS = "Deliverable book has been cleared!";
