@@ -19,7 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.deliverable.Deliverable;
-import seedu.address.model.deliverable.deliverable.TitleContainsKeywordsPredicate;
+import seedu.address.model.deliverable.deliverable.TitleDescriptionContainsKeywordsPredicate;
 import seedu.address.testutil.EditDeliverableDescriptorBuilder;
 
 public class CommandTestUtil {
@@ -123,7 +123,8 @@ public class CommandTestUtil {
 
         Deliverable deliverable = modelDeliverable.getFilteredDeliverableList().get(targetIndex.getZeroBased());
         final String[] splitName = deliverable.getTitle().value.split("\\s+");
-        modelDeliverable.updateFilteredDeliverableList(new TitleContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        modelDeliverable.updateFilteredDeliverableList(
+                new TitleDescriptionContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, modelDeliverable.getFilteredDeliverableList().size());
     }
