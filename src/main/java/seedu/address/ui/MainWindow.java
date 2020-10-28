@@ -48,6 +48,8 @@ public class MainWindow extends UiPart<Stage> {
     private DeliverableListPanel deliverableListPanel;
     private MeetingListPanel meetingListPanel;
     private DeliverableDetailsPanel deliverableDetailsPanel;
+    private MeetingDetailsPanel meetingDetailsPanel;
+    private PersonDetailsPanel personDetailsPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -284,14 +286,11 @@ public class MainWindow extends UiPart<Stage> {
         rightPanelPlaceholder.getChildren().clear();
 
         switch (mode) {
-        //Todo
         case PERSON:
-            /*
             if (logicPerson.getPersonInView() != null) {
                 personDetailsPanel = new PersonDetailsPanel(logicPerson.getPersonInView());
-                detailsPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
+                rightPanelPlaceholder.getChildren().add(personDetailsPanel.getRoot());
             }
-            */
             break;
         case DELIVERABLE:
             if (logicDeliverable.getDeliverableInView() != null) {
@@ -301,12 +300,10 @@ public class MainWindow extends UiPart<Stage> {
             break;
         //Todo
         case MEETING:
-            /*
             if (logicMeeting.getMeetingInView() != null) {
                 meetingDetailsPanel = new MeetingDetailsPanel(logicMeeting.getMeetingInView());
-                detailsPanelPlaceholder.getChildren().add(meetingDetailsPanel.getRoot());
+                rightPanelPlaceholder.getChildren().add(meetingDetailsPanel.getRoot());
             }
-            */
             break;
         default:
             assert false : "invalid mode type: " + ModeEnum.getModeOptions();

@@ -37,4 +37,19 @@ public class NameTest {
         assertTrue(Name.isValidName("Capital Tan")); // with capital letters
         assertTrue(Name.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
     }
+
+    @Test
+    public void compareTo() {
+        Name peterJack = new Name("peter jack");
+        Name peterJackCaps = new Name("Peter Jack");
+        Name peter = new Name("peter");
+
+        // small letter > big letter
+        assertTrue(peterJack.compareTo(peterJackCaps) > 0);
+
+        // longer name > shorter name
+        assertTrue(peterJack.compareTo(peter) > 0);
+
+        assertThrows(NullPointerException.class, () -> peterJack.compareTo(null));
+    }
 }

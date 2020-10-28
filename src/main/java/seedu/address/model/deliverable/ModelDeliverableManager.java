@@ -84,6 +84,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void setDeliverableBook(ReadOnlyDeliverableBook deliverableBook) {
         this.deliverableBook.resetData(deliverableBook);
+        setDeliverableInView(null);
     }
 
     @Override
@@ -100,8 +101,8 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void deleteDeliverable(Deliverable target) {
         deliverableBook.removeDeliverable(target);
-        if (deliverableInView.isSameDeliverable(target)) {
-            deliverableInView = null;
+        if (target.isSameDeliverable(deliverableInView)) {
+            setDeliverableInView(null);
         }
     }
 
@@ -140,6 +141,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
     public void updateFilteredDeliverableList(Predicate<Deliverable> predicate) {
         requireNonNull(predicate);
         filteredDeliverables.setPredicate(predicate);
+        setDeliverableInView(null);
     }
 
     @Override
@@ -158,6 +160,7 @@ public class ModelDeliverableManager implements ModelDeliverable {
         ModelDeliverableManager other = (ModelDeliverableManager) obj;
         return deliverableBook.equals(other.deliverableBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredDeliverables.equals(other.filteredDeliverables);
+                && filteredDeliverables.equals(other.filteredDeliverables)
+                && deliverableInView.equals(other.deliverableInView);
     }
 }

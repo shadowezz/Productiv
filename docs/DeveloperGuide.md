@@ -261,6 +261,39 @@ The following sequence diagram shows how the view operation works:
   * Pros: Does not require an additional operation to fetch the item in view.
   * Cons: Inappropriate use of Command Result whose primary objective is to pass feedback to the user.
 
+### \[Proposed\] Overall Completion Percentage feature
+
+#### Proposed Implementation
+
+The Overall Completion Percentage (OCP) feature is to be implemented in the Dashboard page (coming soon) of *Productiv*.
+This feature allows users to have a quick overview of the progress of their product's development. OCP is given by the 
+formula*:
+
+<div markdown="span" class="alert alert-primary">
+**_OCP (%) = Number of Completed Deliverables / Total Number of Deliverables × 100_**
+</div>
+
+\* If no deliverables are present, OCP will be set to **0%**.
+
+The OCP will only be updated upon successful execution of the following (simplified) commands:
+* AddCommand, i.e. *add(deliverable)*
+* DoneCommand, i.e. *done(deliverable)*
+* DeleteCommand, i.e. *delete(deliverable)*
+
+The following proposed sequence diagram shows how the updating of the OCP would be implemented:
+
+![OCPSequenceDiagram](images/OCPSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How updating of OCP executes
+
+* **Alternative 1 (current choice):** Store the deliverable counters within `LogicDeliverableManager`.
+    * Pros: Adheres to Single Responsibility Principle.
+    * Cons: May require additional interfaces/methods to retrieve the required values for OCP computation.
+* **Alternative 2:** Store the deliverable counters as global variables.
+    * Pros: Directly accesses the required values for OCP computation.
+    * Cons: May violate Single Responsibility Principle.
 
 
 --------------------------------------------------------------------------------------------------------------------
