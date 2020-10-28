@@ -1,11 +1,5 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_CONTACTS_A;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_DEADLINE_A;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_DESCRIPTION_A;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_MILESTONE_A;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_TITLE_A;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,9 +33,6 @@ public class TypicalDeliverables {
             .withContacts("2,4,6")
             .withIsComplete(false)
             .build();
-    public static final Deliverable LOGIN_PAGE = new DeliverableBuilder().withTitle(VALID_TITLE_A)
-            .withMilestone(VALID_MILESTONE_A).withDescription(VALID_DESCRIPTION_A)
-            .withDeadline(VALID_DEADLINE_A).withContacts(VALID_CONTACTS_A).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
@@ -59,6 +50,6 @@ public class TypicalDeliverables {
     }
 
     public static List<Deliverable> getTypicalDeliverables() {
-        return new ArrayList<>(Arrays.asList(HOME_PAGE, NAVIGATION, SORT_AND_FILTER, LOGIN_PAGE));
+        return new ArrayList<>(Arrays.asList(HOME_PAGE, NAVIGATION, SORT_AND_FILTER));
     }
 }

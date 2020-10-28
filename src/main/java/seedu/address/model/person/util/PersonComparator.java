@@ -12,7 +12,7 @@ import seedu.address.model.person.person.Person;
  */
 public class PersonComparator implements Comparator<Person> {
     /**
-     * Compares Persons by Name in ascending order.
+     * Compares Persons by Name in alphabetical order.
      */
     public int compare(Person a, Person b) {
         requireAllNonNull(a, b);

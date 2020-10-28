@@ -102,8 +102,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     }
 
     /**
-     * Sort the list by From's value
-     *
+     * Sort the list chronologically according to From.
      */
     public void sortList() {
         Collections.sort(internalList, timeEventComparator);

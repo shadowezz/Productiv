@@ -34,6 +34,14 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
     public DeliverableBook(ReadOnlyDeliverableBook toBeCopied) {
         this();
         resetData(toBeCopied);
+        sortDeliverables();
+    }
+
+    /**
+     * Sorts the contents of the deliverable list by Deadline in chronological order.
+     */
+    public void sortDeliverables() {
+        this.deliverables.sortList();
     }
 
     //// list overwrite operations
