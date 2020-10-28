@@ -29,15 +29,7 @@ public class MeetingCard extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
-    private Label description;
-    @FXML
-    private Label to;
-    @FXML
-    private Label from;
-    @FXML
-    private Label contacts;
-    @FXML
-    private Label loc;
+    private Label datetime;
 
     /**
      * Creates a {@code MeetingCode} with the given {@code Meeting} and index to display.
@@ -47,11 +39,7 @@ public class MeetingCard extends UiPart<Region> {
         this.meeting = meeting;
         id.setText(displayedIndex + ". ");
         title.setText(meeting.getTitle().value);
-        description.setText(meeting.getDescription().toString());
-        from.setText(meeting.getFrom().toString());
-        to.setText(meeting.getTo().toString());
-        contacts.setText(meeting.getContacts().toString());
-        loc.setText(meeting.getLocation().toString());
+        datetime.setText(String.format("%s to %s", meeting.getFrom(), meeting.getTo()));
     }
 
     @Override

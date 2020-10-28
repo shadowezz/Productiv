@@ -26,11 +26,7 @@
                 </Label>
                 <Label fx:id="title" text="\$title" styleClass="cell_big_label" />
             </HBox>
-            <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
-            <Label fx:id="from" styleClass="cell_small_label" text="\$from" />
-            <Label fx:id="to" styleClass="cell_small_label" text="\$to" />
-            <Label fx:id="contacts" styleClass="cell_small_label" text="\$contacts" />
-            <Label fx:id="loc" styleClass="cell_small_label" text="\$loc" />
+            <Label fx:id="datetime" styleClass="cell_small_label" text="\$datetime" />
         </VBox>
     </GridPane>
 </HBox>

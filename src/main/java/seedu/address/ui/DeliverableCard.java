@@ -30,11 +30,7 @@ public class DeliverableCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label description;
-    @FXML
     private Label deadline;
-    @FXML
-    private Label contacts;
     @FXML
     private Label milestone;
     @FXML
@@ -48,9 +44,7 @@ public class DeliverableCard extends UiPart<Region> {
         this.deliverable = deliverable;
         id.setText(displayedIndex + ". ");
         title.setText(deliverable.getTitle().value);
-        description.setText("Description: " + deliverable.getDescription().toString());
-        deadline.setText("Deadline: " + deliverable.getDeadline().value);
-        contacts.setText("Contacts: " + deliverable.getContacts());
+        deadline.setText(deliverable.getDeadline().value);
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
             isCompleted.setStyle("-fx-background-color: #32cd32");
