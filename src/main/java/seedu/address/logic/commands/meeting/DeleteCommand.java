@@ -18,7 +18,7 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     public static final String MESSAGE_DELETE_MEETING_SUCCESS = "Meeting Deleted: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes a meeting.";
-    public static final String MESSAGE_MEETING_DISPLAYED_INDEX = "The meeting index provided is invalid";
+    public static final String MESSAGE_MEETING_DISPLAYED_INDEX = "The meeting index provided is invalid!";
 
     private final Index targetIndex;
 

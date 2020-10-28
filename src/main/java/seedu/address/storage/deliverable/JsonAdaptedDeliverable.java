@@ -51,7 +51,7 @@ public class JsonAdaptedDeliverable {
         title = source.getTitle().value;
         milestone = source.getMilestone().value;
         description = source.getDescription().value;
-        deadline = source.getDeadline().value;
+        deadline = source.getDeadline().toString();
         contacts = source.getContacts().value;
         isComplete = Boolean.toString(source.getIsComplete());
     }

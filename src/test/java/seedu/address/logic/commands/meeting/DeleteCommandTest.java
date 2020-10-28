@@ -7,8 +7,8 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommand
 import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
 import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_DELETE_MEETING_SUCCESS;
 import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_MEETING_DISPLAYED_INDEX;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalMeetings.getTypicalMeeting;
 import static seedu.address.testutil.TypicalMeetings.getTypicalMeetingBook;
 
@@ -27,8 +27,8 @@ public class DeleteCommandTest {
 
     @Test
     void execute_validIndexUnfilteredList_success() {
-        Meeting meetingToDelete = getTypicalMeeting().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        Meeting meetingToDelete = getTypicalMeeting().get(INDEX_FIRST.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(MESSAGE_DELETE_MEETING_SUCCESS, meetingToDelete);
 
@@ -48,10 +48,10 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
+        showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
-        Meeting personToDelete = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        Meeting personToDelete = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST);
 
         String expectedMessage = String.format(MESSAGE_DELETE_MEETING_SUCCESS, personToDelete);
 
@@ -64,9 +64,9 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showMeetingAtIndex(modelMeeting, INDEX_FIRST_PERSON);
+        showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        Index outOfBoundIndex = INDEX_SECOND;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < modelMeeting.getMeetingBook().getMeetingList().size());
 
@@ -77,14 +77,14 @@ public class DeleteCommandTest {
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
+        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST);
+        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_PERSON);
+        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
