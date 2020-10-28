@@ -15,7 +15,6 @@ import seedu.address.model.meeting.meeting.Meeting;
 /**
  * Panel containing the list of persons.
  */
-
 public class CalendarListPanel extends UiPart<Region> {
     private static final String FXML = "CalendarListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(CalendarListPanel.class);
