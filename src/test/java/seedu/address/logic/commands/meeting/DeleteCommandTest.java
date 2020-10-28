@@ -67,7 +67,8 @@ public class DeleteCommandTest {
         showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
         Index outOfBoundIndex = INDEX_SECOND;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of meeting book list
+
         assertTrue(outOfBoundIndex.getZeroBased() < modelMeeting.getMeetingBook().getMeetingList().size());
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);

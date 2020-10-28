@@ -9,9 +9,9 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
 /**
  * An UI component that displays information of a {@code Deliverable}.
  */
-public class DeliverableCard extends UiPart<Region> {
+public class CalendarDeliverableCard extends UiPart<Region> {
 
-    private static final String FXML = "DeliverableListCard.fxml";
+    private static final String FXML = "CalendarListDeliverableCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -39,11 +39,11 @@ public class DeliverableCard extends UiPart<Region> {
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
      */
-    public DeliverableCard(Deliverable deliverable, int displayedIndex) {
+    public CalendarDeliverableCard(Deliverable deliverable, int displayedIndex) {
         super(FXML);
         this.deliverable = deliverable;
-        id.setText(String.valueOf(displayedIndex));
-        title.setText(deliverable.getTitle().value);
+        id.setText(displayedIndex + ". ");
+        title.setText("Deliverable: " + deliverable.getTitle().value);
         deadline.setText(deliverable.getDeadline().toString());
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
@@ -63,12 +63,12 @@ public class DeliverableCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeliverableCard)) {
+        if (!(other instanceof CalendarDeliverableCard)) {
             return false;
         }
 
         // state check
-        DeliverableCard card = (DeliverableCard) other;
+        CalendarDeliverableCard card = (CalendarDeliverableCard) other;
         return id.getText().equals(card.id.getText())
                 && deliverable.equals(card.deliverable);
     }

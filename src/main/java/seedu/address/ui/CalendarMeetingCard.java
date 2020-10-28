@@ -9,8 +9,8 @@ import seedu.address.model.meeting.meeting.Meeting;
 /**
  * An UI component that displays information of a {@code Meeting}.
  */
-public class MeetingCard extends UiPart<Region> {
-    private static final String FXML = "MeetingListCard.fxml";
+public class CalendarMeetingCard extends UiPart<Region> {
+    private static final String FXML = "CalendarListMeetingCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -29,18 +29,18 @@ public class MeetingCard extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
-    private Label from;
-    @FXML
     private Label to;
+    @FXML
+    private Label from;
 
     /**
      * Creates a {@code MeetingCode} with the given {@code Meeting} and index to display.
      */
-    public MeetingCard(Meeting meeting, int displayedIndex) {
+    public CalendarMeetingCard(Meeting meeting, int displayedIndex) {
         super(FXML);
         this.meeting = meeting;
-        id.setText(String.valueOf(displayedIndex));
-        title.setText(meeting.getTitle().value);
+        id.setText(displayedIndex + ". ");
+        title.setText("Meeting: " + meeting.getTitle().value);
         from.setText(meeting.getFrom().toString());
         to.setText(meeting.getTo().toString());
     }
@@ -53,12 +53,12 @@ public class MeetingCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof MeetingCard)) {
+        if (!(other instanceof CalendarMeetingCard)) {
             return false;
         }
 
         // state check
-        MeetingCard card = (MeetingCard) other;
+        CalendarMeetingCard card = (CalendarMeetingCard) other;
         return id.getText().equals(card.id.getText())
                 && meeting.equals(card.meeting);
     }

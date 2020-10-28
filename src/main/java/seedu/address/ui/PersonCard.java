@@ -31,11 +31,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
-    @FXML
     private Label email;
-    @FXML
-    private Label description;
     @FXML
     private Label role;
 
@@ -45,11 +41,9 @@ public class PersonCard extends UiPart<Region> {
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
         this.person = person;
-        id.setText(displayedIndex + ". ");
+        id.setText(String.valueOf(displayedIndex));
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().toString());
         email.setText(person.getEmail().value);
-        description.setText(person.getDescription().toString());
         role.setText(person.getRole().toString());
         if (person.getRole().equals(Role.DEVELOPER)) {
             role.setStyle("-fx-background-color: #32cd32");
