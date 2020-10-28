@@ -10,7 +10,6 @@ import seedu.address.logic.commands.meeting.ClearCommand;
 import seedu.address.logic.commands.meeting.Command;
 import seedu.address.logic.commands.meeting.DeleteCommand;
 import seedu.address.logic.commands.meeting.EditCommand;
-import seedu.address.logic.commands.meeting.ListCommand;
 import seedu.address.logic.commands.meeting.ViewCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.AddCommand;
@@ -54,9 +53,6 @@ public class MeetingBookParser {
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
-
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
