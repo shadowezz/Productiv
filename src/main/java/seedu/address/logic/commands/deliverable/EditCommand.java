@@ -1,6 +1,5 @@
 package seedu.address.logic.commands.deliverable;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_CONTACTS;
@@ -92,7 +91,8 @@ public class EditCommand extends Command {
      * edited with {@code editDeliverableDescriptor}.
      */
     private static Deliverable createEditedDeliverable(
-            Deliverable deliverableToEdit, EditDeliverableDescriptor editDeliverableDescriptor) {
+            Deliverable deliverableToEdit, EditDeliverableDescriptor editDeliverableDescriptor)
+            throws IllegalArgumentException {
         assert deliverableToEdit != null;
 
         Title updatedTitle = editDeliverableDescriptor.getTitle().orElse(deliverableToEdit.getTitle());
@@ -121,7 +121,7 @@ public class EditCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.address.logic.commands.meeting.EditCommand)) {
+        if (!(other instanceof EditCommand)) {
             return false;
         }
 

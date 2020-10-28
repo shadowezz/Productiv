@@ -11,14 +11,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.meeting.meeting.exceptions.DuplicateMeetingException;
 import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
-import seedu.address.model.meeting.util.MeetingComparator;
+import seedu.address.model.meeting.util.TimeEventComparator;
 
 public class UniqueMeetingList implements Iterable<Meeting> {
 
     private final ObservableList<Meeting> internalList = FXCollections.observableArrayList();
     private final ObservableList<Meeting> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
-    private final MeetingComparator meetingComparator = new MeetingComparator();
+    private final TimeEventComparator timeEventComparator = new TimeEventComparator();
 
     /**
      * Returns true if the list contains an equivalent meeting as the given argument.
@@ -106,7 +106,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      *
      */
     public void sortList() {
-        Collections.sort(internalList, meetingComparator);
+        Collections.sort(internalList, timeEventComparator);
     }
 
     @Override

@@ -20,9 +20,9 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_A
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_B;
 import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.meeting.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD;
 
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +71,7 @@ class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
+        Index targetIndex = INDEX_SECOND;
 
         String userInput = targetIndex.getOneBased() + FROM_DESC_A
                 + CONTACTS_DESC_A + TITLE_DESC_A;
@@ -86,7 +86,7 @@ class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + CONTACTS_DESC_B + LOCATION_DESC_A;
 
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder().withContacts(VALID_CONTACTS_B)
@@ -99,7 +99,7 @@ class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + TITLE_DESC_A;
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_A).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -121,7 +121,7 @@ class EditCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + FROM_DESC_A + TO_DESC_A
                 + FROM_DESC_A + TO_DESC_A
                 + FROM_DESC_B + TO_DESC_B;
@@ -137,7 +137,7 @@ class EditCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST;
         String userInput = targetIndex.getOneBased() + INVALID_FROM_DESC + FROM_DESC_B;
         EditMeetingDescriptor descriptor = new EditMeetingDescriptorBuilder().withFrom(VALID_FROM_B).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);

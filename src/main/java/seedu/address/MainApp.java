@@ -139,9 +139,10 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelDeliverable} with the data from {@code storageDeliverable}'s deliverable book and {@code userPrefs}. <br>
-     * The data from the sample deliverable book will be used instead if {@code storageDeliverable}'s deliverable book is not found,
-     * or an empty deliverable book will be used instead if errors occur when reading {@code storageDeliverable}'s deliverable book.
+     * Returns a {@code ModelDeliverable} with the data from {@code storageDeliverable}'s deliverable book and
+     * {@code userPrefs}. <br> The data from the sample deliverable book will be used instead
+     * if {@code storageDeliverable}'s deliverable book is not found, or an empty deliverable book will be used instead
+     * if errors occur when reading {@code storageDeliverable}'s deliverable book.
      */
     private ModelDeliverable initDeliverableModelManager(StorageDeliverable storageDeliverable,
                                                          ReadOnlyUserPrefs userPrefs) {
@@ -167,9 +168,10 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelMeeting} with the data from {@code storageMeeting}'s meeting book and {@code userPrefs}. <br>
-     * The data from the sample meeting book will be used instead if {@code storageMeeting}'s meeting book is not found,
-     * or an empty meeting book will be used instead if errors occur when reading {@code storageMeeting}'s meeting book.
+     * Returns a {@code ModelMeeting} with the data from {@code storageMeeting}'s meeting book and {@code userPrefs}.
+     * <br> The data from the sample meeting book will be used instead if {@code storageMeeting}'s meeting book is
+     * not found, or an empty meeting book will be used instead if errors occur
+     * when reading {@code storageMeeting}'s meeting book.
      */
     private ModelMeeting initMeetingModelManager(StorageMeeting storageMeeting,
                                                  ReadOnlyUserPrefs userPrefs) {

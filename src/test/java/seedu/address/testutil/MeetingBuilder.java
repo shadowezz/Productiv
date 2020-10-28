@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.util.Optional;
+
 import seedu.address.model.meeting.meeting.From;
 import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
@@ -68,6 +70,14 @@ public class MeetingBuilder {
     }
 
     /**
+     * Sets the {@code Description} of the {@code Meeting} that we are building.
+     */
+    public MeetingBuilder withDescription() {
+        this.description = new OptionalDescription(Optional.empty());
+        return this;
+    }
+
+    /**
      * Sets the {@code From} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withFrom(String from) {
@@ -92,12 +102,29 @@ public class MeetingBuilder {
     }
 
     /**
+     * Sets the {@code Contacts} of the {@code Meeting} that we are building.
+     */
+    public MeetingBuilder withContacts() {
+        this.contacts = new Contacts(Optional.empty());
+        return this;
+    }
+
+    /**
      * Sets the {@code Location} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withLocation(String location) {
         this.location = new Location(location);
         return this;
     }
+
+    /**
+     * Sets the {@code Location} of the {@code Meeting} that we are building.
+     */
+    public MeetingBuilder withLocation() {
+        this.location = new Location(Optional.empty());
+        return this;
+    }
+
 
 
     public Meeting build() {

@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import seedu.address.model.event.TimeEvent;
 import seedu.address.model.util.Contacts;
 import seedu.address.model.util.OptionalDescription;
 import seedu.address.model.util.Title;
@@ -13,7 +14,7 @@ import seedu.address.model.util.Title;
  * Represents a Meeting in the meeting book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Meeting {
+public class Meeting implements TimeEvent {
 
     public static final String INCORRECT_FROM_AND_TO_ORDER = "From date should be earlier than To date.";
 
@@ -66,7 +67,8 @@ public class Meeting {
         return from;
     }
 
-    public LocalDateTime getFromLocalDateTime() {
+    @Override
+    public LocalDateTime getIndicatorTime() {
         return from.getLocalDateTime();
     }
 

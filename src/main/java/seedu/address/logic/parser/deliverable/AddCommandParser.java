@@ -37,21 +37,18 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_MILESTONE,
                 PREFIX_DESCRIPTION, PREFIX_DEADLINE, PREFIX_CONTACTS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_MILESTONE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_MILESTONE,
+                PREFIX_DEADLINE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Milestone milestone = ParserUtil.parseMilestone(argMultimap.getValue(PREFIX_MILESTONE).get());
         OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
-
-        Deadline deadline = argMultimap.getValue(PREFIX_DEADLINE).isEmpty()
-                ? Deadline.createEmptyDeadline()
-                : ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
+        Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
         Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
 
         Deliverable deliverable = new Deliverable(title, milestone, description, deadline, contacts);
-
         return new AddCommand(deliverable);
     }
 

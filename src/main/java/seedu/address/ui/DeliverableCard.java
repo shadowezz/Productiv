@@ -44,7 +44,7 @@ public class DeliverableCard extends UiPart<Region> {
         this.deliverable = deliverable;
         id.setText(String.valueOf(displayedIndex));
         title.setText(deliverable.getTitle().value);
-        deadline.setText(deliverable.getDeadline().value);
+        deadline.setText(deliverable.getDeadline().toString());
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
             isCompleted.setStyle("-fx-background-color: #32cd32");
