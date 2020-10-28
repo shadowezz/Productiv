@@ -14,7 +14,7 @@ class LocationTest {
     }
 
     @Test
-    public void constructor_invalidName_throwsIllegalArgumentException() {
+    public void constructor_invalidLocation_throwsIllegalArgumentException() {
         String invalidLocation = "";
         assertThrows(IllegalArgumentException.class, () -> new Location(invalidLocation));
     }

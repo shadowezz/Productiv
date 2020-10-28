@@ -24,21 +24,22 @@ class UniqueMeetingListTest {
     private final UniqueMeetingList uniqueMeetingList = new UniqueMeetingList();
 
     @Test
-    public void contains_nullPerson_throwsNullPointerException() {
+    public void contains_nullMeeting_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniqueMeetingList.contains(null));
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
+    public void contains_meetingNotInList_returnsFalse() {
         assertFalse(uniqueMeetingList.contains(MEETING_A));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
+    public void contains_meetingInList_returnsTrue() {
         uniqueMeetingList.add(MEETING_A);
         assertTrue(uniqueMeetingList.contains(MEETING_A));
     }
 
+    // TODO:
     //    @Test
     //    public void contains_MeetingWithSameIdentityFieldsInList_returnsTrue() {
     //        uniqueMeetingList.add(MEETING_A);
