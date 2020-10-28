@@ -23,7 +23,6 @@ import seedu.address.logic.LogicPerson;
 import seedu.address.logic.LogicPersonManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.ui.Calendar;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.ModelDeliverableManager;
