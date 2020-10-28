@@ -83,6 +83,7 @@ public class ModelMeetingManager implements ModelMeeting {
     @Override
     public void setMeetingBook(ReadOnlyMeetingBook meetingBook) {
         this.meetingBook.resetData(meetingBook);
+        setMeetingInView(null);
     }
 
     @Override
@@ -138,6 +139,7 @@ public class ModelMeetingManager implements ModelMeeting {
     public void updateFilteredMeetingList(Predicate<Meeting> predicate) {
         requireNonNull(predicate);
         filteredMeetings.setPredicate(predicate);
+        setMeetingInView(null);
     }
 
     @Override
