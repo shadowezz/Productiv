@@ -20,7 +20,7 @@ traditional GUI apps.
 
 1. Ensure you have Java `11` or above installed in your computer.
 
-1. Download the latest `Productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
+1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
 1. Copy the `.jar` file to your preferred folder.
 
@@ -34,9 +34,9 @@ Here are some example commands you can try:
 
    * **`switch`**`deliverable` : Switches to `deliverable` mode.
 
-   * **`add`**`r/stk n/Betty Clarke p/98765432` : If in `contact` mode, adds a contact named `Betty Clarke`.
+   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in `contact` mode, adds a contact named `Betty Clarke`.
 
-   * **`delete`**`1` : If in `meeting` mode, deletes the 1st meeting shown.
+   * **`delete`**`1` : If in `meeting` mode and meeting list is non-empty, deletes the 1st meeting shown.
 
    * **`exit`** : Exits the app.
 
@@ -69,17 +69,21 @@ Shows a message directing you to this User Guide.
 ![help](images/helpMessage.JPG)
 
 Format: `help`
+* Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
 
 #### Switching modes: `switch`
 
-Switches to either `contact`, `meeting` or `deliverable` mode.
+Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
 
 Format: `switch MODE`
-* Corresponding list of existing items will be displayed, e.g. `contact` mode will display all contacts.
-* Subsequent commands will be with respect to the `MODE`.
+* For `deliverable`, `meeting` and `contact` mode, a corresponding list of existing items will be displayed in the left panel, e.g. `switch contact` will display all contacts.
+A view panel will be displayed on the right panel (initially empty).
+* For `dashboard` mode, a project completion status overview will be displayed in the left panel.
+A calendar list containing all deliverables and meetings chronologically sorted will be displayed in the right panel.
+* Subsequent commands will be with respect to the `MODE`, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
 
 Examples:
-* `switch contact` switches to `contact` mode.
+* `switch dashboard` switches to `dashboard` mode.
 * `switch meeting` switches to `meeting` mode.
 
 ### Contact
@@ -94,6 +98,8 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 * `PHONE` is the phone number of the contact.
 * `EMAIL` is the email address of the contact.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
+* You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
+e.g. you cannot execute `add r/dev n/John p/123` if a contact with the name `John` and phone `123` exists in the contact list.
 
 Examples:
 * `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
@@ -110,10 +116,12 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
+* You cannot edit contacts to have the same name and phone or email as another existing contact,
+e.g. you cannot execute `edit 1 r/dev n/John e/john@email.com` if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
 *  `edit 1 p/81234567 e/jeremysand@glutter.com`
-edits the phone number and home address of the 1st person to be `81234567` and `jeremysand@glutter.com` respectively.
+edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
 *  `edit 2 n/Jayden Smith` 
 edits the name of the 2nd contact to be `Jayden Smith`.
 
@@ -271,11 +279,12 @@ Format: `delete INDEX`
 Examples:
 * `delete 3` deletes the 3rd meeting in the meeting list.
 
-### Exiting the program: `exit`
+### Exiting *Productiv*: `exit`
 
 Exits the program.
 
 Format: `exit`
+* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
 
 ### Saving the data
 
