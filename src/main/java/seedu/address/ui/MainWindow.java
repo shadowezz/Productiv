@@ -328,6 +328,7 @@ public class MainWindow extends UiPart<Stage> {
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
                     calendar.updateCalendarList();
+                    projectCompletionStatusPanel.updateOcp();
                     break;
                 case MEETING:
                     commandResult = logicMeeting.execute(commandText);

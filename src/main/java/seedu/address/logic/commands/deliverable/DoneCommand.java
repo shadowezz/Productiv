@@ -51,6 +51,11 @@ public class DoneCommand extends Command {
         }
 
         Deliverable deliverableToComplete = lastShownList.get(targetIndex.getZeroBased());
+
+        if (deliverableToComplete.getIsComplete()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_DELIVERABLE_COMPLETED);
+        }
+
         Deliverable completedDeliverable = createCompletedDeliverable(deliverableToComplete);
         modelDeliverable.setDeliverable(deliverableToComplete, completedDeliverable);
         modelDeliverable.updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);

@@ -16,7 +16,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
- * Represents the in-memory model of the meeting book data
+ * Represents the in-memory model of the deliverable book data
  */
 public class ModelDeliverableManager implements ModelDeliverable {
 

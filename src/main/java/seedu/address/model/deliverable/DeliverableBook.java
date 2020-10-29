@@ -59,7 +59,6 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
      */
     public void resetData(ReadOnlyDeliverableBook newData) {
         requireNonNull(newData);
-
         setDeliverables(newData.getDeliverableList());
     }
 
