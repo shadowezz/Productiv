@@ -154,7 +154,7 @@ Format: `list`
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#finding-contacts) above for details of the `find` command. 
+Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
 </div>
 
 #### Deleting a contact: `delete`
@@ -267,7 +267,7 @@ Format: `list`
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use this command when you want to list all your deliverables back after using the `find` command. 
-Refer to [Finding deliverables](#finding-deliverables) above for details of the `find` command. 
+Refer to [Finding deliverables](#finding-deliverables-find) above for details of the `find` command. 
 </div>
 
 #### Deleting a deliverable: `delete`
@@ -372,7 +372,7 @@ Format: `list`
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
-Refer to [Finding meetings](#finding-meetings) above for details of the `find` command. 
+Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
 </div>
 
 #### Deleting a meeting: `delete`
