@@ -23,12 +23,12 @@ title: User Guide
 1. Copy the `.jar` file to your preferred folder.
 
 1. Double-click the file to start *Productiv*. 
-The GUI similar to the below should appear in a few seconds. 
+Your `dashboard` should appear in a few seconds. 
 Note that the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-   <figcaption>Initial display</figcaption>
-   
 
+   ![Ui](images/Ui.png)
+   <figcaption>Dashboard</figcaption><br>
+   
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
 
@@ -83,9 +83,9 @@ Examples:
 * `switch meeting` switches to `meeting` mode.
 
 ### Contact
-![contact](images/Contact.png)
-<figcaption>Initial display of a contact list </figcaption>
 
+   ![contact](images/Contact.png)
+   <figcaption>Initial display of a contact list </figcaption>
 
 #### Adding a contact: `add`
 
