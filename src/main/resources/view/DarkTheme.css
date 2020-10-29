@@ -181,7 +181,7 @@
 }
 
 #navBar {
-    -fx-background-color: #00fa9a;
+    -fx-background-color: #00c853;
 }
 
 /*
@@ -192,7 +192,7 @@
 .button {
     -fx-padding: 5 22 5 22;
     -fx-background-radius: 0;
-    -fx-background-color: #00fa9a;
+    -fx-background-color:  #00c853;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 14pt;
     -fx-text-fill: #ffffff;
@@ -200,7 +200,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #89ccad;
+    -fx-background-color: #00e676;
 }
 
 .button:pressed, .button:default:hover:pressed {
