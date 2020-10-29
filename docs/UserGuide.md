@@ -286,9 +286,17 @@ There is no need to save manually.
 
 ## FAQ
 
+**Q**: How do I start using *Productiv*?<br>
+**A**: You can refer to our [Quick Start Guide](#quick start).
+
+**Q**: Which operating systems can I run *Productiv* on?<br>
+**A**: Currently, *Productiv* is supported on both Mac and Windows. Just ensure 
+that you have Java `11` or above installed on your computer.
+
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it 
 creates with the file that contains the data of your previous *Productiv* app.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
