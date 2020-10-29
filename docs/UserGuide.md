@@ -156,6 +156,8 @@ Format: `clear`
 
 ### Deliverable
 
+   ![Ui](images/Deliverable.png)
+
 #### Adding a deliverable: `add`
 
 Adds a deliverable to the deliverable list.
@@ -217,6 +219,9 @@ Example:
 
 ### Meeting
 
+   ![Ui](images/Meeting.png)
+   <figcaption align="center">Figure 1</figcaption>
+ 
 #### Adding a meeting: `add`
 
 Adds a meeting to the meeting list.
