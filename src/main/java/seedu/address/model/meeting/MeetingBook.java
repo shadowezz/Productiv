@@ -31,7 +31,7 @@ public class MeetingBook implements ReadOnlyMeetingBook {
     }
 
     /**
-     * Sorts the content of the meeting list by From in ascending order.
+     * Sorts the contents of the meeting list by From in chronological order.
      */
     public void sortMeetings() {
         this.meetings.sortList();

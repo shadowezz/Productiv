@@ -73,7 +73,7 @@ class AddCommandTest {
         // null -> returns false
         assertFalse(addTestACommand.equals(null));
 
-        // different person -> returns false
+        // different deliverable -> returns false
         assertFalse(addTestACommand.equals(addTestBCommand));
     }
 
@@ -112,7 +112,7 @@ class AddCommandTest {
         }
 
         @Override
-        public void addDeliverable(Deliverable person) {
+        public void addDeliverable(Deliverable deliverable) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -163,7 +163,7 @@ class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single deliverable.
      */
     private class ModelDeliverableStubWithDeliverable extends ModelDeliverableStub {
         private final Deliverable deliverable;
@@ -180,7 +180,7 @@ class AddCommandTest {
         }
     }
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the deliverable being added.
      */
     private class ModelDeliverableStubAcceptingDeliverableAdded extends ModelDeliverableStub {
         final ArrayList<Deliverable> deliverablesAdded = new ArrayList<>();

@@ -3,6 +3,7 @@ package seedu.address.model.deliverable.deliverable;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,12 +11,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.exceptions.DeliverableNotFoundException;
 import seedu.address.model.deliverable.deliverable.exceptions.DuplicateDeliverableException;
+import seedu.address.model.util.TimeEventComparator;
 
 public class UniqueDeliverableList implements Iterable<Deliverable> {
 
     private final ObservableList<Deliverable> internalList = FXCollections.observableArrayList();
     private final ObservableList<Deliverable> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+    private final TimeEventComparator timeEventComparator = new TimeEventComparator();
 
     /**
      * Returns true if the list contains an equivalent deliverable as the given argument.
@@ -35,6 +38,7 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
             throw new DuplicateDeliverableException();
         }
         internalList.add(toAdd);
+        sortList();
     }
 
     /**
@@ -56,6 +60,7 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
         }
 
         internalList.set(index, editedDeliverable);
+        sortList();
     }
 
     /**
@@ -85,6 +90,7 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
         }
 
         internalList.setAll(deliverables);
+        sortList();
     }
 
     /**
@@ -94,8 +100,16 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Sort the list chronologically according to Deadline.
+     */
+    public void sortList() {
+        Collections.sort(internalList, timeEventComparator);
+    }
+
     @Override
     public Iterator<Deliverable> iterator() {
+        sortList();
         return internalList.iterator();
     }
 

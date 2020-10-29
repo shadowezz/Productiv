@@ -35,10 +35,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+        sortContacts();
     }
 
     /**
-     * Sorts the content of the contact list by Name in ascending order.
+     * Sorts the contents of the contact list by Name in alphabetical order.
      */
     public void sortContacts() {
         persons.sortList();
