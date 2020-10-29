@@ -3,13 +3,11 @@ layout: page
 title: User Guide
 ---
 
-*Productiv* is a desktop app that assists product managers like yourself with organising product-related information 
-(**contacts**, **deliverables** and **meetings**) so that you can track your product's development more comprehensively 
-and conveniently.
+*Productiv* is a one-stop desktop app for product managers like yourself to organise your **contacts**, 
+**deliverables** and **meetings**, so that you can track your product's development easily.
 
-*Productiv* is optimized for use via Command Line Interface (CLI), but still has the benefits of a Graphical User 
-Interface (GUI). Thus, if you can type fast, *Productiv* can get your product management tasks done faster than 
-traditional GUI apps.
+*Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
+*Productiv* has just become better for you. However, fret not, *Productiv* still has the benefits of a Graphical User Interface (GUI).
 
 * Table of Contents
 {:toc}
@@ -72,7 +70,7 @@ Format: `help`
 
 #### Switching modes: `switch`
 
-Switches to either `contact`, `meeting` or `deliverable` mode.
+Switches to either `contact`, `meeting`, `deliverable`, or `dashboard` mode.
 
 Format: `switch MODE`
 * Corresponding list of existing items will be displayed, e.g. `contact` mode will display all contacts.
@@ -228,8 +226,8 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
-* `CONTACTS` represents the contacts involved in the meeting.
-* `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
+* `CONTACTS` represents the contacts involved in the meeting. It is a comma-separated string of the index numbers of 
+   these contacts, as specified in the contact list.
 * `LOCATION` is the location of the meeting.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -239,10 +237,10 @@ Input an estimate end date time for the meeting if there is none specified.
 Example:
 * `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
 adds a meeting with the title `Discuss app requirements`, description `Refine with business associates`, 
-start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00` and contacts `3,6,9`.
+start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, and contacts `3,6,9`.
 * `add t/User research review from/15-12-2020 13:00 to/15-12-2020 15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
-end date time `15-12-2020 15:00` and location `Meeting room A`.
+end date time `15-12-2020 15:00`, and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
@@ -251,7 +249,7 @@ Edits an existing meeting in the meeting list.
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in the displayed meeting list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
+* At least one of the optional fields must be provided. 
 * The existing values of the specified meeting will be updated to the input values.
 
 Examples:
@@ -271,6 +269,26 @@ Format: `delete INDEX`
 Examples:
 * `delete 3` deletes the 3rd meeting in the meeting list.
 
+#### Finding a meeting: `find`
+
+#### Listing all meetings: `list`
+
+Lists all meetings from your meeting list. 
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
+Refer to [Finding a meeting](#finding-a-meeting-find) above for details of the `find` command. 
+</div>
+
+#### Clearing all meetings: `clear`
+
+Clears all meetings from your meeting list.
+
+Format: `clear`
+
 ### Exiting the program: `exit`
 
 Exits the program.
@@ -279,9 +297,8 @@ Format: `exit`
 
 ### Saving the data
 
-*Productiv* data are saved in your computer's hard disk automatically after any command that changes it. 
-There is no need to save manually.
-
+*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Hence, you can focus on managing your product without fearing any unsaved changes. 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
