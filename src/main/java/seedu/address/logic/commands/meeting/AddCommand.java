@@ -19,17 +19,17 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a meeting to the meeting book. "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
-            + PREFIX_DESCRIPTION + "DESCRIPTION "
             + PREFIX_FROM + "FROM "
             + PREFIX_TO + "TO "
-            + PREFIX_CONTACTS + "CONTACTS "
-            + PREFIX_LOCATION + "LOCATION "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_CONTACTS + "CONTACTS] "
+            + "[" + PREFIX_LOCATION + "LOCATION]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Discuss user requirements with biz associates "
             + PREFIX_DESCRIPTION + "Refer to the reviewed user stories during discussion "
-            + PREFIX_FROM + "2020-12-31 12:00"
-            + PREFIX_TO + "2020-12-31 14:00 "
-            + PREFIX_CONTACTS + "1 3 5 "
+            + PREFIX_FROM + "30-12-2020 12:00 "
+            + PREFIX_TO + "30-12-2020 14:00 "
+            + PREFIX_CONTACTS + "1,3,5 "
             + PREFIX_LOCATION + "Room 1A";
 
     public static final String MESSAGE_SUCCESS = "New meeting added: %1$s";
