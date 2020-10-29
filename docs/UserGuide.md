@@ -26,6 +26,8 @@ title: User Guide
 The GUI similar to the below should appear in a few seconds. 
 Note that the app contains some sample data.<br>
    ![Ui](images/Ui.png)
+   <figcaption>Initial display</figcaption>
+   
 
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
@@ -82,7 +84,7 @@ Examples:
 
 ### Contact
 ![contact](images/Contact.png)
-<figcaption align="center" style="italic">Initial display of a contact list </figcaption>
+<figcaption>Initial display of a contact list </figcaption>
 
 
 #### Adding a contact: `add`
@@ -160,7 +162,7 @@ Format: `clear`
 ### Deliverable
 
    ![Ui](images/Deliverable.png)
-   <figcaption align="center" style="font-style: italic; text-color: #006400">Initial display of a deliverable list </figcaption>
+   <figcaption>Initial display of a deliverable list </figcaption>
 
 #### Adding a deliverable: `add`
 
@@ -224,7 +226,7 @@ Example:
 ### Meeting
 
    ![Ui](images/Meeting.png)
-   <figcaption align="center" style="italic">Initial display of a meeting list </figcaption>
+   <figcaption>Initial display of a meeting list </figcaption>
  
 #### Adding a meeting: `add`
 
@@ -329,6 +331,7 @@ Action | Format, Examples
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
 **Delete** | `delete INDEX` <br> e.g. `delete 3`
+**Delete** | `view INDEX` <br> e.g. `view 2`
 **Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`
