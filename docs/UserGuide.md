@@ -300,7 +300,7 @@ Format: `list`
 Refer to [Finding a meeting](#finding-a-meeting-find) above for details of the `find` command. 
 </div>
 
-#### Finding a meeting: `find`
+#### Finding a meetings: `find`
 
 Finds the meetings whose titles or descriptions contain any of the given keywords.
 
@@ -313,8 +313,8 @@ Format: `find KEYWORDS`
 * Searches return meetings matching at least one keyword, e.g. `Complete game` will return `Complete features` and `Final game`.
 
 Examples:
-* `find discuss user guide John` returns a meeting with name `discuss user guide` and another with description `with Mr John`.
-* `find Mcd0nalds` returns a meeting with name `Meet mcd0nalds` and another with description `Cater mcd0nalds breakfast`.
+* `find discuss user guide John` returns a meeting with title `discuss user guide` and another with description `with Mr John`.
+* `find Mcd0nalds` returns a meeting with title `Meet Mcd0nalds` and another with description `Cater Mcd0nalds breakfast`.
 
 #### Deleting a meeting: `delete`
 
@@ -329,7 +329,7 @@ Example:
 
 #### Viewing a meeting: `view`
 
-Displays more details of specified meeting from your meeting list.
+Displays more details of the specified meeting from your meeting list.
 
 Format: `view INDEX`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
@@ -389,9 +389,9 @@ Action | Format, Examples
 ## Glossary
 
 \# |            Term                | Description
----|--------------------------------|------------------------------------------------------------------------------|
-1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.     |
-2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.             |
-3  | Deliverable                    | Refers to items which need to be completed by a specified time.              |
-4  | Stakeholder                    | An external party involved with the product.                                 |
-5  | Milestone                      | Refers to a transition when a specified group of deliverables are completed. |
+---|--------------------------------|------------------------------------------------------------------------------------------------|
+1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
+2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
+3  | Deliverable                    | An item which needs to be completed by a specified time.                                       |
+4  | Stakeholder                    | An external party involved with the product.                                                   |
+5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables |
