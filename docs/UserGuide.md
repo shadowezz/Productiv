@@ -36,7 +36,7 @@ Here are some example commands you can try:
 
    * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in `contact` mode, adds a contact named `Betty Clarke`.
 
-   * **`delete`**`1` : If in `meeting` mode and meeting list is non-empty, deletes the 1st meeting shown.
+   * **`delete`**`1` : If in `meeting` mode, deletes the 1st meeting shown.
 
    * **`exit`** : Exits the app.
 
@@ -76,11 +76,12 @@ Format: `help`
 Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
 
 Format: `switch MODE`
-* For `deliverable`, `meeting` and `contact` mode, a corresponding list of existing items will be displayed in the left panel, e.g. `switch contact` will display all contacts.
+* `switch`  `deliverable`, `meeting` and `contact` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
+e.g. `switch contact` will display your list of contacts.
 A view panel will be displayed on the right panel (initially empty).
-* For `dashboard` mode, a project completion status overview will be displayed in the left panel.
-A calendar list containing all deliverables and meetings chronologically sorted will be displayed in the right panel.
-* Subsequent commands will be with respect to the `MODE`, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
+* `switch dashboard` will display your project's completion status in the left panel.
+A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
+* How the commands are executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
 
 Examples:
 * `switch dashboard` switches to `dashboard` mode.
@@ -90,7 +91,7 @@ Examples:
 
 #### Adding a contact: `add`
 
-Adds a developer or stakeholder to the contact list.
+Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 * `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
@@ -109,10 +110,10 @@ adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`
 
 #### Editing a contact: `edit`
 
-Edits an existing contact in the contact list.
+Edits an existing contact in your contact list.
 
 Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
-* `INDEX` is the index number of the contact in the displayed contact list.
+* `INDEX` is the index number of the contact in your displayed contact list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
@@ -127,7 +128,7 @@ edits the name of the 2nd contact to be `Jayden Smith`.
 
 #### Listing all contacts: `list`
 
-Shows a list of all contacts in the contact list.
+Shows a list of all contacts in your contact list.
 
 Format: `list`
 
@@ -149,10 +150,10 @@ Examples:
 
 #### Deleting a contact: `delete`
 
-Deletes the specified contact from the contact list.
+Deletes the specified contact from your contact list.
 
 Format: `delete INDEX`
-* `INDEX` is the index number of the contact in the displayed contact list.
+* `INDEX` is the index number of the contact in your displayed contact list.
 * `INDEX` must be a positive integer.
 
 Example:
@@ -160,7 +161,7 @@ Example:
 
 #### Clearing all contacts: `clear`
 
-Clears all contacts from the contact list.
+Clears all contacts from your contact list.
 
 Format: `clear`
 
@@ -168,7 +169,7 @@ Format: `clear`
 
 #### Adding a deliverable: `add`
 
-Adds a deliverable to the deliverable list.
+Adds a deliverable to your deliverable list.
 
 Format: `add t/TITLE m/MILESTONE [d/DESCRIPTION] [by/DEADLINE] [c/CONTACTS]`
 * `TITLE` is the main heading of the deliverable.
@@ -189,10 +190,10 @@ and deadline `12-12-2020 12:00`.
 
 #### Editing a deliverable: `edit`
 
-Edits an existing deliverable in the deliverable list.
+Edits an existing deliverable in your deliverable list.
 
 Format: `edit INDEX [t/TITLE] [m/MILESTONE] [d/DESCRIPTION] [by/DEADLINE] [c/CONTACTS]`
-* `INDEX` is the index number of the deliverable in the displayed deliverable list.
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified deliverable will be updated to the input values.
@@ -205,31 +206,31 @@ and its deadline to be `13-12-2020 12:00`.
 
 #### Marking a deliverable as completed: `done`
 
-Marks the specified deliverable from the deliverable list as done.
+Marks the specified deliverable from your deliverable list as done.
 
 Format: `done INDEX`
-* `INDEX` is the index number of the deliverable in the displayed deliverable list.
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `done 1` marks the 1st deliverable in the deliverable list as done.
+* `done 1` marks the 1st deliverable in your deliverable list as done.
 
 #### Deleting a deliverable: `delete`
 
-Deletes the specified deliverable from the deliverable list.
+Deletes the specified deliverable from your deliverable list.
 
 Format: `delete INDEX`
-* `INDEX` is the index number of the deliverable in the displayed deliverable list.
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `delete 2` deletes the 2nd deliverable in the deliverable list.
+* `delete 2` deletes the 2nd deliverable in your deliverable list.
 
 ### Meeting
 
 #### Adding a meeting: `add`
 
-Adds a meeting to the meeting list.
+Adds a meeting to your meeting list.
 
 Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
@@ -254,10 +255,10 @@ end date time `15-12-2020 15:00` and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
-Edits an existing meeting in the meeting list.
+Edits an existing meeting in your meeting list.
 
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
-* `INDEX` is the index number of the meeting in the displayed meeting list.
+* `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified meeting will be updated to the input values.
@@ -270,14 +271,14 @@ and its description to be `Finalize dashboard functions`.
 
 #### Deleting a meeting: `delete`
 
-Deletes the specified meeting from the meeting list.
+Deletes the specified meeting from your meeting list.
 
 Format: `delete INDEX`
-* `INDEX` is the index number of the meeting in the displayed meeting list.
+* `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
 
-Examples:
-* `delete 3` deletes the 3rd meeting in the meeting list.
+Example:
+* `delete 3` deletes the 3rd meeting in your meeting list.
 
 ### Exiting *Productiv*: `exit`
 
