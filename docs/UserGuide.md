@@ -3,13 +3,11 @@ layout: page
 title: User Guide
 ---
 
-*Productiv* is a desktop app that assists product managers like yourself with organising product-related information 
-(**contacts**, **deliverables** and **meetings**) so that you can track your product's development more comprehensively 
-and conveniently.
+*Productiv* is a one-stop desktop app for product managers like yourself to organise your **contacts**, 
+**deliverables** and **meetings**, so that you can track your product's development easily.
 
-*Productiv* is optimized for use via Command Line Interface (CLI), but still has the benefits of a Graphical User 
-Interface (GUI). Thus, if you can type fast, *Productiv* can get your product management tasks done faster than 
-traditional GUI apps.
+*Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
+*Productiv* has just become better for you. However, fret not, *Productiv* still has the benefits of a Graphical User Interface (GUI).
 
 * Table of Contents
 {:toc}
@@ -25,10 +23,12 @@ traditional GUI apps.
 1. Copy the `.jar` file to your preferred folder.
 
 1. Double-click the file to start *Productiv*. 
-The GUI similar to the below should appear in a few seconds. 
+Your `dashboard` should appear in a few seconds. 
 Note that the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
+   ![Ui](images/Ui.png)
+   <figcaption>Dashboard</figcaption><br>
+   
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
 
@@ -78,16 +78,19 @@ Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
 Format: `switch MODE`
 * `switch`  `deliverable`, `meeting` and `contact` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
 e.g. `switch contact` will display your list of contacts.
-A view panel will be displayed on the right panel (initially empty).
+A view panel will be displayed in the right panel (initially empty).
 * `switch dashboard` will display your project's completion status in the left panel.
 A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
-* How the commands are executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
+* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
 
 Examples:
 * `switch dashboard` switches to `dashboard` mode.
 * `switch meeting` switches to `meeting` mode.
 
 ### Contact
+
+   ![contact](images/Contact.png)
+   <figcaption>Initial display of a contact list </figcaption>
 
 #### Adding a contact: `add`
 
@@ -100,7 +103,7 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 * `EMAIL` is the email address of the contact.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
 * You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
-e.g. you cannot execute `add r/dev n/John p/123` if a contact with the name `John` and phone `123` exists in the contact list.
+e.g. `add r/dev n/John p/123` will not work if a contact with the name `John` and phone `123` exists in the contact list.
 
 Examples:
 * `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
@@ -118,7 +121,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
 * You cannot edit contacts to have the same name and phone or email as another existing contact,
-e.g. you cannot execute `edit 1 r/dev n/John e/john@email.com` if another contact with the name `John` and email `john@email.com` exists in the contact list.
+e.g. `edit 1 r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
 *  `edit 1 p/81234567 e/jeremysand@glutter.com`
@@ -159,6 +162,11 @@ Format: `delete INDEX`
 Example:
 * `delete 3` deletes the 3rd contact in the contact list.
 
+#### Viewing a contact: `view`
+
+   ![Ui](images/ContactView.png)
+   <figcaption>Viewing a contact</figcaption><br>
+
 #### Clearing all contacts: `clear`
 
 Clears all contacts from your contact list.
@@ -166,6 +174,9 @@ Clears all contacts from your contact list.
 Format: `clear`
 
 ### Deliverable
+
+   ![Ui](images/Deliverable.png)
+   <figcaption>Initial display of a deliverable list </figcaption>
 
 #### Adding a deliverable: `add`
 
@@ -226,8 +237,16 @@ Format: `delete INDEX`
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
 
+#### Viewing a deliverable: `view`
+
+   ![Ui](images/DeliverableView.png)
+   <figcaption>Viewing a deliverable</figcaption><br>
+
 ### Meeting
 
+   ![Ui](images/Meeting.png)
+   <figcaption>Initial display of a meeting list </figcaption>
+ 
 #### Adding a meeting: `add`
 
 Adds a meeting to your meeting list.
@@ -237,8 +256,8 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
-* `CONTACTS` represents the contacts involved in the meeting.
-* `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
+* `CONTACTS` represents the contacts involved in the meeting. It is a comma-separated string of the index numbers of 
+   these contacts, as specified in the contact list.
 * `LOCATION` is the location of the meeting.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -248,10 +267,10 @@ Input an estimate end date time for the meeting if there is none specified.
 Example:
 * `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
 adds a meeting with the title `Discuss app requirements`, description `Refine with business associates`, 
-start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00` and contacts `3,6,9`.
+start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, and contacts `3,6,9`.
 * `add t/User research review from/15-12-2020 13:00 to/15-12-2020 15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
-end date time `15-12-2020 15:00` and location `Meeting room A`.
+end date time `15-12-2020 15:00`, and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
@@ -260,7 +279,7 @@ Edits an existing meeting in your meeting list.
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
+* At least one of the optional fields must be provided. 
 * The existing values of the specified meeting will be updated to the input values.
 
 Examples:
@@ -268,6 +287,20 @@ Examples:
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalize dashboard functions`.
 * `edit 4 c/3,6,8` edits the contacts of the 4th meeting to be `3,6,8`.
+
+#### Listing all meetings: `list`
+
+Lists all meetings from your meeting list. 
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
+Refer to [Finding a meeting](#finding-a-meeting-find) above for details of the `find` command. 
+</div>
+
+#### Finding a meeting: `find`
 
 #### Deleting a meeting: `delete`
 
@@ -280,6 +313,16 @@ Format: `delete INDEX`
 Example:
 * `delete 3` deletes the 3rd meeting in your meeting list.
 
+#### Viewing a meeting: `view`
+   ![Ui](images/MeetingView.png)
+   <figcaption>Viewing a meeting</figcaption><br>
+
+#### Clearing all meetings: `clear`
+
+Clears all meetings from your meeting list.
+
+Format: `clear`
+
 ### Exiting *Productiv*: `exit`
 
 Exits the program.
@@ -289,9 +332,8 @@ Format: `exit`
 
 ### Saving the data
 
-*Productiv* data are saved in your computer's hard disk automatically after any command that changes it. 
-There is no need to save manually.
-
+*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Hence, you can focus on managing your product without fearing any unsaved changes. 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -313,6 +355,7 @@ Action | Format, Examples
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
 **Delete** | `delete INDEX` <br> e.g. `delete 3`
+**View** | `view INDEX` <br> e.g. `view 2`
 **Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`

@@ -58,12 +58,13 @@ public class SampleDataUtil {
 
     public static Meeting[] getSampleMeetings() {
         return new Meeting[] {
-            new Meeting(new Title("Meeting 1"), new OptionalDescription("With business associates"),
+            new Meeting(new Title("Daily stand-up"),
+                new OptionalDescription("Discuss everyone's progress for the current milestone"),
                 new From("01-01-2020 12:00"),
                 new To("01-01-2020 14:00"),
                 new Contacts("1,2,3"),
                 new Location("Singapore")),
-            new Meeting(new Title("Meeting 2"), new OptionalDescription("With product designers"),
+            new Meeting(new Title("Discuss user requirements"), new OptionalDescription("With product designers"),
                 new From("02-01-2020 12:00"),
                 new To("02-01-2020 14:00"),
                 new Contacts("4,5,6"),
