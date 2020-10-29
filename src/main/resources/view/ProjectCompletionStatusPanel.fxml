@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Label?>
+
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <Label fx:id="projectCompletionHeading" styleClass="details_title" text="Project Completion" />
-  <Label fx:id="deliverablesCompleted" text="\$deliverablesCompleted"/>
+    <Label fx:id="projectCompletionHeading" styleClass="details_title" text="Project Completion" />
+    <Label fx:id="OcpString" text="\$OcpString"/>
+    <Label fx:id="OcpCaption" text="\$OcpCaption"/>
 </VBox>
