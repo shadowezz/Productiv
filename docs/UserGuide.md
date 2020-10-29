@@ -153,6 +153,11 @@ Format: `delete INDEX`
 Example:
 * `delete 3` deletes the 3rd contact in the contact list.
 
+#### Viewing a contact: `view`
+
+   ![Ui](images/ContactView.png)
+   <figcaption>Viewing a contact</figcaption><br>
+
 #### Clearing all contacts: `clear`
 
 Clears all contacts from the contact list.
@@ -223,6 +228,11 @@ Format: `delete INDEX`
 Example:
 * `delete 2` deletes the 2nd deliverable in the deliverable list.
 
+#### Viewing a deliverable: `view`
+
+   ![Ui](images/DeliverableView.png)
+   <figcaption>Viewing a deliverable</figcaption><br>
+
 ### Meeting
 
    ![Ui](images/Meeting.png)
@@ -280,6 +290,10 @@ Format: `delete INDEX`
 Examples:
 * `delete 3` deletes the 3rd meeting in the meeting list.
 
+#### Viewing a meeting: `view`
+   ![Ui](images/MeetingView.png)
+   <figcaption>Viewing a meeting</figcaption><br>
+
 #### Finding a meeting: `find`
 
 #### Listing all meetings: `list`
@@ -331,7 +345,7 @@ Action | Format, Examples
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
 **Delete** | `delete INDEX` <br> e.g. `delete 3`
-**Delete** | `view INDEX` <br> e.g. `view 2`
+**View** | `view INDEX` <br> e.g. `view 2`
 **Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`
