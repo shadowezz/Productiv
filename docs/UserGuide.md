@@ -160,7 +160,7 @@ Format: `clear`
 ### Deliverable
 
    ![Ui](images/Deliverable.png)
-   <figcaption align="center" style="italic">Initial display of a deliverable list </figcaption>
+   <figcaption align="center" style="font-style: italic; text-color: #006400">Initial display of a deliverable list </figcaption>
 
 #### Adding a deliverable: `add`
 
