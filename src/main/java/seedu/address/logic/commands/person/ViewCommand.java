@@ -16,9 +16,9 @@ import seedu.address.model.person.person.Person;
  */
 public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
-    public static final String MESSAGE_VIEW_CONTACT_SUCCESS = "Viewing meeting: %1$s";
+    public static final String MESSAGE_VIEW_CONTACT_SUCCESS = "Viewing contact: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Views the details of the contact identified by the index number used in the contact list\n"
+            + ": Views the details of the contact identified by the index number used in the contact list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
