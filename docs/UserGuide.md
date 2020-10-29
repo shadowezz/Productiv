@@ -81,6 +81,9 @@ Examples:
 * `switch meeting` switches to `meeting` mode.
 
 ### Contact
+![contact](images/Contact.png)
+<figcaption align="center" style="italic">Initial display of a contact list </figcaption>
+
 
 #### Adding a contact: `add`
 
@@ -157,6 +160,7 @@ Format: `clear`
 ### Deliverable
 
    ![Ui](images/Deliverable.png)
+   <figcaption align="center" style="italic">Initial display of a deliverable list </figcaption>
 
 #### Adding a deliverable: `add`
 
@@ -220,7 +224,7 @@ Example:
 ### Meeting
 
    ![Ui](images/Meeting.png)
-   <figcaption align="center" style="italic">Initial view of </figcaption>
+   <figcaption align="center" style="italic">Initial display of a meeting list </figcaption>
  
 #### Adding a meeting: `add`
 
