@@ -302,6 +302,20 @@ Refer to [Finding a meeting](#finding-a-meeting-find) above for details of the `
 
 #### Finding a meeting: `find`
 
+Finds the meetings whose titles or descriptions contain any of the given keywords.
+
+Format: `find KEYWORDS`
+* `KEYWORDS` contains one or more keywords used to match meetings.
+* Searches only consider title and description.
+* Searches are case-insensitive, e.g. `version` will match `Version`.
+* Order of keywords does not matter, e.g. `v1.2 mid` will match `mid v1.2`.
+* Searches only account for full words, e.g. `Meeting` will not match `Meetings`.
+* Searches return meetings matching at least one keyword, e.g. `Complete game` will return `Complete features` and `Final game`.
+
+Examples:
+* `find discuss user guide John` returns a meeting with name `discuss user guide` and another with description `with Mr John`.
+* `find Mcd0nalds` returns a meeting with name `Meet mcd0nalds` and another with description `Cater mcd0nalds breakfast`.
+
 #### Deleting a meeting: `delete`
 
 Deletes the specified meeting from your meeting list.
@@ -314,6 +328,16 @@ Example:
 * `delete 3` deletes the 3rd meeting in your meeting list.
 
 #### Viewing a meeting: `view`
+
+Displays more details of specified meeting from your meeting list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the meeting in your displayed meeting list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd meeting in your meeting list.
+
    ![Ui](images/MeetingView.png)
    <figcaption>Viewing a meeting</figcaption><br>
 
@@ -359,3 +383,15 @@ Action | Format, Examples
 **Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`
+
+---------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+
+\# |            Term                | Description
+---|--------------------------------|------------------------------------------------------------------------------|
+1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.     |
+2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.             |
+3  | Deliverable                    | Refers to items which need to be completed by a specified time.              |
+4  | Stakeholder                    | An external party involved with the product.                                 |
+5  | Milestone                      | Refers to a transition when a specified group of deliverables are completed. |
