@@ -16,7 +16,7 @@ traditional GUI apps.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+##<a name="quickstart"></a>Quick start
 
 1. Ensure you have Java `11` or above installed in your computer.
 
@@ -287,7 +287,7 @@ There is no need to save manually.
 ## FAQ
 
 **Q**: How do I start using *Productiv*?<br>
-**A**: You can refer to our [Quick Start Guide](#quick start).
+**A**: You can refer to our [Quick Start Guide](#quickstart).
 
 **Q**: Which operating systems can I run *Productiv* on?<br>
 **A**: Currently, *Productiv* is supported on both Mac and Windows. Just ensure 
