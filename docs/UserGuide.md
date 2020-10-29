@@ -220,7 +220,7 @@ Example:
 ### Meeting
 
    ![Ui](images/Meeting.png)
-   <figcaption align="center">Figure 1</figcaption>
+   <figcaption align="center" style="italic">Initial view of </figcaption>
  
 #### Adding a meeting: `add`
 
