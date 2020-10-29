@@ -164,6 +164,15 @@ Example:
 
 #### Viewing a contact: `view`
 
+Displays more details of the specified contact from your contact list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd contact in your contact list.
+
    ![Ui](images/ContactView.png)
    <figcaption>Viewing a contact</figcaption><br>
 
@@ -261,6 +270,15 @@ Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
 
 #### Viewing a deliverable: `view`
+
+Displays more details of the specified deliverable from your deliverable list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd deliverable in your deliverable list.
 
    ![Ui](images/DeliverableView.png)
    <figcaption>Viewing a deliverable</figcaption><br>
