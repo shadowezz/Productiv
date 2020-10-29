@@ -1,6 +1,6 @@
 {
   "persons": [ {
-    "name": "Valid Person",
+    "name": "Valid Contact",
     "phone": {
       "value": "9482424"
     },
@@ -9,7 +9,7 @@
       "value" : null
     }
   }, {
-    "name": "Person With Invalid Phone Field",
+    "name": "Contact With Invalid Phone Field",
     "phone": {
       "value": "948asdf2424"
     },
