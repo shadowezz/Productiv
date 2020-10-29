@@ -11,7 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.meeting.meeting.exceptions.DuplicateMeetingException;
 import seedu.address.model.meeting.meeting.exceptions.MeetingNotFoundException;
-import seedu.address.model.meeting.util.TimeEventComparator;
+import seedu.address.model.util.TimeEventComparator;
 
 public class UniqueMeetingList implements Iterable<Meeting> {
 
@@ -102,8 +102,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     }
 
     /**
-     * Sort the list by From's value
-     *
+     * Sort the list chronologically according to From.
      */
     public void sortList() {
         Collections.sort(internalList, timeEventComparator);

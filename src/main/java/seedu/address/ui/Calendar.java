@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.event.TimeEvent;
 import seedu.address.model.meeting.meeting.Meeting;
-import seedu.address.model.meeting.util.TimeEventComparator;
+import seedu.address.model.util.TimeEventComparator;
 
 public class Calendar {
     private static TimeEventComparator timeEventComparator = new TimeEventComparator();

@@ -1,4 +1,4 @@
-package seedu.address.model.meeting.util;
+package seedu.address.model.util;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -6,11 +6,11 @@ import java.util.Comparator;
 import seedu.address.model.event.TimeEvent;
 
 /**
- * Represents a Comparator for Meeting which sorts by From.
+ * Represents a Comparator for sorting TimeEvents chronologically.
  */
 public class TimeEventComparator implements Comparator<TimeEvent> {
     /**
-     * Compares Meetings by From in ascending order.
+     * Compares TimeEvents in chronological order based on their indicator time.
      */
     public int compare(TimeEvent a, TimeEvent b) {
         LocalDateTime timeA = a.getIndicatorTime();
