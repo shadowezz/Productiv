@@ -164,6 +164,15 @@ Example:
 
 #### Viewing a contact: `view`
 
+Displays more details of the specified contact from your contact list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd contact in your contact list.
+
    ![Ui](images/ContactView.png)
    <figcaption>Viewing a contact</figcaption><br>
 
@@ -182,19 +191,19 @@ Format: `clear`
 
 Adds a deliverable to your deliverable list.
 
-Format: `add t/TITLE m/MILESTONE [d/DESCRIPTION] [by/DEADLINE] [c/CONTACTS]`
+Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `TITLE` is the main heading of the deliverable.
 * `MILESTONE` is the milestone tagged to the deliverable.
 * `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
-* `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
+* `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
 
 Examples:
-* `add t/Login screen m/1.1 d/Include email and password fields c/2,4` 
-adds a deliverable with the title `Login screen`, milestone `1.1`, 
-description `Include email and password fields` and contacts `2,4`.
+* `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/2,4` 
+adds a deliverable with the title `Login screen`, milestone `1.1`,
+deadline `10-10-2020 18:00` description `Include email and password fields` and contacts `2,4`.
 * `add t/Find profile page template m/2.1.1 by/12-12-2020 12:00` 
 adds a deliverable with the title `Find profile page template`, milestone `2.1.1` 
 and deadline `12-12-2020 12:00`.
@@ -203,7 +212,8 @@ and deadline `12-12-2020 12:00`.
 
 Edits an existing deliverable in your deliverable list.
 
-Format: `edit INDEX [t/TITLE] [m/MILESTONE] [d/DESCRIPTION] [by/DEADLINE] [c/CONTACTS]`
+
+Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
@@ -226,6 +236,28 @@ Format: `done INDEX`
 Example:
 * `done 1` marks the 1st deliverable in your deliverable list as done.
 
+#### Listing all deliverables: `list`
+
+Shows a list of all deliverables in the deliverable list.
+
+Format: `list`
+
+#### Finding deliverables: `find`
+
+Finds the deliverables whose titles or descriptions contain any of the given keywords.
+
+Format: `find KEYWORDS`
+* `KEYWORDS` contains one or more keywords used to match deliverables.
+* Searches only consider title and description.
+* Searches are case-insensitive, e.g. `homepage` will match `Homepage`.
+* Order of keywords does not matter, e.g. `Homepage Navigation` will match `Navigation Homepage`.
+* Searches only account for full words, e.g. `Deploy` will not match `Deployment`.
+* Searches return deliverables matching at least one keyword, e.g. `Homepage Navigation` will return `Complete Homepage` and `Increase size of Navigation Bar`.
+
+Examples:
+* `find Homepage urgent` returns a deliverable with title `Complete homepage.` and another with description `Urgent, client is unhappy`.
+* `find Mockup` returns a deliverable with name `Complete mockup` and another with description `Add more details to existing Mockup`.
+
 #### Deleting a deliverable: `delete`
 
 Deletes the specified deliverable from your deliverable list.
@@ -239,8 +271,23 @@ Example:
 
 #### Viewing a deliverable: `view`
 
+Displays more details of the specified deliverable from your deliverable list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd deliverable in your deliverable list.
+
    ![Ui](images/DeliverableView.png)
    <figcaption>Viewing a deliverable</figcaption><br>
+
+#### Clearing all deliverables: `clear`
+
+Clears all deliverables from the deliverable list.
+
+Format: `clear`
 
 ### Meeting
 
@@ -362,9 +409,17 @@ Hence, you can focus on managing your product without fearing any unsaved change
 
 ## FAQ
 
+**Q**: How do I start using *Productiv*?<br>
+**A**: You can refer to our [Quick Start Guide](#quick-start).
+
+**Q**: Which operating systems can I run *Productiv* on?<br>
+**A**: Currently, *Productiv* is supported on both Mac and Windows. Just ensure 
+that you have Java `11` or above installed on your computer.
+
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it 
 creates with the file that contains the data of your previous *Productiv* app.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
