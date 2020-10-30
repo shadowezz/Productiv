@@ -260,7 +260,7 @@ Examples:
 
 #### Listing all deliverables: `list`
 
-Shows a list of all deliverables in the deliverable list.
+Shows a list of all deliverables in your deliverable list.
 
 Format: `list`
 
@@ -365,7 +365,7 @@ Examples:
 
 #### Listing all meetings: `list`
 
-Lists all meetings from your meeting list. 
+Shows a list of all meetings in your meeting list.
 
 Format: `list`
 
