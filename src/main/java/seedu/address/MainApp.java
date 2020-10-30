@@ -89,27 +89,39 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
 
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(
-                userPrefs.getDeliverableBookFilePath());
-        MeetingBookStorage meetingBookStorage = new JsonMeetingBookStorage(
-                userPrefs.getMeetingBookFilePath());
-
-        storagePerson = new StoragePersonManager(addressBookStorage, userPrefsStorage);
-        storageDeliverable = new StorageDeliverableManager(deliverableBookStorage, userPrefsStorage);
         initLogging(config);
-        storageMeeting = new StorageMeetingManager(meetingBookStorage, userPrefsStorage);
 
-        modelPerson = initModelManager(storagePerson, userPrefs);
-        modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
-        modelMeeting = initMeetingModelManager(storageMeeting, userPrefs);
-
-        logicPerson = new LogicPersonManager(modelPerson, storagePerson);
-        logicDeliverable = new LogicDeliverableManager(modelDeliverable, storageDeliverable);
-        logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
+        logicPerson = initLogicPersonManager(userPrefsStorage, userPrefs);
+        logicDeliverable = initLogicDeliverableManager(userPrefsStorage, userPrefs);
+        logicMeeting = initLogicMeetingManager(userPrefsStorage, userPrefs);
         logicMode = new LogicModeManager();
 
         ui = new UiManager(logicMode, logicPerson, logicDeliverable, logicMeeting);
+
+    }
+
+    private LogicPerson initLogicPersonManager(UserPrefsStorage userPrefsStorage, UserPrefs userPrefs) {
+        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        storagePerson = new StoragePersonManager(addressBookStorage, userPrefsStorage);
+        modelPerson = initModelManager(storagePerson, userPrefs);
+        return new LogicPersonManager(modelPerson, storagePerson);
+    }
+
+    private LogicDeliverable initLogicDeliverableManager(UserPrefsStorage userPrefsStorage, UserPrefs userPrefs) {
+        DeliverableBookStorage deliverableBookStorage = new JsonDeliverableBookStorage(
+                userPrefs.getDeliverableBookFilePath());
+        storageDeliverable = new StorageDeliverableManager(deliverableBookStorage, userPrefsStorage);
+        modelDeliverable = initDeliverableModelManager(storageDeliverable, userPrefs);
+        return new LogicDeliverableManager(modelDeliverable, storageDeliverable);
+    }
+
+    private LogicMeeting initLogicMeetingManager(UserPrefsStorage userPrefsStorage, UserPrefs userPrefs) {
+        MeetingBookStorage meetingBookStorage = new JsonMeetingBookStorage(
+                userPrefs.getMeetingBookFilePath());
+        storageMeeting = new StorageMeetingManager(meetingBookStorage, userPrefsStorage);
+
+        modelMeeting = initMeetingModelManager(storageMeeting, userPrefs);
+        return new LogicMeetingManager(modelMeeting, storageMeeting);
 
     }
 
