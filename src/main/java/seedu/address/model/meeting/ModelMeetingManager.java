@@ -26,7 +26,7 @@ public class ModelMeetingManager extends ModelManager implements ModelMeeting {
     private Meeting meetingInView;
 
     /**
-     * Initializes a ModelMeetingManager with the given meetingBook WITHOUT userPrefs.
+     * Initializes a ModelMeetingManager with the given meetingBook and userPrefs.
      */
     public ModelMeetingManager(ReadOnlyMeetingBook meetingBook, ReadOnlyUserPrefs userPrefs) {
         super(userPrefs);

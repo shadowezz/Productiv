@@ -7,6 +7,9 @@ import seedu.address.commons.core.GuiSettings;
 public abstract class ModelManager implements Model {
     protected UserPrefs userPrefs;
 
+    /**
+     * Initializes an abstract ModelManager with the given userPrefs.
+     */
     public ModelManager(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs = new UserPrefs(userPrefs);
