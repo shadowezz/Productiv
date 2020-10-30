@@ -73,7 +73,7 @@ public class LogicDeliverableManager implements LogicDeliverable {
 
     @Override
     public Path getDeliverableBookFilePath() {
-        return modelDeliverable.getDeliverableBookFilePath();
+        return modelDeliverable.getBookFilePath();
     }
 
     @Override

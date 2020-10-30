@@ -71,7 +71,7 @@ public class LogicPersonManager implements LogicPerson {
 
     @Override
     public Path getAddressBookFilePath() {
-        return modelPerson.getAddressBookFilePath();
+        return modelPerson.getBookFilePath();
     }
 
     @Override

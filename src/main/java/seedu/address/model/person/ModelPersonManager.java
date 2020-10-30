@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.person.Person;
@@ -18,11 +19,10 @@ import seedu.address.model.person.person.Person;
 /**
  * Represents the in-memory model of the address book data.
  */
-public class ModelPersonManager implements ModelPerson {
+public class ModelPersonManager extends ModelManager implements ModelPerson {
     private static final Logger logger = LogsCenter.getLogger(ModelPersonManager.class);
 
     private final AddressBook addressBook;
-    private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private Person personInView;
 
@@ -30,13 +30,12 @@ public class ModelPersonManager implements ModelPerson {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelPersonManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        super();
-        requireAllNonNull(addressBook, userPrefs);
+        super(userPrefs);
+        requireNonNull(addressBook);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
-        this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
@@ -47,34 +46,12 @@ public class ModelPersonManager implements ModelPerson {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
-    }
-
-    @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
-    }
-
-    @Override
-    public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
-    }
-
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
-        requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
-    }
-
-    @Override
-    public Path getAddressBookFilePath() {
+    public Path getBookFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
+    public void setBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
