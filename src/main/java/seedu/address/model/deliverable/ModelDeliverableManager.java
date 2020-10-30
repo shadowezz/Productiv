@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.deliverable.Deliverable;
@@ -18,11 +18,10 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
 /**
  * Represents the in-memory model of the deliverable book data
  */
-public class ModelDeliverableManager implements ModelDeliverable {
+public class ModelDeliverableManager extends ModelManager implements ModelDeliverable {
 
     private static final Logger logger = LogsCenter.getLogger(ModelDeliverableManager.class);
     private final DeliverableBook deliverableBook;
-    private final UserPrefs userPrefs;
     private final FilteredList<Deliverable> filteredDeliverables;
     private Deliverable deliverableInView;
 
@@ -30,13 +29,12 @@ public class ModelDeliverableManager implements ModelDeliverable {
      * Initializes a ModelDeliverableManager with the given deliverableBook and userPrefs.
      */
     public ModelDeliverableManager(ReadOnlyDeliverableBook deliverableBook, ReadOnlyUserPrefs userPrefs) {
-        super();
-        requireAllNonNull(deliverableBook, userPrefs);
+        super(userPrefs);
+        requireNonNull(deliverableBook);
 
         logger.fine("Initializing with deliverable book: " + deliverableBook + " and user prefs " + userPrefs);
 
         this.deliverableBook = new DeliverableBook(deliverableBook);
-        this.userPrefs = new UserPrefs(userPrefs);
         filteredDeliverables = new FilteredList<>(this.deliverableBook.getDeliverableList());
     }
 
@@ -47,34 +45,12 @@ public class ModelDeliverableManager implements ModelDeliverable {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
-    }
-
-    @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
-    }
-
-    @Override
-    public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
-    }
-
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
-        requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
-    }
-
-    @Override
-    public Path getDeliverableBookFilePath() {
+    public Path getBookFilePath() {
         return userPrefs.getDeliverableBookFilePath();
     }
 
     @Override
-    public void setDeliverableBookFilePath(Path deliverableBookFilePath) {
+    public void setBookFilePath(Path deliverableBookFilePath) {
         requireNonNull(deliverableBookFilePath);
         userPrefs.setDeliverableBookFilePath(deliverableBookFilePath);
     }
