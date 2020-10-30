@@ -129,12 +129,6 @@ edits the phone number and email address of the 1st contact to be `81234567` and
 *  `edit 2 n/Jayden Smith` 
 edits the name of the 2nd contact to be `Jayden Smith`.
 
-#### Listing all contacts: `list`
-
-Shows a list of all contacts in your contact list.
-
-Format: `list`
-
 #### Finding contacts: `find`
 
 Finds the contacts whose names or descriptions contain any of the given keywords.
@@ -150,6 +144,18 @@ Format: `find KEYWORDS`
 Examples:
 * `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
 * `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
+
+#### Listing all contacts: `list`
+
+Shows a list of all contacts in your contact list.
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
+Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
+</div>
 
 #### Deleting a contact: `delete`
 
@@ -236,12 +242,6 @@ Format: `done INDEX`
 Example:
 * `done 1` marks the 1st deliverable in your deliverable list as done.
 
-#### Listing all deliverables: `list`
-
-Shows a list of all deliverables in the deliverable list.
-
-Format: `list`
-
 #### Finding deliverables: `find`
 
 Finds the deliverables whose titles or descriptions contain any of the given keywords.
@@ -257,6 +257,18 @@ Format: `find KEYWORDS`
 Examples:
 * `find Homepage urgent` returns a deliverable with title `Complete homepage.` and another with description `Urgent, client is unhappy`.
 * `find Mockup` returns a deliverable with name `Complete mockup` and another with description `Add more details to existing Mockup`.
+
+#### Listing all deliverables: `list`
+
+Shows a list of all deliverables in your deliverable list.
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your deliverables back after using the `find` command. 
+Refer to [Finding deliverables](#finding-deliverables-find) above for details of the `find` command. 
+</div>
 
 #### Deleting a deliverable: `delete`
 
@@ -335,19 +347,7 @@ edits the title of the 2nd meeting to be `Discuss final release features`
 and its description to be `Finalize dashboard functions`.
 * `edit 4 c/3,6,8` edits the contacts of the 4th meeting to be `3,6,8`.
 
-#### Listing all meetings: `list`
-
-Lists all meetings from your meeting list. 
-
-Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
-Refer to [Finding a meeting](#finding-a-meeting-find) above for details of the `find` command. 
-</div>
-
-#### Finding a meetings: `find`
+#### Finding meetings: `find`
 
 Finds the meetings whose titles or descriptions contain any of the given keywords.
 
@@ -361,7 +361,19 @@ Format: `find KEYWORDS`
 
 Examples:
 * `find discuss user guide John` returns a meeting with title `discuss user guide` and another with description `with Mr John`.
-* `find Mcd0nalds` returns a meeting with title `Meet Mcd0nalds` and another with description `Cater Mcd0nalds breakfast`.
+* `find Mcdonalds` returns a meeting with title `Meet Mcdonalds` and another with description `Cater Mcdonalds breakfast`.
+
+#### Listing all meetings: `list`
+
+Shows a list of all meetings in your meeting list.
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
+Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
+</div>
 
 #### Deleting a meeting: `delete`
 
