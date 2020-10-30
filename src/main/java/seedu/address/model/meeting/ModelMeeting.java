@@ -1,48 +1,16 @@
 package seedu.address.model.meeting;
 
-import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.Model;
 import seedu.address.model.meeting.meeting.Meeting;
 
 /**
  * The API of the Model component of Meeting.
  */
-public interface ModelMeeting {
+public interface ModelMeeting extends Model {
     Predicate<Meeting> PREDICATE_SHOW_ALL_MEETINGS = unused -> true;
-
-    /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
-     */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
-
-    /**
-     * Returns the user prefs.
-     */
-    ReadOnlyUserPrefs getUserPrefs();
-
-    /**
-     * Returns the user prefs' GUI settings.
-     */
-    GuiSettings getGuiSettings();
-
-    /**
-     * Sets the user prefs' GUI settings.
-     */
-    void setGuiSettings(GuiSettings guiSettings);
-
-    /**
-     * Returns the user prefs' deliverable book file path.
-     */
-    Path getMeetingBookFilePath();
-
-    /**
-     * Sets the user prefs' deliverable book file path.
-     */
-    void setMeetingBookFilePath(Path deliverableBookFilePath);
 
     /**
      * Replaces deliverable book data with the data in {@code deliverableBook}.

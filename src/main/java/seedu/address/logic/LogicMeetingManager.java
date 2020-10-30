@@ -71,7 +71,7 @@ public class LogicMeetingManager implements LogicMeeting {
 
     @Override
     public Path getMeetingBookFilePath() {
-        return modelMeeting.getMeetingBookFilePath();
+        return modelMeeting.getBookFilePath();
     }
 
     @Override

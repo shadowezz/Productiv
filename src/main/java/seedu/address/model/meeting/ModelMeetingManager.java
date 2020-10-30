@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.meeting.meeting.Meeting;
@@ -18,11 +18,10 @@ import seedu.address.model.meeting.meeting.Meeting;
 /**
  * Represents the in-memory model of the meeting book data
  */
-public class ModelMeetingManager implements ModelMeeting {
+public class ModelMeetingManager extends ModelManager implements ModelMeeting {
 
     private static final Logger logger = LogsCenter.getLogger(ModelMeetingManager.class);
     private final MeetingBook meetingBook;
-    private final UserPrefs userPrefs;
     private final FilteredList<Meeting> filteredMeetings;
     private Meeting meetingInView;
 
@@ -30,12 +29,11 @@ public class ModelMeetingManager implements ModelMeeting {
      * Initializes a ModelMeetingManager with the given meetingBook WITHOUT userPrefs.
      */
     public ModelMeetingManager(ReadOnlyMeetingBook meetingBook, ReadOnlyUserPrefs userPrefs) {
-        super();
-        requireAllNonNull(meetingBook, userPrefs);
+        super(userPrefs);
+        requireNonNull(meetingBook);
 
         logger.fine("Initializing with meeting book: " + meetingBook + " and user prefs " + userPrefs);
         this.meetingBook = new MeetingBook(meetingBook);
-        this.userPrefs = new UserPrefs(userPrefs);
         filteredMeetings = new FilteredList<>(this.meetingBook.getMeetingList());
     }
 
@@ -46,34 +44,12 @@ public class ModelMeetingManager implements ModelMeeting {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
-    }
-
-    @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
-    }
-
-    @Override
-    public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
-    }
-
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
-        requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
-    }
-
-    @Override
-    public Path getMeetingBookFilePath() {
+    public Path getBookFilePath() {
         return userPrefs.getMeetingBookFilePath();
     }
 
     @Override
-    public void setMeetingBookFilePath(Path meetingBookFilePath) {
+    public void setBookFilePath(Path meetingBookFilePath) {
         requireNonNull(meetingBookFilePath);
         userPrefs.setMeetingBookFilePath(meetingBookFilePath);
     }
