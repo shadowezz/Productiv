@@ -14,23 +14,17 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.meeting.ReadOnlyMeetingBook;
+import seedu.address.storage.BookStorageManager;
 
 /**
  * A class to access MeetingBook data stored as a json file on the hard disk.
  */
-public class JsonMeetingBookStorage implements MeetingBookStorage {
+public class JsonMeetingBookStorage extends BookStorageManager implements MeetingBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonMeetingBookStorage.class);
 
-    private Path filePath;
-
     public JsonMeetingBookStorage(Path filePath) {
-        this.filePath = filePath;
-    }
-
-    @Override
-    public Path getMeetingBookFilePath() {
-        return filePath;
+        super(filePath);
     }
 
     @Override

@@ -1,34 +1,20 @@
 package seedu.address.storage.meeting;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
 import seedu.address.model.meeting.ReadOnlyMeetingBook;
-import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.Storage;
 
 /**
- * API of the Storage component
+ * API of the Storage component for Meeting
  */
 // TODO: build and change to MeetingBookStorage
-public interface StorageMeeting extends MeetingBookStorage, UserPrefsStorage {
+public interface StorageMeeting extends Storage {
 
-    @Override
-    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
-
-    @Override
-    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
-
-    @Override
-    Path getMeetingBookFilePath();
-
-    @Override
     Optional<ReadOnlyMeetingBook> readMeetingBook() throws DataConversionException, IOException;
 
-    @Override
     void saveMeetingBook(ReadOnlyMeetingBook meetingBook) throws IOException;
 
 }

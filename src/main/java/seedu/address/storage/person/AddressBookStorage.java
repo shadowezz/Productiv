@@ -7,16 +7,12 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.person.AddressBook;
 import seedu.address.model.person.ReadOnlyAddressBook;
+import seedu.address.storage.BookStorage;
 
 /**
  * Represents a storage for {@link AddressBook}.
  */
-public interface AddressBookStorage {
-
-    /**
-     * Returns the file path of the data file.
-     */
-    Path getAddressBookFilePath();
+public interface AddressBookStorage extends BookStorage {
 
     /**
      * Returns AddressBook data as a {@link ReadOnlyAddressBook}.
@@ -27,7 +23,7 @@ public interface AddressBookStorage {
     Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getBookFilePath()
      */
     Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException;
 

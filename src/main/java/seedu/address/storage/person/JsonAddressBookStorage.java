@@ -13,22 +13,17 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.person.ReadOnlyAddressBook;
+import seedu.address.storage.BookStorageManager;
 
 /**
  * A class to access AddressBook data stored as a json file on the hard disk.
  */
-public class JsonAddressBookStorage implements AddressBookStorage {
+public class JsonAddressBookStorage extends BookStorageManager implements AddressBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonAddressBookStorage.class);
 
-    private Path filePath;
-
     public JsonAddressBookStorage(Path filePath) {
-        this.filePath = filePath;
-    }
-
-    public Path getAddressBookFilePath() {
-        return filePath;
+        super(filePath);
     }
 
     @Override

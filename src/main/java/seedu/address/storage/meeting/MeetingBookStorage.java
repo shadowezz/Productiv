@@ -7,15 +7,12 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.meeting.MeetingBook;
 import seedu.address.model.meeting.ReadOnlyMeetingBook;
+import seedu.address.storage.BookStorage;
 
 /**
  * Represents a storage for {@link MeetingBook}.
  */
-public interface MeetingBookStorage {
-    /**
-     * Returns the file path of the data file.
-     */
-    Path getMeetingBookFilePath();
+public interface MeetingBookStorage extends BookStorage {
 
     /**
      * Returns MeetingBook data as a {@link ReadOnlyMeetingBook}.
@@ -26,7 +23,7 @@ public interface MeetingBookStorage {
     Optional<ReadOnlyMeetingBook> readMeetingBook() throws DataConversionException, IOException;
 
     /**
-     * @see #getMeetingBookFilePath()
+     * @see #getBookFilePath()
      */
     Optional<ReadOnlyMeetingBook> readMeetingBook(Path filePath) throws DataConversionException, IOException;
 
