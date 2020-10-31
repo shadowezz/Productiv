@@ -14,23 +14,17 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
+import seedu.address.storage.BookStorageManager;
 
 /**
  * A class to access DeliverableBook data stored as a json file on the hard disk.
  */
-public class JsonDeliverableBookStorage implements DeliverableBookStorage {
+public class JsonDeliverableBookStorage extends BookStorageManager implements DeliverableBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonDeliverableBookStorage.class);
 
-    private Path filePath;
-
     public JsonDeliverableBookStorage(Path filePath) {
-        this.filePath = filePath;
-    }
-
-    @Override
-    public Path getDeliverableBookFilePath() {
-        return filePath;
+        super(filePath);
     }
 
     @Override

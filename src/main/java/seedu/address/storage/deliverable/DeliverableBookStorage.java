@@ -7,15 +7,12 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ReadOnlyDeliverableBook;
+import seedu.address.storage.BookStorage;
 
 /**
  * Represents a storage for {@link DeliverableBook}.
  */
-public interface DeliverableBookStorage {
-    /**
-     * Returns the file path of the data file.
-     */
-    Path getDeliverableBookFilePath();
+public interface DeliverableBookStorage extends BookStorage {
 
     /**
      * Returns DeliverableBook data as a {@link ReadOnlyDeliverableBook}.
@@ -26,7 +23,7 @@ public interface DeliverableBookStorage {
     Optional<ReadOnlyDeliverableBook> readDeliverableBook() throws DataConversionException, IOException;
 
     /**
-     * @see #getDeliverableBookFilePath()
+     * @see #getBookFilePath()
      */
     Optional<ReadOnlyDeliverableBook> readDeliverableBook(Path filePath) throws DataConversionException, IOException;
 
