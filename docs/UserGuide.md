@@ -204,7 +204,12 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
-* `CONTACTS` is a comma-separated string of the index numbers of these contacts, as specified in the contact list.
+* `CONTACTS` is a comma-separated string of names.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** 
+`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+who are not in your contact list.
+</div>
 
 Examples:
 * `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/2,4` 
@@ -315,9 +320,14 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
-* `CONTACTS` represents the contacts involved in the meeting. It is a comma-separated string of the index numbers of 
-   these contacts, as specified in the contact list.
+* `CONTACTS` represents the contacts involved in the meeting. 
+* `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
+
+<div markdown="span" class="alert alert-info">:information_source:**Note:** 
+`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+who are not in your contact list.
+</div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Input an estimate end date time for the meeting if there is none specified.
