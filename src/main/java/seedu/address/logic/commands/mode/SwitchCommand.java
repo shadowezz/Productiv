@@ -15,7 +15,7 @@ public class SwitchCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches mode.\n"
             + "Parameters: MODE (must be " + ModeEnum.getModeOptions()
             + ")\n"
-            + "Example: " + COMMAND_WORD + " contact";
+            + "Example: " + COMMAND_WORD + " " + ModeEnum.DELIVERABLE.getArgument();
 
     public static final String MESSAGE_SUCCESS = "Mode switched to: %1$s";
 
