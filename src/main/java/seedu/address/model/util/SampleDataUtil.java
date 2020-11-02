@@ -92,27 +92,27 @@ public class SampleDataUtil {
                 new OptionalDescription("Survey potential customers to gather feedback."),
                 new Deadline("04-08-2020 15:00"), true, new Contacts("Carol Geller, Martin Seth")),
             new Deliverable(new Title("Determine the Minimum Viable Product (MVP)"), new Milestone("1.2"),
-                new OptionalDescription("Come up with minimum set of features to test key assumptions. " +
-                        "Discuss with Bianca (Product Designer) too."),
+                new OptionalDescription("Come up with minimum set of features to test key assumptions. "
+                        + "Discuss with Bianca (Product Designer) too."),
                 new Deadline("18-08-2020 12:00"), true, new Contacts("Bianca Li")),
             new Deliverable(new Title("Finish mock-ups"), new Milestone("1.3"),
-                new OptionalDescription("Liaise with the UI/UX team. " +
-                        "Lindsay can represent her team as senior UI/UX designer."),
+                new OptionalDescription("Liaise with the UI/UX team. "
+                        + "Lindsay can represent her team as senior UI/UX designer."),
                 new Deadline("01-09-2020 10:00"), true, new Contacts("Lindsay Lauren")),
             new Deliverable(new Title("Finalize design and plan"), new Milestone("1.4"),
                 new OptionalDescription("Get approval from Head of Engineering and Head of Business."),
                 new Deadline("15-09-2020 15:00"), true, new Contacts("Robby Williams, Breonna Randall")),
             new Deliverable(new Title("Settle prioritization of features"), new Milestone("2.1"),
                 new OptionalDescription("Hold meeting with the dev team."),
-                new Deadline("29-09-2020 12:00"), true, new Contacts("Bernice Yu, David Li, Budi Putra," +
-                    "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu")),
+                new Deadline("29-09-2020 12:00"), true, new Contacts("Bernice Yu, David Li, Budi Putra,"
+                    + "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu")),
             new Deliverable(new Title("Deliver first version of MVP"), new Milestone("2.3"),
                 new OptionalDescription("Check-in with Bernice (Tech Lead)."),
                 new Deadline("15-10-2020 10:00"), true, new Contacts("Bernice Yu")),
             new Deliverable(new Title("Conduct MVP usability testing"), new Milestone("2.4"),
                 new OptionalDescription("Schedule meetings with end users."),
-                new Deadline("20-10-2020 15:00"), true, new Contacts("Alex Yeoh, Roy Balakrishnan, " +
-                    "Rosa       Sinantra")),
+                new Deadline("20-10-2020 15:00"), true, new Contacts("Alex Yeoh, Roy Balakrishnan, "
+                    + "Rosa       Sinantra")),
             new Deliverable(new Title("Refine design and plan"), new Milestone("2.5"),
                 new OptionalDescription("Discuss design and plan with Product Designer and UI/UX team again."),
                 new Deadline("28-10-2020 12:00"), true, new Contacts("Lindsay Lauren, Bianca Li")),
@@ -153,8 +153,8 @@ public class SampleDataUtil {
                 new To("18-08-2020 12:00"),
                 new Contacts("Bianca Li"),
                 new Location("Min Cafe")),
-            new Meeting(new Title("Discuss product mock-ups"), new OptionalDescription("With UI/UX team. " +
-                    "Can be represented by the senior UI/UX designer."),
+            new Meeting(new Title("Discuss product mock-ups"), new OptionalDescription("With UI/UX team. "
+                    + "Can be represented by the senior UI/UX designer."),
                 new From("01-09-2020 10:00"),
                 new To("01-09-2020 11:00"),
                 new Contacts("Lindsay Lauren"),
@@ -168,8 +168,8 @@ public class SampleDataUtil {
             new Meeting(new Title("Discuss development plan"), new OptionalDescription("With dev team"),
                 new From("29-09-2020 12:00"),
                 new To("29-09-2020 14:00"),
-                new Contacts("Bernice Yu, David Li, Budi Putra," +
-                        "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu"),
+                new Contacts("Bernice Yu, David Li, Budi Putra,"
+                        + "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu"),
                 new Location("Meeting room B")),
             new Meeting(new Title("Check-in about MVP progress"), new OptionalDescription("With tech lead"),
                 new From("15-10-2020 12:00"),
@@ -201,8 +201,8 @@ public class SampleDataUtil {
             new Meeting(new Title("Scrum meeting"), new OptionalDescription("With dev team"),
                 new From("10-11-2020 10:00"),
                 new To("10-11-2020 14:00"),
-                new Contacts("Bernice Yu, David Li, Budi Putra," +
-                        "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu"),
+                new Contacts("Bernice Yu, David Li, Budi Putra,"
+                        + "Christian Pine, Cassandra Bullock, Samuel Sam, Devina Yu"),
                 new Location("Zoom call")),
             new Meeting(new Title("Finalise marketing goals"),
                 new OptionalDescription("With finance expert"),
