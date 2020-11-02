@@ -11,10 +11,10 @@ import java.util.Optional;
 public class Contacts {
     public static final String EMPTY_CONTACTS_FIELD = "-";
     public static final String MESSAGE_CONSTRAINTS =
-            "Contacts can only take numerical values separated with commas";
+            "Contacts can only take alphabetic characters and spaces, and it should not be blank";
 
     /*
-     * Contacts can only take numerical values separated with commas.
+     * Contacts can only take alphabetic characters and spaces separated with commas.
      * First character should not be a blank string.
      *
      * @@author claraadora-reused
