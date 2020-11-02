@@ -6,7 +6,7 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommand
 import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
 import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_DELETE_MEETING_SUCCESS;
-import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_MEETING_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalMeetings.getTypicalMeeting;
@@ -43,7 +43,7 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(modelMeeting.getFilteredMeetingList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, modelMeeting, MESSAGE_MEETING_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, modelMeeting, MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class DeleteCommandTest {
 
         DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, modelMeeting, MESSAGE_MEETING_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, modelMeeting, MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
     }
 
     @Test

@@ -14,13 +14,13 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all meetings whose names and/or "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all meetings whose titles and/or "
             + "descriptions contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob user";
+            + "Example: " + COMMAND_WORD + " discuss user guide";
 
-    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meetings listed!";
+    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meeting(s) listed!";
 
     private final TitleDescriptionContainsKeywordsPredicate predicate;
 
