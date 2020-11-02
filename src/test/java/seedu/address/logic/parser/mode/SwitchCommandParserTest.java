@@ -16,7 +16,7 @@ class SwitchCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsSwitchCommand() {
-        assertParseSuccess(parser, ModeEnum.PERSON.toString().toLowerCase(), new SwitchCommand(ModeEnum.PERSON));
+        assertParseSuccess(parser, ModeEnum.PERSON.getArgument(), new SwitchCommand(ModeEnum.PERSON));
     }
 
     @Test
@@ -26,6 +26,6 @@ class SwitchCommandParserTest {
 
     @Test
     public void parse_sameMode_throwsParseException() {
-        assertParseFailure(parser, ModeEnum.DASHBOARD.toString().toLowerCase(), SAME_MODE_MESSAGE);
+        assertParseFailure(parser, ModeEnum.DASHBOARD.getArgument(), String.format(SAME_MODE_MESSAGE, ModeEnum.DASHBOARD));
     }
 }
