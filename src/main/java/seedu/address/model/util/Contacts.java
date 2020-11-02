@@ -5,6 +5,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Optional;
 
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.person.Name;
+
 /**
  * Represents a Meeting's contacts in the meeting book.
  */
@@ -20,7 +23,7 @@ public class Contacts {
      * @@author claraadora-reused
      * Reused from https://stackoverflow.com/a/1396228 with minor modifications
      */
-    public static final String VALIDATION_REGEX = "(\\d+)(,\\s*\\d+)*";
+    public static final String VALIDATION_REGEX = "([a-zA-Z]+)(,\\s*[a-zA-Z]+)*";
 
     /*
      * Represents the value of Contacts.
@@ -38,6 +41,15 @@ public class Contacts {
         }
         value = contacts;
     }
+
+//    public static Name parseName(String name) throws ParseException {
+//        requireNonNull(name);
+//        String trimmedName = name.trim();
+//        if (!Name.isValidName(trimmedName)) {
+//            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+//        }
+//        return new Name(trimmedName);
+//    }
 
     /**
      * Constructs a {@code Contacts}.
