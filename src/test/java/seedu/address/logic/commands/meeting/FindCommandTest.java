@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.meeting.FindCommand.MESSAGE_MEETINGS_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_MEETINGS_LISTED_OVERVIEW;
 import static seedu.address.testutil.TypicalMeetings.MEETING_C;
 import static seedu.address.testutil.TypicalMeetings.MEETING_D;
 import static seedu.address.testutil.TypicalMeetings.MEETING_E;

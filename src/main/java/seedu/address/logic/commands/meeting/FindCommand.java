@@ -2,6 +2,7 @@ package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.meeting.TitleDescriptionContainsKeywordsPredicate;
@@ -20,8 +21,6 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " discuss user guide";
 
-    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meeting(s) listed!";
-
     private final TitleDescriptionContainsKeywordsPredicate predicate;
 
     public FindCommand(TitleDescriptionContainsKeywordsPredicate predicate) {
@@ -33,7 +32,7 @@ public class FindCommand extends Command {
         requireNonNull(modelMeeting);
         modelMeeting.updateFilteredMeetingList(predicate);
         return new CommandResult(
-                String.format(MESSAGE_MEETINGS_LISTED_OVERVIEW, modelMeeting.getFilteredMeetingList().size()));
+                String.format(Messages.MESSAGE_MEETINGS_LISTED_OVERVIEW, modelMeeting.getFilteredMeetingList().size()));
     }
 
     @Override

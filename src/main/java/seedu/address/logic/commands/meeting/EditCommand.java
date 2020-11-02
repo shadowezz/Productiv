@@ -49,7 +49,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists.";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
 
 
     private final Index targetIndex;
