@@ -46,7 +46,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_DELIVERABLE_SUCCESS = "Edited deliverable: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already exists in the deliverable list.";
+    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already"
+            + " exists in the deliverable list.";
 
 
     private final Index index;

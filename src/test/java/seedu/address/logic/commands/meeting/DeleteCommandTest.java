@@ -2,11 +2,11 @@ package seedu.address.logic.commands.meeting;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.showMeetingAtIndex;
 import static seedu.address.logic.commands.meeting.DeleteCommand.MESSAGE_DELETE_MEETING_SUCCESS;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalMeetings.getTypicalMeeting;
