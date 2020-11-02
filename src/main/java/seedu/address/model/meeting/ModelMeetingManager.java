@@ -78,6 +78,11 @@ public class ModelMeetingManager implements ModelMeeting {
         userPrefs.setMeetingBookFilePath(meetingBookFilePath);
     }
 
+    @Override
+    public ObservableList<Meeting> getInternalMeetingList() {
+        return meetingBook.getInternalMeetingList();
+    }
+
     //=========== MeetingBook ================================================================================
 
     @Override

@@ -70,6 +70,11 @@ public class LogicMeetingManager implements LogicMeeting {
     }
 
     @Override
+    public ObservableList<Meeting> getInternalMeetingList() {
+        return modelMeeting.getInternalMeetingList();
+    }
+
+    @Override
     public Path getMeetingBookFilePath() {
         return modelMeeting.getMeetingBookFilePath();
     }

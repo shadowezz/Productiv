@@ -157,6 +157,11 @@ class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Deliverable> getInternalDeliverableList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredDeliverableList(Predicate<Deliverable> predicate) {
             throw new AssertionError("This method should not be called.");
         }
