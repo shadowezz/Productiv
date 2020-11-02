@@ -23,7 +23,7 @@ public class Contacts {
      * @@author claraadora-reused
      * Reused from https://stackoverflow.com/a/1396228 with minor modifications
      */
-    public static final String VALIDATION_REGEX = "([a-zA-Z]+)(,\\s*[a-zA-Z]+)*";
+    public static final String VALIDATION_REGEX = "([a-zA-Z\\s]+)(,\\s*[a-zA-Z\\s]+)*";
 
     /*
      * Represents the value of Contacts.
