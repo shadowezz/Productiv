@@ -70,16 +70,16 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_unchangedPerson_failure() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST, new EditPersonDescriptor());
         Person editedPerson = modelPerson.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_UNCHANGED, editedPerson);
 
         ModelPerson expectedModelPerson =
                 new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
 
-        assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
+        assertCommandFailure(editCommand, modelPerson, expectedMessage);
     }
 
     @Test
