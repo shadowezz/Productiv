@@ -802,7 +802,7 @@ testers are expected to do more *exploratory* testing.
 1. Data files are saved in a `data` folder.<br>
 3 JSON files are created:
     * `contactbook.json`
-    * `meetingBook.json`
+    * `meetingbook.json`
     * `deliverablebook.json`
 
 All 3 files contain information stored by the user from their respective modes.

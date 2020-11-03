@@ -76,13 +76,19 @@ Format: `help`
 Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
-* `MODE` can be dashboard (`db`), deliverable (`dv`), meeting (`m`) or contact (`c`).
+* `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
 * `switch` `dv`, `m` or `c` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
 e.g. `switch c` will display your list of contacts.
 A view panel will be displayed in the right panel (initially empty).
 * `switch db` will display your project's completion status in the left panel.
 A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
 * How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in meeting mode deletes the 1st meeting shown.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** A warning message will be shown if you switch to the same mode that you are currently in.
+
+</div>
 
 Examples:
 * `switch db` switches to `dashboard` mode.
@@ -98,7 +104,7 @@ Examples:
 Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
+* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `NAME` is the name of the contact.
 * `PHONE` is the phone number of the contact.
 * `EMAIL` is the email address of the contact.
