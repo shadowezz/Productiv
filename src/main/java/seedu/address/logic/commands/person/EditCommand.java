@@ -44,6 +44,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the address book.";
+    public static final String MESSAGE_UNCHANGED = "Contact unchanged. At least one field must differ "
+            + "from the contact that is being edited.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -71,6 +73,10 @@ public class EditCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+
+        if (personToEdit.equals(editedPerson)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
 
         if (!personToEdit.isSamePerson(editedPerson) && modelPerson.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
