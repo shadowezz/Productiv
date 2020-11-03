@@ -32,8 +32,8 @@ public class CommandTestUtil {
     public static final String VALID_DESCRIPTION_B = "Able to see archived posts";
     public static final String VALID_DEADLINE_A = "12-06-2020 14:00";
     public static final String VALID_DEADLINE_B = "12-10-2020 16:00";
-    public static final String VALID_CONTACTS_A = "1,2,3";
-    public static final String VALID_CONTACTS_B = "4,5,6";
+    public static final String VALID_CONTACTS_A = "Alice, Bob, Sarah";
+    public static final String VALID_CONTACTS_B = "Alice   Alice,    Bob    Bob, Sarah Sarah";
 
     public static final String TITLE_DESC_A = " " + PREFIX_TITLE + VALID_TITLE_A;
     public static final String TITLE_DESC_B = " " + PREFIX_TITLE + VALID_TITLE_B;
