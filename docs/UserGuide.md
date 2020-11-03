@@ -32,11 +32,11 @@ Note that the app contains some sample data.<br>
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
 
-   * **`switch`**`deliverable` : Switches to `deliverable` mode.
+   * **`switch`**`dv` : Switches to deliverable mode.
 
-   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in `contact` mode, adds a contact named `Betty Clarke`.
+   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in contact mode, adds a contact named `Betty Clarke`.
 
-   * **`delete`**`1` : If in `meeting` mode, deletes the 1st meeting shown.
+   * **`delete`**`1` : If in meeting mode, deletes the 1st meeting shown.
 
    * **`exit`** : Exits the app.
 
@@ -73,19 +73,26 @@ Format: `help`
 
 #### Switching modes: `switch`
 
-Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
+Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
-* `switch`  `deliverable`, `meeting` and `contact` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
-e.g. `switch contact` will display your list of contacts.
+* `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
+* `switch` `dv`, `m` or `c` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
+e.g. `switch c` will display your list of contacts.
 A view panel will be displayed in the right panel (initially empty).
-* `switch dashboard` will display your project's completion status in the left panel.
+* `switch db` will display your project's completion status in the left panel.
 A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
-* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
+* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in meeting mode deletes the 1st meeting shown.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** A warning message will be shown if you switch to the same mode that you are currently in.
+
+</div>
 
 Examples:
-* `switch dashboard` switches to `dashboard` mode.
-* `switch meeting` switches to `meeting` mode.
+* `switch db` switches to `dashboard` mode.
+* `switch m` switches to `meeting` mode.
 
 ### Contact
 
@@ -96,8 +103,9 @@ Examples:
 
 Adds a developer or stakeholder to your contact list.
 
+
 Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
+* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `NAME` is the name of the contact.
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
@@ -457,7 +465,7 @@ creates with the file that contains the data of your previous *Productiv* app.
 
 Action | Format, Examples
 --------|------------------
-**Switch** | `switch MODE` <br> e.g. `switch deliverable`
+**Switch** | `switch MODE` <br> e.g. `switch dv`
 **Add (Contact)** | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
 **Edit (Meeting)** | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
 **Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`

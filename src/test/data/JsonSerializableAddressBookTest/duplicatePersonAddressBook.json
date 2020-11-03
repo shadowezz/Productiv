@@ -1,5 +1,5 @@
 {
-  "persons": [ {
+  "contacts": [ {
     "name": "Alice Pauline",
     "phone": {
       "value": "81234567"

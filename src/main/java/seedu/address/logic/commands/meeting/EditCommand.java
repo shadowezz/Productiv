@@ -41,15 +41,15 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TO + "TO] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_CONTACTS + "CONTACTS] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "[" + PREFIX_LOCATION + "LOCATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Discuss ALL features "
             + PREFIX_FROM + "2020-12-31 09:00";
 
 
-    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Meeting: %1$s";
+    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists.";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
 
 
     private final Index targetIndex;
