@@ -69,26 +69,26 @@ class EditCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_unchangedMeeting_failure() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST, new EditMeetingDescriptor());
         Meeting editedMeeting = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting);
+        String expectedMessage = String.format(EditCommand.MESSAGE_UNCHANGED, editedMeeting);
 
         ModelMeeting expectedModelMeeting =
                 new ModelMeetingManager(new MeetingBook(modelMeeting.getMeetingBook()), new UserPrefs());
 
-        assertCommandSuccess(editCommand, modelMeeting, expectedMessage, expectedModelMeeting);
+        assertCommandFailure(editCommand, modelMeeting, expectedMessage);
     }
 
     @Test
     public void execute_filteredList_success() {
         showMeetingAtIndex(modelMeeting, INDEX_FIRST);
 
-        Meeting personInFilteredList = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
-        Meeting editedMeeting = new MeetingBuilder(personInFilteredList).withTitle(VALID_TITLE_B).build();
+        Meeting meetingInFilteredList = modelMeeting.getFilteredMeetingList().get(INDEX_FIRST.getZeroBased());
+        Meeting editedMeeting = new MeetingBuilder(meetingInFilteredList).withTitle(VALID_TITLE_A).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST,
-                new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_B).build());
+                new EditMeetingDescriptorBuilder().withTitle(VALID_TITLE_A).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting);
 
