@@ -318,6 +318,7 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `CONTACTS` represents the contacts involved in the meeting. It is a comma-separated string of the index numbers of 
    these contacts, as specified in the contact list.
 * `LOCATION` is the location of the meeting.
+* As you might want to take note of the meetings that your team has, meetings can overlap.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Input an estimate end date time for the meeting if there is none specified.
@@ -340,6 +341,7 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided. 
 * The existing values of the specified meeting will be updated to the input values.
+* As you might want to take note of the meetings that your team has, meetings can overlap.
 
 Examples:
 * `edit 2 t/Discuss final release features d/Finalize dashboard functions`
