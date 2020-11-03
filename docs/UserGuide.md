@@ -102,8 +102,8 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 * `PHONE` is the phone number of the contact.
 * `EMAIL` is the email address of the contact.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
-* You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
-e.g. `add r/dev n/John p/123` will not work if a contact with the name `John` and phone `123` exists in the contact list.
+* You cannot add contacts with the same name and email as another existing contact,
+e.g. `add r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
 * `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
@@ -120,8 +120,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
-* You cannot edit contacts to have the same name and phone or email as another existing contact,
-e.g. `edit 1 r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
+* You cannot edit contacts to have the same name and email as another existing contact,
+e.g. `edit 1 n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
 *  `edit 1 p/81234567 e/jeremysand@glutter.com`
