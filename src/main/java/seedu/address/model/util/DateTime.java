@@ -84,11 +84,8 @@ public class DateTime implements Comparable<DateTime> {
             df.setLenient(false);
             Date date = df.parse(test);
             Date earliestDate = df.parse(EARLIEST_DATE_STRING);
-            if (date.before(earliestDate)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !date.before(earliestDate);
+
         } catch (ParseException e) {
             return false;
         }
