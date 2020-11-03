@@ -34,8 +34,8 @@ public class CommandTestUtil {
     public static final String VALID_TO_A = "02-01-2020 14:00";
     public static final String VALID_TO_B = "02-01-2020 12:00";
 
-    public static final String VALID_CONTACTS_A = "1,2,3";
-    public static final String VALID_CONTACTS_B = "4,5,6";
+    public static final String VALID_CONTACTS_A = "Alice, Bob, Cameron";
+    public static final String VALID_CONTACTS_B = "Jeannie, Justin, Lenny Sarah";
     public static final String VALID_LOCATION_A = "Singapore";
     public static final String VALID_LOCATION_B = "Jakarta";
 
