@@ -15,8 +15,6 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
 
     private final ModeEnum mode;
 
-    public static final String SAME_MODE_MESSAGE = "Switched to same mode: %s!";
-
     SwitchCommandParser(ModeEnum mode) {
         requireNonNull(mode);
         this.mode = mode;
@@ -42,7 +40,7 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
         }
 
         if (mode == newMode) {
-            throw new ParseException(String.format(SAME_MODE_MESSAGE, mode));
+            throw new ParseException(String.format(SwitchCommand.MESSAGE_SAME_MODE, mode));
         }
 
         return new SwitchCommand(newMode);

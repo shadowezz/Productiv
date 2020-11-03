@@ -1,9 +1,9 @@
 package seedu.address.logic.parser.mode;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SAME_MODE;
 import static seedu.address.logic.parser.mode.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.mode.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.mode.SwitchCommandParser.SAME_MODE_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +26,7 @@ class SwitchCommandParserTest {
 
     @Test
     public void parse_sameMode_throwsParseException() {
-        assertParseFailure(parser, ModeEnum.DASHBOARD.getArgument(), String.format(SAME_MODE_MESSAGE, ModeEnum.DASHBOARD));
+        assertParseFailure(parser, ModeEnum.DASHBOARD.getArgument(),
+                String.format(MESSAGE_SAME_MODE, ModeEnum.DASHBOARD));
     }
 }
