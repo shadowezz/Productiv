@@ -38,15 +38,17 @@ public class PersonTest {
                 .build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
-        // same name, same email, different attributes -> returns true
+        // same name, same email, different phone -> returns true
         editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
+        // same name, same email, different role -> returns true
         editedAlice = new PersonBuilder(ALICE).withRole(VALID_ROLE_BOB)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
+        // same name, same email, different description -> returns true
         editedAlice = new PersonBuilder(ALICE)
                 .withDescription(VALID_DESCRIPTION_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
