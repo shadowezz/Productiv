@@ -1,8 +1,8 @@
 package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_MEETINGS_LISTED_OVERVIEW;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.meeting.ModelMeeting;
 import seedu.address.model.meeting.meeting.TitleDescriptionContainsKeywordsPredicate;
@@ -32,7 +32,7 @@ public class FindCommand extends Command {
         requireNonNull(modelMeeting);
         modelMeeting.updateFilteredMeetingList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_MEETINGS_LISTED_OVERVIEW, modelMeeting.getFilteredMeetingList().size()));
+                String.format(MESSAGE_MEETINGS_LISTED_OVERVIEW, modelMeeting.getFilteredMeetingList().size()));
     }
 
     @Override
