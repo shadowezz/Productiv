@@ -1,7 +1,11 @@
 package seedu.address.logic.commands.person;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.person.CliSyntax.*;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 import static seedu.address.model.person.ModelPerson.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;

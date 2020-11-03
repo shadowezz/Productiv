@@ -1,7 +1,11 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.person.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.person.*;
+import seedu.address.model.person.person.Email;
+import seedu.address.model.person.person.Name;
+import seedu.address.model.person.person.Person;
+import seedu.address.model.person.person.Phone;
+import seedu.address.model.person.person.Role;
 import seedu.address.model.util.OptionalDescription;
 
 /**

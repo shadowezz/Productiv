@@ -2,7 +2,14 @@ package seedu.address.logic.commands.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.person.CommandTestUtil.*;
+import static seedu.address.logic.commands.person.CommandTestUtil.DESC_AMY;
+import static seedu.address.logic.commands.person.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.person.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -98,7 +105,7 @@ public class EditCommandTest {
     public void execute_duplicatePersonSameName_failure() {
         // both persons are in list and have all fields same except for name
         Person firstPerson = modelPerson.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
-            Person editedPerson = new PersonBuilder(firstPerson).withName(VALID_NAME_BOB).build();
+        Person editedPerson = new PersonBuilder(firstPerson).withName(VALID_NAME_BOB).build();
 
         ModelPerson expectedModelPerson =
                 new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
