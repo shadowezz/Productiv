@@ -6,15 +6,20 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DateTime implements Comparable<DateTime> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
     public static final String DATE_REGEX = "(([0-2]\\d)|(3[0-1]))-((0[1-9])|(1[0-2]))-(\\d{4})";
+    public static final String EARLIEST_DATE_STRING = "01-01-2019 00:00";
     public static final String MESSAGE_CONSTRAINTS =
             "Dates should be in the format of DD-MM-YYYY HH:mm, "
-                    + "and should be within the calendar range. Note: Single digit month, day, and "
+                    + "and should be within the calendar range starting from year 2019. Note: Single digit month, day, and "
                     + "minute must start with a leading zero.";
 
     public static final String VALIDATION_REGEX = String.format("%s(\\s(%s))",
@@ -80,8 +85,13 @@ public class DateTime implements Comparable<DateTime> {
         try {
             DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             df.setLenient(false);
-            df.parse(test);
-            return true;
+            Date date = df.parse(test);
+            Date earliestDate = df.parse(EARLIEST_DATE_STRING);
+            if (date.before(earliestDate)) {
+                return false;
+            } else {
+                return true;
+            }
         } catch (ParseException e) {
             return false;
         }
