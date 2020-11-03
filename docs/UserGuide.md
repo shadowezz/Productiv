@@ -310,11 +310,11 @@ Format: `clear`
 
 Adds a meeting to your meeting list.
 
-Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
+Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
-* `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
+* `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `CONTACTS` represents the contacts involved in the meeting. It is a comma-separated string of the index numbers of 
    these contacts, as specified in the contact list.
 * `LOCATION` is the location of the meeting.
@@ -335,7 +335,7 @@ end date time `15-12-2020 15:00`, and location `Meeting room A`.
 
 Edits an existing meeting in your meeting list.
 
-Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
+Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided. 
@@ -437,12 +437,46 @@ creates with the file that contains the data of your previous *Productiv* app.
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Switch** | `switch MODE` <br> e.g. `switch deliverable`
-**Add (Contact)** | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
-**Edit (Meeting)** | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
-**Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`
+### Deliverable
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
+Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
+Mark as Done   | `done ...` 
+Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
+
+### Meeting
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
+Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
+Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
+
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
+Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
+Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
+
+
+Action               | Format, Examples
+---------------------|--------------------------------------------------------------------------------------------------
+**Switch**           | `switch MODE` <br> e.g. `switch deliverable`
+**Add (Contact)**    | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
+**Edit (Meeting)**   | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
+**Mark Done | `done INDEX` <br> e.g. `done 2`
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
 **Delete** | `delete INDEX` <br> e.g. `delete 3`
