@@ -437,13 +437,20 @@ creates with the file that contains the data of your previous *Productiv* app.
 
 ## Command summary
 
+### General 
+Action         | Format, Examples
+-------------- |--------------------------------------------------------------------------------------------------
+**Help**       | `help`
+**Switch**     | `switch MODE` <br> e.g. `switch dv`
+**Exit**       | `exit`
+
 ### Deliverable
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
-Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
-Mark as Done   | `done ...` 
-Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Andy, Billy` 
+Edit           | `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
+Mark as Done   | `done INDEX` <br> e.g. `done 3`
+Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
 View           | `view INDEX` <br> e.g. `view 2`
@@ -452,38 +459,24 @@ Clear          | `clear`
 ### Meeting
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
-Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/John, Mary, Matthew`
+Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
 Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
 View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
+### Contact
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
-Edit           | `edit 2 t/Discuss final release features d/Finalize dashboard functions` <br> e.g. `edit 4 c/3,6,8`
-Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+Add            | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Johnny e/johnny@example.com p/12345678`
+Edit           | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]` `edit 1 r/dev n/John e/john@email.com`
+Find           | `find KEYWORDS` <br> e.g. `find John Kite`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
 View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
-
-
-Action               | Format, Examples
----------------------|--------------------------------------------------------------------------------------------------
-**Switch**           | `switch MODE` <br> e.g. `switch deliverable`
-**Add (Contact)**    | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
-**Edit (Meeting)**   | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
-**Mark Done | `done INDEX` <br> e.g. `done 2`
-**List** | `list`
-**Find** | `find KEYWORDS` <br> e.g. `find Bond James`
-**Delete** | `delete INDEX` <br> e.g. `delete 3`
-**View** | `view INDEX` <br> e.g. `view 2`
-**Clear** | `clear`
-**Help** | `help`
-**Exit** | `exit`
 
 ---------------------------------------------------------------------------------------------------------------------
 
