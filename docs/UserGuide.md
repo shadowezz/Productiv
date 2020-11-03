@@ -101,19 +101,20 @@ Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
 * `NAME` is the name of the contact.
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
+* `PHONE` should only contain numbers, and must be at least 3-digits long.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
 * You cannot add contacts with the same name and email as another existing contact,
 e.g. `add r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
-* `add r/dev n/Jordan Woods e/johndoe@glutter.com p/81234567 `
+* `add r/dev n/Jordan Woods e/jordanwoods@glutter.com p/81234567`
 adds a developer with the name `Jordan Woods`, email `jordanwoods@glutter.com` and phone number `81234567`.
 * `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
 adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
 
 <div markdown="span" class="alert alert-primary">:bulb:
 
-**Tip:** You cannot input some country codes for phone numbers. Phone numbers should only contain numbers, and it should be at least 3 digits long.
+**Tip:** Leave out the + sign for `PHONE`s with country codes.
 </div>
 
 #### Editing a contact: `edit`
@@ -129,8 +130,8 @@ Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]`
 e.g. `edit 1 n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
-*  `edit 1 e/jeremysand@glutter.com p/81234567 `
-edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
+*  `edit 1 e/jeremysand@glutter.com p/81234567`
+edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
 *  `edit 2 n/Jayden Smith` 
 edits the name of the 2nd contact to be `Jayden Smith`.
 
@@ -327,10 +328,12 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `CONTACTS` represents the contacts involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
-* As you might want to take note of the meetings that your team has, meetings can overlap.
 
-<div markdown="span" class="alert alert-info">:information_source:**Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="span" class="alert alert-info">:information_source:**Note:**<br>
+
+* Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
 </div>
 
@@ -355,7 +358,6 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided. 
 * The existing values of the specified meeting will be updated to the input values.
-* As you might want to take note of the meetings that your team has, meetings can overlap.
 
 Examples:
 * `edit 2 t/Discuss final release features d/Finalize dashboard functions`
@@ -457,7 +459,7 @@ Action | Format, Examples
 --------|------------------
 **Switch** | `switch MODE` <br> e.g. `switch deliverable`
 **Add (Contact)** | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
-**Edit (Meeting)** | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [desc/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
+**Edit (Meeting)** | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
 **Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
