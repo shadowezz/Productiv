@@ -1,7 +1,7 @@
 /* @@author torakiki-reused */
 /* Reused from https://github.com/torakiki/fx-progress-circle with minor modifications. */
 
-.circleindicator-container {	
+.circleindicator-container {
 	circleindicator-color: #00C853;
 	-fx-padding: 40.0;
 	-fx-background-color: -fx-background;
