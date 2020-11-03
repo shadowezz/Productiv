@@ -102,8 +102,16 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 * `PHONE` is the phone number of the contact.
 * `EMAIL` is the email address of the contact.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
-* You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
-e.g. `add r/dev n/John p/123` will not work if a contact with the name `John` and phone `123` exists in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+* You cannot add a contact with the same name and email as another contact in your contact list.<br>
+  e.g. `add r/dev n/John e/john@gmail.com` will not work if there is another contact with the name 
+  `John` and email `john@gmail.com` in your contact list.
+  
+</div>
 
 Examples:
 * `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
@@ -120,8 +128,16 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
-* You cannot edit contacts to have the same name and phone or email as another existing contact,
-e.g. `edit 1 r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+* You cannot edit a contact to have the same name and email as another contact in your contact list.<br>
+  e.g. `edit 1 n/John e/john@gmail.com` will not work if there is another contact with the name 
+  `John` and email `john@gmail.com` in your contact list.
+  
+</div>
 
 Examples:
 *  `edit 1 p/81234567 e/jeremysand@glutter.com`
@@ -206,9 +222,17 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of names.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
+
+* You cannot add a deliverable with the same title as another deliverable in your deliverable list.<br>
+  e.g. `add t/Build Login page m/1.0 by/10-11-2020 18:00` will not work if there is another deliverable with the title 
+  `Build Login page` in your deliverable list.
+  
 </div>
 
 Examples:
@@ -229,6 +253,16 @@ Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CON
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified deliverable will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+* You cannot edit a deliverable to have the same title as another deliverable in your deliverable list.<br>
+  e.g. `edit 1 t/Build Login page` will not work if there is another deliverable with the title 
+  `Build Login page` exists in your deliverable list.
+  
+</div>
 
 Examples:
 *  `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
@@ -324,9 +358,17 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
 
-<div markdown="span" class="alert alert-info">:information_source:**Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
+
+* You cannot add a meeting with the same title as another meeting in your meeting list.<br>
+  e.g. `add t/Pitch to client from/10-11-2020 08:00 to/10-11-2020 10:00` will not work if there is another meeting
+   with the title `Pitch to client` in your meeting list.
+  
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -350,6 +392,16 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided. 
 * The existing values of the specified meeting will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+* You cannot edit a meeting to have the same title as another meeting in your meeting list.<br>
+  e.g. `edit 1 t/Pitch to client` will not work if there is another meeting with the title 
+  `Pitch to client` in your meeting list.
+  
+</div>
 
 Examples:
 * `edit 2 t/Discuss final release features d/Finalize dashboard functions`
