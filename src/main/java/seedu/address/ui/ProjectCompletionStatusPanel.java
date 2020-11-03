@@ -1,13 +1,10 @@
 package seedu.address.ui;
 
-import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
@@ -15,20 +12,16 @@ import seedu.address.model.deliverable.deliverable.Deliverable;
  */
 public class ProjectCompletionStatusPanel extends UiPart<Region> {
     private static final String FXML = "ProjectCompletionStatusPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(ProjectCompletionStatusPanel.class);
     private ObservableList<Deliverable> deliverableList;
     private int totalNumDeliverables;
     private int numCompletedDeliverables;
     private int overallCompletionPercentage;
 
     @FXML
-    private StackPane stackPane;
+    private StackPane ocpDiagram;
 
     @FXML
-    private Label OcpString;
-
-    @FXML
-    private Label OcpCaption;
+    private Label ocpCaption;
 
     /**
      * Creates a {@code ProjectCompletionStatusPanel} with the given {@code ObservableList<Deliverable>}
@@ -63,9 +56,11 @@ public class ProjectCompletionStatusPanel extends UiPart<Region> {
         numCompletedDeliverables = findNumCompletedDeliverables(deliverableList);
         overallCompletionPercentage = getOcp(totalNumDeliverables, numCompletedDeliverables);
 
-        String OcpStr = overallCompletionPercentage + "% Completed";
-        OcpString.setText(OcpStr);
-        String caption = numCompletedDeliverables + " / " + totalNumDeliverables + " Deliverables Completed";
-        OcpCaption.setText(caption);
+        RingProgressIndicator ringProgressIndicator = new RingProgressIndicator();
+        ringProgressIndicator.setProgress(overallCompletionPercentage);
+        ocpDiagram.getChildren().add(ringProgressIndicator);
+
+        String caption = numCompletedDeliverables + " of " + totalNumDeliverables + " Deliverables Completed";
+        ocpCaption.setText(caption);
     }
 }

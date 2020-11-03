@@ -2,10 +2,16 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
-
 <?import javafx.scene.layout.StackPane?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="projectCompletionHeading" styleClass="details_title" text="Project Completion" />
-    <Label fx:id="OcpString" text="\$OcpString"/>
-    <Label fx:id="OcpCaption" text="\$OcpCaption"/>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" spacing="20">
+    <Label fx:id="projectCompletionHeading" styleClass="details_title" text="Project Completion"/>
+    <VBox alignment="CENTER" styleClass="stack-pane" >
+        <StackPane fx:id="ocpDiagram"/>
+        <Label fx:id="ocpCaption" text="\$ocpCaption" styleClass="details_subheading"/>
+        <padding>
+            <Insets bottom="25"/>
+        </padding>
+    </VBox>
 </VBox>
