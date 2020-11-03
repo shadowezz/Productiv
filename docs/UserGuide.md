@@ -105,11 +105,10 @@ Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**<br>
-
-* You cannot add a contact with the same name and email as another contact in your contact list.<br>
-  e.g. `add r/dev n/John e/john@gmail.com` will not work if there is another contact with the name 
-  `John` and email `john@gmail.com` in your contact list.
+**:information_source: Note:** You cannot add a contact with the same name and email as another contact in your 
+contact list.<br>
+e.g. `add r/dev n/John e/john@gmail.com` will not work if there is another contact with the name 
+`John` and email `john@gmail.com` in your contact list.
   
 </div>
 
@@ -131,11 +130,10 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**<br>
-
-* You cannot edit a contact to have the same name and email as another contact in your contact list.<br>
-  e.g. `edit 1 n/John e/john@gmail.com` will not work if there is another contact with the name 
-  `John` and email `john@gmail.com` in your contact list.
+**:information_source: Note:** You cannot edit a contact to have the same name and email as another contact 
+in your contact list.<br>
+e.g. `edit 1 n/John e/john@gmail.com` will not work if there is another contact with the name 
+`John` and email `john@gmail.com` in your contact list.
   
 </div>
 
@@ -218,6 +216,7 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `MILESTONE` is the milestone tagged to the deliverable.
 * `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
+* `DEADLINE` can be in the past but must not be earlier than the year 2019.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of names.
@@ -232,6 +231,11 @@ who are not in your contact list.
 * You cannot add a deliverable with the same title as another deliverable in your deliverable list.<br>
   e.g. `add t/Build Login page m/1.0 by/10-11-2020 18:00` will not work if there is another deliverable with the title 
   `Build Login page` in your deliverable list.
+
+* All newly-added deliverables will be assigned the `on-going` tag regardless of their deadline. You will
+need to manually mark past deliverables as `completed`. Refer to 
+[Marking a deliverable as completed](#marking-a-deliverable-as-completed-done) below for more details on 
+the `done` command.
   
 </div>
 
@@ -256,11 +260,10 @@ Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CON
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**<br>
-
-* You cannot edit a deliverable to have the same title as another deliverable in your deliverable list.<br>
-  e.g. `edit 1 t/Build Login page` will not work if there is another deliverable with the title 
-  `Build Login page` exists in your deliverable list.
+**:information_source: Note:** You cannot edit a deliverable to have the same title as another deliverable 
+in your deliverable list.<br>
+e.g. `edit 1 t/Build Login page` will not work if there is another deliverable with the title 
+`Build Login page` exists in your deliverable list.
   
 </div>
 
@@ -354,6 +357,7 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
+* `FROM` and `TO` can be in the past but must not be earlier than the year 2019.
 * `CONTACTS` represents the contacts involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
@@ -367,7 +371,7 @@ who are not in your contact list.
 
 * You cannot add a meeting with the same title as another meeting in your meeting list.<br>
   e.g. `add t/Pitch to client from/10-11-2020 08:00 to/10-11-2020 10:00` will not work if there is another meeting
-   with the title `Pitch to client` in your meeting list.
+  with the title `Pitch to client` in your meeting list.
   
 </div>
 
@@ -395,11 +399,9 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**<br>
-
-* You cannot edit a meeting to have the same title as another meeting in your meeting list.<br>
-  e.g. `edit 1 t/Pitch to client` will not work if there is another meeting with the title 
-  `Pitch to client` in your meeting list.
+**:information_source: Note:** You cannot edit a meeting to have the same title as another meeting in your meeting list.<br>
+e.g. `edit 1 t/Pitch to client` will not work if there is another meeting with the title 
+`Pitch to client` in your meeting list.
   
 </div>
 
