@@ -23,14 +23,14 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_MILESTONE + "MILESTONE "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + PREFIX_DEADLINE + "DEADLINE "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Login screen "
             + PREFIX_MILESTONE + "1.0 "
-            + PREFIX_DESCRIPTION + "Must include username and password fields "
             + PREFIX_DEADLINE + "12-12-2020 23:59 "
+            + PREFIX_DESCRIPTION + "Must include username and password fields "
             + PREFIX_CONTACTS + "2,4";
 
     public static final String MESSAGE_SUCCESS = "New deliverable added: %1$s";

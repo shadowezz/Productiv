@@ -23,14 +23,14 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_ROLE + "ROLE "
             + PREFIX_NAME + "NAME "
-            + "[" + PREFIX_PHONE + "PHONE] "
             + PREFIX_EMAIL + "EMAIL "
+            + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROLE + "stk "
             + PREFIX_NAME + "John Doe "
-            + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_PHONE + "98765432 "
             + PREFIX_DESCRIPTION + "End user";
 
     public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
