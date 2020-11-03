@@ -21,6 +21,8 @@
       <stylesheets>
         <URL value="@DarkTheme.css" />
         <URL value="@Extensions.css" />
+        <URL value="@Circleprogress.css"/>
+        <URL value="@Ringprogress.css"/>
       </stylesheets>
       <VBox>
         <HBox id="navBar" fx:id="navBar" VBox.vgrow="NEVER">
