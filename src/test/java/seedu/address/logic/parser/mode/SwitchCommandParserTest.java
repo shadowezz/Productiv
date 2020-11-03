@@ -27,6 +27,6 @@ class SwitchCommandParserTest {
     @Test
     public void parse_sameMode_throwsParseException() {
         assertParseFailure(parser, ModeEnum.DASHBOARD.getArgument(),
-                String.format(MESSAGE_SAME_MODE, ModeEnum.DASHBOARD));
+                String.format(MESSAGE_SAME_MODE, ModeEnum.DASHBOARD.toString().toLowerCase()));
     }
 }

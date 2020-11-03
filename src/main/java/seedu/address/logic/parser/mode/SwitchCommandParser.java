@@ -40,7 +40,7 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
         }
 
         if (mode == newMode) {
-            throw new ParseException(String.format(SwitchCommand.MESSAGE_SAME_MODE, mode));
+            throw new ParseException(String.format(SwitchCommand.MESSAGE_SAME_MODE, mode.toString().toLowerCase()));
         }
 
         return new SwitchCommand(newMode);

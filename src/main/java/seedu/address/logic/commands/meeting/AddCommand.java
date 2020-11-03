@@ -33,7 +33,7 @@ public class AddCommand extends Command {
             + PREFIX_LOCATION + "Room 1A";
 
     public static final String MESSAGE_SUCCESS = "New meeting added: %1$s";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
 
     private final Meeting toAdd;
 
