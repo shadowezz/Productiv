@@ -1,24 +1,24 @@
-/* @@author torakiki-reused 
-Reused from https://github.com/torakiki/fx-progress-circle with minor modifications. */
+/* @@author torakiki-reused */
+/* Reused from https://github.com/torakiki/fx-progress-circle with minor modifications. */
 
-.ringindicator{
+.ringindicator {
 	-fx-ring-width: 27.5;
 	-fx-inner-radius: 75.0;
 }
 .ringindicator-inner-circle {
 	-fx-opacity: 0.55;
-	-fx-stroke: circleindicator-color; 
+	-fx-stroke: circleindicator-color;
 	-fx-stroke-width: 8.0px;
 	-fx-fill: -fx-background;
 }
 .ringindicator-filler {
-	-fx-stroke: circleindicator-color; 
+	-fx-stroke: circleindicator-color;
 	-fx-fill: -fx-background;
 	-fx-stroke-line-cap: butt;
 }
 .ringindicator-outer-circle-secondary {
 	-fx-opacity: 0.1;
-	-fx-stroke: circleindicator-color; 
+	-fx-stroke: circleindicator-color;
 	-fx-stroke-width: 2.0px;
 	-fx-fill: -fx-background;
 }
