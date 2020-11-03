@@ -17,7 +17,7 @@ public class DeliverableBuilder {
     public static final String DEFAULT_DESCRIPTION = "Finalise features";
     public static final String DEFAULT_DEADLINE = "12-12-2020 23:59";
     public static final boolean DEFAULT_IS_COMPLETE = false;
-    public static final String DEFAULT_CONTACTS = "2,4";
+    public static final String DEFAULT_CONTACTS = "Michael, Samuel";
 
     private Title title;
     private Milestone milestone;

@@ -17,21 +17,21 @@ public class TypicalDeliverables {
             .withMilestone("1.1")
             .withDescription("Include company description")
             .withDeadline("12-05-2020 12:00")
-            .withContacts("3")
+            .withContacts("Alice, Bob")
             .withIsComplete(false)
             .build();
     public static final Deliverable NAVIGATION = new DeliverableBuilder().withTitle("Implement navigation")
             .withMilestone("1.2")
             .withDescription("Include about us tab")
             .withDeadline("12-09-2020 10:00")
-            .withContacts("5,6")
+            .withContacts("Alyssa, Bobby Bobby")
             .withIsComplete(false)
             .build();
     public static final Deliverable SORT_AND_FILTER = new DeliverableBuilder().withTitle("Implement sort and filter")
             .withMilestone("1.2")
             .withDescription("For search box")
             .withDeadline("12-09-2020 14:00")
-            .withContacts("2,4,6")
+            .withContacts("Cassandra, McClander")
             .withIsComplete(false)
             .build();
 
