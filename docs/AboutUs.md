@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/claraadora.png" width="200px">
 
 [[github](https://github.com/claraadora)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/claraadora.md)]
 
 * Role: Developer
 * Responsibilities: In charge of "Meeting" features and Product Management
@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/chrystalquek.png" width="200px">
 
-[[github](http://github.com/chrystalquek)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/chrystalquek)] [[portfolio](team/chrystalquek.md)]
 
 * Role: Developer
 * Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
