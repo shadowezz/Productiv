@@ -33,7 +33,7 @@ public class ModelPersonManager implements ModelPerson {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with contact book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -84,6 +84,7 @@ public class ModelPersonManager implements ModelPerson {
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
+        setPersonInView(null);
     }
 
     @Override
@@ -144,6 +145,7 @@ public class ModelPersonManager implements ModelPerson {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        setPersonInView(null);
     }
 
     @Override

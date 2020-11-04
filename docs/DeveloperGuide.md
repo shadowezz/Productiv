@@ -801,15 +801,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Data files are saved in a `data` folder.<br>
 3 JSON files are created:
-    * `addressbook.json`
-    * `meetingBook.json`
+    * `contactbook.json`
+    * `meetingbook.json`
     * `deliverablebook.json`
 
 All 3 files contain information stored by the user from their respective modes.
 
 1. Dealing with missing/corrupted data files
 
-   1. Missing data/corrupted files: delete `addressbook.json` file and start the jar file again<br> 
+   1. Missing data/corrupted files: delete `contactbook.json` file and start the jar file again<br> 
    Expected: Data file should re-initialise a list of sample contacts
    
 _{more to be added}_

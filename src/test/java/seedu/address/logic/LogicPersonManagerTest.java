@@ -45,7 +45,7 @@ public class LogicPersonManagerTest {
     @BeforeEach
     public void setUp() {
         JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+                new JsonAddressBookStorage(temporaryFolder.resolve("contactbook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StoragePersonManager storage = new StoragePersonManager(addressBookStorage, userPrefsStorage);
         logic = new LogicPersonManager(modelPerson, storage);
