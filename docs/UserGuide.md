@@ -389,16 +389,17 @@ Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
   
 </div>
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Leave out the + sign for `PHONE`s with country codes.
+
+</div>
+
 Examples:
 * `add r/dev n/Jordan Woods e/jordanwoods@glutter.com p/81234567`
 adds a developer with the name `Jordan Woods`, email `jordanwoods@glutter.com` and phone number `81234567`.
 * `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
 adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Leave out the + sign for `PHONE`s with country codes.
-</div>
 
 #### Editing a contact: `edit`
 
