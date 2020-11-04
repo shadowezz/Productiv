@@ -29,10 +29,10 @@ public class AddCommand extends Command {
             + PREFIX_FROM + "30-12-2020 12:00 "
             + PREFIX_TO + "30-12-2020 14:00 "
             + PREFIX_DESCRIPTION + "Refer to the reviewed user stories during discussion "
-            + PREFIX_CONTACTS + "1,3,5 "
+            + PREFIX_CONTACTS + "Abby Li, John Martin "
             + PREFIX_LOCATION + "Room 1A";
 
-    public static final String MESSAGE_SUCCESS = "New meeting added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Added new meeting: %1$s";
     public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
 
     private final Meeting toAdd;

@@ -11,7 +11,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX = "Invalid deliverable index!";
     public static final String MESSAGE_INVALID_MEETING_DISPLAYED_INDEX = "Invalid meeting index!";
     public static final String MESSAGE_INVALID_DELIVERABLE_COMPLETED = "Deliverable is already marked done!";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d contact(s) listed!";
-    public static final String MESSAGE_DELIVERABLES_LISTED_OVERVIEW = "%1$d deliverable(s) listed!";
-    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meeting(s) listed!";
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "Found %1$d contact(s)!";
+    public static final String MESSAGE_DELIVERABLES_LISTED_OVERVIEW = "Found %1$d deliverable(s)!";
+    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "Found %1$d meeting(s)!";
 }
