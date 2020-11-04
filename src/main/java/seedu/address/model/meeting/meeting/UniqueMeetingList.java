@@ -142,6 +142,6 @@ public class UniqueMeetingList implements Iterable<Meeting> {
 
     /** Returns the internal list of meeting */
     public ObservableList<Meeting> getInternalMeetingList() {
-        return FXCollections.observableArrayList(internalList);
+        return internalList;
     }
 }
