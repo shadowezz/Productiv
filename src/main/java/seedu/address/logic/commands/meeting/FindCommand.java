@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.meeting;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_MEETINGS_LISTED_OVERVIEW;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.meeting.ModelMeeting;
@@ -14,13 +15,11 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all meetings whose names and/or "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all meetings whose titles and/or "
             + "descriptions contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob user";
-
-    public static final String MESSAGE_MEETINGS_LISTED_OVERVIEW = "%1$d meetings listed!";
+            + "Example: " + COMMAND_WORD + " discuss user guide";
 
     private final TitleDescriptionContainsKeywordsPredicate predicate;
 

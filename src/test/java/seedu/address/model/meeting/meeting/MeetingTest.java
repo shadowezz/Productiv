@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACT
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_DESCRIPTION_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_B;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_B;
@@ -27,12 +26,17 @@ class MeetingTest {
         // null-> returns false
         assertFalse(MEETING_A.isSameMeeting(null));
 
-        // different contact and location -> return false
+        // different from -> return false
         Meeting editedMeeting = new MeetingBuilder(MEETING_A)
-                .withContacts(VALID_CONTACTS_B).withLocation(VALID_LOCATION_B).build();
+                .withFrom(VALID_FROM_B).build();
         assertFalse(MEETING_A.isSameMeeting(editedMeeting));
 
-        // different Title -> return false
+        // different to -> return false
+        editedMeeting = new MeetingBuilder(MEETING_A)
+                .withTo(VALID_TO_B).build();
+        assertFalse(MEETING_A.isSameMeeting(editedMeeting));
+
+        // different title -> return false
         editedMeeting = new MeetingBuilder(MEETING_A)
                 .withTitle(VALID_TITLE_B).build();
         assertFalse(MEETING_A.isSameMeeting(editedMeeting));

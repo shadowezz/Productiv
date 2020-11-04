@@ -67,6 +67,11 @@ public class LogicDeliverableManager implements LogicDeliverable {
     }
 
     @Override
+    public ObservableList<Deliverable> getInternalDeliverableList() {
+        return modelDeliverable.getInternalDeliverableList();
+    }
+
+    @Override
     public Deliverable getDeliverableInView() {
         return modelDeliverable.getDeliverableInView();
     }

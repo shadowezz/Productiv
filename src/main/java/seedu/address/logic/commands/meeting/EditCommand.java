@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
-import static seedu.address.model.meeting.ModelMeeting.PREDICATE_SHOW_ALL_MEETINGS;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,16 +40,17 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TO + "TO] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_CONTACTS + "CONTACTS] "
-            + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "[" + PREFIX_LOCATION + "LOCATION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Discuss ALL features "
-            + PREFIX_FROM + "2020-12-31 09:00";
+            + PREFIX_FROM + "12-10-2020 09:00";
 
 
-    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited Meeting: %1$s";
+    public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists.";
-
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
+    public static final String MESSAGE_UNCHANGED = "Meeting unchanged. At least one field must differ "
+            + "from the meeting that is being edited.";
 
     private final Index targetIndex;
     private final EditMeetingDescriptor editMeetingDescriptor;
@@ -88,12 +88,15 @@ public class EditCommand extends Command {
         assert Meeting.isValidFromAndTo(editedMeeting.getFrom(), editedMeeting.getTo())
                 : "From should be earlier than To";
 
+        if (meetingToEdit.equals(editedMeeting)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
+
         if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
         }
 
         modelMeeting.setMeeting(meetingToEdit, editedMeeting);
-        modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
     }
 

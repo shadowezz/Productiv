@@ -142,6 +142,11 @@ class AddCommandTest {
         }
 
         @Override
+        public void completeDeliverable(Deliverable target, Deliverable completedDeliverable) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Deliverable getDeliverableInView() {
             throw new AssertionError("This method should not be called.");
         }
@@ -153,6 +158,11 @@ class AddCommandTest {
 
         @Override
         public ObservableList<Deliverable> getFilteredDeliverableList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Deliverable> getInternalDeliverableList() {
             throw new AssertionError("This method should not be called.");
         }
 

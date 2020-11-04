@@ -93,6 +93,11 @@ public class ModelDeliverableManager implements ModelDeliverable {
     }
 
     @Override
+    public ObservableList<Deliverable> getInternalDeliverableList() {
+        return deliverableBook.getInternalDeliverableList();
+    }
+
+    @Override
     public boolean hasDeliverable(Deliverable deliverable) {
         requireNonNull(deliverable);
         return deliverableBook.hasDeliverable(deliverable);
@@ -109,15 +114,23 @@ public class ModelDeliverableManager implements ModelDeliverable {
     @Override
     public void addDeliverable(Deliverable deliverable) {
         deliverableBook.addDeliverable(deliverable);
-        setDeliverableInView(deliverable);
         updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
+        setDeliverableInView(deliverable);
     }
 
     @Override
     public void setDeliverable(Deliverable target, Deliverable editedDeliverable) {
         requireAllNonNull(target, editedDeliverable);
         deliverableBook.setDeliverable(target, editedDeliverable);
+        updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
         setDeliverableInView(editedDeliverable);
+    }
+
+    @Override
+    public void completeDeliverable(Deliverable target, Deliverable completedDeliverable) {
+        requireAllNonNull(target, completedDeliverable);
+        deliverableBook.setDeliverable(target, completedDeliverable);
+        setDeliverableInView(completedDeliverable);
     }
 
     @Override

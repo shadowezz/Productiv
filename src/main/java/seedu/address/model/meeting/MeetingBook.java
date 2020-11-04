@@ -111,4 +111,8 @@ public class MeetingBook implements ReadOnlyMeetingBook {
     public int hashCode() {
         return meetings.hashCode();
     }
+
+    public ObservableList<Meeting> getInternalMeetingList() {
+        return meetings.getInternalMeetingList();
+    }
 }

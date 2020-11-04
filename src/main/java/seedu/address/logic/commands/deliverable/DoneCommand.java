@@ -1,7 +1,6 @@
 package seedu.address.logic.commands.deliverable;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.deliverable.ModelDeliverable.PREDICATE_SHOW_ALL_DELIVERABLES;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class DoneCommand extends Command {
     public static final boolean COMPLETED = true;
     public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as done: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Marks as done the deliverable identified by the index number used in the displayed deliverable list\n"
+            + ": Marks as done the deliverable identified by the index number used in the displayed deliverable list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
@@ -57,8 +56,7 @@ public class DoneCommand extends Command {
         }
 
         Deliverable completedDeliverable = createCompletedDeliverable(deliverableToComplete);
-        modelDeliverable.setDeliverable(deliverableToComplete, completedDeliverable);
-        modelDeliverable.updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
+        modelDeliverable.completeDeliverable(deliverableToComplete, completedDeliverable);
         return new CommandResult(String.format(MESSAGE_DONE_DELIVERABLE_SUCCESS, deliverableToComplete));
     }
 

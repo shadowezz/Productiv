@@ -74,16 +74,16 @@ class EditCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_unchangedDeliverable_failure() {
         EditCommand editCommand = new EditCommand(INDEX_FIRST, new EditDeliverableDescriptor());
         Deliverable editedDeliverable = modelDeliverable.getFilteredDeliverableList().get(INDEX_FIRST.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_DELIVERABLE_SUCCESS, editedDeliverable);
+        String expectedMessage = String.format(EditCommand.MESSAGE_UNCHANGED, editedDeliverable);
 
         ModelDeliverable expectedModelDeliverable = new ModelDeliverableManager(
                 new DeliverableBook(modelDeliverable.getDeliverableBook()), new UserPrefs());
 
-        assertCommandSuccess(editCommand, modelDeliverable, expectedMessage, expectedModelDeliverable);
+        assertCommandFailure(editCommand, modelDeliverable, expectedMessage);
     }
 
     @Test

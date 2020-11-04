@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
-import static seedu.address.model.person.ModelPerson.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,17 +33,20 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed contact list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
+            + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_EMAIL + "johndoe@example.com "
+            + PREFIX_PHONE + "91234567";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the contact list.";
+    public static final String MESSAGE_UNCHANGED = "Contact unchanged. At least one field must differ "
+            + "from the contact that is being edited.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -72,12 +75,15 @@ public class EditCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
+        if (personToEdit.equals(editedPerson)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
+
         if (!personToEdit.isSamePerson(editedPerson) && modelPerson.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
         modelPerson.setPerson(personToEdit, editedPerson);
-        modelPerson.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
@@ -91,9 +97,9 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Role updatedRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
         OptionalDescription updatedDescription =
                 editPersonDescriptor.getDescription().orElse(personToEdit.getDescription());
-        Role updatedRole = personToEdit.getRole();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedRole, updatedDescription);
     }
@@ -124,6 +130,7 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
+        private Role role;
         private OptionalDescription description;
 
         public EditPersonDescriptor() {}
@@ -136,6 +143,7 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
+            setRole(toCopy.role);
             setDescription(toCopy.description);
         }
 
@@ -143,7 +151,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, description);
+            return CollectionUtil.isAnyNonNull(name, phone, email, role, description);
         }
 
         public void setName(Name name) {
@@ -170,6 +178,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
+        public void setRole(Role role) {
+            this.role = role;
+        }
+
+        public Optional<Role> getRole() {
+            return Optional.ofNullable(role);
+        }
+
         public void setDescription(OptionalDescription description) {
             this.description = description;
         }
@@ -177,6 +193,7 @@ public class EditCommand extends Command {
         public Optional<OptionalDescription> getDescription() {
             return Optional.ofNullable(description);
         }
+
 
         @Override
         public boolean equals(Object other) {
@@ -196,6 +213,7 @@ public class EditCommand extends Command {
             return getName().equals(e.getName())
                     && getPhone().equals(e.getPhone())
                     && getEmail().equals(e.getEmail())
+                    && getRole().equals(e.getRole())
                     && getDescription().equals(e.getDescription());
         }
     }
