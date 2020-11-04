@@ -6,6 +6,9 @@ import seedu.address.model.util.DateTime;
  * Represents a Meeting's from in the meeting book.
  */
 public class From extends DateTime {
+
+    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "From");
+
     /**
      * Constructs a {@code From}.
      *

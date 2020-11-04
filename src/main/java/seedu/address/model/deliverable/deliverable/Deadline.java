@@ -6,6 +6,9 @@ import seedu.address.model.util.DateTime;
  * Represents a Deliverable's deadline in the deliverable book.
  */
 public class Deadline extends DateTime {
+
+    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "Deadline");
+
     /**
      * Constructs a {@code Deadline}.
      *

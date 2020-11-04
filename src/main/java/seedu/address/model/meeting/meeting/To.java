@@ -7,6 +7,8 @@ import seedu.address.model.util.Time;
  */
 public class To extends Time {
 
+    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "To");
+
     /**
      * Constructs a {@code To}.
      *

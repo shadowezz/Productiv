@@ -13,8 +13,8 @@ class TimeTest {
     public static final String INVALID_SAMPLE_A = "01-01-2020 23:59";
     public static final String INVALID_SAMPLE_B = "01-01-2020";
     public static final String INVALID_SAMPLE_C = "23:00:59";
-    public static final String INVALID_SAMPLE_D = "24:00";
-    public static final String INVALID_SAMPLE_E = "1:00";
+    public static final String INVALID_SAMPLE_D = "1:00";
+    public static final String INVALID_SAMPLE_E = "24:00";
 
 
     @Test
@@ -40,14 +40,14 @@ class TimeTest {
     @Test
     void parseFail() {
         // Fail pattern
-        // E.g Missing digit, missing date, additional digits
+        // E.g Missing or additional digits, additional date
         assertExceptionMessage(INVALID_SAMPLE_A, Time.MESSAGE_CONSTRAINTS);
         assertExceptionMessage(INVALID_SAMPLE_B, Time.MESSAGE_CONSTRAINTS);
         assertExceptionMessage(INVALID_SAMPLE_C, Time.MESSAGE_CONSTRAINTS);
+        assertExceptionMessage(INVALID_SAMPLE_D, Time.MESSAGE_CONSTRAINTS);
 
         // Fail Range
-        // E.g Months with too many days 29-02-2019
-        assertExceptionMessage(INVALID_SAMPLE_D, Time.MESSAGE_CONSTRAINTS);
+        // E.g 24:00
         assertExceptionMessage(INVALID_SAMPLE_E, Time.MESSAGE_CONSTRAINTS);
 
     }

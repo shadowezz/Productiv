@@ -8,11 +8,11 @@ import java.time.format.DateTimeFormatter;
 
 public class Time implements Comparable<Time> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
-    public static final String MESSAGE_CONSTRAINTS =
-            "Time should be in the format of HH:mm, "
-                    + "minute must start with a leading zero.";
+    public static final String CONSTRAINTS = "%s should be in the format of HH:mm, "
+            + "hour and minute must start with a leading zero.";
+    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "Time");
 
-    public static final String VALIDATION_REGEX = String.format("%s", TIME_REGEX);
+    public static final String VALIDATION_REGEX = TIME_REGEX;
 
     public static final DateTimeFormatter TIME_FORMATTER =
             DateTimeFormatter.ofPattern("HH:mm");

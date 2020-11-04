@@ -17,7 +17,7 @@ import seedu.address.model.util.Title;
  */
 public class Meeting implements TimeEvent {
 
-    public static final String INCORRECT_FROM_AND_TO_ORDER = "From date should be earlier than To date.";
+    public static final String INCORRECT_FROM_AND_TO_ORDER = "From time should be earlier than To.";
 
     private final Title title;
     private final OptionalDescription description;
