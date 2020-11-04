@@ -220,7 +220,7 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
 
         calendarListPanel = new CalendarListPanel(calendar.getTimeEvents());
-        projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getFilteredDeliverableList());
+        projectCompletionStatusPanel = new ProjectCompletionStatusPanel(logicDeliverable.getInternalDeliverableList());
         leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
         rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
 
