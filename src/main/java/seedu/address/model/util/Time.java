@@ -6,7 +6,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Time implements Comparable<Time>{
+public class Time implements Comparable<Time> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
     public static final String MESSAGE_CONSTRAINTS =
             "Time should be in the format of HH:mm, "

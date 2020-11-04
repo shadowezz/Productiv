@@ -31,9 +31,9 @@ class MeetingTest {
                 .withFrom(VALID_FROM_B).build();
         assertFalse(MEETING_A.isSameMeeting(editedMeeting));
 
-        // different to -> return false
+        // different to -> returns false
         editedMeeting = new MeetingBuilder(MEETING_A)
-                .withTo(VALID_TO_B).build();
+                .withTo("15:00").build();
         assertFalse(MEETING_A.isSameMeeting(editedMeeting));
 
         // different title -> return false
@@ -44,11 +44,6 @@ class MeetingTest {
         // different from  -> returns false
         editedMeeting = new MeetingBuilder(MEETING_A)
                 .withFrom(VALID_FROM_B).build();
-        assertFalse(MEETING_A.isSameMeeting(editedMeeting));
-
-        // different to -> returns false
-        editedMeeting = new MeetingBuilder(MEETING_A)
-                .withTo("15:00").build();
         assertFalse(MEETING_A.isSameMeeting(editedMeeting));
 
         //        // TODO:
