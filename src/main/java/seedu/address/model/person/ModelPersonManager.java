@@ -119,14 +119,15 @@ public class ModelPersonManager implements ModelPerson {
     @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
-        setPersonInView(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        setPersonInView(person);
     }
 
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
         addressBook.setPerson(target, editedPerson);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         setPersonInView(editedPerson);
     }
 

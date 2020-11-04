@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_FROM;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_LOCATION;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TITLE;
 import static seedu.address.logic.parser.meeting.CliSyntax.PREFIX_TO;
-import static seedu.address.model.meeting.ModelMeeting.PREDICATE_SHOW_ALL_MEETINGS;
 
 import java.util.List;
 import java.util.Optional;
@@ -98,7 +97,6 @@ public class EditCommand extends Command {
         }
 
         modelMeeting.setMeeting(meetingToEdit, editedMeeting);
-        modelMeeting.updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
         return new CommandResult(String.format(MESSAGE_EDIT_MEETING_SUCCESS, editedMeeting));
     }
 
