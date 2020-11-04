@@ -7,9 +7,9 @@ title: Clara Adora's Project Portfolio Page
 
 ### Overview
 Productiv is a one-stop desktop app for product managers like yourself to organise your contacts, deliverables and 
-meetings, so that you can track your product’s development easily. 
+meetings, so that you can track your product’s development easily.
 
-### Summary of Contributions 
+### Summary of Contributions
 
 #### Code
 
@@ -20,17 +20,17 @@ meetings, so that you can track your product’s development easily.
 
 #### User Guide
 
-* Wrote the Introduction section 
+* Wrote the Introduction section
 * Co-wrote the Meeting subsection in the Feature section
 * Wrote the Command Summary section
-* Added diagrams 
+* Added diagrams
 
 ### Developer Guide
 
 * Added UML diagrams for ...
 * Wrote the implementation for the auto-sort feature
 
-### Team-Based tasks 
+### Team-Based tasks
 
-* Restructured AB3 to accommodate modes 
-* 
+* Restructured AB3 to accommodate modes
+* Updated user and developer guides that are not specific to a feature
