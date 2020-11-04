@@ -141,6 +141,6 @@ public class UniqueDeliverableList implements Iterable<Deliverable> {
 
     /** Returns the internal list of deliverables */
     public ObservableList<Deliverable> getInternalDeliverableList() {
-        return FXCollections.observableArrayList(internalList);
+        return internalList;
     }
 }
