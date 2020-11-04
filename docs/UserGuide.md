@@ -50,14 +50,17 @@ Here are some example commands you can try:
 
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/Jason`.
+* Words in upper case are the parameters to be supplied by you for the respective field.<br>
+  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.
 
-* Items in square brackets are optional.<br>
+* Fields and parameters in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
+  
+* If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
+  e.g. if you input command `r/dev n/NAME r/stk e/EMAIL r/stk`, `n/NAME e/EMAIL r/stk` will be accepted.
 
 </div>
 
