@@ -3,6 +3,7 @@ package seedu.address.model.meeting.meeting;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 import seedu.address.model.event.TimeEvent;
@@ -49,8 +50,8 @@ public class Meeting implements TimeEvent {
      * Returns true if From is earlier than To chronologically.
      */
     public static boolean isValidFromAndTo (From from, To to) {
-        LocalDateTime dateFrom = from.getLocalDateTime();
-        LocalDateTime dateTo = to.getLocalDateTime();
+        LocalTime dateFrom = from.getLocalDateTime().toLocalTime();
+        LocalTime dateTo = to.getLocalTime();
 
         return dateFrom.compareTo(dateTo) <= 0;
     }

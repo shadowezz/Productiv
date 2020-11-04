@@ -16,7 +16,7 @@ public class MeetingBuilder {
     public static final String DEFAULT_DESCRIPTION = "Refine functional requirements"
             + "with business associates";
     public static final String DEFAULT_FROM = "12-12-2020 08:00";
-    public static final String DEFAULT_TO = "12-12-2020 09:00";
+    public static final String DEFAULT_TO = "09:00";
     public static final String DEFAULT_CONTACTS = "Alice Li, Bob Yu, Sarah Yeoh";
     public static final String DEFAULT_LOCATION = "Singapore";
 
