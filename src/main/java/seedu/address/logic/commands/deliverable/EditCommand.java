@@ -48,6 +48,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already"
             + " exists in the deliverable list.";
+    public static final String MESSAGE_UNCHANGED = "Deliverable unchanged. At least one field must differ "
+            + "from the deliverable that is being edited.";
 
 
     private final Index index;
@@ -76,6 +78,10 @@ public class EditCommand extends Command {
 
         Deliverable deliverableToEdit = lastShownList.get(index.getZeroBased());
         Deliverable editedDeliverable = createEditedDeliverable(deliverableToEdit, editDeliverableDescriptor);
+
+        if (deliverableToEdit.equals(editedDeliverable)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
 
         if (!deliverableToEdit.isSameDeliverable(editedDeliverable) && modelDeliverable.hasDeliverable(
                 editedDeliverable)) {

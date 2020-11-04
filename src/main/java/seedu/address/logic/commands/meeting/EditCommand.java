@@ -50,7 +50,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_MEETING_SUCCESS = "Edited meeting: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
-
+    public static final String MESSAGE_UNCHANGED = "Meeting unchanged. At least one field must differ "
+            + "from the meeting that is being edited.";
 
     private final Index targetIndex;
     private final EditMeetingDescriptor editMeetingDescriptor;
@@ -87,6 +88,10 @@ public class EditCommand extends Command {
 
         assert Meeting.isValidFromAndTo(editedMeeting.getFrom(), editedMeeting.getTo())
                 : "From should be earlier than To";
+
+        if (meetingToEdit.equals(editedMeeting)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
 
         if (!meetingToEdit.isSameMeeting(editedMeeting) && modelMeeting.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
