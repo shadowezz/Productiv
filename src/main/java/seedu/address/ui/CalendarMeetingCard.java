@@ -25,24 +25,21 @@ public class CalendarMeetingCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label id;
-    @FXML
     private Label title;
     @FXML
-    private Label to;
-    @FXML
-    private Label from;
+    private Label duration;
+
 
     /**
      * Creates a {@code MeetingCode} with the given {@code Meeting} and index to display.
      */
-    public CalendarMeetingCard(Meeting meeting, int displayedIndex) {
+    public CalendarMeetingCard(Meeting meeting) {
         super(FXML);
         this.meeting = meeting;
-        id.setText(displayedIndex + ". ");
         title.setText("Meeting: " + meeting.getTitle().value);
-        from.setText(meeting.getFrom().toString());
-        to.setText(meeting.getTo().toString());
+        String durationString = String.format("%s to %s",
+                meeting.getFrom().toString(), meeting.getTo().toString());
+        duration.setText(durationString);
     }
 
     @Override
@@ -59,7 +56,6 @@ public class CalendarMeetingCard extends UiPart<Region> {
 
         // state check
         CalendarMeetingCard card = (CalendarMeetingCard) other;
-        return id.getText().equals(card.id.getText())
-                && meeting.equals(card.meeting);
+        return meeting.equals(card.meeting);
     }
 }

@@ -28,8 +28,6 @@ public class CalendarDeliverableCard extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
-    private Label id;
-    @FXML
     private Label deadline;
     @FXML
     private Label milestone;
@@ -39,10 +37,9 @@ public class CalendarDeliverableCard extends UiPart<Region> {
     /**
      * Creates a {@code DeliverableCode} with the given {@code Deliverable} and index to display.
      */
-    public CalendarDeliverableCard(Deliverable deliverable, int displayedIndex) {
+    public CalendarDeliverableCard(Deliverable deliverable) {
         super(FXML);
         this.deliverable = deliverable;
-        id.setText(displayedIndex + ". ");
         title.setText("Deliverable: " + deliverable.getTitle().value);
         deadline.setText(deliverable.getDeadline().toString());
         if (deliverable.getIsComplete()) {
@@ -69,7 +66,6 @@ public class CalendarDeliverableCard extends UiPart<Region> {
 
         // state check
         CalendarDeliverableCard card = (CalendarDeliverableCard) other;
-        return id.getText().equals(card.id.getText())
-                && deliverable.equals(card.deliverable);
+        return deliverable.equals(card.deliverable);
     }
 }

@@ -5,6 +5,6 @@
 
 <?import javafx.scene.control.Label?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <Label fx:id="calendarHeading" styleClass="details_title" text="Calendar" />
+  <Label fx:id="calendarHeading" styleClass="details_title" text="Schedule" />
   <ListView fx:id="timeEventListView" VBox.vgrow="ALWAYS" />
 </VBox>
