@@ -132,7 +132,7 @@ Edits an existing contact in your contact list.
 Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]`
 * `INDEX` is the index number of the contact in your displayed contact list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
+* At least one of the fields of the contact must be changed.
 * The existing values of the specified contact will be updated to the input values.
 * You cannot edit contacts to have the same name and email as another existing contact,
 e.g. `edit 1 n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
@@ -240,7 +240,7 @@ Edits an existing deliverable in your deliverable list.
 Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
+* At least one of the fields of the deliverable must be changed.
 * The existing values of the specified deliverable will be updated to the input values.
 
 Examples:
@@ -364,7 +364,7 @@ Edits an existing meeting in your meeting list.
 Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided. 
+* At least one of the fields of the meeting must be changed.
 * The existing values of the specified meeting will be updated to the input values.
 
 Examples:
