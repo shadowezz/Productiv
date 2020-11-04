@@ -40,7 +40,7 @@ public interface LogicMeeting {
     ObservableList<Meeting> getFilteredMeetingList();
 
     /**
-     * Returns the user prefs' Meeting book file path.
+     * Returns the user prefs' meeting book file path.
      */
     Path getMeetingBookFilePath();
 

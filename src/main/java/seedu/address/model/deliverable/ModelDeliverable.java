@@ -78,6 +78,15 @@ public interface ModelDeliverable {
      */
     void setDeliverable(Deliverable target, Deliverable editedDeliverable);
 
+    /**
+     * Completes the given deliverable {@code target} by replacing it with {@code completedDeliverable}.
+     * {@code target} must exist in the deliverable book.
+     */
+    void completeDeliverable(Deliverable target, Deliverable completedDeliverable);
+
+    /**
+     * Obtains the deliverable currently being viewed.
+     */
     Deliverable getDeliverableInView();
 
     void setDeliverableInView(Deliverable deliverableInView);

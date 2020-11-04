@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 public enum ModeEnum {
 
-    DASHBOARD("Dashboard", "dashboard"),
-    DELIVERABLE("Deliverable", "deliverable"),
-    MEETING("Meeting", "meeting"),
-    PERSON("Contact", "contact");
+    DASHBOARD("Dashboard", "db"),
+    DELIVERABLE("Deliverable", "dv"),
+    MEETING("Meeting", "m"),
+    PERSON("Contact", "c");
 
     private final String name;
     private final String argument;
@@ -29,8 +29,8 @@ public enum ModeEnum {
     }
 
     public static String getModeOptions() {
-        return getStringJoinedBySeparator(Arrays.stream(ModeEnum.values()).map(role -> role.getArgument()),
-                " or ");
+        return getStringJoinedBySeparator(Arrays.stream(ModeEnum.values())
+                .map(mode -> mode.getArgument() + " (" + mode.toString() + ")"), " or ");
     }
 
     public String getArgument() {

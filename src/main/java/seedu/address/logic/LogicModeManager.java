@@ -2,6 +2,7 @@ package seedu.address.logic;
 
 import java.util.logging.Logger;
 
+import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.mode.Command;
@@ -20,11 +21,11 @@ public class LogicModeManager implements LogicMode {
     }
 
     @Override
-    public CommandResult execute(String commandText) throws ParseException {
+    public CommandResult execute(String commandText, ModeEnum mode) throws ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = modeParser.parseCommand(commandText);
+        Command command = modeParser.parseCommand(commandText, mode);
         commandResult = command.execute();
 
         return commandResult;
