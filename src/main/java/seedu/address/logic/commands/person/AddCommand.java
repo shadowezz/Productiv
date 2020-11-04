@@ -33,7 +33,7 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_DESCRIPTION + "End user";
 
-    public static final String MESSAGE_SUCCESS = "New contact added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Added contact: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This contact already exists in the contact list.";
 
     private final Person toAdd;

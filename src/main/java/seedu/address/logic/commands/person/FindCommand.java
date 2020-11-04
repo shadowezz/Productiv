@@ -32,7 +32,7 @@ public class FindCommand extends Command {
         requireNonNull(modelPerson);
         modelPerson.updateFilteredPersonList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, modelPerson.getFilteredPersonList().size()));
+                String.format(Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW, modelPerson.getFilteredPersonList().size()));
     }
 
     @Override

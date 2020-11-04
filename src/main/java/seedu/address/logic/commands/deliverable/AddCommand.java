@@ -31,9 +31,9 @@ public class AddCommand extends Command {
             + PREFIX_MILESTONE + "1.0 "
             + PREFIX_DEADLINE + "12-12-2020 23:59 "
             + PREFIX_DESCRIPTION + "Must include username and password fields "
-            + PREFIX_CONTACTS + "2,4";
+            + PREFIX_CONTACTS + "John Martin, Abby Li";
 
-    public static final String MESSAGE_SUCCESS = "New deliverable added: %1$s";
+    public static final String MESSAGE_SUCCESS = "Added new deliverable: %1$s";
     public static final String MESSAGE_DUPLICATE_DELIVERABLE =
             "This deliverable already exists in the deliverable list.";
 

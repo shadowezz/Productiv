@@ -27,7 +27,6 @@ import seedu.address.model.util.Title;
  * Edits the details of an existing deliverable.
  */
 public class EditCommand extends Command {
-
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the deliverable identified "
             + "by the index number used in the displayed deliverable list. "
@@ -40,7 +39,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Finalise beta release features "
-            + PREFIX_DEADLINE + "2021-01-10 12:00";
+            + PREFIX_DEADLINE + "01-01-2020 12:00";
 
 
     public static final String MESSAGE_EDIT_DELIVERABLE_SUCCESS = "Edited deliverable: %1$s";
