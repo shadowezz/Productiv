@@ -13,7 +13,7 @@
             <Label fx:id="deadline" text="\$deadline" styleClass="cell_small_label" wrapText="true"
                    GridPane.columnIndex="2"/>
             <Label fx:id="isCompleted" text="\$isCompleted" GridPane.halignment="CENTER" GridPane.columnIndex="3"/>
-            <Label fx:id="milestone" text="\$milestone" styleClass="cell_small_label" GridPane.halignment="CENTER" GridPane.columnIndex="4"/>
+            <Label fx:id="milestone" text="\$milestone" styleClass="cell_small_label" wrapText="true" GridPane.halignment="CENTER" GridPane.columnIndex="4"/>
         </children>
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" minWidth="5" prefWidth="5"/>

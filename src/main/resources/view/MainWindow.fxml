@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Region?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="Productiv" minWidth="850" minHeight="700" onCloseRequest="#handleExit">
+         title="Productiv" minWidth="900" minHeight="700" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/productiv_32.png" />
   </icons>
