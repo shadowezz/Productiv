@@ -26,20 +26,20 @@ public class TypicalMeetings {
     public static final String TITLE_C = "Final";
     public static final String DESCRIPTION_C = "Discussing final features";
     public static final String FROM_C = "12-12-2020 08:00";
-    public static final String TO_C = "12-12-2020 10:00";
+    public static final String TO_C = "10:00";
     public static final String CONTACTS_C = "Alice   Bob, Sarah  Goldman Jane, Jane Salmon";
     public static final String LOCATION_C = "Somewhere";
 
     public static final String TITLE_D = "Mid v1.2";
     public static final String DESCRIPTION_D = "Discuss features";
     public static final String FROM_D = "12-12-2020 08:00";
-    public static final String TO_D = "12-12-2020 08:00";
+    public static final String TO_D = "08:00";
     public static final String CONTACTS_D = "Alice, Sarah, Jane Salmon";
     public static final String LOCATION_D = "Somewhere";
 
     public static final String TITLE_E = "Mid v1.3";
     public static final String FROM_E = "12-12-2020 08:00";
-    public static final String TO_E = "12-12-2020 09:00";
+    public static final String TO_E = "09:00";
 
     public static final Meeting MEETING_A = new MeetingBuilder().withTitle(VALID_TITLE_A)
             .withDescription(VALID_DESCRIPTION_A)

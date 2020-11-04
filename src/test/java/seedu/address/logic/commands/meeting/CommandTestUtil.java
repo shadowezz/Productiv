@@ -31,8 +31,8 @@ public class CommandTestUtil {
     public static final String VALID_DESCRIPTION_B = "With product designers";
     public static final String VALID_FROM_A = "01-01-2020 14:00";
     public static final String VALID_FROM_B = "01-01-2020 12:00";
-    public static final String VALID_TO_A = "02-01-2020 14:00";
-    public static final String VALID_TO_B = "02-01-2020 12:00";
+    public static final String VALID_TO_A = "14:00";
+    public static final String VALID_TO_B = "12:00";
 
     public static final String VALID_CONTACTS_A = "Alice, Bob, Cameron";
     public static final String VALID_CONTACTS_B = "Jeannie, Justin, Lenny Sarah";

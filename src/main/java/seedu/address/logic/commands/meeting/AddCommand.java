@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Discuss user requirements with biz associates "
             + PREFIX_FROM + "30-12-2020 12:00 "
-            + PREFIX_TO + "30-12-2020 14:00 "
+            + PREFIX_TO + "14:00 "
             + PREFIX_DESCRIPTION + "Refer to the reviewed user stories during discussion "
             + PREFIX_CONTACTS + "Abby Li, John Martin "
             + PREFIX_LOCATION + "Room 1A";
