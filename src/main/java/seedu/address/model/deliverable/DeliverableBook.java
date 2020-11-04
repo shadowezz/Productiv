@@ -121,4 +121,9 @@ public class DeliverableBook implements ReadOnlyDeliverableBook {
     public int hashCode() {
         return deliverables.hashCode();
     }
+
+    public ObservableList<Deliverable> getInternalDeliverableList() {
+        return deliverables.getInternalDeliverableList();
+    }
 }
+

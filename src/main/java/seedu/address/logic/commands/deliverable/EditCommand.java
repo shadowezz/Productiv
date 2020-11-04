@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_MILESTONE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
-import static seedu.address.model.deliverable.ModelDeliverable.PREDICATE_SHOW_ALL_DELIVERABLES;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +27,6 @@ import seedu.address.model.util.Title;
  * Edits the details of an existing deliverable.
  */
 public class EditCommand extends Command {
-
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the deliverable identified "
             + "by the index number used in the displayed deliverable list. "
@@ -36,17 +34,20 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_MILESTONE + "MILESTONE] "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_DEADLINE + "DEADLINE] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Finalise beta release features "
-            + PREFIX_DEADLINE + "2021-01-10 12:00";
+            + PREFIX_DEADLINE + "01-01-2020 12:00";
 
 
-    public static final String MESSAGE_EDIT_DELIVERABLE_SUCCESS = "Edited Deliverable: %1$s";
+    public static final String MESSAGE_EDIT_DELIVERABLE_SUCCESS = "Edited deliverable: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already exists.";
+    public static final String MESSAGE_DUPLICATE_DELIVERABLE = "This deliverable already"
+            + " exists in the deliverable list.";
+    public static final String MESSAGE_UNCHANGED = "Deliverable unchanged. At least one field must differ "
+            + "from the deliverable that is being edited.";
 
 
     private final Index index;
@@ -76,13 +77,16 @@ public class EditCommand extends Command {
         Deliverable deliverableToEdit = lastShownList.get(index.getZeroBased());
         Deliverable editedDeliverable = createEditedDeliverable(deliverableToEdit, editDeliverableDescriptor);
 
+        if (deliverableToEdit.equals(editedDeliverable)) {
+            throw new CommandException(MESSAGE_UNCHANGED);
+        }
+
         if (!deliverableToEdit.isSameDeliverable(editedDeliverable) && modelDeliverable.hasDeliverable(
                 editedDeliverable)) {
             throw new CommandException(MESSAGE_DUPLICATE_DELIVERABLE);
         }
 
         modelDeliverable.setDeliverable(deliverableToEdit, editedDeliverable);
-        modelDeliverable.updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
         return new CommandResult(String.format(MESSAGE_EDIT_DELIVERABLE_SUCCESS, editedDeliverable));
     }
 

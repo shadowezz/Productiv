@@ -12,7 +12,7 @@ import seedu.address.model.person.ModelPerson;
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Address book has been cleared!";
+    public static final String MESSAGE_SUCCESS = "Cleared all contacts!";
 
 
     @Override

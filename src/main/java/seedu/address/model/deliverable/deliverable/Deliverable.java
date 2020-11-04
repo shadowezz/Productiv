@@ -93,7 +93,8 @@ public class Deliverable implements TimeEvent {
         }
 
         return otherDeliverable != null
-                && otherDeliverable.getTitle().equals(getTitle());
+                && otherDeliverable.getTitle().equals(getTitle())
+                && otherDeliverable.getDeadline().equals(getDeadline());
     }
 
     /**

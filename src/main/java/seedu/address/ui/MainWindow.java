@@ -96,8 +96,8 @@ public class MainWindow extends UiPart<Stage> {
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
-        this.calendar = new Calendar(logicDeliverable.getFilteredDeliverableList(),
-                logicMeeting.getFilteredMeetingList());;
+        this.calendar = new Calendar(logicDeliverable.getInternalDeliverableList(),
+                logicMeeting.getInternalMeetingList());;
 
         // Configure the UI
         // all managers' Gui points to same GuiSettings object so its fine
@@ -319,7 +319,7 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = null;
             if (logicMode.isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
-                commandResult = logicMode.execute(commandText);
+                commandResult = logicMode.execute(commandText, mode);
             } else {
                 switch (mode) {
                 case PERSON:

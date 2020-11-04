@@ -78,6 +78,11 @@ public class ModelMeetingManager implements ModelMeeting {
         userPrefs.setMeetingBookFilePath(meetingBookFilePath);
     }
 
+    @Override
+    public ObservableList<Meeting> getInternalMeetingList() {
+        return meetingBook.getInternalMeetingList();
+    }
+
     //=========== MeetingBook ================================================================================
 
     @Override
@@ -104,8 +109,8 @@ public class ModelMeetingManager implements ModelMeeting {
     @Override
     public void addMeeting(Meeting meeting) {
         meetingBook.addMeeting(meeting);
-        setMeetingInView(meeting);
         updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
+        setMeetingInView(meeting);
     }
 
     @Override
@@ -126,6 +131,7 @@ public class ModelMeetingManager implements ModelMeeting {
     public void setMeeting(Meeting target, Meeting editedMeeting) {
         requireAllNonNull(target, editedMeeting);
         meetingBook.setMeeting(target, editedMeeting);
+        updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
         setMeetingInView(editedMeeting);
     }
 

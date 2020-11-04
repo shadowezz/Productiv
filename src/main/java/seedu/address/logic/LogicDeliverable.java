@@ -34,6 +34,9 @@ public interface LogicDeliverable {
     /** Returns an unmodifiable view of the filtered list of deliverables */
     ObservableList<Deliverable> getFilteredDeliverableList();
 
+    /** Returns the internal list of deliverables */
+    ObservableList<Deliverable> getInternalDeliverableList();
+
     /** Returns the deliverable that is currently in view */
     Deliverable getDeliverableInView();
 

@@ -14,18 +14,18 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
     private final Email email;
 
     // Data fields
     private final Role role;
+    private final Phone phone;
     private final OptionalDescription description;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Role role, OptionalDescription description) {
-        requireAllNonNull(name, phone, email, role);
+        requireAllNonNull(name, phone, email, role, description);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -54,7 +54,7 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both persons of the same name and email.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Person otherPerson) {
@@ -64,7 +64,7 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+                && otherPerson.getEmail().equals(getEmail());
     }
 
     /**

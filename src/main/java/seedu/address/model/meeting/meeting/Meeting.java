@@ -94,11 +94,8 @@ public class Meeting implements TimeEvent {
 
         return otherMeeting != null
                 && otherMeeting.getTitle().equals(getTitle())
-                && otherMeeting.getDescription().equals(getDescription())
                 && otherMeeting.getFrom().equals(getFrom())
-                && otherMeeting.getTo().equals(getTo())
-                && otherMeeting.getContacts().equals(getContacts())
-                && otherMeeting.getLocation().equals(getLocation());
+                && otherMeeting.getTo().equals(getTo());
     }
 
     /**

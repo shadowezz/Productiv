@@ -32,11 +32,11 @@ Note that the app contains some sample data.<br>
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
 
-   * **`switch`**`deliverable` : Switches to `deliverable` mode.
+   * **`switch`**`dv` : Switches to deliverable mode.
 
-   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in `contact` mode, adds a contact named `Betty Clarke`.
+   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in contact mode, adds a contact named `Betty Clarke`.
 
-   * **`delete`**`1` : If in `meeting` mode, deletes the 1st meeting shown.
+   * **`delete`**`1` : If in meeting mode, deletes the 1st meeting shown.
 
    * **`exit`** : Exits the app.
 
@@ -63,6 +63,29 @@ Here are some example commands you can try:
 
 ### General
 
+#### Switching modes: `switch`
+
+Switches to dashboard, deliverable, meeting or contact mode.
+
+Format: `switch MODE`
+* `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
+* `switch` `dv`, `m` or `c` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
+e.g. `switch c` will display your list of contacts.
+A view panel will be displayed in the right panel (initially empty).
+* `switch db` will display your project's completion status in the left panel.
+A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
+* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in meeting mode deletes the 1st meeting shown.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** A warning message will be shown if you switch to the same mode that you are currently in.
+
+</div>
+
+Examples:
+* `switch db` switches to `dashboard` mode.
+* `switch m` switches to `meeting` mode.
+
 #### Viewing help: `help`
 
 Shows a message directing you to this User Guide.
@@ -71,122 +94,17 @@ Shows a message directing you to this User Guide.
 Format: `help`
 * Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
 
-#### Switching modes: `switch`
+#### Exiting *Productiv*: `exit`
 
-Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
+Exits the program.
 
-Format: `switch MODE`
-* `switch`  `deliverable`, `meeting` and `contact` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
-e.g. `switch contact` will display your list of contacts.
-A view panel will be displayed in the right panel (initially empty).
-* `switch dashboard` will display your project's completion status in the left panel.
-A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
-* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
+Format: `exit`
+* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
 
-Examples:
-* `switch dashboard` switches to `dashboard` mode.
-* `switch meeting` switches to `meeting` mode.
+#### Saving the data
 
-### Contact
-
-   ![contact](images/Contact.png)
-   <figcaption>Initial display of a contact list </figcaption>
-
-#### Adding a contact: `add`
-
-Adds a developer or stakeholder to your contact list.
-
-Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
-* `NAME` is the name of the contact.
-* `PHONE` is the phone number of the contact.
-* `EMAIL` is the email address of the contact.
-* `DESCRIPTION` contains additional information about the contact, such as their job position.
-* You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
-e.g. `add r/dev n/John p/123` will not work if a contact with the name `John` and phone `123` exists in the contact list.
-
-Examples:
-* `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
-adds a developer with the name `Jordan Woods`, phone number `81234567` and email `jordanwoods@glutter.com`.
-* `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
-adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
-
-#### Editing a contact: `edit`
-
-Edits an existing contact in your contact list.
-
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
-* The existing values of the specified contact will be updated to the input values.
-* You cannot edit contacts to have the same name and phone or email as another existing contact,
-e.g. `edit 1 r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
-
-Examples:
-*  `edit 1 p/81234567 e/jeremysand@glutter.com`
-edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
-*  `edit 2 n/Jayden Smith` 
-edits the name of the 2nd contact to be `Jayden Smith`.
-
-#### Finding contacts: `find`
-
-Finds the contacts whose names or descriptions contain any of the given keywords.
-
-Format: `find KEYWORDS`
-* `KEYWORDS` contains one or more keywords used to match contacts.
-* Searches only consider name and description.
-* Searches are case-insensitive, e.g. `hans` will match `Hans`.
-* Order of keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
-* Searches only account for full words, e.g. `Han` will not match `Hans`.
-* Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
-
-Examples:
-* `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
-* `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
-
-#### Listing all contacts: `list`
-
-Shows a list of all contacts in your contact list.
-
-Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
-</div>
-
-#### Deleting a contact: `delete`
-
-Deletes the specified contact from your contact list.
-
-Format: `delete INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `delete 3` deletes the 3rd contact in the contact list.
-
-#### Viewing a contact: `view`
-
-Displays more details of the specified contact from your contact list.
-
-Format: `view INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `view 2` views the 2nd contact in your contact list.
-
-   ![Ui](images/ContactView.png)
-   <figcaption>Viewing a contact</figcaption><br>
-
-#### Clearing all contacts: `clear`
-
-Clears all contacts from your contact list.
-
-Format: `clear`
+*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Hence, you can focus on managing your product without fearing any unsaved changes.
 
 ### Deliverable
 
@@ -202,19 +120,31 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `MILESTONE` is the milestone tagged to the deliverable.
 * `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
+* `DEADLINE` can be in the past but must not be earlier than the year 2019.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 * `CONTACTS` represents the contacts involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of names.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
+
+* You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
+
+* All newly-added deliverables will be assigned the `on-going` tag regardless of their deadline. You will
+need to manually mark past deliverables as `completed`. Refer to 
+[Marking a deliverable as completed](#marking-a-deliverable-as-completed-done) below for more details on 
+the `done` command.
+  
 </div>
 
 Examples:
 * `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/2,4` 
 adds a deliverable with the title `Login screen`, milestone `1.1`,
-deadline `10-10-2020 18:00` description `Include email and password fields` and contacts `2,4`.
+deadline `10-10-2020 18:00`, description `Include email and password fields` and contacts `2,4`.
 * `add t/Find profile page template m/2.1.1 by/12-12-2020 12:00` 
 adds a deliverable with the title `Find profile page template`, milestone `2.1.1` 
 and deadline `12-12-2020 12:00`.
@@ -223,12 +153,17 @@ and deadline `12-12-2020 12:00`.
 
 Edits an existing deliverable in your deliverable list.
 
-
 Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
+* At least one of the fields of the deliverable must be changed.
 * The existing values of the specified deliverable will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
+  
+</div>
 
 Examples:
 *  `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
@@ -315,18 +250,27 @@ Format: `clear`
 
 Adds a meeting to your meeting list.
 
-Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
+Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
-* `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
+* `FROM` and `TO` can be in the past but must not be earlier than the year 2019.
+* `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
 * `CONTACTS` represents the contacts involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
 
-<div markdown="span" class="alert alert-info">:information_source:**Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
+
+* You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
+  
 </div>
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
@@ -334,9 +278,9 @@ Input an estimate end date time for the meeting if there is none specified.
 </div>
 
 Example:
-* `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
-adds a meeting with the title `Discuss app requirements`, description `Refine with business associates`, 
-start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, and contacts `3,6,9`.
+* `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/3,6,9`
+adds a meeting with the title `Discuss app requirements`,
+start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, description `Refine with business associates` and contacts `3,6,9`.
 * `add t/User research review from/15-12-2020 13:00 to/15-12-2020 15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
 end date time `15-12-2020 15:00`, and location `Meeting room A`.
@@ -345,11 +289,17 @@ end date time `15-12-2020 15:00`, and location `Meeting room A`.
 
 Edits an existing meeting in your meeting list.
 
-Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
+Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided. 
+* At least one of the fields of the meeting must be changed.
 * The existing values of the specified meeting will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+  
+</div>
 
 Examples:
 * `edit 2 t/Discuss final release features d/Finalize dashboard functions`
@@ -414,19 +364,124 @@ Example:
 
 Clears all meetings from your meeting list.
 
+Format: `clear` 
+
+### Contact
+
+   ![contact](images/Contact.png)
+   <figcaption>Initial display of a contact list </figcaption>
+
+#### Adding a contact: `add`
+
+Adds a developer or stakeholder to your contact list.
+
+Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
+* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
+* `NAME` is the name of the contact.
+* `EMAIL` is the email address of the contact.
+* `PHONE` is the phone number of the contact.
+* `PHONE` should only contain numbers, and must be at least 3-digits long.
+* `DESCRIPTION` contains additional information about the contact, such as their job position.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Leave out the + sign for `PHONE`s with country codes.
+
+</div>
+
+Examples:
+* `add r/dev n/Jordan Woods e/jordanwoods@glutter.com p/81234567`
+adds a developer with the name `Jordan Woods`, email `jordanwoods@glutter.com` and phone number `81234567`.
+* `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
+adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
+
+#### Editing a contact: `edit`
+
+Edits an existing contact in your contact list.
+
+Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+* At least one of the fields of the contact must be changed.
+* The existing values of the specified contact will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
+Examples:
+*  `edit 1 e/jeremysand@glutter.com p/81234567`
+edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
+*  `edit 2 n/Jayden Smith` 
+edits the name of the 2nd contact to be `Jayden Smith`.
+
+#### Finding contacts: `find`
+
+Finds the contacts whose names or descriptions contain any of the given keywords.
+
+Format: `find KEYWORDS`
+* `KEYWORDS` contains one or more keywords used to match contacts.
+* Searches only consider name and description.
+* Searches are case-insensitive, e.g. `hans` will match `Hans`.
+* Order of keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
+* Searches only account for full words, e.g. `Han` will not match `Hans`.
+* Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
+
+Examples:
+* `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
+* `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
+
+#### Listing all contacts: `list`
+
+Shows a list of all contacts in your contact list.
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
+Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
+</div>
+
+#### Deleting a contact: `delete`
+
+Deletes the specified contact from your contact list.
+
+Format: `delete INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `delete 3` deletes the 3rd contact in the contact list.
+
+#### Viewing a contact: `view`
+
+Displays more details of the specified contact from your contact list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd contact in your contact list.
+
+   ![Ui](images/ContactView.png)
+   <figcaption>Viewing a contact</figcaption><br>
+
+#### Clearing all contacts: `clear`
+
+Clears all contacts from your contact list.
+
 Format: `clear`
 
-### Exiting *Productiv*: `exit`
-
-Exits the program.
-
-Format: `exit`
-* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
-
-### Saving the data
-
-*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
-Hence, you can focus on managing your product without fearing any unsaved changes. 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -443,23 +498,50 @@ that you have Java `11` or above installed on your computer.
 creates with the file that contains the data of your previous *Productiv* app.
 
 
---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Switch** | `switch MODE` <br> e.g. `switch deliverable`
-**Add (Contact)** | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
-**Edit (Meeting)** | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
-**Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`
-**List** | `list`
-**Find** | `find KEYWORDS` <br> e.g. `find Bond James`
-**Delete** | `delete INDEX` <br> e.g. `delete 3`
-**View** | `view INDEX` <br> e.g. `view 2`
-**Clear** | `clear`
-**Help** | `help`
-**Exit** | `exit`
+### General 
+Action         | Format, Examples
+-------------- |--------------------------------------------------------------------------------------------------
+**Switch**     | `switch MODE` <br> e.g. `switch dv`
+**Help**       | `help`
+**Exit**       | `exit`
+
+### Deliverable
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Andy, Billy` 
+Edit           | `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
+Mark as Done   | `done INDEX` <br> e.g. `done 3`
+Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
+
+### Meeting
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/John, Mary, Matthew`
+Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
+Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
+
+### Contact
+Action         | Format, Examples
+---------------|------------------------
+Add            | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Johnny e/johnny@example.com p/12345678`
+Edit           | `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]` `edit 1 r/dev n/John e/john@email.com`
+Find           | `find KEYWORDS` <br> e.g. `find John Kite`
+List           | `list` 
+Delete         | `delete INDEX` <br> e.g. `delete 3`
+View           | `view INDEX` <br> e.g. `view 2`
+Clear          | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 

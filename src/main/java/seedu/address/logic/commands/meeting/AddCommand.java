@@ -16,7 +16,7 @@ import seedu.address.model.meeting.meeting.Meeting;
 public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a meeting to the meeting book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a meeting to the meeting list.\n"
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_FROM + "FROM "
@@ -26,14 +26,14 @@ public class AddCommand extends Command {
             + "[" + PREFIX_LOCATION + "LOCATION]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Discuss user requirements with biz associates "
-            + PREFIX_DESCRIPTION + "Refer to the reviewed user stories during discussion "
             + PREFIX_FROM + "30-12-2020 12:00 "
             + PREFIX_TO + "30-12-2020 14:00 "
-            + PREFIX_CONTACTS + "1,3,5 "
+            + PREFIX_DESCRIPTION + "Refer to the reviewed user stories during discussion "
+            + PREFIX_CONTACTS + "Abby Li, John Martin "
             + PREFIX_LOCATION + "Room 1A";
 
-    public static final String MESSAGE_SUCCESS = "New meeting added: %1$s";
-    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting book";
+    public static final String MESSAGE_SUCCESS = "Added new meeting: %1$s";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the meeting list.";
 
     private final Meeting toAdd;
 
