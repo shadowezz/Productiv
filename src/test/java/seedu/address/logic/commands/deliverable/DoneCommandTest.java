@@ -2,8 +2,8 @@ package seedu.address.logic.commands.deliverable;
 
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.*;
-import static seedu.address.logic.commands.deliverable.CommandTestUtil.VALID_TITLE_B;
+import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.deliverable.DoneCommand.MESSAGE_DONE_DELIVERABLE_SUCCESS;
 import static seedu.address.testutil.TypicalDeliverables.getTypicalDeliverableBook;
 import static seedu.address.testutil.TypicalDeliverables.getTypicalDeliverables;
@@ -13,12 +13,10 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.ModelDeliverableManager;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.testutil.DeliverableBuilder;
-import seedu.address.testutil.EditDeliverableDescriptorBuilder;
 
 public class DoneCommandTest {
     private ModelDeliverable modelDeliverable = new ModelDeliverableManager(

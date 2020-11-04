@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.person.CommandTestUtil.VALID_DESCRIPT
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_ROLE_BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -44,6 +45,10 @@ public class EditPersonDescriptorTest {
 
         // different email -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different role -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withRole(VALID_ROLE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different description -> returns false

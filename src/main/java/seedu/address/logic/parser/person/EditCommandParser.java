@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.person.CliSyntax.PREFIX_ROLE;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.person.EditCommand;
@@ -29,7 +30,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_DESCRIPTION);
+                ArgumentTokenizer.tokenize(args, PREFIX_ROLE, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_DESCRIPTION);
 
         Index index;
 
@@ -40,6 +42,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+        if (argMultimap.getValue(PREFIX_ROLE).isPresent()) {
+            editPersonDescriptor.setRole(ParserUtil.parseRole(argMultimap.getValue(PREFIX_ROLE).get()));
+        }
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }

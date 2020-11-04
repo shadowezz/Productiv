@@ -1,5 +1,5 @@
 {
-  "persons": [ {
+  "contacts": [ {
     "name": "Valid Contact",
     "phone": {
       "value": "9482424"

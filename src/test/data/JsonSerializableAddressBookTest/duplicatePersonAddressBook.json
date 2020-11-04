@@ -1,11 +1,11 @@
 {
-  "persons": [ {
+  "contacts": [ {
     "name": "Alice Pauline",
     "phone": {
-      "value": "94351253"
+      "value": "81234567"
     },
-    "email": "alice@example.com",
-    "role": "stk",
+    "email": "pauline@example.com",
+    "role": "dev",
     "description": {
       "value" : "End user"
     }

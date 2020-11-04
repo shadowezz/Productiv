@@ -5,6 +5,7 @@ import seedu.address.model.person.person.Email;
 import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
+import seedu.address.model.person.person.Role;
 import seedu.address.model.util.OptionalDescription;
 
 /**
@@ -54,6 +55,14 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Role} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withRole(String role) {
+        descriptor.setRole(Role.getEnumByArgument(role));
         return this;
     }
 
