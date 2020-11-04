@@ -30,8 +30,9 @@ public class DeliverableTest {
         Deliverable editedHomepage = new DeliverableBuilder(HOME_PAGE).withTitle("Implement home page").build();
         assertFalse(HOME_PAGE.isSameDeliverable(editedHomepage));
 
-        // same title, different other attributes -> returns true
-        Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withTitle("Build home page").build();
+        // same title and deadline, different other attributes -> returns true
+        Deliverable editedNavigation = new DeliverableBuilder(NAVIGATION).withTitle("Build home page")
+                .withDeadline("12-05-2020 12:00").build();
         assertTrue(HOME_PAGE.isSameDeliverable(editedNavigation));
     }
 

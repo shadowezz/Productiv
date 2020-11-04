@@ -14,11 +14,11 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
     private final Email email;
 
     // Data fields
     private final Role role;
+    private final Phone phone;
     private final OptionalDescription description;
 
     /**
