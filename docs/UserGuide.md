@@ -32,11 +32,11 @@ Note that the app contains some sample data.<br>
 1. Type a command in the command box and press Enter to execute it. 
 Here are some example commands you can try:
 
-   * **`switch`**`deliverable` : Switches to `deliverable` mode.
+   * **`switch`**`dv` : Switches to deliverable mode.
 
-   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in `contact` mode, adds a contact named `Betty Clarke`.
+   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in contact mode, adds a contact named `Betty Clarke`.
 
-   * **`delete`**`1` : If in `meeting` mode, deletes the 1st meeting shown.
+   * **`delete`**`1` : If in meeting mode, deletes the 1st meeting shown.
 
    * **`exit`** : Exits the app.
 
@@ -73,19 +73,26 @@ Format: `help`
 
 #### Switching modes: `switch`
 
-Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
+Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
-* `switch`  `deliverable`, `meeting` and `contact` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
-e.g. `switch contact` will display your list of contacts.
+* `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
+* `switch` `dv`, `m` or `c` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
+e.g. `switch c` will display your list of contacts.
 A view panel will be displayed in the right panel (initially empty).
-* `switch dashboard` will display your project's completion status in the left panel.
+* `switch db` will display your project's completion status in the left panel.
 A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
-* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in `meeting` mode deletes the 1st meeting shown.
+* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in meeting mode deletes the 1st meeting shown.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** A warning message will be shown if you switch to the same mode that you are currently in.
+
+</div>
 
 Examples:
-* `switch dashboard` switches to `dashboard` mode.
-* `switch meeting` switches to `meeting` mode.
+* `switch db` switches to `dashboard` mode.
+* `switch m` switches to `meeting` mode.
 
 ### Contact
 
@@ -96,36 +103,43 @@ Examples:
 
 Adds a developer or stakeholder to your contact list.
 
-Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
+
+Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
+* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `NAME` is the name of the contact.
-* `PHONE` is the phone number of the contact.
 * `EMAIL` is the email address of the contact.
+* `PHONE` is the phone number of the contact.
+* `PHONE` should only contain numbers, and must be at least 3-digits long.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
-* You cannot add contacts with the same name and at least one other identity field (phone or email) that is the same,
-e.g. `add r/dev n/John p/123` will not work if a contact with the name `John` and phone `123` exists in the contact list.
+* You cannot add contacts with the same name and email as another existing contact,
+e.g. `add r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
-* `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
-adds a developer with the name `Jordan Woods`, phone number `81234567` and email `jordanwoods@glutter.com`.
+* `add r/dev n/Jordan Woods e/jordanwoods@glutter.com p/81234567`
+adds a developer with the name `Jordan Woods`, email `jordanwoods@glutter.com` and phone number `81234567`.
 * `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
 adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Leave out the + sign for `PHONE`s with country codes.
+</div>
 
 #### Editing a contact: `edit`
 
 Edits an existing contact in your contact list.
 
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
+Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]`
 * `INDEX` is the index number of the contact in your displayed contact list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided.
 * The existing values of the specified contact will be updated to the input values.
-* You cannot edit contacts to have the same name and phone or email as another existing contact,
-e.g. `edit 1 r/dev n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
+* You cannot edit contacts to have the same name and email as another existing contact,
+e.g. `edit 1 n/John e/john@email.com` will not work if another contact with the name `John` and email `john@email.com` exists in the contact list.
 
 Examples:
-*  `edit 1 p/81234567 e/jeremysand@glutter.com`
-edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
+*  `edit 1 e/jeremysand@glutter.com p/81234567`
+edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
 *  `edit 2 n/Jayden Smith` 
 edits the name of the 2nd contact to be `Jayden Smith`.
 
@@ -214,7 +228,7 @@ who are not in your contact list.
 Examples:
 * `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/2,4` 
 adds a deliverable with the title `Login screen`, milestone `1.1`,
-deadline `10-10-2020 18:00` description `Include email and password fields` and contacts `2,4`.
+deadline `10-10-2020 18:00`, description `Include email and password fields` and contacts `2,4`.
 * `add t/Find profile page template m/2.1.1 by/12-12-2020 12:00` 
 adds a deliverable with the title `Find profile page template`, milestone `2.1.1` 
 and deadline `12-12-2020 12:00`.
@@ -222,7 +236,6 @@ and deadline `12-12-2020 12:00`.
 #### Editing a deliverable: `edit`
 
 Edits an existing deliverable in your deliverable list.
-
 
 Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
@@ -315,17 +328,20 @@ Format: `clear`
 
 Adds a meeting to your meeting list.
 
-Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
+Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
-* `DESCRIPTION` contains additional details about the meeting, e.g. agenda. 
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
 * `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
+* `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
 * `CONTACTS` represents the contacts involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
 
-<div markdown="span" class="alert alert-info">:information_source:**Note:** 
-`CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+<div markdown="span" class="alert alert-info">:information_source:**Note:**<br>
+
+* Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
+
+* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
 </div>
 
@@ -334,9 +350,9 @@ Input an estimate end date time for the meeting if there is none specified.
 </div>
 
 Example:
-* `add t/Discuss app requirements d/Refine with business associates from/12-12-2020 09:00 to/12-12-2020 10:00 c/3,6,9`
-adds a meeting with the title `Discuss app requirements`, description `Refine with business associates`, 
-start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, and contacts `3,6,9`.
+* `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/3,6,9`
+adds a meeting with the title `Discuss app requirements`,
+start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, description `Refine with business associates` and contacts `3,6,9`.
 * `add t/User research review from/15-12-2020 13:00 to/15-12-2020 15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
 end date time `15-12-2020 15:00`, and location `Meeting room A`.
@@ -345,7 +361,7 @@ end date time `15-12-2020 15:00`, and location `Meeting room A`.
 
 Edits an existing meeting in your meeting list.
 
-Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]`
+Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
 * At least one of the optional fields must be provided. 
@@ -449,9 +465,9 @@ creates with the file that contains the data of your previous *Productiv* app.
 
 Action | Format, Examples
 --------|------------------
-**Switch** | `switch MODE` <br> e.g. `switch deliverable`
-**Add (Contact)** | `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
-**Edit (Meeting)** | `edit INDEX [t/TITLE] [desc/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
+**Switch** | `switch MODE` <br> e.g. `switch dv`
+**Add (Contact)** | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Jenny Ho e/jennyho@pmail.com`
+**Edit (Meeting)** | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 l/Level 8 Meeting Room 1`
 **Mark Done (Deliverable)** | `done INDEX` <br> e.g. `done 2`
 **List** | `list`
 **Find** | `find KEYWORDS` <br> e.g. `find Bond James`
