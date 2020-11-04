@@ -39,6 +39,9 @@ public interface LogicMeeting {
     /** Returns an unmodifiable view of the filtered list of Meetings */
     ObservableList<Meeting> getFilteredMeetingList();
 
+    /** Returns an internal list of Meetings */
+    ObservableList<Meeting> getInternalMeetingList();
+
     /**
      * Returns the user prefs' meeting book file path.
      */

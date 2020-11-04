@@ -93,6 +93,11 @@ public class ModelDeliverableManager implements ModelDeliverable {
     }
 
     @Override
+    public ObservableList<Deliverable> getInternalDeliverableList() {
+        return deliverableBook.getInternalDeliverableList();
+    }
+
+    @Override
     public boolean hasDeliverable(Deliverable deliverable) {
         requireNonNull(deliverable);
         return deliverableBook.hasDeliverable(deliverable);

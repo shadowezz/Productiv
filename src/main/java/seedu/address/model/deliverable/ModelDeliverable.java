@@ -99,4 +99,7 @@ public interface ModelDeliverable {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDeliverableList(Predicate<Deliverable> predicate);
+
+    /** Returns the internal list of deliverables */
+    ObservableList<Deliverable> getInternalDeliverableList();
 }

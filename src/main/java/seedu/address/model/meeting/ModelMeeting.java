@@ -86,6 +86,9 @@ public interface ModelMeeting {
     /** Returns an unmodifiable view of the filtered deliverable list */
     ObservableList<Meeting> getFilteredMeetingList();
 
+    /** Returns the internal meeting list */
+    ObservableList<Meeting> getInternalMeetingList();
+
     /**
      * Updates the filter of the filtered deliverable list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
