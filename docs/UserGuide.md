@@ -503,6 +503,7 @@ creates with the file that contains the data of your previous *Productiv* app.
 ## Command summary
 
 ### General 
+
 Action         | Format, Examples
 -------------- |--------------------------------------------------------------------------------------------------
 **Switch**     | `switch MODE` <br> e.g. `switch dv`
@@ -510,6 +511,7 @@ Action         | Format, Examples
 **Exit**       | `exit`
 
 ### Deliverable
+
 Action         | Format, Examples
 ---------------|------------------------
 Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Andy, Billy` 
@@ -522,6 +524,7 @@ View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
 ### Meeting
+
 Action         | Format, Examples
 ---------------|------------------------
 Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/John, Mary, Matthew`
@@ -533,6 +536,7 @@ View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
 ### Contact
+
 Action         | Format, Examples
 ---------------|------------------------
 Add            | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Johnny e/johnny@example.com p/12345678`
