@@ -11,7 +11,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -93,13 +93,13 @@ class JsonAdaptedPerson {
 
         if (description == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    OptionalDescription.class.getSimpleName()));
+                    Description.class.getSimpleName()));
         }
-        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
-            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
+        if (description.isPresent() && !Description.isValidDescription(description.get())) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
 
-        final OptionalDescription modelDescription = new OptionalDescription(description);
+        final Description modelDescription = new Description(description);
 
         return new Person(modelName, modelPhone, modelEmail, modelRole, modelDescription);
     }

@@ -7,7 +7,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 
 /**
  * A utility class to help with building Person objects.
@@ -24,7 +24,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Role role;
-    private OptionalDescription description;
+    private Description description;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -34,7 +34,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         role = Role.getRole(DEFAULT_ROLE);
-        description = new OptionalDescription(DEFAULT_DESCRIPTION);
+        description = new Description(DEFAULT_DESCRIPTION);
     }
 
     /**
@@ -84,7 +84,7 @@ public class PersonBuilder {
      * Sets the {@code Description} of the {@code Person} that we are building.
      */
     public PersonBuilder withDescription(String description) {
-        this.description = new OptionalDescription(description);
+        this.description = new Description(description);
         return this;
     }
 
@@ -92,7 +92,7 @@ public class PersonBuilder {
      * Sets the {@code Description} of the {@code Person} that we are building.
      */
     public PersonBuilder withDescription() {
-        this.description = new OptionalDescription(Optional.empty());
+        this.description = new Description(Optional.empty());
         return this;
     }
 

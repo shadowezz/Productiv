@@ -7,7 +7,7 @@ import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 public class MeetingBuilder {
@@ -21,7 +21,7 @@ public class MeetingBuilder {
     public static final String DEFAULT_LOCATION = "Singapore";
 
     private Title title;
-    private OptionalDescription description;
+    private Description description;
     private From from;
     private To to;
     private Contacts contacts;
@@ -32,7 +32,7 @@ public class MeetingBuilder {
      */
     public MeetingBuilder() {
         this.title = new Title(DEFAULT_TITLE);
-        this.description = new OptionalDescription(DEFAULT_DESCRIPTION);
+        this.description = new Description(DEFAULT_DESCRIPTION);
         this.from = new From(DEFAULT_FROM);
         this.to = new To(DEFAULT_TO);
         this.contacts = new Contacts(DEFAULT_CONTACTS);
@@ -65,7 +65,7 @@ public class MeetingBuilder {
      * Sets the {@code Description} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withDescription(String description) {
-        this.description = new OptionalDescription(description);
+        this.description = new Description(description);
         return this;
     }
 
@@ -73,7 +73,7 @@ public class MeetingBuilder {
      * Sets the {@code Description} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withDescription() {
-        this.description = new OptionalDescription(Optional.empty());
+        this.description = new Description(Optional.empty());
         return this;
     }
 

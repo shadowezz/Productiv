@@ -5,7 +5,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 public class EditDeliverableDescriptorBuilder {
@@ -52,7 +52,7 @@ public class EditDeliverableDescriptorBuilder {
      * Sets the {@code OptionalDescription} of the {@code EditDeliverableDescriptor} that we are building.
      */
     public EditDeliverableDescriptorBuilder withDescription(String description) {
-        descriptor.setDescription(new OptionalDescription(description));
+        descriptor.setDescription(new Description(description));
         return this;
     }
 

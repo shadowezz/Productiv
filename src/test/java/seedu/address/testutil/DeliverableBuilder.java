@@ -4,7 +4,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -21,7 +21,7 @@ public class DeliverableBuilder {
 
     private Title title;
     private Milestone milestone;
-    private OptionalDescription description;
+    private Description description;
     private Deadline deadline;
     private Contacts contacts;
     private boolean isComplete;
@@ -32,7 +32,7 @@ public class DeliverableBuilder {
     public DeliverableBuilder() {
         title = new Title(DEFAULT_TITLE);
         milestone = new Milestone(DEFAULT_MILESTONE);
-        description = new OptionalDescription(DEFAULT_DESCRIPTION);
+        description = new Description(DEFAULT_DESCRIPTION);
         deadline = new Deadline(DEFAULT_DEADLINE);
         contacts = new Contacts(DEFAULT_CONTACTS);
         isComplete = DEFAULT_IS_COMPLETE;
@@ -70,7 +70,7 @@ public class DeliverableBuilder {
      * Sets the {@code Description} of the {@code Deliverable} that we are building.
      */
     public DeliverableBuilder withDescription(String description) {
-        this.description = new OptionalDescription(description);
+        this.description = new Description(description);
         return this;
     }
 

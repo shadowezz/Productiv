@@ -6,7 +6,7 @@ import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 public class EditMeetingDescriptorBuilder {
@@ -45,7 +45,7 @@ public class EditMeetingDescriptorBuilder {
      * Sets the {@code OptionalDescription} of the {@code EditMeetingDescriptor} that we are building.
      */
     public EditMeetingDescriptorBuilder withDescription(String description) {
-        descriptor.setDescription(new OptionalDescription(description));
+        descriptor.setDescription(new Description(description));
         return this;
     }
 

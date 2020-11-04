@@ -11,7 +11,7 @@ import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -72,10 +72,10 @@ public class JsonAdaptedMeeting {
         final Title modelTitle = new Title(title);
 
         // Description
-        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
-            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
+        if (description.isPresent() && !Description.isValidDescription(description.get())) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
-        final OptionalDescription modelDescription = new OptionalDescription(description);
+        final Description modelDescription = new Description(description);
 
         // From
         if (from == null) {

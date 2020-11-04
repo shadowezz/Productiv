@@ -6,7 +6,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -70,7 +70,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Description} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withDescription(String description) {
-        descriptor.setDescription(new OptionalDescription(description));
+        descriptor.setDescription(new Description(description));
         return this;
     }
 

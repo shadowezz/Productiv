@@ -20,7 +20,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -44,7 +44,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Milestone milestone = ParserUtil.parseMilestone(argMultimap.getValue(PREFIX_MILESTONE).get());
-        OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
+        Description description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
         Deadline deadline = ParserUtil.parseDeadline(argMultimap.getValue(PREFIX_DEADLINE).get());
         Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));
 

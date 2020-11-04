@@ -10,7 +10,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -79,10 +79,10 @@ public class JsonAdaptedDeliverable {
         }
         final Milestone modelMilestone = new Milestone(milestone);
 
-        if (description.isPresent() && !OptionalDescription.isValidDescription(description.get())) {
-            throw new IllegalValueException(OptionalDescription.MESSAGE_CONSTRAINTS);
+        if (description.isPresent() && !Description.isValidDescription(description.get())) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
-        final OptionalDescription modelDescription = new OptionalDescription(description);
+        final Description modelDescription = new Description(description);
 
         if (!Deadline.isValidDeadline(deadline) && !deadline.equals("NIL")) {
             throw new IllegalValueException(Deadline.MESSAGE_CONSTRAINTS);

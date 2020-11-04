@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import seedu.address.model.event.TimeEvent;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -21,7 +21,7 @@ public class Deliverable implements TimeEvent {
 
     // Data fields
     private final Milestone milestone;
-    private final OptionalDescription description;
+    private final Description description;
     private final Deadline deadline;
     private final boolean isComplete;
     private final Contacts contacts;
@@ -29,7 +29,7 @@ public class Deliverable implements TimeEvent {
     /**
      * Only title and milestone field must be present. Used when adding new deliverable.
      */
-    public Deliverable(Title title, Milestone milestone, OptionalDescription description,
+    public Deliverable(Title title, Milestone milestone, Description description,
                        Deadline deadline, Contacts contacts) {
         requireAllNonNull(title, milestone);
         this.title = title;
@@ -43,7 +43,7 @@ public class Deliverable implements TimeEvent {
     /**
      * Used when editing or completing existing deliverable.
      */
-    public Deliverable(Title title, Milestone milestone, OptionalDescription description, Deadline deadline,
+    public Deliverable(Title title, Milestone milestone, Description description, Deadline deadline,
                        boolean isComplete, Contacts contacts) {
         requireAllNonNull(title);
         this.title = title;
@@ -62,7 +62,7 @@ public class Deliverable implements TimeEvent {
         return milestone;
     }
 
-    public OptionalDescription getDescription() {
+    public Description getDescription() {
         return description;
     }
 
