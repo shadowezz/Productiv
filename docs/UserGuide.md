@@ -63,14 +63,6 @@ Here are some example commands you can try:
 
 ### General
 
-#### Viewing help: `help`
-
-Shows a message directing you to this User Guide.
-![help](images/helpMessage.JPG)
-
-Format: `help`
-* Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
-
 #### Switching modes: `switch`
 
 Switches to `dashboard`, `deliverable`, `meeting` or `contact` mode.
@@ -87,114 +79,25 @@ Examples:
 * `switch dashboard` switches to `dashboard` mode.
 * `switch meeting` switches to `meeting` mode.
 
-### Contact
+#### Viewing help: `help`
 
-   ![contact](images/Contact.png)
-   <figcaption>Initial display of a contact list </figcaption>
+Shows a message directing you to this User Guide.
+![help](images/helpMessage.JPG)
 
-#### Adding a contact: `add`
+Format: `help`
+* Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
 
-Adds a developer or stakeholder to your contact list.
+#### Exiting *Productiv*: `exit`
 
-Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
-* `NAME` is the name of the contact.
-* `PHONE` is the phone number of the contact.
-* `EMAIL` is the email address of the contact.
-* `DESCRIPTION` contains additional information about the contact, such as their job position.
+Exits the program.
 
-<div markdown="block" class="alert alert-info">
+Format: `exit`
+* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
 
-**:information_source: Note:** You cannot add a contact with the same name and email as an existing contact.
-  
-</div>
+#### Saving the data
 
-Examples:
-* `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
-adds a developer with the name `Jordan Woods`, phone number `81234567` and email `jordanwoods@glutter.com`.
-* `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
-adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
-
-#### Editing a contact: `edit`
-
-Edits an existing contact in your contact list.
-
-Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-* At least one of the optional fields must be provided.
-* The existing values of the specified contact will be updated to the input values.
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:** You cannot edit a contact to have the same name and email as an existing contact.
-  
-</div>
-
-Examples:
-*  `edit 1 p/81234567 e/jeremysand@glutter.com`
-edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
-*  `edit 2 n/Jayden Smith` 
-edits the name of the 2nd contact to be `Jayden Smith`.
-
-#### Finding contacts: `find`
-
-Finds the contacts whose names or descriptions contain any of the given keywords.
-
-Format: `find KEYWORDS`
-* `KEYWORDS` contains one or more keywords used to match contacts.
-* Searches only consider name and description.
-* Searches are case-insensitive, e.g. `hans` will match `Hans`.
-* Order of keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
-* Searches only account for full words, e.g. `Han` will not match `Hans`.
-* Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
-
-Examples:
-* `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
-* `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
-
-#### Listing all contacts: `list`
-
-Shows a list of all contacts in your contact list.
-
-Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
-</div>
-
-#### Deleting a contact: `delete`
-
-Deletes the specified contact from your contact list.
-
-Format: `delete INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `delete 3` deletes the 3rd contact in the contact list.
-
-#### Viewing a contact: `view`
-
-Displays more details of the specified contact from your contact list.
-
-Format: `view INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `view 2` views the 2nd contact in your contact list.
-
-   ![Ui](images/ContactView.png)
-   <figcaption>Viewing a contact</figcaption><br>
-
-#### Clearing all contacts: `clear`
-
-Clears all contacts from your contact list.
-
-Format: `clear`
+*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Hence, you can focus on managing your product without fearing any unsaved changes.
 
 ### Deliverable
 
@@ -222,7 +125,7 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
 
-* You cannot add a deliverable with the same title as an existing deliverable.
+* You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
 
 * All newly-added deliverables will be assigned the `on-going` tag regardless of their deadline. You will
 need to manually mark past deliverables as `completed`. Refer to 
@@ -252,7 +155,7 @@ Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CON
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** You cannot edit a deliverable to have the same title as an existing deliverable.
+**:information_source: Note:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
   
 </div>
 
@@ -358,7 +261,7 @@ Format: `add t/TITLE [d/DESCRIPTION] from/FROM to/TO [c/CONTACTS] [l/LOCATION]`
 * `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
 who are not in your contact list.
 
-* You cannot add a meeting with the same title as an existing meeting.
+* You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
   
 </div>
 
@@ -386,7 +289,7 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [from/FROM] [to/TO] [c/CONTACTS] [
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** You cannot edit a meeting to have the same title as an existing meeting.
+**:information_source: Note:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
   
 </div>
 
@@ -453,19 +356,117 @@ Example:
 
 Clears all meetings from your meeting list.
 
+Format: `clear` 
+
+### Contact
+
+   ![contact](images/Contact.png)
+   <figcaption>Initial display of a contact list </figcaption>
+
+#### Adding a contact: `add`
+
+Adds a developer or stakeholder to your contact list.
+
+Format: `add r/ROLE n/NAME [p/PHONE] e/EMAIL [d/DESCRIPTION]`
+* `ROLE` is the type of contact, either developer (`dev`) or stakeholder (`stk`).
+* `NAME` is the name of the contact.
+* `PHONE` is the phone number of the contact.
+* `EMAIL` is the email address of the contact.
+* `DESCRIPTION` contains additional information about the contact, such as their job position.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
+Examples:
+* `add r/dev n/Jordan Woods p/81234567 e/johndoe@glutter.com`
+adds a developer with the name `Jordan Woods`, phone number `81234567` and email `jordanwoods@glutter.com`.
+* `add r/stk n/Betsy Crowe e/betsybet872@pmail.com`
+adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
+
+#### Editing a contact: `edit`
+
+Edits an existing contact in your contact list.
+
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+* At least one of the optional fields must be provided.
+* The existing values of the specified contact will be updated to the input values.
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
+Examples:
+*  `edit 1 p/81234567 e/jeremysand@glutter.com`
+edits the phone number and email address of the 1st contact to be `81234567` and `jeremysand@glutter.com` respectively.
+*  `edit 2 n/Jayden Smith` 
+edits the name of the 2nd contact to be `Jayden Smith`.
+
+#### Finding contacts: `find`
+
+Finds the contacts whose names or descriptions contain any of the given keywords.
+
+Format: `find KEYWORDS`
+* `KEYWORDS` contains one or more keywords used to match contacts.
+* Searches only consider name and description.
+* Searches are case-insensitive, e.g. `hans` will match `Hans`.
+* Order of keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
+* Searches only account for full words, e.g. `Han` will not match `Hans`.
+* Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
+
+Examples:
+* `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
+* `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
+
+#### Listing all contacts: `list`
+
+Shows a list of all contacts in your contact list.
+
+Format: `list`
+
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
+Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
+</div>
+
+#### Deleting a contact: `delete`
+
+Deletes the specified contact from your contact list.
+
+Format: `delete INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `delete 3` deletes the 3rd contact in the contact list.
+
+#### Viewing a contact: `view`
+
+Displays more details of the specified contact from your contact list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd contact in your contact list.
+
+   ![Ui](images/ContactView.png)
+   <figcaption>Viewing a contact</figcaption><br>
+
+#### Clearing all contacts: `clear`
+
+Clears all contacts from your contact list.
+
 Format: `clear`
 
-### Exiting *Productiv*: `exit`
-
-Exits the program.
-
-Format: `exit`
-* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
-
-### Saving the data
-
-*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
-Hence, you can focus on managing your product without fearing any unsaved changes. 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -482,7 +483,7 @@ that you have Java `11` or above installed on your computer.
 creates with the file that contains the data of your previous *Productiv* app.
 
 
---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
