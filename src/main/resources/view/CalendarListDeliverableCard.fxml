@@ -21,11 +21,15 @@
                 <Label fx:id="title" text="\$first" styleClass="cell_big_label" wrapText="true">
                 </Label>
             </HBox>
-            <FlowPane fx:id="tags">
+            <FlowPane>
+                <Label text = "Status / Milestone: " styleClass="label-bright"/>
                 <Label fx:id="isCompleted" text="\$isCompleted" />
                 <Label fx:id="milestone" text="\$milestone" />
             </FlowPane>
-            <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+            <FlowPane>
+                <Label text = "Deadline: " styleClass="label-bright"/>
+                <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+            </FlowPane>
         </VBox>
     </GridPane>
 </HBox>
