@@ -84,6 +84,7 @@ public class ModelPersonManager implements ModelPerson {
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
+        setPersonInView(null);
     }
 
     @Override
@@ -144,6 +145,7 @@ public class ModelPersonManager implements ModelPerson {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        setPersonInView(null);
     }
 
     @Override
