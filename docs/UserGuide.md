@@ -536,7 +536,7 @@ Clear          | `clear`
 Action         | Format, Examples
 ---------------|------------------------
 Add            | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Johnny e/johnny@example.com p/12345678`
-Edit           | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [d/DESCRIPTION]` `edit 1 r/dev n/John e/john@email.com`
+Edit           | `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]` `edit 1 r/dev n/John e/john@email.com`
 Find           | `find KEYWORDS` <br> e.g. `find John Kite`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
