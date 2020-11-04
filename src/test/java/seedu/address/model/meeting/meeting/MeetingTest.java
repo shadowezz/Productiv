@@ -6,7 +6,6 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_CONTACT
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_DESCRIPTION_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_FROM_B;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_LOCATION_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TITLE_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.VALID_TO_B;
