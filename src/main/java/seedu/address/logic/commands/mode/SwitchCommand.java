@@ -12,12 +12,14 @@ public class SwitchCommand extends Command {
 
     public static final String COMMAND_WORD = "switch";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches mode. Parameters: "
-            + ModeEnum.getModeOptions()
-            + " \n"
-            + "Example: " + COMMAND_WORD + " contact";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches mode.\n"
+            + "Parameters: MODE (must be " + ModeEnum.getModeOptions()
+            + ")\n"
+            + "Example: " + COMMAND_WORD + " " + ModeEnum.DELIVERABLE.getArgument();
+
 
     public static final String MESSAGE_SUCCESS = "Mode switched to: %1$s";
+    public static final String MESSAGE_SAME_MODE = "You are already in %s mode!";
 
     private final ModeEnum mode;
 

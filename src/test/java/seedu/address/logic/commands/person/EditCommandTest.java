@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.person.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.person.CommandTestUtil.DESC_BOB;
+import static seedu.address.logic.commands.person.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.person.CommandTestUtil.assertCommandFailure;
@@ -98,6 +99,40 @@ public class EditCommandTest {
         expectedModelPerson.setPerson(modelPerson.getFilteredPersonList().get(0), editedPerson);
 
         assertCommandSuccess(editCommand, modelPerson, expectedMessage, expectedModelPerson);
+    }
+
+    @Test
+    public void execute_duplicatePersonSameName_failure() {
+        // both persons are in list and have all fields same except for name
+        Person firstPerson = modelPerson.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withName(VALID_NAME_BOB).build();
+
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        expectedModelPerson.addPerson(editedPerson);
+
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
+        // try to change name
+        EditCommand editCommand = new EditCommand(INDEX_SECOND, descriptor);
+
+        assertCommandFailure(editCommand, modelPerson, EditCommand.MESSAGE_DUPLICATE_PERSON);
+    }
+
+    @Test
+    public void execute_duplicatePersonSameEmail_failure() {
+        // both persons are in list and have all fields same except for email
+        Person firstPerson = modelPerson.getFilteredPersonList().get(INDEX_FIRST.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withEmail(VALID_EMAIL_BOB).build();
+
+        ModelPerson expectedModelPerson =
+                new ModelPersonManager(new AddressBook(modelPerson.getAddressBook()), new UserPrefs());
+        expectedModelPerson.addPerson(editedPerson);
+
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstPerson).build();
+        // try to change email
+        EditCommand editCommand = new EditCommand(INDEX_SECOND, descriptor);
+
+        assertCommandFailure(editCommand, modelPerson, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
     @Test
