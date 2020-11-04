@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_MILESTONE;
 import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
-import static seedu.address.model.deliverable.ModelDeliverable.PREDICATE_SHOW_ALL_DELIVERABLES;
 
 import java.util.List;
 import java.util.Optional;
@@ -82,7 +81,6 @@ public class EditCommand extends Command {
         }
 
         modelDeliverable.setDeliverable(deliverableToEdit, editedDeliverable);
-        modelDeliverable.updateFilteredDeliverableList(PREDICATE_SHOW_ALL_DELIVERABLES);
         return new CommandResult(String.format(MESSAGE_EDIT_DELIVERABLE_SUCCESS, editedDeliverable));
     }
 

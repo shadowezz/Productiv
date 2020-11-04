@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.person.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.person.CliSyntax.PREFIX_PHONE;
-import static seedu.address.model.person.ModelPerson.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,7 +76,6 @@ public class EditCommand extends Command {
         }
 
         modelPerson.setPerson(personToEdit, editedPerson);
-        modelPerson.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
