@@ -708,7 +708,7 @@ Priorities:
 
 ### Non-Functional Requirements
 
-1. Should work on any mainstream OS as long as it has Java 11 or above installed.
+1. Should work on any mainstream OS as long as it has Java 11 installed.
 1. Should be able to hold up to 1000 contacts without any negative effects.
 1. Should be able to hold up to 1000 deliverables without any negative effects.
 1. Should be able to schedule meetings up to 2 years in advance.
@@ -739,77 +739,89 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file.<br>
+       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.<br>
+       Note: The window has a minimum width and height so that the UI does not look so cramped.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. Shutdown
+1. Shutting down
 
-    1. Click the window close button _OR_
-    1. Enter input: `exit`, to close the program. 
-    
+    1. Test case: Click the window close button.<br>
+       Expected: The app shuts down.
+
+    1. Test case: `exit`<br>
+       Expected: Similar to previous.
+
 ### Switching Modes
 
-1. Via Mouse input
+1. Switching to deliverable mode
 
-    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
+    1. Prerequisite: You are not in deliverable mode.
 
-1. Via Command Line Input
+    1. Test case: Click `Deliverable` on the top navigation bar.<br>
+       Expected: Window displays list of saved deliverables.
 
-    1. Test case: `switch deliverable` or `switch meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
-    
-    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
-    Expected: Status bar throws error message.
+    1. Test case: `switch dv`<br>
+       Expected: Similar to previous.
 
-### Adding an item
+    1. Other incorrect switch commands to try: `switch me3ting`, `switch dev`<br>
+       Expected: Status bar throws error message.
 
-1. Adding a contact while in `Contact` mode
+### Adding a deliverable
 
-   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Adding Login screen
 
-   1. Test case: `add n/john`<br>
-      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: You are in deliverable mode. Login screen not already added. If added, delete it.
 
-   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
-      Expected: Similar to previous.
+   1. Test case: `add t/Login screen m/1.0 by/12-12-2020 23:59 d/Must include username and password fields c/John Martin, Abby Li`<br>
+      Expected: Login screen to appear in the list of deliverables and expanded in right panel.
 
-### Deleting an item
+   1. Test case: `add t/Login screen`<br>
+      Expected: No deliverable is added. Status bar throws error message.
 
-1. Deleting a contact while in `contact` mode
-
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
+   1. Other incorrect add commands to try: `add`, `add Login screen` <br>
+      Expected: Status bar throws error message.
 
 ### Saving data
 
-1. Data files are saved in a `data` folder.<br>
-3 JSON files are created:
-    * `contactbook.json`
-    * `meetingbook.json`
-    * `deliverablebook.json`
+1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-All 3 files contain information stored by the user from their respective modes.
+   On normal usage, 3 JSON files are created:
+      * `contactbook.json`
+      * `meetingbook.json`
+      * `deliverablebook.json`
+
+   All 3 files contain information stored by the user from their respective modes.
+
+   On first starting the program, a file is only created if the user inputs a command specific to that mode.
+
+   1. Prerequisites: Very first time using the app.
+
+   1. Test case: Starting and close the app immediately.<br>
+      Expected: No JSON files created.
+
+   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.
+      Expected: Only `deliverablebook.json` created.
 
 1. Dealing with missing/corrupted data files
 
-   1. Missing data/corrupted files: delete `contactbook.json` file and start the jar file again<br> 
-   Expected: Data file should re-initialise a list of sample contacts
-   
-_{more to be added}_
+   1. Test case: Delete `deliverablebook.json` file and start the jar file again<br>
+      Expected: Data file should re-initialise a list of sample deliverables
+
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.
+      Expected: Similar to previous.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Effort**
+
+tbc
