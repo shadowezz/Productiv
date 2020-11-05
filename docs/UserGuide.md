@@ -52,7 +52,9 @@ Here are some example commands you can try:
 
 * Words in upper case are the parameters to be supplied by you for their respective fields.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.
-
+  <div markdown="span" class="alert alert-primary">:bulb:
+    * If you are not sure what specific parameters to supply for any required fields, supply an estimate or random value as place holder.
+    </div>
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
 
@@ -62,7 +64,8 @@ Here are some example commands you can try:
 * If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
   e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk`, `n/NAME e/EMAIL r/stk` will be accepted.
 
-</div>
+</>
+
 
 ### General
 
