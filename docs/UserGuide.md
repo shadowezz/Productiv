@@ -51,10 +51,9 @@ Here are some example commands you can try:
 **:information_source: Notes about the command format:**<br>
 
 * Words in upper case are the parameters to be supplied by you for their respective fields.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.
-  <div markdown="span" class="alert alert-primary">:bulb:
-    * If you are not sure what specific parameters to supply for any required fields, supply an estimate or random value as place holder.
-    </div>
+  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
+  :bulb: **Tip:** If you are not sure what specific parameters to supply for any required fields, supply an estimate or random value as place holder.
+
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
 
@@ -259,8 +258,8 @@ Adds a meeting to your meeting list.
 Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
 * `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
-* `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
-* `FROM` and `TO` can be in the past but must not be earlier than the year 2019.
+* `FROM` can be in the past but must not be earlier than the year 2019.
+* `TO` is the end time of the meeting in HH:mm format.
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
 * `CONTACTS` represents the contacts involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
@@ -279,17 +278,13 @@ who are not in your contact list.
   
 </div>
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Input an estimate end date time for the meeting if there is none specified.
-</div>
-
 Example:
-* `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/3,6,9`
+* `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/3,6,9`
 adds a meeting with the title `Discuss app requirements`,
-start date time `12-12-2020 09:00`, end date time `12-12-2020 10:00`, description `Refine with business associates` and contacts `3,6,9`.
-* `add t/User research review from/15-12-2020 13:00 to/15-12-2020 15:00 l/Meeting room A` 
+start date time `12-12-2020 09:00`, end time `10:00`, description `Refine with business associates` and contacts `3,6,9`.
+* `add t/User research review from/15-12-2020 13:00 to/15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
-end date time `15-12-2020 15:00`, and location `Meeting room A`.
+end date time `15:00`, and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
@@ -533,7 +528,7 @@ Clear          | `clear`
 
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/12-12-2020 10:00 d/Refine with business associates c/John, Mary, Matthew`
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/John, Mary, Matthew`
 Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
 Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
 List           | `list` 
