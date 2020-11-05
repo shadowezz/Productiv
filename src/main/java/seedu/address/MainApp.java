@@ -280,9 +280,6 @@ public class MainApp extends Application {
         logger.info("============================ [ Stopping Productiv ] =============================");
         try {
             storagePerson.saveUserPrefs(modelPerson.getUserPrefs());
-            // for testing
-            storageDeliverable.saveDeliverableBook(modelDeliverable.getDeliverableBook());
-            storageMeeting.saveMeetingBook(modelMeeting.getMeetingBook());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }
