@@ -30,15 +30,16 @@ Note that the app contains some sample data.<br>
    <figcaption>Dashboard</figcaption><br>
    
 1. Type a command in the command box and press Enter to execute it. 
-Here are some example commands you can try:
+Here is a sequence of example commands you can try:<br>
 
-   * **`switch`**`dv` : Switches to deliverable mode.
+   1. **`switch`** `dv` : Switches to deliverable mode.
 
-   * **`add`**`r/stk n/Betty Clarke e/betty@email.com` : If in contact mode, adds a contact named `Betty Clarke`.
+   1. **`add`** `t/Find profile page template m/2.1.1 by/12-12-2020 12:00` : Adds a deliverable with the 
+   title `Find profile page template`, milestone `2.1.1` and deadline `12-12-2020 12:00`.
 
-   * **`delete`**`1` : If in meeting mode, deletes the 1st meeting shown.
+   1. **`delete`** `1` : Deletes the 1st deliverable shown.
 
-   * **`exit`** : Exits the app.
+   1. **`exit`** : Exits the app.
 
 1. Refer to [Features](#features) below for details of each available command.
 
@@ -61,7 +62,7 @@ Here are some example commands you can try:
   e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
   
 * If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk`, `n/NAME e/EMAIL r/stk` will be accepted.
+  e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk` it will be accepted as `n/NAME r/stk e/EMAIL`.
 
 </div>
 
@@ -74,12 +75,12 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 * `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
-* `switch` `dv`, `m` or `c` mode will display your list of deliverables, meetings and contacts in the left panel respectively, 
+* `switch` `dv`, `m` or `c` will display your list of deliverables, meetings and contacts in the left panel respectively, 
 e.g. `switch c` will display your list of contacts.
 A view panel will be displayed in the right panel (initially empty).
 * `switch db` will display your project's completion status in the left panel.
-A calendar list containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
-* How the commands will be executed depend on which mode you are currently in, e.g. **`delete`**`1` in meeting mode deletes the 1st meeting shown.
+A schedule containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
+* How the commands will be executed depend on which mode you are currently in, e.g. `delete 1` in meeting mode deletes the 1st meeting shown.
 
 <div markdown="block" class="alert alert-info">
 
@@ -123,18 +124,18 @@ Adds a deliverable to your deliverable list.
 Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `TITLE` is the main heading of the deliverable.
 * `MILESTONE` is the milestone tagged to the deliverable.
-* `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
-* `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
+* `MILESTONE` should only take in non-negative integers separated by periods, e.g. `1.3`, `14.2.1`.
+* `DEADLINE` is the due date time of the deliverable in dd-MM-yyyy HH:mm format.
 * `DEADLINE` can be in the past but must not be earlier than the year 2019.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
-* `CONTACTS` represents the contacts involved in seeing through the deliverable.
+* `CONTACTS` represents the contact(s) involved in seeing through the deliverable.
 * `CONTACTS` is a comma-separated string of names.
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes:**<br>
 
-* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+* `CONTACTS` has no relation to the contact(s) in your contact list. Hence, you are free to add those
 who are not in your contact list.
 
 * You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
@@ -147,16 +148,16 @@ the `done` command.
 </div>
 
 Examples:
-* `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/2,4` 
+* `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Jordan Woods, Betsy Crowe` 
 adds a deliverable with the title `Login screen`, milestone `1.1`,
-deadline `10-10-2020 18:00`, description `Include email and password fields` and contacts `2,4`.
+deadline `10-10-2020 18:00`, description `Include email and password fields` and contacts `Jordan Woods, Betsy Crowe`.
 * `add t/Find profile page template m/2.1.1 by/12-12-2020 12:00` 
 adds a deliverable with the title `Find profile page template`, milestone `2.1.1` 
 and deadline `12-12-2020 12:00`.
 
 #### Editing a deliverable: `edit`
 
-Edits an existing deliverable in your deliverable list.
+Edits an existing deliverable in your displayed deliverable list.
 
 Format: `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
@@ -174,18 +175,18 @@ Examples:
 *  `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
 edits the description of the 1st deliverable to be `Must include username, email and password fields`
 and its deadline to be `13-12-2020 12:00`.
-*  `edit 2 c/2,4,5` edits the contacts of the 2nd deliverable to be `2,4,5`.
+*  `edit 2 c/Jordan Woods, Betsy Crowe, Jeremey` edits the contacts of the 2nd deliverable to be `Jordan Woods, Betsy Crowe, Jeremey`.
 
 #### Marking a deliverable as completed: `done`
 
-Marks the specified deliverable from your deliverable list as done.
+Marks the specified deliverable from your displayed deliverable list as done.
 
 Format: `done INDEX`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `done 1` marks the 1st deliverable in your deliverable list as done.
+* `done 1` marks the 1st deliverable in your displayed deliverable list as done.
 
 #### Finding deliverables: `find`
 
@@ -205,7 +206,7 @@ Examples:
 
 #### Listing all deliverables: `list`
 
-Shows a list of all deliverables in your deliverable list.
+Displays a list of all deliverables in your deliverable list.
 
 Format: `list`
 
@@ -228,14 +229,14 @@ Example:
 
 #### Viewing a deliverable: `view`
 
-Displays more details of the specified deliverable from your deliverable list.
+Displays more details of the specified deliverable from your displayed deliverable list.
 
 Format: `view INDEX`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `view 2` views the 2nd deliverable in your deliverable list.
+* `view 2` views the 2nd deliverable in your displayed deliverable list.
 
    ![Ui](images/DeliverableView.png)
    <figcaption>Viewing a deliverable</figcaption><br>
@@ -257,11 +258,11 @@ Adds a meeting to your meeting list.
 
 Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
-* `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
+* `FROM` is the start date time of the meeting in dd-MM-yyyy HH:mm format.
 * `FROM` can be in the past but must not be earlier than the year 2019.
 * `TO` is the end time of the meeting in HH:mm format.
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
-* `CONTACTS` represents the contacts involved in the meeting. 
+* `CONTACTS` represents the contact(s) involved in the meeting. 
 * `CONTACTS` is a comma-separated string of names.
 * `LOCATION` is the location of the meeting.
 
@@ -271,7 +272,7 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 
 * Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
 
-* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
+* `CONTACTS` has no relation to the contact(s) in your contact list. Hence, you are free to add those
 who are not in your contact list.
 
 * You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
@@ -279,16 +280,16 @@ who are not in your contact list.
 </div>
 
 Example:
-* `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/3,6,9`
+* `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/Jordan Woods, Betsy Crowe`
 adds a meeting with the title `Discuss app requirements`,
-start date time `12-12-2020 09:00`, end time `10:00`, description `Refine with business associates` and contacts `3,6,9`.
+start date time `12-12-2020 09:00`, end time `10:00`, description `Refine with business associates` and contacts `Jordan Woods, Betsy Crowe`.
 * `add t/User research review from/15-12-2020 13:00 to/15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
 end date time `15:00`, and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
-Edits an existing meeting in your meeting list.
+Edits an existing meeting in your displayed meeting list.
 
 Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
@@ -306,7 +307,7 @@ Examples:
 * `edit 2 t/Discuss final release features d/Finalize dashboard functions`
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalize dashboard functions`.
-* `edit 4 c/3,6,8` edits the contacts of the 4th meeting to be `3,6,8`.
+* `edit 4 c/Jordan Woods, Betsy Crowe, Jeremey` edits the contacts of the 4th meeting to be `Jordan Woods, Betsy Crowe, Jeremey`.
 
 #### Finding meetings: `find`
 
@@ -326,7 +327,7 @@ Examples:
 
 #### Listing all meetings: `list`
 
-Shows a list of all meetings in your meeting list.
+Displays a list of all meetings in your meeting list.
 
 Format: `list`
 
@@ -338,18 +339,18 @@ Refer to [Finding meetings](#finding-meetings-find) above for details of the `fi
 
 #### Deleting a meeting: `delete`
 
-Deletes the specified meeting from your meeting list.
+Deletes the specified meeting from your displayed meeting list.
 
 Format: `delete INDEX`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `delete 3` deletes the 3rd meeting in your meeting list.
+* `delete 3` deletes the 3rd meeting in your displayed meeting list.
 
 #### Viewing a meeting: `view`
 
-Displays more details of the specified meeting from your meeting list.
+Displays more details of the specified meeting from your displayed meeting list.
 
 Format: `view INDEX`
 * `INDEX` is the index number of the meeting in your displayed meeting list.
@@ -404,7 +405,7 @@ adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`
 
 #### Editing a contact: `edit`
 
-Edits an existing contact in your contact list.
+Edits an existing contact in your displayed contact list.
 
 Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]`
 * `INDEX` is the index number of the contact in your displayed contact list.
@@ -442,7 +443,7 @@ Examples:
 
 #### Listing all contacts: `list`
 
-Shows a list of all contacts in your contact list.
+Displays a list of all contacts in your contact list.
 
 Format: `list`
 
@@ -454,18 +455,18 @@ Refer to [Finding contacts](#finding-contacts-find) above for details of the `fi
 
 #### Deleting a contact: `delete`
 
-Deletes the specified contact from your contact list.
+Deletes the specified contact from your displayed contact list.
 
 Format: `delete INDEX`
 * `INDEX` is the index number of the contact in your displayed contact list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `delete 3` deletes the 3rd contact in the contact list.
+* `delete 3` deletes the 3rd contact in the displayed contact list.
 
 #### Viewing a contact: `view`
 
-Displays more details of the specified contact from your contact list.
+Displays more details of the specified contact from your displayed contact list.
 
 Format: `view INDEX`
 * `INDEX` is the index number of the contact in your displayed contact list.
@@ -515,7 +516,7 @@ Action         | Format, Examples
 
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Andy, Billy` 
+Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Jordan Woods, Betsy Crowe` 
 Edit           | `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
 Mark as Done   | `done INDEX` <br> e.g. `done 3`
 Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
@@ -528,7 +529,7 @@ Clear          | `clear`
 
 Action         | Format, Examples
 ---------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/John, Mary, Matthew`
+Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/Jordan Woods, Betsy Crowe`
 Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
 Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
 List           | `list` 
