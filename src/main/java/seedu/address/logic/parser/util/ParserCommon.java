@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -17,15 +17,15 @@ public class ParserCommon {
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static OptionalDescription parseDescription(Optional<String> description) throws ParseException {
+    public static Description parseDescription(Optional<String> description) throws ParseException {
         if (description.isEmpty()) {
-            return new OptionalDescription(description);
+            return new Description(description);
         }
         String trimmedDescription = description.get().trim();
-        if (!OptionalDescription.isValidDescription(trimmedDescription)) {
-            throw new ParseException(OptionalDescription.MESSAGE_CONSTRAINTS);
+        if (!Description.isValidDescription(trimmedDescription)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
         }
-        return new OptionalDescription(trimmedDescription);
+        return new Description(trimmedDescription);
     }
 
     /**

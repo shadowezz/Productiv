@@ -34,7 +34,7 @@ import seedu.address.model.person.person.Name;
 import seedu.address.model.person.person.Person;
 import seedu.address.model.person.person.Phone;
 import seedu.address.model.person.person.Role;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -120,7 +120,7 @@ public class AddCommandParserTest {
 
         // invalid description
         assertParseFailure(parser, ROLE_DESC_BOB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + INVALID_DESCRIPTION_DESC, OptionalDescription.MESSAGE_CONSTRAINTS);
+                + INVALID_DESCRIPTION_DESC, Description.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, ROLE_DESC_BOB + INVALID_NAME_DESC + PHONE_DESC_BOB + INVALID_EMAIL_DESC

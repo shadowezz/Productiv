@@ -20,7 +20,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -103,7 +103,7 @@ public class EditCommand extends Command {
         Milestone updatedMilestone = editDeliverableDescriptor.getMilestone().orElse(deliverableToEdit.getMilestone());
 
         // Description takes optional String
-        OptionalDescription updatedDesc = editDeliverableDescriptor.getDescription()
+        Description updatedDesc = editDeliverableDescriptor.getDescription()
                 .orElse(deliverableToEdit.getDescription());
 
         Deadline updatedDeadline = editDeliverableDescriptor.getDeadline().orElse(deliverableToEdit.getDeadline());
@@ -142,7 +142,7 @@ public class EditCommand extends Command {
     public static class EditDeliverableDescriptor {
         private Title title;
         private Milestone milestone;
-        private OptionalDescription description;
+        private Description description;
         private Deadline deadline;
         private boolean isComplete;
         private Contacts contacts;
@@ -187,11 +187,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(this.milestone);
         }
 
-        public void setDescription(OptionalDescription description) {
+        public void setDescription(Description description) {
             this.description = description;
         }
 
-        public Optional<OptionalDescription> getDescription() {
+        public Optional<Description> getDescription() {
             return Optional.ofNullable(description);
         }
 

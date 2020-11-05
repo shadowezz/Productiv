@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import seedu.address.model.event.TimeEvent;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -20,7 +20,7 @@ public class Meeting implements TimeEvent {
     public static final String INCORRECT_FROM_AND_TO_ORDER = "From time should be earlier than To.";
 
     private final Title title;
-    private final OptionalDescription description;
+    private final Description description;
     private final From from;
     private final To to;
     private final Contacts contacts;
@@ -29,7 +29,7 @@ public class Meeting implements TimeEvent {
     /**
      * Every field must be present and not null.
      */
-    public Meeting(Title title, OptionalDescription description, From from, To to,
+    public Meeting(Title title, Description description, From from, To to,
                    Contacts contacts, Location location) throws IllegalArgumentException {
 
         requireAllNonNull(title, description, from, to, contacts, location);
@@ -60,7 +60,7 @@ public class Meeting implements TimeEvent {
         return title;
     }
 
-    public OptionalDescription getDescription() {
+    public Description getDescription() {
         return description;
     }
 

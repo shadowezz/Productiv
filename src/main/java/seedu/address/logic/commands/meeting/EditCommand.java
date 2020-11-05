@@ -22,7 +22,7 @@ import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -107,7 +107,7 @@ public class EditCommand extends Command {
         Title updatedTitle = editMeetingDescriptor.getTitle().orElse(meetingToEdit.getTitle());
 
         // Description takes optional String
-        OptionalDescription updatedDesc = editMeetingDescriptor.getDescription()
+        Description updatedDesc = editMeetingDescriptor.getDescription()
                 .orElse(meetingToEdit.getDescription());
 
         From updatedFrom = editMeetingDescriptor.getFrom().orElse(meetingToEdit.getFrom());
@@ -145,7 +145,7 @@ public class EditCommand extends Command {
      */
     public static class EditMeetingDescriptor {
         private Title title;
-        private OptionalDescription description;
+        private Description description;
         private From from;
         private To to;
         private Contacts contacts;
@@ -180,11 +180,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(this.title);
         }
 
-        public void setDescription(OptionalDescription description) {
+        public void setDescription(Description description) {
             this.description = description;
         }
 
-        public Optional<OptionalDescription> getDescription() {
+        public Optional<Description> getDescription() {
             return Optional.ofNullable(description);
         }
 

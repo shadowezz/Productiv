@@ -22,7 +22,7 @@ import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -46,7 +46,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
-        OptionalDescription description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
+        Description description = ParserCommon.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION));
         From from = ParserUtil.parseFrom(argMultimap.getValue(PREFIX_FROM).get());
         To to = ParserUtil.parseTo(argMultimap.getValue(PREFIX_TO).get());
         Contacts contacts = ParserCommon.parseContacts(argMultimap.getValue(PREFIX_CONTACTS));

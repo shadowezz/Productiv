@@ -13,7 +13,7 @@ import seedu.address.model.deliverable.deliverable.Deadline;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.model.deliverable.deliverable.Milestone;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.OptionalDescription;
+import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
@@ -63,7 +63,7 @@ public class DoneCommand extends Command {
     private Deliverable createCompletedDeliverable(Deliverable deliverableToComplete) {
         Title title = deliverableToComplete.getTitle();
         Milestone milestone = deliverableToComplete.getMilestone();
-        OptionalDescription description = deliverableToComplete.getDescription();
+        Description description = deliverableToComplete.getDescription();
         Deadline deadline = deliverableToComplete.getDeadline();
         Contacts contacts = deliverableToComplete.getContacts();
         return new Deliverable(title, milestone, description, deadline, COMPLETED, contacts);
