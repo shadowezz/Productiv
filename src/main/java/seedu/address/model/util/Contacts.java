@@ -11,7 +11,7 @@ import java.util.Optional;
 public class Contacts {
     public static final String EMPTY_CONTACTS_FIELD = "-";
     public static final String MESSAGE_CONSTRAINTS =
-            "Contacts can only take alphabetic characters and spaces, and it should not be blank";
+            "Contacts should only take a name, a comma-separated string of names, or blank.";
 
     /*
      * Contacts can only take alphabetic characters and spaces separated with commas.

@@ -150,7 +150,7 @@ public class SampleDataUtil {
                 new Location("Stardollar Cafe")),
             new Meeting(new Title("Discuss product design"), new Description("With product designer"),
                 new From("18-08-2020 12:00"),
-                new To("12:00"),
+                new To("14:00"),
                 new Contacts("Bianca Li"),
                 new Location("Min Cafe")),
             new Meeting(new Title("Discuss product mock-ups"), new Description("With UI/UX team. "

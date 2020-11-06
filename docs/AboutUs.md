@@ -3,9 +3,9 @@ layout: page
 title: About Us
 ---
 
-We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
+Our Productiv team is based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 
 ## Project team
 
