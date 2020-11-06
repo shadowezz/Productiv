@@ -54,7 +54,7 @@ Here is a sequence of example commands you can try:<br>
 * Words in upper case are the parameters to be supplied by you for their respective fields.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
 :bulb: **Tip:** If you are not sure what specific parameter to supply for any of the required fields, supply an estimate or random value as place holder.<br>
-:bulb: **Tip:** For any fields with an unspecified maximum length, the display may look untidy if you supply a long parameter.
+:bulb: **Tip:** For any fields with an unspecified maximum length, the view will be truncated for fields with long parameters.
 
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
@@ -271,7 +271,7 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 
 **:information_source: Notes:**<br>
 
-* Different meeting may have overlapping timings as you may wish to send a representative for your clashing meetings.
+* Different meetings may have overlapping timings as you may wish to send a representative for your clashing meetings.
 
 * `CONTACTS` has no relation to the contact(s) in your contact list. Hence, you are free to add those
 who are not in your contact list.
@@ -286,7 +286,7 @@ adds a meeting with the title `Discuss app requirements`,
 start date time `12-12-2020 09:00`, end time `10:00`, description `Refine with business associates` and contacts `Jordan Woods, Betsy Crowe`.
 * `add t/User research review from/15-12-2020 13:00 to/15:00 l/Meeting room A` 
 adds a meeting with the title `User research review`, start date time `15-12-2020 13:00`, 
-end date time `15:00`, and location `Meeting room A`.
+end time `15:00` and location `Meeting room A`.
 
 #### Editing a meeting: `edit`
 
