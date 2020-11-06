@@ -3,11 +3,11 @@ layout: page
 title: User Guide
 ---
 
-*Productiv* is a one-stop desktop app for product managers like yourself to organise your **contacts**, 
-**deliverables** and **meetings**, so that you can track your product's development easily.
+*Productiv* is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
+**meetings** and **contacts** so that you can track your product's development easily.
 
 *Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
-*Productiv* has just become better for you. However, fret not, *Productiv* still has the benefits of a Graphical User Interface (GUI).
+*Productiv* has just become better for you. Nevertheless, *Productiv* still has the benefits of a Graphical User Interface (GUI).
 
 * Table of Contents
 {:toc}
@@ -16,14 +16,14 @@ title: User Guide
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your computer.
+1. Ensure you have Java `11` installed in your computer.
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
 1. Copy the `.jar` file to your preferred folder.
 
 1. Double-click the file to start *Productiv*. 
-Your `dashboard` should appear in a few seconds. 
+Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
    ![Ui](images/Ui.png)
@@ -89,8 +89,8 @@ A schedule containing all your deliverables and meetings, chronologically sorted
 </div>
 
 Examples:
-* `switch db` switches to `dashboard` mode.
-* `switch m` switches to `meeting` mode.
+* `switch db` switches to dashboard mode.
+* `switch m` switches to meeting mode.
 
 #### Viewing help: `help`
 
@@ -188,6 +188,20 @@ Format: `done INDEX`
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as done.
 
+#### Viewing a deliverable: `view`
+
+Displays more details of the specified deliverable from your displayed deliverable list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd deliverable in your displayed deliverable list.
+
+   ![Ui](images/DeliverableView.png)
+   <figcaption>Viewing a deliverable</figcaption><br>
+
 #### Finding deliverables: `find`
 
 Finds the deliverables whose titles or descriptions contain any of the given keywords.
@@ -201,7 +215,7 @@ Format: `find KEYWORDS`
 * Searches return deliverables matching at least one keyword, e.g. `Homepage Navigation` will return `Complete Homepage` and `Increase size of Navigation Bar`.
 
 Examples:
-* `find Homepage urgent` returns a deliverable with title `Complete homepage.` and another with description `Urgent, client is unhappy`.
+* `find Homepage urgent` returns a deliverable with title `Complete homepage` and another with description `Urgent, client is unhappy`.
 * `find Mockup` returns a deliverable with name `Complete mockup` and another with description `Add more details to existing Mockup`.
 
 #### Listing all deliverables: `list`
@@ -226,20 +240,6 @@ Format: `delete INDEX`
 
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
-
-#### Viewing a deliverable: `view`
-
-Displays more details of the specified deliverable from your displayed deliverable list.
-
-Format: `view INDEX`
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `view 2` views the 2nd deliverable in your displayed deliverable list.
-
-   ![Ui](images/DeliverableView.png)
-   <figcaption>Viewing a deliverable</figcaption><br>
 
 #### Clearing all deliverables: `clear`
 
@@ -270,7 +270,7 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 
 **:information_source: Notes:**<br>
 
-* Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
+* Different meeting may have overlapping timings as you may wish to send a representative for your clashing meetings.
 
 * `CONTACTS` has no relation to the contact(s) in your contact list. Hence, you are free to add those
 who are not in your contact list.
@@ -308,6 +308,20 @@ Examples:
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalize dashboard functions`.
 * `edit 4 c/Jordan Woods, Betsy Crowe, Jeremey` edits the contacts of the 4th meeting to be `Jordan Woods, Betsy Crowe, Jeremey`.
+
+#### Viewing a meeting: `view`
+
+Displays more details of the specified meeting from your displayed meeting list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the meeting in your displayed meeting list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd meeting in your meeting list.
+
+   ![Ui](images/MeetingView.png)
+   <figcaption>Viewing a meeting</figcaption><br>
 
 #### Finding meetings: `find`
 
@@ -347,20 +361,6 @@ Format: `delete INDEX`
 
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
-
-#### Viewing a meeting: `view`
-
-Displays more details of the specified meeting from your displayed meeting list.
-
-Format: `view INDEX`
-* `INDEX` is the index number of the meeting in your displayed meeting list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `view 2` views the 2nd meeting in your meeting list.
-
-   ![Ui](images/MeetingView.png)
-   <figcaption>Viewing a meeting</figcaption><br>
 
 #### Clearing all meetings: `clear`
 
@@ -425,6 +425,20 @@ edits the email and phone number of the 1st contact to be `jeremysand@glutter.co
 *  `edit 2 n/Jayden Smith` 
 edits the name of the 2nd contact to be `Jayden Smith`.
 
+#### Viewing a contact: `view`
+
+Displays more details of the specified contact from your displayed contact list.
+
+Format: `view INDEX`
+* `INDEX` is the index number of the contact in your displayed contact list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `view 2` views the 2nd contact in your contact list.
+
+   ![Ui](images/ContactView.png)
+   <figcaption>Viewing a contact</figcaption><br>
+
 #### Finding contacts: `find`
 
 Finds the contacts whose names or descriptions contain any of the given keywords.
@@ -463,20 +477,6 @@ Format: `delete INDEX`
 
 Example:
 * `delete 3` deletes the 3rd contact in the displayed contact list.
-
-#### Viewing a contact: `view`
-
-Displays more details of the specified contact from your displayed contact list.
-
-Format: `view INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-
-Example:
-* `view 2` views the 2nd contact in your contact list.
-
-   ![Ui](images/ContactView.png)
-   <figcaption>Viewing a contact</figcaption><br>
 
 #### Clearing all contacts: `clear`
 
@@ -519,10 +519,10 @@ Action         | Format, Examples
 Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Jordan Woods, Betsy Crowe` 
 Edit           | `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
 Mark as Done   | `done INDEX` <br> e.g. `done 3`
+View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
-View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
 ### Meeting
@@ -531,10 +531,10 @@ Action         | Format, Examples
 ---------------|------------------------
 Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/Jordan Woods, Betsy Crowe`
 Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
+View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
-View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
 ### Contact
@@ -543,10 +543,10 @@ Action         | Format, Examples
 ---------------|------------------------
 Add            | `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add r/stk n/Johnny e/johnny@example.com p/12345678`
 Edit           | `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE_NUMBER] [d/DESCRIPTION]` `edit 1 r/dev n/John e/john@email.com`
+View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find John Kite`
 List           | `list` 
 Delete         | `delete INDEX` <br> e.g. `delete 3`
-View           | `view INDEX` <br> e.g. `view 2`
 Clear          | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
