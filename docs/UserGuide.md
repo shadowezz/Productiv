@@ -77,11 +77,9 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 * `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
-* `switch` `dv`, `m` or `c` will display your list of deliverables, meetings and contacts in the left panel respectively, 
-e.g. `switch c` will display your list of contacts.
-A view panel will be displayed in the right panel (initially empty).
-* `switch db` will display your project's completion status in the left panel.
-A schedule containing all your deliverables and meetings, chronologically sorted, will be displayed in the right panel.
+* `switch` `dv`, `m` or `c` will display information related to your deliverables, meetings and contacts respectively,
+e.g. `switch c` will display your contacts.
+* `switch db` will display your project's completion status and your own schedule.
 * How the commands will be executed depend on which mode you are currently in, e.g. `delete 1` in meeting mode deletes the 1st meeting shown.
 
 <div markdown="block" class="alert alert-info">
@@ -113,6 +111,29 @@ Format: `exit`
 
 *Productiv* automatically saves any changes that you made, to your computer's hard disk. 
 Hence, you can focus on managing your product without fearing any unsaved changes.
+
+
+### Dashboard
+
+    TODO: screenshot here
+    <figcaption>Initial display of Dashboard </figcaption>
+
+
+The dashboard gives you an overview of information related to your product.
+The dashboard is the default landing page of *Productiv*.
+Whenever you start up *Productiv*, you will be brought to dashboard mode.
+
+The Overall Completion Percentage (OCP) will be displayed in the left panel. The OCP gives you a quick overview of the progress of your product’s development.
+
+Your schedule will be displayed in the right panel. The schedule contains all your deliverables and meetings, chronologically sorted.
+
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** There are no commands specific to the Dashboard. 
+You can only use commands found under [General](#general). 
+  
+</div>
 
 ### Deliverable
 
