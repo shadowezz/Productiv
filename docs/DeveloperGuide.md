@@ -831,7 +831,7 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 | Feature     | AB3     | Productiv    |
 | ----------- | ------- | ------------ |
-| LoC         | ~6k     | ~20k         |
+| LoC         | ~6k     | ~15k         |
 | Difficulty  | 10      | 15           |
 | Effort      | 10      | 15           |
 
