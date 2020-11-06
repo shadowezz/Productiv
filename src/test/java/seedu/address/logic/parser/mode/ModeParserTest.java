@@ -46,7 +46,6 @@ public class ModeParserTest {
     @Test
     public void parseCommand_isModeCommand() {
         assertTrue(parser.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
-        // TODO add more modes here
         assertTrue(parser.isModeCommand(ExitCommand.COMMAND_WORD));
         assertTrue(parser.isModeCommand(HelpCommand.COMMAND_WORD));
     }

@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Milestone {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Milestone can only take numerical values separated by dots.";
+            "Milestone should only take a non-negative integer, or a string of period-separated non-negative integers.";
 
     /*
      * Milestone can only take numerical values separated with dots.

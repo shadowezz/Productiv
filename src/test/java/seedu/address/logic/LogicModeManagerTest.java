@@ -71,7 +71,6 @@ class LogicModeManagerTest {
     @Test
     public void parseCommand_isModeCommand() {
         assertTrue(logicMode.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
-        // TODO add more modes here
         assertTrue(logicMode.isModeCommand(ExitCommand.COMMAND_WORD));
         assertTrue(logicMode.isModeCommand(HelpCommand.COMMAND_WORD));
     }

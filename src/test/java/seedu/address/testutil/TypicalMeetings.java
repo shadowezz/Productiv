@@ -33,7 +33,7 @@ public class TypicalMeetings {
     public static final String TITLE_D = "Mid v1.2";
     public static final String DESCRIPTION_D = "Discuss features";
     public static final String FROM_D = "12-12-2020 08:00";
-    public static final String TO_D = "08:00";
+    public static final String TO_D = "09:00";
     public static final String CONTACTS_D = "Alice, Sarah, Jane Salmon";
     public static final String LOCATION_D = "Somewhere";
 

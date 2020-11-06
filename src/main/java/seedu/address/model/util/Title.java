@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Title {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Title can take any values, and it must not be blank.";
+            "Title must not be blank.";
 
     /*
      * The first character of the address must not be a whitespace,

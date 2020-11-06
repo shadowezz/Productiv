@@ -715,10 +715,10 @@ Priorities:
 
 * **Mainstream OS**: Windows, Unix, OS-X.
 * **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
-* **Mode**: an option allowing a change in the method of operation of the app. The app can be in dashboard, deliverable, meeting or contact mode.
-* **Deliverable**: an item to be completed as part of the product development process.
-* **Milestone**: a significant stage or event in the development of a product.
-* **Role**: a function assumed or part played by a contact. Every contact is either a developer or stakeholder.
+* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
+* **Deliverable**: An item to be completed as part of the product development process.
+* **Milestone**: A significant stage or event in the development of a product.
+* **Role**: A function assumed or part played by a contact. Every contact is either a developer or stakeholder.
 
 ## **Appendix F: Instructions for Manual Testing**
 
