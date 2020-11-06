@@ -9,10 +9,10 @@
     <GridPane HBox.hgrow="ALWAYS" minHeight="40">
         <children>
             <Label fx:id="id" styleClass="cell_small_label" GridPane.columnIndex="0" />
-            <Label fx:id="title" text="\$first" styleClass="cell_small_label" wrapText="true" GridPane.columnIndex="1" />
-            <Label fx:id="deadline" text="\$deadline" styleClass="cell_small_label" wrapText="true"
+            <Label fx:id="title" text="\$first" styleClass="cell_small_label" GridPane.columnIndex="1" />
+            <Label fx:id="deadline" text="\$deadline" styleClass="cell_small_label"
                    GridPane.columnIndex="2"/>
-            <Label fx:id="milestone" text="\$milestone" styleClass="cell_small_label" wrapText="true" GridPane.halignment="CENTER" GridPane.columnIndex="3"/>
+            <Label fx:id="milestone" text="\$milestone" styleClass="cell_small_label" GridPane.halignment="CENTER" GridPane.columnIndex="3"/>
             <Label fx:id="isCompleted" text="\$isCompleted" GridPane.halignment="CENTER" GridPane.columnIndex="4"/>
         </children>
         <columnConstraints>

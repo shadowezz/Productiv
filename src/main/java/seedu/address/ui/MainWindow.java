@@ -237,9 +237,6 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
@@ -304,7 +301,6 @@ public class MainWindow extends UiPart<Stage> {
                 rightPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
             break;
-        //Todo
         case MEETING:
             if (logicMeeting.getMeetingInView() != null) {
                 meetingDetailsPanel = new MeetingDetailsPanel(logicMeeting.getMeetingInView());
