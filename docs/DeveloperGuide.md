@@ -708,7 +708,7 @@ Priorities:
 
 ### Non-Functional Requirements
 
-1. Should work on any mainstream OS as long as it has Java 11 or above installed.
+1. Should work on any mainstream OS as long as it has Java 11 installed.
 1. Should be able to hold up to 1000 contacts without any negative effects.
 1. Should be able to hold up to 1000 deliverables without any negative effects.
 1. Should be able to schedule meetings up to 2 years in advance.
