@@ -716,10 +716,10 @@ Priorities:
 ## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
-* **Deliverable**: a thing able to be provided, especially as a product of a development process.
-* **CRUD**: Create, Read, Update and delete.
-
-*{More to be added}*
+* **Mode**: an option allowing a change in the method of operation of the app. The app can be in dashboard, deliverable, meeting and contact mode.
+* **Deliverable**: a good or service produced as a product of a development process in a project.
+* **Milestone**: a significant stage or event in the development of a product.
+* **Role**: a function assumed or part played by a contact. Every contact is either a developer or stakeholder.
 
 ## **Appendix F: Instructions for Manual Testing**
 
