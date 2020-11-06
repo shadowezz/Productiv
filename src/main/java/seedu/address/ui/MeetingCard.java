@@ -29,9 +29,7 @@ public class MeetingCard extends UiPart<Region> {
     @FXML
     private Label title;
     @FXML
-    private Label from;
-    @FXML
-    private Label to;
+    private Label dateTime;
 
     /**
      * Creates a {@code MeetingCode} with the given {@code Meeting} and index to display.
@@ -41,8 +39,9 @@ public class MeetingCard extends UiPart<Region> {
         this.meeting = meeting;
         id.setText(String.valueOf(displayedIndex));
         title.setText(meeting.getTitle().value);
-        from.setText(meeting.getFrom().toString());
-        to.setText(meeting.getTo().toString());
+        String from = meeting.getFrom().toString();
+        String to = meeting.getTo().toString();
+        dateTime.setText(String.format("%s to %s", from, to));
     }
 
     @Override

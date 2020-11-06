@@ -98,13 +98,14 @@ public class Person {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append("Name: ")
+                .append(getName())
                 .append(" Role: ")
                 .append(getRole())
-                .append(" Phone: ")
-                .append(getPhone())
                 .append(" Email: ")
                 .append(getEmail())
+                .append(" Phone: ")
+                .append(getPhone())
                 .append(" Description: ")
                 .append(getDescription());
         return builder.toString();

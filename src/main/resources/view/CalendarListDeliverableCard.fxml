@@ -22,13 +22,16 @@
                 </Label>
             </HBox>
             <FlowPane>
-                <Label text = "Status / Milestone: " styleClass="label-bright"/>
-                <Label fx:id="isCompleted" text="\$isCompleted" />
+                <Label text = "Deadline: " styleClass="label-bright"/>
+                <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+            </FlowPane>
+            <FlowPane>
+                <Label text = "Milestone: " styleClass="label-bright"/>
                 <Label fx:id="milestone" text="\$milestone" />
             </FlowPane>
             <FlowPane>
-                <Label text = "Deadline: " styleClass="label-bright"/>
-                <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+                <Label text = "Status: " styleClass="label-bright"/>
+                <Label fx:id="isCompleted" text="\$isCompleted" />
             </FlowPane>
         </VBox>
     </GridPane>
