@@ -399,7 +399,8 @@ Format: `clear`
 Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `NAME` is the name of the contact.
+* `NAME` is the name of the contact. 
+* `NAME` should only take alphabetic characters and (optionally) spaces.
 * `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
