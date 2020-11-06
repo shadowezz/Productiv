@@ -195,37 +195,52 @@ The following sequence diagram shows how a list is autosorted upon an addition o
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
 
-### [In progress] Switch Mode feature
+### Switch Mode feature
+
+Productiv can be one of these modes: dashboard, deliverable, meeting and contact mode.
+Based on the current mode, user input is passed to the corresponding `LogicManager`,
+e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
 
 #### Implementation
 
-Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
-Based on the current mode, the user input is passed to the relevant `LogicManager`. 
-Following that, the `LogicManager` will parse the user input and produce the relevant results.
-The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
+The user input is handled and retrieved by the `MainWindow` and then passed to `LogicModeManager`.
+`LogicModeManager` will call `ModeParser`, which will parse the input and create a `SwitchCommandParser`. `SwitchCommandParser` will return a `SwitchCommand`.
+`LogicModeManager` will then execute `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to. 
+Then, `MainWindow` gets the new mode to switch to from `CommandResult`.
+Based on the mode, `MainWindow` will update its own attribute `mode`.
+`MainWindow` will then update the UI to show only related information to the new mode.
+
+Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
-Figure <?> Switch Command Sequence Diagram (In Progress)
 
-The user input is passed to `LogicModeManager`. 
-`LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
-`MainWindow` then reflects the corresponding list in the user interface and
-will pass subsequent user inputs to the corresponding `LogicManager`.
+Given below is an activity diagram to show how the switch mode operation works.
+
+![SwitchModeActivityDiagram](images/SwitchModeActivityDiagram.png)
+
 
 #### Design consideration:
 
+##### Aspect: How Switch commands should be implemented
+
+* **Alternative 1 (current choice):** Shortened user commands: `switch` `db`, `dv`, `m` or `c`.
+  * Pros: More convenient and faster to type shorter user commands.
+  * Cons: More difficult for users to remember short forms.
+
+* **Alternative 2 (original implementation):** Longer user commands: `switch` `dashboard`, `deliverable`, `meeting` or `contact`.
+  * Pros: Clearer as commands correspond to the naming of tabs on the navigation bar.
+  * Cons: Take longer to type longer user commands.
+
 ##### Aspect: Where mode is stored
 
-* **Alternative 1 (current choice):** Store mode in `MainWindow`
+* **Alternative 1 (current choice):** Store mode in `MainWindow`.
   * Pros: Easy to implement.
   * Cons: May violate Single Responsibility Principle.
 
-* **Alternative 2:** Store mode in a `LogicModeManager`
+* **Alternative 2:** Store mode in a `LogicModeManager`.
   * Pros: Adheres to the Single Responsibility Principle better.
   * Cons: `LogicModeManager` would need to have references to the other logic managers. 
   It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
-
-_{more aspects and alternatives to be added}_
 
 
 ### \[Proposed\] View feature
