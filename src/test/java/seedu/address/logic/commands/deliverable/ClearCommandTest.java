@@ -16,7 +16,7 @@ import seedu.address.model.deliverable.ModelDeliverableManager;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyDeliverableBook_success() {
+    public void execute_emptyDeliverableBook_failure() {
         ModelDeliverable modelDeliverable = new ModelDeliverableManager();
 
         assertCommandFailure(

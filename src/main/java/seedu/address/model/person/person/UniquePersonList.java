@@ -105,7 +105,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /** Returns the internal list of contacts */
-    public ObservableList<Person> getInternalContactList() {
+    public ObservableList<Person> getInternalPersonList() {
         return internalList;
     }
 

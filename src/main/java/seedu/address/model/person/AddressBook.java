@@ -115,7 +115,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public ObservableList<Person> getInternalPersonList() {
-        return persons.getInternalContactList();
+        return persons.getInternalPersonList();
     }
 
     @Override

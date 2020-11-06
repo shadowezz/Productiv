@@ -15,7 +15,7 @@ import seedu.address.model.person.ModelPersonManager;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyAddressBook_failure() {
         ModelPerson modelPerson = new ModelPersonManager();
 
         assertCommandFailure(
