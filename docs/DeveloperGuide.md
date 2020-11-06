@@ -716,6 +716,7 @@ Priorities:
 ## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
 * **Mode**: an option allowing a change in the method of operation of the app. The app can be in dashboard, deliverable, meeting and contact mode.
 * **Deliverable**: a good or service produced as a product of a development process in a project.
 * **Milestone**: a significant stage or event in the development of a product.
@@ -817,4 +818,9 @@ testers are expected to do more *exploratory* testing.
 
 ## **Appendix G: Effort**
 
-tbc
+| Feature     | AB3     | Productiv    |
+| ----------- | ------- | ------------ |
+| LoC         | ~6k     | ~20k         |
+| Difficulty  | 10      | 15           |
+| Effort      | 10      | 15           |
+
