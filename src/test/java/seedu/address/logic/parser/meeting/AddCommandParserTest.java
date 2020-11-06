@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.DESCRIPTION_D
 import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_CONTACTS_DESC;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_FROM_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_LOCATION_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_TITLE_DESC;
@@ -116,10 +115,6 @@ class AddCommandParserTest {
         // invalid TITLE
         assertParseFailure(parser, INVALID_TITLE_DESC + DESCRIPTION_DESC_B + FROM_DESC_B
                 + TO_DESC_B + CONTACTS_DESC_B + LOCATION_DESC_B, Title.MESSAGE_CONSTRAINTS);
-
-        // invalid DESCRIPTION
-        assertParseFailure(parser, TITLE_DESC_B + INVALID_DESCRIPTION_DESC + FROM_DESC_B
-                + TO_DESC_B + CONTACTS_DESC_B + LOCATION_DESC_B, Description.MESSAGE_CONSTRAINTS);
 
         // invalid FROM
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + INVALID_FROM_DESC
