@@ -705,7 +705,7 @@ Priorities:
       
 ## **Appendix D: Non-Functional Requirements**
 
-1. Should work on any [`mainstream OS`](#common-classes) as long as it has Java `11` installed.
+1. Should work on any [`mainstream OS`](#common-classes) as long as Java `11` is installed and is the default.
 1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without a noticeable sluggishness in performance for typical usage.
 1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
 1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.
@@ -715,7 +715,7 @@ Priorities:
 
 ## **Appendix E: Glossary**
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X.
+* **Mainstream OS**: Windows, Unix, OS-X.
 * **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
 * **Mode**: an option allowing a change in the method of operation of the app. The app can be in dashboard, deliverable, meeting and contact mode.
 * **Deliverable**: a good or service produced as a product of a development process in a project.
