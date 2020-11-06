@@ -289,6 +289,11 @@ public class MainWindow extends UiPart<Stage> {
         rightPanelPlaceholder.getChildren().clear();
 
         switch (mode) {
+        case DASHBOARD:
+            if (!rightPanelPlaceholder.getChildren().contains(calendarListPanel.getRoot())) {
+                rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
+            }
+            break;
         case PERSON:
             if (logicPerson.getPersonInView() != null) {
                 personDetailsPanel = new PersonDetailsPanel(logicPerson.getPersonInView());
