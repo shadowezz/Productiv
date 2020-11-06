@@ -45,6 +45,7 @@ public class DeliverableCard extends UiPart<Region> {
         id.setText(String.valueOf(displayedIndex));
         title.setText(deliverable.getTitle().value);
         deadline.setText(deliverable.getDeadline().toString());
+        milestone.setText(deliverable.getMilestone().toString());
         if (deliverable.getIsComplete()) {
             isCompleted.setText("completed");
             isCompleted.setStyle("-fx-background-color: #32cd32");
@@ -52,7 +53,6 @@ public class DeliverableCard extends UiPart<Region> {
             isCompleted.setText("on-going");
             isCompleted.setStyle("-fx-background-color: #ffa500");
         }
-        milestone.setText(deliverable.getMilestone().toString());
     }
 
     @Override
