@@ -195,37 +195,52 @@ The following sequence diagram shows how a list is autosorted upon an addition o
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
 
-### [In progress] Switch Mode feature
+### Switch Mode feature
+
+Productiv can be one of these modes: dashboard, deliverable, meeting and contact mode.
+Based on the current mode, user input is passed to the corresponding `LogicManager`,
+e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
 
 #### Implementation
 
-Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
-Based on the current mode, the user input is passed to the relevant `LogicManager`. 
-Following that, the `LogicManager` will parse the user input and produce the relevant results.
-The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
+The user input is handled and retrieved by the `MainWindow` and then passed to `LogicModeManager`.
+`LogicModeManager` will call `ModeParser`, which will parse the input and create a `SwitchCommandParser`. `SwitchCommandParser` will return a `SwitchCommand`.
+`LogicModeManager` will then execute `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to. 
+Then, `MainWindow` gets the new mode to switch to from `CommandResult`.
+Based on the mode, `MainWindow` will update its own attribute `mode`.
+`MainWindow` will then update the UI to only show information related to the new mode.
+
+Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
-Figure <?> Switch Command Sequence Diagram (In Progress)
 
-The user input is passed to `LogicModeManager`. 
-`LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
-`MainWindow` then reflects the corresponding list in the user interface and
-will pass subsequent user inputs to the corresponding `LogicManager`.
+Given below is an activity diagram to show how the switch mode operation works.
+
+![SwitchModeActivityDiagram](images/SwitchModeActivityDiagram.png)
+
 
 #### Design consideration:
 
+##### Aspect: How Switch commands should be implemented
+
+* **Alternative 1 (current choice):** Shortened user commands: `switch` `db`, `dv`, `m` or `c`.
+  * Pros: More convenient and faster to type shorter user commands.
+  * Cons: More difficult for users to remember short forms.
+
+* **Alternative 2 (original implementation):** Longer user commands: `switch` `dashboard`, `deliverable`, `meeting` or `contact`.
+  * Pros: Clearer as commands correspond to the naming of tabs on the navigation bar.
+  * Cons: Takes longer to type longer user commands.
+
 ##### Aspect: Where mode is stored
 
-* **Alternative 1 (current choice):** Store mode in `MainWindow`
+* **Alternative 1 (current choice):** Store mode in `MainWindow`.
   * Pros: Easy to implement.
   * Cons: May violate Single Responsibility Principle.
 
-* **Alternative 2:** Store mode in a `LogicModeManager`
+* **Alternative 2:** Store mode in a `LogicModeManager`.
   * Pros: Adheres to the Single Responsibility Principle better.
   * Cons: `LogicModeManager` would need to have references to the other logic managers. 
   It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
-
-_{more aspects and alternatives to be added}_
 
 
 ### \[Proposed\] View feature
@@ -725,7 +740,7 @@ Priorities:
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Each test case is to be executed independently of each other.
 
 </div>
 
@@ -733,18 +748,17 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
-
-    1. Double-click the jar file.<br>
+    1. Test case: Download the jar file and copy into an empty folder. Double-click the jar file.<br>
        Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.<br>
-       Note: The window has a minimum width and height so that the UI does not look so cramped.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
+    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window.
+       Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+
+       <div markdown="span" class="alert alert-info">:information_source: **Note:** The window has a minimum width and height so that the UI does not look so cramped.
+       </div>
 
 1. Shutting down
 
@@ -766,7 +780,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `switch dv`<br>
        Expected: Similar to previous.
 
-    1. Other incorrect switch commands to try: `switch me3ting`, `switch dev`<br>
+    1. Other incorrect switch commands to try: `switch meeting`, `switch dev`<br>
        Expected: Status bar throws error message.
 
 ### Adding a deliverable
@@ -788,37 +802,70 @@ testers are expected to do more *exploratory* testing.
 
 1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-   On normal usage, 3 JSON files are created:
-      * `contactbook.json`
-      * `meetingbook.json`
-      * `deliverablebook.json`
-
+   On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
    All 3 files contain information stored by the user from their respective modes.
 
    On first starting the program, a file is only created if the user inputs a command specific to that mode.
 
    1. Prerequisites: Very first time using the app.
 
-   1. Test case: Starting and close the app immediately.<br>
-      Expected: No JSON files created.
+   1. Test case: Start and close the app immediately.<br>
+      Expected: The 3 JSON files are not created.
 
-   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.
-      Expected: Only `deliverablebook.json` created.
+   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.<br>
+      Expected: Of the 3 JSON files, only `deliverablebook.json` created.
 
 1. Dealing with missing/corrupted data files
 
-   1. Test case: Delete `deliverablebook.json` file and start the jar file again<br>
-      Expected: Data file should re-initialise a list of sample deliverables
+   1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
+      Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.
 
-   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.
-      Expected: Similar to previous.
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. Add a (`-`) to a saved deliverable's milestone.<br>
+      Expected: The app should be able to start up but show no deliverables.
+
+      <div markdown="span" class="alert alert-info">:information_source: **Note:** To re-initialise a list of sample deliverables, execute the previous test case.
+      </div>
 
 
 ## **Appendix G: Effort**
 
 | Feature     | AB3     | Productiv    |
 | ----------- | ------- | ------------ |
-| LoC         | ~6k     | ~20k         |
+| LoC         | ~9k     | ~20k         |
 | Difficulty  | 10      | 15           |
 | Effort      | 10      | 15           |
 
+
+
+**Understanding our target user profile**
+
+Initially, we had completely different ideas on what our target user profile is. We were confused about the differences between product owners, product managers, business analysts and project leads.
+
+To ensure that we were all on the same page, we made sure to talk things out before starting our project. We researched on the job scope of a product manager and shared with each other our experiences of working in different organisations and what product managers do at these organisations. 
+
+Eventually, our shared understanding on our target user profile helped us to build a cohesive product catered to product managers.
+
+
+**Model**
+
+The `Model` of Productiv is certainly more complex than that of AddressBook. In AddressBook, there was only one key entity type in play - `Person`. For Productiv, three different entity types are managed at once - `Deliverable`, `Meeting` and `Contact`.
+
+As such, we had to restructure our entire application to accommodate these three entity types. Throughout the project, we had to rethink and refactor the structure of our code, weighing the pros and cons of each approach. This was a very painful process and also vulnerable to regressions.
+
+Eventually, we separated the models into three different `ModelManager`s, handled by three different `LogicManager`s, adhering to the Separation of Concerns Principle. The reduced coupling decreased the dependencies between the models.
+
+This also influenced our decision to not link the `Contacts` field in `Deliverable` and `Meeting` to data in the `Contact` model. This also provided greater flexibility to users as they could add contacts to `Deliverable`s and `Meeting`s without recording the details of the contact, e.g. a `Meeting` can involve people who are not important to record as a `Contact`.
+
+
+**Ui**
+
+The `Ui` of Productiv was almost entirely revamped from the AddressBook. 
+
+The easiest way would have been to stick to the current `Ui` of the AddressBook i.e. have 3 lists (`DeliverableListPanel`, `MeetingListPanel` and `ContactListPanel`) on the same page. While this would have been easier to implement, it would have made Productiv look very cluttered. We chose the hard way as we believe in making the user-experience seamless and enjoyable. As such, we worked hard to have the `Ui` change according to the current mode the user is in and also create an entirely new View Panel to enhance the user experience.
+
+The `Dashboard` was difficult to implement. In particular, the OCP was definitely not something that could be done overnight. None of us had experience with JavaFX prior to CS2103T. We did extensive research on the libraries that we could use and exhaustive checks to ensure that the OCP was synced with the rest of Productiv. Eventually, we managed to create the OCP, which vastly improved the user experience.
+
+
+**Overall**
+
+As a whole, this process was fraught with challenges. Whenever we had to face obstacles, we worked with each other to brainstorm and decide on the best solution. We made sure that everyone followed the same workflow and reviewed each other’s work to maintain the code quality of our codebase. We have learnt alot from each other, beyond just technical skills. Productiv would not have been possible without the hard work and commitment of the entire team.
