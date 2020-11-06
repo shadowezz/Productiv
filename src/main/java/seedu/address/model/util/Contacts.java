@@ -35,8 +35,12 @@ public class Contacts {
     public Contacts(Optional<String> contacts) {
         if (contacts.isPresent()) {
             checkArgument(isValidContacts(contacts.get()), MESSAGE_CONSTRAINTS);
+            value = contacts.get().isEmpty()
+                    ? Optional.empty()
+                    : contacts;
+        } else {
+            value = contacts;
         }
-        value = contacts;
     }
 
     /**
@@ -47,14 +51,22 @@ public class Contacts {
     public Contacts(String contacts) {
         requireNonNull(contacts);
         checkArgument(isValidContacts(contacts), MESSAGE_CONSTRAINTS);
-        value = Optional.of(contacts);
+        if (contacts.isEmpty()) {
+            value = Optional.empty();
+        } else {
+            value = Optional.of(contacts);
+        }
     }
 
     /**
      * Returns true if a given string is a valid contacts.
      */
     public static boolean isValidContacts(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (test.isEmpty()) {
+            return true;
+        } else {
+            return test.matches(VALIDATION_REGEX);
+        }
     }
 
     @Override

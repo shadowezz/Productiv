@@ -9,7 +9,6 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_CONTACTS_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_FROM_DESC;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_LOCATION_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_TO_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.LOCATION_DESC_A;
@@ -127,10 +126,6 @@ class AddCommandParserTest {
         // invalid CONTACTS
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B
                 + TO_DESC_B + INVALID_CONTACTS_DESC + LOCATION_DESC_A, Contacts.MESSAGE_CONSTRAINTS);
-
-        // invalid LOCATION
-        assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B
-                + TO_DESC_B + CONTACTS_DESC_B + INVALID_LOCATION_DESC, Location.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B
