@@ -51,9 +51,19 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram*s below show how the components interact with each other for the scenario where the user issues the commands 
+
+* `delete 1` (in deliverable or meeting mode)
+
+<img src="images/ArchitectureSequenceDiagramWithDb.png" width="574" />
+
+* `delete 1` (in contact mode)
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
+
+* `switch m` (in any mode)
+
+<img src="images/ArchitectureSequenceSwitch.png" width="574" />
 
 The sections below give more details of each component.
 
