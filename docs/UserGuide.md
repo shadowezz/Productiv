@@ -16,7 +16,7 @@ title: User Guide
 
 ## Quick start
 
-1. Ensure you have Java `11` installed in your computer.
+1. Ensure you have Java `11` installed in your computer (it should be your default Java version).
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
@@ -513,8 +513,8 @@ Format: `clear`
 **A**: You can refer to our [Quick Start Guide](#quick-start).
 
 **Q**: Which operating systems can I run *Productiv* on?<br>
-**A**: Currently, *Productiv* is supported on both Mac and Windows. Just ensure 
-that you have Java `11` or above installed on your computer.
+**A**: Currently, *Productiv* is supported on both Windows and Mac. Just ensure
+that you have Java `11` installed on your computer and it is your default Java version.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it 
