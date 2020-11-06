@@ -140,6 +140,13 @@ You can only use commands found under [General](#general).
    ![Ui](images/Deliverable.png)
    <figcaption>Initial display of a deliverable list </figcaption>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You must be in the deliverable mode to execute the following commands. 
+Refer to [switch](#switching-modes-switch) for more information.
+
+</div>
+
 #### Adding a deliverable: `add`
 
 Adds a deliverable to your deliverable list.
@@ -237,8 +244,8 @@ Format: `find KEYWORDS`
 * Searches return deliverables matching at least one keyword, e.g. `Homepage Navigation` will return `Complete Homepage` and `Increase size of Navigation Bar`.
 
 Examples:
-* `find Homepage urgent` returns a deliverable with title `Complete homepage` and another with description `Urgent, client is unhappy`.
-* `find Mockup` returns a deliverable with name `Complete mockup` and another with description `Add more details to existing Mockup`.
+* `find mock-ups urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
+* `find plan` returns a deliverable with name `Finalize design and plan` and another with description `Reminder to plan time wisely.`.
 
 #### Listing all deliverables: `list`
 
@@ -273,6 +280,13 @@ Format: `clear`
 
    ![Ui](images/Meeting.png)
    <figcaption>Initial display of a meeting list </figcaption>
+   
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You must be in the meeting mode to execute the following commands. 
+Refer to [switch](#switching-modes-switch) for more information.
+
+</div>   
  
 #### Adding a meeting: `add`
 
@@ -357,8 +371,8 @@ Format: `find KEYWORDS`
 * Searches return meetings matching at least one keyword, e.g. `Complete game` will return `Complete features` and `Final game`.
 
 Examples:
-* `find discuss user guide John` returns a meeting with title `discuss user guide` and another with description `with Mr John`.
-* `find Mcdonalds` returns a meeting with title `Meet Mcdonalds` and another with description `Cater Mcdonalds breakfast`.
+* `find Survey` returns a meeting with title `Survey potential customers` and another with description `Don't forget to present survey results.`.
+* `find consult goals` returns a meeting with title `Consult about marketing goals` and another with description `Goals must be achieved!`.
 
 #### Listing all meetings: `list`
 
@@ -393,13 +407,20 @@ Format: `clear`
 
    ![contact](images/Contact.png)
    <figcaption>Initial display of a contact list </figcaption>
+   
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** You must be in the contact mode to execute the following commands. 
+Refer to [switch](#switching-modes-switch) for more information.
+
+</div> 
 
 #### Adding a contact: `add`
 
 Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `NAME` is the name of the contact.
+* `NAME` is the name of the contact. 
 * `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
@@ -473,8 +494,8 @@ Format: `find KEYWORDS`
 * Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
 
 Examples:
-* `find John Kite` returns a contact with name `john kite` and another with description `Kite manufacturer`.
-* `find Sun` returns a contact with name `Joe Sun` and another with description `Works at Sun Tools`.
+* `find alex yeoh` returns a contact with name `Alex Yeoh` and another with description `Business analyst. Alex works with him.`.
+* `find Johnson` returns a contact with name `Amber Johnson` and another with description `Works at Johnson & Johnson`.
 
 #### Listing all contacts: `list`
 
