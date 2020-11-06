@@ -308,9 +308,7 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product Scope**
 
 **Target user profile**:
 
@@ -326,7 +324,7 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 manage their product’s development more comprehensively and conveniently.
 
 
-### EPIC
+## **Appendix B: User Stories**
 
 | No | EPIC                                                                                                                                        | 
 |----|---------------------------------------------------------------------------------------------------------------------------------------------|
@@ -335,8 +333,6 @@ manage their product’s development more comprehensively and conveniently.
 |C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
 |D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
 |E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
-
-### User stories
 
 Priorities: 
 * `* * *` - High (must have)
@@ -383,7 +379,7 @@ Priorities:
 
 
 
-### Use cases
+## **Appendix C: Use Cases**
 
 (For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -705,8 +701,7 @@ Priorities:
       
 *{More to be added}*
       
-
-### Non-Functional Requirements
+## **Appendix D: Non-Functional Requirements**
 
 1. Should work on any mainstream OS as long as it has Java 11 installed.
 1. Should be able to hold up to 1000 contacts without any negative effects.
@@ -716,7 +711,7 @@ Priorities:
 
 *{More to be added}*
 
-### Glossary
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X.
 * **Deliverable**: a thing able to be provided, especially as a product of a development process.
@@ -724,9 +719,7 @@ Priorities:
 
 *{More to be added}*
 
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
@@ -820,8 +813,6 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Effort**
+## **Appendix G: Effort**
 
 tbc
