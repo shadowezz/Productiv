@@ -314,14 +314,16 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 * has a need to manage a significant number of contacts
 * has a need to manage a meeting schedule
-* has a need to oversee the development of the product
-* prefer desktop apps over other types
+* has a need to oversee the development of a product
+* prefers to have product-related information in a single application
+* prefer desktop apps over other types of apps
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Used in a corporate setting, our application integrates both a meeting schedule and a contact list for the user to 
-manage their product’s development more comprehensively and conveniently.
+**Value proposition**: 
+* consolidates product-related information such as deliverables, meetings and contacts into one place
+* manage their product’s development more comprehensively and conveniently than a typical mouse/GUI driven app
 
 
 ## **Appendix B: User Stories**
