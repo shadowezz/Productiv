@@ -63,7 +63,7 @@ The *Sequence Diagram*s below show how the components interact with each other f
 
 * `switch m` (in any mode)
 
-<img src="images/ArchitectureSequenceDiagramSwitch.png" width="574" />
+<img src="images/ArchitectureSequenceDiagramSwitch.png" width="450" />
 
 The sections below give more details of each component.
 
