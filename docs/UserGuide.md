@@ -121,12 +121,12 @@ Adds a deliverable to your deliverable list.
 Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `TITLE` is the main heading of the deliverable.
 * `MILESTONE` is the milestone tagged to the deliverable.
-* `MILESTONE` takes in numerical values separated by periods, e.g. `1.3`, `14.2.1`.
+* `MILESTONE` is a non-negative integer, or a period-separated string of non-negative integers, e.g. `2`, `14.2.1`.
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
 * `DEADLINE` can be in the past but must not be earlier than the year 2019.
 * `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
-* `CONTACTS` represents the contacts involved in seeing through the deliverable.
-* `CONTACTS` is a comma-separated string of names.
+* `CONTACTS` represents the contact(s) involved in seeing through the deliverable.
+* `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
 
 <div markdown="block" class="alert alert-info">
 
@@ -255,12 +255,12 @@ Adds a meeting to your meeting list.
 
 Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `TITLE` is the main heading of the meeting.
-* `FROM` is the start date time of the meeting in DD-MM-YYYY HH:mm format.
-* `TO` is the end date time of the meeting in DD-MM-YYYY HH:mm format.
-* `FROM` and `TO` can be in the past but must not be earlier than the year 2019.
+* `FROM` is the start date time of the meeting in dd-MM-yyyy HH:mm format.
+* `FROM` can accept dates in the past but must not be earlier than the year 2019.
+* `TO` is the end time of the meeting in HH:mm format.
 * `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
-* `CONTACTS` represents the contacts involved in the meeting. 
-* `CONTACTS` is a comma-separated string of names.
+* `CONTACTS` represents the contact(s) involved in the meeting. 
+* `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
 * `LOCATION` is the location of the meeting.
 
 <div markdown="block" class="alert alert-info">

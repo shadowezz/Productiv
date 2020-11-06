@@ -14,12 +14,9 @@ public class DateTime implements Comparable<DateTime> {
     public static final String DATE_REGEX = "(([0-2]\\d)|(3[0-1]))-((0[1-9])|(1[0-2]))-(\\d{4})";
     public static final String EARLIEST_DATE_STRING = "01-01-2019 00:00";
     public static final String CONSTRAINTS =
-            "%s should be in the format of DD-MM-YYYY HH:mm, "
-                    + "and should be within the calendar range starting from year 2019. "
-                    + "Note: Single digit month, day, hour and minute must start with a leading zero.";
+            "%s should be in dd-MM-yyyy HH:mm format and must not be earlier than the year 2019.";
 
-
-    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "Dates");
+    public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "Date");
 
     public static final String VALIDATION_REGEX = String.format("%s(\\s(%s))",
             DATE_REGEX, Time.TIME_REGEX);
