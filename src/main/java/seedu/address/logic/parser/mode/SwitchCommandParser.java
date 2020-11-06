@@ -1,6 +1,5 @@
 package seedu.address.logic.parser.mode;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.ModeEnum;

@@ -1,10 +1,6 @@
 package seedu.address.logic.parser.meeting;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.meeting.ClearCommand;
 import seedu.address.logic.commands.meeting.Command;
@@ -13,7 +9,6 @@ import seedu.address.logic.commands.meeting.EditCommand;
 import seedu.address.logic.commands.meeting.FindCommand;
 import seedu.address.logic.commands.meeting.ListCommand;
 import seedu.address.logic.commands.meeting.ViewCommand;
-import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.logic.parser.TokenizedUserInput;
 import seedu.address.logic.parser.exceptions.ParseException;
