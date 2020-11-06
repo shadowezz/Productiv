@@ -130,15 +130,16 @@ public class Deliverable implements TimeEvent {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getTitle())
-                .append(" Milestone: ")
-                .append(getMilestone())
-                .append(" Description: ")
-                .append(getDescription())
+        builder.append("Title: ")
+                .append(getTitle())
                 .append(" Deadline: ")
                 .append(getDeadline())
-                .append(" Contacts: ")
-                .append(getContacts());
+                .append(" Milestone: ")
+                .append(getMilestone())
+                .append(" Contact(s): ")
+                .append(getContacts())
+                .append(" Description: ")
+                .append(getDescription());
         return builder.toString();
     }
 
