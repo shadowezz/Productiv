@@ -120,13 +120,13 @@ Adds a deliverable to your deliverable list.
 
 Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 * `TITLE` is the main heading of the deliverable.
-* `MILESTONE` is the milestone tagged to the deliverable.
-* `MILESTONE` is a non-negative integer, or a period-separated string of non-negative integers, e.g. `2`, `14.2.1`.
 * `DEADLINE` is the due date time of the deliverable in DD-MM-YYYY HH:mm format.
 * `DEADLINE` can be in the past but must not be earlier than the year 2019.
-* `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
+* `MILESTONE` is the milestone tagged to the deliverable.
+* `MILESTONE` is a non-negative integer, or a period-separated string of non-negative integers, e.g. `2`, `14.2.1`.
 * `CONTACTS` represents the contact(s) involved in seeing through the deliverable.
 * `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
+* `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 
 <div markdown="block" class="alert alert-info">
 
@@ -258,10 +258,10 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 * `FROM` is the start date time of the meeting in dd-MM-yyyy HH:mm format.
 * `FROM` can accept dates in the past but must not be earlier than the year 2019.
 * `TO` is the end time of the meeting in HH:mm format.
-* `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
 * `CONTACTS` represents the contact(s) involved in the meeting. 
 * `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
 * `LOCATION` is the location of the meeting.
+* `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
 
 <div markdown="block" class="alert alert-info">
 
@@ -379,8 +379,8 @@ Format: `clear`
 Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `NAME` is the name of the contact.
+* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
 * `PHONE` should only contain numbers, and must be at least 3-digits long.

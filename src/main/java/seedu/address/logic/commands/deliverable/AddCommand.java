@@ -22,16 +22,16 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a deliverable to the deliverable list.\n"
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
-            + PREFIX_MILESTONE + "MILESTONE "
             + PREFIX_DEADLINE + "DEADLINE "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
+            + PREFIX_MILESTONE + "MILESTONE "
+            + "[" + PREFIX_CONTACTS + "CONTACTS] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Login screen "
-            + PREFIX_MILESTONE + "1.0 "
             + PREFIX_DEADLINE + "12-12-2020 23:59 "
-            + PREFIX_DESCRIPTION + "Must include username and password fields "
-            + PREFIX_CONTACTS + "John Martin, Abby Li";
+            + PREFIX_MILESTONE + "1.0 "
+            + PREFIX_CONTACTS + "John Martin, Abby Li "
+            + PREFIX_DESCRIPTION + "Must include username and password fields";
 
     public static final String MESSAGE_SUCCESS = "Added new deliverable: %1$s";
     public static final String MESSAGE_DUPLICATE_DELIVERABLE =

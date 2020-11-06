@@ -129,18 +129,18 @@ public class Meeting implements TimeEvent {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Title: ")
+        builder.append("Title: ")
                 .append(getTitle())
-                .append(" Description: ")
-                .append(getDescription())
                 .append(" From: ")
                 .append(getFrom())
                 .append(" To: ")
                 .append(getTo())
-                .append(" Contacts: ")
+                .append(" Contact(s): ")
                 .append(getContacts())
                 .append(" Location: ")
-                .append(getLocation());
+                .append(getLocation())
+                .append(" Description: ")
+                .append(getDescription());
         return builder.toString();
     }
 
