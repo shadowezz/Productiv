@@ -245,7 +245,7 @@ Format: `find KEYWORDS`
 
 Examples:
 * `find mock-ups urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
-* `find plan` returns a deliverable with name `Finalize design and plan` and another with description `Reminder to plan time wisely.`.
+* `find plan` returns a deliverable with title `Finalise design and plan` and another with description `Reminder to plan time wisely.`.
 
 #### Listing all deliverables: `list`
 
@@ -339,9 +339,9 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [
 </div>
 
 Examples:
-* `edit 2 t/Discuss final release features d/Finalize dashboard functions`
+* `edit 2 t/Discuss final release features d/Finalise dashboard functions`
 edits the title of the 2nd meeting to be `Discuss final release features` 
-and its description to be `Finalize dashboard functions`.
+and its description to be `Finalise dashboard functions`.
 * `edit 4 c/Jordan Woods, Betsy Crowe, Jeremey` edits the contacts of the 4th meeting to be `Jordan Woods, Betsy Crowe, Jeremey`.
 
 #### Viewing a meeting: `view`
@@ -420,7 +420,7 @@ Refer to [switch](#switching-modes-switch) for more information.
 Adds a developer or stakeholder to your contact list.
 
 Format: `add r/ROLE n/NAME e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `NAME` is the name of the contact. 
+* `NAME` is the name of the contact.
 * `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
 * `EMAIL` is the email address of the contact.
 * `PHONE` is the phone number of the contact.
@@ -572,7 +572,7 @@ Clear          | `clear`
 Action         | Format, Examples
 ---------------|------------------------
 Add            | `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `add t/Discuss app requirements from/12-12-2020 09:00 to/10:00 d/Refine with business associates c/Jordan Woods, Betsy Crowe`
-Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalize dashboard functions`
+Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalise dashboard functions`
 View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
 List           | `list` 
