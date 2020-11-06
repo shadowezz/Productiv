@@ -192,7 +192,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to dashboard mode.
      */
     public void switchDashboard() {
-        logger.info(String.format(CLICK_MODE_MESSAGE, "DashBoard"));
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Dashboard"));
         switchMode(ModeEnum.DASHBOARD);
     }
 
