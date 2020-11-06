@@ -208,7 +208,7 @@ The user input is handled and retrieved by the `MainWindow` and then passed to `
 `LogicModeManager` will then execute `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to. 
 Then, `MainWindow` gets the new mode to switch to from `CommandResult`.
 Based on the mode, `MainWindow` will update its own attribute `mode`.
-`MainWindow` will then update the UI to show only related information to the new mode.
+`MainWindow` will then update the UI to only show information related to the new mode.
 
 Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
@@ -229,7 +229,7 @@ Given below is an activity diagram to show how the switch mode operation works.
 
 * **Alternative 2 (original implementation):** Longer user commands: `switch` `dashboard`, `deliverable`, `meeting` or `contact`.
   * Pros: Clearer as commands correspond to the naming of tabs on the navigation bar.
-  * Cons: Take longer to type longer user commands.
+  * Cons: Takes longer to type longer user commands.
 
 ##### Aspect: Where mode is stored
 
@@ -802,7 +802,7 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-   On normal usage, 3 JSON files are created / saved - `contactbook.json`, `meetingbook.json` and `deliverablebook.json`.
+   On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
    All 3 files contain information stored by the user from their respective modes.
 
    On first starting the program, a file is only created if the user inputs a command specific to that mode.
@@ -820,7 +820,7 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
    1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
       Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.
 
-   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.<br>
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. Add a (`-`) to a saved deliverable's milestone.<br>
       Expected: The app should be able to start up but show no deliverables.
 
       <div markdown="span" class="alert alert-info">:information_source: **Note:** To re-initialise a list of sample deliverables, execute the previous test case.
@@ -831,7 +831,7 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 | Feature     | AB3     | Productiv    |
 | ----------- | ------- | ------------ |
-| LoC         | ~6k     | ~15k         |
+| LoC         | ~9k     | ~20k         |
 | Difficulty  | 10      | 15           |
 | Effort      | 10      | 15           |
 
