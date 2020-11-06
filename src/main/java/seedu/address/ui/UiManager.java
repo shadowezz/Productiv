@@ -36,7 +36,6 @@ public class UiManager implements Ui {
      */
     public UiManager(LogicMode logicMode, LogicPerson logicPerson,
                      LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
-        // TODO use only a central logic object
         super();
         this.logicMode = logicMode;
         this.logicPerson = logicPerson;
@@ -54,7 +53,7 @@ public class UiManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, logicMode, logicPerson, logicDeliverable, logicMeeting);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts(); // TODO change to dashboard. for now default to contact list
+            mainWindow.fillInnerParts();
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));

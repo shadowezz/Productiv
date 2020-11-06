@@ -28,7 +28,10 @@ public class SwitchCommandTest {
         assertCommandSuccess(switchMeetingCommand, new CommandResult(expectedMeetingMessage, false, false,
                 ModeEnum.MEETING));
 
-        // TODO add more modes here
+        SwitchCommand switchDashboardCommand = new SwitchCommand(ModeEnum.DASHBOARD);
+        String expectedDashboardMessage = String.format(SwitchCommand.MESSAGE_SUCCESS, ModeEnum.DASHBOARD);
+        assertCommandSuccess(switchDashboardCommand, new CommandResult(expectedDashboardMessage, false, false,
+                ModeEnum.DASHBOARD));
     }
 
     @Test
