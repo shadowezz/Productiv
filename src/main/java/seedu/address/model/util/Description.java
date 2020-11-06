@@ -13,6 +13,7 @@ import java.util.Optional;
 public class Description {
 
     public static final String EMPTY_DESCRIPTION_FIELD = "-";
+    // TODO: remove after allowing blank optional fields to pass.
     public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values, and it should not be blank";
 
     /*

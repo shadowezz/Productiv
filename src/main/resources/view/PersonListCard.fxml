@@ -10,8 +10,8 @@
   <GridPane HBox.hgrow="ALWAYS" minHeight="40">
     <children>
       <Label fx:id="id" styleClass="cell_small_label" GridPane.columnIndex="0" />
-      <Label fx:id="name" text="\$first" styleClass="cell_small_label" wrapText="true" GridPane.columnIndex="1" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" wrapText="true" GridPane.columnIndex="2" />
+      <Label fx:id="name" text="\$first" styleClass="cell_small_label" GridPane.columnIndex="1" />
+      <Label fx:id="email" styleClass="cell_small_label" text="\$email" GridPane.columnIndex="2" />
       <FlowPane fx:id="tags" GridPane.columnIndex="3" >
         <Label fx:id="role" text="\$role" />
       </FlowPane>

@@ -16,8 +16,8 @@ public enum Role {
     STAKEHOLDER("Stakeholder", "stk");
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Role should only be a " + getStringJoinedBySeparator(Arrays.stream(Role.values())
-                    .map(role -> role.getArgument() + " (" + role.toString() + ")"), " or ");
+            "Role should only take " + getStringJoinedBySeparator(Arrays.stream(Role.values())
+                    .map(role -> role.getArgument() + " (" + role.toString().toLowerCase() + ")"), " or ") + ".";
     public static final String VALIDATION_REGEX =
             getStringJoinedBySeparator(Arrays.stream(Role.values()).map(role -> role.getArgument()), "|");
 

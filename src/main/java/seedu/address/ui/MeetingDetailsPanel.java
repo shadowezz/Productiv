@@ -21,7 +21,7 @@ public class MeetingDetailsPanel extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
-    private Label datetime;
+    private Label dateTime;
     @FXML
     private Label venue;
     @FXML
@@ -36,7 +36,7 @@ public class MeetingDetailsPanel extends UiPart<Region> {
         assert meeting != null;
         title.setText(meeting.getTitle().value);
         description.setText(meeting.getDescription().toString());
-        datetime.setText(String.format("%s to %s", meeting.getFrom(), meeting.getTo()));
+        dateTime.setText(String.format("%s to %s", meeting.getFrom(), meeting.getTo()));
         venue.setText(meeting.getLocation().toString());
         meeting.getContacts().value.ifPresentOrElse(contacts -> {
             for (String contact : contacts.split(",")) {

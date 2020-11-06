@@ -308,25 +308,25 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product Scope**
 
 **Target user profile**:
 
 * has a need to manage a significant number of contacts
 * has a need to manage a meeting schedule
-* has a need to oversee the development of the product
-* prefer desktop apps over other types
+* has a need to oversee the development of a product
+* prefers to have product-related information in a single application
+* prefer desktop apps over other types of apps
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Used in a corporate setting, our application integrates both a meeting schedule and a contact list for the user to 
-manage their product’s development more comprehensively and conveniently.
+**Value proposition**: 
+* consolidates product-related information such as deliverables, meetings and contacts into one place
+* manage their product’s development more comprehensively and conveniently than a typical mouse/GUI driven app
 
 
-### EPIC
+## **Appendix B: User Stories**
 
 | No | EPIC                                                                                                                                        | 
 |----|---------------------------------------------------------------------------------------------------------------------------------------------|
@@ -335,8 +335,6 @@ manage their product’s development more comprehensively and conveniently.
 |C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
 |D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
 |E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
-
-### User stories
 
 Priorities: 
 * `* * *` - High (must have)
@@ -383,7 +381,7 @@ Priorities:
 
 
 
-### Use cases
+## **Appendix C: Use Cases**
 
 (For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -705,28 +703,24 @@ Priorities:
       
 *{More to be added}*
       
+## **Appendix D: Non-Functional Requirements**
 
-### Non-Functional Requirements
+1. Should work on any [`mainstream OS`](#common-classes) as long as Java `11` is installed and is the default.
+1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without noticeable sluggishness in performance for typical usage.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
+1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+1. The application should be for a single user, with its size being smaller than 100MB.
 
-1. Should work on any mainstream OS as long as it has Java 11 or above installed.
-1. Should be able to hold up to 1000 contacts without any negative effects.
-1. Should be able to hold up to 1000 deliverables without any negative effects.
-1. Should be able to schedule meetings up to 2 years in advance.
-1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+## **Appendix E: Glossary**
 
-*{More to be added}*
+* **Mainstream OS**: Windows, Unix, OS-X.
+* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
+* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
+* **Deliverable**: An item to be completed as part of the product development process.
+* **Milestone**: A significant stage or event in the development of a product.
+* **Role**: A function assumed or part played by a contact. Every contact is either a developer or stakeholder.
 
-### Glossary
-
-* **Mainstream OS**: Windows, Linux, Unix, OS-X.
-* **Deliverable**: a thing able to be provided, especially as a product of a development process.
-* **CRUD**: Create, Read, Update and delete.
-
-*{More to be added}*
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
@@ -739,77 +733,92 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file.<br>
+       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.<br>
+       Note: The window has a minimum width and height so that the UI does not look so cramped.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. Shutdown
+1. Shutting down
 
-    1. Click the window close button _OR_
-    1. Enter input: `exit`, to close the program. 
-    
+    1. Test case: Click the window close button.<br>
+       Expected: The app shuts down.
+
+    1. Test case: `exit`<br>
+       Expected: Similar to previous.
+
 ### Switching Modes
 
-1. Via Mouse input
+1. Switching to deliverable mode
 
-    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
+    1. Prerequisite: You are not in deliverable mode.
 
-1. Via Command Line Input
+    1. Test case: Click `Deliverable` on the top navigation bar.<br>
+       Expected: Window displays list of saved deliverables.
 
-    1. Test case: `switch deliverable` or `switch meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
-    
-    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
-    Expected: Status bar throws error message.
+    1. Test case: `switch dv`<br>
+       Expected: Similar to previous.
 
-### Adding an item
+    1. Other incorrect switch commands to try: `switch me3ting`, `switch dev`<br>
+       Expected: Status bar throws error message.
 
-1. Adding a contact while in `Contact` mode
+### Adding a deliverable
 
-   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Adding Login screen
 
-   1. Test case: `add n/john`<br>
-      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: You are in deliverable mode. Login screen not already added. If added, delete it.
 
-   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
-      Expected: Similar to previous.
+   1. Test case: `add t/Login screen m/1.0 by/12-12-2020 23:59 d/Must include username and password fields c/John Martin, Abby Li`<br>
+      Expected: Login screen to appear in the list of deliverables and expanded in right panel.
 
-### Deleting an item
+   1. Test case: `add t/Login screen`<br>
+      Expected: No deliverable is added. Status bar throws error message.
 
-1. Deleting a contact while in `contact` mode
-
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
+   1. Other incorrect add commands to try: `add`, `add Login screen` <br>
+      Expected: Status bar throws error message.
 
 ### Saving data
 
-1. Data files are saved in a `data` folder.<br>
-3 JSON files are created:
-    * `contactbook.json`
-    * `meetingbook.json`
-    * `deliverablebook.json`
+1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-All 3 files contain information stored by the user from their respective modes.
+   On normal usage, 3 JSON files are created:
+      * `contactbook.json`
+      * `meetingbook.json`
+      * `deliverablebook.json`
+
+   All 3 files contain information stored by the user from their respective modes.
+
+   On first starting the program, a file is only created if the user inputs a command specific to that mode.
+
+   1. Prerequisites: Very first time using the app.
+
+   1. Test case: Starting and close the app immediately.<br>
+      Expected: No JSON files created.
+
+   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.
+      Expected: Only `deliverablebook.json` created.
 
 1. Dealing with missing/corrupted data files
 
-   1. Missing data/corrupted files: delete `contactbook.json` file and start the jar file again<br> 
-   Expected: Data file should re-initialise a list of sample contacts
-   
-_{more to be added}_
+   1. Test case: Delete `deliverablebook.json` file and start the jar file again<br>
+      Expected: Data file should re-initialise a list of sample deliverables
+
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.
+      Expected: Similar to previous.
+
+
+## **Appendix G: Effort**
+
+| Feature     | AB3     | Productiv    |
+| ----------- | ------- | ------------ |
+| LoC         | ~6k     | ~20k         |
+| Difficulty  | 10      | 15           |
+| Effort      | 10      | 15           |
+
