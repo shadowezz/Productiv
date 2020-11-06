@@ -13,13 +13,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class SwitchCommandParser implements Parser<SwitchCommand> {
 
-    private final ModeEnum mode;
-
-    SwitchCommandParser(ModeEnum mode) {
-        requireNonNull(mode);
-        this.mode = mode;
-    }
-
     /**
      * Parses the given {@code String} of arguments in the context of the SwitchCommand
      * and returns a SwitchCommand object for execution.
@@ -37,10 +30,6 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
         if (newMode == null) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
-        }
-
-        if (mode == newMode) {
-            throw new ParseException(String.format(SwitchCommand.MESSAGE_SAME_MODE, mode.toString().toLowerCase()));
         }
 
         return new SwitchCommand(newMode);
