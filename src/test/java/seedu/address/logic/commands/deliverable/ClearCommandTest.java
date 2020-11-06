@@ -1,11 +1,13 @@
 package seedu.address.logic.commands.deliverable;
 
 
+import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalDeliverables.getTypicalDeliverableBook;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deliverable.DeliverableBook;
 import seedu.address.model.deliverable.ModelDeliverable;
@@ -16,10 +18,10 @@ public class ClearCommandTest {
     @Test
     public void execute_emptyDeliverableBook_success() {
         ModelDeliverable modelDeliverable = new ModelDeliverableManager();
-        ModelDeliverable expectedModelDeliverable = new ModelDeliverableManager();
 
-        assertCommandSuccess(
-                new ClearCommand(), modelDeliverable, ClearCommand.MESSAGE_SUCCESS, expectedModelDeliverable);
+        assertCommandFailure(
+                new ClearCommand(), modelDeliverable, String.format(
+                        Messages.MESSAGE_INVALID_DELIVERABLE_LIST_EMPTY, ClearCommand.COMMAND_WORD));
     }
 
     @Test

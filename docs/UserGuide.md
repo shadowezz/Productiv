@@ -242,7 +242,7 @@ Examples:
 
 #### Listing all deliverables: `list`
 
-Displays a list of all deliverables in your deliverable list.
+Lists out all deliverables in your deliverable list, if any.
 
 Format: `list`
 
@@ -265,7 +265,7 @@ Example:
 
 #### Clearing all deliverables: `clear`
 
-Clears all deliverables from the deliverable list.
+Clears all deliverables from your deliverable list, if any.
 
 Format: `clear`
 
@@ -362,7 +362,7 @@ Examples:
 
 #### Listing all meetings: `list`
 
-Displays a list of all meetings in your meeting list.
+Lists out all meetings in your meeting list, if any.
 
 Format: `list`
 
@@ -385,7 +385,7 @@ Example:
 
 #### Clearing all meetings: `clear`
 
-Clears all meetings from your meeting list.
+Clears all meetings from your meeting list, if any.
 
 Format: `clear` 
 
@@ -478,7 +478,7 @@ Examples:
 
 #### Listing all contacts: `list`
 
-Displays a list of all contacts in your contact list.
+Lists out all contacts from your contact list, if any.
 
 Format: `list`
 
@@ -501,7 +501,7 @@ Example:
 
 #### Clearing all contacts: `clear`
 
-Clears all contacts from your contact list.
+Clears all contacts from your contact list, if any.
 
 Format: `clear`
 
