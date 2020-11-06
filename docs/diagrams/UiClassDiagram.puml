@@ -11,10 +11,29 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
 Class StatusBarFooter
 Class CommandBox
+package XYZ <<Rectangle>>{
+Class XYZDetailsPanel
+Class XYZListPanel
+Class XYZCard
+}
+'package Deliverable <<Rectangle>>{
+'Class DeliverableCard
+'Class DeliverableListPanel
+'Class DeliverableDetailsPanel
+'}
+'package Meeting <<Rectangle>>{
+'Class MeetingCard
+'Class MeetingDetailsPanel
+'Class MeetingListPanel
+'}
+package DashBoard <<Rectangle>>{
+Class CalendarDeliverableCard
+Class CalendarListPanel
+Class CalendarMeetingCard
+Class ProjectCompletionStatusPanel
+}
 }
 
 package Model <<Rectangle>> {
@@ -33,25 +52,46 @@ UiManager -down-> MainWindow
 MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
+MainWindow *-down-> XYZListPanel
 MainWindow *-down-> StatusBarFooter
+'MainWindow *-down-> DeliverableListPanel
+'MainWindow *-down-> MeetingListPanel
+MainWindow *-down-> XYZDetailsPanel
+'MainWindow *-down-> DeliverableDetailsPanel
+'MainWindow *-down-> MeetingDetailsPanel
+MainWindow *-down-> CalendarListPanel
+MainWindow *-down-> ProjectCompletionStatusPanel
 
-PersonListPanel -down-> PersonCard
+XYZListPanel -down-> XYZCard
+'DeliverableListPanel -down-> DeliverableCard
+'MeetingListPanel -down-> MeetingCard
+CalendarListPanel -down-> CalendarDeliverableCard
+CalendarListPanel -down-> CalendarMeetingCard
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
+XYZListPanel --|> UiPart
+XYZCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
+'DeliverableListPanel --|> UiPart
+'MeetingListPanel --|> UiPart
+XYZDetailsPanel --|> UiPart
+'DeliverableDetailsPanel --|> UiPart
+'MeetingDetailsPanel --|> UiPart
+CalendarListPanel --|> UiPart
+ProjectCompletionStatusPanel --|> UiPart
 
-PersonCard ..> Model
+XYZCard ..> Model
+'DeliverableCard ..> Model
+'MeetingCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
+note top of XYZ: XYZ = Deliverable, Meeting and Contact
 
-PersonListPanel -[hidden]left- HelpWindow
+XYZListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter

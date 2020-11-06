@@ -1,0 +1,63 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor MODEL_COLOR
+
+package Entity <<Rectangle>>{
+package Person <<Rectangle>>{
+Class Person
+Class Name
+Class Phone
+Class Email
+Class Role
+}
+
+package Deliverable <<Rectangle>>{
+Class Deliverable
+Class Deadline
+Class Milestone
+}
+
+package Meeting <<Rectangle>>{
+Class Meeting
+Class From
+Class To
+Class Location
+}
+
+
+Interface TimeEvent
+Class Title
+Class Description
+Class Contacts
+Class DateTime
+Class Time
+}
+
+Person *--> Name
+Person *--> Role
+Person *--> Phone
+Person *--> Email
+Person *--> Description
+
+Deliverable *--> Title
+Deliverable *--> Description
+Deliverable *--> Deadline
+Deliverable *--> Milestone
+Deliverable *--> Contacts
+
+Meeting *--> Title
+Meeting *--> Description
+Meeting *--> From
+Meeting *--> To
+Meeting *--> Contacts
+Meeting *--> Location
+
+Deliverable ..|> TimeEvent
+Meeting ..|> TimeEvent
+From --|> DateTime
+Deadline --|> DateTime
+To --|> Time
+
+@enduml
