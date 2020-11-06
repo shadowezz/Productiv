@@ -40,7 +40,6 @@ public class LogicPersonManagerTest {
 
     private ModelPerson modelPerson = new ModelPersonManager();
     private LogicPerson logic;
-    private Object CommandException;
 
     @BeforeEach
     public void setUp() {

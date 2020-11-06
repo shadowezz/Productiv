@@ -194,6 +194,7 @@ public class MainWindow extends UiPart<Stage> {
     public void switchDashboard() {
         logger.info(String.format(CLICK_MODE_MESSAGE, "Dashboard"));
         switchMode(ModeEnum.DASHBOARD);
+        projectCompletionStatusPanel.updateOcp();
     }
 
     /**
@@ -330,7 +331,6 @@ public class MainWindow extends UiPart<Stage> {
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
                     calendar.updateCalendarList();
-                    projectCompletionStatusPanel.updateOcp();
                     break;
                 case MEETING:
                     commandResult = logicMeeting.execute(commandText);
@@ -356,6 +356,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
+
+                if (commandResult.getMode() == ModeEnum.DASHBOARD) {
+                    projectCompletionStatusPanel.updateOcp();
+                }
             } else {
                 updateDetailsPanel();
             }
