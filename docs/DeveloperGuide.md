@@ -705,13 +705,13 @@ Priorities:
       
 ## **Appendix D: Non-Functional Requirements**
 
-1. Should work on any mainstream OS as long as it has Java 11 installed.
-1. Should be able to hold up to 1000 contacts without any negative effects.
-1. Should be able to hold up to 1000 deliverables without any negative effects.
-1. Should be able to schedule meetings up to 2 years in advance.
-1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. Should work on any [`mainstream OS`](#common-classes) as long as it has Java `11` installed.
+1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without a noticeable sluggishness in performance for typical usage.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
+1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+1. The application should be for a single user, with its size being smaller than 100MB.
+1. The computer should have sufficient disk space to accommodate the user’s data stored in the system.
+1. The computer should have sufficient RAM and CPU power to run the JVM smoothly.
 
 ## **Appendix E: Glossary**
 
