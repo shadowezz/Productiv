@@ -725,7 +725,7 @@ Priorities:
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Each test case is to be executed independently of each other.
 
 </div>
 
@@ -733,18 +733,17 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
-
-    1. Double-click the jar file.<br>
+    1. Test case: Download the jar file and copy into an empty folder. Double-click the jar file.<br>
        Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.<br>
-       Note: The window has a minimum width and height so that the UI does not look so cramped.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
+    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window.
+       Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+
+       <div markdown="span" class="alert alert-info">:information_source: **Note:** The window has a minimum width and height so that the UI does not look so cramped.
+       </div>
 
 1. Shutting down
 
@@ -766,7 +765,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `switch dv`<br>
        Expected: Similar to previous.
 
-    1. Other incorrect switch commands to try: `switch me3ting`, `switch dev`<br>
+    1. Other incorrect switch commands to try: `switch meeting`, `switch dev`<br>
        Expected: Status bar throws error message.
 
 ### Adding a deliverable
@@ -788,30 +787,29 @@ testers are expected to do more *exploratory* testing.
 
 1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-   On normal usage, 3 JSON files are created:
-      * `contactbook.json`
-      * `meetingbook.json`
-      * `deliverablebook.json`
-
+   On normal usage, 3 JSON files are created / saved - `contactbook.json`, `meetingbook.json` and `deliverablebook.json`.
    All 3 files contain information stored by the user from their respective modes.
 
    On first starting the program, a file is only created if the user inputs a command specific to that mode.
 
    1. Prerequisites: Very first time using the app.
 
-   1. Test case: Starting and close the app immediately.<br>
-      Expected: No JSON files created.
+   1. Test case: Start and close the app immediately.<br>
+      Expected: The 3 JSON files are not created.
 
-   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.
-      Expected: Only `deliverablebook.json` created.
+   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.<br>
+      Expected: Of the 3 JSON files, only `deliverablebook.json` created.
 
 1. Dealing with missing/corrupted data files
 
-   1. Test case: Delete `deliverablebook.json` file and start the jar file again<br>
-      Expected: Data file should re-initialise a list of sample deliverables
+   1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
+      Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.
 
-   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.
-      Expected: Similar to previous.
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. The easiest way is to add - to a saved deliverable's milestone.<br>
+      Expected: The app should be able to start up but show no deliverables.
+
+      <div markdown="span" class="alert alert-info">:information_source: **Note:** To re-initialise a list of sample deliverables, execute the previous test case.
+      </div>
 
 
 ## **Appendix G: Effort**
