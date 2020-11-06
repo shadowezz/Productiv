@@ -55,15 +55,15 @@ The *Sequence Diagram*s below show how the components interact with each other f
 
 * `delete 1` (in deliverable or meeting mode)
 
-<img src="images/ArchitectureSequenceDiagramWithDb.png" width="574" />
+![`Architecture Sequence Diagram with Dashboard](images/ArchitectureSequenceDiagramWithDb.png)
 
 * `delete 1` (in contact mode)
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+![`Architecture Sequence Diagram without Dashboard](images/ArchitectureSequenceDiagram.png)
 
 * `switch m` (in any mode)
 
-<img src="images/ArchitectureSequenceDiagramSwitch.png" width="450" />
+![`Architecture Sequence Diagram for switch command](images/ArchitectureSequenceDiagramSwitch.png)
 
 The sections below give more details of each component.
 
