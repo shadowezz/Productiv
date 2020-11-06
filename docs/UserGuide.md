@@ -53,7 +53,8 @@ Here is a sequence of example commands you can try:<br>
 
 * Words in upper case are the parameters to be supplied by you for their respective fields.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
-:bulb: **Tip:** If you are not sure what specific parameters to supply for any required fields, supply an estimate or random value as place holder.
+:bulb: **Tip:** If you are not sure what specific parameters to supply for any required fields, supply an estimate or random value as place holder.<br>
+:bulb: **Tip:** For fields with an unspecified maximum length, the panels may look untidy if you supply long parameters.
 
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
