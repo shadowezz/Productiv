@@ -93,6 +93,11 @@ public class ModelPersonManager implements ModelPerson {
     }
 
     @Override
+    public ObservableList<Person> getInternalPersonList() {
+        return addressBook.getInternalPersonList();
+    }
+
+    @Override
     public Person getPersonInView() {
         return personInView;
     }

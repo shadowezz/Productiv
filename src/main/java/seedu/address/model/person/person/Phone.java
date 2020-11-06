@@ -25,9 +25,14 @@ public class Phone {
      * @param phone A valid phone number.
      */
     public Phone(Optional<String> phone) {
-        requireNonNull(phone);
-        phone.ifPresent(ph -> checkArgument(isValidPhone(ph), MESSAGE_CONSTRAINTS));
-        value = phone;
+        if (phone.isPresent()) {
+            checkArgument(isValidPhone(phone.get()), MESSAGE_CONSTRAINTS);
+            value = phone.get().isEmpty()
+                    ? Optional.empty()
+                    : phone;
+        } else {
+            value = phone;
+        }
     }
 
     /**
@@ -38,14 +43,22 @@ public class Phone {
     public Phone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
-        value = Optional.of(phone);
+        if (phone.isEmpty()) {
+            value = Optional.empty();
+        } else {
+            value = Optional.of(phone);
+        }
     }
 
     /**
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPhone(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (test.isEmpty()) {
+            return true;
+        } else {
+            return test.matches(VALIDATION_REGEX);
+        }
     }
 
     @Override

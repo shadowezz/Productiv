@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.testutil.Assert;
+
 class LocationTest {
 
     @Test
@@ -15,8 +17,8 @@ class LocationTest {
 
     @Test
     public void constructor_invalidLocation_throwsIllegalArgumentException() {
-        String invalidLocation = "";
-        assertThrows(IllegalArgumentException.class, () -> new Location(invalidLocation));
+        String invalidLocation = " ";
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Location(invalidLocation));
     }
 
     @Test
@@ -24,8 +26,10 @@ class LocationTest {
         // null Location
         assertThrows(NullPointerException.class, () -> Location.isValidLocation(null));
 
-        // blank location
-        assertFalse(Location.isValidLocation(""));
+        // Empty location
+        assertTrue(Location.isValidLocation(""));
+
+        // Blank location
         assertFalse(Location.isValidLocation(" "));
         assertFalse(Location.isValidLocation("   "));
 
