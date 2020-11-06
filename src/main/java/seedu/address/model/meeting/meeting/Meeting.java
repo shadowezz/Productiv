@@ -53,7 +53,7 @@ public class Meeting implements TimeEvent {
         LocalTime dateFrom = from.getLocalDateTime().toLocalTime();
         LocalTime dateTo = to.getLocalTime();
 
-        return dateFrom.compareTo(dateTo) <= 0;
+        return dateFrom.compareTo(dateTo) < 0;
     }
 
     public Title getTitle() {
