@@ -13,7 +13,7 @@
         <children>
             <Label fx:id="title" styleClass="details_title" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS" />
             <HBox spacing="5">
-                <Label fx:id="datetime" styleClass="cell_small_label" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS" />
+                <Label fx:id="dateTime" styleClass="cell_small_label" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS" />
                 <padding>
                     <Insets bottom="40" />
                 </padding>
