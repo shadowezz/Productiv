@@ -197,18 +197,25 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 
 ### Switch Mode feature
 
-Productiv can be one of these modes: dashboard, deliverable, meeting and contact mode.
+Productiv can be in any one of these modes: dashboard, deliverable, meeting and contact mode.
 Based on the current mode, user input is passed to the corresponding `LogicManager`,
 e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
 
 #### Implementation
 
 The user input is handled and retrieved by the `MainWindow` and then passed to `LogicModeManager`.
-`LogicModeManager` will call `ModeParser`, which will parse the input and create a `SwitchCommandParser`. `SwitchCommandParser` will return a `SwitchCommand`.
-`LogicModeManager` will then execute `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to. 
-Then, `MainWindow` gets the new mode to switch to from `CommandResult`.
+`LogicModeManager` will call `ModeParser`, which will create a `SwitchCommandParser`.
+`ModeParser` calls on `SwitchCommandParser` to parse the arguments in the user input.
+`SwitchCommandParser` will parse the arguments and return a `SwitchCommand`.
+This `SwitchCommand` is passed back `LogicModeManager`.
+`LogicModeManager` will then call the execute method of `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to.
+This `CommandResult` is passed back `MainWindow`.
+Then, `MainWindow` will then call the `getMode()` method of `CommandResult` to gets the new mode to switch to.
 Based on the mode, `MainWindow` will update its own attribute `mode`.
-`MainWindow` will then update the UI to only show information related to the new mode.
+`MainWindow` will then update the UI via `switchMode(mode)` to only show information related to the new mode.
+
+For the command, a `SwitchCommandParser` is implemented to parse the input into a mode.
+Invalid arguments (any argument other than `dv`, `db`, `m` and `c`) are also handled properly, with suitable error messages being displayed to the user.
 
 Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
