@@ -28,6 +28,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    private static final String CLICK_MODE_MESSAGE = "%1$s button clicked!\nResult: Switched to: %1$s";
+
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -190,6 +192,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to dashboard mode.
      */
     public void switchDashboard() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "DashBoard"));
         switchMode(ModeEnum.DASHBOARD);
     }
 
@@ -197,6 +200,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to contact mode.
      */
     public void switchPerson() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Contact"));
         switchMode(ModeEnum.PERSON);
     }
 
@@ -204,6 +208,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to deliverable mode.
      */
     public void switchDeliverable() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Deliverable"));
         switchMode(ModeEnum.DELIVERABLE);
     }
 
@@ -211,6 +216,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to meeting mode.
      */
     public void switchMeeting() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Meeting"));
         switchMode(ModeEnum.MEETING);
     }
 
