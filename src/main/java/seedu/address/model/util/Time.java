@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Time implements Comparable<Time> {
     public static final String TIME_REGEX = "(([0-1]\\d)|(2[0-3])):([0-5]\\d)";
-    public static final String CONSTRAINTS = "%s should be in HH:mm format. ";
+    public static final String CONSTRAINTS = "%s should be in HH:mm format.";
     public static final String MESSAGE_CONSTRAINTS = String.format(CONSTRAINTS, "Time");
 
     public static final String VALIDATION_REGEX = TIME_REGEX;

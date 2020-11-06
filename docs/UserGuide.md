@@ -132,8 +132,7 @@ Format: `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]`
 
 **:information_source: Notes:**<br>
 
-* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
-who are not in your contact list.
+* As `CONTACTS` is not related to your contact list, you can include those not present in it.
 
 * You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
 
@@ -269,8 +268,7 @@ Format: `add t/TITLE from/FROM to/TO [d/DESCRIPTION] [c/CONTACTS] [l/LOCATION]`
 
 * Meeting timings may overlap as you may wish to send a representative for your clashing meetings.
 
-* `CONTACTS` has no relation to the contacts in your contact list. Hence, you are free to add those
-who are not in your contact list.
+* As `CONTACTS` is not related to your contact list, you can include those not present in it.
 
 * You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
   

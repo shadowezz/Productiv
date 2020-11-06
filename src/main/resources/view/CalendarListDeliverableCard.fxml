@@ -22,12 +22,12 @@
                 </Label>
             </HBox>
             <FlowPane>
-                <Label text = "Milestone: " styleClass="label-bright"/>
-                <Label fx:id="milestone" text="\$milestone" />
-            </FlowPane>
-            <FlowPane>
                 <Label text = "Deadline: " styleClass="label-bright"/>
                 <Label fx:id="deadline" styleClass="cell_small_label" text="\$deadline" />
+            </FlowPane>
+            <FlowPane>
+                <Label text = "Milestone: " styleClass="label-bright"/>
+                <Label fx:id="milestone" text="\$milestone" />
             </FlowPane>
             <FlowPane>
                 <Label text = "Status: " styleClass="label-bright"/>
