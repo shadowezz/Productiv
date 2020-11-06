@@ -29,11 +29,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.meeting.AddCommand;
 import seedu.address.model.meeting.meeting.From;
-import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 import seedu.address.testutil.MeetingBuilder;
 
