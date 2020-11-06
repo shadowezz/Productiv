@@ -53,11 +53,9 @@ public class CommandTestUtil {
     public static final String LOCATION_DESC_B = " " + PREFIX_LOCATION + VALID_LOCATION_B;
 
     public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + ""; // "" empty not allowed not allowed
-    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION + ""; // empty not allowed
     public static final String INVALID_FROM_DESC = " " + PREFIX_FROM + "3-03-2020 09:30"; // missing '0' digit
     public static final String INVALID_TO_DESC = " " + PREFIX_TO + "03-03-2020 0930"; // missing colon
     public static final String INVALID_CONTACTS_DESC = " " + PREFIX_CONTACTS + "1 2 3"; // no commas
-    public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION + ""; // empty not allowed
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

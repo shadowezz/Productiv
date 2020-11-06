@@ -42,7 +42,10 @@ public class DeliverableDetailsPanel extends UiPart<Region> {
         deliverable.getContacts().value.ifPresentOrElse(contacts -> {
             for (String contact : contacts.split(",")) {
                 String cleanedContact = contact.trim().replaceAll("\\s+", " ");
-                contactList.getChildren().add(new Label("- " + cleanedContact));
+                Label label = new Label("-" + cleanedContact);
+                label.setWrapText(true);
+                label.setStyle("-fx-pref-width: 400");
+                contactList.getChildren().add(label);
             }
         }, () -> contactList.getChildren().add(new Label(deliverable.getContacts().toString())));
 
