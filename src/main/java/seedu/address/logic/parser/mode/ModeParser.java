@@ -48,9 +48,11 @@ public class ModeParser {
      * @param userInput full user input string
      * @return whether the user input is a mode command
      */
-    public boolean isModeCommand(String userInput) {
-        return userInput.startsWith(SwitchCommand.COMMAND_WORD) || userInput.startsWith(ExitCommand.COMMAND_WORD)
-                || userInput.startsWith(HelpCommand.COMMAND_WORD);
+    public boolean isModeCommand(String userInput) throws ParseException {
+        TokenizedUserInput tokenizedUserInput = TokenizedUserInput.getCommandWordArgumentsFromUserInput(userInput);
+        String commandWord = tokenizedUserInput.getCommandWord();
+        return commandWord.startsWith(SwitchCommand.COMMAND_WORD) || commandWord.startsWith(ExitCommand.COMMAND_WORD)
+                || commandWord.startsWith(HelpCommand.COMMAND_WORD);
     }
 
 }
