@@ -18,8 +18,10 @@ public class TitleDescriptionContainsKeywordsPredicate implements Predicate<Meet
     @Override
     public boolean test(Meeting meeting) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(meeting.getTitle().value, keyword)
-                        || StringUtil.containsWordIgnoreCase(meeting.getDescription().value.orElse(""), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(
+                        meeting.getTitle().value.replaceAll("\\W", " "), keyword)
+                        || StringUtil.containsWordIgnoreCase(
+                                meeting.getDescription().value.orElse("").replaceAll("\\W", " "), keyword));
     }
 
     @Override

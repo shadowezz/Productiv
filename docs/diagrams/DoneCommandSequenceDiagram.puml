@@ -1,0 +1,61 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":DeliverableLogicManager" as DeliverableLogicManager LOGIC_COLOR_T2
+participant ":DeliverableBookParser" as DeliverableBookParser LOGIC_COLOR_T2
+participant ":DoneCommandParser" as DoneCommandParser LOGIC_COLOR_T2
+participant "d:DoneCommand" as DoneCommand LOGIC_COLOR_T2
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelDeliverable" as ModelDeliverable MODEL_COLOR_T2
+end box
+
+[-> DeliverableLogicManager : execute("done 2")
+activate DeliverableLogicManager
+
+DeliverableLogicManager -> DeliverableBookParser : parseCommand("done 2")
+activate DeliverableBookParser
+
+create DoneCommandParser
+DeliverableBookParser -> DoneCommandParser
+activate DoneCommandParser
+
+DoneCommandParser --> DeliverableBookParser
+deactivate DoneCommandParser
+
+DeliverableBookParser -> DoneCommandParser : parse("done 2")
+activate DoneCommandParser
+
+create DoneCommand
+DoneCommandParser -> DoneCommand
+activate DoneCommand
+
+DoneCommand --> DoneCommandParser : d
+deactivate DoneCommand
+
+DoneCommandParser --> DeliverableBookParser : d
+deactivate DoneCommandParser
+destroy DoneCommandParser
+
+DeliverableBookParser --> DeliverableLogicManager : d
+deactivate DeliverableBookParser
+
+DeliverableLogicManager -> DoneCommand : execute()
+activate DoneCommand
+
+DoneCommand -> ModelDeliverable : updateDeliverableStatus
+activate ModelDeliverable
+
+ModelDeliverable --> DoneCommand
+deactivate ModelDeliverable
+
+DoneCommand --> DeliverableLogicManager : result
+deactivate DoneCommand
+destroy DoneCommand
+
+[<-- DeliverableLogicManager : result
+deactivate DeliverableLogicManager
+
+@enduml

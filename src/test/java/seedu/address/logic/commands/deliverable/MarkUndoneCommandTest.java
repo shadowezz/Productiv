@@ -1,10 +1,9 @@
 package seedu.address.logic.commands.deliverable;
 
-
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX;
 import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.deliverable.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.deliverable.DoneCommand.MESSAGE_DONE_DELIVERABLE_SUCCESS;
+import static seedu.address.logic.commands.deliverable.MarkUndoneCommand.MESSAGE_UNDONE_DELIVERABLE_SUCCESS;
 import static seedu.address.testutil.TypicalDeliverables.getTypicalDeliverableBook;
 import static seedu.address.testutil.TypicalDeliverables.getTypicalDeliverables;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
@@ -18,31 +17,30 @@ import seedu.address.model.deliverable.ModelDeliverableManager;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 import seedu.address.testutil.DeliverableBuilder;
 
-public class DoneCommandTest {
+public class MarkUndoneCommandTest {
     private ModelDeliverable modelDeliverable = new ModelDeliverableManager(
             getTypicalDeliverableBook(), new UserPrefs());
 
     @Test
     void execute_validIndexUnfilteredList_success() {
-        Deliverable deliverableToComplete = getTypicalDeliverables().get(INDEX_FIRST.getZeroBased());
-        Deliverable completedDeliverable = new DeliverableBuilder(deliverableToComplete).withIsComplete(true).build();
-        DoneCommand doneCommand = new DoneCommand(INDEX_FIRST);
+        Deliverable deliverableToOpen = getTypicalDeliverables().get(INDEX_FIRST.getZeroBased());
+        Deliverable openedDeliverable = new DeliverableBuilder(deliverableToOpen).withIsComplete(false).build();
+        MarkUndoneCommand command = new MarkUndoneCommand(INDEX_FIRST);
 
-        String expectedMessage = String.format(MESSAGE_DONE_DELIVERABLE_SUCCESS, deliverableToComplete);
+        String expectedMessage = String.format(MESSAGE_UNDONE_DELIVERABLE_SUCCESS, deliverableToOpen);
 
         ModelDeliverableManager expectedModel = new ModelDeliverableManager(
                 modelDeliverable.getDeliverableBook(), new UserPrefs());
-        expectedModel.completeDeliverable(deliverableToComplete, completedDeliverable);
+        expectedModel.updateDeliverableStatus(deliverableToOpen, openedDeliverable);
 
-        assertCommandSuccess(doneCommand, modelDeliverable, expectedMessage, expectedModel);
+        assertCommandSuccess(command, modelDeliverable, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(modelDeliverable.getFilteredDeliverableList().size() + 1);
-        DoneCommand doneCommand = new DoneCommand(outOfBoundIndex);
+        MarkUndoneCommand command = new MarkUndoneCommand(outOfBoundIndex);
 
-        assertCommandFailure(doneCommand, modelDeliverable, MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX);
+        assertCommandFailure(command, modelDeliverable, MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX);
     }
-
 }

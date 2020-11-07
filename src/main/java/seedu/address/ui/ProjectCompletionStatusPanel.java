@@ -67,7 +67,7 @@ public class ProjectCompletionStatusPanel extends UiPart<Region> {
         new WorkerThread(ringProgressIndicator, overallCompletionPercentage).start();
         // @@author
 
-        String caption = numCompletedDeliverables + " of " + totalNumDeliverables + " Deliverables Completed";
+        String caption = numCompletedDeliverables + " / " + totalNumDeliverables + " Deliverables Completed";
         ocpCaption.setText(caption);
     }
 

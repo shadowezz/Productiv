@@ -38,9 +38,9 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_FROM + "FROM] "
             + "[" + PREFIX_TO + "TO] "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_CONTACTS + "CONTACTS] "
-            + "[" + PREFIX_LOCATION + "LOCATION]\n"
+            + "[" + PREFIX_LOCATION + "LOCATION] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Discuss ALL features "
             + PREFIX_FROM + "12-10-2020 09:00";
