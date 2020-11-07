@@ -20,27 +20,27 @@ public class ModeParserTest {
 
     @Test
     public void parseCommand_exit() throws Exception {
-        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD, ModeEnum.DASHBOARD) instanceof ExitCommand);
-        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3", ModeEnum.DASHBOARD) instanceof ExitCommand);
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
     @Test
     public void parseCommand_help() throws Exception {
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD, ModeEnum.DASHBOARD) instanceof HelpCommand);
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3", ModeEnum.DASHBOARD) instanceof HelpCommand);
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
     @Test
     public void parseCommand_switch() throws Exception {
-        SwitchCommand command = (SwitchCommand) parser.parseCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON),
-                ModeEnum.DASHBOARD);
+        SwitchCommand command = (SwitchCommand) parser.parseCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)
+        );
         assertEquals(new SwitchCommand(ModeEnum.PERSON), command);
     }
 
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () ->
-                parser.parseCommand("unknownCommand", ModeEnum.DASHBOARD));
+                parser.parseCommand("unknownCommand"));
     }
 
     @Test

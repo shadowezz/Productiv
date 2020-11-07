@@ -19,7 +19,6 @@ public class SwitchCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "Switched to: %1$s";
-    public static final String MESSAGE_SAME_MODE = "You are already in %s mode!";
 
     private final ModeEnum mode;
 
