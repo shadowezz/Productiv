@@ -348,13 +348,9 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+            } else if (commandResult.isExit()) {
                 handleExit();
-            }
-
-            if (commandResult.getMode() != null) {
+            } else if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
             } else {
                 updateDetailsPanel();
