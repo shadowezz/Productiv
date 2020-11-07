@@ -127,10 +127,10 @@ public class ModelDeliverableManager implements ModelDeliverable {
     }
 
     @Override
-    public void completeDeliverable(Deliverable target, Deliverable completedDeliverable) {
-        requireAllNonNull(target, completedDeliverable);
-        deliverableBook.setDeliverable(target, completedDeliverable);
-        setDeliverableInView(completedDeliverable);
+    public void updateDeliverableStatus(Deliverable target, Deliverable updatedDeliverable) {
+        requireAllNonNull(target, updatedDeliverable);
+        deliverableBook.setDeliverable(target, updatedDeliverable);
+        setDeliverableInView(updatedDeliverable);
     }
 
     @Override

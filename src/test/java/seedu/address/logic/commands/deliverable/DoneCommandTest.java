@@ -32,7 +32,7 @@ public class DoneCommandTest {
 
         ModelDeliverableManager expectedModel = new ModelDeliverableManager(
                 modelDeliverable.getDeliverableBook(), new UserPrefs());
-        expectedModel.completeDeliverable(deliverableToComplete, completedDeliverable);
+        expectedModel.updateDeliverableStatus(deliverableToComplete, completedDeliverable);
 
         assertCommandSuccess(doneCommand, modelDeliverable, expectedMessage, expectedModel);
     }

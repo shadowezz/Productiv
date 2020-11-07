@@ -13,6 +13,7 @@ import seedu.address.logic.commands.deliverable.DeleteCommand;
 import seedu.address.logic.commands.deliverable.DoneCommand;
 import seedu.address.logic.commands.deliverable.EditCommand;
 import seedu.address.logic.commands.deliverable.ListCommand;
+import seedu.address.logic.commands.deliverable.UndoneCommand;
 import seedu.address.logic.commands.deliverable.ViewCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.FindCommand;
@@ -50,6 +51,8 @@ public class DeliverableBookParser {
             return new DeleteCommandParser().parse(arguments);
         case DoneCommand.COMMAND_WORD:
             return new DoneCommandParser().parse(arguments);
+        case UndoneCommand.COMMAND_WORD:
+            return new UndoneCommandParser().parse(arguments);
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
         case EditCommand.COMMAND_WORD:

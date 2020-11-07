@@ -17,24 +17,24 @@ import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 
 /**
- * Completes a deliverable
+ * Mark a deliverable as on-going.
  */
-public class DoneCommand extends Command {
+public class UndoneCommand extends Command {
 
-    public static final String COMMAND_WORD = "done";
-    public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as done: %1$s";
+    public static final String COMMAND_WORD = "undone";
+    public static final String MESSAGE_UNDONE_DELIVERABLE_SUCCESS = "Marked deliverable as on-going: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Marks as done the deliverable identified by the index number used in the displayed deliverable list.\n"
+            + ": Marks as on-going the deliverable identified by the index number used in the displayed deliverable list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     private final Index targetIndex;
 
     /**
-     * Construct command given index of deliverable to complete.
+     * Construct command given index of deliverable to mark as on-going.
      * @param targetIndex specified index of deliverable to complete.
      */
-    public DoneCommand(Index targetIndex) {
+    public UndoneCommand(Index targetIndex) {
         requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
     }
@@ -48,25 +48,19 @@ public class DoneCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_DELIVERABLE_DISPLAYED_INDEX);
         }
 
-        Deliverable deliverableToComplete = lastShownList.get(targetIndex.getZeroBased());
+        Deliverable deliverableToOpen = lastShownList.get(targetIndex.getZeroBased());
 
-        if (deliverableToComplete.getIsComplete()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_DELIVERABLE_COMPLETED);
-        }
-
-        Deliverable completedDeliverable = createCompletedDeliverable(deliverableToComplete);
-        modelDeliverable.updateDeliverableStatus(deliverableToComplete, completedDeliverable);
-        return new CommandResult(String.format(MESSAGE_DONE_DELIVERABLE_SUCCESS, deliverableToComplete));
+        Deliverable openedDeliverable = createOngoingDeliverable(deliverableToOpen);
+        modelDeliverable.updateDeliverableStatus(deliverableToOpen, openedDeliverable);
+        return new CommandResult(String.format(MESSAGE_UNDONE_DELIVERABLE_SUCCESS, deliverableToOpen));
     }
 
-    private Deliverable createCompletedDeliverable(Deliverable deliverableToComplete) {
-        Title title = deliverableToComplete.getTitle();
-        Milestone milestone = deliverableToComplete.getMilestone();
-        Description description = deliverableToComplete.getDescription();
-        Deadline deadline = deliverableToComplete.getDeadline();
-        Contacts contacts = deliverableToComplete.getContacts();
-        return new Deliverable(title, milestone, description, deadline, true, contacts);
+    private Deliverable createOngoingDeliverable(Deliverable deliverableToOpen) {
+        Title title = deliverableToOpen.getTitle();
+        Milestone milestone = deliverableToOpen.getMilestone();
+        Description description = deliverableToOpen.getDescription();
+        Deadline deadline = deliverableToOpen.getDeadline();
+        Contacts contacts = deliverableToOpen.getContacts();
+        return new Deliverable(title, milestone, description, deadline, false, contacts);
     }
-
-
 }
