@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.deliverable.CliSyntax.PREFIX_TITLE;
 
 import seedu.address.logic.commands.deliverable.AddCommand;
 import seedu.address.logic.commands.deliverable.EditCommand;
-import seedu.address.logic.parser.meeting.CliSyntax;
 import seedu.address.model.deliverable.deliverable.Deliverable;
 
 /**
@@ -43,8 +42,10 @@ public class DeliverableUtil {
     public static String getEditDeliverableDescriptorDetails(EditCommand.EditDeliverableDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getTitle().ifPresent(title -> sb.append(PREFIX_TITLE).append(title.value).append(" "));
-        descriptor.getDeadline().ifPresent(deadline -> sb.append(PREFIX_DEADLINE).append(deadline.toString()).append(" "));
-        descriptor.getMilestone().ifPresent(milestone -> sb.append(PREFIX_MILESTONE).append(milestone.value).append(" "));
+        descriptor.getDeadline().ifPresent(deadline -> sb.append(PREFIX_DEADLINE)
+                .append(deadline.toString()).append(" "));
+        descriptor.getMilestone().ifPresent(milestone -> sb.append(PREFIX_MILESTONE)
+                .append(milestone.value).append(" "));
         descriptor.getContacts().ifPresent(contacts ->
                 sb.append(PREFIX_CONTACTS).append(contacts.value.orElse("")).append(" "));
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESCRIPTION)

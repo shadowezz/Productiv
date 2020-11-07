@@ -208,14 +208,25 @@ and its deadline to be `13-12-2020 12:00`.
 
 #### Marking a deliverable as completed: `done`
 
-Marks the specified deliverable from your displayed deliverable list as done.
+Marks the specified deliverable from your displayed deliverable list as completed.
 
 Format: `done INDEX`
 * `INDEX` is the index number of the deliverable in your displayed deliverable list.
 * `INDEX` must be a positive integer.
 
 Example:
-* `done 1` marks the 1st deliverable in your displayed deliverable list as done.
+* `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
+
+#### Marking a deliverable as on-going: `undone`
+
+Marks the specified deliverable from your displayed deliverable list as on-going.
+
+Format: `undone INDEX`
+* `INDEX` is the index number of the deliverable in your displayed deliverable list.
+* `INDEX` must be a positive integer.
+
+Example:
+* `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
 
 #### Viewing a deliverable: `view`
 
@@ -561,7 +572,8 @@ Action         | Format, Examples
 ---------------|------------------------
 Add            | `add t/TITLE m/MILESTONE by/DEADLINE [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `add t/Login screen m/1.1 by/10-10-2020 18:00 d/Include email and password fields c/Jordan Woods, Betsy Crowe` 
 Edit           | `edit INDEX [t/TITLE] [m/MILESTONE] [by/DEADLINE] [d/DESCRIPTION] [c/CONTACTS]` <br> e.g. `edit 1 d/Must include username, email and password fields by/13-12-2020 12:00`
-Mark as Done   | `done INDEX` <br> e.g. `done 3`
+Mark as completed   | `done INDEX` <br> e.g. `done 3`
+Mark as on-going    | `undone INDEX` <br> e.g. `undone 3`
 View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
 List           | `list` 

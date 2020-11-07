@@ -10,10 +10,10 @@ import seedu.address.logic.commands.deliverable.AddCommand;
 import seedu.address.logic.commands.deliverable.ClearCommand;
 import seedu.address.logic.commands.deliverable.Command;
 import seedu.address.logic.commands.deliverable.DeleteCommand;
-import seedu.address.logic.commands.deliverable.DoneCommand;
 import seedu.address.logic.commands.deliverable.EditCommand;
 import seedu.address.logic.commands.deliverable.ListCommand;
-import seedu.address.logic.commands.deliverable.UndoneCommand;
+import seedu.address.logic.commands.deliverable.MarkDoneCommand;
+import seedu.address.logic.commands.deliverable.MarkUndoneCommand;
 import seedu.address.logic.commands.deliverable.ViewCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
 import seedu.address.logic.commands.person.FindCommand;
@@ -49,9 +49,9 @@ public class DeliverableBookParser {
             return new AddCommandParser().parse(arguments);
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
-        case DoneCommand.COMMAND_WORD:
+        case MarkDoneCommand.COMMAND_WORD:
             return new DoneCommandParser().parse(arguments);
-        case UndoneCommand.COMMAND_WORD:
+        case MarkUndoneCommand.COMMAND_WORD:
             return new UndoneCommandParser().parse(arguments);
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);

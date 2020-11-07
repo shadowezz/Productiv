@@ -19,12 +19,13 @@ import seedu.address.model.util.Title;
 /**
  * Completes a deliverable
  */
-public class DoneCommand extends Command {
+public class MarkDoneCommand extends Command {
 
     public static final String COMMAND_WORD = "done";
-    public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as done: %1$s";
+    public static final String MESSAGE_DONE_DELIVERABLE_SUCCESS = "Marked deliverable as completed: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Marks as done the deliverable identified by the index number used in the displayed deliverable list.\n"
+            + ": Marks as completed the deliverable identified by the index number "
+            + "used in the displayed deliverable list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
@@ -34,7 +35,7 @@ public class DoneCommand extends Command {
      * Construct command given index of deliverable to complete.
      * @param targetIndex specified index of deliverable to complete.
      */
-    public DoneCommand(Index targetIndex) {
+    public MarkDoneCommand(Index targetIndex) {
         requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
     }
@@ -71,8 +72,8 @@ public class DoneCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || other instanceof DoneCommand
-                && targetIndex.equals(((DoneCommand) other).targetIndex);
+                || other instanceof MarkDoneCommand
+                && targetIndex.equals(((MarkDoneCommand) other).targetIndex);
     }
 
 

@@ -7,19 +7,19 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.deliverable.UndoneCommand;
+import seedu.address.logic.commands.deliverable.MarkUndoneCommand;
 
-public class UndoneCommandParserTest {
+public class MarkUndoneCommandParserTest {
     private UndoneCommandParser parser = new UndoneCommandParser();
 
     @Test
     void parse_validArgs_returnsUndoneCommand() {
-        assertParseSuccess(parser, "1", new UndoneCommand(INDEX_FIRST));
+        assertParseSuccess(parser, "1", new MarkUndoneCommand(INDEX_FIRST));
     }
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoneCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkUndoneCommand.MESSAGE_USAGE));
     }
 
 

@@ -79,7 +79,8 @@ public interface ModelDeliverable {
     void setDeliverable(Deliverable target, Deliverable editedDeliverable);
 
     /**
-     * Updates the completion status of given deliverable {@code target} by replacing it with {@code updatedDeliverable}.
+     * Updates the completion status of given deliverable {@code target}
+     * by replacing it with {@code updatedDeliverable}.
      * {@code target} must exist in the deliverable book.
      */
     void updateDeliverableStatus(Deliverable target, Deliverable updatedDeliverable);
