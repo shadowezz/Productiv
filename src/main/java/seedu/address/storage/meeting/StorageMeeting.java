@@ -13,7 +13,7 @@ import seedu.address.storage.UserPrefsStorage;
 /**
  * API of the Storage component
  */
-// TODO: build and change to MeetingBookStorage
+
 public interface StorageMeeting extends MeetingBookStorage, UserPrefsStorage {
 
     @Override

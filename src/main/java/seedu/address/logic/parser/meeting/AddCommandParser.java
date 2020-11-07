@@ -66,7 +66,6 @@ public class AddCommandParser implements Parser<AddCommand> {
 
     }
 
-    // TODO: Move the function up the hierarchy
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
