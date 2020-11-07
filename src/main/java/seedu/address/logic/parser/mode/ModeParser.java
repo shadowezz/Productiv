@@ -2,7 +2,6 @@ package seedu.address.logic.parser.mode;
 
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
-import seedu.address.commons.ModeEnum;
 import seedu.address.logic.commands.mode.Command;
 import seedu.address.logic.commands.mode.ExitCommand;
 import seedu.address.logic.commands.mode.HelpCommand;
@@ -18,11 +17,10 @@ public class ModeParser {
      * Parses user input into command for execution.
      *
      * @param userInput full user input string
-     * @param mode the current mode of the app
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseCommand(String userInput, ModeEnum mode) throws ParseException {
+    public Command parseCommand(String userInput) throws ParseException {
         TokenizedUserInput tokenizedUserInput = TokenizedUserInput.getCommandWordArgumentsFromUserInput(userInput);
         String commandWord = tokenizedUserInput.getCommandWord();
         String arguments = tokenizedUserInput.getArguments();
@@ -36,7 +34,7 @@ public class ModeParser {
             return new HelpCommand();
 
         case SwitchCommand.COMMAND_WORD:
-            return new SwitchCommandParser(mode).parse(arguments);
+            return new SwitchCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
