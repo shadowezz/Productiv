@@ -326,18 +326,15 @@ public class MainWindow extends UiPart<Stage> {
                 switch (mode) {
                 case PERSON:
                     commandResult = logicPerson.execute(commandText);
-                    updateDetailsPanel();
                     break;
                 case DELIVERABLE:
                     commandResult = logicDeliverable.execute(commandText);
                     calendar.updateCalendarList();
                     projectCompletionStatusPanel.updateOcp();
-                    updateDetailsPanel();
                     break;
                 case MEETING:
                     commandResult = logicMeeting.execute(commandText);
                     calendar.updateCalendarList();
-                    updateDetailsPanel();
                     break;
                 default:
                     assert false : "from default: " + ModeEnum.getModeOptions();
@@ -351,14 +348,12 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+            } else if (commandResult.isExit()) {
                 handleExit();
-            }
-
-            if (commandResult.getMode() != null) {
+            } else if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
+            } else {
+                updateDetailsPanel();
             }
 
             return commandResult;
