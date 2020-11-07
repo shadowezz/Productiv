@@ -60,7 +60,7 @@ public class ProjectCompletionStatusPanel extends UiPart<Region> {
         ringProgressIndicator.setProgress(overallCompletionPercentage);
         ocpDiagram.getChildren().add(ringProgressIndicator);
 
-        String caption = numCompletedDeliverables + " of " + totalNumDeliverables + " Deliverables Completed";
+        String caption = numCompletedDeliverables + " / " + totalNumDeliverables + " Deliverables Completed";
         ocpCaption.setText(caption);
     }
 }
