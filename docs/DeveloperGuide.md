@@ -75,10 +75,10 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
  keep track of his/her schedule.
 
 
- When the application is in `Deliverable`, `Meeting` or `Contact` mode, the respective UI components will be displayed. For example,
- in `Deliverable` mode, the left side of the application will contain the `DeliverableListPanel`, consisting of `DeliverableCard`,
+ When the application is in deliverable, meeting or contact mode, the respective UI components will be displayed. For example,
+ in deliverable mode, the left side of the application will contain the `DeliverableListPanel`, consisting of `DeliverableCard`,
  to show the list of deliverables the user has. The right side consists of the `DeliverableDetailsPanel` which will display the full details
- of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for `Meeting` and `Contact` mode.
+ of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for meeting and contact mode.
   
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
@@ -214,14 +214,16 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 
 #### Implementation
 
-This Done feature allows users to mark their deliverables as completed. The user input is received by`MainWindow` in
-the `UI` component before being passed to `DeliverableLogicManager` to be executed. The `DeliverableLogicManager` will call
-`DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. `DoneCommandParser` will
-then parse the command argument to return a `DoneCommand`, which on execution will set the status of the specified deliverable
-to completed and update the `ModelDeliverable` accordingly. Invalid user inputs such as an invalid index will result in the
-appropriate error messages displayed to the user.
+The Done feature allows users to mark their deliverables as completed. 
 
-Given below is a sequence diagram to show how the execution at each step.
+1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` to be executed. 
+1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. 
+1. `DoneCommandParser` will then parse the command argument to return a `DoneCommand`.
+1. On execution, `DoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
+
+Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user.
+
+Given below is a sequence diagram to show how the done operation works at each step.
 
 ![DoneCommandSequenceDiagram](images/DoneCommandSequenceDiagram.png)
 
@@ -292,15 +294,18 @@ Given below is an activity diagram to show how the switch mode operation works.
 
 #### Implementation
 
-The view feature allows users to view the details of a specific `Meeting`, `Deliverable` or `Contact` on the right
-panel of the display window, depending on the `Mode` the application is in. Suppose the user in currently in the `Meeting` mode, 
-the user input received by `MainWindow` in the `UI` component will be passed to `MeetingLogicManager` to be executed. The `MeetingLogicManager` will call
-`MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. `ViewCommandParser` will
-then parse the command argument to return a `ViewCommand`, which on execution will update the `ModelMeeting` to set the meeting currently in view. 
-Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user. The `UI` component will then
-make a separate call to `ModelMeeting` to retrieve the meeting currently in view and display its full details to the user in the right panel of the application.
+The view feature allows users to view the details of a specific deliverable, meeting or contact on the right
+panel of the display window, depending on the mode the application is in. 
 
-The following sequence diagram shows how the view operation works:
+1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` to be executed. 
+1. `MeetingLogicManager` will call `MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. 
+1. `ViewCommandParser` will then parse the command argument to return a `ViewCommand`.
+1. On execution, `ViewCommand` will update the `ModelMeeting` to set the meeting currently in view. 
+1. `UI` component will then make a separate call to `ModelMeeting` to retrieve the meeting currently in view and display its full details to the user in the right panel of the application.
+
+Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user. 
+
+The following sequence diagram shows how the view operation works in each step:
 
 ![ViewCommandSequenceDiagram](images/ViewCommandSequenceDiagram.png)
 
