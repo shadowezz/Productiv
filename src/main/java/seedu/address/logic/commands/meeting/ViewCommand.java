@@ -18,7 +18,7 @@ public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
     public static final String MESSAGE_VIEW_MEETING_SUCCESS = "Displayed meeting: %1$s";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Views the details of the meeting identified by the index number used in the displayed meeting list.\n"
+            + ": Displays the details of the meeting identified by the index number used in the displayed meeting list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
