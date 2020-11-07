@@ -212,6 +212,8 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 
 ### Done feature
 
+#### Implementation
+
 This Done feature allows users to mark their deliverables as completed. The user input is received by`MainWindow` in
 the `UI` component before being passed to `DeliverableLogicManager` to be executed. The `DeliverableLogicManager` will call
 `DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. `DoneCommandParser` will
