@@ -50,11 +50,6 @@ public class DoneCommand extends Command {
         }
 
         Deliverable deliverableToComplete = lastShownList.get(targetIndex.getZeroBased());
-
-        if (deliverableToComplete.getIsComplete()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_DELIVERABLE_COMPLETED);
-        }
-
         Deliverable completedDeliverable = createCompletedDeliverable(deliverableToComplete);
         modelDeliverable.completeDeliverable(deliverableToComplete, completedDeliverable);
         return new CommandResult(String.format(MESSAGE_DONE_DELIVERABLE_SUCCESS, deliverableToComplete));
