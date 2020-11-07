@@ -37,6 +37,7 @@ deactivate DoneCommand
 
 DoneCommandParser --> DeliverableBookParser : d
 deactivate DoneCommandParser
+destroy DoneCommandParser
 
 DeliverableBookParser --> DeliverableLogicManager : d
 deactivate DeliverableBookParser
@@ -44,7 +45,7 @@ deactivate DeliverableBookParser
 DeliverableLogicManager -> DoneCommand : execute()
 activate DoneCommand
 
-DoneCommand -> ModelDeliverable : completeDeliverable
+DoneCommand -> ModelDeliverable : updateDeliverableStatus
 activate ModelDeliverable
 
 ModelDeliverable --> DoneCommand

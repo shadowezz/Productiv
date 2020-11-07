@@ -142,7 +142,7 @@ class AddCommandTest {
         }
 
         @Override
-        public void completeDeliverable(Deliverable target, Deliverable completedDeliverable) {
+        public void updateDeliverableStatus(Deliverable target, Deliverable completedDeliverable) {
             throw new AssertionError("This method should not be called.");
         }
 
