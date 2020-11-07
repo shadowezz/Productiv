@@ -44,18 +44,6 @@ deactivate DeliverableBookParser
 DeliverableLogicManager -> DoneCommand : execute()
 activate DoneCommand
 
-DoneCommand -> ModelDeliverable : getFilteredDeliverableList
-activate ModelDeliverable
-
-ModelDeliverable --> DoneCommand : filteredList
-deactivate ModelDeliverable
-
-DoneCommand -> DoneCommand : createCompletedDeliverable
-activate DoneCommand
-
-DoneCommand --> DoneCommand
-deactivate DoneCommand
-
 DoneCommand -> ModelDeliverable : completeDeliverable
 activate ModelDeliverable
 
@@ -64,8 +52,9 @@ deactivate ModelDeliverable
 
 DoneCommand --> DeliverableLogicManager : result
 deactivate DoneCommand
-destroy ViewCommand
+destroy DoneCommand
 
 [<-- DeliverableLogicManager : result
 deactivate DeliverableLogicManager
+
 @enduml

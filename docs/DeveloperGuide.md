@@ -59,13 +59,27 @@ The sections below give more details of each component.
 
 ### UI component
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/UiClassDiagramUpdated.png)
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `PersonDetailsPanel`, `CalendarListPanel`,
  `ProjectCompletionStatusPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+
+
+ The `Dashboard` components of the UI are displayed when the application is in `Dashboard` mode. The left side of the application consists of 
+ the `ProjectCompletionStatusPanel` where the user can see the overall completion status of his/her product based on the
+ percentage of deliverables completed. The right side consists of the `CalendarListPanel` which displays a list of deliverables
+ and meetings, through `CalendarDeliverableCard` and `CalendarMeetingCard` respectively, in chronological order so that the user can
+ keep track of his/her schedule.
+
+
+ When the application is in `Deliverable`, `Meeting` or `Contact` mode, the respective UI components will be displayed. For example,
+ in `Deliverable` mode, the left side of the application will contain the `DeliverableListPanel`, consisting of `DeliverableCard`,
+ to show the list of deliverables the user has. The right side consists of the `DeliverableDetailsPanel` which will display the full details
+ of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for `Meeting` and `Contact` mode.
+  
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -196,6 +210,34 @@ The following sequence diagram shows how a list is autosorted upon an addition o
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
 
+### Done feature
+
+This Done feature allows users to mark their deliverables as completed. The user input is received by`MainWindow` in
+the `UI` component before being passed to `DeliverableLogicManager` to be executed. The `DeliverableLogicManager` will call
+`DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. `DoneCommandParser` will
+then parse the command argument to return a `DoneCommand`, which on execution will set the status of the specified deliverable
+to completed and update the `ModelDeliverable` accordingly. Invalid user inputs such as an invalid index will result in the
+appropriate error messages displayed to the user.
+
+Given below is a sequence diagram to show how the execution at each step.
+
+![DoneCommandSequenceDiagram](images/DoneCommandSequenceDiagram.png)
+
+#### Design Considerations
+
+##### Aspect: How `done` is implemented
+
+* **Alternative 1 (current choice):** Have a separate command `done` for marking deliverables as completed.
+    * Pros: Clearer and easier for the user. Prevents the `edit` command from being too cluttered with too many
+    editable fields.
+    * Cons: More code and testing required as there are additional classes created such as `DoneCommand` and 
+    `DoneCommandParser`.
+* **Alternative 2:** Allow users to mark deliverables as completed through the existing `edit` command by changing 
+the completion status field of the deliverable
+    * Pros: Less code required since we only need to make small amendments to the existing `EditCommand` and `EditCommandParser`.
+    * Cons: Format of the command will be more complex and confusing for the user. Instead of just having to pass in the index
+    of deliverable, we will need to provide a prefix (e.g. s/) and a string to represent the completion status to edit to (e.g. edit 1 s/complete).
+
 ### Switch Mode feature
 
 Productiv can be one of these modes: dashboard, deliverable, meeting and contact mode.
@@ -244,22 +286,17 @@ Given below is an activity diagram to show how the switch mode operation works.
   It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
 
 
-### \[Proposed\] View feature
+### View feature
 
-#### Proposed Implementation
+#### Implementation
 
 The view feature allows users to view the details of a specific `Meeting`, `Deliverable` or `Contact` on the right
-panel of the display window.
-
-The proposed view mechanism is facilitated by implementing the following operations:
-
-* `ModelDeliverable#setDeliverableInView()` — Changes the `Deliverable` to be displayed
-* `ModelPerson#setContactInView()` — Changes the `Contact` to be displayed
-* `ModelMeeting#setMeetingInView()` — Changes the `Meeting` to be displayed
-
-Given below is an example usage scenario of how viewing a deliverable works.
-
-Step 1. The user executes `view 2` command to view the details of the second deliverable in the list of deliverables. The view command calls `ModelDeliverable#setDeliverableInView()` which updates the deliverable currently in view in the `ModelDeliverable`. This newly updated deliverable is then fetched and displayed to the user on the right panel.
+panel of the display window, depending on the `Mode` the application is in. Suppose the user in currently in the `Meeting` mode, 
+the user input received by `MainWindow` in the `UI` component will be passed to `MeetingLogicManager` to be executed. The `MeetingLogicManager` will call
+`MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. `ViewCommandParser` will
+then parse the command argument to return a `ViewCommand`, which on execution will update the `ModelMeeting` to set the meeting currently in view. 
+Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user. The `UI` component will then
+make a separate call to `ModelMeeting` to retrieve the meeting currently in view and display its full details to the user in the right panel of the application.
 
 The following sequence diagram shows how the view operation works:
 
@@ -275,7 +312,8 @@ The following sequence diagram shows how the view operation works:
 
 * **Alternative 2:** Passes the item in view inside the Command Result to the UI component
   * Pros: Does not require an additional operation to fetch the item in view.
-  * Cons: Inappropriate use of Command Result whose primary objective is to pass feedback to the user.
+  * Cons: Cluttering of Command Result object which now needs to store mode-specific items. This is against its original purpose 
+  which is to pass mode-neutral information, such as error messages, back to UI for display after a command execution.
 
 ### \[Proposed\] Overall Completion Percentage feature
 
