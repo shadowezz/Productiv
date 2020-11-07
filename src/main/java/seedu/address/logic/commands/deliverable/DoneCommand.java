@@ -68,5 +68,12 @@ public class DoneCommand extends Command {
         return new Deliverable(title, milestone, description, deadline, true, contacts);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        return other == this
+                || other instanceof DoneCommand
+                && targetIndex.equals(((DoneCommand) other).targetIndex);
+    }
+
 
 }

@@ -63,4 +63,11 @@ public class UndoneCommand extends Command {
         Contacts contacts = deliverableToOpen.getContacts();
         return new Deliverable(title, milestone, description, deadline, false, contacts);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this
+                || other instanceof UndoneCommand
+                && targetIndex.equals(((UndoneCommand) other).targetIndex);
+    }
 }
