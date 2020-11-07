@@ -16,14 +16,14 @@ end box
 [-> MainWindow : executeCommand(commandText)
 activate MainWindow
 
-MainWindow -> LogicModeManager : execute(commandText, currMode)
+MainWindow -> LogicModeManager : execute(commandText)
 activate LogicModeManager
 
-LogicModeManager -> ModeParser : parseCommand(commandText, currMode)
+LogicModeManager -> ModeParser : parseCommand(commandText)
 activate ModeParser
 
 create SwitchCommandParser
-ModeParser -> SwitchCommandParser: SwitchCommandParser(currMode)
+ModeParser -> SwitchCommandParser: SwitchCommandParser()
 activate SwitchCommandParser
 SwitchCommandParser --> ModeParser
 deactivate SwitchCommandParser
@@ -49,7 +49,7 @@ LogicModeManager -> SwitchCommand : execute()
 activate SwitchCommand
 
 create CommandResult
-SwitchCommand -> CommandResult : CommandResult(success, false, false, mode)
+SwitchCommand -> CommandResult : CommandResult(successMessage, false, false, mode)
 activate CommandResult
 CommandResult --> SwitchCommand
 deactivate CommandResult

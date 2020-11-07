@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-<GridPane HBox.hgrow="ALWAYS" minHeight="40">
+<GridPane alignment="CENTER" HBox.hgrow="ALWAYS" minHeight="40">
     <children>
         <Label fx:id="id" styleClass="cell_small_label" GridPane.columnIndex="0" />
         <Label fx:id="title" text="\$title" styleClass="cell_small_label" GridPane.columnIndex="1" />

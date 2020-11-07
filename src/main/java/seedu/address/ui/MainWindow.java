@@ -321,7 +321,7 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = null;
             if (logicMode.isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
-                commandResult = logicMode.execute(commandText, mode);
+                commandResult = logicMode.execute(commandText);
             } else {
                 switch (mode) {
                 case PERSON:
@@ -348,13 +348,9 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+            } else if (commandResult.isExit()) {
                 handleExit();
-            }
-
-            if (commandResult.getMode() != null) {
+            } else if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
             } else {
                 updateDetailsPanel();
