@@ -186,26 +186,26 @@ given for dates
     * Pros: Saves time for the user if he had intended to select the last day of the month.
     * Cons: The date specified may not be the intended input.
 
-### \[Proposed\] Autosort feature
+### Auto-sort feature
 
-#### Proposed Implementation
+#### Implementation
 
-Autosort allows users to view `Meeting`s, `Deliverable`s, and `Contact`s in a logical manner. Specifically, Autosort
-automatically sorts the abovementioned components by the following attributes: 
+The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Contact`s in a logical manner. 
+Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Contact`s by the following attributes: 
 
-* `Meeting`   - `From`'s `LocalDateTime` value in chronological order 
-* `Deadline`  - `Deadline`'s `LocalDateTime` value in chronological order 
-* `Contact`   - `Title`'s `String` value in alphabetical order 
+* `Meeting`   - its `From`'s `LocalDateTime` value in ascending chronological order 
+* `Deadline`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
+* `Contact`   - its `Title`'s `String` value in ascending alphabetical order 
 
-Autosort is faciliated by custom objects that implements `Comparator`.
+Auto-sort is facilitated by custom classes that implements `Comparator`.
 
-The following sequence diagram shows how a list is autosorted upon an addition of a new element.
+The following sequence diagram shows how a list is auto-sorted upon an addition of a new element.
 
 ![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How autosorting executes
+##### Aspect: How auto-sorting executes
 
 * **Alternative 1 (current choice):** Sorts a list upon an addition or update of an element.
     * Pros: Error-free and easy to implement.

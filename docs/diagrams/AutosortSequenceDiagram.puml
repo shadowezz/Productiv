@@ -3,11 +3,11 @@
 
 box Model MODEL_COLOR_T1
 participant ":UniqueMeetingList" as UniqueMeetingList MODEL_COLOR
+participant ":ObservableList" as ObservableList MODEL_COLOR
 
 end box
 
-participant ":ObservableList" as ObservableList MODEL_COLOR
-participant "<<class>>\n:Collections" as Collections MODEL_COLOR
+participant "<<class>>\n:Collections" as Collections RANDOM_COLOR
 
 [-> UniqueMeetingList : add(meeting)
 activate UniqueMeetingList
@@ -21,11 +21,13 @@ deactivate
 UniqueMeetingList -> UniqueMeetingList : sortList()
 activate UniqueMeetingList #DarkSalmon
 
-UniqueMeetingList -> Collections : sort(list, meetingComparator)
+UniqueMeetingList -> Collections : sort(list, timeEventComparator)
 activate Collections
 
 Collections --> UniqueMeetingList :
 deactivate Collections
+
+return
 
 [<--UniqueMeetingList
 deactivate UniqueMeetingList
