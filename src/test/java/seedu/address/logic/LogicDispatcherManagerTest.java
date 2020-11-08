@@ -14,8 +14,8 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.ModeEnum;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.mode.ExitCommand;
-import seedu.address.logic.commands.mode.HelpCommand;
+import seedu.address.logic.commands.general.ExitCommand;
+import seedu.address.logic.commands.general.HelpCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deliverable.ModelDeliverable;
 import seedu.address.model.deliverable.ModelDeliverableManager;
@@ -103,14 +103,15 @@ class LogicDispatcherManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
-        assertThrows(expectedException, expectedMessage, () -> logicDispatcher.execute(inputCommand, ModeEnum.DASHBOARD));
+        assertThrows(expectedException, expectedMessage, () ->
+                logicDispatcher.execute(inputCommand, ModeEnum.DASHBOARD));
     }
 
 
     @Test
     public void parseCommand_isModeCommand() throws ParseException {
-        assertTrue(logicDispatcher.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
-        assertTrue(logicDispatcher.isModeCommand(ExitCommand.COMMAND_WORD));
-        assertTrue(logicDispatcher.isModeCommand(HelpCommand.COMMAND_WORD));
+        assertTrue(logicDispatcher.isGeneralCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
+        assertTrue(logicDispatcher.isGeneralCommand(ExitCommand.COMMAND_WORD));
+        assertTrue(logicDispatcher.isGeneralCommand(HelpCommand.COMMAND_WORD));
     }
 }

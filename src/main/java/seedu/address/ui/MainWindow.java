@@ -1,7 +1,7 @@
 package seedu.address.ui;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.commands.mode.SwitchCommand.MESSAGE_SUCCESS;
+import static seedu.address.logic.commands.general.SwitchCommand.MESSAGE_SUCCESS;
 
 import java.util.logging.Logger;
 

@@ -16,5 +16,5 @@ public interface LogicDispatcher {
      */
     CommandResult execute(String commandText, ModeEnum mode) throws CommandException, ParseException;
 
-    boolean isModeCommand(String commandText) throws ParseException;
+    boolean isGeneralCommand(String commandText) throws ParseException;
 }

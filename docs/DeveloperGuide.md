@@ -252,13 +252,13 @@ Based on the current mode, user input is passed to the corresponding `LogicManag
 e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
 Based on the current mode, the `Ui` updates with information related to that mode.
 
-The mode of the application be switched via CLI or mouse input.
+The mode of the application can be switched via CLI or mouse input.
 
-For CLI:
+Via CLI:
 1. The user input is received by the `MainWindow` in the `Ui` component and passed to `LogicDispatcherManager`.
-`LogicDispatcherManager` is the 'gatekeeper' for the Logic component. 
-1. `LogicDispatcherManager` will identify the user input as a `General` command and call `ModeParser`.
-1. `ModeParser` will create a `SwitchCommandParser`. `SwitchCommandParser` will then parse the arguments in the user input to return a `SwitchCommand`.
+`LogicDispatcherManager` is the 'gatekeeper' of the Logic component. 
+1. `LogicDispatcherManager` will identify the user input as a `General` command and call `GeneralParser`.
+1. `GeneralParser` will create a `SwitchCommandParser`. `SwitchCommandParser` will then parse the arguments in the user input to return a `SwitchCommand`.
 1. This `SwitchCommand` is passed back to `LogicDispatcherManager`.
 1. `LogicDispatcherManager` will then call the execute method of `SwitchCommand` which returns a `CommandResult` containing the mode that the application should switch to.
 1. This `CommandResult` is passed back to `MainWindow`.
@@ -269,23 +269,26 @@ For CLI:
 For the command, a `SwitchCommandParser` is implemented to parse the input into a mode.
 Invalid arguments (any argument other than `dv`, `db`, `m` and `c`) are also handled properly, with suitable error messages being displayed to the user.
 
-Given below is a sequence diagram to show how the switch mode mechanism behaves.
+Given below is a sequence diagram to show how the switch mode mechanism behaves for CLI.
 
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
 
-For mouse input:
+Given below is an activity diagram to show how the switch mode operation works for CLI.
+
+![SwitchModeActivityDiagram](images/SwitchModeActivityDiagram.png)
+
+
+
+
+Via mouse input:
 There is no interaction with the logic component. The only steps are:
 1. The `MainWindow` detects that a button on the navigation bar is clicked, e.g. if Deliverable is clicked, `switchDeliverable()` method of `MainWindow` is called.
 1. The `MainWindow` will update its own attribute `mode` and the UI to only show information related to the new mode.
 
-Given below is a sequence diagram to show how the switch mode mechanism behaves.
+Given below is a sequence diagram to show how the switch mode mechanism behaves for mouse input.
 
 ![SwitchModeMouseInputSequenceDiagram](images/SwitchModeMouseInputSequenceDiagram.png)
-<figcaption>The two sequence diagrams are separated from simplicity</figcaption>
-
-Given below is an activity diagram to show how the switch mode operation works.
-
-![SwitchModeActivityDiagram](images/SwitchModeActivityDiagram.png)
+<figcaption>The two sequence diagrams are separated for simplicity</figcaption>
 
 
 #### Design consideration:
@@ -303,13 +306,12 @@ Given below is an activity diagram to show how the switch mode operation works.
 ##### Aspect: Where mode is stored
 
 * **Alternative 1 (current choice):** Store mode in `MainWindow`.
-  * Pros: Easy to implement.
-  * Cons: May violate Single Responsibility Principle.
+  * Pros: `MainWindow` can update UI easily by accessing current mode.
+  * Cons: Need to keep passing current mode to `LogicDispatcherManager`.
 
-* **Alternative 2:** Store mode in a `LogicDispatcherManager`.
-  * Pros: Adheres to the Single Responsibility Principle better.
-  * Cons: `MainWindow` might have to fetch the mode from `LogicDispatcherManager` for certain updates.
-    Also, mode can be said to be primarily a `Ui` consideration and should be stored in a `Ui` component.
+* **Alternative 2:** Store mode in both `MainWindow` and `LogicDispatcherManager`.
+  * Pros: Easier implementation. No need to keep passing current mode to `LogicDispatcherManager`.
+  * Cons: No single source of truth, could lead to bugs.
 
 
 ### View feature

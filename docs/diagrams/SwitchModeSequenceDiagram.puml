@@ -7,7 +7,7 @@ end box
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicDispatcherManager" as LogicDispatcherManager LOGIC_COLOR
-participant ":ModeParser" as ModeParser LOGIC_COLOR
+participant ":GeneralParser" as GeneralParser LOGIC_COLOR
 participant ":SwitchCommandParser" as SwitchCommandParser LOGIC_COLOR
 participant ":SwitchCommand" as SwitchCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
@@ -19,16 +19,16 @@ activate MainWindow
 MainWindow -> LogicDispatcherManager : execute("switch dv", currMode)
 activate LogicDispatcherManager
 
-LogicDispatcherManager -> ModeParser : parseCommand("switch dv")
-activate ModeParser
+LogicDispatcherManager -> GeneralParser : parseCommand("switch dv")
+activate GeneralParser
 
 create SwitchCommandParser
-ModeParser -> SwitchCommandParser: SwitchCommandParser()
+GeneralParser -> SwitchCommandParser: SwitchCommandParser()
 activate SwitchCommandParser
-SwitchCommandParser --> ModeParser
+SwitchCommandParser --> GeneralParser
 deactivate SwitchCommandParser
 
-ModeParser -> SwitchCommandParser: parse("dv")
+GeneralParser -> SwitchCommandParser: parse("dv")
 activate SwitchCommandParser
 
 create SwitchCommand
@@ -37,11 +37,11 @@ activate SwitchCommand
 SwitchCommand --> SwitchCommandParser
 deactivate SwitchCommand
 
-SwitchCommandParser --> ModeParser
+SwitchCommandParser --> GeneralParser
 deactivate SwitchCommandParser
 
-ModeParser --> LogicDispatcherManager : command
-deactivate ModeParser
+GeneralParser --> LogicDispatcherManager : command
+deactivate GeneralParser
 
 destroy SwitchCommandParser
 

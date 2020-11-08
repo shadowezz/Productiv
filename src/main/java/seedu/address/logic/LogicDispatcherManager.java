@@ -8,16 +8,16 @@ import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.mode.Command;
+import seedu.address.logic.commands.general.Command;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.mode.ModeParser;
+import seedu.address.logic.parser.general.GeneralParser;
 
 /**
  * The main LogicManager of the app.
  */
 public class LogicDispatcherManager implements LogicDispatcher {
     private final Logger logger = LogsCenter.getLogger(LogicDispatcherManager.class);
-    private final ModeParser modeParser;
+    private final GeneralParser generalParser;
 
     private final LogicPerson logicPerson;
     private final LogicDeliverable logicDeliverable;
@@ -30,8 +30,9 @@ public class LogicDispatcherManager implements LogicDispatcher {
      * @param logicDeliverable
      * @param logicMeeting
      */
-    public LogicDispatcherManager(LogicPerson logicPerson, LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
-        this.modeParser = new ModeParser();
+    public LogicDispatcherManager(LogicPerson logicPerson, LogicDeliverable logicDeliverable,
+                                  LogicMeeting logicMeeting) {
+        this.generalParser = new GeneralParser();
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
@@ -44,8 +45,8 @@ public class LogicDispatcherManager implements LogicDispatcher {
         CommandResult commandResult = null;
 
         // catch all general commands and pass to modeParser
-        if (isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
-            Command command = modeParser.parseCommand(commandText);
+        if (isGeneralCommand(commandText) || mode == ModeEnum.DASHBOARD) {
+            Command command = generalParser.parseCommand(commandText);
             commandResult = command.execute();
         } else {
             switch (mode) {
@@ -68,8 +69,8 @@ public class LogicDispatcherManager implements LogicDispatcher {
         return commandResult;
     }
 
-    public boolean isModeCommand(String commandText) throws ParseException {
-        return modeParser.isModeCommand(commandText);
+    public boolean isGeneralCommand(String commandText) throws ParseException {
+        return generalParser.isGeneralCommand(commandText);
     }
 
 }
