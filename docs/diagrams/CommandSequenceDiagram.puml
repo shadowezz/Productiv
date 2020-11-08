@@ -1,6 +1,8 @@
 @startuml
 !include style.puml
 
+scale 1.5
+
 skinparam BackgroundColor LOGIC_COLOR_T1
 skinparam ArrowFontColor #FFFFF
 

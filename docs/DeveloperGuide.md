@@ -92,10 +92,13 @@ The `UI` component:
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-<div markdown="span" class="alert alert-info">
-:information_source: **Note:** 
-* ABC refers to `Deliverable`, `Meeting`, `Person` and `Mode`.<br>
+<div markdown="span" class="alert alert-info"> 
+:information_source: **Note:** <br>
+
+* ABC refers to `Deliverable`, `Meeting`, `Person` and `Mode`.
+
 * XYZ refers to any general command call, e.g Add, find, delete, etc. 
+
 </div>
 
 **API** : <br>
@@ -130,8 +133,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
 </div>
 <div markdown="span" class="alert alert-primary">:bulb:
-**Tip**: Refer to  
-[Switch Mode Feature](#Switch-Mode-feature) below for more details on the Switch Mode feature.
+**Tip**: Refer to [Switch Mode Feature](#Switch-Mode-feature) below for more details on the Switch Mode feature.
 </div>
 
 ### Model component
@@ -157,6 +159,14 @@ The `Model`:
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+
+<div markdown="span" class="alert alert-info"> <br>
+
+**:information_source: Note:**<br>
+
+ABC refers to `Deliverable`, `Meeting` and `Person`.
+
+</div>
 
 **API** : 
 [`StorageDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/deliverable/StorageDeliverable.java)

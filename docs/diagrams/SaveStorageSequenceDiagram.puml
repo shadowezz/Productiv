@@ -1,6 +1,8 @@
 @startuml
 !include style.puml
 
+Scale 1.5
+
 box Logic LOGIC_COLOR
 participant ":LogicABC" as LogicABC LOGIC_COLOR
 end box
