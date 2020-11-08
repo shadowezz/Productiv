@@ -282,7 +282,7 @@ Given below is an activity diagram to show how the switch mode operation works f
 
 Via mouse input:
 There is no interaction with the logic component. The only steps are:
-1. The `MainWindow` detects that a button on the navigation bar is clicked, e.g. if Deliverable is clicked, `switchDeliverable()` method of `MainWindow` is called.
+1. The `MainWindow` detects that a button on the navigation bar is clicked, e.g. if Deliverable is clicked, `switchDeliverable` method of `MainWindow` is called.
 1. The `MainWindow` will update its own attribute `mode` and the UI to only show information related to the new mode.
 
 Given below is a sequence diagram to show how the switch mode mechanism behaves for mouse input.
@@ -803,7 +803,7 @@ Priorities:
 * **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
 * **Deliverable**: An item to be completed as part of the product development process.
 * **Milestone**: A significant stage or event in the development of a product.
-* **Role**: A function assumed or part played by a contact. Every contact is either a developer or stakeholder.
+* **Role**: A function assumed or part played by a `Person`. Every `Person` is either a developer or stakeholder.
 
 ## **Appendix F: Instructions for Manual Testing**
 
@@ -875,9 +875,9 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
    On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
    All 3 files contain information stored by the user from their respective modes.
 
-   On first starting the program, a file is only created if the user inputs a command specific to that mode.
+   On first starting the program, a file is only created if the user inputs a command specific to that mode, i.e. not the General commands.
 
-   1. Prerequisites: Very first time using the app.
+   1. Prerequisites: Very first time using the application. Delete all files under ./data/ if not the first time using the application.
 
    1. Test case: Start and close the app immediately.<br>
       Expected: The 3 JSON files are not created.
@@ -918,20 +918,20 @@ Eventually, our shared understanding on our target user profile helped us to bui
 
 **Model**
 
-The `Model` of Productiv is certainly more complex than that of AddressBook. In AddressBook, there was only one key entity type in play - `Person`. For Productiv, three different entity types are managed at once - `Deliverable`, `Meeting` and `Contact`.
+The `Model` of Productiv is certainly more complex than that of AddressBook. In AddressBook, there was only one key entity type in play - `Person`. For Productiv, three different entity types are managed at once - `Deliverable`, `Meeting` and `Person`.
 
 As such, we had to restructure our entire application to accommodate these three entity types. Throughout the project, we had to rethink and refactor the structure of our code, weighing the pros and cons of each approach. This was a very painful process and also vulnerable to regressions.
 
 Eventually, we separated the models into three different `ModelManager`s, handled by three different `LogicManager`s, adhering to the Separation of Concerns Principle. The reduced coupling decreased the dependencies between the models.
 
-This also influenced our decision to not link the `Contacts` field in `Deliverable` and `Meeting` to data in the `Contact` model. This also provided greater flexibility to users as they could add contacts to `Deliverable`s and `Meeting`s without recording the details of the contact, e.g. a `Meeting` can involve people who are not important to record as a `Contact`.
+This also influenced our decision to not link the `Contacts` field in `Deliverable` and `Meeting` to data in the `Person` model. This also provided greater flexibility to users as they could add contacts to `Deliverable`s and `Meeting`s without recording the details of the contact, e.g. a `Meeting` can involve people who are not important to record as a `Person`.
 
 
 **Ui**
 
 The `Ui` of Productiv was almost entirely revamped from the AddressBook. 
 
-The easiest way would have been to stick to the current `Ui` of the AddressBook i.e. have 3 lists (`DeliverableListPanel`, `MeetingListPanel` and `ContactListPanel`) on the same page. While this would have been easier to implement, it would have made Productiv look very cluttered. We chose the hard way as we believe in making the user-experience seamless and enjoyable. As such, we worked hard to have the `Ui` change according to the current mode the user is in and also create an entirely new View Panel to enhance the user experience.
+The easiest way would have been to stick to the current `Ui` of the AddressBook i.e. have 3 lists (`DeliverableListPanel`, `MeetingListPanel` and `PersonListPanel`) on the same page. While this would have been easier to implement, it would have made Productiv look very cluttered. We chose the hard way as we believe in making the user-experience seamless and enjoyable. As such, we worked hard to have the `Ui` change according to the current mode the user is in and also create an entirely new View Panel to enhance the user experience.
 
 The `Dashboard` was difficult to implement. In particular, the OCP was definitely not something that could be done overnight. None of us had experience with JavaFX prior to CS2103T. We did extensive research on the libraries that we could use and exhaustive checks to ensure that the OCP was synced with the rest of Productiv. Eventually, we managed to create the OCP, which vastly improved the user experience.
 
