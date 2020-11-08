@@ -8,7 +8,7 @@ title: Productiv
 
 ![Ui](images/Ui.png)
 
-***Productive* is a desktop application for product managers like yourself to organise your product-related information.** 
+***Productiv* is a desktop application for product managers like yourself to organise your product-related information.** 
 While it has a Graphical User 
 Interface, most of your user interactions will happen through a Command Line Interface.
 

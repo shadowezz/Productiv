@@ -8,9 +8,7 @@ import static seedu.address.logic.commands.meeting.CommandTestUtil.DESCRIPTION_D
 import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_A;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.FROM_DESC_B;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_CONTACTS_DESC;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_DESCRIPTION_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_FROM_DESC;
-import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_LOCATION_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.INVALID_TO_DESC;
 import static seedu.address.logic.commands.meeting.CommandTestUtil.LOCATION_DESC_A;
@@ -31,11 +29,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.meeting.AddCommand;
 import seedu.address.model.meeting.meeting.From;
-import seedu.address.model.meeting.meeting.Location;
 import seedu.address.model.meeting.meeting.Meeting;
 import seedu.address.model.meeting.meeting.To;
 import seedu.address.model.util.Contacts;
-import seedu.address.model.util.Description;
 import seedu.address.model.util.Title;
 import seedu.address.testutil.MeetingBuilder;
 
@@ -117,10 +113,6 @@ class AddCommandParserTest {
         assertParseFailure(parser, INVALID_TITLE_DESC + DESCRIPTION_DESC_B + FROM_DESC_B
                 + TO_DESC_B + CONTACTS_DESC_B + LOCATION_DESC_B, Title.MESSAGE_CONSTRAINTS);
 
-        // invalid DESCRIPTION
-        assertParseFailure(parser, TITLE_DESC_B + INVALID_DESCRIPTION_DESC + FROM_DESC_B
-                + TO_DESC_B + CONTACTS_DESC_B + LOCATION_DESC_B, Description.MESSAGE_CONSTRAINTS);
-
         // invalid FROM
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + INVALID_FROM_DESC
                 + TO_DESC_B + CONTACTS_DESC_B + LOCATION_DESC_B, From.MESSAGE_CONSTRAINTS);
@@ -132,10 +124,6 @@ class AddCommandParserTest {
         // invalid CONTACTS
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B
                 + TO_DESC_B + INVALID_CONTACTS_DESC + LOCATION_DESC_A, Contacts.MESSAGE_CONSTRAINTS);
-
-        // invalid LOCATION
-        assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B
-                + TO_DESC_B + CONTACTS_DESC_B + INVALID_LOCATION_DESC, Location.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, TITLE_DESC_B + DESCRIPTION_DESC_B + FROM_DESC_B

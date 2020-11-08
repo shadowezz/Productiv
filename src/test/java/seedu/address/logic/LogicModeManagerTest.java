@@ -46,7 +46,7 @@ class LogicModeManagerTest {
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage)
             throws CommandException, ParseException {
-        CommandResult result = logicMode.execute(inputCommand, ModeEnum.DASHBOARD);
+        CommandResult result = logicMode.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
     }
 
@@ -64,14 +64,13 @@ class LogicModeManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
-        assertThrows(expectedException, expectedMessage, () -> logicMode.execute(inputCommand, ModeEnum.DASHBOARD));
+        assertThrows(expectedException, expectedMessage, () -> logicMode.execute(inputCommand));
     }
 
 
     @Test
     public void parseCommand_isModeCommand() {
         assertTrue(logicMode.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
-        // TODO add more modes here
         assertTrue(logicMode.isModeCommand(ExitCommand.COMMAND_WORD));
         assertTrue(logicMode.isModeCommand(HelpCommand.COMMAND_WORD));
     }

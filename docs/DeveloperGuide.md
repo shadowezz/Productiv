@@ -69,16 +69,31 @@ The sections below give more details of each component.
 
 ### UI component
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+![Structure of the UI Component](images/UiClassDiagramUpdated.png)
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `PersonDetailsPanel`, `CalendarListPanel`,
+ `ProjectCompletionStatusPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
-The `UI` component,
+ The `Dashboard` components of the UI are displayed when the application is in `Dashboard` mode. The left side of the application consists of 
+ the `ProjectCompletionStatusPanel` where the user can see the overall completion status of his/her product based on the
+ percentage of deliverables completed. The right side consists of the `CalendarListPanel` which displays a list of deliverables
+ and meetings, through `CalendarDeliverableCard` and `CalendarMeetingCard` respectively, in chronological order so that the user can
+ keep track of his/her schedule.
+
+
+ When the application is in deliverable, meeting or contact mode, the respective UI components will be displayed. For example,
+ in deliverable mode, the left side of the application will contain the `DeliverableListPanel`, consisting of `DeliverableCard`,
+ to show the list of deliverables the user has. The right side consists of the `DeliverableDetailsPanel` which will display the full details
+ of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for meeting and contact mode.
+  
+
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+
+The `UI` component:
 
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
@@ -109,7 +124,11 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 **API** : [`ModelDeliverable.java`, `ModelMeeting`, `ModelPerson`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/modelPerson/Model.java)
 
+<<<<<<< HEAD
 The Model component,
+=======
+The `Model`:
+>>>>>>> bf307de581bcb93e38bfb6c76e401d5b1166e530
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores deliverable, meeting, and person book. 
@@ -130,7 +149,7 @@ e.g. the UI can be bound to these lists so that the UI automatically updates whe
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storagePerson/Storage.java)
 
-The `Storage` component,
+The `Storage` component:
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
@@ -206,57 +225,109 @@ The following sequence diagram shows how a list is autosorted upon an addition o
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
 
-### [In progress] Switch Mode feature
+### Done feature
 
 #### Implementation
 
-Productiv can be in different modes: dashboard, deliverable, meeting and contact mode. 
-Based on the current mode, the user input is passed to the relevant `LogicManager`. 
-Following that, the `LogicManager` will parse the user input and produce the relevant results.
-The current mode is represented by a `ModeEnum` and stored in `MainWindow`.
+The Done feature allows users to mark their deliverables as completed. 
+
+1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` to be executed. 
+1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. 
+1. `DoneCommandParser` will then parse the command argument to return a `DoneCommand`.
+1. On execution, `DoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
+
+Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user.
+
+Given below is a sequence diagram to show how the done operation works at each step.
+
+![DoneCommandSequenceDiagram](images/DoneCommandSequenceDiagram.png)
+
+#### Design Considerations
+
+##### Aspect: How `done` is implemented
+
+* **Alternative 1 (current choice):** Have a separate command `done` for marking deliverables as completed.
+    * Pros: Clearer and easier for the user. Prevents the `edit` command from being too cluttered with too many
+    editable fields.
+    * Cons: More code and testing required as there are additional classes created such as `DoneCommand` and 
+    `DoneCommandParser`.
+* **Alternative 2:** Allow users to mark deliverables as completed through the existing `edit` command by changing 
+the completion status field of the deliverable
+    * Pros: Less code required since we only need to make small amendments to the existing `EditCommand` and `EditCommandParser`.
+    * Cons: Format of the command will be more complex and confusing for the user. Instead of just having to pass in the index
+    of deliverable, we will need to provide a prefix (e.g. s/) and a string to represent the completion status to edit to (e.g. edit 1 s/complete).
+
+### Switch Mode feature
+
+Productiv can be in any one of these modes: dashboard, deliverable, meeting and contact mode.
+Based on the current mode, user input is passed to the corresponding `LogicManager`,
+e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
+
+#### Implementation
+
+The user input is handled and retrieved by the `MainWindow` and then passed to `LogicModeManager`.
+`LogicModeManager` will call `ModeParser`, which will create a `SwitchCommandParser`.
+`ModeParser` calls on `SwitchCommandParser` to parse the arguments in the user input.
+`SwitchCommandParser` will parse the arguments and return a `SwitchCommand`.
+This `SwitchCommand` is passed back `LogicModeManager`.
+`LogicModeManager` will then call the execute method of `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to.
+This `CommandResult` is passed back `MainWindow`.
+Then, `MainWindow` will then call the `getMode()` method of `CommandResult` to gets the new mode to switch to.
+Based on the mode, `MainWindow` will update its own attribute `mode`.
+`MainWindow` will then update the UI via `switchMode(mode)` to only show information related to the new mode.
+
+For the command, a `SwitchCommandParser` is implemented to parse the input into a mode.
+Invalid arguments (any argument other than `dv`, `db`, `m` and `c`) are also handled properly, with suitable error messages being displayed to the user.
+
+Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
-Figure <?> Switch Command Sequence Diagram (In Progress)
 
-The user input is passed to `LogicModeManager`. 
-`LogicModeManager` then returns a `CommandResult` containing the mode that Productiv should switch to. 
-`MainWindow` then reflects the corresponding list in the user interface and
-will pass subsequent user inputs to the corresponding `LogicManager`.
+Given below is an activity diagram to show how the switch mode operation works.
+
+![SwitchModeActivityDiagram](images/SwitchModeActivityDiagram.png)
+
 
 #### Design consideration:
 
+##### Aspect: How Switch commands should be implemented
+
+* **Alternative 1 (current choice):** Shortened user commands: `switch` `db`, `dv`, `m` or `c`.
+  * Pros: More convenient and faster to type shorter user commands.
+  * Cons: More difficult for users to remember short forms.
+
+* **Alternative 2 (original implementation):** Longer user commands: `switch` `dashboard`, `deliverable`, `meeting` or `contact`.
+  * Pros: Clearer as commands correspond to the naming of tabs on the navigation bar.
+  * Cons: Takes longer to type longer user commands.
+
 ##### Aspect: Where mode is stored
 
-* **Alternative 1 (current choice):** Store mode in `MainWindow`
+* **Alternative 1 (current choice):** Store mode in `MainWindow`.
   * Pros: Easy to implement.
   * Cons: May violate Single Responsibility Principle.
 
-* **Alternative 2:** Store mode in a `LogicModeManager`
+* **Alternative 2:** Store mode in a `LogicModeManager`.
   * Pros: Adheres to the Single Responsibility Principle better.
   * Cons: `LogicModeManager` would need to have references to the other logic managers. 
   It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
 
-_{more aspects and alternatives to be added}_
 
+### View feature
 
-### \[Proposed\] View feature
+#### Implementation
 
-#### Proposed Implementation
+The view feature allows users to view the details of a specific deliverable, meeting or contact on the right
+panel of the display window, depending on the mode the application is in. 
 
-The view feature allows users to view the details of a specific `Meeting`, `Deliverable` or `Contact` on the right
-panel of the display window.
+1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` to be executed. 
+1. `MeetingLogicManager` will call `MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. 
+1. `ViewCommandParser` will then parse the command argument to return a `ViewCommand`.
+1. On execution, `ViewCommand` will update the `ModelMeeting` to set the meeting currently in view. 
+1. `UI` component will then make a separate call to `ModelMeeting` to retrieve the meeting currently in view and display its full details to the user in the right panel of the application.
 
-The proposed view mechanism is facilitated by implementing the following operations:
+Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user. 
 
-* `ModelDeliverable#setDeliverableInView()` — Changes the `Deliverable` to be displayed
-* `ModelPerson#setContactInView()` — Changes the `Contact` to be displayed
-* `ModelMeeting#setMeetingInView()` — Changes the `Meeting` to be displayed
-
-Given below is an example usage scenario of how viewing a deliverable works.
-
-Step 1. The user executes `view 2` command to view the details of the second deliverable in the list of deliverables. The view command calls `ModelDeliverable#setDeliverableInView()` which updates the deliverable currently in view in the `ModelDeliverable`. This newly updated deliverable is then fetched and displayed to the user on the right panel.
-
-The following sequence diagram shows how the view operation works:
+The following sequence diagram shows how the view operation works in each step:
 
 ![ViewCommandSequenceDiagram](images/ViewCommandSequenceDiagram.png)
 
@@ -270,7 +341,8 @@ The following sequence diagram shows how the view operation works:
 
 * **Alternative 2:** Passes the item in view inside the Command Result to the UI component
   * Pros: Does not require an additional operation to fetch the item in view.
-  * Cons: Inappropriate use of Command Result whose primary objective is to pass feedback to the user.
+  * Cons: Cluttering of Command Result object which now needs to store mode-specific items. This is against its original purpose 
+  which is to pass mode-neutral information, such as error messages, back to UI for display after a command execution.
 
 ### \[Proposed\] Overall Completion Percentage feature
 
@@ -319,25 +391,25 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
-
-### Product scope
+## **Appendix A: Product Scope**
 
 **Target user profile**:
 
 * has a need to manage a significant number of contacts
 * has a need to manage a meeting schedule
-* has a need to oversee the development of the product
-* prefer desktop apps over other types
+* has a need to oversee the development of a product
+* prefers to have product-related information in a single application
+* prefer desktop apps over other types of apps
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Used in a corporate setting, our application integrates both a meeting schedule and a contact list for the user to 
-manage their product’s development more comprehensively and conveniently.
+**Value proposition**: 
+* consolidates product-related information such as deliverables, meetings and contacts into one place
+* manage their product’s development more comprehensively and conveniently than a typical mouse/GUI driven app
 
 
-### EPIC
+## **Appendix B: User Stories**
 
 | No | EPIC                                                                                                                                        | 
 |----|---------------------------------------------------------------------------------------------------------------------------------------------|
@@ -346,8 +418,6 @@ manage their product’s development more comprehensively and conveniently.
 |C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
 |D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
 |E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
-
-### User stories
 
 Priorities: 
 * `* * *` - High (must have)
@@ -394,7 +464,7 @@ Priorities:
 
 
 
-### Use cases
+## **Appendix C: Use Cases**
 
 (For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -716,33 +786,29 @@ Priorities:
       
 *{More to be added}*
       
+## **Appendix D: Non-Functional Requirements**
 
-### Non-Functional Requirements
+1. Should work on any [`mainstream OS`](#common-classes) as long as Java `11` is installed and is the default.
+1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without noticeable sluggishness in performance for typical usage.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
+1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+1. The application should be for a single user, with its size being smaller than 100MB.
 
-1. Should work on any mainstream OS as long as it has Java 11 or above installed.
-1. Should be able to hold up to 1000 contacts without any negative effects.
-1. Should be able to hold up to 1000 deliverables without any negative effects.
-1. Should be able to schedule meetings up to 2 years in advance.
-1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+## **Appendix E: Glossary**
 
-*{More to be added}*
+* **Mainstream OS**: Windows, Unix, OS-X.
+* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
+* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
+* **Deliverable**: An item to be completed as part of the product development process.
+* **Milestone**: A significant stage or event in the development of a product.
+* **Role**: A function assumed or part played by a contact. Every contact is either a developer or stakeholder.
 
-### Glossary
-
-* **Mainstream OS**: Windows, Linux, Unix, OS-X.
-* **Deliverable**: a thing able to be provided, especially as a product of a development process.
-* **CRUD**: Create, Read, Update and delete.
-
-*{More to be added}*
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more *exploratory* testing. Each test case is to be executed independently of each other.
 
 </div>
 
@@ -750,77 +816,124 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
-
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Test case: Download the jar file and copy into an empty folder. Double-click the jar file.<br>
+       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window.
+       Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. Shutdown
+       <div markdown="span" class="alert alert-info">:information_source: **Note:** The window has a minimum width and height so that the UI does not look so cramped.
+       </div>
 
-    1. Click the window close button _OR_
-    1. Enter input: `exit`, to close the program. 
-    
+1. Shutting down
+
+    1. Test case: Click the window close button.<br>
+       Expected: The app shuts down.
+
+    1. Test case: `exit`<br>
+       Expected: Similar to previous.
+
 ### Switching Modes
 
-1. Via Mouse input
+1. Switching to deliverable mode
 
-    1. Test case: Click `Deliverable` _OR_ Click `Meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
+    1. Prerequisite: You are not in deliverable mode.
 
-1. Via Command Line Input
+    1. Test case: Click `Deliverable` on the top navigation bar.<br>
+       Expected: Window displays list of saved deliverables.
 
-    1. Test case: `switch deliverable` or `switch meeting`<br>
-    Expected: Window displays list of saved `deliverables` or `meetings`.
-    
-    1. Incorrect modes: `switch me3ting`, `switch dev`, `...`<br>
-    Expected: Status bar throws error message.
+    1. Test case: `switch dv`<br>
+       Expected: Similar to previous.
 
-### Adding an item
+    1. Other incorrect switch commands to try: `switch meeting`, `switch dev`<br>
+       Expected: Status bar throws error message.
 
-1. Adding a contact while in `Contact` mode
+### Adding a deliverable
 
-   1. Test case: `add r/stk n/John e/Johnwork@abc.com`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Adding Login screen
 
-   1. Test case: `add n/john`<br>
-      Expected: No contact is added. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: You are in deliverable mode. Login screen not already added. If added, delete it.
 
-   1. Other incorrect add commands to try: `add john stk`, `add john`, `...` <br>
-      Expected: Similar to previous.
+   1. Test case: `add t/Login screen m/1.0 by/12-12-2020 23:59 d/Must include username and password fields c/John Martin, Abby Li`<br>
+      Expected: Login screen to appear in the list of deliverables and expanded in right panel.
 
-### Deleting an item
+   1. Test case: `add t/Login screen`<br>
+      Expected: No deliverable is added. Status bar throws error message.
 
-1. Deleting a contact while in `contact` mode
-
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
+   1. Other incorrect add commands to try: `add`, `add Login screen` <br>
+      Expected: Status bar throws error message.
 
 ### Saving data
 
-1. Data files are saved in a `data` folder.<br>
-3 JSON files are created:
-    * `contactbook.json`
-    * `meetingbook.json`
-    * `deliverablebook.json`
+1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-All 3 files contain information stored by the user from their respective modes.
+   On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
+   All 3 files contain information stored by the user from their respective modes.
+
+   On first starting the program, a file is only created if the user inputs a command specific to that mode.
+
+   1. Prerequisites: Very first time using the app.
+
+   1. Test case: Start and close the app immediately.<br>
+      Expected: The 3 JSON files are not created.
+
+   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.<br>
+      Expected: Of the 3 JSON files, only `deliverablebook.json` created.
 
 1. Dealing with missing/corrupted data files
 
-   1. Missing data/corrupted files: delete `contactbook.json` file and start the jar file again<br> 
-   Expected: Data file should re-initialise a list of sample contacts
-   
-_{more to be added}_
+   1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
+      Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.
+
+   1. Test case: Corrupt `deliverablebook.json` under ./data/. Add a (`-`) to a saved deliverable's milestone.<br>
+      Expected: The app should be able to start up but show no deliverables.
+
+      <div markdown="span" class="alert alert-info">:information_source: **Note:** To re-initialise a list of sample deliverables, execute the previous test case.
+      </div>
+
+
+## **Appendix G: Effort**
+
+| Feature     | AB3     | Productiv    |
+| ----------- | ------- | ------------ |
+| LoC         | ~9k     | ~20k         |
+| Difficulty  | 10      | 15           |
+| Effort      | 10      | 15           |
+
+
+
+**Understanding our target user profile**
+
+Initially, we had completely different ideas on what our target user profile is. We were confused about the differences between product owners, product managers, business analysts and project leads.
+
+To ensure that we were all on the same page, we made sure to talk things out before starting our project. We researched on the job scope of a product manager and shared with each other our experiences of working in different organisations and what product managers do at these organisations. 
+
+Eventually, our shared understanding on our target user profile helped us to build a cohesive product catered to product managers.
+
+
+**Model**
+
+The `Model` of Productiv is certainly more complex than that of AddressBook. In AddressBook, there was only one key entity type in play - `Person`. For Productiv, three different entity types are managed at once - `Deliverable`, `Meeting` and `Contact`.
+
+As such, we had to restructure our entire application to accommodate these three entity types. Throughout the project, we had to rethink and refactor the structure of our code, weighing the pros and cons of each approach. This was a very painful process and also vulnerable to regressions.
+
+Eventually, we separated the models into three different `ModelManager`s, handled by three different `LogicManager`s, adhering to the Separation of Concerns Principle. The reduced coupling decreased the dependencies between the models.
+
+This also influenced our decision to not link the `Contacts` field in `Deliverable` and `Meeting` to data in the `Contact` model. This also provided greater flexibility to users as they could add contacts to `Deliverable`s and `Meeting`s without recording the details of the contact, e.g. a `Meeting` can involve people who are not important to record as a `Contact`.
+
+
+**Ui**
+
+The `Ui` of Productiv was almost entirely revamped from the AddressBook. 
+
+The easiest way would have been to stick to the current `Ui` of the AddressBook i.e. have 3 lists (`DeliverableListPanel`, `MeetingListPanel` and `ContactListPanel`) on the same page. While this would have been easier to implement, it would have made Productiv look very cluttered. We chose the hard way as we believe in making the user-experience seamless and enjoyable. As such, we worked hard to have the `Ui` change according to the current mode the user is in and also create an entirely new View Panel to enhance the user experience.
+
+The `Dashboard` was difficult to implement. In particular, the OCP was definitely not something that could be done overnight. None of us had experience with JavaFX prior to CS2103T. We did extensive research on the libraries that we could use and exhaustive checks to ensure that the OCP was synced with the rest of Productiv. Eventually, we managed to create the OCP, which vastly improved the user experience.
+
+
+**Overall**
+
+As a whole, this process was fraught with challenges. Whenever we had to face obstacles, we worked with each other to brainstorm and decide on the best solution. We made sure that everyone followed the same workflow and reviewed each other’s work to maintain the code quality of our codebase. We have learnt alot from each other, beyond just technical skills. Productiv would not have been possible without the hard work and commitment of the entire team.

@@ -18,12 +18,12 @@
         <Insets top="5" right="5" bottom="5" left="15" />
       </padding>
       <HBox spacing="5" alignment="CENTER_LEFT">
-        <Label fx:id="title" text="\$title" styleClass="cell_big_label" wrapText="true">
+        <Label fx:id="title" text="\$title" styleClass="cell_big_label">
         </Label>
       </HBox>
       <FlowPane>
-          <Label text = "Time: " styleClass="label-bright"/>
-          <Label fx:id="duration" styleClass="cell_small_label" text="\$duration" wrapText="true"/>
+          <Label text = "Date &amp; Time: " styleClass="label-bright"/>
+          <Label fx:id="duration" styleClass="cell_small_label" text="\$duration"/>
       </FlowPane>
     </VBox>
   </GridPane>

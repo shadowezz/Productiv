@@ -28,6 +28,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    private static final String CLICK_MODE_MESSAGE = "%1$s button clicked!\nResult: Switched to: %1$s";
+
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -190,6 +192,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to dashboard mode.
      */
     public void switchDashboard() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Dashboard"));
         switchMode(ModeEnum.DASHBOARD);
     }
 
@@ -197,6 +200,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to contact mode.
      */
     public void switchPerson() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Contact"));
         switchMode(ModeEnum.PERSON);
     }
 
@@ -204,6 +208,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to deliverable mode.
      */
     public void switchDeliverable() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Deliverable"));
         switchMode(ModeEnum.DELIVERABLE);
     }
 
@@ -211,6 +216,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to meeting mode.
      */
     public void switchMeeting() {
+        logger.info(String.format(CLICK_MODE_MESSAGE, "Meeting"));
         switchMode(ModeEnum.MEETING);
     }
 
@@ -230,9 +236,6 @@ public class MainWindow extends UiPart<Stage> {
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logicPerson.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -298,7 +301,6 @@ public class MainWindow extends UiPart<Stage> {
                 rightPanelPlaceholder.getChildren().add(deliverableDetailsPanel.getRoot());
             }
             break;
-        //Todo
         case MEETING:
             if (logicMeeting.getMeetingInView() != null) {
                 meetingDetailsPanel = new MeetingDetailsPanel(logicMeeting.getMeetingInView());
@@ -319,7 +321,7 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = null;
             if (logicMode.isModeCommand(commandText) || mode == ModeEnum.DASHBOARD) {
-                commandResult = logicMode.execute(commandText, mode);
+                commandResult = logicMode.execute(commandText);
             } else {
                 switch (mode) {
                 case PERSON:
@@ -346,13 +348,9 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+            } else if (commandResult.isExit()) {
                 handleExit();
-            }
-
-            if (commandResult.getMode() != null) {
+            } else if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
             } else {
                 updateDetailsPanel();

@@ -11,6 +11,7 @@ import java.util.Optional;
  */
 public class Location {
     public static final String EMPTY_LOCATION_FIELD = "-";
+    // TODO: remove after allowing blank optional fields to pass.
     public static final String MESSAGE_CONSTRAINTS = "Locations can take any values, and it should not be blank";
 
     /*
@@ -32,8 +33,12 @@ public class Location {
     public Location(Optional<String> location) {
         if (location.isPresent()) {
             checkArgument(isValidLocation(location.get()), MESSAGE_CONSTRAINTS);
+            value = location.get().isEmpty()
+                    ? Optional.empty()
+                    : location;
+        } else {
+            value = location;
         }
-        value = location;
     }
 
     /**
@@ -44,14 +49,23 @@ public class Location {
     public Location(String location) {
         requireNonNull(location);
         checkArgument(isValidLocation(location), MESSAGE_CONSTRAINTS);
-        value = Optional.of(location);
+        if (location.isEmpty()) {
+            value = Optional.empty();
+        } else {
+            value = Optional.of(location);
+        }
+
     }
 
     /**
      * Returns true if a given string is a valid email.
      */
     public static boolean isValidLocation(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (test.isEmpty()) {
+            return true;
+        } else {
+            return test.matches(VALIDATION_REGEX);
+        }
     }
 
     @Override

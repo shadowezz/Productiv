@@ -13,7 +13,7 @@ Class ReadOnlyXYZBook
 Class ModelXYZ
 Class ModelXYZManager
 Class UserPrefs
-Class ReadOnlyUserPrefs
+Interface ReadOnlyUserPrefs <<Interface>>
 
 Package Util {
 Class DateTime
@@ -47,6 +47,10 @@ Class Deliverable
 Class UniqueDeliverableList
 }
 
+Package Event {
+interface TimeEvent <<Interface>>
+}
+
 }
 
 Class HiddenOutside #FFFFFF
@@ -75,6 +79,7 @@ Phone -[hidden]right-> Description
 
 XYZBook *--> "1" UniqueMeetingList
 UniqueMeetingList o--> "*" Meeting
+Meeting .up.|> TimeEvent
 Meeting *--> From
 Meeting *--> To
 Meeting *--> Location
@@ -85,19 +90,23 @@ Meeting *--> Contacts
 Location -[hidden]right-> To
 To -[hidden]right-> From
 
-From .down.|> DateTime
-To .down.|> Time
+From -down-|> DateTime
+To -down-|> Time
 
 XYZBook *--> "1" UniqueDeliverableList
 UniqueDeliverableList o--> "*" Deliverable
+Deliverable .up.|> TimeEvent
 Deliverable *--> Deadline
 Deliverable *--> Milestone
 Deliverable *--> Title
 Deliverable *--> Description
 
-Deadline .down.|> DateTime
+Deadline -down-|> DateTime
 
 ModelXYZManager -->"1" Person : filtered list
+ModelXYZManager -->"1" Person : in view
+ModelXYZManager -->"1" Meeting : in view
 ModelXYZManager -->"1" Meeting : filtered list
 ModelXYZManager -->"1" Deliverable : filtered list
+ModelXYZManager -->"1" Deliverable : in view
 @enduml

@@ -31,8 +31,8 @@ public class CommandTestUtil {
     public static final String VALID_DESCRIPTION_B = "With product designers";
     public static final String VALID_FROM_A = "01-01-2020 14:00";
     public static final String VALID_FROM_B = "01-01-2020 12:00";
-    public static final String VALID_TO_A = "14:00";
-    public static final String VALID_TO_B = "12:00";
+    public static final String VALID_TO_A = "15:00";
+    public static final String VALID_TO_B = "14:00";
 
     public static final String VALID_CONTACTS_A = "Alice, Bob, Cameron";
     public static final String VALID_CONTACTS_B = "Jeannie, Justin, Lenny Sarah";
@@ -53,11 +53,9 @@ public class CommandTestUtil {
     public static final String LOCATION_DESC_B = " " + PREFIX_LOCATION + VALID_LOCATION_B;
 
     public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + ""; // "" empty not allowed not allowed
-    public static final String INVALID_DESCRIPTION_DESC = " " + PREFIX_DESCRIPTION + ""; // empty not allowed
     public static final String INVALID_FROM_DESC = " " + PREFIX_FROM + "3-03-2020 09:30"; // missing '0' digit
     public static final String INVALID_TO_DESC = " " + PREFIX_TO + "03-03-2020 0930"; // missing colon
     public static final String INVALID_CONTACTS_DESC = " " + PREFIX_CONTACTS + "1 2 3"; // no commas
-    public static final String INVALID_LOCATION_DESC = " " + PREFIX_LOCATION + ""; // empty not allowed
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

@@ -10,15 +10,16 @@ participant ":LogicModeManager" as LogicModeManager LOGIC_COLOR
 participant ":ModeParser" as ModeParser LOGIC_COLOR
 participant ":SwitchCommandParser" as SwitchCommandParser LOGIC_COLOR
 participant ":SwitchCommand" as SwitchCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
-[-> MainWindow : executeCommand(switchMode)
+[-> MainWindow : executeCommand(commandText)
 activate MainWindow
 
-MainWindow -> LogicModeManager : execute(switchMode)
+MainWindow -> LogicModeManager : execute(commandText)
 activate LogicModeManager
 
-LogicModeManager -> ModeParser : parseCommand(switchMode)
+LogicModeManager -> ModeParser : parseCommand(commandText)
 activate ModeParser
 
 create SwitchCommandParser
@@ -31,7 +32,7 @@ ModeParser -> SwitchCommandParser: parse(arguments)
 activate SwitchCommandParser
 
 create SwitchCommand
-SwitchCommandParser -> SwitchCommand: SwitchCommand(arguments)
+SwitchCommandParser -> SwitchCommand: SwitchCommand(mode)
 activate SwitchCommand
 SwitchCommand --> SwitchCommandParser
 deactivate SwitchCommand
@@ -47,19 +48,32 @@ destroy SwitchCommandParser
 LogicModeManager -> SwitchCommand : execute()
 activate SwitchCommand
 
-SwitchCommand --> LogicModeManager : result
+create CommandResult
+SwitchCommand -> CommandResult : CommandResult(successMessage, false, false, mode)
+activate CommandResult
+CommandResult --> SwitchCommand
+deactivate CommandResult
+
+SwitchCommand --> LogicModeManager : commandResult
 deactivate SwitchCommand
-SwitchCommand -[hidden]-> LogicModeManager : result
+SwitchCommand -[hidden]-> LogicModeManager : commandResult
 destroy SwitchCommand
 
-LogicModeManager --> MainWindow : result
+LogicModeManager --> MainWindow : commandResult
 deactivate LogicModeManager
 
+MainWindow -> CommandResult : getMode()
+activate CommandResult
+CommandResult --> MainWindow : mode
+deactivate CommandResult
+
 MainWindow -> MainWindow: switchMode(mode)
+destroy CommandResult
 activate MainWindow
 MainWindow --> MainWindow
 
 deactivate MainWindow
 [<--MainWindow
+deactivate MainWindow
 
 @enduml

@@ -91,4 +91,7 @@ public interface ModelPerson {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /** Returns the internal list of deliverables */
+    ObservableList<Person> getInternalPersonList();
 }
