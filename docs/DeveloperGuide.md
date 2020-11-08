@@ -92,7 +92,7 @@ The `UI` component:
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-<div markdown="span" class="alert alert-info"> 
+<div markdown="block" class="alert alert-info"> 
 :information_source: **Note:** <br>
 
 * ABC refers to `Deliverable`, `Meeting`, `Person` and `Mode`.
@@ -160,12 +160,9 @@ The `Model`:
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-<div markdown="span" class="alert alert-info"> <br>
-
-**:information_source: Note:**<br>
-
+<div markdown="span" class="alert alert-info"> 
+**:information_source: Note:** <br>
 ABC refers to `Deliverable`, `Meeting` and `Person`.
-
 </div>
 
 **API** : 
