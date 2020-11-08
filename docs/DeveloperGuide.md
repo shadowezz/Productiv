@@ -413,62 +413,51 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 ## **Appendix B: User Stories**
 
-| No | EPIC                                                                                                                                        | 
-|----|---------------------------------------------------------------------------------------------------------------------------------------------|
-|A   | As a Product Manager, I can track my product’s development so that I can work better towards production deadlines.                          |
-|B   | As a Product Manager, I can manage my stakeholder/dev team contacts.                                                                        |
-|C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
-|D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
-|E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
+Priority Legend: 
+* `* * *` - High (must be addressed)
+* `* *` - Medium (would be nice to address)
+* `*` - Low (least likely to be addressed) 
 
-Priorities: 
-* `* * *` - High (must have)
-* `* *` - Medium (nice to have)
-* `*` - Low (unlikely to have) 
-
-| Priority | As a Product Manager…​                | I want to …​                                                             | So that I can…​                 |
-| -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
-| **EPIC A** |
-| `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
-| `* * *`  | Product Manager                          | mark deliverables as completed                                              | refer back to them when needed     |
-| `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
-| `* *`    | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
-| `* *`    | Product Manager                          | package deliverables into different milestones                              | retrieve the relevant deliverables easily |
-| `* *`    | Product Manager                          | easily know who and how to contact the person-in-charge                     | contact the person when the progress of a deliverable is behind schedule |
-| `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
-| `* *`    | Product Manager                          | find a deliverable easily                                                   |                                    |
-| `* *`    | Product Manager                          | sort my deliverables by deadline                                            |                                    |
-| **EPIC B** |
-| `* * *`  | Product Manager                          | add contacts                                                                | store their details for future communication |
-| `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
-| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | remember and retrieve important information  |
-| `* *  `  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
-| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
-| `* *`    | Product Manager                          | sort my contacts by alphabetical order                                      |                                    |
-| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
-| **EPIC C** |
-| `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
-| `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
-| `* *`    | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
-| `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
-| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
-| `* *`    | Product Manager                          | sort my meetings by alphabetical order                                      |                                    |
-| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
-| **EPIC D** |
-| `* *`    | Product Manager                          | view a helpful popup                                                        | easily access the relevant instructions |
-| `* *`    | Product Manager                          | receive feedback from the app                                               | know the system has registered my action correctly or not |
-| `* *`    | Product Manager                          | view and easily navigate within the shortcut reference                      | locate technical solutions quickly |
-| **EPIC E** |
-| `* * *`  | Product Manager                          | Opening page                                                                | Enter the name of product and initialise Productiv       |
-| `*`      | Product Manager                          | see a calendar view of meetings                                             | know my available slots to schedule new meetings   |
-| `*`      | Product Manager                          | view the overall completion                                                 | know whether we are on track (completed deliverables/total deliverables) |
-
-
-
+| Priority   | As a ...                                   | I can ...                                                                   | So that I can ...                                          |
+| ---------- | ------------------------------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **EPIC A** | Product Manager                            | track my product’s deliverables                                             | work better towards meeting them                           |
+| `* * *`    | Product Manager                            | add deliverables for the product                                            | keep track of them                                         |
+| `* * *`    | Product Manager                            | mark deliverables as completed                                              | know which ones I've done                                  |
+| `* * *`    | Product Manager                            | delete deliverables that are no longer relevant                             | focus on other deliverables                                |
+| `* *`      | Product Manager                            | edit the details of the deliverables                                        | keep them updated                                          |
+| `* *`      | Product Manager                            | tag deliverables to different milestones                                    | distinguish the deliverables easily                        |
+| `* *`      | Product Manager                            | add contacts under my deliverables                                          | know who is involved in meeting the deliverable            |
+| `* *`      | Product Manager                            | edit a deliverable which was wrongly marked done back to its original status| ensure my deliverables are reflected correctly             |
+| `* *`      | Product Manager with many deliverables     | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many deliverables     | have my deliverables sorted chronologically by deadline                     | look out for more urgent deliverables                      |
+| `* *`      | Product Manager                            | be informed when a deliverable is close to its deadline or has passed it    | know which deliverables need more attention                |
+| **EPIC B** | Product Manager                            | manage my product-related meetings                                          | be clear on my meeting schedule                            |
+| `* * *`    | Product Manager                            | add new meetings that I'm scheduled for                                     | keep track of them                                         |
+| `* * *`    | Product Manager                            | delete my scheduled meetings                                                | remove outdated or cancelled meetings                      |
+| `* *`      | Product Manager                            | edit the details of my scheduled meetings                                   | keep them updated                                          |
+| `* *`      | Product Manager                            | add contacts and location under my meetings                                 | know who is involved and where the meeting is taking place |
+| `* *`      | Product Manager with many meetings         | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many meetings         | have my meetings sorted chronologically by its start time                   | look out for the earlier meetings that were scheduled      |
+| `* *`      | Product Manager                            | be informed when a meeting is close to starting, on-going or has ended      | be updated on the status of my meetings                    |
+| **EPIC C** | Product Manager                            | organise my developer or stakeholder contacts                               | reference them easily                                      |
+| `* * *`    | Product Manager                            | add contacts related to the product (developers/stakeholders)               | store their details for future communication               |
+| `* * *`    | Product Manager                            | distinguish between developers and stakeholders in a project easily         | remember their respective roles                            |
+| `* * *`    | Product Manager                            | delete contacts that are no longer relevant                                 | forget about unimportant contacts                          |
+| `* *`      | Product Manager                            | edit the details of my contacts                                             | keep them updated                                          |
+| `* *`      | Product Manager with many contacts         | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many contacts         | have my contacts sorted by alphabetical order                               | keep my contact list organised                             |
+| **EPIC D** | Product Manager                            | have an overview of my product's development and upcoming events            | work better towards production deadlines                   |
+| `* *`      | Product Manager                            | view the overall completion of the product                                  | know the current progress of the product's development     |
+| `* *`      | Product Manager                            | see a calendar view of my deliverables and meetings                         | know which product-related events are upcoming and urgent  |
+| `*`        | Product Manager                            | toggle between daily, weekly and monthly view of the calendar               | have a variety of views to see my upcoming events          |
+| **EPIC E** | forgetful or inexperienced Product Manager | view app instructions and tips                                              | be able to use it as intended                              | 
+| `* * *`    | Product Manager                            | receive feedback from the app                                               | know the system has successfully registered my action      |
+| `* *`      | Product Manager                            | view a helpful popup that directs me to the app's user guide                | easily access the relevant instructions                    |
+| `*`        | Product Manager                            | view a shortcut reference                                                   | receive technical solutions immediately for command issues |
 
 ## **Appendix C: Use Cases**
 
-(For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Productiv` and the **Actor** is the `user`, unless specified otherwise)
 
 #### Mode
 
