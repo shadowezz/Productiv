@@ -33,10 +33,10 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
-            + "[" + PREFIX_MILESTONE + "MILESTONE] "
             + "[" + PREFIX_DEADLINE + "DEADLINE] "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_CONTACTS + "CONTACTS]\n"
+            + "[" + PREFIX_MILESTONE + "MILESTONE] "
+            + "[" + PREFIX_CONTACTS + "CONTACTS] "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "Finalise beta release features "
             + PREFIX_DEADLINE + "01-01-2020 12:00";

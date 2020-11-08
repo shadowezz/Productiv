@@ -1,10 +1,9 @@
-package seedu.address.logic.parser.mode;
+package seedu.address.logic.parser.general;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.ModeEnum;
-import seedu.address.logic.commands.mode.SwitchCommand;
+import seedu.address.logic.commands.general.SwitchCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -12,13 +11,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new SwitchCommand object
  */
 public class SwitchCommandParser implements Parser<SwitchCommand> {
-
-    private final ModeEnum mode;
-
-    SwitchCommandParser(ModeEnum mode) {
-        requireNonNull(mode);
-        this.mode = mode;
-    }
 
     /**
      * Parses the given {@code String} of arguments in the context of the SwitchCommand
@@ -37,10 +29,6 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
         if (newMode == null) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
-        }
-
-        if (mode == newMode) {
-            throw new ParseException(String.format(SwitchCommand.MESSAGE_SAME_MODE, mode.toString().toLowerCase()));
         }
 
         return new SwitchCommand(newMode);

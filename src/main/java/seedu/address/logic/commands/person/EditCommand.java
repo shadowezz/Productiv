@@ -33,8 +33,8 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed contact list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_ROLE + "ROLE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION]\n"
@@ -69,7 +69,7 @@ public class EditCommand extends Command {
         List<Person> lastShownList = modelPerson.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());

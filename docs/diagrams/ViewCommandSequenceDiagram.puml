@@ -2,30 +2,32 @@
 !include style.puml
 
 box Logic LOGIC_COLOR_T1
-participant ":DeliverableLogicManager" as DeliverableLogicManager LOGIC_COLOR_T2
-participant ":DeliverableBookParser" as DeliverableBookParser LOGIC_COLOR_T2
+participant ":XYZLogicManager" as XYZLogicManager LOGIC_COLOR_T2
+participant ":XYZBookParser" as XYZBookParser LOGIC_COLOR_T2
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR_T2
 participant "v:ViewCommand" as ViewCommand LOGIC_COLOR_T2
 end box
 
+note left of XYZLogicManager : XYZ = Deliverable, Meeting or Contact
+
 box Model MODEL_COLOR_T1
-participant ":ModelDeliverable" as ModelDeliverable MODEL_COLOR_T2
+participant ":ModelXYZ" as ModelXYZ MODEL_COLOR_T2
 end box
 
-[-> DeliverableLogicManager : execute("view 2")
-activate DeliverableLogicManager
+[-> XYZLogicManager : execute("view 2")
+activate XYZLogicManager
 
-DeliverableLogicManager -> DeliverableBookParser : parseCommand("view 2")
-activate DeliverableBookParser
+XYZLogicManager -> XYZBookParser : parseCommand("view 2")
+activate XYZBookParser
 
 create ViewCommandParser
-DeliverableBookParser -> ViewCommandParser
+XYZBookParser -> ViewCommandParser
 activate ViewCommandParser
 
-ViewCommandParser --> DeliverableBookParser
+ViewCommandParser --> XYZBookParser
 deactivate ViewCommandParser
 
-DeliverableBookParser -> ViewCommandParser : parse("view 2")
+XYZBookParser -> ViewCommandParser : parse("view 2")
 activate ViewCommandParser
 
 create ViewCommand
@@ -35,25 +37,38 @@ activate ViewCommand
 ViewCommand --> ViewCommandParser : v
 deactivate ViewCommand
 
-ViewCommandParser --> DeliverableBookParser : v
+ViewCommandParser --> XYZBookParser : v
 deactivate ViewCommandParser
+destroy ViewCommandParser
 
-DeliverableBookParser --> DeliverableLogicManager : v
-deactivate DeliverableBookParser
+XYZBookParser --> XYZLogicManager : v
+deactivate XYZBookParser
 
-DeliverableLogicManager -> ViewCommand : execute()
+XYZLogicManager -> ViewCommand : execute()
 activate ViewCommand
 
-ViewCommand -> ModelDeliverable : setDeliverableInView(deliverable)
-activate ModelDeliverable
+ViewCommand -> ModelXYZ : setXYZInView(XYZ)
+activate ModelXYZ
 
-ModelDeliverable --> ViewCommand
-deactivate ModelDeliverable
+ModelXYZ --> ViewCommand
+deactivate ModelXYZ
 
-ViewCommand --> DeliverableLogicManager : result
+ViewCommand --> XYZLogicManager : result
 deactivate ViewCommand
 destroy ViewCommand
 
-[<-- DeliverableLogicManager : result
-deactivate DeliverableLogicManager
+[<-- XYZLogicManager : result
+deactivate XYZLogicManager
+
+[-> XYZLogicManager : getXYZInView
+activate XYZLogicManager
+
+XYZLogicManager -> ModelXYZ : getXYZInView()
+activate ModelXYZ
+
+ModelXYZ --> XYZLogicManager : XYZ in view
+deactivate ModelXYZ
+
+[<-- XYZLogicManager : XYZ in view
+deactivate XYZLogicManager
 @enduml

@@ -13,15 +13,8 @@ import java.util.Optional;
 public class Description {
 
     public static final String EMPTY_DESCRIPTION_FIELD = "-";
-    // TODO: remove after allowing blank optional fields to pass.
-    public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any values, and it should not be blank";
-
-    /*
-     * The first character of the description must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
+    public static final String MESSAGE_CONSTRAINTS = "Descriptions can take any value.";
     public static final String VALIDATION_REGEX = "[^\\s].*";
-
     public final Optional<String> value;
 
     /**
@@ -32,8 +25,13 @@ public class Description {
     public Description(Optional<String> description) {
         if (description.isPresent()) {
             checkArgument(isValidDescription(description.get()), MESSAGE_CONSTRAINTS);
+            value = description.get().isEmpty()
+                    ? Optional.empty()
+                    : description;
+        } else {
+            value = description;
         }
-        value = description;
+
     }
 
     /**
@@ -44,15 +42,25 @@ public class Description {
     public Description(String description) {
         requireNonNull(description);
         checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
-        value = Optional.of(description);
+        if (description.isEmpty()) {
+            value = Optional.empty();
+        } else {
+            value = Optional.of(description);
+        }
     }
 
     /**
-     * Returns true if a given string is a valid deadline.
+     * Returns true if a given string is a valid description.
      */
     public static boolean isValidDescription(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (test.isEmpty()) {
+            return true;
+        } else {
+            return test.matches(VALIDATION_REGEX);
+        }
+
     }
+
 
     @Override
     public String toString() {
