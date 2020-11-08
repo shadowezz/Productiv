@@ -63,6 +63,7 @@ ModelXYZ .right.> ObservableList
 ModelXYZManager o--> "1" XYZBook
 ModelXYZManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
+note right of ModelXYZManager: XYZ = Deliverable, Meeting or Person
 
 XYZBook *--> "1" UniquePersonList
 UniquePersonList o--> "*" Person
