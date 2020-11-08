@@ -194,14 +194,14 @@ The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Cont
 Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Contact`s by the following attributes: 
 
 * `Meeting`   - its `From`'s `LocalDateTime` value in ascending chronological order 
-* `Deadline`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
-* `Contact`   - its `Title`'s `String` value in ascending alphabetical order 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
+* `Person`   - its `Title`'s `String` value in ascending alphabetical order 
 
 Auto-sort is facilitated by custom classes that implements `Comparator`.
 
-The following sequence diagram shows how a list is auto-sorted upon an addition of a new element.
+The following sequence diagram shows how a list is auto-sorted upon an addition of a `Meeting`.
 
-![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
+![AutosortSequenceDiagram](images/AutosortSequenceDiagram.png)
 
 #### Design consideration:
 
@@ -213,6 +213,38 @@ The following sequence diagram shows how a list is auto-sorted upon an addition 
 * **Alternative 2:** Searches the correct index in the list to insert an element upon addition or update.
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
+    
+### Calendar feature
+
+#### Implementation
+
+The Calendar feature allows users to view their `Deliverable`s and`Meeting`s together in one chronologically ordered list - `calendarList`. 
+Specifically, the Calendar feature combines and orders `Deliverable`s and `Meeting`s by the following attributes: 
+
+* `Meeting`   - its `From`'s `LocalDateTime` value 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value
+
+The combining is done by applying polymorphism; `Deliverable` and `Meeting` implement the interface `TimeEvent`.
+The following class diagram demonstrates the above-mentioned implementation. 
+![TimeEventClassDiagram](images/TimeEventClassDiagram.png)
+
+Meanwhile, the ordering is facilitated by the [Auto-sort feature](#auto-sort-feature).
+
+The following sequence diagram shows how the Calendar is updated upon an addition of a `Deliverable`.
+
+![CalendarSequenceDiagram](images/CalendarSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How the `calendarList` in `Calendar` is updated 
+
+* **Alternative 1 (current choice):** Holds references to `internalList`s in `UniqueDeliverableList` and `UniqueMeetingList`.
+    * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified. 
+    * Cons: Relatively high time complexity as it handles all elements in a one-element update.
+* **Alternative 2:** Modifies implementation of `UniqueDeliverableList` and `UniqueMeetingList`. 
+    * Pros: Relatively low time complexity as for every one-element update to the `internalList` in `UniqueDeliverableList` or `UniqueMeetingList`, 
+        the same amount is updated in the `calendarList` in Calendar. 
+    * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified.
 
 ### Done feature
 
