@@ -15,7 +15,7 @@ import seedu.address.commons.ModeEnum;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.LogicDeliverable;
-import seedu.address.logic.LogicGeneral;
+import seedu.address.logic.LogicDispatcher;
 import seedu.address.logic.LogicMeeting;
 import seedu.address.logic.LogicPerson;
 import seedu.address.logic.commands.CommandResult;
@@ -36,7 +36,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private ModeEnum mode;
-    private LogicGeneral logicGeneral;
+    private LogicDispatcher logicDispatcher;
     private LogicPerson logicPerson;
     private LogicDeliverable logicDeliverable;
     private LogicMeeting logicMeeting;
@@ -88,13 +88,13 @@ public class MainWindow extends UiPart<Stage> {
      * Creates a {@code MainWindow} with the given {@code Stage} {@code LogicMode},
      * {@code LogicPerson} and {@code LogicDeliverable}.
      */
-    public MainWindow(Stage primaryStage, LogicGeneral logicGeneral, LogicPerson logicPerson,
+    public MainWindow(Stage primaryStage, LogicDispatcher logicDispatcher, LogicPerson logicPerson,
                       LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
-        this.logicGeneral = logicGeneral;
+        this.logicDispatcher = logicDispatcher;
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;
         this.logicMeeting = logicMeeting;
@@ -319,7 +319,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
-            CommandResult commandResult = logicGeneral.execute(commandText, mode);
+            CommandResult commandResult = logicDispatcher.execute(commandText, mode);
 
             requireNonNull(commandResult);
 

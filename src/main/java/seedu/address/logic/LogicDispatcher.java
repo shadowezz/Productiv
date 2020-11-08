@@ -5,7 +5,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public interface LogicGeneral {
+public interface LogicDispatcher {
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.

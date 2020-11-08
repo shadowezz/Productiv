@@ -6,20 +6,20 @@ participant ":MainWindow" as MainWindow UI_COLOR
 end box
 
 box Logic LOGIC_COLOR_T1
-participant ":LogicModeManager" as LogicModeManager LOGIC_COLOR
+participant ":LogicDispatcherManager" as LogicDispatcherManager LOGIC_COLOR
 participant ":ModeParser" as ModeParser LOGIC_COLOR
 participant ":SwitchCommandParser" as SwitchCommandParser LOGIC_COLOR
 participant ":SwitchCommand" as SwitchCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
-[-> MainWindow : executeCommand(commandText)
+[-> MainWindow : executeCommand("switch dv")
 activate MainWindow
 
-MainWindow -> LogicModeManager : execute(commandText)
-activate LogicModeManager
+MainWindow -> LogicDispatcherManager : execute("switch dv", currMode)
+activate LogicDispatcherManager
 
-LogicModeManager -> ModeParser : parseCommand(commandText)
+LogicDispatcherManager -> ModeParser : parseCommand("switch dv")
 activate ModeParser
 
 create SwitchCommandParser
@@ -28,11 +28,11 @@ activate SwitchCommandParser
 SwitchCommandParser --> ModeParser
 deactivate SwitchCommandParser
 
-ModeParser -> SwitchCommandParser: parse(arguments)
+ModeParser -> SwitchCommandParser: parse("dv")
 activate SwitchCommandParser
 
 create SwitchCommand
-SwitchCommandParser -> SwitchCommand: SwitchCommand(mode)
+SwitchCommandParser -> SwitchCommand: SwitchCommand(ModeEnum.DELIVERABLE)
 activate SwitchCommand
 SwitchCommand --> SwitchCommandParser
 deactivate SwitchCommand
@@ -40,34 +40,34 @@ deactivate SwitchCommand
 SwitchCommandParser --> ModeParser
 deactivate SwitchCommandParser
 
-ModeParser --> LogicModeManager : command
+ModeParser --> LogicDispatcherManager : command
 deactivate ModeParser
 
 destroy SwitchCommandParser
 
-LogicModeManager -> SwitchCommand : execute()
+LogicDispatcherManager -> SwitchCommand : execute()
 activate SwitchCommand
 
 create CommandResult
-SwitchCommand -> CommandResult : CommandResult(successMessage, false, false, mode)
+SwitchCommand -> CommandResult : CommandResult(successMessage, false, false, ModeEnum.DELIVERABLE)
 activate CommandResult
 CommandResult --> SwitchCommand
 deactivate CommandResult
 
-SwitchCommand --> LogicModeManager : commandResult
+SwitchCommand --> LogicDispatcherManager : commandResult
 deactivate SwitchCommand
-SwitchCommand -[hidden]-> LogicModeManager : commandResult
+SwitchCommand -[hidden]-> LogicDispatcherManager : commandResult
 destroy SwitchCommand
 
-LogicModeManager --> MainWindow : commandResult
-deactivate LogicModeManager
+LogicDispatcherManager --> MainWindow : commandResult
+deactivate LogicDispatcherManager
 
 MainWindow -> CommandResult : getMode()
 activate CommandResult
-CommandResult --> MainWindow : mode
+CommandResult --> MainWindow : ModeEnum.DELIVERABLE
 deactivate CommandResult
 
-MainWindow -> MainWindow: switchMode(mode)
+MainWindow -> MainWindow: switchMode(ModeEnum.DELIVERABLE)
 destroy CommandResult
 activate MainWindow
 MainWindow --> MainWindow

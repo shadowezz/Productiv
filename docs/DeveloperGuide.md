@@ -244,22 +244,27 @@ the completion status field of the deliverable
 
 ### Switch Mode feature
 
-Productiv can be in any one of these modes: dashboard, deliverable, meeting and contact mode.
-Based on the current mode, user input is passed to the corresponding `LogicManager`,
-e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
-
 #### Implementation
 
-The user input is handled and retrieved by the `MainWindow` and then passed to `LogicModeManager`.
-`LogicModeManager` will call `ModeParser`, which will create a `SwitchCommandParser`.
-`ModeParser` calls on `SwitchCommandParser` to parse the arguments in the user input.
-`SwitchCommandParser` will parse the arguments and return a `SwitchCommand`.
-This `SwitchCommand` is passed back `LogicModeManager`.
-`LogicModeManager` will then call the execute method of `SwitchCommand` which returns a `CommandResult` containing the mode that the app should switch to.
-This `CommandResult` is passed back `MainWindow`.
-Then, `MainWindow` will then call the `getMode()` method of `CommandResult` to gets the new mode to switch to.
-Based on the mode, `MainWindow` will update its own attribute `mode`.
-`MainWindow` will then update the UI via `switchMode(mode)` to only show information related to the new mode.
+The switch mode feature allows users to switch to any of the modes of the application.
+The application can be in any one of these modes: dashboard, deliverable, meeting and contact mode.
+Based on the current mode, user input is passed to the corresponding `LogicManager`,
+e.g. if the user is in deliverable mode, user input is passed to `LogicDeliverableManager`.
+Based on the current mode, the `Ui` updates with information related to that mode.
+
+The mode of the application be switched via CLI or mouse input.
+
+For CLI:
+1. The user input is received by the `MainWindow` in the `Ui` component and passed to `LogicDispatcherManager`.
+`LogicDispatcherManager` is the 'gatekeeper' for the Logic component. 
+1. `LogicDispatcherManager` will identify the user input as a `General` command and call `ModeParser`.
+1. `ModeParser` will create a `SwitchCommandParser`. `SwitchCommandParser` will then parse the arguments in the user input to return a `SwitchCommand`.
+1. This `SwitchCommand` is passed back to `LogicDispatcherManager`.
+1. `LogicDispatcherManager` will then call the execute method of `SwitchCommand` which returns a `CommandResult` containing the mode that the application should switch to.
+1. This `CommandResult` is passed back to `MainWindow`.
+1. Then, `MainWindow` will retrieve the new mode from the `CommandResult`.
+1. Based on the new mode, `MainWindow` will update its own attribute `mode`.
+`MainWindow` will also update the UI to only show information related to the new mode.
 
 For the command, a `SwitchCommandParser` is implemented to parse the input into a mode.
 Invalid arguments (any argument other than `dv`, `db`, `m` and `c`) are also handled properly, with suitable error messages being displayed to the user.
@@ -267,6 +272,16 @@ Invalid arguments (any argument other than `dv`, `db`, `m` and `c`) are also han
 Given below is a sequence diagram to show how the switch mode mechanism behaves.
 
 ![SwitchModeSequenceDiagram](images/SwitchModeSequenceDiagram.png)
+
+For mouse input:
+There is no interaction with the logic component. The only steps are:
+1. The `MainWindow` detects that a button on the navigation bar is clicked, e.g. if Deliverable is clicked, `switchDeliverable()` method of `MainWindow` is called.
+1. The `MainWindow` will update its own attribute `mode` and the UI to only show information related to the new mode.
+
+Given below is a sequence diagram to show how the switch mode mechanism behaves.
+
+![SwitchModeMouseInputSequenceDiagram](images/SwitchModeMouseInputSequenceDiagram.png)
+<figcaption>The two sequence diagrams are separated from simplicity</figcaption>
 
 Given below is an activity diagram to show how the switch mode operation works.
 
@@ -291,10 +306,10 @@ Given below is an activity diagram to show how the switch mode operation works.
   * Pros: Easy to implement.
   * Cons: May violate Single Responsibility Principle.
 
-* **Alternative 2:** Store mode in a `LogicModeManager`.
+* **Alternative 2:** Store mode in a `LogicDispatcherManager`.
   * Pros: Adheres to the Single Responsibility Principle better.
-  * Cons: `LogicModeManager` would need to have references to the other logic managers. 
-  It should not be the responsibility of `LogicModeManager` to pass the user input to the relevant `LogicManager`.
+  * Cons: `MainWindow` might have to fetch the mode from `LogicDispatcherManager` for certain updates.
+    Also, mode can be said to be primarily a `Ui` consideration and should be stored in a `Ui` component.
 
 
 ### View feature

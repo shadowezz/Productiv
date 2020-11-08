@@ -15,8 +15,8 @@ import seedu.address.logic.parser.mode.ModeParser;
 /**
  * The main LogicManager of the app.
  */
-public class LogicGeneralManager implements LogicGeneral {
-    private final Logger logger = LogsCenter.getLogger(LogicGeneralManager.class);
+public class LogicDispatcherManager implements LogicDispatcher {
+    private final Logger logger = LogsCenter.getLogger(LogicDispatcherManager.class);
     private final ModeParser modeParser;
 
     private final LogicPerson logicPerson;
@@ -24,13 +24,13 @@ public class LogicGeneralManager implements LogicGeneral {
     private final LogicMeeting logicMeeting;
 
     /**
-     * Main Manager of the app.
+     * Main Dispatcher of the app to the correct Logic Manager.
      *
      * @param logicPerson
      * @param logicDeliverable
      * @param logicMeeting
      */
-    public LogicGeneralManager(LogicPerson logicPerson, LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
+    public LogicDispatcherManager(LogicPerson logicPerson, LogicDeliverable logicDeliverable, LogicMeeting logicMeeting) {
         this.modeParser = new ModeParser();
         this.logicPerson = logicPerson;
         this.logicDeliverable = logicDeliverable;

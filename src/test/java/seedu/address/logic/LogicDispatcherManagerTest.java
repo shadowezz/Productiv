@@ -32,12 +32,12 @@ import seedu.address.storage.person.JsonAddressBookStorage;
 import seedu.address.storage.person.StoragePersonManager;
 import seedu.address.testutil.ModeUtil;
 
-class LogicGeneralManagerTest {
+class LogicDispatcherManagerTest {
 
     @TempDir
     public Path temporaryFolder;
 
-    private LogicGeneral logicGeneral;
+    private LogicDispatcher logicDispatcher;
 
     @BeforeEach
     public void setUp() {
@@ -61,7 +61,7 @@ class LogicGeneralManagerTest {
         ModelMeeting modelMeeting = new ModelMeetingManager();
         LogicMeeting logicMeeting = new LogicMeetingManager(modelMeeting, storageMeeting);
 
-        logicGeneral = new LogicGeneralManager(logicPerson, logicDeliverable, logicMeeting);
+        logicDispatcher = new LogicDispatcherManager(logicPerson, logicDeliverable, logicMeeting);
     }
 
     @Test
@@ -85,7 +85,7 @@ class LogicGeneralManagerTest {
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage)
             throws CommandException, ParseException {
-        CommandResult result = logicGeneral.execute(inputCommand, ModeEnum.DASHBOARD);
+        CommandResult result = logicDispatcher.execute(inputCommand, ModeEnum.DASHBOARD);
         assertEquals(expectedMessage, result.getFeedbackToUser());
     }
 
@@ -103,14 +103,14 @@ class LogicGeneralManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
-        assertThrows(expectedException, expectedMessage, () -> logicGeneral.execute(inputCommand, ModeEnum.DASHBOARD));
+        assertThrows(expectedException, expectedMessage, () -> logicDispatcher.execute(inputCommand, ModeEnum.DASHBOARD));
     }
 
 
     @Test
     public void parseCommand_isModeCommand() throws ParseException {
-        assertTrue(logicGeneral.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
-        assertTrue(logicGeneral.isModeCommand(ExitCommand.COMMAND_WORD));
-        assertTrue(logicGeneral.isModeCommand(HelpCommand.COMMAND_WORD));
+        assertTrue(logicDispatcher.isModeCommand(ModeUtil.getSwitchCommand(ModeEnum.PERSON)));
+        assertTrue(logicDispatcher.isModeCommand(ExitCommand.COMMAND_WORD));
+        assertTrue(logicDispatcher.isModeCommand(HelpCommand.COMMAND_WORD));
     }
 }
