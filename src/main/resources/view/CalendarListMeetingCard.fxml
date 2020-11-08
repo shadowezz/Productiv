@@ -22,7 +22,7 @@
         </Label>
       </HBox>
       <FlowPane>
-          <Label text = "Time: " styleClass="label-bright"/>
+          <Label text = "Date &amp; Time: " styleClass="label-bright"/>
           <Label fx:id="duration" styleClass="cell_small_label" text="\$duration"/>
       </FlowPane>
     </VBox>

@@ -18,12 +18,6 @@
                     <Insets bottom="40" />
                 </padding>
             </HBox>
-            <Label text="Description" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
-            <Label fx:id="description" styleClass="cell_large_label" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS">
-                <padding>
-                    <Insets bottom="20" />
-                </padding>
-            </Label>
             <Label text="Contacts" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
             <VBox fx:id="contactList" styleClass="cell_large_label" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                 <padding>
@@ -32,6 +26,12 @@
             </VBox>
             <Label text="Location" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
             <Label fx:id="venue" styleClass="cell_large_label" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="20" />
+                </padding>
+            </Label>
+            <Label text="Description" styleClass="details_subheading" VBox.vgrow="ALWAYS" />
+            <Label fx:id="description" styleClass="cell_large_label" prefWidth="400" wrapText="true" VBox.vgrow="ALWAYS">
                 <padding>
                     <Insets bottom="20" />
                 </padding>

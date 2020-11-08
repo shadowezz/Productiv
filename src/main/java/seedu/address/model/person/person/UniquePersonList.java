@@ -104,6 +104,11 @@ public class UniquePersonList implements Iterable<Person> {
         sortList();
     }
 
+    /** Returns the internal list of contacts */
+    public ObservableList<Person> getInternalPersonList() {
+        return internalList;
+    }
+
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */

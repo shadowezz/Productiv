@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane minHeight="40">
+    <GridPane minHeight="20">
         <children>
             <Label text="#" styleClass="cell_big_label" GridPane.columnIndex="0" />
             <Label text="Title" styleClass="cell_big_label" wrapText="true" GridPane.columnIndex="1" />
