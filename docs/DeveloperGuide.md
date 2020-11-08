@@ -77,20 +77,46 @@ The `UI` component,
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-**API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+<div markdown="span" class="alert alert-info">
+:information_source: **Note:** 
+* ABC refers to `Deliverable`, `Meeting`, `Person` and `Mode`.<br>
+* XYZ refers to any general command call, e.g Add, find, delete, etc. 
+</div>
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
-1. This results in a `Command` object which is executed by the `LogicManager`.
+**API** : <br>
+* [`LogicDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDeliverable.java)
+* [`LogicMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMeeting.java)
+* [`LogicPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicPerson.java)
+* [`LogicMode.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMode.java)
+
+The `Logic` component parses the user commands and executes them. Depending on the mode of the application, 
+the command execution can affect different models. For e.g add command will affect `ModelDeliverable` 
+if the program is in Deliverable Mode. Only `LogicMode` does not affect Model.
+
+This is the list of what `Model` components affected by their respective `Logic` components: 
+* `LogicDeliverable`: Component that affects `DeliverableModel`.
+* `LogicMeeting`: Component that affects `MeetingModel`.
+* `LogicPerson`: Component that affects `PersonModel`.
+
+The components follow the general sequence to execute a command:
+
+1. `Logic` uses the `XYZBookParser` class to parse the user command.
+1. This results in a `XYZCommand` object which is executed by the `LogicXYZManager`.
 1. The command execution can affect the `Model` (e.g. adding a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for API call of any command. 
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for any command](images/CommandSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) 
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
+</div>
+<div markdown="span" class="alert alert-primary">:bulb:
+**Tip**: Refer to  
+[Switch Mode Feature](#Switch-Mode-feature) below for more details on the Switch Mode feature.
 </div>
 
 ### Model component
@@ -117,11 +143,31 @@ The `Model`,
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storagePerson/Storage.java)
+**API** : 
+[`StorageDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/deliverable/StorageDeliverable.java)
+[`StorageMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/meeting/StorageMeeting.java)
+[`StoragePerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/person/StoragePerson.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
+* can save the data in json format and read it back.
+
+For saving files, storage follows this sequence:
+
+1. When `ABCBook` is updated, `StorageABCManagers` saves the newly updated book.
+1. The newly updated book is passed to `JsonSerliazableABCBook`.
+1. Each item in `ABCBook` is serialized by `JsonAdaptedABC` before overwriting the current Jsonfile
+
+Given below is the Sequence Diagram for data being stored.
+
+![Interactions Inside the Storage Component for Any Book](images/SaveStorageSequenceDiagram.png)
+
+For reading files, based on the `UserPrefs` provided, storage will find the Json Files and load the data from there. 
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** 
+If the Json files are missing or if the path is missing, a new set of Json files will be generated with a set of sample items.
+</div>
 
 ### Common classes
 

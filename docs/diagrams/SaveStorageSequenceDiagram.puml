@@ -1,0 +1,50 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR
+participant ":LogicABC" as LogicABC LOGIC_COLOR
+end box
+
+box Storage STORAGE_COLOR
+participant "storageABC:StorageABC" as StorageABC STORAGE_COLOR
+participant ":ABCBookStorage" as ABCBookStorage STORAGE_COLOR
+participant "json:JsonSerializableABCBookStorage" as JsonSerializableABCBookStorage STORAGE_COLOR
+participant "jsonItem:JsonAdaptedABC" as JsonAdaptedABC STORAGE_COLOR
+
+end box
+
+[-> LogicABC
+activate LogicABC
+
+LogicABC -> StorageABC : execute("args")
+activate StorageABC
+
+StorageABC -> ABCBookStorage : saveABC(ABCBook)
+activate ABCBookStorage
+
+create JsonSerializableABCBookStorage
+ABCBookStorage -> JsonSerializableABCBookStorage : saveABC(ABCBook)
+activate JsonSerializableABCBookStorage
+
+loop book has items
+    create JsonAdaptedABC
+    JsonSerializableABCBookStorage -> JsonAdaptedABC
+    activate JsonAdaptedABC
+
+    JsonAdaptedABC -> JsonSerializableABCBookStorage : jsonItem
+    deactivate JsonAdaptedABC
+
+end
+
+JsonSerializableABCBookStorage -> ABCBookStorage : json
+deactivate JsonSerializableABCBookStorage
+
+ABCBookStorage -> StorageABC
+deactivate ABCBookStorage
+
+StorageABC -> LogicABC
+deactivate StorageABC
+
+deactivate LogicABC
+
+@enduml
