@@ -818,13 +818,12 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Initial launch
 
-    1. Test case: Download the jar file and copy into an empty folder. Double-click the jar file.<br>
-       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
+    1. Test case: Download the `.jar` file and copy into an empty folder. Start *Productiv* from the terminal.<br>
+       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.<br>
 
 1. Saving window preferences
 
-    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window.
-       Re-launch the app by double-clicking the jar file.<br>
+    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window. Re-launch the app.<br>
        Expected: The most recent window size and location is retained.
 
        <div markdown="span" class="alert alert-info">:information_source: **Note:** The window has a minimum width and height so that the UI does not look so cramped.
@@ -857,10 +856,10 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Adding Login screen
 
-   1. Prerequisites: You are in deliverable mode. Login screen not already added. If added, delete it.
+   1. Prerequisites: You are in deliverable mode. The deliverable `Login screen` is not already added. If added, delete it.
 
-   1. Test case: `add t/Login screen m/1.0 by/12-12-2020 23:59 d/Must include username and password fields c/John Martin, Abby Li`<br>
-      Expected: Login screen to appear in the list of deliverables and expanded in right panel.
+   1. Test case: `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields`<br>
+      Expected: The deliverable `Login screen` is added to the list of deliverables and is expanded in the right panel.
 
    1. Test case: `add t/Login screen`<br>
       Expected: No deliverable is added. Status bar throws error message.
@@ -872,20 +871,18 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-   On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
-   All 3 files contain information stored by the user from their respective modes.
-
-   On first starting the program, a file is only created if the user inputs a command specific to that mode, i.e. not the General commands.
+   On normal usage, data is saved to 3 JSON files - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
+   All 3 files contain information stored by the user from the respective modes.
 
    1. Prerequisites: Very first time using the application. Delete all files under ./data/ if not the first time using the application.
 
    1. Test case: Start and close the app immediately.<br>
       Expected: The 3 JSON files are not created.
 
-   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.<br>
+   1. Test case: Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
       Expected: Of the 3 JSON files, only `deliverablebook.json` created.
 
-1. Dealing with missing/corrupted data files
+1. Dealing with missing or corrupted data files
 
    1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
       Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.

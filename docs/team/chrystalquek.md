@@ -15,7 +15,7 @@ Productiv is a desktop application for product managers to organise their produc
 #### New features and Enhancements
 
 * **New Feature**: Added the ability to switch modes.
-  * What it does: Allows the user to `switch` to the different modes of the app - `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact). The user can also click on the tabs in the navigation bar. Subsequent commands are executed with respect to the current mode.
+  * What it does: Allows the user to `switch` to the different modes of the app. The user can also click on the tabs in the navigation bar. Subsequent commands are executed with respect to the current mode.
   * Justification: This feature improves the user experience significantly because the user can just choose to see only deliverable, meeting or contact related information. This makes the application less cluttered and more organised.
 
     The user can also remember less commands, e.g. the `add` command word can be used to add a deliverable, meeting or contact, depending on the mode the user is currently in.
@@ -51,7 +51,7 @@ Productiv is a desktop application for product managers to organise their produc
 
 #### Community
   * PRs reviewed (with non-trivial review comments): [\#105](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/105), [\#70](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/70), [#34](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/34)
-  * Total PRs reviewed: 25+, Total comments given: 70+
+  * Total PRs reviewed: ~25, Total comments given: ~70
   * Reported bugs and suggestions for other teams (during PE-D): [#11](https://github.com/chrystalquek/ped/issues/11), [#7](https://github.com/chrystalquek/ped/issues/7)
 
 #### Documentation
@@ -61,5 +61,3 @@ Productiv is a desktop application for product managers to organise their produc
   * Developer Guide:
     * Added implementation details of the `switch` feature. Included UML diagrams `SwitchModeSequenceDiagram`, `SwitchModeActivityDiagram` and `SwitchModeMouseInputSequenceDiagram`: [\#241](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/241)
     * Updated almost the entire Appendix, including Instructions for Manual Testing and Effort. Also introduced a neater structure to the Appendix: [\#229](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/229)
-
-### Documentation Extracts

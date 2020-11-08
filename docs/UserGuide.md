@@ -20,9 +20,9 @@ title: User Guide
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
-1. Copy the `.jar` file to your preferred folder.
+1. Copy the `.jar` file to an empty folder.
 
-1. Double-click the file to start *Productiv*. 
+1. Start *Productiv* from the terminal.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
