@@ -156,6 +156,7 @@ public class MainWindow extends UiPart<Stage> {
             rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
             leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
             setUnderlineButton(dashboardButton);
+            projectCompletionStatusPanel.updateOcp();
             break;
         case PERSON:
             leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -194,7 +195,6 @@ public class MainWindow extends UiPart<Stage> {
     public void switchDashboard() {
         logger.info(String.format(CLICK_MODE_MESSAGE, "Dashboard"));
         switchMode(ModeEnum.DASHBOARD);
-        projectCompletionStatusPanel.updateOcp();
     }
 
     /**
@@ -352,10 +352,6 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             } else if (commandResult.getMode() != null) {
                 switchMode(commandResult.getMode());
-
-                if (commandResult.getMode() == ModeEnum.DASHBOARD) {
-                    projectCompletionStatusPanel.updateOcp();
-                }
             } else {
                 updateDetailsPanel();
             }

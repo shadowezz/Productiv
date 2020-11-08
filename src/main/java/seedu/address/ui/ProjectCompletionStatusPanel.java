@@ -102,7 +102,7 @@ public class ProjectCompletionStatusPanel extends UiPart<Region> {
                 });
 
                 progress++;
-                if (progress > ocp) {
+                if (progress >= ocp) {
                     break;
                 }
             }
