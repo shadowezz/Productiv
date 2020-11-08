@@ -34,12 +34,12 @@ Productiv is a desktop application for product managers to organise their produc
   * Edited GUI for overall cohesiveness: [\#119](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/119)
 
 
-### Project management
+#### Project management
   * Organised and lead some weekly team meetings.
   * Facilitated task delegation.
   * Ensured that deadlines were met.
     
-### Contributions to team-based tasks
+#### Contributions to team-based tasks
   * Created skeleton for switching modes: [\#32](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/32), [\#106](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/106)
   * Necessary general code enhancements
       * Changed product icon and name and renamed jar file: [\#119](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/119)
@@ -49,15 +49,17 @@ Productiv is a desktop application for product managers to organise their produc
   * Clarified and followed up with reviewers of PE-D on behalf of team: [\#4](https://github.com/khoodehui/ped/issues/4), [\#3](https://github.com/zhaohuanqdcn/ped/issues/3)
   * Standardized App feedback messages: [\#124](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/124)
 
-### Community
+#### Community
   * PRs reviewed (with non-trivial review comments): [\#105](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/105), [\#70](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/70), [#34](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/34)
   * Total PRs reviewed: 25+, Total comments given: 70+
   * Reported bugs and suggestions for other teams (during PE-D): [#11](https://github.com/chrystalquek/ped/issues/11), [#7](https://github.com/chrystalquek/ped/issues/7)
 
-### Documentation
+#### Documentation
   * User Guide:
     * Updated documentation for contact feature: [\#124](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/124)
     * Added documentation for dashboard feature : [\#216](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/216)
   * Developer Guide:
     * Added implementation details of the `switch` feature. Included UML diagrams `SwitchModeSequenceDiagram`, `SwitchModeActivityDiagram` and `SwitchModeMouseInputSequenceDiagram`: [\#241](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/241)
     * Updated almost the entire Appendix, including Instructions for Manual Testing and Effort. Also introduced a neater structure to the Appendix: [\#229](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/229)
+
+### Documentation Extracts
