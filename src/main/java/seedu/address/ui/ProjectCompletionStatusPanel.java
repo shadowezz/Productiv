@@ -97,14 +97,15 @@ public class ProjectCompletionStatusPanel extends UiPart<Region> {
                     Logger.getLogger(ProjectCompletionStatusPanel.class.getName()).log(Level.SEVERE, null, e);
                 }
 
+                if (progress >= ocp) {
+                    break;
+                }
+
                 Platform.runLater(() -> {
                     rpi.setProgress(progress);
                 });
 
                 progress++;
-                if (progress >= ocp) {
-                    break;
-                }
             }
         }
     }
