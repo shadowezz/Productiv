@@ -16,8 +16,8 @@ Productiv is a desktop application for product managers to organise their produc
 
 * **New Feature**: Added the ability to switch modes.
   * What it does: Allows the user to `switch` to the different modes of the app - `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact). The user can also click on the tabs in the navigation bar. Subsequent commands are executed with respect to the current mode.
-  * Justification: This feature improves the user experience significantly because the user can just choose to see only deliverable, meeting or contact related information. This makes the application less cluttered and more organised. 
-    
+  * Justification: This feature improves the user experience significantly because the user can just choose to see only deliverable, meeting or contact related information. This makes the application less cluttered and more organised.
+
     The user can also remember less commands, e.g. the `add` command word can be used to add a deliverable, meeting or contact, depending on the mode the user is currently in.
   * Highlights: This feature was very difficult to implement and required significant restructuring of the entire application. I had to make the UI change whenever there was a switch in mode and ensure that the subsequent commands were passed to the correct `LogicManager`s for execution.
 
@@ -26,13 +26,13 @@ Productiv is a desktop application for product managers to organise their produc
   * Justification: Helps users keep track of the developers and stakeholders that are involved in the development of the product.
   * Highlights: Refactored `Person` to user-facing Contact. A `Person` can have a `Role` (developer or stakeholder) and also a `Description`.
    After careful consideration, decided to remove attributes that would not be important for product-management such as `Address` and `Tag`.
- 
+
 * **Major enhancement**: Improved list UI. Created a table format for list UI and made sure to only display fields that are more important to the user.
 
 * **Enhancements to existing features**:
   * Updated the GUI color scheme: [\#48](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/48)
   * Edited GUI for overall cohesiveness: [\#119](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/119)
-  
+
 
 ### Project management
   * Organised and lead some weekly team meetings.
