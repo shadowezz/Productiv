@@ -62,7 +62,7 @@ Here is a sequence of example commands you can try:<br>
   e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
   
 * If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `n/NAME r/stk e/EMAIL`.
+  e.g. if you input the command `add r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `add n/NAME r/stk e/EMAIL`.
 
 * For single-word commands without fields, any word(s) following it will be ignored.<br>
   e.g. if you input the command `list everything please`, it will be accepted as `list`.
@@ -184,7 +184,7 @@ Format: `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRI
 * `INDEX` must be a positive integer.
 * At least one of the fields of the deliverable must be changed.
 * The existing values of the specified deliverable will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the first deliverable.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
 
 <div markdown="block" class="alert alert-info">
 
@@ -334,7 +334,7 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 * `INDEX` must be a positive integer.
 * At least one of the fields of the meeting must be changed.
 * The existing values of the specified meeting will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the first meeting.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
 
 <div markdown="block" class="alert alert-info">
 
@@ -459,7 +459,7 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the fields of the contact must be changed.
 * The existing values of the specified contact will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the first contact.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st contact.
 
 <div markdown="block" class="alert alert-info">
 
@@ -471,7 +471,7 @@ Examples:
 *  `edit 1 e/jeremysand@glutter.com p/81234567`
 edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
 *  `edit 2 p/` 
-clear the optional phone field of the 2nd contact.
+clears the optional phone field of the 2nd contact.
 
 #### Viewing a contact: `view`
 

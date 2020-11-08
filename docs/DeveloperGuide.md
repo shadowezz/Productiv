@@ -440,7 +440,7 @@ Priority Legend:
 | `* *`      | Product Manager with many meetings         | have my meetings sorted chronologically by its start time                   | look out for the earlier meetings that were scheduled      |
 | `* *`      | Product Manager                            | be informed when a meeting is close to starting, on-going or has ended      | be updated on the status of my meetings                    |
 | **EPIC C** | Product Manager                            | organise my developer or stakeholder contacts                               | reference them easily                                      |
-| `* * *`    | Product Manager                            | add contacts related to the product (developers/stakeholders)               | store their details for future communication               |
+| `* * *`    | Product Manager                            | add contacts related to the product                                         | store their details for future communication               |
 | `* * *`    | Product Manager                            | distinguish between developers and stakeholders in a project easily         | remember their respective roles                            |
 | `* * *`    | Product Manager                            | delete contacts that are no longer relevant                                 | forget about unimportant contacts                          |
 | `* *`      | Product Manager                            | edit the details of my contacts                                             | keep them updated                                          |
@@ -452,33 +452,33 @@ Priority Legend:
 | `*`        | Product Manager                            | toggle between daily, weekly and monthly view of the calendar               | have a variety of views to see my upcoming events          |
 | **EPIC E** | forgetful or inexperienced Product Manager | view app instructions and tips                                              | be able to use it as intended                              | 
 | `* * *`    | Product Manager                            | receive feedback from the app                                               | know the system has successfully registered my action      |
-| `* *`      | Product Manager                            | view a helpful popup that directs me to the app's user guide                | easily access the relevant instructions                    |
+| `* *`      | Product Manager                            | get directions to the app's user guide                                      | easily access the relevant instructions                    |
 | `*`        | Product Manager                            | view a shortcut reference                                                   | receive technical solutions immediately for command issues |
 
 ## **Appendix C: Use Cases**
 
-For all use cases below, the **System** is `Productiv` and the **Actor** is the `user`, unless specified otherwise.
+For all use cases below, the **System** is `Productiv` and the **Actor** is the `user`.
 
 ### General
 
-**Use case: UC01 - Switch Mode**
+**Use case: G01 - Switch Mode**
 
 **MSS**
 1. User chooses to switch to another mode.
 2. User enters the command to switch mode into the command box.
-3. Productiv switches to the expected mode and displays a success message.
+3. Productiv switches to the expected mode and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-     * 2a1. Productiv displays an error message.
+     * 2a1. Productiv displays an error message in the feedback box.
      * 2a2. User enters the command again.
      * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
        
        Use case resumes from step 3.
 
-**Use case: UC02 - Help**
+**Use case: G02 - Help**
 
 **Precondition(s):**
 * User has a stable internet connection.
@@ -486,20 +486,20 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 **MSS**
 1. User chooses to view instructions on how to use Productiv.
 2. User enters the help command into the command box.
-3. Productiv shows a help window with a copyable URL to its user guide and displays a success message.
+3. Productiv shows a help window with a copyable URL to its user guide and displays a success message in the feedback box.
 4. User copies the link into their browser and is directed to the user guide.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-     * 2a1. Productiv displays an error message.
+     * 2a1. Productiv displays an error message in the feedback box.
      * 2a2. User enters the command again.
      * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
 
        Use case resumes from step 3.
 
-**Use case: UC03 - Exit**
+**Use case: G03 - Exit**
 
 **MSS**
 1. User chooses to exit Productiv.
@@ -510,7 +510,7 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-     * 2a1. Productiv displays an error message.
+     * 2a1. Productiv displays an error message in the feedback box.
      * 2a2. User enters the command again.
      * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
      
@@ -518,99 +518,106 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
        
 ### Deliverable
 
-**Use case: UC11 - Add a deliverable**
+**Use case: D01 - Add a deliverable**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 
 **Guarantee(s):**
-* Upon successful command, the OCP will be updated accordingly.
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The added deliverable will be reflected in the left and right panels.
 
 **MSS**
 1. User chooses to add a deliverable.
 2. User enters the command to add a deliverable into the command box.
-3. Productiv adds the deliverable into the deliverable list.
+3. Productiv adds the deliverable into the deliverable list and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC12 - Edit a deliverable**
+**Use case: D02 - Edit a deliverable**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * Deliverable to edit exists.
 
+**Guarantee(s):**
+* The dashboard's Schedule will be updated accordingly.
+* The edited deliverable will be reflected in the left and right panels.
+
 **MSS**
 1. User chooses to edit a deliverable.
 2. User enters the command to edit a deliverable into the command box.
-3. Productiv edits the deliverable accordingly.
+3. Productiv edits the deliverable accordingly and displays a success message in the feedback box.
    
    Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
 
-**Use case: UC13 - Mark a deliverable as completed**
+**Use case: D03 - Mark a deliverable as completed**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * Deliverable to mark as completed exists.
 
 **Guarantee(s):**
-* Upon successful command, the OCP will be updated accordingly.
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The deliverable marked as completed will be reflected in the left and right panels.
 
 **MSS**
 1. User chooses to mark a deliverable as completed.
 2. User enters the command to mark a deliverable as completed into the command box.
-3. Productiv marks the deliverable as completed.
+3. Productiv marks the deliverable as completed and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC14 - Mark a deliverable as on-going**
+**Use case: D04 - Mark a deliverable as on-going**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * Deliverable to mark as on-going exists.
 
 **Guarantee(s):**
-* Upon successful command, the OCP will be updated accordingly.
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The deliverable marked as on-going will be reflected in the left and right panels.
 
 **MSS**
 1. User chooses to mark a deliverable as on-going.
 2. User enters the command to mark a deliverable as on-going into the command box.
-3. Productiv marks the deliverable as on-going.
+3. Productiv marks the deliverable as on-going and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
     
-**Use case: UC15 - View a deliverable**
+**Use case: D05 - View a deliverable**
 
 **Precondition(s):**
 * User is in the deliverable mode.
@@ -619,107 +626,116 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 **MSS**
 1. User chooses to view a deliverable.
 2. User enters the command to view a deliverable into the command box.
-3. Productiv displays the deliverable in the view box.
+3. Productiv displays the deliverable in the right panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
     
-**Use case: UC16 - Find deliverables**
+**Use case: D06 - Find deliverables**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * User has keyword(s) for Productiv to find deliverables with.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to find deliverables.
 2. User enters the command and keyword(s) to find deliverables into the command box.
-3. Productiv returns all matching deliverables in the list box.
+3. Productiv returns all matching deliverables in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC17 - List all deliverables**
+**Use case: D07 - List all deliverables**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * User has at least one existing deliverable in Productiv.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to list all deliverables.
 2. User enters the command to list all deliverables into the command box.
-3. Productiv lists out all deliverables in the list box.
+3. Productiv lists out all deliverables in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC18 - Delete a deliverable**
+**Use case: D08 - Delete a deliverable**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * Deliverable to delete exists.
 
 **Guarantee(s):** 
-* Upon successful command, the OCP will be updated accordingly.
+* The left panel will reflect the updated deliverable list.
+* The right panel will be cleared.
+* The dashboard's OCP and Schedule will be updated accordingly.
 * The deleted deliverable will not have its data stored anymore in Productiv.
 * The deleted deliverable cannot be retrieved back.
 
 **MSS**
 1. User chooses to delete a deliverable.
 2. User enters the command to delete a deliverable into the command box.
-3. Productiv deletes the deliverable from the deliverable list.
+3. Productiv deletes the deliverable from the deliverable list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC19 - Clear all deliverables**
+**Use case: D09 - Clear all deliverables**
 
 **Precondition(s):**
 * User is in the deliverable mode.
 * User has at least one existing deliverable in Productiv.
 
 **Guarantee(s):** 
-* Upon successful command, the OCP will be updated accordingly.
+* The left and right panels will be cleared.
+* The dashboard's OCP and Schedule will be updated accordingly.
 * The cleared deliverables will not have its data stored anymore in Productiv.
 * The cleared deliverables cannot be retrieved back.
 
 **MSS**
 1. User chooses to clear all deliverables.
 2. User enters the command to clear all deliverables into the command box.
-3. Productiv clears all deliverables from the deliverable list.
+3. Productiv clears all deliverables from the deliverable list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -727,54 +743,56 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 
 ### Meeting
 
-**Use case: UC21 - Add a meeting**
+**Use case: M01 - Add a meeting**
 
 **Precondition(s):**
 * User is in the meeting mode.
 
 **Guarantee(s):**
-* Upon successful command, the Dashboard's Schedule will be updated accordingly.
+* The dashboard's Schedule will be updated accordingly.
+* The added meeting will be reflected in the left and right panels.
 
 **MSS**
 1. User chooses to add a meeting.
 2. User enters the command to add a meeting into the command box.
-3. Productiv adds the meeting into the meeting list.
+3. Productiv adds the meeting into the meeting list and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC22 - Edit a meeting**
+**Use case: M02 - Edit a meeting**
 
 **Precondition(s):**
 * User is in the meeting mode.
 * Meeting to edit exists.
 
 **Guarantee(s):**
-* Upon successful command, the Dashboard's Schedule will be updated accordingly.
+* The dashboard's Schedule will be updated accordingly.
+* The edited meeting will be reflected in the left and right panels.
 
 **MSS**
 1. User chooses to edit a meeting.
 2. User enters the command to edit a meeting into the command box.
-3. Productiv edits the meeting accordingly.
+3. Productiv edits the meeting accordingly and displays a success message in the feedback box.
    
    Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
     
-**Use case: UC23 - View a meeting**
+**Use case: M03 - View a meeting**
 
 **Precondition(s):**
 * User is in the meeting mode.
@@ -783,107 +801,116 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 **MSS**
 1. User chooses to view a meeting.
 2. User enters the command to view a meeting into the command box.
-3. Productiv displays the meeting in the view box.
+3. Productiv displays the meeting in the right panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
     
-**Use case: UC24 - Find meetings**
+**Use case: M04 - Find meetings**
 
 **Precondition(s):**
 * User is in the meeting mode.
 * User has keyword(s) for Productiv to find meetings with.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to find meetings.
 2. User enters the command and keyword(s) to find meetings into the command box.
-3. Productiv returns all matching meetings in the list box.
+3. Productiv returns all matching meetings in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC25 - List all meetings**
+**Use case: M05 - List all meetings**
 
 **Precondition(s):**
 * User is in the meeting mode.
 * User has at least one existing meeting in Productiv.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to list all meetings.
 2. User enters the command to list all meetings into the command box.
-3. Productiv lists out all meetings in the list box.
+3. Productiv lists out all meetings in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC26 - Delete a meeting**
+**Use case: M06 - Delete a meeting**
 
 **Precondition(s):**
 * User is in the meeting mode.
 * Meeting to delete exists.
 
 **Guarantee(s):** 
-* Upon successful command, the Dashboard's Schedule will be updated accordingly.
+* The left panel will reflect the updated meeting list.
+* The right panel will be cleared.
+* The dashboard's Schedule will be updated accordingly.
 * The deleted meeting will not have its data stored anymore in Productiv.
 * The deleted meeting cannot be retrieved back.
 
 **MSS**
 1. User chooses to delete a meeting.
 2. User enters the command to delete a meeting into the command box.
-3. Productiv deletes the meeting from the meeting list.
+3. Productiv deletes the meeting from the meeting list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC27 - Clear all meetings**
+**Use case: M07 - Clear all meetings**
 
 **Precondition(s):**
 * User is in the meeting mode.
 * User has at least one existing meeting in Productiv.
 
 **Guarantee(s):** 
-* Upon successful command, the Dashboard's Schedule will be updated accordingly.
+* The left and right panels will be cleared.
+* The dashboard's Schedule will be updated accordingly.
 * The cleared meetings will not have its data stored anymore in Productiv.
 * The cleared meetings cannot be retrieved back.
 
 **MSS**
 1. User chooses to clear all meetings.
 2. User enters the command to clear all meetings into the command box.
-3. Productiv clears all meetings from the meeting list.
+3. Productiv clears all meetings from the meeting list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -891,48 +918,54 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
       
 ### Contact
 
-**Use case: UC31 - Add a contact**
+**Use case: C01 - Add a contact**
 
 **Precondition(s):**
 * User is in the contact mode.
 
+**Guarantee(s):**
+* The added contact will be reflected in the left and right panels.
+
 **MSS**
 1. User chooses to add a contact.
 2. User enters the command to add a contact into the command box.
-3. Productiv adds the contact into the contact list.
+3. Productiv adds the contact into the contact list and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC32 - Edit a contact**
+**Use case: C02 - Edit a contact**
 
 **Precondition(s):**
 * User is in the contact mode.
 * Contact to edit exists.
 
+**Guarantee(s):**
+* The edited contact will be reflected in the left and right panels.
+
 **MSS**
 1. User chooses to edit a contact.
 2. User enters the command to edit a contact into the command box.
-3. Productiv edits the contact accordingly.
+3. Productiv edits the contact accordingly and displays a success message in the feedback box.
    
    Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
     
-**Use case: UC33 - View a contact**
+**Use case: C03 - View a contact**
 
 **Precondition(s):**
 * User is in the contact mode.
@@ -941,105 +974,114 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 **MSS**
 1. User chooses to view a contact.
 2. User enters the command to view a contact into the command box.
-3. Productiv displays the contact in the view box.
+3. Productiv displays the contact in the right panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
     
-**Use case: UC34 - Find contacts**
+**Use case: C04 - Find contacts**
 
 **Precondition(s):**
 * User is in the contact mode.
 * User has keyword(s) for Productiv to find contacts with.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to find contacts.
 2. User enters the command and keyword(s) to find contacts into the command box.
-3. Productiv returns all matching contacts in the list box.
+3. Productiv returns all matching contacts in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC35 - List all contacts**
+**Use case: C05 - List all contacts**
 
 **Precondition(s):**
 * User is in the contact mode.
 * User has at least one existing contact in Productiv.
 
+**Guarantee(s):**
+* The right panel will be cleared.
+
 **MSS**
 1. User chooses to list all contacts.
 2. User enters the command to list all contacts into the command box.
-3. Productiv lists out all contacts in the list box.
+3. Productiv lists out all contacts in the left panel and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.  
       
-**Use case: UC36 - Delete a contact**
+**Use case: C06 - Delete a contact**
 
 **Precondition(s):**
 * User is in the contact mode.
 * Contact to delete exists.
 
 **Guarantee(s):** 
+* The left panel will reflect the updated contact list.
+* The right panel will be cleared.
 * The deleted contact will not have its data stored anymore in Productiv.
 * The deleted contact cannot be retrieved back.
 
 **MSS**
 1. User chooses to delete a contact.
 2. User enters the command to delete a contact into the command box.
-3. Productiv deletes the contact from the contact list.
+3. Productiv deletes the contact from the contact list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: UC37 - Clear all contacts**
+**Use case: C07 - Clear all contacts**
 
 **Precondition(s):**
 * User is in the contact mode.
 * User has at least one existing contact in Productiv.
 
-**Guarantee(s):** 
+**Guarantee(s):**
+* The left and right panels will be cleared.
 * The cleared contacts will not have its data stored anymore in Productiv.
 * The cleared contacts cannot be retrieved back.
 
 **MSS**
 1. User chooses to clear all contacts.
 2. User enters the command to clear all contacts into the command box.
-3. Productiv clears all contacts from the contact list.
+3. Productiv clears all contacts from the contact list and displays a success message in the feedback box.
     
     Use case ends.
 
 **Extensions**
 * 2a. Productiv detects an error in the command.
-    * 2a1. Productiv displays an error message.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
@@ -1060,7 +1102,7 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 * **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
 * **Deliverable**: An item to be completed as part of the product development process.
 * **Milestone**: A significant stage or event in the development of a product.
-* **Role**: A function assumed or part played by a `Person`. Every `Person` is either a developer or stakeholder.
+* **Role**: A function assumed or part played by a `Contact`/`Person`, who is either a developer or stakeholder.
 
 ## **Appendix F: Instructions for Manual Testing**
 
