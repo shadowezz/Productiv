@@ -23,11 +23,12 @@ The ***Architecture Diagram*** given above explains the high-level design of Pro
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for:
+<<<<<<< HEAD
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch, initialising the components in the correct sequence, and connects them up with each other.
 * Upon exiting, shutting down the components and invoking cleanup methods where necessary.
 
@@ -83,7 +84,9 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
  of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for meeting and contact mode.
   
 
-The UI component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+
+The UI component uses JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+
 
 The UI component:
 
@@ -208,7 +211,7 @@ The implementation allows users to parse and compare unique `DateTime` and `Time
 
 DateTime can be used to compare with other DateTime objects:
 * Enable deliverables or meetings to be sorted based on which one is due the earliest.
-*Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
+*Refer to [Auto-sort feature](#auto-sort-feature) to view this implementation.*
 * Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
@@ -296,10 +299,10 @@ The following sequence diagram shows how the Calendar is updated upon an additio
 
 The Done feature allows users to mark their deliverables as completed. 
 
-1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` to be executed. 
-1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. 
-1. `DoneCommandParser` will then parse the command argument to return a `DoneCommand`.
-1. On execution, `DoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
+1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` through `LogicDispatcherManager` to be executed. 
+1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `MarkDoneCommandParser`. 
+1. `MarkDoneCommandParser` will then parse the command argument to return a `MarkDoneCommand`.
+1. On execution, `MarkDoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
 
 Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user.
 
@@ -314,8 +317,8 @@ Given below is a sequence diagram to show how the done operation works at each s
 * **Alternative 1 (current choice):** Have a separate command `done` for marking deliverables as completed.
     * Pros: Clearer and easier for the user. Prevents the `edit` command from being too cluttered with too many
     editable fields.
-    * Cons: More code and testing required as there are additional classes created such as `DoneCommand` and 
-    `DoneCommandParser`.
+    * Cons: More code and testing required as there are additional classes created such as `MarkDoneCommand` and 
+    `MarkDoneCommandParser`.
 * **Alternative 2:** Allow users to mark deliverables as completed through the existing `edit` command by changing 
 the completion status field of the deliverable
     * Pros: Less code required since we only need to make small amendments to the existing `EditCommand` and `EditCommandParser`.
@@ -401,7 +404,7 @@ Given below is a sequence diagram to show how the switch mode mechanism behaves 
 The view feature allows users to view the details of a specific deliverable, meeting or contact on the right
 panel of the display window, depending on the mode the application is in. 
 
-1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` to be executed. 
+1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` through `LogicDispatcherManager` to be executed. 
 1. `MeetingLogicManager` will call `MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. 
 1. `ViewCommandParser` will then parse the command argument to return a `ViewCommand`.
 1. On execution, `ViewCommand` will update the `ModelMeeting` to set the meeting currently in view. 
@@ -456,7 +459,7 @@ You should note the mechanism after the mode has been switched.
 1. `MainWindow` detects that the dashboard button in the navigation bar is clicked, and its `switchDashboard` method is called.
 2. `MainWindow` updates its own attribute `mode` to reflect the dashboard and its UI displays it accordingly.
 3. The `updateOcp` method of `ProjectCompletionStatusPanel` is called.
-4. `ProjectCompletionStatusPanel` calls the `size` method of its `ObservableList`, `deliverableList`, which returns the total number of deliverables (`totalNumDeliverables`).
+4. `ProjectCompletionStatusPanel` calls the `size` method of its `deliverableList` (of type `ObservableList`), which returns the total number of deliverables (`totalNumDeliverables`).
 5. `ProjectCompletionStatusPanel` self-invokes its `findNumCompletedDeliverables` method that returns the number of completed deliverables of its `deliverableList` (`numCompletedDeliverables`).
 6. `ProjectCompletionStatusPanel` self-invokes its `getOcp` method with `totalNumDeliverables` and `numCompletedDeliverables` as parameters, and returns the `overallCompletionPercentage`*.
 
@@ -468,12 +471,12 @@ You should note the mechanism after the mode has been switched.
 
 ##### Aspect: How updating of OCP executes
 
-* **Alternative 1 (current choice):** Update OCP upon command to switch to dashboard mode.
-    * Pros: Adheres more towards Single Responsibility Principle.
+* **Alternative 1 (current choice):** Calculate OCP on-the-go only upon switching to dashboard mode.
+    * Pros: Less prone to calculation errors.
     * Cons: Takes slightly longer to calculate OCP for display.
-* **Alternative 2:** Update OCP upon any successful command.
-    * Pros: Potentially faster to retrieve OCP information for display.
-    * Cons: Violates more of the Single Responsibility Principle.
+* **Alternative 2:** Have a global variable for OCP that updates upon any relevant change to the deliverable list.
+    * Pros: Potentially faster to retrieve OCP information for display (using a getter method).
+    * Cons: More prone to errors from higher frequency of calculation.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1183,7 +1186,7 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
       
 ## **Appendix D: Non-Functional Requirements**
 
-1. Should work on any [`mainstream OS`](#common-classes) as long as Java `11` is installed and is the default.
+1. Should work on any [`mainstream OS`](#appendix-e-glossary) as long as Java `11` is installed and is the default.
 1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without noticeable sluggishness in performance for typical usage.
 1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
 1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.

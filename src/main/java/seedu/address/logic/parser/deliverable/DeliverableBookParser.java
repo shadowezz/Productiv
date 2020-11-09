@@ -39,9 +39,9 @@ public class DeliverableBookParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
         case MarkDoneCommand.COMMAND_WORD:
-            return new DoneCommandParser().parse(arguments);
+            return new MarkDoneCommandParser().parse(arguments);
         case MarkUndoneCommand.COMMAND_WORD:
-            return new UndoneCommandParser().parse(arguments);
+            return new MarkUndoneCommandParser().parse(arguments);
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
         case EditCommand.COMMAND_WORD:
