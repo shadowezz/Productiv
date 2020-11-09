@@ -1,26 +1,30 @@
 @startuml
 !include style.puml
+
+scale 1.5
+
 skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
 
 package Storage{
-Interface ABCStorage <<Interface>>
+Interface XYZStorage <<Interface>>
 Interface UserPrefsStorage <<Interface>>
-Interface ABCBookStorage <<Interface>>
+Interface XYZBookStorage <<Interface>>
 
-Class StorageABCManager
+Class StorageXYZManager
 Class JsonUserPrefsStorage
-Class JsonABCBookStorage
+Class JsonXYZBookStorage
 
-StorageABCManager .left.|> ABCStorage
-StorageABCManager o-right-> UserPrefsStorage
-StorageABCManager o--> ABCBookStorage
+StorageXYZManager .left.|> XYZStorage
+StorageXYZManager o-right-> UserPrefsStorage
+StorageXYZManager o--> XYZBookStorage
 
 JsonUserPrefsStorage .left.|> UserPrefsStorage
-JsonABCBookStorage .left.|> ABCBookStorage
-JsonABCBookStorage .down.> JsonSerializableABCBookStorage
-JsonSerializableABCBookStorage .right.> JsonSerializableABC
-JsonSerializableABC .right.> JsonAdaptedABC
+JsonXYZBookStorage .left.|> XYZBookStorage
+JsonXYZBookStorage .down.> JsonSerializableXYZBookStorage
+JsonSerializableXYZBookStorage .right.> JsonSerializableXYZ
+JsonSerializableXYZ .right.> JsonAdaptedXYZ
+note right of JsonXYZBookStorage : XYZ = Deliverable, \nMeeting or Person
 }
 @enduml

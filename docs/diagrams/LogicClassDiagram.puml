@@ -1,7 +1,7 @@
 @startuml
 !include style.puml
 
-'scale 1.5
+scale 1.5
 
 skinparam arrowThickness 1.1
 skinparam arrowColor LOGIC_COLOR_T4
@@ -11,8 +11,8 @@ package Logic {
 
 package Parser {
 Interface Parser <<Interface>>
-Class ABCBookParser
-Class XYZCommandParser
+Class XYZBookParser
+Class ABCCommandParser
 Class CliSyntax
 Class ParserUtil
 Class ArgumentMultimap
@@ -21,13 +21,17 @@ Class Prefix
 }
 
 package Command {
-Class XYZCommand
+Class ABCCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
 }
 
 Interface LogicDispatcher <<Interface>>
 Class LogicDispatcherManager
+
+note top of ABCCommandParser: ABC = Add, Find,\nDelete, etc
+note top of XYZBookParser: XYZ = Deliverable, \nMeeting or Person
+
 }
 
 package Model{
@@ -38,25 +42,25 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> LogicDispatcher
 
 LogicDispatcherManager .up.|> LogicDispatcher
-LogicDispatcherManager -->"1" ABCBookParser
-ABCBookParser .left.> XYZCommandParser: creates >
+LogicDispatcherManager -->"0..1" XYZBookParser
+XYZBookParser .left.> ABCCommandParser: creates >
 
-XYZCommandParser ..> XYZCommand : creates >
-XYZCommandParser ..|> Parser
-XYZCommandParser ..> ArgumentMultimap
-XYZCommandParser ..> ArgumentTokenizer
+ABCCommandParser ..> ABCCommand : creates >
+ABCCommandParser ..|> Parser
+ABCCommandParser ..> ArgumentMultimap
+ABCCommandParser ..> ArgumentTokenizer
 ArgumentTokenizer .left.> ArgumentMultimap
-XYZCommandParser ..> CliSyntax
+ABCCommandParser ..> CliSyntax
 CliSyntax ..> Prefix
-XYZCommandParser ..> ParserUtil
+ABCCommandParser ..> ParserUtil
 ParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
-XYZCommand -up-|> Command
+ABCCommand -up-|> Command
 LogicDispatcherManager .left.> Command : executes >
-LogicDispatcherManager -> "0..1           " Model
-LogicDispatcherManager ---> "0..1" XYZCommandParser
+LogicDispatcherManager -> "0..1      " Model
+LogicDispatcherManager ---> "1" ABCCommandParser
 
-Command .> "0..1    " Model
+Command .> "0..1  " Model
 
 LogicDispatcher ..> CommandResult
 LogicDispatcherManager .down.> CommandResult

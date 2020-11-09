@@ -92,43 +92,37 @@ The `UI` component:
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-<div markdown="block" class="alert alert-info"> 
-:information_source: **Note:** ABC refers to `Deliverable`, `Meeting`, `Person`. 
-XYZ refers to any command call, e.g Add, find, delete, etc. 
-
-</div>
-
 **API** : <br>
 * [`LogicDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDeliverable.java)
 * [`LogicMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMeeting.java)
 * [`LogicPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicPerson.java)
 * [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
-The `Logic` component parses the user commands and executes them. There are different pa`LogicDispatcher` selects the correct parser to 
+The Logic component parses the user commands and executes them. 
+`LogicDispatcher` selects the correct parser to, based on the current mode (ie `deliverable` mode).  
 
-This is the list of what `Model` components affected by their respective `Logic` components: 
-* `LogicDeliverable`: Component that affects `DeliverableModel`.
-* `LogicMeeting`: Component that affects `MeetingModel`.
-* `LogicPerson`: Component that affects `PersonModel`.
+This is the list of what Model components are affected:  
+* `LogicDeliverable`: Component that affects `DeliverableModel` when in `deliverable` mode.
+* `LogicMeeting`: Component that affects `MeetingModel` when in `meeting` mode.
+* `LogicPerson`: Component that affects `PersonModel` when in `contact` mode.
+
+Commands that do not affect Model components will be passed to `GeneralParser` when in any mode.
 
 The components follow the general sequence to execute a command:
 
-1. `Logic` uses the `XYZBookParser` class to parse the user command.
-1. This results in a `XYZCommand` object which is executed by the `LogicXYZManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. `Logic` uses `XYZBookParser` class to parse the user command.
+1. This results in a `ABCCommand` object which is executed by the `LogicDispatcherManager`.
+1. The command execution can affect the `Model` (e.g. adding a meeting).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help or switching mode for the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for API call of any command. 
 
 ![Interactions Inside the Logic Component for any command](images/CommandSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: 
-**Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) 
+**Note:** The lifeline for `ABCCommandParser` should end at the destroy marker (X) 
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
-</div>
-<div markdown="span" class="alert alert-primary">:bulb:
-**Tip**: Refer to [Switch Mode Feature](#switch-mode-feature) below for more details on the Switch Mode feature.
 </div>
 
 ### Model component
@@ -155,27 +149,22 @@ The `Model`:
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-<div markdown="span" class="alert alert-info"> 
-**:information_source: Note:** ABC refers to `Deliverable`, `Meeting` and `Person`.
-
-</div>
-
 **API** : 
 [`StorageDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/deliverable/StorageDeliverable.java)
 [`StorageMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/meeting/StorageMeeting.java)
 [`StoragePerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/person/StoragePerson.java)
 
-The `Storage` component:
+The Storage component:
 * can save `UserPref` objects in json format and read it back.
 * can save the data in json format and read it back.
 
 For saving files, storage follows this sequence:
 
-1. When `ABCBook` is updated, `StorageABCManagers` saves the newly updated book.
-1. The newly updated book is passed to `JsonSerliazableABCBook`.
-1. Each item in `ABCBook` is serialized by `JsonAdaptedABC` before overwriting the current Jsonfile
+1. When `XYZBook` is updated, `StorageXYZManagers` saves the newly updated book.
+1. The newly updated book is passed to `JsonSerliazableXYZBook`.
+1. Each item in `XYZBook` is serialized by `JsonAdaptedXYZ` before overwriting the current json files.
 
-Given below is the Sequence Diagram for data being stored.
+Given below is the sequence diagram for data being stored.
 
 ![Interactions Inside the Storage Component for Any Book](images/SaveStorageSequenceDiagram.png)
 
@@ -183,7 +172,7 @@ For reading files, based on the `UserPrefs` provided, storage will find the Json
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** 
-If the Json files are missing or if the path is missing, a new set of Json files will be generated with a set of sample items.
+If the json files are missing or if the path is missing, a new set of json files will be generated with a set of sample items.
 </div>
 
 ### Common classes
@@ -195,34 +184,32 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### [Proposed] \[Date and Time verfication\]
+### \[Date and Time verfication\]
 
 #### Proposed Implementation
-The implementation allows users to parse and compare unique Date and Time types.
+The implementation allows users to parse and compare unique `DateTime` and `Time` types.
 
 ![Structure of DateTime and Time implementations](images/DateTimeClass.png)
 
-**Time type**:
-To parse, Time should be in the following format: **`HH:mm`** 
+**`Time`**: To parse, `Time` should be in the following format: **`HH:mm`** 
 * Single digits fields must include leading zero: `01:10`.
 
-Time will throw a parsing error if
-* `00:00:59` Format is wrong (e.g missing or additional digit).
-* `24:00` Invalid range (e.g invalid leap year).
+`Time` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `00:00:59`
+* Invalid range (e.g invalid leap year): `24:00` 
 
-**DateTime type**:
-To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
+**`DateTime`**: To parse, `DateTime` should be in the following format: **`dd-MM-yyyy HH:mm`** 
 * Single digits fields must include leading zero: `01-01-0101 01:10`.
 * Valid Calendar Range: \[`01-01-2019 00:00` - `31-12-9999 23:59`\].
 
-DateTime will throw a parsing error if
-* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
-* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
+`DateTime` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `1-10-2020 00:00:59` 
+* Invalid range (e.g invalid leap year): `31-02-2020 00:00`
 
 DateTime can be used to compare with other DateTime objects:
 * Enable deliverables or meetings to be sorted based on which one is due the earliest.
 *Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
-* Used to identify invalid inputs (e.g datetime in `from` is after `to`).
+* Ensures `From` in meeting is strictly before `To` (ie Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:

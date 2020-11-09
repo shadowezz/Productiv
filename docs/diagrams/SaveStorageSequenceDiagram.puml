@@ -3,50 +3,56 @@
 
 Scale 1.5
 
-box Logic LOGIC_COLOR
-participant ":LogicABC" as LogicABC LOGIC_COLOR
+box Logic LOGIC_COLOR_T1
+participant ":LogicXYZ" as LogicXYZ LOGIC_COLOR
 end box
 
-box Storage STORAGE_COLOR
-participant "storageABC:StorageABC" as StorageABC STORAGE_COLOR
-participant ":ABCBookStorage" as ABCBookStorage STORAGE_COLOR
-participant "json:JsonSerializableABCBookStorage" as JsonSerializableABCBookStorage STORAGE_COLOR
-participant "jsonItem:JsonAdaptedABC" as JsonAdaptedABC STORAGE_COLOR
+box Storage STORAGE_COLOR_T1
+participant "storageXYZ:StorageXYZ" as StorageXYZ STORAGE_COLOR
+participant ":XYZBookStorage" as XYZBookStorage STORAGE_COLOR
+participant "json:JsonSerializableXYZBookStorage" as JsonSerializableXYZBookStorage STORAGE_COLOR
+participant "jsonItem:JsonAdaptedXYZ" as JsonAdaptedXYZ STORAGE_COLOR
 
 end box
 
-[-> LogicABC
-activate LogicABC
+[-> LogicXYZ
+activate LogicXYZ
 
-LogicABC -> StorageABC : execute("args")
-activate StorageABC
+LogicXYZ -> StorageXYZ : execute(command)
+activate StorageXYZ
 
-StorageABC -> ABCBookStorage : saveABC(ABCBook)
-activate ABCBookStorage
+StorageXYZ -> XYZBookStorage : saveXYZ(XYZBook)
+activate XYZBookStorage
 
-create JsonSerializableABCBookStorage
-ABCBookStorage -> JsonSerializableABCBookStorage : saveABC(ABCBook)
-activate JsonSerializableABCBookStorage
+
+create JsonSerializableXYZBookStorage
+XYZBookStorage -> JsonSerializableXYZBookStorage : saveXYZ(XYZBook)
+activate JsonSerializableXYZBookStorage
+
+Note right
+XYZ = Deliverable,
+Meeting or Person
+end Note
 
 loop book has items
-    create JsonAdaptedABC
-    JsonSerializableABCBookStorage -> JsonAdaptedABC
-    activate JsonAdaptedABC
+    create JsonAdaptedXYZ
+    JsonSerializableXYZBookStorage -> JsonAdaptedXYZ
+    activate JsonAdaptedXYZ
 
-    JsonAdaptedABC -> JsonSerializableABCBookStorage : jsonItem
-    deactivate JsonAdaptedABC
+    JsonAdaptedXYZ -> JsonSerializableXYZBookStorage : jsonItem
+    deactivate JsonAdaptedXYZ
 
 end
 
-JsonSerializableABCBookStorage -> ABCBookStorage : json
-deactivate JsonSerializableABCBookStorage
+JsonSerializableXYZBookStorage -> XYZBookStorage : json
+deactivate JsonSerializableXYZBookStorage
 
-ABCBookStorage -> StorageABC
-deactivate ABCBookStorage
+XYZBookStorage -> StorageXYZ
+deactivate XYZBookStorage
 
-StorageABC -> LogicABC
-deactivate StorageABC
+StorageXYZ -> LogicXYZ
+deactivate StorageXYZ
 
-deactivate LogicABC
+deactivate LogicXYZ
 
 @enduml

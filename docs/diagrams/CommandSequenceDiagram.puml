@@ -3,78 +3,88 @@
 
 scale 1.5
 
-skinparam BackgroundColor LOGIC_COLOR_T1
-skinparam ArrowFontColor #FFFFF
 
-box Logic LOGIC_COLOR
-participant ":ABCLogicManager" as ABCLogicManager LOGIC_COLOR
-participant ":ABCBookParser" as ABCBookParser LOGIC_COLOR
-participant ":XYZCommandParser" as XYZCommandParser LOGIC_COLOR
-participant "d:XYZCommand" as XYZCommand LOGIC_COLOR
+box Logic LOGIC_COLOR_T1
+participant ":XYZLogicManager" as XYZLogicManager LOGIC_COLOR
+participant ":XYZBookParser" as XYZBookParser LOGIC_COLOR
+participant ":ABCCommandParser" as ABCCommandParser LOGIC_COLOR
+participant "abcCommand:ABCCommand" as ABCCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
+
 end box
 
 box Model MODEL_COLOR_T1
-participant ":ABCModel" as ABCModel MODEL_COLOR
+participant ":XYZModel" as XYZModel MODEL_COLOR
 end box
 
-[-> ABCLogicManager : execute("XYZ args")
-activate ABCLogicManager
+[-> XYZLogicManager : execute(command)
+activate XYZLogicManager
 
-ABCLogicManager -> ABCBookParser : parseCommand("XYZ args")
-activate ABCBookParser
+note left
+XYZ = Deliverable,
+Meeting or Person
+end note
 
-create XYZCommandParser
-ABCBookParser -> XYZCommandParser
-activate XYZCommandParser
+XYZLogicManager -> XYZBookParser : parseCommand(command)
+activate XYZBookParser
 
-XYZCommandParser --> ABCBookParser
-deactivate XYZCommandParser
+create ABCCommandParser
+XYZBookParser -> ABCCommandParser
+activate ABCCommandParser
 
-ABCBookParser -> XYZCommandParser : parse("args")
-activate XYZCommandParser
+ABCCommandParser --> XYZBookParser
+deactivate ABCCommandParser
 
-create XYZCommand
-XYZCommandParser -> XYZCommand
-activate XYZCommand
+XYZBookParser -> ABCCommandParser : parse(command)
+activate ABCCommandParser
 
-XYZCommand --> XYZCommandParser : command
-deactivate XYZCommand
+create ABCCommand
+ABCCommandParser -> ABCCommand
+activate ABCCommand
 
-XYZCommandParser --> ABCBookParser : command
-deactivate XYZCommandParser
+
+ABCCommand --> ABCCommandParser : abcCommand
+deactivate ABCCommand
+note right
+ABC = Add, Find, Delete, etc
+Similarly, abc = add, find, delete, etc
+end note
+
+ABCCommandParser --> XYZBookParser : abcCommand
+deactivate ABCCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-XYZCommandParser -[hidden]-> ABCBookParser
-destroy XYZCommandParser
+ABCCommandParser -[hidden]-> XYZBookParser
+destroy ABCCommandParser
 
-ABCBookParser --> ABCLogicManager : command
-deactivate ABCBookParser
+XYZBookParser --> XYZLogicManager : abcCommand
+deactivate XYZBookParser
 
-ABCLogicManager -> XYZCommand : execute()
-activate XYZCommand
+XYZLogicManager -> ABCCommand : execute()
+activate ABCCommand
 
 skinparam sequenceGroupBackgroundColor yellow
 skinparam sequenceGroupBorderColor blue
 
-opt parsers that affect models
+opt commands that affect models
 
-    XYZCommand -> ABCModel
-    activate ABCModel
+    ABCCommand -> XYZModel
+    activate XYZModel
 
-    ABCModel --> XYZCommand
-    deactivate ABCModel
+    XYZModel --> ABCCommand
+    deactivate XYZModel
 
     create CommandResult
-    XYZCommand -> CommandResult
+    ABCCommand -> CommandResult
     activate CommandResult
 
-    CommandResult --> XYZCommand
+    CommandResult --> ABCCommand
     deactivate CommandResult
 end
 
-XYZCommand --> ABCLogicManager : result
-deactivate XYZCommand
+ABCCommand --> XYZLogicManager : result
+deactivate ABCCommand
 
-[<--ABCLogicManager
-deactivate ABCLogicManager
+[<--XYZLogicManager
+deactivate XYZLogicManager
+
 @enduml
