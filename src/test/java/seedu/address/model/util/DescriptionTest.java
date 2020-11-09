@@ -37,7 +37,7 @@ public class DescriptionTest {
         assertTrue(Description.isValidDescription("!@#$%.,?"));
     }
 
-    public void DescriptionToString() {
+    public void descriptionToString() {
 
         // empty description -> "-"
         Description desc = new Description("");

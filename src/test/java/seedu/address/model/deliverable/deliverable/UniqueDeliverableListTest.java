@@ -39,7 +39,7 @@ public class UniqueDeliverableListTest {
 
 
     @Test
-    public void contains_DifferentDeliverableWithSameIdentity_returnsTrue() {
+    public void contains_differentDeliverableWithSameIdentity_returnsTrue() {
         uniqueDeliverableList.add(HOME_PAGE);
         Deliverable editedHomepage = new DeliverableBuilder(HOME_PAGE).withDescription(VALID_DESCRIPTION_B)
                 .build();
@@ -64,12 +64,14 @@ public class UniqueDeliverableListTest {
 
     @Test
     public void setDeliverable_nullEditedMeeting_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueDeliverableList.setDeliverable(HOME_PAGE, null));
+        assertThrows(NullPointerException.class, ()
+            -> uniqueDeliverableList.setDeliverable(HOME_PAGE, null));
     }
 
     @Test
     public void setDeliverable_targetMeetingNotInList_throwsDeliverableNotFoundException() {
-        assertThrows(DeliverableNotFoundException.class, () -> uniqueDeliverableList.setDeliverable(HOME_PAGE, HOME_PAGE));
+        assertThrows(DeliverableNotFoundException.class, ()
+            -> uniqueDeliverableList.setDeliverable(HOME_PAGE, HOME_PAGE));
     }
 
     @Test
@@ -105,7 +107,8 @@ public class UniqueDeliverableListTest {
     public void setDeliverable_editedDeliverableHasNonUniqueIdentity_throwsDuplicateDeliverableException() {
         uniqueDeliverableList.add(HOME_PAGE);
         uniqueDeliverableList.add(NAVIGATION);
-        assertThrows(DuplicateDeliverableException.class, () -> uniqueDeliverableList.setDeliverable(HOME_PAGE, NAVIGATION));
+        assertThrows(DuplicateDeliverableException.class, ()
+            -> uniqueDeliverableList.setDeliverable(HOME_PAGE, NAVIGATION));
     }
 
     @Test
@@ -128,7 +131,8 @@ public class UniqueDeliverableListTest {
 
     @Test
     public void setDeliverables_nullUniqueDeliverableList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueDeliverableList.setDeliverables((UniqueDeliverableList) null));
+        assertThrows(NullPointerException.class, ()
+            -> uniqueDeliverableList.setDeliverables((UniqueDeliverableList) null));
     }
 
     @Test
@@ -158,7 +162,8 @@ public class UniqueDeliverableListTest {
     @Test
     public void setDeliverables_listWithDuplicateDeliverables_throwsDuplicateDeliverableException() {
         List<Deliverable> listWithDuplicateDeliverables = Arrays.asList(HOME_PAGE, HOME_PAGE);
-        assertThrows(DuplicateDeliverableException.class, () -> uniqueDeliverableList.setDeliverables(listWithDuplicateDeliverables));
+        assertThrows(DuplicateDeliverableException.class, ()
+            -> uniqueDeliverableList.setDeliverables(listWithDuplicateDeliverables));
     }
 
     @Test

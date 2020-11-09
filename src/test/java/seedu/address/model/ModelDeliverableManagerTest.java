@@ -1,9 +1,11 @@
 package seedu.address.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.deliverable.ModelDeliverable.PREDICATE_SHOW_ALL_DELIVERABLES;
-import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalDeliverables.HOME_PAGE;
 import static seedu.address.testutil.TypicalDeliverables.NAVIGATION;
 
@@ -14,8 +16,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.deliverable.ModelDeliverableManager;
 import seedu.address.model.deliverable.DeliverableBook;
+import seedu.address.model.deliverable.ModelDeliverableManager;
 import seedu.address.model.deliverable.deliverable.TitleDescriptionContainsKeywordsPredicate;
 import seedu.address.testutil.DeliverableBookBuilder;
 
@@ -113,12 +115,14 @@ public class ModelDeliverableManagerTest {
 
     @Test
     public void getFilteredDeliverableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredDeliverableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, ()
+            -> modelManager.getFilteredDeliverableList().remove(0));
     }
 
     @Test
     public void equals() {
-        DeliverableBook deliverableBook = new DeliverableBookBuilder().withDeliverable(HOME_PAGE).withDeliverable(NAVIGATION).build();
+        DeliverableBook deliverableBook = new DeliverableBookBuilder().withDeliverable(HOME_PAGE)
+                .withDeliverable(NAVIGATION).build();
         DeliverableBook differentDeliverableBook = new DeliverableBook();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -141,7 +145,8 @@ public class ModelDeliverableManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = HOME_PAGE.getTitle().value.split("\\s+");
-        modelManager.updateFilteredDeliverableList(new TitleDescriptionContainsKeywordsPredicate(Arrays.asList(keywords)));
+        modelManager.updateFilteredDeliverableList(
+                new TitleDescriptionContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelDeliverableManager(deliverableBook, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
