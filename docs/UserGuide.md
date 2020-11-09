@@ -2,17 +2,42 @@
 layout: page
 title: User Guide
 ---
+* Table of Contents
+{:toc}
 
+--------------------------------------------------------------------------------------------------------------------
+## Introduction
+### Overview
 Productiv is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
 **meetings** and **contacts** so that you can track your product's development easily.
 
 Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
 Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
 
-* Table of Contents
-{:toc}
 
---------------------------------------------------------------------------------------------------------------------
+### Preview
+To get you familiarised, the following is Productiv's GUI. 
+
+   ![Ui](images/UiLabel.jpg)
+   <figcaption>Dashboard</figcaption><br>
+   
+   <div markdown="block" class="alert alert-info">
+   
+   **:information_source: GUI components:**<br>
+   
+   1. **Navigation bar**: where you navigate to other modes. <br>
+   1. **Command box**: where you enter your commands. <br>
+   1. **Feedback box**: where you can see the feedback of your command.
+        If your command is successful, you can see a success message.
+        Otherwise, you can see an error message. <br>
+   1. **Left panel**: where you can view <br>
+      * your product's overall completion percentage (in dashboard mode), or <br>   
+      * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
+   1. **Right panel**: where you can view <br>
+      * your product management schedule (in dashboard mode), or <br>
+      * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
+   </div>
+
 
 ## Quick start
 
@@ -20,9 +45,9 @@ Productiv has just become better for you. Nevertheless, Productiv still has the 
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
-1. Copy the `.jar` file to your preferred folder.
+1. Copy the .jar file to an empty folder.
 
-1. Double-click the file to start Productiv. 
+1. From your terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start Productiv.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
@@ -606,6 +631,7 @@ Clear          | `clear`
 ---|--------------------------------|------------------------------------------------------------------------------------------------|
 1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
 2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
-3  | Deliverable                    | An item which needs to be completed by a specified time.                                       |
-4  | Stakeholder                    | An external party involved with the product.                                                   |
-5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
+3  | Deliverable                    | An item to be completed as part of the product development process.                            |
+4  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
+5  | Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
+6  | Stakeholder                    | An external party involved with the product.                                                   |
