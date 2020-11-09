@@ -3,19 +3,18 @@ layout: page
 title: Merlin Lim's Project Portfolio Page
 ---
 
-## Project: Productiv
+### Project: Productiv
 
-### Overview
 Productiv is a desktop application for product managers to organise their product-related information. 
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. 
 It is written in Java, and has about 20 kLoC.
 
-### Summary of Contributions
-* **Code contributed**: 
+Given below are my contributions to the project.
+
+**Code contributed**: 
 [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=merlinlim)
 
-
-#### New features and Enhancements
+##### New features and Enhancements
 
 * **New Feature**: Delete command for Meeting
     * Delete command for meeting allows users to delete meeting from list.
@@ -38,12 +37,12 @@ It is written in Java, and has about 20 kLoC.
     * Updated the GUI for Schedule Panel 
     * Updated the GUI for Meeting
     
-#### Project management
+##### Project management
   * Organised and led some weekly team meetings
   * Delegated tasks.
   * Ensured deliverables were met by the end of the week
 
-#### Contributions to team-based tasks
+##### Contributions to team-based tasks
 * Create Delete command for Meeting: 
 [\#44](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/44), 
 [\#52](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/52)
@@ -84,7 +83,7 @@ It is written in Java, and has about 20 kLoC.
   [\#3](https://github.com/MerlinLim/ped/issues/3)
   [\#4](https://github.com/MerlinLim/ped/issues/4)
 
-#### Documentation
+##### Documentation
   * User Guide:
     * Updated documentation for `meeting`:
     [\#128](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/128)

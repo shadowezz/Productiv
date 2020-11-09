@@ -3,19 +3,18 @@ layout: page
 title: Cao Wenjie's Project Portfolio Page
 ---
 
-## Project: Productiv
+### Project: Productiv
 
-### Overview
 Productiv is a one-stop desktop app for product managers like yourself to organise your eliverables, meetings and contacts, 
 so that you can track your product’s development easily. 
 
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
 
-### Summary of Contributions
+Given below are my contributions to the project.
 
 **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=shadowezz&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
-#### New Features and Enhancements
+##### New Features and Enhancements
 
 * **New Feature**: Added the ability to complete deliverables.
   * What it does: This allows the user to mark specific deliverables as completed after accomplishing them.
@@ -50,17 +49,17 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
   * Upgraded deliverable to include a new milestone field. [\#72](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/72)
   * Updated the GUI to display the milestone and completion status of a deliverable as tags. [\#55](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/55) 
 
-#### Contributions to team-based tasks
+##### Contributions to team-based tasks
    * Created the skeleton code for deliverable. [\#35](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/35)
    * Implemented find, list and clear commands for deliverable. [\#116](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/116)
 
-#### Project management
+##### Project management
   * Led two team meetings, which involves setting the agenda and documenting what was discussed.
   * In charge of opening, closing and assigning issues for the earlier milestones.
   * Reviewed and provided constructive feedback for teammates' PR. [\#211](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/211),
   [\#229](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/229)
 
-#### Documentation
+##### Documentation
   * User Guide:
     * Added documentation for the commands `done`, `undone` and `view`. [\#195](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/195),
     [\#260](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/260)
@@ -69,7 +68,3 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
     * Added description and `UiClassDiagram` of the UI component. [\#253](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/253)
     * Added implementation details of the `done` and `view` feature. Included UML diagrams `DoneCommandSequenceDiagram` and 
     `ViewCommandSequenceDiagram`. [\#253](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/253)
-   
-
-
-
