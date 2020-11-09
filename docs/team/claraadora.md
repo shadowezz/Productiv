@@ -44,6 +44,10 @@ It is written in Java, and has about 20 kLoC.
 1. Updated user and developer guides that are not specific to my responsibilities
 
 #### Community
-1. Reported bugs and suggestions for a team [(link to issues)](https://github.com/claraadora/ped)
-1. Reviewed PRs with non-trivial comments (examples: [\#32](), [\#98](), [\#108](), [\#52]())
-1. Total PRs reviewed: 20+, Total comments given: 65+ 
+1. Reported bugs and suggestions for a team [(link to issues)](https://github.com/claraadora/ped/issues)
+1. Reviewed PRs with non-trivial comments (examples: 
+[\#32](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/32), 
+[\#98](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/98), 
+[\#108](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/108), 
+[\#52](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/52))
+1. Total PRs reviewed: 20+, Total comments given: 80+ 
