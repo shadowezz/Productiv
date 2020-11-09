@@ -19,7 +19,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
+The ***Architecture Diagram*** given above explains the high-level design of Productiv (referred to as "the App" or "the application"). Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -51,11 +51,9 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The sequence diagram below shows how the components interact with each other for the scenario where the user issues the command `delete 1` in the deliverable, meeting, or contact mode.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
-
-The sections below give more details of each component.
+![`Architecture Sequence Diagram with Dashboard](images/ArchitectureSequenceDiagramWithDb.png)
 
 ### UI component
 
@@ -129,21 +127,18 @@ but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/modelPerson/Model.java)
+**API** : 
+[`ModelDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/model/deliverable/ModelDeliverable.java), 
+[`ModelMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/model/meeting/ModelMeeting.java), 
+[`ModelPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/model/person/ModelPerson.java)
 
-The `Model`:
+The Model component (`ModelDeliverable`, `ModelMeeting` or `ModelPerson`),
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores its respective deliverable, meeting, or person book. 
+* exposes unmodifiable its respective `ObservableList<Deliverable>`,`ObservableList<Meeting>`, or `ObservableList<Person>`.
+e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
-
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) modelPerson is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
-
 
 ### Storage component
 
@@ -224,26 +219,26 @@ given for dates
     * Pros: Saves time for the user if he had intended to select the last day of the month.
     * Cons: The date specified may not be the intended input.
 
-### \[Proposed\] Autosort feature
+### Auto-sort feature
 
-#### Proposed Implementation
+#### Implementation
 
-Autosort allows users to view `Meeting`s, `Deliverable`s, and `Contact`s in a logical manner. Specifically, Autosort
-automatically sorts the abovementioned components by the following attributes: 
+The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Person`s in a logical manner. 
+Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Person`s by the following attributes: 
 
-* `Meeting`   - `From`'s `LocalDateTime` value in chronological order 
-* `Deadline`  - `Deadline`'s `LocalDateTime` value in chronological order 
-* `Contact`   - `Title`'s `String` value in alphabetical order 
+* `Meeting`   - its `From`'s `LocalDateTime` value in ascending chronological order 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
+* `Person`   - its `Name`'s `String` value in ascending alphabetical order 
 
-Autosort is faciliated by custom objects that implements `Comparator`.
+Auto-sort is facilitated by custom classes that implements `Comparator`.
 
-The following sequence diagram shows how a list is autosorted upon an addition of a new element.
+The following sequence diagram shows how a list is auto-sorted upon an addition of a `Meeting`.
 
-![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
+![AutosortSequenceDiagram](images/AutosortSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How autosorting executes
+##### Aspect: How auto-sorting executes
 
 * **Alternative 1 (current choice):** Sorts a list upon an addition or update of an element.
     * Pros: Error-free and easy to implement.
@@ -251,6 +246,44 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 * **Alternative 2:** Searches the correct index in the list to insert an element upon addition or update.
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
+    
+### Calendar feature
+
+#### Implementation
+
+The Calendar feature allows users to view their `Deliverable`s and`Meeting`s together in one chronologically ordered list - `calendarList`. 
+Specifically, the Calendar feature combines and orders `Deliverable`s and `Meeting`s by the following attributes: 
+
+* `Meeting`   - its `From`'s `LocalDateTime` value 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value
+
+The combining is done by applying polymorphism; `Deliverable` and `Meeting` implement the interface `TimeEvent`.
+The following class diagram demonstrates the above-mentioned polymorphism. 
+![TimeEventClassDiagram](images/TimeEventClassDiagram.png)
+
+Meanwhile, the ordering is facilitated by the [Auto-sort feature](#auto-sort-feature).
+
+The following sequence diagram shows how the Calendar is updated upon an addition of a `Deliverable`.
+
+![CalendarSequenceDiagram](images/CalendarSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: Where and how is `calendarList` updated
+
+* **Alternative 1 (current choice):** `calendarList` is in the UI component, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is cleared 
+  1. both `internalList`s' elements are added into `calendarList`
+  1. `calendarList` is sorted
+  * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified.
+  * Cons: Relatively high time complexity as any update to the `internalList`s requires clearing, adding back all `internalList`s' elements, and sorting `calendarList`. 
+    This is required because `calendarList`, which is not in `UniqueDeliverableList` and `UniqueMeetingList`, has no direct access to the item being updated. 
+* **Alternative 2:** `calendarList` is in `UniqueDeliverableList` and `UniqueMeetingList` as references, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is updated in the same way as the `internalList` involved. 
+  This is possible because the `calendarList`, which is in `UniqueDeliverableList` and `UniqueMeetingList`, has direct access to the element being updated. 
+  * Pros: Lower time complexity compared to Alternative 1, as both clearing and adding back all `internalList`s' elements are not needed. 
+  * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified
+    i.e. both hold and update `calendarList` (on top of `internalList`) for any update.
 
 ### Done feature
 
@@ -455,380 +488,679 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 ## **Appendix B: User Stories**
 
-| No | EPIC                                                                                                                                        | 
-|----|---------------------------------------------------------------------------------------------------------------------------------------------|
-|A   | As a Product Manager, I can track my product’s development so that I can work better towards production deadlines.                          |
-|B   | As a Product Manager, I can manage my stakeholder/dev team contacts.                                                                        |
-|C   | As a Product Manager, I can organise my meetings with stakeholders.                                                                         |
-|D   | As an inexperienced or forgetful Product Manager, I can refer to a user guide as I’m using the app so that I am able to use it as intended. |
-|E   | As a bridge between Dev Team and Stakeholders, I can communicate better.                                                                    |
+Priority Legend: 
+* `* * *` - High (must be addressed)
+* `* *` - Medium (would be nice to address)
+* `*` - Low (least likely to be addressed) 
 
-Priorities: 
-* `* * *` - High (must have)
-* `* *` - Medium (nice to have)
-* `*` - Low (unlikely to have) 
-
-| Priority | As a Product Manager…​                | I want to …​                                                             | So that I can…​                 |
-| -------- | ---------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
-| **EPIC A** |
-| `* * *`  | Product Manager                          | add deliverables                                                            | keep track of them                 |
-| `* * *`  | Product Manager                          | mark deliverables as completed                                              | refer back to them when needed     |
-| `* * *`  | Product Manager                          | delete deliverables that are no longer relevant                             | focus on current deliverables      |
-| `* *`    | Product Manager                          | change the description of the deliverables                                  | keep them up to date               |
-| `* *`    | Product Manager                          | package deliverables into different milestones                              | retrieve the relevant deliverables easily |
-| `* *`    | Product Manager                          | easily know who and how to contact the person-in-charge                     | contact the person when the progress of a deliverable is behind schedule |
-| `* *`    | Product Manager                          | flag problematic deliverables in the app                                    | know that these tasks require further attention |
-| `* *`    | Product Manager                          | find a deliverable easily                                                   |                                    |
-| `* *`    | Product Manager                          | sort my deliverables by deadline                                            |                                    |
-| **EPIC B** |
-| `* * *`  | Product Manager                          | add contacts                                                                | store their details for future communication |
-| `* * *`  | Product Manager                          | distinguish between the developers and the stakeholders in a project easily | remember the different roles       |
-| `* * *`  | Product Manager                          | view my contacts and their relevant details                                 | remember and retrieve important information  |
-| `* *  `  | Product Manager                          | edit my contacts                                                            | keep them up-to-date               |
-| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
-| `* *`    | Product Manager                          | sort my contacts by alphabetical order                                      |                                    |
-| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
-| **EPIC C** |
-| `* * *`  | Product Manager                          | schedule new meetings with my stakeholders                                  | keep track of them                 |
-| `* * *`  | Product Manager                          | delete scheduled meetings with my stakeholders                              | remove outdated or cancelled meetings |
-| `* *`    | Product Manager                          | edit existing meeting details with my stakeholders                          | update them accordingly            |
-| `* *`    | Product Manager                          | be notified if I have conflicting meetings before adding new ones           | reschedule the meetings            |
-| `* *`    | Product Manager                          | search for contacts based on a certain field of information                 | easily navigate through different groups |
-| `* *`    | Product Manager                          | sort my meetings by alphabetical order                                      |                                    |
-| `* *`    | Product Manager                          | view the details of my deliverables easily                                  |                                    |
-| **EPIC D** |
-| `* *`    | Product Manager                          | view a helpful popup                                                        | easily access the relevant instructions |
-| `* *`    | Product Manager                          | receive feedback from the app                                               | know the system has registered my action correctly or not |
-| `* *`    | Product Manager                          | view and easily navigate within the shortcut reference                      | locate technical solutions quickly |
-| **EPIC E** |
-| `* * *`  | Product Manager                          | Opening page                                                                | Enter the name of product and initialise Productiv       |
-| `*`      | Product Manager                          | see a calendar view of meetings                                             | know my available slots to schedule new meetings   |
-| `*`      | Product Manager                          | view the overall completion                                                 | know whether we are on track (completed deliverables/total deliverables) |
-
-
-
+| Priority   | As a ...                                   | I can ...                                                                   | So that I can ...                                          |
+| ---------- | ------------------------------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **EPIC A** | Product Manager                            | track my product’s deliverables                                             | work better towards meeting them                           |
+| `* * *`    | Product Manager                            | add deliverables for the product                                            | keep track of them                                         |
+| `* * *`    | Product Manager                            | mark deliverables as completed                                              | know which ones I've done                                  |
+| `* * *`    | Product Manager                            | delete deliverables that are no longer relevant                             | focus on other deliverables                                |
+| `* *`      | Product Manager                            | edit the details of the deliverables                                        | keep them updated                                          |
+| `* *`      | Product Manager                            | tag deliverables to different milestones                                    | distinguish the deliverables easily                        |
+| `* *`      | Product Manager                            | add contacts under my deliverables                                          | know who is involved in meeting the deliverable            |
+| `* *`      | Product Manager                            | edit a deliverable which was wrongly marked done back to its original status| ensure my deliverables are reflected correctly             |
+| `* *`      | Product Manager with many deliverables     | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many deliverables     | have my deliverables sorted chronologically by deadline                     | look out for more urgent deliverables                      |
+| `* *`      | Product Manager                            | be informed when a deliverable is close to its deadline or has passed it    | know which deliverables need more attention                |
+| **EPIC B** | Product Manager                            | manage my product-related meetings                                          | be clear on my meeting schedule                            |
+| `* * *`    | Product Manager                            | add new meetings that I'm scheduled for                                     | keep track of them                                         |
+| `* * *`    | Product Manager                            | delete my scheduled meetings                                                | remove outdated or cancelled meetings                      |
+| `* *`      | Product Manager                            | edit the details of my scheduled meetings                                   | keep them updated                                          |
+| `* *`      | Product Manager                            | add contacts and location under my meetings                                 | know who is involved and where the meeting is taking place |
+| `* *`      | Product Manager with many meetings         | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many meetings         | have my meetings sorted chronologically by its start time                   | look out for the earlier meetings that were scheduled      |
+| `* *`      | Product Manager                            | be informed when a meeting is close to starting, on-going or has ended      | be updated on the status of my meetings                    |
+| **EPIC C** | Product Manager                            | organise my developer or stakeholder contacts                               | reference them easily                                      |
+| `* * *`    | Product Manager                            | add contacts related to the product                                         | store their details for future communication               |
+| `* * *`    | Product Manager                            | distinguish between developers and stakeholders in a project easily         | remember their respective roles                            |
+| `* * *`    | Product Manager                            | delete contacts that are no longer relevant                                 | forget about unimportant contacts                          |
+| `* *`      | Product Manager                            | edit the details of my contacts                                             | keep them updated                                          |
+| `* *`      | Product Manager with many contacts         | search for specific ones                                                    | easily find them from my entire list                       |
+| `* *`      | Product Manager with many contacts         | have my contacts sorted by alphabetical order                               | keep my contact list organised                             |
+| **EPIC D** | Product Manager                            | have an overview of my product's development and upcoming events            | work better towards production deadlines                   |
+| `* *`      | Product Manager                            | view the overall completion of the product                                  | know the current progress of the product's development     |
+| `* *`      | Product Manager                            | see a calendar view of my deliverables and meetings                         | know which product-related events are upcoming and urgent  |
+| `*`        | Product Manager                            | toggle between daily, weekly and monthly view of the calendar               | have a variety of views to see my upcoming events          |
+| **EPIC E** | forgetful or inexperienced Product Manager | view app instructions and tips                                              | be able to use it as intended                              | 
+| `* * *`    | Product Manager                            | receive feedback from the app                                               | know the system has successfully registered my action      |
+| `* *`      | Product Manager                            | get directions to the app's user guide                                      | easily access the relevant instructions                    |
+| `*`        | Product Manager                            | view a shortcut reference                                                   | receive technical solutions immediately for command issues |
 
 ## **Appendix C: Use Cases**
 
-(For all use cases below, the **System** is the `Productiv` and the **Actor** is the `user`, unless specified otherwise)
+For all use cases below, the **System** is `Productiv` and the **Actor** is the `user`.
 
-#### Mode
+### General
 
-**Use case: `UC01 - Switch Mode`**
+**Use case: G01 - Switch Mode**
 
 **MSS**
-
-1. User chooses to switch the mode.
-2. User enters the command to switch mode into the input box.
-3. Productiv switches to the expected mode.
+1. User chooses to switch to another mode.
+2. User enters the command to switch mode into the command box.
+3. Productiv switches to the expected mode and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
-
-* 2a. Produtiv detects an error in the command.
-     
-     * 2a1. Productiv displays an error message
-     
+* 2a. Productiv detects an error in the command.
+     * 2a1. Productiv displays an error message in the feedback box.
      * 2a2. User enters the command again.
-     
+     * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
+       
+       Use case resumes from step 3.
+
+**Use case: G02 - Help**
+
+**Precondition(s):**
+* User has a stable internet connection.
+
+**MSS**
+1. User chooses to view instructions on how to use Productiv.
+2. User enters the help command into the command box.
+3. Productiv shows a help window with a copyable URL to its user guide and displays a success message in the feedback box.
+4. User copies the link into their browser and is directed to the user guide.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+     * 2a1. Productiv displays an error message in the feedback box.
+     * 2a2. User enters the command again.
+     * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
+
+       Use case resumes from step 3.
+
+**Use case: G03 - Exit**
+
+**MSS**
+1. User chooses to exit Productiv.
+2. User enters the exit command into the command box.
+3. Productiv closes.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+     * 2a1. Productiv displays an error message in the feedback box.
+     * 2a2. User enters the command again.
      * 2a3. Steps 2a1-2a2 are repeated until the command entered is correct.
      
        Use case resumes from step 3.
+       
+### Deliverable
 
-
-#### CONTACT
-
-**Use case: `UC10 - Add a contact`**
-
-**Precondition(s):**
-* **`User is in the Contact mode`**
-
-**MSS**
-
-1. User adds contact.
-    Use case ends.
-    
-**Extensions**
-
-* 1a. Invalid input.
-    
-    * 1a1. Productiv shows an error message.
-      
-      Use case ends.
-
-      
-**Use case: `UC11 - Edit a contact`**
+**Use case: D01 - Add a deliverable**
 
 **Precondition(s):**
-* **`User is in the Contact mode`**
-* **`Contact to edit exists`**
+* User is in the deliverable mode.
+
+**Guarantee(s):**
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The added deliverable will be reflected in the left and right panels.
 
 **MSS**
-
-1. User requests to list contacts.
-1. Productiv shows list of contacts.
-1. User edits a specific contact in the list.
-1. Productiv edits contact details.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-  
-  * Use case ends.
-     
-* 3a. The given index is invalid.
-    
-    * 3a1. Productiv shows an error message.
-    
-      Use case resumes at step 2.
-      
-* 4a. The given input is invalid.
-    
-    * 4a1 Productiv shows an error message.
-      
-      Use case resumes at step 2.
-
-**Use case: `UC12 - Delete a contact`**
-
-**Precondition(s):**
-* **`User is in the Contact mode`** 
-* **`Contact to delete exists`**
-
-**Guarantee(s):** 
-* **`Deleted contacts will not have its data in Productiv`**
-* **`Deleted contacts cannot be retrieved back`**
-
-**MSS**
-
-1. User requests to list contacts.
-1. Productiv shows list of contacts.
-1. User requests to delete a specific contact in the list.
-1. Productiv deletes the contact.
-   User case ends.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-  
-  * Use case ends.
-     
-* 3a. The given index is invalid.
-    
-    * 3a1. Productiv shows an error message.
-    
-      Use case resumes at step 2.
-      
-
-
-
-#### DELIVERABLES
-
-**Use case: `UC20 - Add Deliverable`**
-
-**Precondition(s):**
-* **`User is in the Deliverable mode`** 
-
-**MSS**
-
 1. User chooses to add a deliverable.
-1. User enters the command to add a deliverable into the input box.
-1. Productiv adds the deliverable for tracking.
+2. User enters the command to add a deliverable into the command box.
+3. Productiv adds the deliverable into the deliverable list and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
-
-* 2a. Produtiv detects an error in the command.
-    
-    * 2a1. Productiv displays an error message.
-    
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
-    
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: `UC21 - Edit Deliverable`**
+**Use case: D02 - Edit a deliverable**
 
 **Precondition(s):**
-* **`User is in the Deliverable mode`** 
-* **`Deliverable to edit exists`**
+* User is in the deliverable mode.
+* Deliverable to edit exists.
+
+**Guarantee(s):**
+* The dashboard's Schedule will be updated accordingly.
+* The edited deliverable will be reflected in the left and right panels.
 
 **MSS**
-
 1. User chooses to edit a deliverable.
-1. User enters the command to edit a deliverable into the input box.
-1. Productiv edits the deliverable.
+2. User enters the command to edit a deliverable into the command box.
+3. Productiv edits the deliverable accordingly and displays a success message in the feedback box.
    
    Use case ends.
 
 **Extensions**
-
-* 2a. Produtiv detects an error in the command.
-    
-    * 2a1. Productiv displays an error message.
-    
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
-    
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
 
-**Use case: `UC22 - Mark Deliverable Completed`**
+**Use case: D03 - Mark a deliverable as completed**
 
 **Precondition(s):**
-* **`User is in the Deliverable mode`** 
-* **`Deliverable to mark complete exists`**
+* User is in the deliverable mode.
+* Deliverable to mark as completed exists.
+
+**Guarantee(s):**
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The deliverable marked as completed will be reflected in the left and right panels.
 
 **MSS**
-
 1. User chooses to mark a deliverable as completed.
-1. User enters the command to mark a deliverable as complete into the input box.
-1. Productiv marks the deliverable as done.
+2. User enters the command to mark a deliverable as completed into the command box.
+3. Productiv marks the deliverable as completed and displays a success message in the feedback box.
 
-    Use case ends
-
+    Use case ends.
 
 **Extensions**
-
-* 2a. Produtiv detects an error in the command.
-    
-    * 2a1. Productiv displays an error message.
-    
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
-    
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-**Use case: `UC23 - Delete Deliverable`**
+**Use case: D04 - Mark a deliverable as on-going**
 
 **Precondition(s):**
-* **`User is in the Deliverable mode`** 
-* **`Deliverable to delete exists`**
+* User is in the deliverable mode.
+* Deliverable to mark as on-going exists.
+
+**Guarantee(s):**
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The deliverable marked as on-going will be reflected in the left and right panels.
+
+**MSS**
+1. User chooses to mark a deliverable as on-going.
+2. User enters the command to mark a deliverable as on-going into the command box.
+3. Productiv marks the deliverable as on-going and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+    
+**Use case: D05 - View a deliverable**
+
+**Precondition(s):**
+* User is in the deliverable mode.
+* Deliverable to view exists.
+
+**MSS**
+1. User chooses to view a deliverable.
+2. User enters the command to view a deliverable into the command box.
+3. Productiv displays the deliverable in the right panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+    
+**Use case: D06 - Find deliverables**
+
+**Precondition(s):**
+* User is in the deliverable mode.
+* User has keyword(s) for Productiv to find deliverables with.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to find deliverables.
+2. User enters the command and keyword(s) to find deliverables into the command box.
+3. Productiv returns all matching deliverables in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: D07 - List all deliverables**
+
+**Precondition(s):**
+* User is in the deliverable mode.
+* User has at least one existing deliverable in Productiv.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to list all deliverables.
+2. User enters the command to list all deliverables into the command box.
+3. Productiv lists out all deliverables in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: D08 - Delete a deliverable**
+
+**Precondition(s):**
+* User is in the deliverable mode.
+* Deliverable to delete exists.
 
 **Guarantee(s):** 
-* **`Deleted deliverables will not have its data in Productiv`**
-* **`Deleted deliverables cannot be retrieved back`**
-
+* The left panel will reflect the updated deliverable list.
+* The right panel will be cleared.
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The deleted deliverable will not have its data stored anymore in Productiv.
+* The deleted deliverable cannot be retrieved back.
 
 **MSS**
 1. User chooses to delete a deliverable.
-1. User enters the command to delete a deliverable into the input box.
-1. Productiv prompts the user to confirm deletion.
-1. User accepts confirmation.
-1. Productiv deletes the deliverable.
+2. User enters the command to delete a deliverable into the command box.
+3. Productiv deletes the deliverable from the deliverable list and displays a success message in the feedback box.
+    
     Use case ends.
 
 **Extensions**
-
-* 2a. Produtiv detects an error in the command.
-    
-    * 2a1. Productiv displays an error message.
-    
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
     * 2a2. User enters the command again.
-    
     * Steps 2a1-2a2 are repeated until the command entered is correct.
       
       Use case resumes from step 3.
       
-* 4a. User declines confirmation.
-
-    * 4a1. Productiv cancels the deletion process.
-    
-      Use case ends.
-
-#### MEETING
-
-**Use case: `UC30 - Add a meeting`**
+**Use case: D09 - Clear all deliverables**
 
 **Precondition(s):**
-* **`User is in the meeting mode`**
-
-**MSS**
-
-1. User adds meeting.
-    Use case ends.
-    
-**Extensions**
-
-* 1a. Invalid input.
-    
-    * 1a1. Productiv shows an error message.
-      
-      Use case ends.
-      
-**Use case: `UC31 - Edit a meeting`**
-
-**Precondition(s):**
-* **`User is in the meeting mode`** 
-* **`Meeting to edit exists`**
-
-**MSS**
-
-1. User requests to list meetings.
-1. Productiv shows list of meetings.
-1. User edits a specific meeting in the list.
-1. Productiv edits meeting details.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-  
-  * Use case ends.
-     
-* 3a. The given index is invalid.
-    
-    * 3a1. Productiv shows an error message.
-    
-      Use case resumes at step 2.
-      
-* 4a. The given input is invalid.
-    
-    * 4a1 Productiv shows an error message.
-      
-      Use case resumes at step 2.
-      
-**Use case: `UC32 - Delete a meeting`**
-
-**Precondition(s):**
-* **`User is in the meeting mode`** 
-* **`Meeting to delete exists`**
+* User is in the deliverable mode.
+* User has at least one existing deliverable in Productiv.
 
 **Guarantee(s):** 
-* **`Deleted meeting will not have its data in Productiv`**
-* **`Deleted meeting cannot be retrieved back`**
+* The left and right panels will be cleared.
+* The dashboard's OCP and Schedule will be updated accordingly.
+* The cleared deliverables will not have its data stored anymore in Productiv.
+* The cleared deliverables cannot be retrieved back.
 
 **MSS**
+1. User chooses to clear all deliverables.
+2. User enters the command to clear all deliverables into the command box.
+3. Productiv clears all deliverables from the deliverable list and displays a success message in the feedback box.
+    
+    Use case ends.
 
-1. User requests to list meetings.
-1. Productiv shows list of meetings.
-1. User requests to delete a specific meeting in the list.
-1. Productiv deletes the meeting.
-   User case ends.
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+
+### Meeting
+
+**Use case: M01 - Add a meeting**
+
+**Precondition(s):**
+* User is in the meeting mode.
+
+**Guarantee(s):**
+* The dashboard's Schedule will be updated accordingly.
+* The added meeting will be reflected in the left and right panels.
+
+**MSS**
+1. User chooses to add a meeting.
+2. User enters the command to add a meeting into the command box.
+3. Productiv adds the meeting into the meeting list and displays a success message in the feedback box.
 
     Use case ends.
 
 **Extensions**
-
-* 2a. The list is empty.
-  
-  * Use case ends.
-     
-* 3a. The given index is invalid.
-    
-    * 3a1. Productiv shows an error message.
-    
-      Use case resumes at step 2.
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
       
-*{More to be added}*
+      Use case resumes from step 3.
+      
+**Use case: M02 - Edit a meeting**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* Meeting to edit exists.
+
+**Guarantee(s):**
+* The dashboard's Schedule will be updated accordingly.
+* The edited meeting will be reflected in the left and right panels.
+
+**MSS**
+1. User chooses to edit a meeting.
+2. User enters the command to edit a meeting into the command box.
+3. Productiv edits the meeting accordingly and displays a success message in the feedback box.
+   
+   Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+    
+**Use case: M03 - View a meeting**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* Meeting to view exists.
+
+**MSS**
+1. User chooses to view a meeting.
+2. User enters the command to view a meeting into the command box.
+3. Productiv displays the meeting in the right panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+    
+**Use case: M04 - Find meetings**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* User has keyword(s) for Productiv to find meetings with.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to find meetings.
+2. User enters the command and keyword(s) to find meetings into the command box.
+3. Productiv returns all matching meetings in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: M05 - List all meetings**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* User has at least one existing meeting in Productiv.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to list all meetings.
+2. User enters the command to list all meetings into the command box.
+3. Productiv lists out all meetings in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: M06 - Delete a meeting**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* Meeting to delete exists.
+
+**Guarantee(s):** 
+* The left panel will reflect the updated meeting list.
+* The right panel will be cleared.
+* The dashboard's Schedule will be updated accordingly.
+* The deleted meeting will not have its data stored anymore in Productiv.
+* The deleted meeting cannot be retrieved back.
+
+**MSS**
+1. User chooses to delete a meeting.
+2. User enters the command to delete a meeting into the command box.
+3. Productiv deletes the meeting from the meeting list and displays a success message in the feedback box.
+    
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+**Use case: M07 - Clear all meetings**
+
+**Precondition(s):**
+* User is in the meeting mode.
+* User has at least one existing meeting in Productiv.
+
+**Guarantee(s):** 
+* The left and right panels will be cleared.
+* The dashboard's Schedule will be updated accordingly.
+* The cleared meetings will not have its data stored anymore in Productiv.
+* The cleared meetings cannot be retrieved back.
+
+**MSS**
+1. User chooses to clear all meetings.
+2. User enters the command to clear all meetings into the command box.
+3. Productiv clears all meetings from the meeting list and displays a success message in the feedback box.
+    
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3. 
+      
+### Contact
+
+**Use case: C01 - Add a contact**
+
+**Precondition(s):**
+* User is in the contact mode.
+
+**Guarantee(s):**
+* The added contact will be reflected in the left and right panels.
+
+**MSS**
+1. User chooses to add a contact.
+2. User enters the command to add a contact into the command box.
+3. Productiv adds the contact into the contact list and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+**Use case: C02 - Edit a contact**
+
+**Precondition(s):**
+* User is in the contact mode.
+* Contact to edit exists.
+
+**Guarantee(s):**
+* The edited contact will be reflected in the left and right panels.
+
+**MSS**
+1. User chooses to edit a contact.
+2. User enters the command to edit a contact into the command box.
+3. Productiv edits the contact accordingly and displays a success message in the feedback box.
+   
+   Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+    
+**Use case: C03 - View a contact**
+
+**Precondition(s):**
+* User is in the contact mode.
+* Contact to view exists.
+
+**MSS**
+1. User chooses to view a contact.
+2. User enters the command to view a contact into the command box.
+3. Productiv displays the contact in the right panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+    
+**Use case: C04 - Find contacts**
+
+**Precondition(s):**
+* User is in the contact mode.
+* User has keyword(s) for Productiv to find contacts with.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to find contacts.
+2. User enters the command and keyword(s) to find contacts into the command box.
+3. Productiv returns all matching contacts in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: C05 - List all contacts**
+
+**Precondition(s):**
+* User is in the contact mode.
+* User has at least one existing contact in Productiv.
+
+**Guarantee(s):**
+* The right panel will be cleared.
+
+**MSS**
+1. User chooses to list all contacts.
+2. User enters the command to list all contacts into the command box.
+3. Productiv lists out all contacts in the left panel and displays a success message in the feedback box.
+
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.  
+      
+**Use case: C06 - Delete a contact**
+
+**Precondition(s):**
+* User is in the contact mode.
+* Contact to delete exists.
+
+**Guarantee(s):** 
+* The left panel will reflect the updated contact list.
+* The right panel will be cleared.
+* The deleted contact will not have its data stored anymore in Productiv.
+* The deleted contact cannot be retrieved back.
+
+**MSS**
+1. User chooses to delete a contact.
+2. User enters the command to delete a contact into the command box.
+3. Productiv deletes the contact from the contact list and displays a success message in the feedback box.
+    
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3.
+      
+**Use case: C07 - Clear all contacts**
+
+**Precondition(s):**
+* User is in the contact mode.
+* User has at least one existing contact in Productiv.
+
+**Guarantee(s):**
+* The left and right panels will be cleared.
+* The cleared contacts will not have its data stored anymore in Productiv.
+* The cleared contacts cannot be retrieved back.
+
+**MSS**
+1. User chooses to clear all contacts.
+2. User enters the command to clear all contacts into the command box.
+3. Productiv clears all contacts from the contact list and displays a success message in the feedback box.
+    
+    Use case ends.
+
+**Extensions**
+* 2a. Productiv detects an error in the command.
+    * 2a1. Productiv displays an error message in the feedback box.
+    * 2a2. User enters the command again.
+    * Steps 2a1-2a2 are repeated until the command entered is correct.
+      
+      Use case resumes from step 3. 
       
 ## **Appendix D: Non-Functional Requirements**
 
@@ -840,12 +1172,13 @@ Priorities:
 
 ## **Appendix E: Glossary**
 
-* **Mainstream OS**: Windows, Unix, OS-X.
-* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
-* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
 * **Deliverable**: An item to be completed as part of the product development process.
-* **Milestone**: A significant stage or event in the development of a product.
-* **Role**: A function assumed or part played by a `Person`. Every `Person` is either a developer or stakeholder.
+* **Mainstream OS**: Windows, Unix, OS-X.
+* **Milestone**: A stage in the software development process associated with a particular group of deliverables.
+* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
+* **OCP**: Overall Completion Percentage. It is a donut chart showing the project's completion status, found on the left panel of the Dashboard.
+* **Role**: A function assumed or part played by a `Contact`/`Person`, who is either a developer or stakeholder.
+* **Stakeholder**: An external party involved with the product.
 
 ## **Appendix F: Instructions for Manual Testing**
 
@@ -860,13 +1193,15 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Initial launch
 
-    1. Test case: Download the jar file and copy into an empty folder. Double-click the jar file.<br>
-       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.
+    1. Prerequisite: You have Java `11` installed in your computer (it should be your default Java version).
+
+    1. Test case: Download the .jar file from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases) and copy into an empty folder.
+       From the terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start *Productiv*.<br>
+       Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.<br>
 
 1. Saving window preferences
 
-    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window.
-       Re-launch the app by double-clicking the jar file.<br>
+    1. Test case: Resize the window to an optimum size. Move the window to a different location. Close the window. Re-launch the app.<br>
        Expected: The most recent window size and location is retained.
 
        <div markdown="span" class="alert alert-info">:information_source: **Note:** The window has a minimum width and height so that the UI does not look so cramped.
@@ -899,10 +1234,10 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Adding Login screen
 
-   1. Prerequisites: You are in deliverable mode. Login screen not already added. If added, delete it.
+   1. Prerequisites: You are in deliverable mode. The deliverable `Login screen` is not already added. If it is already added, delete it.
 
-   1. Test case: `add t/Login screen m/1.0 by/12-12-2020 23:59 d/Must include username and password fields c/John Martin, Abby Li`<br>
-      Expected: Login screen to appear in the list of deliverables and expanded in right panel.
+   1. Test case: `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields`<br>
+      Expected: The deliverable `Login screen` is added to the list of deliverables and is expanded in the right panel.
 
    1. Test case: `add t/Login screen`<br>
       Expected: No deliverable is added. Status bar throws error message.
@@ -914,20 +1249,18 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Deliverables, meetings and contacts are saved automatically to ./data/.
 
-   On normal usage, 3 JSON files are created / saved - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
-   All 3 files contain information stored by the user from their respective modes.
-
-   On first starting the program, a file is only created if the user inputs a command specific to that mode, i.e. not the General commands.
+   On normal usage, data is saved to 3 JSON files - `deliverablebook.json`, `meetingbook.json` and `contactbook.json`.
+   All 3 files contain information stored by the user from the respective modes.
 
    1. Prerequisites: Very first time using the application. Delete all files under ./data/ if not the first time using the application.
 
    1. Test case: Start and close the app immediately.<br>
       Expected: The 3 JSON files are not created.
 
-   1. Test case: Start the app. Switch to deliverable mode. Add a deliverable. Close the app.<br>
+   1. Test case: Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
       Expected: Of the 3 JSON files, only `deliverablebook.json` created.
 
-1. Dealing with missing/corrupted data files
+1. Dealing with missing or corrupted data files
 
    1. Test case: Delete `deliverablebook.json` file. Start the app. Switch to deliverable mode. Enter `list`. Close the app.<br>
       Expected: `deliverablebook.json` should re-initialise a list of sample deliverables.
