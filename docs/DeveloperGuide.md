@@ -187,9 +187,9 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### \[Date and Time verfication\]
+### Date and Time Verification
 
-#### Proposed Implementation
+#### Implementation
 The implementation allows users to parse and compare unique `DateTime` and `Time` types.
 
 ![Structure of DateTime and Time implementations](images/DateTimeClass.png)
@@ -215,7 +215,7 @@ DateTime can be used to compare with other DateTime objects:
 * Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
-#### Design consideration:
+#### Design consideration
 * **Alternative 1 (current choice):** Throws error when invalid range is 
 given for dates
   * E.g `29-02-2019 00:00` or `31-11-2020 00:00`.
@@ -244,7 +244,7 @@ The following sequence diagram shows how a list is auto-sorted upon an addition 
 
 ![AutosortSequenceDiagram](images/AutosortSequenceDiagram.png)
 
-#### Design consideration:
+#### Design consideration
 
 ##### Aspect: How auto-sorting executes
 
@@ -275,7 +275,7 @@ The following sequence diagram shows how the Calendar is updated upon an additio
 
 ![CalendarSequenceDiagram](images/CalendarSequenceDiagram.png)
 
-#### Design consideration:
+#### Design consideration
 
 ##### Aspect: Where and how is `calendarList` updated
 
@@ -374,7 +374,7 @@ Given below is a sequence diagram to show how the switch mode mechanism behaves 
 <figcaption>The two sequence diagrams are separated for simplicity</figcaption>
 
 
-#### Design consideration:
+#### Design consideration
 
 ##### Aspect: How Switch commands should be implemented
 
@@ -416,7 +416,8 @@ The following sequence diagram shows how the view operation works in each step:
 
 ![ViewCommandSequenceDiagram](images/ViewCommandSequenceDiagram.png)
 
-#### Design consideration:
+#### Design consideration
+
 
 ##### Aspect: How view executes
 
@@ -467,7 +468,7 @@ You should note the mechanism after the mode has been switched.
 
 ![OCPSequenceDiagram](images/OCPSequenceDiagram.png)
 
-#### Design consideration:
+#### Design consideration
 
 ##### Aspect: How updating of OCP executes
 
