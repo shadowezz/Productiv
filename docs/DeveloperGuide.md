@@ -115,7 +115,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The Model component (`ModelDeliverable`, `ModelMeeting` or `ModelPerson`),
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores its respective deliverable, meeting, or contact book. 
+* stores its respective deliverable, meeting, or person book. 
 * exposes unmodifiable its respective `ObservableList<Deliverable>`,`ObservableList<Meeting>`, or `ObservableList<Person>`.
 e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
