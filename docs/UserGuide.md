@@ -36,6 +36,8 @@ To get you familiarised, the following is Productiv's GUI.
    1. **Right panel**: where you can view <br>
       * your product management schedule (in dashboard mode), or <br>
       * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
+    
+   Note: For modes other than the dashboard, you can see your file path at the bottom of your GUI. 
    </div>
 
 
