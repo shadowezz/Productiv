@@ -23,11 +23,11 @@ The ***Architecture Diagram*** given above explains the high-level design of Pro
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
@@ -37,8 +37,8 @@ The rest of the App consists of four components.
 
 * [**`UI`**](#ui-component): The UI of the App.
 * [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#modelPerson-component): Holds the data of the App in memory.
-* [**`Storage`**](#storagePerson-component): Reads data from, and writes data to, the hard disk.
+* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components,
 
@@ -203,7 +203,7 @@ The implementation allows users to parse and compare unique `DateTime` and `Time
 
 DateTime can be used to compare with other DateTime objects:
 * Enable deliverables or meetings to be sorted based on which one is due the earliest.
-*Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
+*Refer to [Auto-sort feature](#auto-sort-feature) to view this implementation.*
 * Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
@@ -1178,7 +1178,7 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
       
 ## **Appendix D: Non-Functional Requirements**
 
-1. Should work on any [`mainstream OS`](#common-classes) as long as Java `11` is installed and is the default.
+1. Should work on any [`mainstream OS`](#appendix-e-glossary) as long as Java `11` is installed and is the default.
 1. Should be able to hold up to 1000 deliverables, 1000 meetings and 1000 contacts without noticeable sluggishness in performance for typical usage.
 1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. This excludes the Switch and Help command.
 1. The user interface should look intuitive and simple to navigate. It should not look cluttered with too many panels.
