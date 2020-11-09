@@ -93,11 +93,8 @@ The `UI` component:
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 <div markdown="block" class="alert alert-info"> 
-:information_source: **Note:** <br>
-
-* ABC refers to `Deliverable`, `Meeting`, `Person` and `Mode`.
-
-* XYZ refers to any general command call, e.g Add, find, delete, etc. 
+:information_source: **Note:** ABC refers to `Deliverable`, `Meeting`, `Person`. 
+XYZ refers to any command call, e.g Add, find, delete, etc. 
 
 </div>
 
@@ -105,11 +102,9 @@ The `UI` component:
 * [`LogicDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDeliverable.java)
 * [`LogicMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMeeting.java)
 * [`LogicPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicPerson.java)
-* [`LogicMode.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMode.java)
+* [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
-The `Logic` component parses the user commands and executes them. Depending on the mode of the application, 
-the command execution can affect different models. For e.g add command will affect `ModelDeliverable` 
-if the program is in Deliverable Mode. Only `LogicMode` does not affect Model.
+The `Logic` component parses the user commands and executes them. There are different pa`LogicDispatcher` selects the correct parser to 
 
 This is the list of what `Model` components affected by their respective `Logic` components: 
 * `LogicDeliverable`: Component that affects `DeliverableModel`.
@@ -161,8 +156,8 @@ The `Model`:
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
 <div markdown="span" class="alert alert-info"> 
-**:information_source: Note:** <br>
-ABC refers to `Deliverable`, `Meeting` and `Person`.
+**:information_source: Note:** ABC refers to `Deliverable`, `Meeting` and `Person`.
+
 </div>
 
 **API** : 

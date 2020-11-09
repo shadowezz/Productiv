@@ -4,6 +4,7 @@ skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
 
+package Storage{
 Interface ABCStorage <<Interface>>
 Interface UserPrefsStorage <<Interface>>
 Interface ABCBookStorage <<Interface>>
@@ -21,6 +22,5 @@ JsonABCBookStorage .left.|> ABCBookStorage
 JsonABCBookStorage .down.> JsonSerializableABCBookStorage
 JsonSerializableABCBookStorage .right.> JsonSerializableABC
 JsonSerializableABC .right.> JsonAdaptedABC
-
-note top of JsonSerializableABC: JsonSerializableABC = JsonSerializableDeliverable\nJsonSerializabeMeeting, JsonSerializablePerson
+}
 @enduml

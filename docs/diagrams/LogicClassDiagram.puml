@@ -1,7 +1,7 @@
 @startuml
 !include style.puml
 
-scale 1.5
+'scale 1.5
 
 skinparam arrowThickness 1.1
 skinparam arrowColor LOGIC_COLOR_T4
@@ -28,9 +28,6 @@ Class "{abstract}\nCommand" as Command
 
 Interface LogicDispatcher <<Interface>>
 Class LogicDispatcherManager
-
-note top of ABCBookParser: ABCBookParser = DeliverableBookParser\nMeetingBookParser, PersonBookParser
-
 }
 
 package Model{
@@ -56,11 +53,11 @@ ParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
 XYZCommand -up-|> Command
 LogicDispatcherManager .left.> Command : executes >
-
 LogicDispatcherManager -> "0..1           " Model
+LogicDispatcherManager ---> "0..1" XYZCommandParser
+
 Command .> "0..1    " Model
 
-note bottom of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
 LogicDispatcher ..> CommandResult
 LogicDispatcherManager .down.> CommandResult
 Command .up.> CommandResult
