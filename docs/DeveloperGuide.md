@@ -421,26 +421,41 @@ The following sequence diagram shows how the view operation works in each step:
   * Cons: Cluttering of Command Result object which now needs to store mode-specific items. This is against its original purpose 
   which is to pass mode-neutral information, such as error messages, back to UI for display after a command execution.
 
-### \[Proposed\] Overall Completion Percentage feature
+### Overall Completion Percentage feature
 
-#### Proposed Implementation
+#### Implementation
 
-The Overall Completion Percentage (OCP) feature is to be implemented in the Dashboard page (coming soon) of *Productiv*.
-This feature allows users to have a quick overview of the progress of their product's development. OCP is given by the 
+The Overall Completion Percentage (OCP) feature is located at the left panel of the dashboard in Productiv.
+It is a donut chart implemented with the third-party library [fx-progress-circle](https://github.com/torakiki/fx-progress-circle/),
+and it appears as shown below.
+
+![OCP](images/OCP.JPG)
+
+The OCP feature allows product managers to have a quick overview of the progress of their product's development 
+so that they can work better towards production deadlines. 
+OCP is given by the 
 formula*:
 
 <div markdown="span" class="alert alert-primary">
 **_OCP (%) = Number of Completed Deliverables / Total Number of Deliverables × 100_**
 </div>
 
-\* If no deliverables are present, OCP will be set to **0%**.
+\* If no deliverables exist, OCP will be set to **0%**.
 
-The OCP will only be updated upon successful execution of the following (simplified) commands:
-* AddCommand, i.e. *add(deliverable)*
-* DoneCommand, i.e. *done(deliverable)*
-* DeleteCommand, i.e. *delete(deliverable)*
+The OCP will be updated upon switching to dashboard mode. 
+This can be done via CLI (with the command `switch db`) or mouse input (clicking on the dashboard tab).
 
-The following proposed sequence diagram shows how the updating of the OCP would be implemented:
+The following steps and sequence diagram shows how the **updating** of the OCP is implemented via mouse input.
+You should note the mechanism after the mode has been switched.
+
+1. `MainWindow` detects that the dashboard button in the navigation bar is clicked, and its `switchDashboard` method is called.
+2. `MainWindow` updates its own attribute `mode` to reflect the dashboard and its UI displays it accordingly.
+3. The `updateOcp` method of `ProjectCompletionStatusPanel` is called.
+4. `ProjectCompletionStatusPanel` calls the `size` method of its `ObservableList`, `deliverableList`, which returns the total number of deliverables (`totalNumDeliverables`).
+5. `ProjectCompletionStatusPanel` self-invokes its `findNumCompletedDeliverables` method that returns the number of completed deliverables of its `deliverableList` (`numCompletedDeliverables`).
+6. `ProjectCompletionStatusPanel` self-invokes its `getOcp` method with `totalNumDeliverables` and `numCompletedDeliverables` as parameters, and returns the `overallCompletionPercentage`*.
+
+*This value is later passed to the progress ring indicator to render the OCP donut chart in the dashboard. 
 
 ![OCPSequenceDiagram](images/OCPSequenceDiagram.png)
 
@@ -448,13 +463,12 @@ The following proposed sequence diagram shows how the updating of the OCP would 
 
 ##### Aspect: How updating of OCP executes
 
-* **Alternative 1 (current choice):** Store the deliverable counters within `LogicDeliverableManager`.
-    * Pros: Adheres to Single Responsibility Principle.
-    * Cons: May require additional interfaces/methods to retrieve the required values for OCP computation.
-* **Alternative 2:** Store the deliverable counters as global variables.
-    * Pros: Directly accesses the required values for OCP computation.
-    * Cons: May violate Single Responsibility Principle.
-
+* **Alternative 1 (current choice):** Update OCP upon command to switch to dashboard mode.
+    * Pros: Adheres more towards Single Responsibility Principle.
+    * Cons: Takes slightly longer to calculate OCP for display.
+* **Alternative 2:** Update OCP upon any successful command.
+    * Pros: Potentially faster to retrieve OCP information for display.
+    * Cons: Violates more of the Single Responsibility Principle.
 
 --------------------------------------------------------------------------------------------------------------------
 
