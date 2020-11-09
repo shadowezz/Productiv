@@ -57,7 +57,7 @@ The sequence diagram below shows how the components interact with each other for
 
 ### UI component
 
-![Structure of the UI Component](images/UiClassDiagramUpdated.png)
+![Structure of the UI Component](images/UiClassDiagram.png)
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -66,25 +66,25 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
  `ProjectCompletionStatusPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 
- The `Dashboard` components of the UI are displayed when the application is in `Dashboard` mode. The left side of the application consists of 
+ The `Dashboard` parts of the UI are displayed when the application is in `Dashboard` mode. The left side of the application consists of 
  the `ProjectCompletionStatusPanel` where the user can see the overall completion status of his/her product based on the
  percentage of deliverables completed. The right side consists of the `CalendarListPanel` which displays a list of deliverables
  and meetings, through `CalendarDeliverableCard` and `CalendarMeetingCard` respectively, in chronological order so that the user can
  keep track of his/her schedule.
 
 
- When the application is in deliverable, meeting or contact mode, the respective UI components will be displayed. For example,
+ When the application is in deliverable, meeting or contact mode, the respective UI parts will be displayed. For example,
  in deliverable mode, the left side of the application will contain the `DeliverableListPanel`, consisting of `DeliverableCard`,
  to show the list of deliverables the user has. The right side consists of the `DeliverableDetailsPanel` which will display the full details
  of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for meeting and contact mode.
   
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+The UI component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
-The `UI` component:
+The UI component:
 
-* Executes user commands using the `Logic` component.
-* Listens for changes to `Model` data so that the UI can be updated with the modified data.
+* Executes user commands using the Logic component.
+* Listens for changes to Model data so that the UI can be updated with the modified data.
 
 ### Logic component
 
