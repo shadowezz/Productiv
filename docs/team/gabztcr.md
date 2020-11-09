@@ -5,12 +5,18 @@ title: Gabriel Tan's Project Portfolio Page
 
 ## Project: Productiv
 
+### Overview
+
 Productiv is a one-stop desktop app for product managers like yourself to organise your contacts, deliverables and 
 meetings, so that you can track your product’s development easily. 
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. 
+It is written in Java, and has about 20 kLoC.
 
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 20 kLoC.
+### Summary of Contributions
 
-Given below are my contributions to the project.
+**Code contributed**: [RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=gabztcr)
+
+#### New features and Enhancements
 
 * **New Feature**: Deliverables (specifically add, edit and delete commands).
   * What it does: This feature allows the user to track their product's deliverables easily with basic CRUD features.
@@ -26,14 +32,6 @@ Given below are my contributions to the project.
   Although the library and its tutorial were available, implementing it was very challenging since the code bases were very different.
   * Credits: The third-party library [fx-progress-circle](https://github.com/torakiki/fx-progress-circle/) and its [tutorial](https://youtu.be/9SEE8UP17jo) were used to implement this feature. 
 
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=gabztcr)
-
-* **Project management**:
-  * Set up [GitHub Projects](https://github.com/AY2021S1-CS2103T-F11-2/tp/projects/1) to track issues and PRs for Productiv.
-  * Hosted two sprint planning meetings to sync up on issues and discuss technical solutions.
-  * Managed milestone `mid-v1.4`.
-  * Created a timetable for PR merging to minimise merge conflicts when the team was working on our documentation together.
-
 * **Enhancements to existing features**:
   * Wrote additional tests for deliverables to increase coverage (PRs [\#112](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/112), [\#123](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/123)).
   * Implement autosort feature for deliverables that sorts them chronologically by deadline (PR [\#123](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/123)).
@@ -41,12 +39,21 @@ Given below are my contributions to the project.
   * Enabled `find` command to accommodate punctuations when matching keywords to deliverables, meetings or contacts (PR [\#250](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/250)).
   * Amended the alignment of and ordering within the UI of Productiv (PR [\#256](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/256)).
 
-* **Documentation**:
+#### Project management
+
+  * Set up [GitHub Projects](https://github.com/AY2021S1-CS2103T-F11-2/tp/projects/1) to track issues and PRs for Productiv.
+  * Hosted two sprint planning meetings to sync up on issues and discuss technical solutions.
+  * Managed milestone `mid-v1.4`.
+  * Created a timetable for PR merging to minimise merge conflicts when the team was working on our documentation together.
+
+#### Documentation
+
   * User Guide:
     * Created the skeleton version from AddressBook (PR [\#29](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/29)).
     * Added documentation for `list`, `find` and `clear` commands for contacts (PR [\#99](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/99)).
     * Updated the notes about the command format under Features (PRs [\#214](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/214), [\#265](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/265)).
     * Reordered the fields for all existing commands (PR [\#256](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/256)).
+    * Oversaw the general accuracy, consistency and formatting.
   * Developer Guide:
     * Added implementation details of the OCP feature (PR [\#107](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/107)).
     * Amended User Stories and Use Cases (PR [\#265](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/265)).
@@ -54,6 +61,7 @@ Given below are my contributions to the project.
     * Created a shortened URL link of the User Guide for the GUI's help window.
     * Amended all error messages for the feedback box in Productiv (PR [\#228](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/228)). 
 
-* **Community**:
+#### Community
+
   * Reviewed PRs with non-trivial comments (PRs [\#188](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/188), [\#189](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/189)).
   * Reported bugs and suggestions for other teams (examples: [1](https://github.com/gabztcr/ped/issues/7), [2](https://github.com/gabztcr/ped/issues/6), [3](https://github.com/gabztcr/ped/issues/5)).
