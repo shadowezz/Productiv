@@ -156,6 +156,7 @@ public class MainWindow extends UiPart<Stage> {
             rightPanelPlaceholder.getChildren().add(calendarListPanel.getRoot());
             leftPanelPlaceholder.getChildren().add(projectCompletionStatusPanel.getRoot());
             setUnderlineButton(dashboardButton);
+            projectCompletionStatusPanel.updateOcp();
             break;
         case PERSON:
             leftPanelPlaceholder.getChildren().add(personListPanel.getRoot());

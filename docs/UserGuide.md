@@ -55,8 +55,6 @@ Here is a sequence of example commands you can try:<br>
   e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
 :bulb: **Tip:** If you are not sure what specific parameter to supply for any of the required fields, supply an estimate or random value as place holder.<br>
 
-* If you supply a long parameter, its display in the list panel might be truncated.
-
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
 
@@ -64,8 +62,10 @@ Here is a sequence of example commands you can try:<br>
   e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
   
 * If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk` it will be accepted as `n/NAME r/stk e/EMAIL`.
+  e.g. if you input the command `add r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `add n/NAME r/stk e/EMAIL`.
 
+* For single-word commands without fields, any word(s) following it will be ignored.<br>
+  e.g. if you input the command `list everything please`, it will be accepted as `list`.
 </div>
 
 
@@ -92,14 +92,12 @@ Shows a message directing you to this User Guide.
 ![help](images/helpMessage.JPG)
 
 Format: `help`
-* Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
 
 #### Exiting *Productiv*: `exit`
 
 Exits the program.
 
 Format: `exit`
-* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
 
 #### Saving the data
 
@@ -186,6 +184,7 @@ Format: `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRI
 * `INDEX` must be a positive integer.
 * At least one of the fields of the deliverable must be changed.
 * The existing values of the specified deliverable will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
 
 <div markdown="block" class="alert alert-info">
 
@@ -197,7 +196,7 @@ Examples:
 *  `edit 1 d/Must include username, email and password fields by/15-12-2020 12:00`
 edits the description of the 1st deliverable to be `Must include username, email and password fields`
 and its deadline to be `15-12-2020 12:00`.
-*  `edit 2 c/Betsy Crowe, Jeremey` edits the contacts of the 2nd deliverable to be `Betsy Crowe, Jeremey`.
+*  `edit 2 c/` clears the optional contacts field of the 2nd deliverable.
 
 #### Marking a deliverable as completed: `done`
 
@@ -335,6 +334,7 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 * `INDEX` must be a positive integer.
 * At least one of the fields of the meeting must be changed.
 * The existing values of the specified meeting will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
 
 <div markdown="block" class="alert alert-info">
 
@@ -346,7 +346,7 @@ Examples:
 * `edit 2 t/Discuss final release features d/Finalise dashboard functions`
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalise dashboard functions`.
-* `edit 4 c/Jordan Woods, Jeremey` edits the contacts of the 4th meeting to be `Jordan Woods, Jeremey`.
+* `edit 4 c/` clears the optional contact field of the 4th meeting.
 
 #### Viewing a meeting: `view`
 
@@ -459,6 +459,7 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the fields of the contact must be changed.
 * The existing values of the specified contact will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st contact.
 
 <div markdown="block" class="alert alert-info">
 
@@ -469,8 +470,8 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 Examples:
 *  `edit 1 e/jeremysand@glutter.com p/81234567`
 edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
-*  `edit 2 n/Jayden Smith` 
-edits the name of the 2nd contact to be `Jayden Smith`.
+*  `edit 2 p/` 
+clears the optional phone field of the 2nd contact.
 
 #### Viewing a contact: `view`
 
@@ -566,7 +567,7 @@ Action         | Format, Examples
 Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
 Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
 Mark as completed   | `done INDEX` <br> e.g. `done 3`
-Mark as on-going    | `undone INDEX` <br> e.g. `undone 3`
+Mark as on-going    | `undone INDEX` <br> e.g. `undone 1`
 View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
 List           | `list` 
@@ -607,4 +608,4 @@ Clear          | `clear`
 2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
 3  | Deliverable                    | An item which needs to be completed by a specified time.                                       |
 4  | Stakeholder                    | An external party involved with the product.                                                   |
-5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables |
+5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
