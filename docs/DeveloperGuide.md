@@ -27,25 +27,30 @@ The ***Architecture Diagram*** given above explains the high-level design of Pro
 
 </div>
 
+<<<<<<< HEAD
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+* At app launch, initialising the components in the correct sequence, and connects them up with each other.
+* Upon exiting, shutting down the components and invoking cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.  
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
+* [**`UI`**](#ui-component): Handles the UI of the App.
+* [**`Logic`**](#logic-component): Executes commands supplied to the App.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
-Each of the four components,
+The app contains 3 types of entities: Deliverable, Meeting and Person
 
-* defines its *API* in an `interface` with the same name as the Component.
-* exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+Each of the four components:
 
-For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
+* defines its *API* using a `{Component}{Entity}` interface.
+* exposes its functionality using a concrete `{Component}{Entity}Manager` class (which implements the corresponding 
+API `interface` above.)
+
+For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic{Entity}.java` interface 
+and exposes its functionality using the `Logic{Entity}Manager.java` class which implements the `Logic{Entity}` interface.)
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
 
@@ -66,7 +71,7 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
  `ProjectCompletionStatusPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 
- The `Dashboard` parts of the UI are displayed when the application is in dashboard mode. The left side of the application consists of 
+ The `Dashboard` parts of the UI are displayed when the application is in dashboard mode. The left side of the application consists of
  the `ProjectCompletionStatusPanel` where the user can see the overall completion status of his/her product based on the
  percentage of deliverables completed. The right side consists of the `CalendarListPanel` which displays a list of deliverables
  and meetings, through `CalendarDeliverableCard` and `CalendarMeetingCard` respectively, in chronological order so that the user can
@@ -99,7 +104,7 @@ The UI component:
 * [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
 The Logic component parses the user commands and executes them. 
-`LogicDispatcher` selects the correct parser based on the current mode (ie deliverable mode).  
+`LogicDispatcher` selects the correct `LogicXYZ` based on the current mode (e.g deliverable mode).  
 
 This is the list of what Model components are affected:  
 * `LogicDeliverable`: Component that affects `DeliverableModel` when in deliverable mode.
@@ -110,9 +115,10 @@ Commands that do not affect Model components will be passed to `GeneralParser` w
 
 The components follow the general sequence to execute a command:
 
-1. Logic uses `XYZBookParser` class to parse the user command.
+1. `LogicDispatcherManager` dispatches commands to
+    1. `LogicXYZManager` class to execute and parse the user command which affect models
+    1. `GeneralCommandParser` class to parse user commands which do not affect models
 1. This results in a `ABCCommand` object which is executed by the `LogicDispatcherManager`.
-1. The command execution can affect the Model (e.g. adding a meeting).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
 1. In addition, `CommandResult` can also instruct `Ui` to perform certain actions, such as displaying help or switching mode for the user.
 
@@ -189,14 +195,14 @@ The implementation allows users to parse and compare unique `DateTime` and `Time
 ![Structure of DateTime and Time implementations](images/DateTimeClass.png)
 
 **`Time`**: To parse, `Time` should be in the following format: **`HH:mm`** 
-* Single digits fields must include leading zero: `01:10`.
+* Single digit fields must include leading zero: `01:10`.
 
 `Time` will throw a parsing error if
 * Format is wrong (e.g missing or additional digit): `00:00:59`
-* Invalid range (e.g invalid leap year): `24:00` 
+* Invalid range (e.g beyond max limit): `24:00` 
 
 **`DateTime`**: To parse, `DateTime` should be in the following format: **`dd-MM-yyyy HH:mm`** 
-* Single digits fields must include leading zero: `01-01-0101 01:10`.
+* Single digit fields must include leading zero: `01-01-0101 01:10`.
 * Valid Calendar Range: \[`01-01-2019 00:00` - `31-12-9999 23:59`\].
 
 `DateTime` will throw a parsing error if

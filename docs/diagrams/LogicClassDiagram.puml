@@ -1,7 +1,7 @@
 @startuml
 !include style.puml
 
-scale 1.5
+'scale 1.5
 
 skinparam arrowThickness 1.1
 skinparam arrowColor LOGIC_COLOR_T4
@@ -26,6 +26,9 @@ Class CommandResult
 Class "{abstract}\nCommand" as Command
 }
 
+Interface LogicXYZ <<Interface>>
+Class LogicXYZManager
+
 Interface LogicDispatcher <<Interface>>
 Class LogicDispatcherManager
 
@@ -42,7 +45,6 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> LogicDispatcher
 
 LogicDispatcherManager .up.|> LogicDispatcher
-LogicDispatcherManager -->"0..1" XYZBookParser
 XYZBookParser .left.> ABCCommandParser: creates >
 
 ABCCommandParser ..> ABCCommand : creates >
@@ -58,7 +60,7 @@ ArgumentTokenizer .down.> Prefix
 ABCCommand -up-|> Command
 LogicDispatcherManager .left.> Command : executes >
 LogicDispatcherManager -> "0..1      " Model
-LogicDispatcherManager ---> "1" ABCCommandParser
+LogicDispatcherManager ---> "0..1    " ABCCommandParser
 
 Command .> "0..1  " Model
 
@@ -66,4 +68,8 @@ LogicDispatcher ..> CommandResult
 LogicDispatcherManager .down.> CommandResult
 Command .up.> CommandResult
 CommandResult -[hidden]-> Parser
+
+LogicXYZ ..> LogicXYZManager
+LogicDispatcherManager -left-> LogicXYZManager
+LogicXYZManager -> XYZBookParser
 @enduml
