@@ -451,7 +451,7 @@ You should note the mechanism after the mode has been switched.
 1. `MainWindow` detects that the dashboard button in the navigation bar is clicked, and its `switchDashboard` method is called.
 2. `MainWindow` updates its own attribute `mode` to reflect the dashboard and its UI displays it accordingly.
 3. The `updateOcp` method of `ProjectCompletionStatusPanel` is called.
-4. `ProjectCompletionStatusPanel` calls the `size` method of its `ObservableList`, `deliverableList`, which returns the total number of deliverables (`totalNumDeliverables`).
+4. `ProjectCompletionStatusPanel` calls the `size` method of its `deliverableList` (of type `ObservableList`), which returns the total number of deliverables (`totalNumDeliverables`).
 5. `ProjectCompletionStatusPanel` self-invokes its `findNumCompletedDeliverables` method that returns the number of completed deliverables of its `deliverableList` (`numCompletedDeliverables`).
 6. `ProjectCompletionStatusPanel` self-invokes its `getOcp` method with `totalNumDeliverables` and `numCompletedDeliverables` as parameters, and returns the `overallCompletionPercentage`*.
 
