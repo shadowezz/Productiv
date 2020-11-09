@@ -16,7 +16,7 @@ It is written in Java, and has about 20 kLoC.
 
 **Code contributed**: [RepoSense](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=gabztcr)
 
-#### New features and Enhancements
+#### New features and enhancements
 
 * **New Feature**: Deliverables (specifically add, edit and delete commands).
   * What it does: This feature allows the user to track their product's deliverables easily with basic CRUD features.
@@ -33,10 +33,14 @@ It is written in Java, and has about 20 kLoC.
   * Credits: The third-party library [fx-progress-circle](https://github.com/torakiki/fx-progress-circle/) and its [tutorial](https://youtu.be/9SEE8UP17jo) were used to implement this feature. 
 
 * **Enhancements to existing features**:
-  * Wrote additional tests for deliverables to increase coverage (PRs [\#112](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/112), [\#123](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/123)).
   * Implement autosort feature for deliverables that sorts them chronologically by deadline (PR [\#123](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/123)).
   * Disabled clearing/listing of empty deliverable, meeting or contact lists (PR [\#240](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/240)).
   * Enabled `find` command to accommodate punctuations when matching keywords to deliverables, meetings or contacts (PR [\#250](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/250)).
+
+#### Contributions to team-based tasks
+  * Created a shortened URL link of the User Guide for the GUI's help window.
+  * Wrote additional tests for deliverables to increase coverage (PRs [\#112](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/112), [\#123](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/123)).
+  * Amended all error messages for the feedback box in Productiv (PR [\#228](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/228)).
   * Amended the alignment of and ordering within the UI of Productiv (PR [\#256](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/256)).
 
 #### Project management
@@ -57,9 +61,6 @@ It is written in Java, and has about 20 kLoC.
   * Developer Guide:
     * Added implementation details of the OCP feature (PR [\#107](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/107)).
     * Amended User Stories and Use Cases (PR [\#265](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/265)).
-  * Others:
-    * Created a shortened URL link of the User Guide for the GUI's help window.
-    * Amended all error messages for the feedback box in Productiv (PR [\#228](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/228)). 
 
 #### Community
 
