@@ -3,11 +3,11 @@ layout: page
 title: User Guide
 ---
 
-*Productiv* is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
+Productiv is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
 **meetings** and **contacts** so that you can track your product's development easily.
 
-*Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
-*Productiv* has just become better for you. Nevertheless, *Productiv* still has the benefits of a Graphical User Interface (GUI).
+Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
+Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
 
 * Table of Contents
 {:toc}
@@ -22,7 +22,7 @@ title: User Guide
 
 1. Copy the `.jar` file to your preferred folder.
 
-1. Double-click the file to start *Productiv*. 
+1. Double-click the file to start Productiv. 
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
@@ -93,7 +93,7 @@ Shows a message directing you to this User Guide.
 
 Format: `help`
 
-#### Exiting *Productiv*: `exit`
+#### Exiting Productiv: `exit`
 
 Exits the program.
 
@@ -101,7 +101,7 @@ Format: `exit`
 
 #### Saving the data
 
-*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Productiv automatically saves any changes that you made, to your computer's hard disk. 
 Hence, you can focus on managing your product without fearing any unsaved changes.
 
 
@@ -112,8 +112,8 @@ Hence, you can focus on managing your product without fearing any unsaved change
 
 
 The dashboard gives you an overview of information related to your product.
-The dashboard is the default landing page of *Productiv*.
-Whenever you start up *Productiv*, you will be brought to dashboard mode.
+The dashboard is the default landing page of Productiv.
+Whenever you start up Productiv, you will be brought to dashboard mode.
 
 The Overall Completion Percentage (OCP) will be displayed in the left panel. The OCP gives you a quick overview of the progress of your product’s development.
 
@@ -536,16 +536,16 @@ Format: `clear`
 
 ## FAQ
 
-**Q**: How do I start using *Productiv*?<br>
+**Q**: How do I start using Productiv?<br>
 **A**: You can refer to our [Quick Start Guide](#quick-start).
 
-**Q**: Which operating systems can I run *Productiv* on?<br>
-**A**: Currently, *Productiv* is supported on both Windows and Mac. Just ensure
+**Q**: Which operating systems can I run Productiv on?<br>
+**A**: Currently, Productiv is supported on both Windows and Mac. Just ensure
 that you have Java `11` installed on your computer and it is your default Java version.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it 
-creates with the file that contains the data of your previous *Productiv* app.
+creates with the file that contains the data of your previous Productiv app.
 
 
 ---------------------------------------------------------------------------------------------------------------------

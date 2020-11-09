@@ -19,6 +19,15 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 * Role: Developer
 * Responsibilities: In charge of "Deliverable" features and Quality Assurance (Testing)
 
+### Chrystal Quek
+
+<img src="images/chrystalquek.png" width="200px">
+
+[[github](http://github.com/chrystalquek)] [[portfolio](team/chrystalquek.md)]
+
+* Role: Developer
+* Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
+
 ### Clara Adora
 
 <img src="images/claraadora.png" width="200px">
@@ -29,25 +38,6 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 * Role: Developer
 * Responsibilities: In charge of "Meeting" features and Product Management
 
-### Chrystal Quek
-
-<img src="images/chrystalquek.png" width="200px">
-
-[[github](http://github.com/chrystalquek)] [[portfolio](team/chrystalquek.md)]
-
-* Role: Developer
-* Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
-
-### Gabriel Tan
-
-<img src="images/gabztcr.png" width="200px">
-
-[[github](http://github.com/gabztcr)]
-[[portfolio](team/gabztcr.md)]
-
-* Role: Developer
-* Responsibilities: In charge of "Deliverable" features and Documentation
-
 ### Merlin Lim
 
 <img src="images/merlinlim.png" width="200px">
@@ -57,3 +47,13 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 
 * Role: Developer
 * Responsibilities: In charge of "Meeting" features and Documentation
+
+### Tan Chang Ri, Gabriel
+
+<img src="images/gabztcr.png" width="200px">
+
+[[github](http://github.com/gabztcr)]
+[[portfolio](team/gabztcr.md)]
+
+* Role: Developer
+* Responsibilities: In charge of "Deliverable" features and Documentation
