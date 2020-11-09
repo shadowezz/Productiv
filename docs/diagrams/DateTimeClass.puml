@@ -2,22 +2,30 @@
 !include style.puml
 
 Package Model <<Rectangle>> {
-Class Meeting MODEL_COLOR_T4
-Class From MODEL_COLOR_T3
-Class To MODEL_COLOR_T3
 
-Class Deliverable MODEL_COLOR_T4
-Class Deadline MODEL_COLOR_T3
+    Package Meeting <<Rectangle>> {
+        Class Meeting MODEL_COLOR
+        Class From MODEL_COLOR_T3
+        Class To MODEL_COLOR_T3
+    }
 
-Class DateTime MODEL_COLOR_T2
+    Package Deliverable <<Rectangle>>{
+        Class Deliverable MODEL_COLOR
+        Class Deadline MODEL_COLOR_T3
+    }
 
+    Package Util <<Rectangle>> {
+        Class DateTime MODEL_COLOR_T2
+        Class pp #FFFFFF
+        Class Time MODEL_COLOR_T2
+    }
 }
 
 Meeting *-- From
 Meeting *-- To
 Deliverable *-- Deadline
 
-From --|> DateTime
-To --|> DateTime
-Deadline --|> DateTime
+From -right-|> DateTime
+To --|> Time
+Deadline -down-|> DateTime
 @enduml

@@ -90,20 +90,37 @@ The `UI` component:
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-**API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : <br>
+* [`LogicDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDeliverable.java)
+* [`LogicMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMeeting.java)
+* [`LogicPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicPerson.java)
+* [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
-1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+The Logic component parses the user commands and executes them. 
+`LogicDispatcher` selects the correct parser based on the current mode (ie deliverable mode).  
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+This is the list of what Model components are affected:  
+* `LogicDeliverable`: Component that affects `DeliverableModel` when in deliverable mode.
+* `LogicMeeting`: Component that affects `MeetingModel` when in meeting mode.
+* `LogicPerson`: Component that affects `PersonModel` when in contact mode.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+Commands that do not affect Model components will be passed to `GeneralParser` when in any mode.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The components follow the general sequence to execute a command:
+
+1. Logic uses `XYZBookParser` class to parse the user command.
+1. This results in a `ABCCommand` object which is executed by the `LogicDispatcherManager`.
+1. The command execution can affect the Model (e.g. adding a meeting).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
+1. In addition, `CommandResult` can also instruct `Ui` to perform certain actions, such as displaying help or switching mode for the user.
+
+Given below is the Sequence Diagram for interactions within the Logic component for API call of any command. 
+
+![Interactions Inside the Logic Component for any command](images/CommandSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The lifeline for `ABCCommandParser` should end at the destroy marker (X) 
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
 </div>
 
 ### Model component
@@ -127,11 +144,31 @@ e.g. the UI can be bound to these lists so that the UI automatically updates whe
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storagePerson/Storage.java)
+**API** : 
+[`StorageDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/deliverable/StorageDeliverable.java)
+[`StorageMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/meeting/StorageMeeting.java)
+[`StoragePerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/person/StoragePerson.java)
 
-The `Storage` component:
-* can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
+The Storage component:
+* can save `UserPref` objects in JSON format and read it back.
+* can save the data in JSON format and read it back.
+
+For saving files, storage follows this sequence:
+
+1. When `XYZBook` is updated, `StorageXYZManagers` saves the newly updated book.
+1. The newly updated book is passed to `JsonSerliazableXYZBook`.
+1. Each item in `XYZBook` is serialized by `JsonAdaptedXYZ` before overwriting the current json files.
+
+Given below is the sequence diagram for data being stored.
+
+![Interactions Inside the Storage Component for Any Book](images/SaveStorageSequenceDiagram.png)
+
+For reading files, based on the `UserPrefs` provided, storage will find the JSON Files and load the data from there. 
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** 
+If the JSON files are missing or if the path is missing, a new set of JSON files will be generated with a set of sample items.
+</div>
 
 ### Common classes
 
@@ -142,38 +179,43 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### [In Progress] \[DateTime\]
+### \[Date and Time verfication\]
 
 #### Proposed Implementation
-The implementation allows users to parse and compare unique DateTime types. 
+The implementation allows users to parse and compare unique `DateTime` and `Time` types.
 
-To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
+![Structure of DateTime and Time implementations](images/DateTimeClass.png)
+
+**`Time`**: To parse, `Time` should be in the following format: **`HH:mm`** 
+* Single digits fields must include leading zero: `01:10`.
+
+`Time` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `00:00:59`
+* Invalid range (e.g invalid leap year): `24:00` 
+
+**`DateTime`**: To parse, `DateTime` should be in the following format: **`dd-MM-yyyy HH:mm`** 
 * Single digits fields must include leading zero: `01-01-0101 01:10`.
-* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+* Valid Calendar Range: \[`01-01-2019 00:00` - `31-12-9999 23:59`\].
 
-DateTime will throw a parsing error if
-* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
-* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
-
-The following is an example of how DateTime can be implemented into the model
-
-![DateTimeClassDiagram](images/DateTimeClass.png)
-* DateTime is a class that can be used by all models.
-* From, To and Deadline are fields which extend from DateTime.
+`DateTime` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `1-10-2020 00:00:59` 
+* Invalid range (e.g invalid leap year): `31-02-2020 00:00`
 
 DateTime can be used to compare with other DateTime objects:
-* Enable deliverables to be sorted based on which one is due the earliest.
+* Enable deliverables or meetings to be sorted based on which one is due the earliest.
+*Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
+* Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:
 * **Alternative 1 (current choice):** Throws error when invalid range is 
 given for dates
-  * E.g `29-02-2019` or `31-11-2020`.
+  * E.g `29-02-2019 00:00` or `31-11-2020 00:00`.
   * Pros: Notifies user he has made a mistake.
   * Cons: Costs time to re-type the entire command.
   
 * **Alternative 2:** Command knows how to resolve overflow of dates. 
-    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * E.g `29-02-2019 00:00` will be resolved automatically to `28-02-2019 00:00` the `MAX number of days of the month`.
     * Pros: Saves time for the user if he had intended to select the last day of the month.
     * Cons: The date specified may not be the intended input.
 
