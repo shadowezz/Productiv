@@ -33,13 +33,13 @@ To get you familiarised, the following is Productiv's GUI.
    1. **Left panel**: where you can view <br>
       * your product's overall completion percentage (in dashboard mode) <br>
       
-      <span style="text-align: center"> or </span> <br>
+      <span style="text-align:center;"> or </span> <br>
        
       * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
    1. **Right panel**: where you can view <br>
       * your product management schedule (in dashboard mode) <br>
       
-      <span style="text-align: center"> or </span> <br>
+      <span style="text-align: center;"> or </span> <br>
       
       * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
    </div>
