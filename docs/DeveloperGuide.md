@@ -81,7 +81,7 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
  of the deliverable that the user is viewing or just performed an operation on. The same idea is applicable for meeting and contact mode.
   
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component:
 
@@ -216,10 +216,10 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 
 The Done feature allows users to mark their deliverables as completed. 
 
-1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` to be executed. 
-1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `DoneCommandParser`. 
-1. `DoneCommandParser` will then parse the command argument to return a `DoneCommand`.
-1. On execution, `DoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
+1. The user input is received by `MainWindow` in the `UI` component before being passed to `DeliverableLogicManager` through `LogicDispatcherManager` to be executed. 
+1. `DeliverableLogicManager` will call `DeliverableBookParser` which will parse the command keyword ("done") to return a `MarkDoneCommandParser`. 
+1. `MarkDoneCommandParser` will then parse the command argument to return a `MarkDoneCommand`.
+1. On execution, `MarkDoneCommand` will set the status of the specified deliverable to completed and update the `ModelDeliverable` accordingly. 
 
 Invalid user inputs such as an invalid index will result in the appropriate error messages displayed to the user.
 
@@ -234,8 +234,8 @@ Given below is a sequence diagram to show how the done operation works at each s
 * **Alternative 1 (current choice):** Have a separate command `done` for marking deliverables as completed.
     * Pros: Clearer and easier for the user. Prevents the `edit` command from being too cluttered with too many
     editable fields.
-    * Cons: More code and testing required as there are additional classes created such as `DoneCommand` and 
-    `DoneCommandParser`.
+    * Cons: More code and testing required as there are additional classes created such as `MarkDoneCommand` and 
+    `MarkDoneCommandParser`.
 * **Alternative 2:** Allow users to mark deliverables as completed through the existing `edit` command by changing 
 the completion status field of the deliverable
     * Pros: Less code required since we only need to make small amendments to the existing `EditCommand` and `EditCommandParser`.
@@ -321,7 +321,7 @@ Given below is a sequence diagram to show how the switch mode mechanism behaves 
 The view feature allows users to view the details of a specific deliverable, meeting or contact on the right
 panel of the display window, depending on the mode the application is in. 
 
-1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` to be executed. 
+1. Suppose the user in currently in the meeting mode, the user input received by `MainWindow` in `UI` component will be passed to `MeetingLogicManager` through `LogicDispatcherManager` to be executed. 
 1. `MeetingLogicManager` will call `MeetingBookParser` which will parse the command keyword ("view") to return a `ViewCommandParser`. 
 1. `ViewCommandParser` will then parse the command argument to return a `ViewCommand`.
 1. On execution, `ViewCommand` will update the `ModelMeeting` to set the meeting currently in view. 

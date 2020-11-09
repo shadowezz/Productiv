@@ -27,7 +27,7 @@ activate ViewCommandParser
 ViewCommandParser --> XYZBookParser
 deactivate ViewCommandParser
 
-XYZBookParser -> ViewCommandParser : parse("view 2")
+XYZBookParser -> ViewCommandParser : parse("2")
 activate ViewCommandParser
 
 create ViewCommand
@@ -60,7 +60,7 @@ destroy ViewCommand
 [<-- XYZLogicManager : result
 deactivate XYZLogicManager
 
-[-> XYZLogicManager : getXYZInView
+[-> XYZLogicManager : getXYZInView()
 activate XYZLogicManager
 
 XYZLogicManager -> ModelXYZ : getXYZInView()

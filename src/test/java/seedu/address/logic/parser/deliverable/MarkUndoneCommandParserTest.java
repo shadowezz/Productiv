@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.deliverable.MarkUndoneCommand;
 
 public class MarkUndoneCommandParserTest {
-    private UndoneCommandParser parser = new UndoneCommandParser();
+    private MarkUndoneCommandParser parser = new MarkUndoneCommandParser();
 
     @Test
     void parse_validArgs_returnsUndoneCommand() {
