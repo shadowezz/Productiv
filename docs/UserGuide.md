@@ -2,17 +2,42 @@
 layout: page
 title: User Guide
 ---
-
-*Productiv* is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
-**meetings** and **contacts** so that you can track your product's development easily.
-
-*Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
-*Productiv* has just become better for you. Nevertheless, *Productiv* still has the benefits of a Graphical User Interface (GUI).
-
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## Introduction
+### Overview
+Productiv is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
+**meetings** and **contacts** so that you can track your product's development easily.
+
+Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
+Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
+
+
+### Preview
+To get you familiarised, the following is Productiv's GUI. 
+
+   ![Ui](images/UiLabel.jpg)
+   <figcaption>Dashboard</figcaption><br>
+   
+   <div markdown="block" class="alert alert-info">
+   
+   **:information_source: GUI components:**<br>
+   
+   1. **Navigation bar**: where you navigate to other modes. <br>
+   1. **Command box**: where you enter your commands. <br>
+   1. **Feedback box**: where you can see the feedback of your command.
+        If your command is successful, you can see a success message.
+        Otherwise, you can see an error message. <br>
+   1. **Left panel**: where you can view <br>
+      * your product's overall completion percentage (in dashboard mode), or <br>   
+      * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
+   1. **Right panel**: where you can view <br>
+      * your product management schedule (in dashboard mode), or <br>
+      * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
+   </div>
+
 
 ## Quick start
 
@@ -20,9 +45,9 @@ title: User Guide
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
-1. Copy the `.jar` file to your preferred folder.
+1. Copy the .jar file to an empty folder.
 
-1. Double-click the file to start *Productiv*. 
+1. From your terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start Productiv.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
@@ -55,8 +80,6 @@ Here is a sequence of example commands you can try:<br>
   e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
 :bulb: **Tip:** If you are not sure what specific parameter to supply for any of the required fields, supply an estimate or random value as place holder.<br>
 
-* If you supply a long parameter, its display in the list panel might be truncated.
-
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
 
@@ -64,8 +87,10 @@ Here is a sequence of example commands you can try:<br>
   e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
   
 * If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `r/dev n/NAME r/stk e/EMAIL r/stk` it will be accepted as `n/NAME r/stk e/EMAIL`.
+  e.g. if you input the command `add r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `add n/NAME r/stk e/EMAIL`.
 
+* For single-word commands without fields, any word(s) following it will be ignored.<br>
+  e.g. if you input the command `list everything please`, it will be accepted as `list`.
 </div>
 
 
@@ -82,12 +107,6 @@ e.g. `switch c` will display your contacts.
 * `switch db` will display your project's completion status and your own schedule.
 * How the commands will be executed depend on which mode you are currently in, e.g. `delete 1` in meeting mode deletes the 1st meeting shown.
 
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:** A warning message will be shown if you switch to the same mode that you are currently in.
-
-</div>
-
 Examples:
 * `switch db` switches to dashboard mode.
 * `switch m` switches to meeting mode.
@@ -98,18 +117,16 @@ Shows a message directing you to this User Guide.
 ![help](images/helpMessage.JPG)
 
 Format: `help`
-* Words after `help` will be ignored, e.g. `help I don't know what to do` will show the help message.
 
-#### Exiting *Productiv*: `exit`
+#### Exiting Productiv: `exit`
 
 Exits the program.
 
 Format: `exit`
-* Words after `exit` will be ignored, e.g. `exit please` will exit *Productiv*.
 
 #### Saving the data
 
-*Productiv* automatically saves any changes that you made, to your computer's hard disk. 
+Productiv automatically saves any changes that you made, to your computer's hard disk. 
 Hence, you can focus on managing your product without fearing any unsaved changes.
 
 
@@ -120,8 +137,8 @@ Hence, you can focus on managing your product without fearing any unsaved change
 
 
 The dashboard gives you an overview of information related to your product.
-The dashboard is the default landing page of *Productiv*.
-Whenever you start up *Productiv*, you will be brought to dashboard mode.
+The dashboard is the default landing page of Productiv.
+Whenever you start up Productiv, you will be brought to dashboard mode.
 
 The Overall Completion Percentage (OCP) will be displayed in the left panel. The OCP gives you a quick overview of the progress of your product’s development.
 
@@ -192,6 +209,7 @@ Format: `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRI
 * `INDEX` must be a positive integer.
 * At least one of the fields of the deliverable must be changed.
 * The existing values of the specified deliverable will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
 
 <div markdown="block" class="alert alert-info">
 
@@ -203,7 +221,7 @@ Examples:
 *  `edit 1 d/Must include username, email and password fields by/15-12-2020 12:00`
 edits the description of the 1st deliverable to be `Must include username, email and password fields`
 and its deadline to be `15-12-2020 12:00`.
-*  `edit 2 c/Betsy Crowe, Jeremey` edits the contacts of the 2nd deliverable to be `Betsy Crowe, Jeremey`.
+*  `edit 2 c/` clears the optional contacts field of the 2nd deliverable.
 
 #### Marking a deliverable as completed: `done`
 
@@ -341,6 +359,7 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 * `INDEX` must be a positive integer.
 * At least one of the fields of the meeting must be changed.
 * The existing values of the specified meeting will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
 
 <div markdown="block" class="alert alert-info">
 
@@ -352,7 +371,7 @@ Examples:
 * `edit 2 t/Discuss final release features d/Finalise dashboard functions`
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalise dashboard functions`.
-* `edit 4 c/Jordan Woods, Jeremey` edits the contacts of the 4th meeting to be `Jordan Woods, Jeremey`.
+* `edit 4 c/` clears the optional contact field of the 4th meeting.
 
 #### Viewing a meeting: `view`
 
@@ -465,6 +484,7 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 * `INDEX` must be a positive integer.
 * At least one of the fields of the contact must be changed.
 * The existing values of the specified contact will be updated to the input values.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st contact.
 
 <div markdown="block" class="alert alert-info">
 
@@ -475,8 +495,8 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 Examples:
 *  `edit 1 e/jeremysand@glutter.com p/81234567`
 edits the email and phone number of the 1st contact to be `jeremysand@glutter.com` and `81234567` respectively.
-*  `edit 2 n/Jayden Smith` 
-edits the name of the 2nd contact to be `Jayden Smith`.
+*  `edit 2 p/` 
+clears the optional phone field of the 2nd contact.
 
 #### Viewing a contact: `view`
 
@@ -541,16 +561,16 @@ Format: `clear`
 
 ## FAQ
 
-**Q**: How do I start using *Productiv*?<br>
+**Q**: How do I start using Productiv?<br>
 **A**: You can refer to our [Quick Start Guide](#quick-start).
 
-**Q**: Which operating systems can I run *Productiv* on?<br>
-**A**: Currently, *Productiv* is supported on both Windows and Mac. Just ensure
+**Q**: Which operating systems can I run Productiv on?<br>
+**A**: Currently, Productiv is supported on both Windows and Mac. Just ensure
 that you have Java `11` installed on your computer and it is your default Java version.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it 
-creates with the file that contains the data of your previous *Productiv* app.
+creates with the file that contains the data of your previous Productiv app.
 
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -572,7 +592,7 @@ Action         | Format, Examples
 Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
 Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
 Mark as completed   | `done INDEX` <br> e.g. `done 3`
-Mark as on-going    | `undone INDEX` <br> e.g. `undone 3`
+Mark as on-going    | `undone INDEX` <br> e.g. `undone 1`
 View           | `view INDEX` <br> e.g. `view 2`
 Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
 List           | `list` 
@@ -611,6 +631,7 @@ Clear          | `clear`
 ---|--------------------------------|------------------------------------------------------------------------------------------------|
 1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
 2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
-3  | Deliverable                    | An item which needs to be completed by a specified time.                                       |
-4  | Stakeholder                    | An external party involved with the product.                                                   |
-5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables |
+3  | Deliverable                    | An item to be completed as part of the product development process.                            |
+4  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
+5  | Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
+6  | Stakeholder                    | An external party involved with the product.                                                   |

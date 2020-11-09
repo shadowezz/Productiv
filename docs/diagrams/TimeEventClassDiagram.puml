@@ -12,10 +12,6 @@ Class DateTime {
 }
 
 Class Meeting {
-    <color white> - title: Title
-    <color white> - description: Description
-    <color white> - to: To
-    <color white> - contacts: Contacts
     <color white> + getIndicatorTime(): LocalDateTime
 }
 
@@ -25,10 +21,7 @@ Class Deadline {
 
 class From {}
 Class Deliverable {
-    <color white> - milestone: Milestone
-    <color white> - description: Description
-    <color white> - isComplete: boolean
-    <color white> - contacts: Contacts
+
     <color white> + getIndicatorTime(): LocalDateTime
 }
 
@@ -47,12 +40,11 @@ Deliverable *--> Deadline
 
 Deadline --|> DateTime
 
-show Meeting fields
 show DateTime methods
 show DateTime fields
 show Meeting methods
 show TimeEvent methods
 show Deliverable methods
-show Deliverable fields
+
 
 @enduml
