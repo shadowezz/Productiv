@@ -51,21 +51,9 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram*s below show how the components interact with each other for the scenario where the user issues the commands 
-
-* `delete 1` (in deliverable or meeting mode)
+The *Sequence Diagram*s below show how the components interact with each other for the scenario where the user issues the command `delete 1`, applicable in the deliverable, meeting, or person mode.
 
 ![`Architecture Sequence Diagram with Dashboard](images/ArchitectureSequenceDiagramWithDb.png)
-
-* `delete 1` (in contact mode)
-
-![`Architecture Sequence Diagram without Dashboard](images/ArchitectureSequenceDiagram.png)
-
-* `switch m` (in any mode)
-
-![`Architecture Sequence Diagram for switch command](images/ArchitectureSequenceDiagramSwitch.png)
-
-The sections below give more details of each component.
 
 ### UI component
 
@@ -127,7 +115,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The Model component (`ModelDeliverable`, `ModelMeeting` or `ModelPerson`),
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores its respective deliverable, meeting, or person book. 
+* stores its respective deliverable, meeting, or contact book. 
 * exposes unmodifiable its respective `ObservableList<Deliverable>`,`ObservableList<Meeting>`, or `ObservableList<Person>`.
 e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
@@ -190,12 +178,12 @@ given for dates
 
 #### Implementation
 
-The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Contact`s in a logical manner. 
-Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Contact`s by the following attributes: 
+The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Person`s in a logical manner. 
+Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Person`s by the following attributes: 
 
 * `Meeting`   - its `From`'s `LocalDateTime` value in ascending chronological order 
 * `Deliverable`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
-* `Person`   - its `Title`'s `String` value in ascending alphabetical order 
+* `Person`   - its `Name`'s `String` value in ascending alphabetical order 
 
 Auto-sort is facilitated by custom classes that implements `Comparator`.
 
@@ -225,7 +213,7 @@ Specifically, the Calendar feature combines and orders `Deliverable`s and `Meeti
 * `Deliverable`  - its `Deadline`'s `LocalDateTime` value
 
 The combining is done by applying polymorphism; `Deliverable` and `Meeting` implement the interface `TimeEvent`.
-The following class diagram demonstrates the above-mentioned implementation. 
+The following class diagram demonstrates the above-mentioned polymorphism. 
 ![TimeEventClassDiagram](images/TimeEventClassDiagram.png)
 
 Meanwhile, the ordering is facilitated by the [Auto-sort feature](#auto-sort-feature).
@@ -236,15 +224,21 @@ The following sequence diagram shows how the Calendar is updated upon an additio
 
 #### Design consideration:
 
-##### Aspect: How the `calendarList` in `Calendar` is updated 
+##### Aspect: Where and how is `calendarList` updated
 
-* **Alternative 1 (current choice):** Holds references to `internalList`s in `UniqueDeliverableList` and `UniqueMeetingList`.
-    * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified. 
-    * Cons: Relatively high time complexity as it handles all elements in a one-element update.
-* **Alternative 2:** Modifies implementation of `UniqueDeliverableList` and `UniqueMeetingList`. 
-    * Pros: Relatively low time complexity as for every one-element update to the `internalList` in `UniqueDeliverableList` or `UniqueMeetingList`, 
-        the same amount is updated in the `calendarList` in Calendar. 
-    * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified.
+* **Alternative 1 (current choice):** `calendarList` is in the UI component, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is cleared 
+  1. both `internalList`s' elements are added into `calendarList`
+  1. `calendarList` is sorted
+    * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified.
+    * Cons: Relatively high time complexity as any update to the `internalList`s requires clearing, adding back all `internalList`s' elements, and sorting `calendarList`. 
+    This is required because `calendarList`, which is not in `UniqueDeliverableList` and `UniqueMeetingList`, has no direct access to the item being updated. 
+* **Alternative 2:** `calendarList` is in `UniqueDeliverableList` and `UniqueMeetingList` as references, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is updated in the same way as the `internalList` involved. 
+  This is possible because the `calendarList`, which is in `UniqueDeliverableList` and `UniqueMeetingList`, has direct access to the element being updated. 
+    * Pros: Lower time complexity compared to Alternative 1, as both clearing and adding back all `internalList`s' elements are not needed. 
+    * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified
+    i.e. both hold and update `calendarList` (on top of `internalList`) for any update.
 
 ### Done feature
 

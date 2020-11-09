@@ -9,7 +9,7 @@ end box
 
 participant "<<class>>\n:Collections" as Collections RANDOM_COLOR
 
-[-> MainWindow : executeCommand(command)
+[-> MainWindow : executeCommand("delete 1")
 activate MainWindow
 
 MainWindow -> Calendar : updateCalendarList()
