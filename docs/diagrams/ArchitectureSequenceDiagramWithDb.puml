@@ -3,7 +3,7 @@
 
 Actor User as user USER_COLOR
 box "UI" #LightGreen
-Participant ":UI" as ui UI_COLOR
+Participant ":UI" as ui UI_COLOR_T2
 Participant ":Calendar" as calendar UI_COLOR_T3
 Participant ":ProjectCompletionStatusPanel" as ocp UI_COLOR_T4
 end box
@@ -14,14 +14,17 @@ end box
 
 box "Model" #Pink
 Participant ":ModelXYZ" as modelPerson MODEL_COLOR
+end box
+
+box "Storage" #Orange
 Participant ":StorageXYZ" as storageMeeting STORAGE_COLOR
 end box
 
 user -[USER_COLOR]> ui : "delete 1"
-activate ui UI_COLOR
+activate ui UI_COLOR_T2
 
 note left of ui: XYZ = Deliverable, Meeting, or Person \n Similarly, xyz = deliverable, meeting, or person
-ui -[UI_COLOR]> logic : execute("delete 1")
+ui -[UI_COLOR_T2]> logic : execute("delete 1")
 activate logic LOGIC_COLOR
 
 logic -[LOGIC_COLOR]> modelPerson : deleteXYZ(xyz)
@@ -45,19 +48,19 @@ logic --[LOGIC_COLOR]> ui
 deactivate logic
 
 opt in deliverable or meeting mode
-    ui--[UI_COLOR]> calendar : updateCalendarList()
+    ui--[UI_COLOR_T2]> calendar : updateCalendarList()
     activate calendar UI_COLOR_T3
 
     calendar --[UI_COLOR_T3]> ui
     deactivate calendar
 
-    ui--[UI_COLOR]> ocp : updateOcp()
+    ui--[UI_COLOR_T2]> ocp : updateOcp()
     activate ocp UI_COLOR_T4
 
     ocp --[UI_COLOR_T4]> ui
     deactivate ocp
 
 end
-ui--[UI_COLOR]> user
+ui--[UI_COLOR_T2]> user
 deactivate ui
 @enduml
