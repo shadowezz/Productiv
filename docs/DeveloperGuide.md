@@ -133,7 +133,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
 </div>
 <div markdown="span" class="alert alert-primary">:bulb:
-**Tip**: Refer to [Switch Mode Feature](#Switch-Mode-feature) below for more details on the Switch Mode feature.
+**Tip**: Refer to [Switch Mode Feature](#switch-mode-feature) below for more details on the Switch Mode feature.
 </div>
 
 ### Model component
@@ -200,38 +200,45 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### [In Progress] \[DateTime\]
+### [Proposed] \[Date and Time verfication\]
 
 #### Proposed Implementation
-The implementation allows users to parse and compare unique DateTime types. 
+The implementation allows users to parse and compare unique Date and Time types.
 
+![Structure of DateTime and Time implementations](images/DateTimeClass.png)
+
+**Time type**:
+To parse, Time should be in the following format: **`HH:mm`** 
+* Single digits fields must include leading zero: `01:10`.
+
+Time will throw a parsing error if
+* `00:00:59` Format is wrong (e.g missing or additional digit).
+* `24:00` Invalid range (e.g invalid leap year).
+
+**DateTime type**:
 To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
 * Single digits fields must include leading zero: `01-01-0101 01:10`.
-* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+* Valid Calendar Range: \[`01-01-2019 00:00` - `31-12-9999 23:59`\].
 
 DateTime will throw a parsing error if
 * `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
 * `31-02-2020 00:00` Invalid range (e.g invalid leap year).
 
-The following is an example of how DateTime can be implemented into the model
-
-![DateTimeClassDiagram](images/DateTimeClass.png)
-* DateTime is a class that can be used by all models.
-* From, To and Deadline are fields which extend from DateTime.
-
 DateTime can be used to compare with other DateTime objects:
-* Enable deliverables to be sorted based on which one is due the earliest.
+* Enable deliverables or meetings to be sorted based on which one is due the earliest.
+*Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
+* Used to identify invalid inputs (e.g datetime in `from` is after `to`).
 * DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:
 * **Alternative 1 (current choice):** Throws error when invalid range is 
 given for dates
-  * E.g `29-02-2019` or `31-11-2020`.
+  * E.g `29-02-2019 00:00` or `31-11-2020 00:00`.
   * Pros: Notifies user he has made a mistake.
   * Cons: Costs time to re-type the entire command.
   
 * **Alternative 2:** Command knows how to resolve overflow of dates. 
-    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * E.g `29-02-2019 00:00` will be resolved automatically to `28-02-2019 00:00` the `MAX number of days of the month`.
     * Pros: Saves time for the user if he had intended to select the last day of the month.
     * Cons: The date specified may not be the intended input.
 
