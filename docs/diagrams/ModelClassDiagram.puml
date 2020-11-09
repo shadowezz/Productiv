@@ -101,6 +101,7 @@ Deliverable *--> Deadline
 Deliverable *--> Milestone
 Deliverable *--> Title
 Deliverable *--> Description
+Deliverable *--> Contacts
 
 Deadline -down-|> DateTime
 

@@ -1,12 +1,11 @@
 @startuml
 !include style.puml
 
-scale 1.5
-
-
 box Logic LOGIC_COLOR_T1
+participant ":LogicDispatcherManager" as LogicDispatcherManager LOGIC_COLOR
 participant ":XYZLogicManager" as XYZLogicManager LOGIC_COLOR
 participant ":XYZBookParser" as XYZBookParser LOGIC_COLOR
+participant ":GeneralParser" as GeneralParser LOGIC_COLOR
 participant ":ABCCommandParser" as ABCCommandParser LOGIC_COLOR
 participant "abcCommand:ABCCommand" as ABCCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
@@ -17,13 +16,16 @@ box Model MODEL_COLOR_T1
 participant ":XYZModel" as XYZModel MODEL_COLOR
 end box
 
-[-> XYZLogicManager : execute(command)
-activate XYZLogicManager
-
+[-> LogicDispatcherManager : execute(command, XYZ)
+activate LogicDispatcherManager
 note left
 XYZ = Deliverable,
 Meeting or Person
 end note
+
+alt LOGIC_COLOR_T1 commands that affect model
+LogicDispatcherManager -> XYZLogicManager : execute(command)
+activate XYZLogicManager
 
 XYZLogicManager -> XYZBookParser : parseCommand(command)
 activate XYZBookParser
@@ -62,29 +64,72 @@ deactivate XYZBookParser
 XYZLogicManager -> ABCCommand : execute()
 activate ABCCommand
 
-skinparam sequenceGroupBackgroundColor yellow
-skinparam sequenceGroupBorderColor blue
+ABCCommand -> XYZModel
+activate XYZModel
 
-opt commands that affect models
+XYZModel --> ABCCommand
+deactivate XYZModel
 
-    ABCCommand -> XYZModel
-    activate XYZModel
+create CommandResult
+ABCCommand -> CommandResult
+activate CommandResult
 
-    XYZModel --> ABCCommand
-    deactivate XYZModel
-
-    create CommandResult
-    ABCCommand -> CommandResult
-    activate CommandResult
-
-    CommandResult --> ABCCommand
-    deactivate CommandResult
-end
+CommandResult --> ABCCommand
+deactivate CommandResult
 
 ABCCommand --> XYZLogicManager : result
 deactivate ABCCommand
 
-[<--XYZLogicManager
+LogicDispatcherManager<--XYZLogicManager
 deactivate XYZLogicManager
+
+else #yellow commands that do not affect model
+
+LogicDispatcherManager -> GeneralParser : parseCommand(command)
+activate GeneralParser
+
+create ABCCommandParser
+GeneralParser -> ABCCommandParser
+activate ABCCommandParser
+
+ABCCommandParser --> GeneralParser
+deactivate ABCCommandParser
+
+GeneralParser -> ABCCommandParser : parse(command)
+activate ABCCommandParser
+
+create ABCCommand
+ABCCommandParser -> ABCCommand
+activate ABCCommand
+
+
+ABCCommand --> ABCCommandParser : abcCommand
+deactivate ABCCommand
+
+ABCCommandParser --> GeneralParser : abcCommand
+deactivate ABCCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+ABCCommandParser -[hidden]-> GeneralParser
+destroy ABCCommandParser
+
+GeneralParser -->LogicDispatcherManager : abcCommand
+deactivate GeneralParser
+
+LogicDispatcherManager -> ABCCommand : execute()
+activate ABCCommand
+
+create CommandResult
+ABCCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> ABCCommand
+deactivate CommandResult
+
+ABCCommand --> LogicDispatcherManager : result
+deactivate ABCCommand
+
+end
+[<--LogicDispatcherManager
+deactivate LogicDispatcherManager
 
 @enduml
