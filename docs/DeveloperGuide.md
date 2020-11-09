@@ -230,14 +230,14 @@ The following sequence diagram shows how the Calendar is updated upon an additio
   1. `calendarList` is cleared 
   1. both `internalList`s' elements are added into `calendarList`
   1. `calendarList` is sorted
-    * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified.
-    * Cons: Relatively high time complexity as any update to the `internalList`s requires clearing, adding back all `internalList`s' elements, and sorting `calendarList`. 
+  * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified.
+  * Cons: Relatively high time complexity as any update to the `internalList`s requires clearing, adding back all `internalList`s' elements, and sorting `calendarList`. 
     This is required because `calendarList`, which is not in `UniqueDeliverableList` and `UniqueMeetingList`, has no direct access to the item being updated. 
 * **Alternative 2:** `calendarList` is in `UniqueDeliverableList` and `UniqueMeetingList` as references, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
   1. `calendarList` is updated in the same way as the `internalList` involved. 
   This is possible because the `calendarList`, which is in `UniqueDeliverableList` and `UniqueMeetingList`, has direct access to the element being updated. 
-    * Pros: Lower time complexity compared to Alternative 1, as both clearing and adding back all `internalList`s' elements are not needed. 
-    * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified
+  * Pros: Lower time complexity compared to Alternative 1, as both clearing and adding back all `internalList`s' elements are not needed. 
+  * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified
     i.e. both hold and update `calendarList` (on top of `internalList`) for any update.
 
 ### Done feature
