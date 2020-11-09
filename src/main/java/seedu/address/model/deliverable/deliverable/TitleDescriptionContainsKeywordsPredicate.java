@@ -15,8 +15,10 @@ public class TitleDescriptionContainsKeywordsPredicate implements Predicate<Deli
     @Override
     public boolean test(Deliverable deliverable) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(deliverable.getTitle().value, keyword)
-                        || StringUtil.containsWordIgnoreCase(deliverable.getDescription().value.orElse(""), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(
+                        deliverable.getTitle().value.replaceAll("\\W", " "), keyword)
+                        || StringUtil.containsWordIgnoreCase(
+                                deliverable.getDescription().value.orElse("").replaceAll("\\W", " "), keyword));
     }
 
     @Override

@@ -1,16 +1,15 @@
-package seedu.address.logic.parser.mode;
+package seedu.address.logic.parser.deliverable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import seedu.address.logic.commands.mode.Command;
+import seedu.address.logic.commands.deliverable.Command;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Contains helper methods for testing command parsers.
+ * Contains helper methods for testing command parsers for deliverable.
  */
 public class CommandParserTestUtil {
-
     /**
      * Asserts that the parsing of {@code userInput} by {@code parser} is successful and the command created
      * equals to {@code expectedCommand}.

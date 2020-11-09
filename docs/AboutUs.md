@@ -29,7 +29,7 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 * Role: Developer
 * Responsibilities: In charge of "Meeting" features and Product Management
 
-### Chrystal Quek
+### Chrystal Quek Wan Qi
 
 <img src="images/chrystalquek.png" width="200px">
 

@@ -39,6 +39,7 @@ deactivate ViewCommand
 
 ViewCommandParser --> XYZBookParser : v
 deactivate ViewCommandParser
+destroy ViewCommandParser
 
 XYZBookParser --> XYZLogicManager : v
 deactivate XYZBookParser
