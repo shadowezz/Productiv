@@ -31,16 +31,10 @@ To get you familiarised, the following is Productiv's GUI.
         If your command is successful, you can see a success message.
         Otherwise, you can see an error message. <br>
    1. **Left panel**: where you can view <br>
-      * your product's overall completion percentage (in dashboard mode) <br>
-      
-      <div style="text-align: center;"> or </div> <br>
-       
+      * your product's overall completion percentage (in dashboard mode), or <br>   
       * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
    1. **Right panel**: where you can view <br>
-      * your product management schedule (in dashboard mode) <br>
-      
-      <div style="text-align: center;"> or </div> <br>
-      
+      * your product management schedule (in dashboard mode), or <br>
       * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
    </div>
 
