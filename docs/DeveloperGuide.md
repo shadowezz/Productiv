@@ -97,24 +97,24 @@ The `UI` component:
 * [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
 The Logic component parses the user commands and executes them. 
-`LogicDispatcher` selects the correct parser to, based on the current mode (ie `deliverable` mode).  
+`LogicDispatcher` selects the correct parser based on the current mode (ie deliverable mode).  
 
 This is the list of what Model components are affected:  
-* `LogicDeliverable`: Component that affects `DeliverableModel` when in `deliverable` mode.
-* `LogicMeeting`: Component that affects `MeetingModel` when in `meeting` mode.
-* `LogicPerson`: Component that affects `PersonModel` when in `contact` mode.
+* `LogicDeliverable`: Component that affects `DeliverableModel` when in deliverable mode.
+* `LogicMeeting`: Component that affects `MeetingModel` when in meeting mode.
+* `LogicPerson`: Component that affects `PersonModel` when in contact mode.
 
 Commands that do not affect Model components will be passed to `GeneralParser` when in any mode.
 
 The components follow the general sequence to execute a command:
 
-1. `Logic` uses `XYZBookParser` class to parse the user command.
+1. Logic uses `XYZBookParser` class to parse the user command.
 1. This results in a `ABCCommand` object which is executed by the `LogicDispatcherManager`.
-1. The command execution can affect the `Model` (e.g. adding a meeting).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help or switching mode for the user.
+1. The command execution can affect the Model (e.g. adding a meeting).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
+1. In addition, `CommandResult` can also instruct `Ui` to perform certain actions, such as displaying help or switching mode for the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for API call of any command. 
+Given below is the Sequence Diagram for interactions within the Logic component for API call of any command. 
 
 ![Interactions Inside the Logic Component for any command](images/CommandSequenceDiagram.png)
 
@@ -150,8 +150,8 @@ e.g. the UI can be bound to these lists so that the UI automatically updates whe
 [`StoragePerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/person/StoragePerson.java)
 
 The Storage component:
-* can save `UserPref` objects in json format and read it back.
-* can save the data in json format and read it back.
+* can save `UserPref` objects in JSON format and read it back.
+* can save the data in JSON format and read it back.
 
 For saving files, storage follows this sequence:
 
@@ -163,11 +163,11 @@ Given below is the sequence diagram for data being stored.
 
 ![Interactions Inside the Storage Component for Any Book](images/SaveStorageSequenceDiagram.png)
 
-For reading files, based on the `UserPrefs` provided, storage will find the Json Files and load the data from there. 
+For reading files, based on the `UserPrefs` provided, storage will find the JSON Files and load the data from there. 
 
 <div markdown="span" class="alert alert-info">:information_source: 
 **Note:** 
-If the json files are missing or if the path is missing, a new set of json files will be generated with a set of sample items.
+If the JSON files are missing or if the path is missing, a new set of JSON files will be generated with a set of sample items.
 </div>
 
 ### Common classes
@@ -204,7 +204,7 @@ The implementation allows users to parse and compare unique `DateTime` and `Time
 DateTime can be used to compare with other DateTime objects:
 * Enable deliverables or meetings to be sorted based on which one is due the earliest.
 *Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
-* Ensures `From` in meeting is strictly before `To` (ie Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
+* Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:
