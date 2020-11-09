@@ -20,9 +20,9 @@ title: User Guide
 
 1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
 
-1. Copy the `.jar` file to your preferred folder.
+1. Copy the .jar file to an empty folder.
 
-1. Double-click the file to start *Productiv*. 
+1. From the terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start *Productiv*.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
@@ -606,6 +606,7 @@ Clear          | `clear`
 ---|--------------------------------|------------------------------------------------------------------------------------------------|
 1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
 2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
-3  | Deliverable                    | An item which needs to be completed by a specified time.                                       |
-4  | Stakeholder                    | An external party involved with the product.                                                   |
-5  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
+3  | Deliverable                    | An item to be completed as part of the product development process.                            |
+4  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
+5  | Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
+6  | Stakeholder                    | An external party involved with the product.                                                   |
