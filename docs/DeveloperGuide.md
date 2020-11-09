@@ -1097,12 +1097,13 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 
 ## **Appendix E: Glossary**
 
-* **Mainstream OS**: Windows, Unix, OS-X.
-* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
-* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
 * **Deliverable**: An item to be completed as part of the product development process.
-* **Milestone**: A significant stage or event in the development of a product.
+* **Mainstream OS**: Windows, Unix, OS-X.
+* **Milestone**: A stage in the software development process associated with a particular group of deliverables.
+* **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
+* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
 * **Role**: A function assumed or part played by a `Contact`/`Person`, who is either a developer or stakeholder.
+* **Stakeholder**: An external party involved with the product.
 
 ## **Appendix F: Instructions for Manual Testing**
 
@@ -1117,7 +1118,10 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Initial launch
 
-    1. Test case: Download the `.jar` file and copy into an empty folder. Start *Productiv* from the terminal.<br>
+    1. Prerequisite: You have Java `11` installed in your computer (it should be your default Java version).
+
+    1. Test case: Download the .jar file from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases) and copy into an empty folder.
+       From the terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start *Productiv*.<br>
        Expected: Shows the GUI with a dashboard containing some sample data. The window size may not be optimum.<br>
 
 1. Saving window preferences
@@ -1155,7 +1159,7 @@ testers are expected to do more *exploratory* testing. Each test case is to be e
 
 1. Adding Login screen
 
-   1. Prerequisites: You are in deliverable mode. The deliverable `Login screen` is not already added. If added, delete it.
+   1. Prerequisites: You are in deliverable mode. The deliverable `Login screen` is not already added. If it is already added, delete it.
 
    1. Test case: `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields`<br>
       Expected: The deliverable `Login screen` is added to the list of deliverables and is expanded in the right panel.

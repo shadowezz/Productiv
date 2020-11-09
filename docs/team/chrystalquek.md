@@ -21,10 +21,10 @@ Productiv is a desktop application for product managers to organise their produc
     The user can also remember less commands, e.g. the `add` command word can be used to add a deliverable, meeting or contact, depending on the mode the user is currently in.
   * Highlights: This feature was very difficult to implement and required significant restructuring of the entire application. I had to make the UI change whenever there was a switch in mode and ensure that the subsequent commands were passed to the correct `LogicManager`s for execution.
 
-* **Major enhancement**: Updated `Person` to user-facing Contact that is more useful for product-management.
+* **Major enhancement**: Updated Person to user-facing Contact that is more useful for product-management.
   * What it does: Allows the user to CRUD contacts in Productiv.
   * Justification: Helps users keep track of the developers and stakeholders that are involved in the development of the product.
-  * Highlights: Refactored `Person` to user-facing Contact. A `Person` can have a `Role` (developer or stakeholder) and also a `Description`.
+  * Highlights: Refactored Person to user-facing Contact. A Contact can have a `Role` (developer or stakeholder) and also a `Description`.
    After careful consideration, decided to remove attributes that would not be important for product-management such as `Address` and `Tag`.
 
 * **Major enhancement**: Improved list UI. Created a table format for list UI and made sure to only display fields that are more important to the user.
@@ -44,14 +44,14 @@ Productiv is a desktop application for product managers to organise their produc
   * Necessary general code enhancements
       * Changed product icon and name and renamed jar file: [\#119](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/119)
       * Changed log file name: [\#188](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/188)
-      * Update `Person` to user-facing Contact that is more useful for product-management: [\#37](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/37), [\#67](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/67)
+      * Updated Person to user-facing Contact that is more useful for product-management: [\#37](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/37), [\#67](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/67)
   * Enabled assertions in Gradle: [\#94](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/94)
   * Clarified and followed up with reviewers of PE-D on behalf of team: [\#4](https://github.com/khoodehui/ped/issues/4), [\#3](https://github.com/zhaohuanqdcn/ped/issues/3)
   * Standardized App feedback messages: [\#124](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/124)
 
 #### Community
   * PRs reviewed (with non-trivial review comments): [\#105](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/105), [\#70](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/70), [#34](https://github.com/AY2021S1-CS2103T-F11-2/tp/pull/34)
-  * Total PRs reviewed: ~25, Total comments given: ~70
+  * Total PRs reviewed: 20+, Total comments given: 80+
   * Reported bugs and suggestions for other teams (during PE-D): [#11](https://github.com/chrystalquek/ped/issues/11), [#7](https://github.com/chrystalquek/ped/issues/7)
 
 #### Documentation
