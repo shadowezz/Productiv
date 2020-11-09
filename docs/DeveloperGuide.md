@@ -463,12 +463,12 @@ You should note the mechanism after the mode has been switched.
 
 ##### Aspect: How updating of OCP executes
 
-* **Alternative 1 (current choice):** Update OCP upon command to switch to dashboard mode.
-    * Pros: Adheres more towards Single Responsibility Principle.
+* **Alternative 1 (current choice):** Calculate OCP on-the-go only upon switching to dashboard mode.
+    * Pros: Less prone to calculation errors.
     * Cons: Takes slightly longer to calculate OCP for display.
-* **Alternative 2:** Update OCP upon any successful command.
-    * Pros: Potentially faster to retrieve OCP information for display.
-    * Cons: Violates more of the Single Responsibility Principle.
+* **Alternative 2:** Have a global variable for OCP that updates upon any relevant change to the deliverable list.
+    * Pros: Potentially faster to retrieve OCP information for display (using a getter method).
+    * Cons: More prone to errors from higher frequency of calculation.
 
 --------------------------------------------------------------------------------------------------------------------
 
