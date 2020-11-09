@@ -23,12 +23,12 @@ end box
 user -[USER_COLOR]> ui : "delete 1"
 activate ui UI_COLOR_T2
 
-note left of ui: XYZ = Deliverable, Meeting, or Person \n Similarly, xyz = deliverable, meeting, or person
 ui -[UI_COLOR_T2]> logic : execute("delete 1")
 activate logic LOGIC_COLOR
 
 logic -[LOGIC_COLOR]> modelPerson : deleteXYZ(xyz)
 activate modelPerson MODEL_COLOR
+note left of modelPerson: XYZ = Deliverable, Meeting, or Person \n Similarly, xyz = deliverable, meeting, or person
 
 modelPerson -[MODEL_COLOR]-> logic
 deactivate modelPerson
