@@ -8,7 +8,8 @@ package Logic {
 
 package Parser {
 Interface Parser <<Interface>>
-Class AddressBookParser
+Class ModeParser
+Class ABCBookParser
 Class XYZCommandParser
 Class CliSyntax
 Class ParserUtil
@@ -23,20 +24,31 @@ Class CommandResult
 Class "{abstract}\nCommand" as Command
 }
 
-Interface Logic <<Interface>>
-Class LogicManager
+Interface LogicABC <<Interface>>
+Class LogicABCManager
+
+Interface LogicMode <<Interface>>
+Class LogicModeManager
+
 }
+note "ABC = Deliverable, \nMeeting, Contact" as N1
+
+note "XYZ = Add, Delete, \nFind, etc" as N2
 
 package Model{
 Class HiddenModel #FFFFFF
 }
 
-Class HiddenOutside #FFFFFF
-HiddenOutside ..> Logic
 
-LogicManager .up.|> Logic
-LogicManager -->"1" AddressBookParser
-AddressBookParser .left.> XYZCommandParser: creates >
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> LogicABC
+HiddenOutside ..> LogicMode
+
+LogicABCManager .up.|> LogicABC
+LogicModeManager .up.|> LogicMode
+LogicABCManager --> ABCBookParser
+LogicModeManager --> ModeParser
+ABCBookParser .left.> XYZCommandParser: creates >
 
 XYZCommandParser ..> XYZCommand : creates >
 XYZCommandParser ..|> Parser
@@ -49,14 +61,14 @@ XYZCommandParser ..> ParserUtil
 ParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
 XYZCommand -up-|> Command
-LogicManager .left.> Command : executes >
+LogicABCManager .left.> Command : executes >
 
-LogicManager --> Model
-Command .right.> Model
-note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
+LogicABCManager --> Model
+Command .left.> Model
 
-Logic ..> CommandResult
-LogicManager .down.> CommandResult
+
+LogicABC ..> CommandResult
+LogicABCManager .down.> CommandResult
 Command .up.> CommandResult
 CommandResult -[hidden]-> Parser
 @enduml
