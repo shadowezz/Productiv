@@ -4,8 +4,8 @@
 box Logic LOGIC_COLOR_T1
 participant ":DeliverableLogicManager" as DeliverableLogicManager LOGIC_COLOR_T2
 participant ":DeliverableBookParser" as DeliverableBookParser LOGIC_COLOR_T2
-participant ":DoneCommandParser" as DoneCommandParser LOGIC_COLOR_T2
-participant "d:DoneCommand" as DoneCommand LOGIC_COLOR_T2
+participant ":MarkDoneCommandParser" as MarkDoneCommandParser LOGIC_COLOR_T2
+participant "d:MarkDoneCommand" as MarkDoneCommand LOGIC_COLOR_T2
 end box
 
 box Model MODEL_COLOR_T1
@@ -18,42 +18,42 @@ activate DeliverableLogicManager
 DeliverableLogicManager -> DeliverableBookParser : parseCommand("done 2")
 activate DeliverableBookParser
 
-create DoneCommandParser
-DeliverableBookParser -> DoneCommandParser
-activate DoneCommandParser
+create MarkDoneCommandParser
+DeliverableBookParser -> MarkDoneCommandParser
+activate MarkDoneCommandParser
 
-DoneCommandParser --> DeliverableBookParser
-deactivate DoneCommandParser
+MarkDoneCommandParser --> DeliverableBookParser
+deactivate MarkDoneCommandParser
 
-DeliverableBookParser -> DoneCommandParser : parse("done 2")
-activate DoneCommandParser
+DeliverableBookParser -> MarkDoneCommandParser : parse("2")
+activate MarkDoneCommandParser
 
-create DoneCommand
-DoneCommandParser -> DoneCommand
-activate DoneCommand
+create MarkDoneCommand
+MarkDoneCommandParser -> MarkDoneCommand
+activate MarkDoneCommand
 
-DoneCommand --> DoneCommandParser : d
-deactivate DoneCommand
+MarkDoneCommand --> MarkDoneCommandParser : d
+deactivate MarkDoneCommand
 
-DoneCommandParser --> DeliverableBookParser : d
-deactivate DoneCommandParser
-destroy DoneCommandParser
+MarkDoneCommandParser --> DeliverableBookParser : d
+deactivate MarkDoneCommandParser
+destroy MarkDoneCommandParser
 
 DeliverableBookParser --> DeliverableLogicManager : d
 deactivate DeliverableBookParser
 
-DeliverableLogicManager -> DoneCommand : execute()
-activate DoneCommand
+DeliverableLogicManager -> MarkDoneCommand : execute()
+activate MarkDoneCommand
 
-DoneCommand -> ModelDeliverable : updateDeliverableStatus
+MarkDoneCommand -> ModelDeliverable : updateDeliverableStatus()
 activate ModelDeliverable
 
-ModelDeliverable --> DoneCommand
+ModelDeliverable --> MarkDoneCommand
 deactivate ModelDeliverable
 
-DoneCommand --> DeliverableLogicManager : result
-deactivate DoneCommand
-destroy DoneCommand
+MarkDoneCommand --> DeliverableLogicManager : result
+deactivate MarkDoneCommand
+destroy MarkDoneCommand
 
 [<-- DeliverableLogicManager : result
 deactivate DeliverableLogicManager
