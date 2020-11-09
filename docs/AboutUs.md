@@ -17,7 +17,7 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 [[portfolio](team/shadowezz.md)]
 
 * Role: Developer
-* Responsibilities: In charge of "Deliverable" features and Quality Assurance (Testing)
+* Responsibilities: In charge of `Deliverable` features and Quality Assurance (Testing)
 
 ### Chrystal Quek Wan Qi
 
