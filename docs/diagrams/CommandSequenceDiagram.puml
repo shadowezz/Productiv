@@ -1,0 +1,90 @@
+@startuml
+!include style.puml
+
+scale 1.5
+
+
+box Logic LOGIC_COLOR_T1
+participant ":XYZLogicManager" as XYZLogicManager LOGIC_COLOR
+participant ":XYZBookParser" as XYZBookParser LOGIC_COLOR
+participant ":ABCCommandParser" as ABCCommandParser LOGIC_COLOR
+participant "abcCommand:ABCCommand" as ABCCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+
+end box
+
+box Model MODEL_COLOR_T1
+participant ":XYZModel" as XYZModel MODEL_COLOR
+end box
+
+[-> XYZLogicManager : execute(command)
+activate XYZLogicManager
+
+note left
+XYZ = Deliverable,
+Meeting or Person
+end note
+
+XYZLogicManager -> XYZBookParser : parseCommand(command)
+activate XYZBookParser
+
+create ABCCommandParser
+XYZBookParser -> ABCCommandParser
+activate ABCCommandParser
+
+ABCCommandParser --> XYZBookParser
+deactivate ABCCommandParser
+
+XYZBookParser -> ABCCommandParser : parse(command)
+activate ABCCommandParser
+
+create ABCCommand
+ABCCommandParser -> ABCCommand
+activate ABCCommand
+
+
+ABCCommand --> ABCCommandParser : abcCommand
+deactivate ABCCommand
+note right
+ABC = Add, Find, Delete, etc
+Similarly, abc = add, find, delete, etc
+end note
+
+ABCCommandParser --> XYZBookParser : abcCommand
+deactivate ABCCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+ABCCommandParser -[hidden]-> XYZBookParser
+destroy ABCCommandParser
+
+XYZBookParser --> XYZLogicManager : abcCommand
+deactivate XYZBookParser
+
+XYZLogicManager -> ABCCommand : execute()
+activate ABCCommand
+
+skinparam sequenceGroupBackgroundColor yellow
+skinparam sequenceGroupBorderColor blue
+
+opt commands that affect models
+
+    ABCCommand -> XYZModel
+    activate XYZModel
+
+    XYZModel --> ABCCommand
+    deactivate XYZModel
+
+    create CommandResult
+    ABCCommand -> CommandResult
+    activate CommandResult
+
+    CommandResult --> ABCCommand
+    deactivate CommandResult
+end
+
+ABCCommand --> XYZLogicManager : result
+deactivate ABCCommand
+
+[<--XYZLogicManager
+deactivate XYZLogicManager
+
+@enduml

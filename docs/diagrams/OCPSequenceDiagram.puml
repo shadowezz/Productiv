@@ -1,67 +1,47 @@
 @startuml
 !include style.puml
 
+scale 1
+
+box UI UI_COLOR_T1
+participant ":MainWindow" as Main UI_COLOR
+participant ":ProjectCompletionStatusPanel" as Panel UI_COLOR
+end box
+
 box Model MODEL_COLOR_T1
-participant ":DeliverableModel" as Mod MODEL_COLOR
+participant ":ObservableList" as List MODEL_COLOR
 end box
 
-box Logic LOGIC_COLOR_T1
-participant ":TotalNumDeliverables" as Total LOGIC_COLOR
-participant ":NumCompletedDeliverables" as Com LOGIC_COLOR
-participant ":OCP" as OCP LOGIC_COLOR
-end box
+[-> Main: switchDashboard()
+activate Main
+Main -> Main : switchMode(ModeEnum.DASHBOARD)
+activate Main
 
-[-> Mod: add(deliverable)
-activate Mod
-Mod -> Total : add(1)
-activate Total
-Total -> OCP : update()
-activate OCP
-OCP --> Total
-deactivate OCP
-Total --> Mod
-deactivate Total
-[<-- Mod
-deactivate Mod
+Main -> Panel: updateOcp()
+activate Panel
 
-[-> Mod: done(deliverable)
-activate Mod
-Mod -> Com : add(1)
-activate Com
-Com -> ":OCP" as OCP: update()
-activate OCP
-OCP --> Com
-deactivate OCP
-Com --> Mod
-deactivate Com
-[<-- Mod
-deactivate Mod
+Panel -> List : size()
+activate List
+List --> Panel : totalNumDeliverables
+deactivate List
 
-[-> Mod: delete(deliverable)
-activate Mod
+Panel -> Panel : findNumCompletedDeliverables(deliverableList)
+activate Panel
+Panel --> Panel: numCompletedDeliverables
+deactivate Panel
 
-opt isCompleted(deliverable)
+Panel -> Panel : getOcp(totalNumDeliverables, numCompletedDeliverables)
+activate Panel
+Panel --> Panel : overallCompletionPercentage
+deactivate Panel
 
-Mod -> Com : sub(1)
-activate Com
-Com -> ":OCP" as OCP: update()
-activate OCP
-OCP --> Com
-deactivate OCP
-Com --> Mod
-deactivate Com
+Panel --> Main
+deactivate Panel
 
-end
+Main --> Main
+deactivate Main
 
-Mod -> Total : sub(1)
-activate Total
-Total -> ":OCP" as OCP: update()
-activate OCP
-OCP --> Total
-deactivate OCP
-Total --> Mod
-deactivate Total
+[<-- Main
+deactivate Main
 
-[<-- Mod
-deactivate Mod
 @enduml

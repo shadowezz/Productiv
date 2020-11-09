@@ -3,7 +3,6 @@ package seedu.address.model.util;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-// TODO : discuss immutability (update the rest upon decision)
 /**
  * Represents a Meeting's title in the meeting book.
  * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
