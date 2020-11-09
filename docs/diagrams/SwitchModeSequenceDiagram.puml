@@ -32,43 +32,42 @@ GeneralParser -> SwitchCommandParser: parse("dv")
 activate SwitchCommandParser
 
 create SwitchCommand
-SwitchCommandParser -> SwitchCommand: SwitchCommand(ModeEnum.DELIVERABLE)
+SwitchCommandParser -> SwitchCommand: SwitchCommand(DELIVERABLE)
 activate SwitchCommand
 SwitchCommand --> SwitchCommandParser
 deactivate SwitchCommand
 
 SwitchCommandParser --> GeneralParser
 deactivate SwitchCommandParser
+destroy SwitchCommandParser
 
 GeneralParser --> LogicDispatcherManager : command
 deactivate GeneralParser
-
-destroy SwitchCommandParser
 
 LogicDispatcherManager -> SwitchCommand : execute()
 activate SwitchCommand
 
 create CommandResult
-SwitchCommand -> CommandResult : CommandResult(successMessage, false, false, ModeEnum.DELIVERABLE)
+SwitchCommand -> CommandResult : CommandResult(..., DELIVERABLE)
 activate CommandResult
 CommandResult --> SwitchCommand
 deactivate CommandResult
 
 SwitchCommand --> LogicDispatcherManager : commandResult
 deactivate SwitchCommand
-SwitchCommand -[hidden]-> LogicDispatcherManager : commandResult
 destroy SwitchCommand
+SwitchCommand -[hidden]-> LogicDispatcherManager : commandResult
 
 LogicDispatcherManager --> MainWindow : commandResult
 deactivate LogicDispatcherManager
 
 MainWindow -> CommandResult : getMode()
 activate CommandResult
-CommandResult --> MainWindow : ModeEnum.DELIVERABLE
+CommandResult --> MainWindow : DELIVERABLE
 deactivate CommandResult
-
-MainWindow -> MainWindow: switchMode(ModeEnum.DELIVERABLE)
 destroy CommandResult
+
+MainWindow -> MainWindow: switchMode(DELIVERABLE)
 activate MainWindow
 MainWindow --> MainWindow
 
