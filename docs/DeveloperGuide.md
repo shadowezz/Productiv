@@ -51,11 +51,9 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The sequence diagram below shows how the components interact with each other for the scenario where the user issues the command `delete 1` in the deliverable, meeting, or contact mode.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
-
-The sections below give more details of each component.
+![`Architecture Sequence Diagram with Dashboard](images/ArchitectureSequenceDiagramWithDb.png)
 
 ### UI component
 
@@ -92,51 +90,85 @@ The `UI` component:
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-**API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : <br>
+* [`LogicDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDeliverable.java)
+* [`LogicMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicMeeting.java)
+* [`LogicPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicPerson.java)
+* [`LogicDispatcher.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/logic/LogicDispatcher.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
-1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+The Logic component parses the user commands and executes them. 
+`LogicDispatcher` selects the correct parser based on the current mode (ie deliverable mode).  
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+This is the list of what Model components are affected:  
+* `LogicDeliverable`: Component that affects `DeliverableModel` when in deliverable mode.
+* `LogicMeeting`: Component that affects `MeetingModel` when in meeting mode.
+* `LogicPerson`: Component that affects `PersonModel` when in contact mode.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+Commands that do not affect Model components will be passed to `GeneralParser` when in any mode.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The components follow the general sequence to execute a command:
+
+1. Logic uses `XYZBookParser` class to parse the user command.
+1. This results in a `ABCCommand` object which is executed by the `LogicDispatcherManager`.
+1. The command execution can affect the Model (e.g. adding a meeting).
+1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui`.
+1. In addition, `CommandResult` can also instruct `Ui` to perform certain actions, such as displaying help or switching mode for the user.
+
+Given below is the Sequence Diagram for interactions within the Logic component for API call of any command. 
+
+![Interactions Inside the Logic Component for any command](images/CommandSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** The lifeline for `ABCCommandParser` should end at the destroy marker (X) 
+but due to a limitation of PlantUML, the lifeline reaches the end of diagram.<br>
 </div>
 
 ### Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/modelPerson/Model.java)
+**API** : 
+[`ModelDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/model/deliverable/ModelDeliverable.java), 
+[`ModelMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/model/meeting/ModelMeeting.java), 
+[`ModelPerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/blob/master/src/main/java/seedu/address/model/person/ModelPerson.java)
 
-The `Model`:
+The Model component (`ModelDeliverable`, `ModelMeeting` or `ModelPerson`),
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores its respective deliverable, meeting, or person book. 
+* exposes unmodifiable its respective `ObservableList<Deliverable>`,`ObservableList<Meeting>`, or `ObservableList<Person>`.
+e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.
 * does not depend on any of the other three components.
-
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) modelPerson is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
-
 
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storagePerson/Storage.java)
+**API** : 
+[`StorageDeliverable.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/deliverable/StorageDeliverable.java)
+[`StorageMeeting.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/meeting/StorageMeeting.java)
+[`StoragePerson.java`](https://github.com/AY2021S1-CS2103T-F11-2/tp/tree/master/src/main/java/seedu/address/storage/person/StoragePerson.java)
 
-The `Storage` component:
-* can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
+The Storage component:
+* can save `UserPref` objects in JSON format and read it back.
+* can save the data in JSON format and read it back.
+
+For saving files, storage follows this sequence:
+
+1. When `XYZBook` is updated, `StorageXYZManagers` saves the newly updated book.
+1. The newly updated book is passed to `JsonSerliazableXYZBook`.
+1. Each item in `XYZBook` is serialized by `JsonAdaptedXYZ` before overwriting the current json files.
+
+Given below is the sequence diagram for data being stored.
+
+![Interactions Inside the Storage Component for Any Book](images/SaveStorageSequenceDiagram.png)
+
+For reading files, based on the `UserPrefs` provided, storage will find the JSON Files and load the data from there. 
+
+<div markdown="span" class="alert alert-info">:information_source: 
+**Note:** 
+If the JSON files are missing or if the path is missing, a new set of JSON files will be generated with a set of sample items.
+</div>
 
 ### Common classes
 
@@ -147,61 +179,66 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-### [In Progress] \[DateTime\]
+### \[Date and Time verfication\]
 
 #### Proposed Implementation
-The implementation allows users to parse and compare unique DateTime types. 
+The implementation allows users to parse and compare unique `DateTime` and `Time` types.
 
-To parse, DateTime should be in the following format: **`dd-MM-yyyy HH:mm`** 
+![Structure of DateTime and Time implementations](images/DateTimeClass.png)
+
+**`Time`**: To parse, `Time` should be in the following format: **`HH:mm`** 
+* Single digits fields must include leading zero: `01:10`.
+
+`Time` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `00:00:59`
+* Invalid range (e.g invalid leap year): `24:00` 
+
+**`DateTime`**: To parse, `DateTime` should be in the following format: **`dd-MM-yyyy HH:mm`** 
 * Single digits fields must include leading zero: `01-01-0101 01:10`.
-* Valid Calendar Range: \[`01-01-0001 00:00` - `31-12-9999 23:59`\].
+* Valid Calendar Range: \[`01-01-2019 00:00` - `31-12-9999 23:59`\].
 
-DateTime will throw a parsing error if
-* `1-10-2020 00:00:59` Format is wrong (e.g missing or additional digit).
-* `31-02-2020 00:00` Invalid range (e.g invalid leap year).
-
-The following is an example of how DateTime can be implemented into the model
-
-![DateTimeClassDiagram](images/DateTimeClass.png)
-* DateTime is a class that can be used by all models.
-* From, To and Deadline are fields which extend from DateTime.
+`DateTime` will throw a parsing error if
+* Format is wrong (e.g missing or additional digit): `1-10-2020 00:00:59` 
+* Invalid range (e.g invalid leap year): `31-02-2020 00:00`
 
 DateTime can be used to compare with other DateTime objects:
-* Enable deliverables to be sorted based on which one is due the earliest.
+* Enable deliverables or meetings to be sorted based on which one is due the earliest.
+*Refer to [Autosort feature](#proposed-autosort-feature) to view this implementation.*
+* Ensures `From` in meeting is strictly before `To` (e.g Throw error for command `edit 1 from/01-01-2020 23:59 to/00:00` in meeting mode).
 * DateTime can be used to identify time clashes between different meetings.
 
 #### Design consideration:
 * **Alternative 1 (current choice):** Throws error when invalid range is 
 given for dates
-  * E.g `29-02-2019` or `31-11-2020`.
+  * E.g `29-02-2019 00:00` or `31-11-2020 00:00`.
   * Pros: Notifies user he has made a mistake.
   * Cons: Costs time to re-type the entire command.
   
 * **Alternative 2:** Command knows how to resolve overflow of dates. 
-    * E.g `29-02-2019` will be resolved automatically to `28-02-2019` the `MAX number of days of the month`.
+    * E.g `29-02-2019 00:00` will be resolved automatically to `28-02-2019 00:00` the `MAX number of days of the month`.
     * Pros: Saves time for the user if he had intended to select the last day of the month.
     * Cons: The date specified may not be the intended input.
 
-### \[Proposed\] Autosort feature
+### Auto-sort feature
 
-#### Proposed Implementation
+#### Implementation
 
-Autosort allows users to view `Meeting`s, `Deliverable`s, and `Contact`s in a logical manner. Specifically, Autosort
-automatically sorts the abovementioned components by the following attributes: 
+The Auto-sort feature allows users to view `Deliverable`s, `Meeting`s, and `Person`s in a logical manner. 
+Specifically, the Auto-sort feature automatically sorts `Deliverable`s, `Meeting`s, and `Person`s by the following attributes: 
 
-* `Meeting`   - `From`'s `LocalDateTime` value in chronological order 
-* `Deadline`  - `Deadline`'s `LocalDateTime` value in chronological order 
-* `Contact`   - `Title`'s `String` value in alphabetical order 
+* `Meeting`   - its `From`'s `LocalDateTime` value in ascending chronological order 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value in ascending chronological order 
+* `Person`   - its `Name`'s `String` value in ascending alphabetical order 
 
-Autosort is faciliated by custom objects that implements `Comparator`.
+Auto-sort is facilitated by custom classes that implements `Comparator`.
 
-The following sequence diagram shows how a list is autosorted upon an addition of a new element.
+The following sequence diagram shows how a list is auto-sorted upon an addition of a `Meeting`.
 
-![UndoSequenceDiagram](images/AutosortSequenceDiagram.png)
+![AutosortSequenceDiagram](images/AutosortSequenceDiagram.png)
 
 #### Design consideration:
 
-##### Aspect: How autosorting executes
+##### Aspect: How auto-sorting executes
 
 * **Alternative 1 (current choice):** Sorts a list upon an addition or update of an element.
     * Pros: Error-free and easy to implement.
@@ -209,6 +246,44 @@ The following sequence diagram shows how a list is autosorted upon an addition o
 * **Alternative 2:** Searches the correct index in the list to insert an element upon addition or update.
     * Pros: Relatively low time complexity i.e. O(logn).
     * Cons: Prone to error and difficult to implement.
+    
+### Calendar feature
+
+#### Implementation
+
+The Calendar feature allows users to view their `Deliverable`s and`Meeting`s together in one chronologically ordered list - `calendarList`. 
+Specifically, the Calendar feature combines and orders `Deliverable`s and `Meeting`s by the following attributes: 
+
+* `Meeting`   - its `From`'s `LocalDateTime` value 
+* `Deliverable`  - its `Deadline`'s `LocalDateTime` value
+
+The combining is done by applying polymorphism; `Deliverable` and `Meeting` implement the interface `TimeEvent`.
+The following class diagram demonstrates the above-mentioned polymorphism. 
+![TimeEventClassDiagram](images/TimeEventClassDiagram.png)
+
+Meanwhile, the ordering is facilitated by the [Auto-sort feature](#auto-sort-feature).
+
+The following sequence diagram shows how the Calendar is updated upon an addition of a `Deliverable`.
+
+![CalendarSequenceDiagram](images/CalendarSequenceDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: Where and how is `calendarList` updated
+
+* **Alternative 1 (current choice):** `calendarList` is in the UI component, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is cleared 
+  1. both `internalList`s' elements are added into `calendarList`
+  1. `calendarList` is sorted
+  * Pros: Coupling is reduced as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are unmodified.
+  * Cons: Relatively high time complexity as any update to the `internalList`s requires clearing, adding back all `internalList`s' elements, and sorting `calendarList`. 
+    This is required because `calendarList`, which is not in `UniqueDeliverableList` and `UniqueMeetingList`, has no direct access to the item being updated. 
+* **Alternative 2:** `calendarList` is in `UniqueDeliverableList` and `UniqueMeetingList` as references, and for any change in `UniqueDeliverableList`'s or `UniqueMeetingList`'s `internalList`: 
+  1. `calendarList` is updated in the same way as the `internalList` involved. 
+  This is possible because the `calendarList`, which is in `UniqueDeliverableList` and `UniqueMeetingList`, has direct access to the element being updated. 
+  * Pros: Lower time complexity compared to Alternative 1, as both clearing and adding back all `internalList`s' elements are not needed. 
+  * Cons: Coupling is increased as the implementation of `UniqueDeliverableList` and `UniqueMeetingList` are modified
+    i.e. both hold and update `calendarList` (on top of `internalList`) for any update.
 
 ### Done feature
 
