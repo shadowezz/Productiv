@@ -14,10 +14,19 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 <img src="images/shadowezz.png" width="200px">
 
 [[github](https://github.com/shadowezz)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/shadowezz.md)]
 
 * Role: Developer
 * Responsibilities: In charge of "Deliverable" features and Quality Assurance (Testing)
+
+### Chrystal Quek Wan Qi
+
+<img src="images/chrystalquek.png" width="200px">
+
+[[github](http://github.com/chrystalquek)] [[portfolio](team/chrystalquek.md)]
+
+* Role: Developer
+* Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
 
 ### Clara Adora
 
@@ -29,16 +38,17 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 * Role: Developer
 * Responsibilities: In charge of "Meeting" features and Product Management
 
-### Chrystal Quek Wan Qi
+### Merlin Lim
 
-<img src="images/chrystalquek.png" width="200px">
+<img src="images/merlinlim.png" width="200px">
 
-[[github](http://github.com/chrystalquek)] [[portfolio](team/chrystalquek.md)]
+[[github](https://github.com/MerlinLim)]
+[[portfolio](team/merlinlim.md)]
 
 * Role: Developer
-* Responsibilities: In charge of "Contact" and "Mode" features, as well as Quality Assurance (Testing)
+* Responsibilities: In charge of "Meeting" features and Documentation
 
-### Gabriel Tan
+### Tan Chang Ri, Gabriel
 
 <img src="images/gabztcr.png" width="200px">
 
@@ -47,13 +57,3 @@ You can contact us at `productiv@comp.nus.edu.sg` for any enquiries.
 
 * Role: Developer
 * Responsibilities: In charge of "Deliverable" features and Documentation
-
-### Merlin Lim
-
-<img src="images/merlinlim.png" width="200px">
-
-[[github](https://github.com/MerlinLim)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: In charge of "Meeting" features and Documentation

@@ -19,7 +19,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
+The ***Architecture Diagram*** given above explains the high-level design of Productiv (referred to as "the App" or "the application"). Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -1101,7 +1101,7 @@ For all use cases below, the **System** is `Productiv` and the **Actor** is the 
 * **Mainstream OS**: Windows, Unix, OS-X.
 * **Milestone**: A stage in the software development process associated with a particular group of deliverables.
 * **Mode**: The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.
-* **OCP**: Overall Completion Percentage. It is a piechart showing the project's completion status, found on the left panel of the Dashboard.
+* **OCP**: Overall Completion Percentage. It is a donut chart showing the project's completion status, found on the left panel of the Dashboard.
 * **Role**: A function assumed or part played by a `Contact`/`Person`, who is either a developer or stakeholder.
 * **Stakeholder**: An external party involved with the product.
 
