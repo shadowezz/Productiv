@@ -41,7 +41,6 @@ public class MeetingUtil {
         meeting.getDescription().value.ifPresent(desc -> sb.append(PREFIX_DESCRIPTION + desc + " "));
         meeting.getLocation().value.ifPresent(loc -> sb.append(PREFIX_LOCATION + loc + " "));
         meeting.getContacts().value.ifPresent(con -> sb.append(PREFIX_CONTACTS + con + " "));
-        System.out.println(sb.toString());
         return sb.toString();
     }
 

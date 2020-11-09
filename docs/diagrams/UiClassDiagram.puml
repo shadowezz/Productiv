@@ -67,7 +67,7 @@ ProjectCompletionStatusPanel --|> UiPart
 XYZCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
-note top of XYZ: XYZ = Deliverable, Meeting or Contact
+note top of XYZ: XYZ = Deliverable, Meeting or Person
 
 XYZListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
