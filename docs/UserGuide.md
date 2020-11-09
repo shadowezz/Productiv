@@ -2,17 +2,48 @@
 layout: page
 title: User Guide
 ---
+* Table of Contents
+{:toc}
 
+--------------------------------------------------------------------------------------------------------------------
+## Introduction
+### Overview
 *Productiv* is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
 **meetings** and **contacts** so that you can track your product's development easily.
 
 *Productiv* is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
 *Productiv* has just become better for you. Nevertheless, *Productiv* still has the benefits of a Graphical User Interface (GUI).
 
-* Table of Contents
-{:toc}
 
---------------------------------------------------------------------------------------------------------------------
+### Preview
+To get you familiarised, the following is Productiv's GUI. 
+
+   ![Ui](images/UiLabel.jpg)
+   <figcaption>Dashboard</figcaption><br>
+   
+   <div markdown="block" class="alert alert-info">
+   
+   **:information_source: GUI components:**<br>
+   
+   1. **Navigation bar**: where you navigate to other modes. <br>
+   1. **Command box**: where you enter your commands. <br>
+   1. **Feedback box**: where you can see the feedback of your command.
+        If your command is successful, you can see a success message.
+        Otherwise, you can see an error message. <br>
+   1. **Left panel**: where you can view <br>
+      * your product's overall completion percentage (in dashboard mode) <br>
+      
+      <span style="text-align: center"> or </span> <br>
+       
+      * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
+   1. **Right panel**: where you can view <br>
+      * your product management schedule (in dashboard mode) <br>
+      
+      <span style="text-align: center"> or </span> <br>
+      
+      * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
+   </div>
+
 
 ## Quick start
 
