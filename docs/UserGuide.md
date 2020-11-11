@@ -104,9 +104,9 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
-Parameter      | Description                   | Example 
----------------|-------------------------------|--------------------------------
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <br/>-`db` (dashboard) <br/>-`dv` (deliverable) <br/>-`m` (meeting) or <br/>-`c` (contact) | - `c`: represents contact mode <br/> - `dv`: represents dashboard mode
+Parameter      | Description                    
+---------------|------------------------------
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <ul><li>`db` (dashboard)</li><li>`dv` (deliverable)</li><li>`m`(meeting) or</li> <li>`c` (contact)</li></ul>
 
 
 <div markdown="block" class="alert alert-info">
@@ -174,9 +174,9 @@ Format: `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of the deliverable.| `Create login screen`
-`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<br/>- It can be in the past but must not be earlier than the year 2019.<br/>- It is in dd-MM-yyyy HH:mm format.| -`10-10-2020 18:00` <br/>-`30-12-2020 08:00`
-`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | -`2`<br/> -`14.2.1`
-`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | -`conan`<br/> -`Zachary, drew, Paul Smith`
+`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00`
+`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | <ul><li>`2`</li><li>`14.2.1`</li></ul>
+`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <ul><li>`conan`</li><li>`Zachary, drew, Paul Smith`</li></ul>
 `DESCRIPTION`  | Additional information about the deliverable.|`Remember to include email and password fields`
 
 <div markdown="block" class="alert alert-warning">
@@ -204,10 +204,13 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable to be edited in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
 
-<div markdown="block" class="alert alert-warning">
+<div markdown="block" class="alert alert-info">
 
-**:warning: Warning:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
-  
+**:information_source: Note:**
+
+* At least one of the fields of the deliverable must be changed.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
+
 </div>
 
 Examples:
@@ -215,6 +218,12 @@ Examples:
 edits the description of the 1st deliverable to be `Must include username, email and password fields`
 and its deadline to be `15-12-2020 12:00`.
 *  `edit 2 c/` clears the optional contacts field of the 2nd deliverable.
+
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
+  
+</div>
 
 #### Marking a deliverable as completed: `done`
 
@@ -266,7 +275,7 @@ Format: `find KEYWORDS`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | One or more keywords used to match the deliverables to be found. <br><br>Details:<br>- Searches only consider title and description. <br>- Searches are case-insensitive, e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: represents `Complete Homepage` and `Increase size of Navigation Bar` among others
+`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br>Details:<ul><li>Searches only based on title and description of deliverables.</li><li>Searches are case-insensitive, e.g. `homepage` will match `Homepage`.</li></ul>| `Homepage Navigation`: can match phrases such as `Complete Homepage` and `Increase size of Navigation Bar`
 
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
@@ -320,9 +329,9 @@ Adds a meeting to your meeting list.
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of the meeting.| `Daily stand-up meeting`
-`FROM`         | The start date and time of the meeting.<br><br>Details:<br/>- It can be in the past but must not be earlier than the year 2019.<br/>- It is in dd-MM-yyyy HH:mm format.| - `30-12-2020 18:00` <br> - `01-01-2020 20:00`
-`TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. | -`20:OO`<br/>-`10:OO`
-`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | -`Louisa Kennedy`<br/> -`Nancy, Abraham, Sarah`
+`FROM`         | The start date and time of the meeting.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00`
+`TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. |`20:OO`
+`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <ul><li>`Louisa Kennedy`</li><li>`Nancy, Abraham, Sarah`</li></ul>
 `LOCATION`     | The location of the meeting. | `Meeting room 1B`
 `DESCRIPTION`  | The additional information about the meeting.|`Remember to plan the agenda before the meeting`
 
@@ -351,12 +360,6 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the meeting to be edited in your displayed deliverable list. <br><br>Details:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
-[`TITLE`]      | The new main heading of the meeting.| `Weekly stand-up meeting`
-[`FROM`]       | The new start date and time of the meeting.|`25-12-2020 18:00`
-[`TO`]         | The new end time of the meeting. |`21:OO`
-[`CONTACTS`]   | The new contact(s) involved in the meeting.| - `Abby`<br/> -`Matthew, Justin, Nancy`
-[`LOCATION`]   | The new location of the meeting. | `Meeting room 3C`
-[`DESCRIPTION`]| The new additional information about the meeting.|`Remember to plan the agenda and tasks before the meeting`
 
 <div markdown="block" class="alert alert-info">
 
