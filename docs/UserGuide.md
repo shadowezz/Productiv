@@ -323,7 +323,7 @@ Parameter      | Description                   | Example
 `FROM`         | The start date and time of the meeting.<br><br>Details:<br/>- It can be in the past but must not be earlier than the year 2019.<br/>- It is in dd-MM-yyyy HH:mm format.| - `30-12-2020 18:00` <br> - `01-01-2020 20:00`
 `TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. | -`20:OO`<br/>-`10:OO`
 `CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | -`Louisa Kennedy`<br/> -`Nancy, Abraham, Sarah`
-`LOCATION`     | The location of the meeting.
+`LOCATION`     | The location of the meeting. | `Meeting room 1B`
 `DESCRIPTION`  | The additional information about the meeting.|`Remember to plan the agenda before the meeting`
 
 <div markdown="block" class="alert alert-info">
@@ -355,7 +355,7 @@ Parameter      | Description                   | Example
 [`FROM`]       | The new start date and time of the meeting.|`25-12-2020 18:00`
 [`TO`]         | The new end time of the meeting. |`21:OO`
 [`CONTACTS`]   | The new contact(s) involved in the meeting.| - `Abby`<br/> -`Matthew, Justin, Nancy`
-[`LOCATION`]   | The new location of the meeting.
+[`LOCATION`]   | The new location of the meeting. | `Meeting room 3C`
 [`DESCRIPTION`]| The new additional information about the meeting.|`Remember to plan the agenda and tasks before the meeting`
 
 <div markdown="block" class="alert alert-info">
