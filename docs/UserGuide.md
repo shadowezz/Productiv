@@ -103,11 +103,18 @@ Here is a sequence of example commands you can try:<br>
 Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
-* `MODE` can be `db` (dashboard), `dv` (deliverable), `m` (meeting) or `c` (contact).
-* `switch` `dv`, `m` or `c` will display information related to your deliverables, meetings and contacts respectively,
-e.g. `switch c` will display your contacts.
-* `switch db` will display your project's completion status and your own schedule.
-* How the commands will be executed depend on which mode you are currently in, e.g. `delete 1` in meeting mode deletes the 1st meeting shown.
+
+Parameter | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <br/>-`db` (dashboard) <br/>-`dv` (deliverable) <br/>-`m` (meeting) or <br/>-`c` (contact) | - `switch c`: switches to contact mode <br/> - `switch dv`: switches to dashboard mode
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** How the commands will be executed depend on which mode you are currently in, 
+e.g. `delete 1` in meeting mode deletes the 1st meeting shown.). 
+
+</div>
+
 
 Examples:
 * `switch db` switches to dashboard mode.
