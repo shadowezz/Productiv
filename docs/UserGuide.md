@@ -104,6 +104,10 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
+| column 1 | column 2 |
+|------------|----------|
+| value | <ul><li>value 1</li><li>value 2</li></ul> |
+| value | <ul><li>value 1</li><li>value 2</li></ul> |
 
 Parameter      | Description                  | 
 ---------------|------------------------------|
