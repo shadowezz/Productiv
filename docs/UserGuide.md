@@ -111,7 +111,7 @@ Format: `switch MODE`
 
 Parameter      | Description                  | 
 ---------------|------------------------------|
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <br>&nbsp;&bull;`db` (dashboard)<br>&nbsp;&bull;`dv` (deliverable)<br>&nbsp;&bull;`m`(meeting) or<br>&nbsp;&bull;`c` (contact)|
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <br>&#9;&bull;`db` (dashboard)<br>&nbsp;&bull;`dv` (deliverable)<br>&nbsp;&bull;`m`(meeting) or<br>&nbsp;&bull;`c` (contact)|
 `MODE`         | The mode to be navigated to. <br/> It can be either:  {::nomarkdown}<ul><li>`db` (dashboard)</li><li>`dv` (deliverable)</li><li>`m`(meeting) or</li> <li>`c` (contact)</li></ul>{:/}|
 `MODE`         | The mode to be navigated to. <br/> It can be either:  {::nomarkdown}<ul><li>{:/}`db` (dashboard){::nomarkdown}</li><li>{:/}`dv` (deliverable){::nomarkdown}</li><li>`m`(meeting) or{:/}{::nomarkdown}</li><li>{:/}`c` (contact){::nomarkdown}</li></ul>{:/}|
 
