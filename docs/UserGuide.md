@@ -106,7 +106,7 @@ Format: `switch MODE`
 
 | column 1 | column 2 |
 |------------|----------|
-| value | <div><ul><li>value 1</li><li>value 2</li></ul></div> |
+| value | {::nomarkdown} <ul><li>value 1</li><li>value 2</li></ul>{:/} |
 | value | <ul><li>value 1</li><li>value 2</li></ul> |
 
 Parameter      | Description                  | 
