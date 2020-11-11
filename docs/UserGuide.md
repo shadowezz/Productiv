@@ -104,16 +104,9 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
-| column 1 | column 2 |
-|------------|----------|
-| value | {::nomarkdown} <ul><li>value 1</li><li>value 2</li></ul>{:/} |
-| value | <ul><li>value 1</li><li>value 2</li></ul> |
-
 Parameter      | Description                  | 
 ---------------|------------------------------|
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <br>&emsp;&bull;`db` (dashboard)<br>&nbsp;&bull;`dv` (deliverable)<br>&nbsp;&bull;`m`(meeting) or<br>&nbsp;&bull;`c` (contact)|
-`MODE`         | The mode to be navigated to. <br/> It can be either:  {::nomarkdown}<ul><li>`db` (dashboard)</li><li>`dv` (deliverable)</li><li>`m`(meeting) or</li> <li>`c` (contact)</li></ul>{:/}|
-`MODE`         | The mode to be navigated to. <br/> It can be either:  {::nomarkdown}<ul><li>{:/}`db` (dashboard){::nomarkdown}</li><li>{:/}`dv` (deliverable){::nomarkdown}</li><li>`m`(meeting) or{:/}{::nomarkdown}</li><li>{:/}`c` (contact){::nomarkdown}</li></ul>{:/}|
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <br>&emsp;&bull;`db` (dashboard)<br>&emsp;&bull;`dv` (deliverable)<br>&emsp;&bull;`m`(meeting) or<br>&emsp;&bull;`c` (contact)
 
 <div markdown="block" class="alert alert-info">
 
@@ -180,9 +173,9 @@ Format: `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of the deliverable.| `Create login screen`
-`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00`
-`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | <ul><li>`2`</li><li>`14.2.1`</li></ul>
-`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <ul><li>`conan`</li><li>`Zachary, drew, Paul Smith`</li></ul>
+`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<br>&emsp;&bull;It must not be earlier than the year 2019.<br>&emsp;&bull;It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00`
+`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | <br>&emsp;&bull;`2`<br>&emsp;&bull;`14.2.1`
+`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&emsp;&bull;`conan`<br>&emsp;&bull;`Zachary, drew, Paul Smith`
 `DESCRIPTION`  | Additional information about the deliverable.|`Remember to include email and password fields`
 
 <div markdown="block" class="alert alert-warning">
@@ -281,7 +274,7 @@ Format: `find KEYWORDS`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br>Details:<ul><li>Searches only based on title and description of deliverables.</li><li>Searches are case-insensitive, e.g. `homepage` will match `Homepage`.</li></ul>| `Homepage Navigation`: can match phrases such as `Complete Homepage` and `Increase size of Navigation Bar`
+`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br>Details:<br>&emsp;&bull;Searches based on title and description.<br>&emsp;&bull;Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: can match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
@@ -335,9 +328,9 @@ Adds a meeting to your meeting list.
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of the meeting.| `Daily stand-up meeting`
-`FROM`         | The start date and time of the meeting.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00` |
+`FROM`         | The start date and time of the meeting.<br><br>Details:<br>&emsp;&bull;It must not be earlier than the year 2019.<br>&emsp;&bull;It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00` |
 `TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. |`20:OO`
-`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <ul><li>`Louisa Kennedy`</li><li>`Nancy, Abraham, Sarah`</li></ul>
+`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&emsp;&bull;`Louisa Kennedy`<br>&emsp;&bull;`Nancy, Abraham, Sarah`
 `LOCATION`     | The location of the meeting. | `Meeting room 1B`
 `DESCRIPTION`  | The additional information about the meeting.|`Remember to plan the agenda before the meeting`
 
