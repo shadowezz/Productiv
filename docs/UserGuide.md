@@ -104,9 +104,10 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
-Parameter | Description                   | Example 
+Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <br/>-`db` (dashboard) <br/>-`dv` (deliverable) <br/>-`m` (meeting) or <br/>-`c` (contact) | - `switch c`: switches to contact mode <br/> - `switch dv`: switches to dashboard mode
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <br/>-`db` (dashboard) <br/>-`dv` (deliverable) <br/>-`m` (meeting) or <br/>-`c` (contact) | - `c`: represents contact mode <br/> - `dv`: represents dashboard mode
+
 
 <div markdown="block" class="alert alert-info">
 
@@ -114,11 +115,6 @@ Parameter | Description                   | Example
 e.g. `delete 1` in meeting mode deletes the 1st meeting shown.). 
 
 </div>
-
-
-Examples:
-* `switch db` switches to dashboard mode.
-* `switch m` switches to meeting mode.
 
 #### Viewing help: `help`
 
@@ -174,28 +170,21 @@ Refer to [switch](#switching-modes-switch) for more information.
 Adds a deliverable to your deliverable list.
 
 Format: `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`
-* `TITLE` is the main heading of the deliverable.
-* `DEADLINE` is the due date time of the deliverable in dd-MM-yyyy HH:mm format.
-* `DEADLINE` can be in the past but must not be earlier than the year 2019.
-* `MILESTONE` is the milestone tagged to the deliverable.
-* `MILESTONE` is a non-negative integer, or a period-separated string of non-negative integers, e.g. `2`, `14.2.1`.
-* `CONTACTS` represents the contact(s) involved in seeing through the deliverable.
-* `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
-* `DESCRIPTION` contains additional information about the deliverable, e.g. sub-requirements. 
 
-<div markdown="block" class="alert alert-info">
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`TITLE`        | The main heading of the deliverable.| `Create login screen`
+`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<br/>- It can be in the past but must not be earlier than the year 2019.<br/>- It is in dd-MM-yyyy HH:mm format.| -`10-10-2020 18:00` <br/>-`30-12-2020 08:00`
+`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | -`2`<br/> -`14.2.1`
+`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | -`conan`<br/> -`Zachary, drew, Paul Smith`
+`DESCRIPTION`  | Additional information about the deliverable.|`Remember to include email and password fields`
 
-**:information_source: Notes:**<br>
+<div markdown="block" class="alert alert-warning">
 
-* As `CONTACTS` is not related to your contact list, you can include those not present in it.
+**:information_source: Warning:**<br>
 
 * You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
 
-* All newly-added deliverables will be assigned the `on-going` tag regardless of their deadline. You will
-need to manually mark past deliverables as `completed`. Refer to 
-[Marking a deliverable as completed](#marking-a-deliverable-as-completed-done) below for more details on 
-the `done` command.
-  
 </div>
 
 Examples:
@@ -210,15 +199,14 @@ adds a deliverable with the title `Find profile page template`, deadline `08-12-
 Edits an existing deliverable in your displayed deliverable list.
 
 Format: `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION] `
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
-* At least one of the fields of the deliverable must be changed.
-* The existing values of the specified deliverable will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
 
-<div markdown="block" class="alert alert-info">
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the deliverable to be edited in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
 
-**:information_source: Note:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
+<div markdown="block" class="alert alert-warning">
+
+**:information_source: Warning:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
   
 </div>
 
@@ -233,8 +221,10 @@ and its deadline to be `15-12-2020 12:00`.
 Marks the specified deliverable from your displayed deliverable list as completed.
 
 Format: `done INDEX`
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the deliverable to be marked as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
 
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
@@ -244,8 +234,10 @@ Example:
 Marks the specified deliverable from your displayed deliverable list as on-going.
 
 Format: `undone INDEX`
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the deliverable to be marked as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
 
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
@@ -255,8 +247,10 @@ Example:
 Displays more details of the specified deliverable from your displayed deliverable list.
 
 Format: `view INDEX`
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the deliverable in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
 
 Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
@@ -269,12 +263,10 @@ Example:
 Finds the deliverables whose titles or descriptions contain any of the given keywords.
 
 Format: `find KEYWORDS`
-* `KEYWORDS` contains one or more keywords used to match deliverables.
-* Searches only consider title and description.
-* Searches are case-insensitive, e.g. `homepage` will match `Homepage`.
-* Order of keywords does not matter, e.g. `Homepage Navigation` will match `Navigation Homepage`.
-* Searches only account for full words, e.g. `Deploy` will not match `Deployment` but `Stand-up` will match `Up button` and `Laptop stand`. 
-* Searches return deliverables matching at least one keyword, e.g. `Homepage Navigation` will return `Complete Homepage` and `Increase size of Navigation Bar`.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`KEYWORDS`     | One or more keywords used to match the deliverables to be found. <br><br>Details:<br>- Searches only consider title and description. <br>- Searches are case-insensitive, e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: represents `Complete Homepage` and `Increase size of Navigation Bar` among others
 
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
@@ -296,9 +288,9 @@ Refer to [Finding deliverables](#finding-deliverables-find) above for details of
 
 Deletes the specified deliverable from your deliverable list.
 
-Format: `delete INDEX`
-* `INDEX` is the index number of the deliverable in your displayed deliverable list.
-* `INDEX` must be a positive integer.
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`KEYWORDS`     | The index number of the deliverable to be deleted in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: represents deliverable with index 2 in the list
 
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
@@ -325,23 +317,18 @@ Refer to [switch](#switching-modes-switch) for more information.
 
 Adds a meeting to your meeting list.
 
-Format: `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`
-* `TITLE` is the main heading of the meeting.
-* `FROM` is the start date and time of the meeting in dd-MM-yyyy HH:mm format.
-* `FROM` can accept dates in the past but must not be earlier than the year 2019.
-* `TO` is the end time of the meeting in HH:mm format.
-* `CONTACTS` represents the contact(s) involved in the meeting. 
-* `CONTACTS` is a name, or a comma-separated string of names, e.g. `conan`, `nancy, drew, paul`.
-* `LOCATION` is the location of the meeting.
-* `DESCRIPTION` contains additional details about the meeting, e.g. agenda.
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`TITLE`        | The main heading of the meeting.| `Daily stand-up meeting`
+`FROM`         | The start date and time of the meeting.<br><br>Details:<br/>- It can be in the past but must not be earlier than the year 2019.<br/>- It is in dd-MM-yyyy HH:mm format.| - `30-12-2020 18:00` <br> - `01-01-2020 20:00`
+`TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. | -`20:OO`<br/>-`10:OO`
+`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | -`Louisa Kennedy`<br/> -`Nancy, Abraham, Sarah`
+`LOCATION`     | The location of the meeting.
+`DESCRIPTION`  | The additional information about the meeting.|`Remember to plan the agenda before the meeting`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes:**<br>
-
-* Different meetings may have overlapping timings as you may wish to send a representative for your clashing meetings.
-
-* As `CONTACTS` is not related to your contact list, you can include those not present in it.
+**:information_source: Warning:**<br>
 
 * You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
   
@@ -360,16 +347,24 @@ end time `15:00` and location `Meeting room A`.
 Edits an existing meeting in your displayed meeting list.
 
 Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`
-* `INDEX` is the index number of the meeting in your displayed meeting list.
-* `INDEX` must be a positive integer.
-* At least one of the fields of the meeting must be changed.
-* The existing values of the specified meeting will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the meeting to be edited in your displayed deliverable list. <br><br>Details:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
+[`TITLE`]      | The new main heading of the meeting.| `Weekly stand-up meeting`
+[`FROM`]       | The new start date and time of the meeting.|`25-12-2020 18:00`
+[`TO`]         | The new end time of the meeting. |`21:OO`
+[`CONTACTS`]   | The new contact(s) involved in the meeting.| - `Abby`<br/> -`Matthew, Justin, Nancy`
+[`LOCATION`]   | The new location of the meeting.
+[`DESCRIPTION`]| The new additional information about the meeting.|`Remember to plan the agenda and tasks before the meeting`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
-  
+**:information_source: Note:**
+
+* At least one of the fields of the meeting must be changed.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
+
 </div>
 
 Examples:
@@ -378,13 +373,21 @@ edits the title of the 2nd meeting to be `Discuss final release features`
 and its description to be `Finalise dashboard functions`.
 * `edit 4 c/` clears the optional contact field of the 4th meeting.
 
+<div markdown="block" class="alert alert-warning">
+
+**:information_source: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+  
+</div>
+
 #### Viewing a meeting: `view`
 
 Displays more details of the specified meeting from your displayed meeting list.
 
 Format: `view INDEX`
-* `INDEX` is the index number of the meeting in your displayed meeting list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the meeting to be viewed in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents meeting with index 2 in the list
 
 Example:
 * `view 2` views the 2nd meeting in your meeting list.
@@ -462,9 +465,9 @@ Format: `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]`
 * `PHONE` should only contain numbers, and must be at least 3-digits long.
 * `DESCRIPTION` contains additional information about the contact, such as their job position.
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-warning">
 
-**:information_source: Note:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
+**:information_source: Warning:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
   
 </div>
 
@@ -491,9 +494,9 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 * The existing values of the specified contact will be updated to the input values.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st contact.
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-warning">
 
-**:information_source: Note:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
+**:information_source: Warning:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
   
 </div>
 
