@@ -8,7 +8,7 @@ import seedu.address.logic.commands.deliverable.MarkUndoneCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-public class UndoneCommandParser implements Parser<MarkUndoneCommand> {
+public class MarkUndoneCommandParser implements Parser<MarkUndoneCommand> {
     @Override
     public MarkUndoneCommand parse(String args) throws ParseException {
         try {

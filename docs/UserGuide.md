@@ -141,11 +141,7 @@ Hence, you can focus on managing your product without fearing any unsaved change
 
 ### Dashboard
 
-    TODO: screenshot here
-    <figcaption>Initial display of Dashboard </figcaption>
-
-
-The dashboard gives you an overview of information related to your product.
+The [dashboard](#preview) gives you an overview of information related to your product.
 The dashboard is the default landing page of Productiv.
 Whenever you start up Productiv, you will be brought to dashboard mode.
 

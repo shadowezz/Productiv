@@ -8,17 +8,17 @@ participant ":LogicXYZ" as LogicXYZ LOGIC_COLOR
 end box
 
 box Storage STORAGE_COLOR_T1
-participant "storageXYZ:StorageXYZ" as StorageXYZ STORAGE_COLOR
+participant ":StorageXYZ" as StorageXYZ STORAGE_COLOR
 participant ":XYZBookStorage" as XYZBookStorage STORAGE_COLOR
 participant "json:JsonSerializableXYZBookStorage" as JsonSerializableXYZBookStorage STORAGE_COLOR
 participant "jsonItem:JsonAdaptedXYZ" as JsonAdaptedXYZ STORAGE_COLOR
 
 end box
 
-[-> LogicXYZ
+[-> LogicXYZ : execute(command)
 activate LogicXYZ
 
-LogicXYZ -> StorageXYZ : execute(command)
+LogicXYZ -> StorageXYZ : saveXYZ(XYZBook)
 activate StorageXYZ
 
 StorageXYZ -> XYZBookStorage : saveXYZ(XYZBook)
@@ -26,7 +26,7 @@ activate XYZBookStorage
 
 
 create JsonSerializableXYZBookStorage
-XYZBookStorage -> JsonSerializableXYZBookStorage : saveXYZ(XYZBook)
+XYZBookStorage -> JsonSerializableXYZBookStorage
 activate JsonSerializableXYZBookStorage
 
 Note right
@@ -39,20 +39,21 @@ loop book has items
     JsonSerializableXYZBookStorage -> JsonAdaptedXYZ
     activate JsonAdaptedXYZ
 
-    JsonAdaptedXYZ -> JsonSerializableXYZBookStorage : jsonItem
+    JsonAdaptedXYZ --> JsonSerializableXYZBookStorage : jsonItem
     deactivate JsonAdaptedXYZ
 
 end
 
-JsonSerializableXYZBookStorage -> XYZBookStorage : json
+JsonSerializableXYZBookStorage --> XYZBookStorage : json
 deactivate JsonSerializableXYZBookStorage
 
-XYZBookStorage -> StorageXYZ
+XYZBookStorage --> StorageXYZ
 deactivate XYZBookStorage
 
-StorageXYZ -> LogicXYZ
+StorageXYZ --> LogicXYZ
 deactivate StorageXYZ
 
 deactivate LogicXYZ
+[<--LogicXYZ
 
 @enduml
