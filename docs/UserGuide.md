@@ -3,6 +3,7 @@ layout: page
 title: User Guide
 ---
 <div style="page-break-after: always;"></div>
+
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
@@ -42,6 +43,8 @@ title: User Guide
         * [3.5.5 Listing all contacts: `list`](#355-listing-all-contacts---list-)
         * [3.5.6 Deleting a contact: `delete`](#356-deleting-a-contact---delete-)
         * [3.5.7 Clearing all contacts: `clear`](#357-clearing-all-contacts---clear-)
+<div style="page-break-after: always;"></div>
+
 4. [FAQ](#4-faq)
 5. [Command summary](#5command-summary)
     - [5.1 General](#51-general)
@@ -60,12 +63,15 @@ Productiv is a one-stop desktop app for product managers like yourself to organi
 Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
 Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
 
+<div style="page-break-after: always;"></div>
 
 ### 1.2 Preview
-To get you familiarised, see the Figure 1. for is Productiv's GUI. 
+To get you familiarised, see the following for Productiv's GUI. 
 
-   ![Ui](images/UiLabel.jpg)
-   <figcaption>Figure 1. Dashboard</figcaption><br>
+   ![Ui](images/UiLabel.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 1: Dashboard Components
+   </div>
    
    <div markdown="block" class="alert alert-info">
    
@@ -86,7 +92,6 @@ To get you familiarised, see the Figure 1. for is Productiv's GUI.
    Note: For modes other than the dashboard, you can see your file path at the bottom of your GUI. 
    </div>
 
-
 ## 2. Quick start
 
 1. Ensure you have Java `11` installed in your computer (it should be your default Java version).
@@ -100,7 +105,9 @@ Your dashboard should appear in a few seconds.
 Note that the app contains some sample data.<br>
 
    ![Ui](images/Ui.png)
-   <figcaption>Dashboard</figcaption><br>
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 2: Dashboard
+   </div>
    
 1. Type a command in the command box and press Enter to execute it. 
 Here is a sequence of example commands you can try:<br>
@@ -114,10 +121,9 @@ Here is a sequence of example commands you can try:<br>
 
    1. `exit`: Exits the app.
 
-1. Refer to [Features](#features) below for details of each available command.
+1. Refer to [Features](#3-features) below for details of each available command.
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## 3. Features
 
 <div markdown="block" class="alert alert-info">
@@ -141,7 +147,6 @@ Here is a sequence of example commands you can try:<br>
   e.g. if you input the command `list everything please`, it will be accepted as `list`.
 </div>
 
-
 ### 3.1 General
 
 #### 3.1.1 Switching modes: `switch`
@@ -162,7 +167,10 @@ Examples:
 #### 3.1.2 Viewing help: `help`
 
 Shows a message directing you to this User Guide.
-![help](images/helpMessage.JPG)
+![Figure 3.1.2.1: Help](images/helpMessage.JPG)
+<div style="text-align: center; padding-bottom: 2em">
+Figure 3.1.2.1: Help
+</div>
 
 Format: `help`
 
@@ -180,7 +188,7 @@ Hence, you can focus on managing your product without fearing any unsaved change
 
 ### 3.2 Dashboard
 
-The [dashboard](#preview) gives you an overview of information related to your product.
+The [dashboard](#12-preview) gives you an overview of information related to your product.
 The dashboard is the default landing page of Productiv.
 Whenever you start up Productiv, you will be brought to dashboard mode.
 
@@ -192,19 +200,21 @@ Your schedule will be displayed in the right panel. The schedule contains all yo
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** There are no commands specific to the Dashboard. 
-You can only use commands found under [General](#general). 
+You can only use commands found under [General](#31-general). 
   
 </div>
 
 ### 3.3 Deliverable
 
-   ![Ui](images/Deliverable.png)
-   <figcaption>Initial display of a deliverable list </figcaption>
+   ![Figure 3.3.0.1: Initial display of a deliverable list](images/Deliverable.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.3.0.1: Initial display of a deliverable list
+   </div>
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the deliverable mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div>
 
@@ -232,7 +242,7 @@ Format: `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`
 
 * All newly-added deliverables will be assigned the `on-going` tag regardless of their deadline. You will
 need to manually mark past deliverables as `completed`. Refer to 
-[Marking a deliverable as completed](#marking-a-deliverable-as-completed-done) below for more details on 
+[Marking a deliverable as completed](#333-marking-a-deliverable-as-completed---done-) below for more details on 
 the `done` command.
   
 </div>
@@ -300,9 +310,11 @@ Format: `view INDEX`
 Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
 
-   ![Ui](images/DeliverableView.png)
-   <figcaption>Viewing a deliverable</figcaption><br>
-
+   ![Figure 3.3.5.1 Viewing a deliverable](images/DeliverableView.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.3.5.1: Viewing a deliverable
+   </div>
+   
 #### 3.3.6 Finding deliverables: `find`
 
 Finds the deliverables whose titles or descriptions contain any of the given keywords.
@@ -328,7 +340,7 @@ Format: `list`
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use this command when you want to list all your deliverables back after using the `find` command. 
-Refer to [Finding deliverables](#finding-deliverables-find) above for details of the `find` command. 
+Refer to [Finding deliverables](#336-finding-deliverables---find-) above for details of the `find` command. 
 </div>
 
 #### 3.3.8 Deleting a deliverable: `delete`
@@ -350,13 +362,16 @@ Format: `clear`
 
 ### 3.4 Meeting
 
-   ![Ui](images/Meeting.png)
-   <figcaption>Initial display of a meeting list </figcaption>
+   ![Figure 3.4.0.1: Initial display of a meeting list](images/Meeting.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.4.0.1: Initial display of a meeting list
+   </div>
+   
    
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the meeting mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div>   
  
@@ -428,8 +443,10 @@ Format: `view INDEX`
 Example:
 * `view 2` views the 2nd meeting in your meeting list.
 
-   ![Ui](images/MeetingView.png)
-   <figcaption>Viewing a meeting</figcaption><br>
+   ![Figure 3.4.3.1: Viewing a meeting](images/MeetingView.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.4.3.1: Viewing a meeting
+   </div>
 
 #### 3.4.4 Finding meetings: `find`
 
@@ -479,12 +496,14 @@ Format: `clear`
 ### 3.5 Contact
 
    ![contact](images/Contact.png)
-   <figcaption>Initial display of a contact list </figcaption>
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.5.0.1: Initial display of a contact list
+   </div>
    
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the contact mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div> 
 
@@ -553,8 +572,10 @@ Format: `view INDEX`
 Example:
 * `view 2` views the 2nd contact in your contact list.
 
-   ![Ui](images/ContactView.png)
-   <figcaption>Viewing a contact</figcaption><br>
+   ![Figure 3.5.3.1: Viewing a contact](images/ContactView.png)
+   <div style="text-align: center; padding-bottom: 2em">
+   Figure 3.5.3.1: Viewing a contact
+   </div>
 
 #### 3.5.4 Finding contacts: `find`
 
@@ -581,7 +602,7 @@ Format: `list`
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
+Refer to [Finding contacts](#354-finding-contacts---find-) above for details of the `find` command. 
 </div>
 
 #### 3.5.6 Deleting a contact: `delete`
@@ -606,7 +627,7 @@ Format: `clear`
 ## 4. FAQ
 
 **Q**: How do I start using Productiv?<br>
-**A**: You can refer to our [Quick Start Guide](#quick-start).
+**A**: You can refer to our [Quick Start Guide](#2-quick-start).
 
 **Q**: Which operating systems can I run Productiv on?<br>
 **A**: Currently, Productiv is supported on both Windows and Mac. Just ensure
