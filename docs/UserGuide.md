@@ -104,9 +104,10 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
-Parameter      | Description                    
----------------|------------------------------
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <ul><li>`db` (dashboard)</li><li>`dv` (deliverable)</li><li>`m`(meeting) or</li> <li>`c` (contact)</li></ul>
+
+Parameter      | Description                  | 
+---------------|------------------------------|
+`MODE`         | The mode to be navigated to. <br/> It can be either:  <ul><li>`db` (dashboard)</li><li>`dv` (deliverable)</li><li>`m`(meeting) or</li> <li>`c` (contact)</li></ul>|
 
 
 <div markdown="block" class="alert alert-info">
@@ -329,7 +330,7 @@ Adds a meeting to your meeting list.
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of the meeting.| `Daily stand-up meeting`
-`FROM`         | The start date and time of the meeting.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00`
+`FROM`         | The start date and time of the meeting.<br><br>Details:<ul><li>It can be in the past but must not be earlier than the year 2019.</li><li>It is in dd-MM-yyyy HH:mm format.</li></ul>| `30-12-2020 18:00` |
 `TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. |`20:OO`
 `CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <ul><li>`Louisa Kennedy`</li><li>`Nancy, Abraham, Sarah`</li></ul>
 `LOCATION`     | The location of the meeting. | `Meeting room 1B`
