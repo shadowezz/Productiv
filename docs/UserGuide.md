@@ -181,7 +181,7 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-warning">
 
-**:information_source: Warning:**<br>
+**:warning: Warning:**<br>
 
 * You cannot add a deliverable with the same `TITLE` and `DEADLINE` as an existing deliverable.
 
@@ -206,7 +206,7 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-warning">
 
-**:information_source: Warning:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
+**:warning: Warning:** You cannot edit a deliverable to have the same `TITLE` and `DEADLINE` as an existing deliverable.
   
 </div>
 
@@ -328,7 +328,7 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Warning:**<br>
+**:warning: Warning:**<br>
 
 * You cannot add a meeting with the same `TITLE`, `FROM` and `TO` as an existing meeting.
   
@@ -375,7 +375,7 @@ and its description to be `Finalise dashboard functions`.
 
 <div markdown="block" class="alert alert-warning">
 
-**:information_source: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+**:warning: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
   
 </div>
 
@@ -467,7 +467,7 @@ Format: `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]`
 
 <div markdown="block" class="alert alert-warning">
 
-**:information_source: Warning:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
+**:warning: Warning:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
   
 </div>
 
@@ -496,7 +496,7 @@ Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
 
 <div markdown="block" class="alert alert-warning">
 
-**:information_source: Warning:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
+**:warning: Warning:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
   
 </div>
 
