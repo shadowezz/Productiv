@@ -69,8 +69,8 @@ Productiv has just become better for you. Nevertheless, Productiv still has the 
 To get you familiarised, see the following for Productiv's GUI. 
 
    ![Ui](images/UiLabel.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 1: Dashboard Components
+   <div style="text-align: left">
+   <i>Figure 1: Dashboard Components</i>
    </div>
    
    <div markdown="block" class="alert alert-info">
@@ -105,8 +105,8 @@ Your dashboard should appear in a few seconds.
 Note that the app contains some sample data.<br>
 
    ![Ui](images/Ui.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 2: Dashboard
+   <div style="text-align: left">
+   <i>Figure 2: Dashboard</i>
    </div>
    
 1. Type a command in the command box and press Enter to execute it. 
@@ -168,8 +168,8 @@ Examples:
 
 Shows a message directing you to this User Guide.
 ![Figure 3.1.2.1: Help](images/helpMessage.JPG)
-<div style="text-align: center; padding-bottom: 2em">
-Figure 3.1.2.1: Help
+<div style="text-align: left">
+<i>Figure 3.1.2.1: Help</i>
 </div>
 
 Format: `help`
@@ -207,8 +207,8 @@ You can only use commands found under [General](#31-general).
 ### 3.3 Deliverable
 
    ![Figure 3.3.0.1: Initial display of a deliverable list](images/Deliverable.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.3.0.1: Initial display of a deliverable list
+   <div style="text-align: left">
+   <i>Figure 3.3.0.1: Initial display of a deliverable list</i>
    </div>
 
 <div markdown="block" class="alert alert-info">
@@ -311,8 +311,8 @@ Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
 
    ![Figure 3.3.5.1 Viewing a deliverable](images/DeliverableView.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.3.5.1: Viewing a deliverable
+   <div style="text-align: left">
+   <i>Figure 3.3.5.1: Viewing a deliverable</i>
    </div>
    
 #### 3.3.6 Finding deliverables: `find`
@@ -363,8 +363,8 @@ Format: `clear`
 ### 3.4 Meeting
 
    ![Figure 3.4.0.1: Initial display of a meeting list](images/Meeting.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.4.0.1: Initial display of a meeting list
+   <div style="text-align: left">
+   <i>Figure 3.4.0.1: Initial display of a meeting list</i>
    </div>
    
    
@@ -444,8 +444,8 @@ Example:
 * `view 2` views the 2nd meeting in your meeting list.
 
    ![Figure 3.4.3.1: Viewing a meeting](images/MeetingView.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.4.3.1: Viewing a meeting
+   <div style="text-align: left">
+   <i>Figure 3.4.3.1: Viewing a meeting</i>
    </div>
 
 #### 3.4.4 Finding meetings: `find`
@@ -496,8 +496,8 @@ Format: `clear`
 ### 3.5 Contact
 
    ![contact](images/Contact.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.5.0.1: Initial display of a contact list
+   <div style="text-align: left">
+   <i>Figure 3.5.0.1: Initial display of a contact list</i>
    </div>
    
 <div markdown="block" class="alert alert-info">
@@ -573,8 +573,8 @@ Example:
 * `view 2` views the 2nd contact in your contact list.
 
    ![Figure 3.5.3.1: Viewing a contact](images/ContactView.png)
-   <div style="text-align: center; padding-bottom: 2em">
-   Figure 3.5.3.1: Viewing a contact
+   <div style="text-align: left">
+   <i>Figure 3.5.3.1: Viewing a contact</i>
    </div>
 
 #### 3.5.4 Finding contacts: `find`
