@@ -245,7 +245,7 @@ Format: `undone INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents deliverable with index 2 in your list
+`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents deliverable with index 2 in your list
 
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
