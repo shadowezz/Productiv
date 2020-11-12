@@ -274,7 +274,7 @@ Format: `find KEYWORDS`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull;Searches based on title and description.<br>&emsp;&bull;Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
+`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
@@ -358,7 +358,7 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the meeting you wish to edit in your displayed meeting list. <br><br>Details:<br>It must be a positive integer. |`1`: Represents the 1st meeting in your list
+`INDEX`        | The index number of the meeting you wish to edit in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st meeting in your list
 
 <div markdown="block" class="alert alert-info">
 
