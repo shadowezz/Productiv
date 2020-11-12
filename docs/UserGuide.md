@@ -133,10 +133,10 @@ Here is a sequence of example commands you can try:<br>
 ## 3. Features
 
 Excited about what Productiv can do for you? Here are the 4 main features of Productiv!
-1. [Dashboard](#dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
-1. [Deliverable](#deliverable) - Helps you track your product’s deliverables so that you can work better towards meeting them.
-1. [Meeting](#meeting) - Helps you manage your product-related meetings	so that you can be clear on your meeting schedule.
-1. [Contact](#contact) - Helps you organise your developer or stakeholder contacts so that you can reference them easily.
+1. [Dashboard](#32-dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
+1. [Deliverable](#33-deliverable) - Helps you track your product’s deliverables so that you can work better towards meeting them.
+1. [Meeting](#34-meeting) - Helps you manage your product-related meetings	so that you can be clear on your meeting schedule.
+1. [Contact](#35-contact) - Helps you organise your developer or stakeholder contacts so that you can reference them easily.
 
 
 **Listed below are the common components of a command:**<br>
@@ -374,7 +374,7 @@ Parameter      | Description                   | Example
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your deliverables back after using the `find` command.
-Refer to [Listing all deliverables](#listing-all-deliverables-list) below for details of the `list` command.
+Refer to [Listing all deliverables](#337-listing-all-deliverables---list-) below for details of the `list` command.
 </div>
 
 Examples:
@@ -489,7 +489,7 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**
+**:information_source: Notes:**
 
 * At least one of the fields of your meeting must be changed.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of your 1st meeting.
@@ -542,7 +542,7 @@ Parameter      | Description                   | Example
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your meetings back after using the `find` command.
-Refer to [Listing all meetings](#listing-all-meetings-list) below for details of the `list` command.
+Refer to [Listing all meetings](#345-listing-all-meetings---list-) below for details of the `list` command.
 </div>
 
 Examples:
@@ -554,12 +554,6 @@ Examples:
 Lists out all meetings in your meeting list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
-Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
-</div>
 
 #### 3.4.6 Deleting a meeting: `delete`
 
@@ -705,7 +699,7 @@ Parameter      | Description                   | Example
 <div markdown="span" class="alert alert-primary">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your contacts back after using the `find` command.
-Refer to [Listing all contacts](#listing-all-contacts-list) below for details of the `list` command.
+Refer to [Listing all contacts](#355-listing-all-contacts---list-) below for details of the `list` command.
 </div>
 
 Examples:
