@@ -74,26 +74,13 @@ Here is a sequence of example commands you can try:<br>
 
 ## Features
 
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
+**Notes about the command format:**<br>
 
 * Words in upper case are the parameters to be supplied by you for their respective fields.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
-:bulb: **Tip:** If you are not sure what specific parameter to supply for any of the required fields, supply an estimate or random value as place holder.<br>
+  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.
 
 * Field-parameter pairs in square brackets are optional.<br>
   e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
-
-* Field-parameter pairs can be in any order.<br>
-  e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
-  
-* If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `add r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `add n/NAME r/stk e/EMAIL`.
-
-* For single-word commands without fields, any word(s) following it will be ignored.<br>
-  e.g. if you input the command `list everything please`, it will be accepted as `list`.
-</div>
 
 
 ### General
@@ -147,7 +134,7 @@ Your schedule will be displayed in the right panel. The schedule contains all yo
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** There are no commands specific to the Dashboard. 
+**:information_source: Note:** There are no commands specific to the dashboard.
 You can only use commands found under [General](#general). 
   
 </div>
@@ -186,6 +173,12 @@ Parameter      | Description                   | Example(s)
 
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Examples:
 * `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
 adds a deliverable with the title `Login screen`, deadline `10-10-2020 18:00`, 
@@ -212,6 +205,12 @@ Parameter      | Description                   | Example
 
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
+
 Examples:
 *  `edit 1 d/Must include username, email and password fields by/15-12-2020 12:00`
 edits the description of the 1st deliverable to be `Must include username, email and password fields`
@@ -234,6 +233,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable you wish to mark as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
 
@@ -245,7 +250,13 @@ Format: `undone INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents deliverable with index 2 in your list
+`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
 
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
@@ -276,6 +287,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your deliverables back after using the `find` command.
+Refer to [Listing all deliverables](#listing-all-deliverables-list) below for details of the `list` command.
+</div>
+
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
 * `find plan` returns a deliverable with title `Finalise design and plan` and another with description `Reminder to plan time wisely.`.
@@ -285,12 +302,6 @@ Examples:
 Lists out all deliverables in your deliverable list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your deliverables back after using the `find` command. 
-Refer to [Finding deliverables](#finding-deliverables-find) above for details of the `find` command. 
-</div>
 
 #### Deleting a deliverable: `delete`
 
@@ -302,6 +313,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
 
@@ -310,6 +327,12 @@ Example:
 Clears all deliverables from your deliverable list, if any.
 
 Format: `clear`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
 
 ### Meeting
 
@@ -346,6 +369,12 @@ Parameter      | Description                   | Example(s)
   
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe d/Refine with business associates`
 adds a meeting with the title `Discuss app requirements`, start date and time `11-12-2020 09:00`, 
@@ -364,12 +393,19 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the meeting you wish to edit in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st meeting in your list
 
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+
+</div>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**
 
 * At least one of the fields of your meeting must be changed.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of your 1st meeting.
+* The dashboard’s Schedule will be updated accordingly.
 
 </div>
 
@@ -378,12 +414,6 @@ Examples:
 edits the title of the 2nd meeting to be `Discuss final release features` 
 and its description to be `Finalise dashboard functions`.
 * `edit 4 c/` clears the optional contact field of the 4th meeting.
-
-<div markdown="block" class="alert alert-warning">
-
-**:warning: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
-  
-</div>
 
 #### Viewing a meeting: `view`
 
@@ -411,6 +441,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the meetings you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `discussion` will match `Discussion`.| `Consult mentor`: Will match phrases such as `Consult advisor` and `Pitch to mentor`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your meetings back after using the `find` command.
+Refer to [Listing all meetings](#listing-all-meetings-list) below for details of the `list` command.
+</div>
+
 Examples:
 * `find Survey` returns a meeting with title `Survey potential customers` and another with description `Don't forget to present survey results.`.
 * `find consult goals` returns a meeting with title `Consult about marketing goals` and another with description `Goals must be achieved!`.
@@ -420,12 +456,6 @@ Examples:
 Lists out all meetings in your meeting list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
-Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
-</div>
 
 #### Deleting a meeting: `delete`
 
@@ -437,6 +467,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
 
@@ -444,7 +480,13 @@ Example:
 
 Clears all meetings from your meeting list, if any.
 
-Format: `clear` 
+Format: `clear`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
 
 ### Contact
 
@@ -548,6 +590,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the contacts you need. <br><br>Details:<br>&emsp;&bull; Searches based on name and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `james` will match `James`.| `James designer`: Will match phrases such as `James Tan` and `Graphic designer`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your contacts back after using the `find` command.
+Refer to [Listing all contacts](#listing-all-contacts-list) below for details of the `list` command.
+</div>
+
 Examples:
 * `find alex yeoh` returns a contact with name `Alex Yeoh` and another with description `Business analyst. Alex works with him.`.
 * `find Johnson` returns a contact with name `Amber Johnson` and another with description `Works at Johnson & Johnson`.
@@ -557,12 +605,6 @@ Examples:
 Lists out all contacts from your contact list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#finding-contacts-find) above for details of the `find` command. 
-</div>
 
 #### Deleting a contact: `delete`
 
