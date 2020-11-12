@@ -174,7 +174,7 @@ Parameter      | Description                   | Example(s)
 ---------------|-------------------------------|--------------------------------
 `TITLE`        | The main heading of your deliverable.| `Create login screen`
 `DEADLINE`     | The due date time of your deliverable.<br><br>Details:<br>&emsp;&bull; It must not be earlier than the year 2019.<br>&emsp;&bull; It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00`
-`MILESTONE`    | The milestone tagged to your deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | <br>&bull;`2`<br>&bull;`14.2.1`
+`MILESTONE`    | The milestone tagged to your deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integers. | <br>&bull;`2`<br>&bull;`14.2.1`
 `CONTACTS`     | The contact(s) involved in seeing through your deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&bull;`conan`<br>&bull;`Zachary, drew, Paul Smith`
 `DESCRIPTION`  | Any additional information about your deliverable.|`Remember to include email and password fields`
 
@@ -296,9 +296,11 @@ Refer to [Finding deliverables](#finding-deliverables-find) above for details of
 
 Deletes the specified deliverable from your deliverable list.
 
+Format: `delete INDEX`
+
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
+`INDEX`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
 
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
@@ -324,6 +326,8 @@ Refer to [switch](#switching-modes-switch) for more information.
 #### Adding a meeting: `add`
 
 Adds a meeting to your meeting list.
+
+Format: `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`
 
 Parameter      | Description                   | Example(s) 
 ---------------|-------------------------------|--------------------------------
@@ -401,6 +405,8 @@ Example:
 
 Finds the meetings whose titles or descriptions contain any of the given keywords.
 
+Format: `find KEYWORDS`
+
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the meetings you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `discussion` will match `Discussion`.| `Consult mentor`: Will match phrases such as `Consult advisor` and `Pitch to mentor`
@@ -425,9 +431,11 @@ Refer to [Finding meetings](#finding-meetings-find) above for details of the `fi
 
 Deletes the specified meeting from your displayed meeting list.
 
+Format: `delete INDEX`
+
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
+`INDEX`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
 
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
@@ -462,7 +470,7 @@ Parameter      | Description                   | Example(s)
 `ROLE`         | Your contact can only belong to one of the two roles:<br>&emsp;&bull; Developer <br>&emsp;&bull; Stakeholder | Only the following inputs are valid: <br>&emsp;&bull;`dev` (Developer)<br>&emsp;&bull;`stk` (Stakeholder)
 `EMAIL`        | The email address of your contact |`james_tan@gmail.com`
 `PHONE`        | The mobile or office number of your contact | `81234567`
-`DESCRIPTION`  | Any additional information about your contact, such as their job position.|`CEO of Carousell`
+`DESCRIPTION`  | Any additional information about your contact, such as job position.|`CEO of Carousell`
 
 <div markdown="span" class="alert alert-primary">:bulb:
 
@@ -564,7 +572,7 @@ Format: `delete INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | The index number of the contact you wish to delete in your displayed contact list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd contact in your list
+`INDEX`     | The index number of the contact you wish to delete in your displayed contact list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd contact in your list
 
 Example:
 * `delete 3` deletes the 3rd contact in the displayed contact list.
