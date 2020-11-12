@@ -132,25 +132,30 @@ Here is a sequence of example commands you can try:<br>
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Features
 
+Excited about what Productiv can do for you? Here are the 4 main features of Productiv!
+1. [Dashboard](#32-dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
+1. [Deliverable](#33-deliverable) - Helps you track your product’s deliverables so that you can work better towards meeting them.
+1. [Meeting](#34-meeting) - Helps you manage your product-related meetings	so that you can be clear on your meeting schedule.
+1. [Contact](#35-contact) - Helps you organise your developer or stakeholder contacts so that you can reference them easily.
+
+
+**Listed below are the common components of a command:**<br>
+
+Component | Description |
+---------------------|------------|
+Command word | The first word of a command. It is the action that you want to perform. |
+Prefix | The characters before the parameter. It is the short-form of the corresponding field. |
+Parameter |	The words following each prefix. It represents the value of the corresponding field. |
+
+For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`:
+* Command word - `add`
+* Prefixes - `t/`, `by/`, `m/`, `c/`, `d/`
+* Parameters - `TITLE`, `DEADLINE`, `MILESTONE`, `CONTACTS`, `DESCRIPTION`
+
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**:information_source: Note:** Prefix-parameter pairs in square brackets are optional, i.e. `[c/CONTACTS]` and `[d/DESCRIPTION]` need not be present in the command.
 
-* Words in upper case are the parameters to be supplied by you for their respective fields.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.<br>
-:bulb: **Tip:** If you are not sure what specific parameter to supply for any of the required fields, supply an estimate or random value as place holder.<br>
-
-* Field-parameter pairs in square brackets are optional.<br>
-  e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
-
-* Field-parameter pairs can be in any order.<br>
-  e.g. if the command specifies `n/NAME e/EMAIL`, `e/EMAIL n/NAME` is also acceptable.
-  
-* If multiple and/or repeat parameters are provided for the same field, only the last parameter will be accepted.<br>
-  e.g. if you input the command `add r/dev n/NAME r/stk e/EMAIL r/stk`, it will be accepted as `add n/NAME r/stk e/EMAIL`.
-
-* For single-word commands without fields, any word(s) following it will be ignored.<br>
-  e.g. if you input the command `list everything please`, it will be accepted as `list`.
 </div>
 
 ### 3.1 General
@@ -210,7 +215,7 @@ Your schedule will be displayed in the right panel. The schedule contains all yo
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** There are no commands specific to the Dashboard. 
+**:information_source: Note:** There are no commands specific to the dashboard. 
 You can only use commands found under [General](#31-general). 
   
 </div>
@@ -253,6 +258,12 @@ Parameter      | Description                   | Example(s)
 
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Examples:
 * `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
 adds a deliverable with the title `Login screen`, deadline `10-10-2020 18:00`, 
@@ -272,10 +283,11 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**
+**:information_source: Notes:**
 
 * At least one of the fields of the deliverable must be changed.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
+* The dashboard’s Schedule will be updated accordingly.
 
 </div>
 
@@ -301,6 +313,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable you wish to mark as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
 
@@ -312,7 +330,13 @@ Format: `undone INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents deliverable with index 2 in your list
+`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
 
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
@@ -347,6 +371,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your deliverables back after using the `find` command.
+Refer to [Listing all deliverables](#337-listing-all-deliverables---list-) below for details of the `list` command.
+</div>
+
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
 * `find plan` returns a deliverable with title `Finalise design and plan` and another with description `Reminder to plan time wisely.`.
@@ -356,12 +386,6 @@ Examples:
 Lists out all deliverables in your deliverable list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your deliverables back after using the `find` command. 
-Refer to [Finding deliverables](#336-finding-deliverables---find-) above for details of the `find` command. 
-</div>
 
 #### 3.3.8 Deleting a deliverable: `delete`
 
@@ -373,6 +397,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
 
@@ -381,6 +411,12 @@ Example:
 Clears all deliverables from your deliverable list, if any.
 
 Format: `clear`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
+
+</div>
 
 ### 3.4 Meeting
 
@@ -421,6 +457,12 @@ Parameter      | Description                   | Example(s)
   
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe d/Refine with business associates`
 adds a meeting with the title `Discuss app requirements`, start date and time `11-12-2020 09:00`, 
@@ -439,12 +481,19 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the meeting you wish to edit in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st meeting in your list
 
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+
+</div>
+
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**
+**:information_source: Notes:**
 
 * At least one of the fields of your meeting must be changed.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of your 1st meeting.
+* The dashboard’s Schedule will be updated accordingly.
 
 </div>
 
@@ -490,6 +539,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the meetings you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `discussion` will match `Discussion`.| `Consult mentor`: Will match phrases such as `Consult advisor` and `Pitch to mentor`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your meetings back after using the `find` command.
+Refer to [Listing all meetings](#345-listing-all-meetings---list-) below for details of the `list` command.
+</div>
+
 Examples:
 * `find Survey` returns a meeting with title `Survey potential customers` and another with description `Don't forget to present survey results.`.
 * `find consult goals` returns a meeting with title `Consult about marketing goals` and another with description `Goals must be achieved!`.
@@ -499,12 +554,6 @@ Examples:
 Lists out all meetings in your meeting list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
-Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
-</div>
 
 #### 3.4.6 Deleting a meeting: `delete`
 
@@ -516,6 +565,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
+
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
 
@@ -523,7 +578,13 @@ Example:
 
 Clears all meetings from your meeting list, if any.
 
-Format: `clear` 
+Format: `clear`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+
+</div>
 
 ### 3.5 Contact
 
@@ -635,6 +696,12 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the contacts you need. <br><br>Details:<br>&emsp;&bull; Searches based on name and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `james` will match `James`.| `James designer`: Will match phrases such as `James Tan` and `Graphic designer`
 
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use the `list` command when you want to list all your contacts back after using the `find` command.
+Refer to [Listing all contacts](#355-listing-all-contacts---list-) below for details of the `list` command.
+</div>
+
 Examples:
 * `find alex yeoh` returns a contact with name `Alex Yeoh` and another with description `Business analyst. Alex works with him.`.
 * `find Johnson` returns a contact with name `Amber Johnson` and another with description `Works at Johnson & Johnson`.
@@ -644,12 +711,6 @@ Examples:
 Lists out all contacts from your contact list, if any.
 
 Format: `list`
-
-<div markdown="span" class="alert alert-primary">:bulb:
-
-**Tip:** Use this command when you want to list all your contacts back after using the `find` command. 
-Refer to [Finding contacts](#354-finding-contacts---find-) above for details of the `find` command. 
-</div>
 
 #### 3.5.6 Deleting a contact: `delete`
 
@@ -674,12 +735,17 @@ Format: `clear`
 
 ## 4. FAQ
 
-**Q**: How do I start using Productiv?<br>
-**A**: You can refer to our [Quick Start Guide](#2-quick-start).
+**Q**: Is Productiv available on both Windows and Mac?<br>
+**A**: Absolutely! Just ensure that you have Java `11` installed on your computer and it is your default Java version.
 
-**Q**: Which operating systems can I run Productiv on?<br>
-**A**: Currently, Productiv is supported on both Windows and Mac. Just ensure
-that you have Java `11` installed on your computer and it is your default Java version.
+**Q**: How many deliverables, meetings and contacts can I store in Productiv?<br>
+**A**: Productiv can support up to 1000 deliverables, 1000 meetings and 1000 contacts.
+
+**Q**: Can I recover deleted deliverables, meetings and contacts?<br>
+**A**: Unfortunately, you won't be able to recover your deleted items so do be careful before deciding to delete any items!
+
+**Q**: Can I manage multiple products on Productiv?<br>
+**A**: Currently, Productiv is catered for a single product but future versions of Productiv will allow you to manage multiple products, so stay tuned!
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -687,59 +753,58 @@ that you have Java `11` installed on your computer and it is your default Java v
 
 ### 5.1 General 
 
-Action         | Format, Examples
--------------- |--------------------------------------------------------------------------------------------------
-**Switch**     | `switch MODE` <br> e.g. `switch dv`
-**Help**       | `help`
-**Exit**       | `exit`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Switch         | `switch MODE` | `switch dv`
+Help           | `help`        | `help`
+Exit           | `exit`        | `exit`
 
 ### 5.2 Deliverable
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
-Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
-Mark as completed   | `done INDEX` <br> e.g. `done 3`
-Mark as on-going    | `undone INDEX` <br> e.g. `undone 1`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` | `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields`
+Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` | `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
+Mark as completed   | `done INDEX` | `done 3`
+Mark as on-going    | `undone INDEX` | `undone 1`
+View           | `view INDEX`  |  `view 2`
+Find           | `find KEYWORDS`  |  `find Homepage urgent`
+List           | `list`  | `list`
+Delete         | `delete INDEX`  |  `delete 3`
+Clear          | `clear` | `clear`
 
 ### 5.3 Meeting
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]` <br> e.g. `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe l/Meeting Room A d/Refine with business associates`
-Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalise dashboard functions`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Add            | `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`   |   `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe l/Meeting Room A d/Refine with business associates`
+Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`   |   `edit 2 t/Discuss final release features d/Finalise dashboard functions`
+View           | `view INDEX`   |   `view 2`
+Find           | `find KEYWORDS`   |   `find discuss user guide John`
+List           | `list`   | `list`
+Delete         | `delete INDEX`   |   `delete 3`
+Clear          | `clear`  | `clear`
 
 ### 5.4 Contact
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add n/Johnny r/stk e/johnny@example.com p/12345678 d/Business Analyst`
-Edit           | `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]` <br> e.g. `edit 1 n/John r/dev e/john@email.com`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find John Kite`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|--------------|-----------------------------------------------------------------------------------
+Add            | `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]`   |   `add n/Johnny r/stk e/johnny@example.com p/12345678 d/Business Analyst`
+Edit           | `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`   |   `edit 1 n/John r/dev e/john@email.com`
+View           | `view INDEX`   |   `view 2`
+Find           | `find KEYWORDS`   |   `find John Kite`
+List           | `list`   | `list`
+Delete         | `delete INDEX`   |   `delete 3`
+Clear          | `clear`  | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
 ## 6. Glossary
 
-\# |            Term                | Description
----|--------------------------------|------------------------------------------------------------------------------------------------|
-1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
-2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
-3  | Deliverable                    | An item to be completed as part of the product development process.                            |
-4  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
-5  | Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
-6  | Stakeholder                    | An external party involved with the product.                                                   |
+Term                | Description
+--------------------------------|------------------------------------------------------------------------------------------------|
+Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
+Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |                         |
+Milestone                      | A stage in the software development process associated with a particular group of deliverables. It is a non-negative integer, or a period-separated string of non-negative integers. |
+Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
+Overall Completion Percentage (OCP) | A donut chart showing the product’s completion status, found on the left panel of the dashboard mode. |
