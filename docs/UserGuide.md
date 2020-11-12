@@ -70,7 +70,7 @@ To get you familiarised, see the following for Productiv's GUI.
    
 <p align="center">
   
-<img src="UiLabel.png" alt="Ui Label">
+<img src="images/UiLabel.png" alt="Ui Label">
 <i>Figure 2: Dashboard Components.</i>
   
 </p>
@@ -110,7 +110,7 @@ Note that the app contains some sample data.<br>
 
    <p align="center">
    
-   <img src="Ui.png" alt="Dashboard">
+   <img src="images/Ui.png" alt="Dashboard">
    <i>Figure 2: Dashboard.</i>
        
    </p>
