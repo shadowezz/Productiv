@@ -2,26 +2,80 @@
 layout: page
 title: User Guide
 ---
-* Table of Contents
-{:toc}
+<div style="page-break-after: always;"></div>
+
+## Table of Contents
+
+1. [Introduction](#1-introduction)
+    - [1.1 Overview](#11-overview)
+    - [1.2 Preview](#12-preview)
+2. [Quick start](#2-quick-start)
+3. [Features](#3-features)
+    - [3.1 General](#31-general)
+        * [3.1.1 Switching modes: `switch`](#311-switching-modes---switch-)
+        * [3.1.2 Viewing help: `help`](#312-viewing-help---help-)
+        * [3.1.3 Exiting Productiv: `exit`](#313-exiting-productiv---exit-)
+        * [3.1.4 Saving the data](#314-saving-the-data)
+    - [3.2 Dashboard](#32-dashboard)
+    - [3.3 Deliverable](#33-deliverable)
+        * [3.3.1 Adding a deliverable: `add`](#331-adding-a-deliverable---add-)
+        * [3.3.2 Editing a deliverable: `edit`](#332-editing-a-deliverable---edit-)
+        * [3.3.3 Marking a deliverable as completed: `done`](#333-marking-a-deliverable-as-completed---done-)
+        * [3.3.4 Marking a deliverable as on-going: `undone`](#334-marking-a-deliverable-as-on-going---undone-)
+        * [3.3.5 Viewing a deliverable: `view`](#335-viewing-a-deliverable---view-)
+        * [3.3.6 Finding deliverables: `find`](#336-finding-deliverables---find-)
+        * [3.3.7 Listing all deliverables: `list`](#337-listing-all-deliverables---list-)
+        * [3.3.8 Deleting a deliverable: `delete`](#338-deleting-a-deliverable---delete-)
+        * [3.3.9 Clearing all deliverables: `clear`](#339-clearing-all-deliverables---clear-)
+    - [3.4 Meeting](#34-meeting)
+        * [3.4.1 Adding a meeting: `add`](#341-adding-a-meeting---add-)
+        * [3.4.2 Editing a meeting: `edit`](#342-editing-a-meeting---edit-)
+        * [3.4.3 Viewing a meeting: `view`](#343-viewing-a-meeting---view-)
+        * [3.4.4 Finding meetings: `find`](#344-finding-meetings---find-)
+        * [3.4.5 Listing all meetings: `list`](#345-listing-all-meetings---list-)
+        * [3.4.6 Deleting a meeting: `delete`](#346-deleting-a-meeting---delete-)
+        * [3.4.7 Clearing all meetings: `clear`](#347-clearing-all-meetings---clear-)
+    - [3.5 Contact](#35-contact)
+        * [3.5.1 Adding a contact: `add`](#351-adding-a-contact---add-)
+        * [3.5.2 Editing a contact: `edit`](#352-editing-a-contact---edit-)
+        * [3.5.3 Viewing a contact: `view`](#353-viewing-a-contact---view-)
+        * [3.5.4 Finding contacts: `find`](#354-finding-contacts---find-)
+        * [3.5.5 Listing all contacts: `list`](#355-listing-all-contacts---list-)
+        * [3.5.6 Deleting a contact: `delete`](#356-deleting-a-contact---delete-)
+        * [3.5.7 Clearing all contacts: `clear`](#357-clearing-all-contacts---clear-)
+<div style="page-break-after: always;"></div>
+
+4. [FAQ](#4-faq)
+5. [Command summary](#5command-summary)
+    - [5.1 General](#51-general)
+    - [5.2 Deliverable](#52-deliverable)
+    - [5.3 Meeting](#53-meeting)
+    - [5.4 Contact](#54-contact)
+6. [Glossary](#6-glossary)
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
-## Introduction
-### Overview
+## 1. Introduction
+### 1.1 Overview
 Productiv is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
 **meetings** and **contacts** so that you can track your product's development easily.
 
 Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
 Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
 
+<div style="page-break-after: always;"></div>
 
-### Preview
-To get you familiarised, the following is Productiv's GUI. 
-
-   ![Ui](images/UiLabel.jpg)
-   <figcaption>Dashboard</figcaption><br>
+### 1.2 Preview
+To get you familiarised, see the following for Productiv's GUI. 
    
-   <div markdown="block" class="alert alert-info">
+<p align="center">
+  
+<img src="images/UiLabel.png" alt="Ui Label">
+<i>Figure 1: Dashboard components</i>
+  
+</p>
+   
+<div markdown="block" class="alert alert-info">
    
    **:information_source: GUI components:**<br>
    
@@ -36,12 +90,13 @@ To get you familiarised, the following is Productiv's GUI.
    1. **Right panel**: where you can view <br>
       * your product management schedule (in dashboard mode), or <br>
       * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
-    
+
+   <div style="page-break-after: always;"></div>
+   
    Note: For modes other than the dashboard, you can see your file path at the bottom of your GUI. 
    </div>
 
-
-## Quick start
+## 2. Quick start
 
 1. Ensure you have Java `11` installed in your computer (it should be your default Java version).
 
@@ -53,9 +108,13 @@ To get you familiarised, the following is Productiv's GUI.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
-   ![Ui](images/Ui.png)
-   <figcaption>Dashboard</figcaption><br>
+<p align="center">
+
+<img src="images/Ui.png" alt="Dashboard">
+<i>Figure 2: Dashboard</i>
    
+</p>
+
 1. Type a command in the command box and press Enter to execute it. 
 Here is a sequence of example commands you can try:<br>
 
@@ -68,11 +127,10 @@ Here is a sequence of example commands you can try:<br>
 
    1. `exit`: Exits the app.
 
-1. Refer to [Features](#features) below for details of each available command.
+1. Refer to [Features](#3-features) below for details of each available command.
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Features
+## 3. Features
 
 Excited about what Productiv can do for you? Here are the 4 main features of Productiv!
 1. [Dashboard](#dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
@@ -83,7 +141,7 @@ Excited about what Productiv can do for you? Here are the 4 main features of Pro
 
 **Listed below are the common components of a command:**<br>
 
-Component of Command | Description |
+Component | Description |
 ---------------------|------------|
 Command word | The first word of a command. It is the action that you want to perform. |
 Prefix | The characters before the parameter. It is the short-form of the corresponding field. |
@@ -96,15 +154,13 @@ For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILE
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** Field-parameter pairs in square brackets are optional.
-e.g. `[c/CONTACTS]` and `[d/DESCRIPTION]` are optional.
+**:information_source: Note:** Prefix-parameter pairs in square brackets are optional, i.e. `[c/CONTACTS]` and `[d/DESCRIPTION]` need not be present in the command.
 
 </div>
 
+### 3.1 General
 
-### General
-
-#### Switching modes: `switch`
+#### 3.1.1 Switching modes: `switch`
 
 Switches to dashboard, deliverable, meeting or contact mode.
 
@@ -121,28 +177,34 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 </div>
 
-#### Viewing help: `help`
+#### 3.1.2 Viewing help: `help`
 
 Shows a message directing you to this User Guide.
-![help](images/helpMessage.JPG)
+
+<p align="center">
+   
+<img src="images/helpMessage.JPG" alt="Help message">
+<i>Figure 3: Help</i>
+   
+</p>
 
 Format: `help`
 
-#### Exiting Productiv: `exit`
+#### 3.1.3 Exiting Productiv: `exit`
 
 Exits the program.
 
 Format: `exit`
 
-#### Saving the data
+#### 3.1.4 Saving the data
 
 Productiv automatically saves any changes that you made, to your computer's hard disk. 
 Hence, you can focus on managing your product without fearing any unsaved changes.
 
 
-### Dashboard
+### 3.2 Dashboard
 
-The [dashboard](#preview) gives you an overview of information related to your product.
+The dashboard gives you an overview of information related to your product.
 The dashboard is the default landing page of Productiv.
 Whenever you start up Productiv, you will be brought to dashboard mode.
 
@@ -153,24 +215,28 @@ Your schedule will be displayed in the right panel. The schedule contains all yo
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:** There are no commands specific to the dashboard.
-You can only use commands found under [General](#general). 
+**:information_source: Note:** There are no commands specific to the dashboard. 
+You can only use commands found under [General](#31-general). 
   
 </div>
 
-### Deliverable
-
-   ![Ui](images/Deliverable.png)
-   <figcaption>Initial display of a deliverable list </figcaption>
+### 3.3 Deliverable
+   
+<p align="center">
+  
+<img src="images/Deliverable.png" alt="Deliverable">
+<i>Figure 4: Initial display of a deliverable list</i>
+  
+</p>
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the deliverable mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div>
 
-#### Adding a deliverable: `add`
+#### 3.3.1 Adding a deliverable: `add`
 
 Adds a deliverable to your deliverable list.
 
@@ -205,7 +271,7 @@ milestone `1.1`, contacts `Jordan Woods, Betsy Crowe` and description `Include e
 * `add t/Find profile page template by/08-12-2020 12:00 m/2.1.1` 
 adds a deliverable with the title `Find profile page template`, deadline `08-12-2020 12:00` and milestone `2.1.1`.
 
-#### Editing a deliverable: `edit`
+#### 3.3.2 Editing a deliverable: `edit`
 
 Edits an existing deliverable in your displayed deliverable list.
 
@@ -237,7 +303,7 @@ and its deadline to be `15-12-2020 12:00`.
   
 </div>
 
-#### Marking a deliverable as completed: `done`
+#### 3.3.3 Marking a deliverable as completed: `done`
 
 Marks the specified deliverable from your displayed deliverable list as completed.
 
@@ -256,7 +322,7 @@ Parameter      | Description                   | Example
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
 
-#### Marking a deliverable as on-going: `undone`
+#### 3.3.4 Marking a deliverable as on-going: `undone`
 
 Marks the specified deliverable from your displayed deliverable list as on-going.
 
@@ -275,7 +341,7 @@ Parameter      | Description                   | Example
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
 
-#### Viewing a deliverable: `view`
+#### 3.3.5 Viewing a deliverable: `view`
 
 Displays more details of the specified deliverable from your displayed deliverable list.
 
@@ -287,11 +353,15 @@ Parameter      | Description                   | Example
 
 Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
-
-   ![Ui](images/DeliverableView.png)
-   <figcaption>Viewing a deliverable</figcaption><br>
-
-#### Finding deliverables: `find`
+   
+<p align="center">
+ 
+<img src="images/DeliverableView.png" alt="Deliverable View">
+<i>Figure 5: Viewing a deliverable</i>
+ 
+</p>
+   
+#### 3.3.6 Finding deliverables: `find`
 
 Finds the deliverables whose titles or descriptions contain any of the given keywords.
 
@@ -311,13 +381,13 @@ Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
 * `find plan` returns a deliverable with title `Finalise design and plan` and another with description `Reminder to plan time wisely.`.
 
-#### Listing all deliverables: `list`
+#### 3.3.7 Listing all deliverables: `list`
 
 Lists out all deliverables in your deliverable list, if any.
 
 Format: `list`
 
-#### Deleting a deliverable: `delete`
+#### 3.3.8 Deleting a deliverable: `delete`
 
 Deletes the specified deliverable from your deliverable list.
 
@@ -336,7 +406,7 @@ Parameter      | Description                   | Example
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
 
-#### Clearing all deliverables: `clear`
+#### 3.3.9 Clearing all deliverables: `clear`
 
 Clears all deliverables from your deliverable list, if any.
 
@@ -348,19 +418,23 @@ Format: `clear`
 
 </div>
 
-### Meeting
+### 3.4 Meeting
 
-   ![Ui](images/Meeting.png)
-   <figcaption>Initial display of a meeting list </figcaption>
+<p align="center">
+ 
+<img src="images/Meeting.png" alt="Meeting">
+<i>Figure 6: Initial display of a meeting list</i>
+ 
+</p>
    
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the meeting mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div>   
  
-#### Adding a meeting: `add`
+#### 3.4.1 Adding a meeting: `add`
 
 Adds a meeting to your meeting list.
 
@@ -397,7 +471,7 @@ end time `10:00`, contacts `Jordan Woods, Betsy Crowe` and description `Refine w
 adds a meeting with the title `User research review`, start date and time `15-12-2020 13:00`, 
 end time `15:00` and location `Meeting room A`.
 
-#### Editing a meeting: `edit`
+#### 3.4.2 Editing a meeting: `edit`
 
 Edits an existing meeting in your displayed meeting list.
 
@@ -429,7 +503,13 @@ edits the title of the 2nd meeting to be `Discuss final release features`
 and its description to be `Finalise dashboard functions`.
 * `edit 4 c/` clears the optional contact field of the 4th meeting.
 
-#### Viewing a meeting: `view`
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot edit a meeting to have the same `TITLE`, `FROM` and `TO` as an existing meeting.
+  
+</div>
+
+#### 3.4.3 Viewing a meeting: `view`
 
 Displays more details of the specified meeting from your displayed meeting list.
 
@@ -441,11 +521,15 @@ Parameter      | Description                   | Example
 
 Example:
 * `view 2` views the 2nd meeting in your meeting list.
+   
+<p align="center">
+ 
+<img src="images/MeetingView.png" alt="Meeting View">
+<i>Figure 7: Viewing a meeting</i>
+ 
+</p>
 
-   ![Ui](images/MeetingView.png)
-   <figcaption>Viewing a meeting</figcaption><br>
-
-#### Finding meetings: `find`
+#### 3.4.4 Finding meetings: `find`
 
 Finds the meetings whose titles or descriptions contain any of the given keywords.
 
@@ -465,13 +549,19 @@ Examples:
 * `find Survey` returns a meeting with title `Survey potential customers` and another with description `Don't forget to present survey results.`.
 * `find consult goals` returns a meeting with title `Consult about marketing goals` and another with description `Goals must be achieved!`.
 
-#### Listing all meetings: `list`
+#### 3.4.5 Listing all meetings: `list`
 
 Lists out all meetings in your meeting list, if any.
 
 Format: `list`
 
-#### Deleting a meeting: `delete`
+<div markdown="span" class="alert alert-primary">:bulb:
+
+**Tip:** Use this command when you want to list all your meetings back after using the `find` command. 
+Refer to [Finding meetings](#finding-meetings-find) above for details of the `find` command. 
+</div>
+
+#### 3.4.6 Deleting a meeting: `delete`
 
 Deletes the specified meeting from your displayed meeting list.
 
@@ -490,7 +580,7 @@ Parameter      | Description                   | Example
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
 
-#### Clearing all meetings: `clear`
+#### 3.4.7 Clearing all meetings: `clear`
 
 Clears all meetings from your meeting list, if any.
 
@@ -502,19 +592,23 @@ Format: `clear`
 
 </div>
 
-### Contact
+### 3.5 Contact
 
-   ![contact](images/Contact.png)
-   <figcaption>Initial display of a contact list </figcaption>
-   
+<p align="center">
+ 
+<img src="images/Contact.png" alt="Contact">
+<i>Figure 8: Initial display of a contact list</i>
+ 
+</p>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the contact mode to execute the following commands. 
-Refer to [switch](#switching-modes-switch) for more information.
+Refer to [switch](#311-switching-modes---switch-) for more information.
 
 </div> 
 
-#### Adding a contact: `add`
+#### 3.5.1 Adding a contact: `add`
 
 Adds a developer or stakeholder to your contact list.
 
@@ -546,7 +640,7 @@ adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`
   
 </div>
 
-#### Editing a contact: `edit`
+#### 3.5.2 Editing a contact: `edit`
 
 Edits an existing contact in your displayed contact list.
 
@@ -578,7 +672,7 @@ clears the optional phone field of the 2nd contact.
   
 </div>
 
-#### Viewing a contact: `view`
+#### 3.5.3 Viewing a contact: `view`
 
 Displays more details of the specified contact from your displayed contact list.
 
@@ -591,10 +685,14 @@ Parameter      | Description                   | Example
 Example:
 * `view 2` views the 2nd contact in your contact list.
 
-   ![Ui](images/ContactView.png)
-   <figcaption>Viewing a contact</figcaption><br>
+<p align="center">
+ 
+<img src="images/ContactView.png" alt="Contact View">
+<i>Figure 9: Viewing a contact</i>
+ 
+</p>
 
-#### Finding contacts: `find`
+#### 3.5.4 Finding contacts: `find`
 
 Finds the contacts whose names or descriptions contain any of the given keywords.
 
@@ -614,13 +712,13 @@ Examples:
 * `find alex yeoh` returns a contact with name `Alex Yeoh` and another with description `Business analyst. Alex works with him.`.
 * `find Johnson` returns a contact with name `Amber Johnson` and another with description `Works at Johnson & Johnson`.
 
-#### Listing all contacts: `list`
+#### 3.5.5 Listing all contacts: `list`
 
 Lists out all contacts from your contact list, if any.
 
 Format: `list`
 
-#### Deleting a contact: `delete`
+#### 3.5.6 Deleting a contact: `delete`
 
 Deletes the specified contact from your displayed contact list.
 
@@ -633,7 +731,7 @@ Parameter      | Description                   | Example
 Example:
 * `delete 3` deletes the 3rd contact in the displayed contact list.
 
-#### Clearing all contacts: `clear`
+#### 3.5.7 Clearing all contacts: `clear`
 
 Clears all contacts from your contact list, if any.
 
@@ -641,7 +739,7 @@ Format: `clear`
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## 4. FAQ
 
 **Q**: Is Productiv available on both Windows and Mac?<br>
 **A**: Absolutely! Just ensure that you have Java `11` installed on your computer and it is your default Java version.
@@ -657,9 +755,9 @@ Format: `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## 5.Command summary
 
-### General 
+### 5.1 General 
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -667,7 +765,7 @@ Switch         | `switch MODE` | `switch dv`
 Help           | `help`        | `help`
 Exit           | `exit`        | `exit`
 
-### Deliverable
+### 5.2 Deliverable
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -681,7 +779,7 @@ List           | `list`  | `list`
 Delete         | `delete INDEX`  |  `delete 3`
 Clear          | `clear` | `clear`
 
-### Meeting
+### 5.3 Meeting
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -693,7 +791,7 @@ List           | `list`   | `list`
 Delete         | `delete INDEX`   |   `delete 3`
 Clear          | `clear`  | `clear`
 
-### Contact
+### 5.4 Contact
 
 Command        | Format        | Example
 ---------------|--------------|-----------------------------------------------------------------------------------
@@ -707,7 +805,7 @@ Clear          | `clear`  | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
-## Glossary
+## 6. Glossary
 
 Term                | Description
 --------------------------------|------------------------------------------------------------------------------------------------|
