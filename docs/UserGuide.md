@@ -6,11 +6,11 @@ title: User Guide
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
-    - [1.1 Overview](#11-overview)
-    - [1.2 Preview](#12-preview)
-2. [Quick start](#2-quick-start)
-3. [Features](#3-features)
+1. [Welcome to Productiv](#1-welcome-to-productiv)
+2. [Reading the user guide](#2-reading-the-user-guide)
+3. [Getting started](#3-getting-started)
+4. [Features](#4-features)
+5. [Commands](#5-commands)
     - [3.1 General](#31-general)
         * [3.1.1 Switching modes: `switch`](#311-switching-modes---switch-)
         * [3.1.2 Viewing help: `help`](#312-viewing-help---help-)
@@ -43,103 +43,112 @@ title: User Guide
         * [3.5.5 Listing all contacts: `list`](#355-listing-all-contacts---list-)
         * [3.5.6 Deleting a contact: `delete`](#356-deleting-a-contact---delete-)
         * [3.5.7 Clearing all contacts: `clear`](#357-clearing-all-contacts---clear-)
-<div style="page-break-after: always;"></div>
-
-4. [FAQ](#4-faq)
-5. [Command summary](#5command-summary)
-    - [5.1 General](#51-general)
-    - [5.2 Deliverable](#52-deliverable)
-    - [5.3 Meeting](#53-meeting)
-    - [5.4 Contact](#54-contact)
-6. [Glossary](#6-glossary)
+6. [Final remarks](#6-final-remarks)
+7. [FAQ](#7-faq)
+8. [Command summary](#8command-summary)
+    - [8.1 General](#81-general)
+    - [8.2 Deliverable](#82-deliverable)
+    - [8.3 Meeting](#83-meeting)
+    - [8.4 Contact](#84-contact)
+9. [Glossary](#9-glossary)
 <div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
-## 1. Introduction
-### 1.1 Overview
-Productiv is a one-stop desktop app for product managers like yourself to organise your **deliverables**, 
-**meetings** and **contacts** so that you can track your product's development easily.
 
-Productiv is optimized for use via Command Line Interface (CLI). Thus, if you like to type and/or type fast, 
-Productiv has just become better for you. Nevertheless, Productiv still has the benefits of a Graphical User Interface (GUI).
+## 1. Welcome to Productiv
+
+Are you a product manager looking for a simple way to organise your many product development tasks?
+Or ever found yourself in dire need to conveniently reference your various product-related information? 
+_Then this app is for you!_
+
+Productiv is a one-stop desktop application for product managers like yourself to organise your **deliverables**, 
+**meetings** and **contacts** so that you can track your product's development easily. 
+
+Able to type fast? Great! Productiv is optimized for use via Command Line Interface (CLI), 
+which means you will be able to manage your product-related information swiftly using simple commands. 
+Nevertheless, Productiv has elements of Graphical User Interface (GUI) for your benefit.
+
+Read on, if you are keen to know more, and we'll take you through this journey to _get quacking with Productiv_!
 
 <div style="page-break-after: always;"></div>
 
-### 1.2 Preview
-To get you familiarised, see the following for Productiv's GUI. 
-   
-<p align="center">
-  
-<img src="images/UiLabel.png" alt="Ui Label">
-<i>Figure 1: Dashboard components</i>
-  
-</p>
-   
-<div markdown="block" class="alert alert-info">
-   
-   **:information_source: GUI components:**<br>
-   
-   1. **Navigation bar**: where you navigate to other modes. <br>
-   1. **Command box**: where you enter your commands. <br>
-   1. **Feedback box**: where you can see the feedback of your command.
-        If your command is successful, you can see a success message.
-        Otherwise, you can see an error message. <br>
-   1. **Left panel**: where you can view <br>
-      * your product's overall completion percentage (in dashboard mode), or <br>   
-      * your list of deliverables, meetings, or contacts (in deliverable, meeting, or contact mode) <br>
-   1. **Right panel**: where you can view <br>
-      * your product management schedule (in dashboard mode), or <br>
-      * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
+## 2. Reading the user guide
 
-   <div style="page-break-after: always;"></div>
+In this user guide, you will see several icons and text styles that will aid you in your Productiv journey.
+View the table below to understand their meaning and usage.
+
+Icon/Text Style | Description                    
+----------------|-------------------------------------------------
+[hyperlink]()   | Clicking it takes you to the relevant section in this guide (except [here]() hyperlinks, which takes you to other sites).
+`Markdown`      | Represents a command/part of a command.
+(some icon)     | Clicking it takes you back to the Table of Contents.
+<div markdown="block" class="alert alert-info">:information_source:</div> | Represents a note for your information.
+<div markdown="block" class="alert alert-warning">:warning:</div> | Represents a warning for your caution.
+<div markdown="span" class="alert alert-primary">:bulb:</div> | Represents a tip for your benefit.
+
+Other than reading, you may also watch the demo video of Productiv [here](https://tiny.cc/Productiv-Demo-Video) to supplement this user guide.
+
+## 3. Getting started
+
+Ready to be productive? Follow the steps here to _get quacking with Productiv_:
+
+1. Ensure you have **Java 11** installed in your computer (it should be your default Java version).
+
+1. Download the latest **productiv.jar** file from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
+
+1. Copy the file to an empty folder.
+
+1. Double-click the file to launch Productiv. 
+
+## 4. Features
+
+Now that you have Productiv up and running, let's get familiarised with the features of Productiv.
+
+To enhance your product management, here are the 4 modes that are available to you:
+* **Dashboard**: Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
+* **Deliverable**: Helps you track your product’s deliverables so that you can aim better to meet them.
+* **Meeting**: Helps you manage your product-related meetings so that you can be clearer about your meeting schedule.
+* **Contact**: Helps you organise your developer or stakeholder contacts so that you can reference them easily.
    
-   Note: For modes other than the dashboard, you can see your file path at the bottom of your GUI. 
+Next, let's get acquainted with Productiv's application layout.
+If you have launched Productiv, you should see a window similar to the figure below.
+
+<p align="center">
+<img src="images/UiLabel.png" alt="Ui Label">
+<i>Figure 1: Layout of Productiv</i>
+</p>
+
+Here is the main list of Productiv's layout components and what you can do with them:
+   * **Navigation bar**: Navigate to other modes. 
+   * **Command box**: Enter your commands. 
+   * **Feedback box**: View success or error messages based on your commands.
+   * **Left panel**: View your product's overall completion percentage or a list of your deliverables/meetings/contacts (depending on your current mode)
+   * **Right panel**: View your product management schedule or an expanded view of your selected deliverable/meeting/contact (depending on your current mode)
+
+   <div markdown="block" class="alert alert-info">
+   **:information_source: GUI components:**<br>
+   For modes other than the dashboard, you can see the respective data file path at the bottom of the application. 
    </div>
 
-## 2. Quick start
-
-1. Ensure you have Java `11` installed in your computer (it should be your default Java version).
-
-1. Download the latest `productiv.jar` from [here](https://github.com/AY2021S1-CS2103T-F11-2/tp/releases).
-
-1. Copy the .jar file to an empty folder.
-
-1. From your terminal, navigate to the folder containing the .jar file and enter `java -jar productiv.jar` to start Productiv.
-Your dashboard should appear in a few seconds. 
-Note that the app contains some sample data.<br>
-
-<p align="center">
-
-<img src="images/Ui.png" alt="Dashboard">
-<i>Figure 2: Dashboard</i>
-   
-</p>
-
-1. Type a command in the command box and press Enter to execute it. 
-Here is a sequence of example commands you can try:<br>
+All that's left now is to execute some simple commands in Productiv!
+This can be done by typing in the command box and pressing the Enter key. 
+Here is a sequence of example commands that you can try:
 
    1. `switch dv`: Switches to deliverable mode.
-
-   1. `add t/Find profile page template by/11-12-2020 12:00 m/2.1.1`: Adds a deliverable with the 
-   title `Find profile page template`, deadline `11-12-2020 12:00` and milestone `2.1.1`.
-
+   
+   1. `view 1`: Displays the 1st deliverable shown.
+   
    1. `delete 1`: Deletes the 1st deliverable shown.
 
-   1. `exit`: Exits the app.
+And it's as simple as that! But of course, there's more to just these three commands.
 
-1. Refer to [Features](#3-features) below for details of each available command.
+## 5. Commands
 
---------------------------------------------------------------------------------------------------------------------
-## 3. Features
+This section provides a list of all the available commands you can use to improve your productivity.
+Do take your time to explore each one of them so that you can fully utilize the app.
+Ultimately, _Productiv is designed to make product management more convenient and powerful for you_.
 
-Excited about what Productiv can do for you? Here are the 4 main features of Productiv!
-1. [Dashboard](#32-dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
-1. [Deliverable](#33-deliverable) - Helps you track your product’s deliverables so that you can work better towards meeting them.
-1. [Meeting](#34-meeting) - Helps you manage your product-related meetings	so that you can be clear on your meeting schedule.
-1. [Contact](#35-contact) - Helps you organise your developer or stakeholder contacts so that you can reference them easily.
-
-
-**Listed below are the common components of a command:**<br>
+Now, let's first understand the common components found in a typical command:<br>
 
 Component | Description |
 ---------------------|------------|
@@ -731,9 +740,13 @@ Clears all contacts from your contact list, if any.
 
 Format: `clear`
 
+## 6. Final remarks
+
+(...)
+
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. FAQ
+## 7. FAQ
 
 **Q**: Is Productiv available on both Windows and Mac?<br>
 **A**: Absolutely! Just ensure that you have Java `11` installed on your computer and it is your default Java version.
@@ -749,9 +762,9 @@ Format: `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
-## 5.Command summary
+## 8.Command summary
 
-### 5.1 General 
+### 8.1 General 
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -759,7 +772,7 @@ Switch         | `switch MODE` | `switch dv`
 Help           | `help`        | `help`
 Exit           | `exit`        | `exit`
 
-### 5.2 Deliverable
+### 8.2 Deliverable
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -773,7 +786,7 @@ List           | `list`  | `list`
 Delete         | `delete INDEX`  |  `delete 3`
 Clear          | `clear` | `clear`
 
-### 5.3 Meeting
+### 8.3 Meeting
 
 Command        | Format        | Example
 ---------------|---------------|-----------------------------------------------------------------------------------
@@ -785,7 +798,7 @@ List           | `list`   | `list`
 Delete         | `delete INDEX`   |   `delete 3`
 Clear          | `clear`  | `clear`
 
-### 5.4 Contact
+### 8.4 Contact
 
 Command        | Format        | Example
 ---------------|--------------|-----------------------------------------------------------------------------------
@@ -799,7 +812,7 @@ Clear          | `clear`  | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
-## 6. Glossary
+## 9. Glossary
 
 Term                | Description
 --------------------------------|------------------------------------------------------------------------------------------------|
