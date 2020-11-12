@@ -629,12 +629,24 @@ Format: `clear`
 
 ## FAQ
 
-**Q**: How do I start using Productiv?<br>
-**A**: You can refer to our [Quick Start Guide](#quick-start).
+**Q**: Is Productiv available on both Windows and Mac?<br>
+**A**: Absolutely! Just ensure that you have Java `11` installed on your computer and it is your default Java version.
 
-**Q**: Which operating systems can I run Productiv on?<br>
-**A**: Currently, Productiv is supported on both Windows and Mac. Just ensure
-that you have Java `11` installed on your computer and it is your default Java version.
+**Q**: How many deliverables, meetings and contacts can I store in Productiv?<br>
+**A**: Productiv can support up to 1000 deliverables, 1000 meetings and 1000 contacts.
+
+**Q**: Can I transfer my data to another device?<br>
+**A**: You can transfer your data to another device as long as that device runs Productiv. Here are the steps:
+
+1. On both devices, navigate to the folder containing productiv.jar. You should see a folder ./data.
+    
+1. Proceed to copy over ./data from your original device to the device you want to transfer the data to.
+
+**Q**: Can I recover deleted deliverables, meetings and contacts?<br>
+**A**: Unfortunately, you won't be able to recover your deleted items so do be careful before deciding to delete any items!
+
+**Q**: Can I manage multiple products on Productiv?<br>
+**A**: Currently, Productiv is catered for a single product but future versions of Productiv will allow you to manage multiple products, so stay tuned!
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -642,59 +654,57 @@ that you have Java `11` installed on your computer and it is your default Java v
 
 ### General 
 
-Action         | Format, Examples
--------------- |--------------------------------------------------------------------------------------------------
-**Switch**     | `switch MODE` <br> e.g. `switch dv`
-**Help**       | `help`
-**Exit**       | `exit`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Switch         | `switch MODE` | `switch dv`
+Help           | `help`        | `help`
+Exit           | `exit`        | `exit`
 
 ### Deliverable
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields` 
-Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` <br> e.g. `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
-Mark as completed   | `done INDEX` <br> e.g. `done 3`
-Mark as on-going    | `undone INDEX` <br> e.g. `undone 1`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find Homepage urgent`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Add            | `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]` | `add t/Login screen by/10-10-2020 18:00 m/1.1 c/Jordan Woods, Betsy Crowe d/Include email and password fields`
+Edit           | `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRIPTION]` | `edit 1 by/14-12-2020 12:00 d/Must include username, email and password fields`
+Mark as completed   | `done INDEX` | `done 3`
+Mark as on-going    | `undone INDEX` | `undone 1`
+View           | `view INDEX`  |  `view 2`
+Find           | `find KEYWORDS`  |  `find Homepage urgent`
+List           | `list`  | `list`
+Delete         | `delete INDEX`  |  `delete 3`
+Clear          | `clear` | `clear`
 
 ### Meeting
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]` <br> e.g. `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe l/Meeting Room A d/Refine with business associates`
-Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]` <br> e.g. `edit 2 t/Discuss final release features d/Finalise dashboard functions`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find discuss user guide John`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|---------------|-----------------------------------------------------------------------------------
+Add            | `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`   |   `add t/Discuss app requirements from/11-12-2020 09:00 to/10:00 c/Jordan Woods, Betsy Crowe l/Meeting Room A d/Refine with business associates`
+Edit           | `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`   |   `edit 2 t/Discuss final release features d/Finalise dashboard functions`
+View           | `view INDEX`   |   `view 2`
+Find           | `find KEYWORDS`   |   `find discuss user guide John`
+List           | `list`   | `list`
+Delete         | `delete INDEX`   |   `delete 3`
+Clear          | `clear`  | `clear`
 
 ### Contact
 
-Action         | Format, Examples
----------------|------------------------
-Add            | `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]` <br> e.g. `add n/Johnny r/stk e/johnny@example.com p/12345678 d/Business Analyst`
-Edit           | `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]` <br> e.g. `edit 1 n/John r/dev e/john@email.com`
-View           | `view INDEX` <br> e.g. `view 2`
-Find           | `find KEYWORDS` <br> e.g. `find John Kite`
-List           | `list` 
-Delete         | `delete INDEX` <br> e.g. `delete 3`
-Clear          | `clear`
+Command        | Format        | Example
+---------------|--------------|-----------------------------------------------------------------------------------
+Add            | `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]`   |   `add n/Johnny r/stk e/johnny@example.com p/12345678 d/Business Analyst`
+Edit           | `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`   |   `edit 1 n/John r/dev e/john@email.com`
+View           | `view INDEX`   |   `view 2`
+Find           | `find KEYWORDS`   |   `find John Kite`
+List           | `list`   | `list`
+Delete         | `delete INDEX`   |   `delete 3`
+Clear          | `clear`  | `clear`
 
 ---------------------------------------------------------------------------------------------------------------------
 
 ## Glossary
 
-\# |            Term                | Description
----|--------------------------------|------------------------------------------------------------------------------------------------|
-1  | Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
-2  | Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |
-3  | Deliverable                    | An item to be completed as part of the product development process.                            |
-4  | Milestone                      | A stage in the software development process associated with a particular group of deliverables.|
-5  | Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
-6  | Stakeholder                    | An external party involved with the product.                                                   |
+Term                | Description
+--------------------------------|------------------------------------------------------------------------------------------------|
+Command Line Interface (CLI)   | A text-based user interface (UI) used to view and manage computer files.                       |
+Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |                         |
+Milestone                      | A stage in the software development process associated with a particular group of deliverables. It is a non-negative integer, or a period-separated string of non-negative integers. |
+Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
