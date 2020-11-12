@@ -67,13 +67,15 @@ Productiv has just become better for you. Nevertheless, Productiv still has the 
 
 ### 1.2 Preview
 To get you familiarised, see the following for Productiv's GUI. 
-
-   ![Ui](images/UiLabel.png)
-   <div style="text-align: left">
-   <i>Figure 1: Dashboard Components</i>
-   </div>
    
-   <div markdown="block" class="alert alert-info">
+<p align="center">
+  
+<img src="UiLabel.png" alt="Ui Label">
+<i>Figure 2: Dashboard Components.</i>
+  
+</p>
+   
+<div markdown="block" class="alert alert-info">
    
    **:information_source: GUI components:**<br>
    
@@ -88,7 +90,9 @@ To get you familiarised, see the following for Productiv's GUI.
    1. **Right panel**: where you can view <br>
       * your product management schedule (in dashboard mode), or <br>
       * an expanded view of your selected deliverable, meeting, or contact (in deliverable, meeting, or contact mode) <br>
-    
+
+   <div style="page-break-after: always;"></div>
+   
    Note: For modes other than the dashboard, you can see your file path at the bottom of your GUI. 
    </div>
 
@@ -104,10 +108,12 @@ To get you familiarised, see the following for Productiv's GUI.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
-   ![Ui](images/Ui.png)
-   <div style="text-align: left">
-   <i>Figure 2: Dashboard</i>
-   </div>
+   <p align="center">
+   
+   <img src="Ui.png" alt="Dashboard">
+   <i>Figure 2: Dashboard.</i>
+       
+   </p>
    
 1. Type a command in the command box and press Enter to execute it. 
 Here is a sequence of example commands you can try:<br>
@@ -169,10 +175,13 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 #### 3.1.2 Viewing help: `help`
 
 Shows a message directing you to this User Guide.
-![Figure 3.1.2.1: Help](images/helpMessage.JPG)
-<div style="text-align: left">
+
+<p align="center">
+   
+<img src="images/helpMessage.JPG" alt="Help message">
 <i>Figure 3.1.2.1: Help</i>
-</div>
+   
+</p>
 
 Format: `help`
 
@@ -207,11 +216,13 @@ You can only use commands found under [General](#31-general).
 </div>
 
 ### 3.3 Deliverable
-
-   ![Figure 3.3.0.1: Initial display of a deliverable list](images/Deliverable.png)
-   <div style="text-align: left">
-   <i>Figure 3.3.0.1: Initial display of a deliverable list</i>
-   </div>
+   
+<p align="center">
+  
+<img src="images/Deliverable.png" alt="Deliverable">
+<i>Figure 3.3.0.1: Initial display of a deliverable list</i>
+  
+</p>
 
 <div markdown="block" class="alert alert-info">
 
@@ -318,11 +329,13 @@ Parameter      | Description                   | Example
 
 Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
-
-   ![Figure 3.3.5.1 Viewing a deliverable](images/DeliverableView.png)
-   <div style="text-align: left">
-   <i>Figure 3.3.5.1: Viewing a deliverable</i>
-   </div>
+   
+<p align="center">
+ 
+<img src="images/DeliverableView.png" alt="Deliverable View">
+<i>Figure 3.3.5.1: Viewing a deliverable</i>
+ 
+</p>
    
 #### 3.3.6 Finding deliverables: `find`
 
@@ -371,11 +384,12 @@ Format: `clear`
 
 ### 3.4 Meeting
 
-   ![Figure 3.4.0.1: Initial display of a meeting list](images/Meeting.png)
-   <div style="text-align: left">
-   <i>Figure 3.4.0.1: Initial display of a meeting list</i>
-   </div>
-   
+<p align="center">
+ 
+<img src="images/Meeting.png" alt="Meeting">
+<i>Figure 3.4.0.1: Initial display of a meeting list</i>
+ 
+</p>
    
 <div markdown="block" class="alert alert-info">
 
@@ -458,11 +472,13 @@ Parameter      | Description                   | Example
 
 Example:
 * `view 2` views the 2nd meeting in your meeting list.
-
-   ![Figure 3.4.3.1: Viewing a meeting](images/MeetingView.png)
-   <div style="text-align: left">
-   <i>Figure 3.4.3.1: Viewing a meeting</i>
-   </div>
+   
+<p align="center">
+ 
+<img src="images/MeetingView.png" alt="Meeting View">
+<i>Figure 3.4.3.1: Viewing a meeting</i>
+ 
+</p>
 
 #### 3.4.4 Finding meetings: `find`
 
@@ -511,11 +527,13 @@ Format: `clear`
 
 ### 3.5 Contact
 
-   ![contact](images/Contact.png)
-   <div style="text-align: left">
-   <i>Figure 3.5.0.1: Initial display of a contact list</i>
-   </div>
-   
+<p align="center">
+ 
+<img src="images/Contact.png" alt="Contact">
+<i>Figure 3.5.0.1: Initial display of a contact list</i>
+ 
+</p>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:** You must be in the contact mode to execute the following commands. 
@@ -600,10 +618,12 @@ Parameter      | Description                   | Example
 Example:
 * `view 2` views the 2nd contact in your contact list.
 
-   ![Figure 3.5.3.1: Viewing a contact](images/ContactView.png)
-   <div style="text-align: left">
-   <i>Figure 3.5.3.1: Viewing a contact</i>
-   </div>
+<p align="center">
+ 
+<img src="images/ContactView.png" alt="Contact View">
+<i>Figure 3.5.3.1: Viewing a contact</i>
+ 
+</p>
 
 #### 3.5.4 Finding contacts: `find`
 
