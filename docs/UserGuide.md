@@ -71,7 +71,7 @@ To get you familiarised, see the following for Productiv's GUI.
 <p align="center">
   
 <img src="images/UiLabel.png" alt="Ui Label">
-<i>Figure 2: Dashboard Components.</i>
+<i>Figure 1: Dashboard components.</i>
   
 </p>
    
@@ -108,13 +108,13 @@ To get you familiarised, see the following for Productiv's GUI.
 Your dashboard should appear in a few seconds. 
 Note that the app contains some sample data.<br>
 
-   <p align="center">
+<p align="center">
+
+<img src="images/Ui.png" alt="Dashboard">
+<i>Figure 2: Dashboard</i>
    
-   <img src="images/Ui.png" alt="Dashboard">
-   <i>Figure 2: Dashboard.</i>
-       
-   </p>
-   
+</p>
+
 1. Type a command in the command box and press Enter to execute it. 
 Here is a sequence of example commands you can try:<br>
 
@@ -179,7 +179,7 @@ Shows a message directing you to this User Guide.
 <p align="center">
    
 <img src="images/helpMessage.JPG" alt="Help message">
-<i>Figure 3.1.2.1: Help</i>
+<i>Figure 3: Help</i>
    
 </p>
 
@@ -220,7 +220,7 @@ You can only use commands found under [General](#31-general).
 <p align="center">
   
 <img src="images/Deliverable.png" alt="Deliverable">
-<i>Figure 3.3.0.1: Initial display of a deliverable list</i>
+<i>Figure 4: Initial display of a deliverable list</i>
   
 </p>
 
@@ -333,7 +333,7 @@ Example:
 <p align="center">
  
 <img src="images/DeliverableView.png" alt="Deliverable View">
-<i>Figure 3.3.5.1: Viewing a deliverable</i>
+<i>Figure 5: Viewing a deliverable</i>
  
 </p>
    
@@ -387,7 +387,7 @@ Format: `clear`
 <p align="center">
  
 <img src="images/Meeting.png" alt="Meeting">
-<i>Figure 3.4.0.1: Initial display of a meeting list</i>
+<i>Figure 6: Initial display of a meeting list</i>
  
 </p>
    
@@ -476,7 +476,7 @@ Example:
 <p align="center">
  
 <img src="images/MeetingView.png" alt="Meeting View">
-<i>Figure 3.4.3.1: Viewing a meeting</i>
+<i>Figure 7: Viewing a meeting</i>
  
 </p>
 
@@ -530,7 +530,7 @@ Format: `clear`
 <p align="center">
  
 <img src="images/Contact.png" alt="Contact">
-<i>Figure 3.5.0.1: Initial display of a contact list</i>
+<i>Figure 8: Initial display of a contact list</i>
  
 </p>
 
@@ -621,7 +621,7 @@ Example:
 <p align="center">
  
 <img src="images/ContactView.png" alt="Contact View">
-<i>Figure 3.5.3.1: Viewing a contact</i>
+<i>Figure 9: Viewing a contact</i>
  
 </p>
 
