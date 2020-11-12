@@ -74,13 +74,32 @@ Here is a sequence of example commands you can try:<br>
 
 ## Features
 
-**Notes about the command format:**<br>
+Excited about what Productiv can do for you? Here are the 4 main features of Productiv!
+1. [Dashboard](#dashboard) - Gives you an overview of your product’s development and upcoming events so that you can work better towards production deadlines.
+1. [Deliverable](#deliverable) - Helps you track your product’s deliverables so that you can work better towards meeting them.
+1. [Meeting](#meeting) - Helps you manage your product-related meetings	so that you can be clear on your meeting schedule.
+1. [Contact](#contact) - Helps you organise your developer or stakeholder contacts so that you can reference them easily.
 
-* Words in upper case are the parameters to be supplied by you for their respective fields.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter for the name field `n`, which can be used as `add n/Jason`.
 
-* Field-parameter pairs in square brackets are optional.<br>
-  e.g `n/NAME [p/PHONE]` can be used as `n/Jason p/98890112` or as `n/Jason`.
+**Listed below are the common components of a command:**<br>
+
+Component of Command | Description |
+---------------------|------------|
+Command word | The first word of a command. It is the action that you want to perform. |
+Prefix | The characters before the parameter. It is the short-form of the corresponding field. |
+Parameter |	The words following each prefix. It represents the value of the corresponding field. |
+
+For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`:
+* Command word - `add`
+* Prefixes - `t/`, `by/`, `m/`, `c/`, `d/`
+* Parameters - `TITLE`, `DEADLINE`, `MILESTONE`, `CONTACTS`, `DESCRIPTION`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:** Field-parameter pairs in square brackets are optional.
+e.g. `[c/CONTACTS]` and `[d/DESCRIPTION]` are optional.
+
+</div>
 
 
 ### General
@@ -198,16 +217,11 @@ Parameter      | Description                   | Example
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**
+**:information_source: Notes:**
 
 * At least one of the fields of the deliverable must be changed.
 * You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st deliverable.
-
-</div>
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
+* The dashboard’s Schedule will be updated accordingly.
 
 </div>
 
@@ -635,13 +649,6 @@ Format: `clear`
 **Q**: How many deliverables, meetings and contacts can I store in Productiv?<br>
 **A**: Productiv can support up to 1000 deliverables, 1000 meetings and 1000 contacts.
 
-**Q**: Can I transfer my data to another device?<br>
-**A**: You can transfer your data to another device as long as that device runs Productiv. Here are the steps:
-
-1. On both devices, navigate to the folder containing productiv.jar. You should see a folder ./data.
-    
-1. Proceed to copy over ./data from your original device to the device you want to transfer the data to.
-
 **Q**: Can I recover deleted deliverables, meetings and contacts?<br>
 **A**: Unfortunately, you won't be able to recover your deleted items so do be careful before deciding to delete any items!
 
@@ -708,3 +715,4 @@ Command Line Interface (CLI)   | A text-based user interface (UI) used to view a
 Graphical User Interface (GUI) | A system of interactive visual components for computer software.                               |                         |
 Milestone                      | A stage in the software development process associated with a particular group of deliverables. It is a non-negative integer, or a period-separated string of non-negative integers. |
 Mode                           | The state of the application that affects how each command will be executed. The app can be in dashboard, deliverable, meeting or contact mode.                                                  |
+Overall Completion Percentage (OCP) | A donut chart showing the product’s completion status, found on the left panel of the dashboard mode. |
