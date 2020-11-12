@@ -71,7 +71,7 @@ To get you familiarised, see the following for Productiv's GUI.
 <p align="center">
   
 <img src="images/UiLabel.png" alt="Ui Label">
-<i>Figure 1: Dashboard components.</i>
+<i>Figure 1: Dashboard components</i>
   
 </p>
    
