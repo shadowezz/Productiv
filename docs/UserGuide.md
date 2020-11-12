@@ -155,9 +155,9 @@ Switches to dashboard, deliverable, meeting or contact mode.
 
 Format: `switch MODE`
 
-Parameter      | Description                  | 
----------------|------------------------------|
-`MODE`         | The mode to be navigated to. <br/> It can be either:  <br>&emsp;&bull;`db` (dashboard)<br>&emsp;&bull;`dv` (deliverable)<br>&emsp;&bull;`m`(meeting) or<br>&emsp;&bull;`c` (contact)
+Parameter      | Description                  | Examples
+---------------|------------------------------| --------------------------------
+`MODE`         | The mode that you wish to navigate to. <br><br> It can be only be one of the following:  <br>&emsp;&bull; Dashboard<br> &emsp;&bull; Deliverable<br> &emsp;&bull; Meeting<br> &emsp;&bull; Contact | The following are the only valid inputs:<br>&emsp;&bull;`db` (Dashboard)<br> &emsp;&bull;`dv` (Deliverable)<br> &emsp;&bull;`m` (Meeting)<br> &emsp;&bull;`c` (Contact)
 
 <div markdown="block" class="alert alert-info">
 
@@ -226,13 +226,13 @@ Adds a deliverable to your deliverable list.
 
 Format: `add t/TITLE by/DEADLINE m/MILESTONE [c/CONTACTS] [d/DESCRIPTION]`
 
-Parameter      | Description                   | Example 
+Parameter      | Description                   | Example(s)
 ---------------|-------------------------------|--------------------------------
-`TITLE`        | The main heading of the deliverable.| `Create login screen`
-`DEADLINE`     | The due date time of the deliverable.<br><br>Details:<br>&emsp;&bull;It must not be earlier than the year 2019.<br>&emsp;&bull;It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00`
-`MILESTONE`    | The milestone tagged to the deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integer. | <br>&emsp;&bull;`2`<br>&emsp;&bull;`14.2.1`
-`CONTACTS`     | The contact(s) involved in seeing through the deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&emsp;&bull;`conan`<br>&emsp;&bull;`Zachary, drew, Paul Smith`
-`DESCRIPTION`  | Additional information about the deliverable.|`Remember to include email and password fields`
+`TITLE`        | The main heading of your deliverable.| `Create login screen`
+`DEADLINE`     | The due date time of your deliverable.<br><br>Details:<br>&emsp;&bull; It must not be earlier than the year 2019.<br>&emsp;&bull; It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00`
+`MILESTONE`    | The milestone tagged to your deliverable.<br><br>Detail:<br/>It is a non-negative integer, or a period-separated string of non-negative integers. | <br>&bull;`2`<br>&bull;`14.2.1`
+`CONTACTS`     | The contact(s) involved in seeing through your deliverable.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&bull;`conan`<br>&bull;`Zachary, drew, Paul Smith`
+`DESCRIPTION`  | Any additional information about your deliverable.|`Remember to include email and password fields`
 
 <div markdown="block" class="alert alert-warning">
 
@@ -257,7 +257,7 @@ Format: `edit INDEX [t/TITLE] [by/DEADLINE] [m/MILESTONE] [c/CONTACTS] [d/DESCRI
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable to be edited in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
+`INDEX`        | The index number of the deliverable you wish to edit in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st deliverable in your list
 
 <div markdown="block" class="alert alert-info">
 
@@ -288,7 +288,7 @@ Format: `done INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable to be marked as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
+`INDEX`        | The index number of the deliverable you wish to mark as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
 Example:
 * `done 1` marks the 1st deliverable in your displayed deliverable list as completed.
@@ -301,7 +301,7 @@ Format: `undone INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable to be marked as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
+`INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents deliverable with index 2 in your list
 
 Example:
 * `undone 1` marks the 1st deliverable in your displayed deliverable list as on-going.
@@ -314,7 +314,7 @@ Format: `view INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the deliverable in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents deliverable with index 2 in the list
+`INDEX`        | The index number of the deliverable you wish to view in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
 Example:
 * `view 2` views the 2nd deliverable in your displayed deliverable list.
@@ -332,7 +332,7 @@ Format: `find KEYWORDS`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br>Details:<br>&emsp;&bull;Searches based on title and description.<br>&emsp;&bull;Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: can match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
+`KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
 Examples:
 * `find mock-up urgent` returns a deliverable with title `Finish mock-ups` and another with description `This is urgent and important!`.
@@ -354,9 +354,11 @@ Refer to [Finding deliverables](#336-finding-deliverables---find-) above for det
 
 Deletes the specified deliverable from your deliverable list.
 
+Format: `delete INDEX`
+
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`KEYWORDS`     | The index number of the deliverable to be deleted in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: represents deliverable with index 2 in the list
+`INDEX`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
 
 Example:
 * `delete 2` deletes the 2nd deliverable in your deliverable list.
@@ -386,14 +388,16 @@ Refer to [switch](#311-switching-modes---switch-) for more information.
 
 Adds a meeting to your meeting list.
 
-Parameter      | Description                   | Example 
+Format: `add t/TITLE from/FROM to/TO [c/CONTACTS] [l/LOCATION] [d/DESCRIPTION]`
+
+Parameter      | Description                   | Example(s) 
 ---------------|-------------------------------|--------------------------------
-`TITLE`        | The main heading of the meeting.| `Daily stand-up meeting`
-`FROM`         | The start date and time of the meeting.<br><br>Details:<br>&emsp;&bull;It must not be earlier than the year 2019.<br>&emsp;&bull;It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00` |
-`TO`           | The end time of the meeting.<br><br>Detail:<br/>It is in HH:mm format. |`20:OO`
-`CONTACTS`     | The contact(s) involved in the meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&emsp;&bull;`Louisa Kennedy`<br>&emsp;&bull;`Nancy, Abraham, Sarah`
-`LOCATION`     | The location of the meeting. | `Meeting room 1B`
-`DESCRIPTION`  | The additional information about the meeting.|`Remember to plan the agenda before the meeting`
+`TITLE`        | The main heading of your meeting.| `Daily stand-up meeting`
+`FROM`         | The start date and time of your meeting.<br><br>Details:<br>&emsp;&bull; It must not be earlier than the year 2019.<br>&emsp;&bull; It is in dd-MM-yyyy HH:mm format.| `30-12-2020 18:00` |
+`TO`           | The end time of your meeting.<br><br>Detail:<br/>It is in HH:mm format. |`20:OO`
+`CONTACTS`     | The contact(s) involved in your meeting.<br><br>Detail: <br/>It is a name, or a comma-separated string of names. | <br>&bull;`Louisa Kennedy`<br>&bull;`Nancy, Abraham, Sarah`
+`LOCATION`     | The location of your meeting. | `Meeting room 1B`
+`DESCRIPTION`  | Any additional information about your meeting.|`Remember to plan the agenda before the meeting`
 
 <div markdown="block" class="alert alert-info">
 
@@ -419,14 +423,14 @@ Format: `edit INDEX [t/TITLE] [from/FROM] [to/TO] [c/CONTACTS] [l/LOCATION] [d/D
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the meeting to be edited in your displayed deliverable list. <br><br>Details:<br>It must be a positive integer. |`1`: represents deliverable with index 1 in the list
+`INDEX`        | The index number of the meeting you wish to edit in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st meeting in your list
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**
 
-* At least one of the fields of the meeting must be changed.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st meeting.
+* At least one of the fields of your meeting must be changed.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of your 1st meeting.
 
 </div>
 
@@ -450,7 +454,7 @@ Format: `view INDEX`
 
 Parameter      | Description                   | Example 
 ---------------|-------------------------------|--------------------------------
-`INDEX`        | The index number of the meeting to be viewed in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`2`: represents meeting with index 2 in the list
+`INDEX`        | The index number of the meeting you wish to view in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd meeting in your list
 
 Example:
 * `view 2` views the 2nd meeting in your meeting list.
@@ -465,12 +469,10 @@ Example:
 Finds the meetings whose titles or descriptions contain any of the given keywords.
 
 Format: `find KEYWORDS`
-* `KEYWORDS` contains one or more keywords used to match meetings.
-* Searches only consider title and description.
-* Searches are case-insensitive, e.g. `version` will match `Version`.
-* Order of keywords does not matter, e.g. `v1.2 mid` will match `mid v1.2`.
-* Searches only account for full words, e.g. `Meeting` will not match `Meetings`.
-* Searches return meetings matching at least one keyword, e.g. `Complete game` will return `Complete features` and `Final game`.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`KEYWORDS`     | One or more keywords used to search for the meetings you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `discussion` will match `Discussion`.| `Consult mentor`: Will match phrases such as `Consult advisor` and `Pitch to mentor`
 
 Examples:
 * `find Survey` returns a meeting with title `Survey potential customers` and another with description `Don't forget to present survey results.`.
@@ -493,8 +495,10 @@ Refer to [Finding meetings](#finding-meetings-find) above for details of the `fi
 Deletes the specified meeting from your displayed meeting list.
 
 Format: `delete INDEX`
-* `INDEX` is the index number of the meeting in your displayed meeting list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
 
 Example:
 * `delete 3` deletes the 3rd meeting in your displayed meeting list.
@@ -524,19 +528,14 @@ Refer to [switch](#311-switching-modes---switch-) for more information.
 Adds a developer or stakeholder to your contact list.
 
 Format: `add n/NAME r/ROLE e/EMAIL [p/PHONE] [d/DESCRIPTION]`
-* `NAME` is the name of the contact. 
-* `NAME` should only take alphabetic characters and (optionally) spaces.
-* `ROLE` is the type of contact, either `dev` (developer) or `stk` (stakeholder).
-* `EMAIL` is the email address of the contact.
-* `PHONE` is the phone number of the contact.
-* `PHONE` should only contain numbers, and must be at least 3-digits long.
-* `DESCRIPTION` contains additional information about the contact, such as their job position.
 
-<div markdown="block" class="alert alert-warning">
-
-**:warning: Warning:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
-  
-</div>
+Parameter      | Description                   | Example(s) 
+---------------|-------------------------------|--------------------------------
+`NAME`         | The name of your contact.| `James Tan`
+`ROLE`         | Your contact can only belong to one of the two roles:<br>&emsp;&bull; Developer <br>&emsp;&bull; Stakeholder | Only the following inputs are valid: <br>&emsp;&bull;`dev` (Developer)<br>&emsp;&bull;`stk` (Stakeholder)
+`EMAIL`        | The email address of your contact |`james_tan@gmail.com`
+`PHONE`        | The mobile or office number of your contact | `81234567`
+`DESCRIPTION`  | Any additional information about your contact, such as job position.|`CEO of Carousell`
 
 <div markdown="span" class="alert alert-primary">:bulb:
 
@@ -550,21 +549,30 @@ adds a developer with the name `Jordan Woods`, email `jordanwoods@glutter.com` a
 * `add n/Betsy Crowe r/stk e/betsybet872@pmail.com`
 adds a stakeholder with the name `Betsy Crowe` and email `betsybet872@pmail.com`.
 
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot add a contact with the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
 #### 3.5.2 Editing a contact: `edit`
 
 Edits an existing contact in your displayed contact list.
 
 Format: `edit INDEX [n/NAME] [r/ROLE] [e/EMAIL] [p/PHONE] [d/DESCRIPTION]`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
-* At least one of the fields of the contact must be changed.
-* The existing values of the specified contact will be updated to the input values.
-* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of the 1st contact.
 
-<div markdown="block" class="alert alert-warning">
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the contact you wish to edit in your displayed deliverable list. <br><br>Details:<br>It must be a positive integer. |`1`: Represents the 1st contact in your list
 
-**:warning: Warning:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
-  
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**
+
+* At least one of the fields of your contact must be changed.
+* You can clear an optional field by inputting an empty parameter, e.g. `edit 1 d/` will empty the description of your 1st contact.
+
 </div>
 
 Examples:
@@ -573,13 +581,21 @@ edits the email and phone number of the 1st contact to be `jeremysand@glutter.co
 *  `edit 2 p/` 
 clears the optional phone field of the 2nd contact.
 
+<div markdown="block" class="alert alert-warning">
+
+**:warning: Warning:** You cannot edit a contact to have the same `NAME` and `EMAIL` as an existing contact.
+  
+</div>
+
 #### 3.5.3 Viewing a contact: `view`
 
 Displays more details of the specified contact from your displayed contact list.
 
 Format: `view INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`        | The index number of the contact you wish to view in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd contact in your list
 
 Example:
 * `view 2` views the 2nd contact in your contact list.
@@ -594,12 +610,10 @@ Example:
 Finds the contacts whose names or descriptions contain any of the given keywords.
 
 Format: `find KEYWORDS`
-* `KEYWORDS` contains one or more keywords used to match contacts.
-* Searches only consider name and description.
-* Searches are case-insensitive, e.g. `hans` will match `Hans`.
-* Order of keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
-* Searches only account for full words, e.g. `Han` will not match `Hans`.
-* Searches return contacts matching at least one keyword, e.g. `Hans Bo` will return `Hans Seed` and `Bo Yarns`.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`KEYWORDS`     | One or more keywords used to search for the contacts you need. <br><br>Details:<br>&emsp;&bull; Searches based on name and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `james` will match `James`.| `James designer`: Will match phrases such as `James Tan` and `Graphic designer`
 
 Examples:
 * `find alex yeoh` returns a contact with name `Alex Yeoh` and another with description `Business analyst. Alex works with him.`.
@@ -622,8 +636,10 @@ Refer to [Finding contacts](#354-finding-contacts---find-) above for details of 
 Deletes the specified contact from your displayed contact list.
 
 Format: `delete INDEX`
-* `INDEX` is the index number of the contact in your displayed contact list.
-* `INDEX` must be a positive integer.
+
+Parameter      | Description                   | Example 
+---------------|-------------------------------|--------------------------------
+`INDEX`     | The index number of the contact you wish to delete in your displayed contact list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd contact in your list
 
 Example:
 * `delete 3` deletes the 3rd contact in the displayed contact list.
