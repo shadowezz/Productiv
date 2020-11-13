@@ -84,7 +84,7 @@ Icon/Text Style | Description
 (some icon)     | Clicking it takes you back to the Table of Contents.
 <div markdown="block" class="alert alert-info">:information_source:</div> | Represents a note for your information.
 <div markdown="block" class="alert alert-warning">:warning:</div> | Represents a warning for your caution.
-<div markdown="span" class="alert alert-primary">:bulb:</div> | Represents a tip for your benefit.
+<div markdown="span" class="alert alert-success">:bulb:</div> | Represents a tip for your benefit.
 
 Other than reading, you may also watch the demo video of Productiv [here](https://tiny.cc/Productiv-Demo-Video) to supplement this user guide.
 
@@ -380,7 +380,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the deliverables you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `homepage` will match `Homepage`.| `Homepage Navigation`: Will match phrases such as `Complete homepage` and `Increase size of Navigation Bar`
 
-<div markdown="span" class="alert alert-primary">:bulb:
+<div markdown="span" class="alert alert-success">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your deliverables back after using the `find` command.
 Refer to [Listing all deliverables](#337-listing-all-deliverables---list-) below for details of the `list` command.
@@ -548,7 +548,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the meetings you need. <br><br>Details:<br>&emsp;&bull; Searches based on title and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `discussion` will match `Discussion`.| `Consult mentor`: Will match phrases such as `Consult advisor` and `Pitch to mentor`
 
-<div markdown="span" class="alert alert-primary">:bulb:
+<div markdown="span" class="alert alert-success">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your meetings back after using the `find` command.
 Refer to [Listing all meetings](#345-listing-all-meetings---list-) below for details of the `list` command.
@@ -625,7 +625,7 @@ Parameter      | Description                   | Example(s)
 `PHONE`        | The mobile or office number of your contact | `81234567`
 `DESCRIPTION`  | Any additional information about your contact, such as job position.|`CEO of Carousell`
 
-<div markdown="span" class="alert alert-primary">:bulb:
+<div markdown="span" class="alert alert-success">:bulb:
 
 **Tip:** Leave out the + sign for `PHONE`s with country codes.
 
@@ -705,7 +705,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `KEYWORDS`     | One or more keywords used to search for the contacts you need. <br><br>Details:<br>&emsp;&bull; Searches based on name and description.<br>&emsp;&bull; Searches are case-insensitive, <br>&emsp;&nbsp;e.g. `james` will match `James`.| `James designer`: Will match phrases such as `James Tan` and `Graphic designer`
 
-<div markdown="span" class="alert alert-primary">:bulb:
+<div markdown="span" class="alert alert-success">:bulb:
 
 **Tip:** Use the `list` command when you want to list all your contacts back after using the `find` command.
 Refer to [Listing all contacts](#355-listing-all-contacts---list-) below for details of the `list` command.
