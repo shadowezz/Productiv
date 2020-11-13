@@ -2,6 +2,34 @@
 layout: page
 title: User Guide
 ---
+
+<div>
+    <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="500px" height="500px">
+</div>
+
+<div>
+    <p style= "text-align: left">
+    <h1>
+    <span style = "color: #28a745;">Productiv
+    </span>
+    </h1>
+    </p>
+</div>
+
+<div>
+    <p style= "text-align: left">
+    <span style = "color: #28a745;">Get quackin with productiv!
+    </span>
+    </p>
+</div>
+
+Contributors
+- Merlin Lim En Sheng
+- Gabriel
+- Chrystal
+- Clara
+- Wenjie 
+
 <div style="page-break-after: always;"></div>
 
 ## Table of Contents
@@ -117,6 +145,7 @@ If you have launched Productiv, you should see a window similar to the figure be
 <img src="images/UiLabel.png" alt="Ui Label">
 <i>Figure 1: Layout of Productiv</i>
 </p>
+<br>
 
 Here is the main list of Productiv's layout components and what you can do with them:
    * **Navigation bar**: Navigate to other modes. 
@@ -188,14 +217,15 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 #### 3.1.2 Viewing help: `help`
 
-Shows a message directing you to this User Guide.
+Shows a message directing you to this User Guide.<br>
 
 <p align="center">
    
-<img src="images/helpMessage.JPG" alt="Help message">
+<img src="images/helpMessage.JPG" alt="Help message"><br>
 <i>Figure 3: Help</i>
    
 </p>
+<br>
 
 Format: `help`
 
@@ -237,6 +267,7 @@ You can only use commands found under [General](#31-general).
 <i>Figure 4: Initial display of a deliverable list</i>
   
 </p>
+<br>
 
 <div markdown="block" class="alert alert-info">
 
@@ -435,6 +466,7 @@ Format: `clear`
 <i>Figure 6: Initial display of a meeting list</i>
  
 </p>
+<br>
    
 <div markdown="block" class="alert alert-info">
 
@@ -537,6 +569,7 @@ Example:
 <i>Figure 7: Viewing a meeting</i>
  
 </p>
+<br>
 
 #### 3.4.4 Finding meetings: `find`
 
@@ -603,6 +636,7 @@ Format: `clear`
 <i>Figure 8: Initial display of a contact list</i>
  
 </p>
+<br>
 
 <div markdown="block" class="alert alert-info">
 
@@ -694,6 +728,7 @@ Example:
 <i>Figure 9: Viewing a contact</i>
  
 </p>
+<br>
 
 #### 3.5.4 Finding contacts: `find`
 
