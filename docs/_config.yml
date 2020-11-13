@@ -1,6 +1,9 @@
 title: "Productiv"
 theme: minima
 
+header_pages:
+  - UserGuide.md
+
 markdown: kramdown
 
 repository: "AY2021S1-CS2103T-F11-2/tp"
