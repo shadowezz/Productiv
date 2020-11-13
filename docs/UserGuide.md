@@ -112,7 +112,7 @@ Icon/Text Style | Description
 :--------------:|-------------------------------------------------
 [hyperlink]()   | Clicking it takes you to the relevant section in this guide (except [here]() hyperlinks, which takes you to other sites).
 `Markdown`      | Represents a command/part of a command.
-<img src="images/productivDuck.png" style="align:center;width:30px;height:30px;" alt="duck">     | Clicking it takes you back to the Table of Contents.
+[<img src="images/productivDuck.png" style="width:30px;height:30px;" alt="duck">](#table-of-contents)     | Clicking it takes you back to the Table of Contents.
 <div markdown="block" class="alert alert-success">:information_source:</div> | Represents a note for your information.
 <div markdown="block" class="alert alert-warning">:warning:</div> | Represents a warning for your caution.
 <div markdown="span" class="alert alert-primary">:bulb:</div> | Represents a tip for your benefit.
