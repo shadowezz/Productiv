@@ -2,6 +2,9 @@
 layout: page
 title: User Guide
 ---
+
+## **Table of Contents**
+
 * Table of Contents
 {:toc}
 
@@ -150,7 +153,7 @@ You can only use commands found under [General](#general).
   
 </div>
 
-### Deliverable
+### Deliverable [<img src="images/Deliverable.png">](#table-of-contents)
 
    ![Ui](images/Deliverable.png)
    <figcaption>Initial display of a deliverable list </figcaption>
