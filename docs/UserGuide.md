@@ -2,6 +2,37 @@
 layout: page
 title: User Guide
 ---
+<div>
+<p align = "center">
+    <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="300px" height="300px">
+</p>
+</div>
+
+<div>
+    <p style= "text-align: center">
+    <h1 style = "text-align: center">
+    <span style = "color: #00c853; font-size: 60px" >Productiv
+    </span>
+    </h1>
+    </p>
+</div>
+<div>
+    <p style= "text-align: center">
+    <span style = "font-size: 30px">Get Quacking with
+    </span>
+    <span style = "font-size: 30px; color : #00c853"> Productiv!
+    </span>
+    </p>
+</div>
+<div>
+    <h1 style = "text-align: center"><strong>Contributors</strong></h1>
+    <p style= "text-align: center">Merlin Lim</p>
+    <p style= "text-align: center">Gabriel Tan</p>
+    <p style= "text-align: center">Chrystal Quek</p>
+    <p style= "text-align: center">Clara Adora</p>
+    <p style= "text-align: center">Cao Wenjie</p>
+</div>
+
 <div style="page-break-after: always;"></div>
 
 ## Table of Contents
@@ -117,6 +148,7 @@ If you have launched Productiv, you should see a window similar to the figure be
 <img src="images/UiLabel.png" alt="Ui Label">
 <i>Figure 1: Layout of Productiv</i>
 </p>
+<br>
 
 Here is the main list of Productiv's layout components and what you can do with them:
    * **Navigation bar**: Navigate to other modes. 
@@ -188,14 +220,17 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 #### 3.1.2 Viewing help: `help`
 
-Shows a message directing you to this User Guide.
+Shows a message directing you to this User Guide.<br>
 
+<div align = "left">
 <p align="center">
    
-<img src="images/helpMessage.JPG" alt="Help message">
+<img src="images/helpMessage.JPG" alt="Help message"><br>
 <i>Figure 3: Help</i>
    
 </p>
+</div>
+<br>
 
 Format: `help`
 
@@ -237,6 +272,7 @@ You can only use commands found under [General](#31-general).
 <i>Figure 4: Initial display of a deliverable list</i>
   
 </p>
+<br>
 
 <div markdown="block" class="alert alert-success">
 
@@ -435,6 +471,7 @@ Format: `clear`
 <i>Figure 6: Initial display of a meeting list</i>
  
 </p>
+<br>
    
 <div markdown="block" class="alert alert-success">
 
@@ -537,6 +574,7 @@ Example:
 <i>Figure 7: Viewing a meeting</i>
  
 </p>
+<br>
 
 #### 3.4.4 Finding meetings: `find`
 
@@ -603,6 +641,7 @@ Format: `clear`
 <i>Figure 8: Initial display of a contact list</i>
  
 </p>
+<br>
 
 <div markdown="block" class="alert alert-success">
 
@@ -694,6 +733,7 @@ Example:
 <i>Figure 9: Viewing a contact</i>
  
 </p>
+<br>
 
 #### 3.5.4 Finding contacts: `find`
 
