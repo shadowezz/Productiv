@@ -2,6 +2,37 @@
 layout: page
 title: User Guide
 ---
+<div>
+<p align = "center">
+    <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="300px" height="300px">
+</p>
+</div>
+
+<div>
+    <p style= "text-align: center">
+    <h1 style = "text-align: center">
+    <span style = "color: #00c853; font-size: 60px" >Productiv
+    </span>
+    </h1>
+    </p>
+</div>
+<div>
+    <p style= "text-align: center">
+    <span style = "font-size: 30px">Get Quacking with
+    </span>
+    <span style = "font-size: 30px; color : #00c853"> Productiv!
+    </span>
+    </p>
+</div>
+<div>
+    <h1 style = "text-align: center"><strong>Contributors</strong></h1>
+    <p style= "text-align: center">Merlin Lim</p>
+    <p style= "text-align: center">Gabriel Tan</p>
+    <p style= "text-align: center">Chrystal Quek</p>
+    <p style= "text-align: center">Clara Adora</p>
+    <p style= "text-align: center">Cao Wenjie</p>
+</div>
+
 <div style="page-break-after: always;"></div>
 
 ## Table of Contents
@@ -82,7 +113,7 @@ Icon/Text Style | Description
 [hyperlink]()   | Clicking it takes you to the relevant section in this guide (except [here]() hyperlinks, which takes you to other sites).
 `Markdown`      | Represents a command/part of a command.
 <img src="images/productivDuck.png" style="align:center;width:30px;height:30px;" alt="duck">     | Clicking it takes you back to the Table of Contents.
-<div markdown="block" class="alert alert-info">:information_source:</div> | Represents a note for your information.
+<div markdown="block" class="alert alert-success">:information_source:</div> | Represents a note for your information.
 <div markdown="block" class="alert alert-warning">:warning:</div> | Represents a warning for your caution.
 <div markdown="span" class="alert alert-primary">:bulb:</div> | Represents a tip for your benefit.
 
@@ -117,6 +148,7 @@ If you have launched Productiv, you should see a window similar to the figure be
 <img src="images/UiLabel.png" alt="Ui Label">
 <i>Figure 1: Layout of Productiv</i>
 </p>
+<br>
 
 Here is the main list of Productiv's layout components and what you can do with them:
    * **Navigation bar**: Navigate to other modes. 
@@ -125,7 +157,7 @@ Here is the main list of Productiv's layout components and what you can do with 
    * **Left panel**: View your product's overall completion percentage or a list of your deliverables/meetings/contacts (depending on your current mode)
    * **Right panel**: View your product management schedule or an expanded view of your selected deliverable/meeting/contact (depending on your current mode)
 
-   <div markdown="block" class="alert alert-info">
+   <div markdown="block" class="alert alert-success">
    **:information_source: GUI components:**<br>
    For modes other than the dashboard, you can see the respective data file path at the bottom of the application. 
    </div>
@@ -161,7 +193,7 @@ For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILE
 * Prefixes - `t/`, `by/`, `m/`, `c/`, `d/`
 * Parameters - `TITLE`, `DEADLINE`, `MILESTONE`, `CONTACTS`, `DESCRIPTION`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** Prefix-parameter pairs in square brackets are optional, i.e. `[c/CONTACTS]` and `[d/DESCRIPTION]` need not be present in the command.
 
@@ -179,7 +211,7 @@ Parameter      | Description                  | Examples
 ---------------|------------------------------| --------------------------------
 `MODE`         | The mode that you wish to navigate to. <br><br> It can be only be one of the following:  <br>&emsp;&bull; Dashboard<br> &emsp;&bull; Deliverable<br> &emsp;&bull; Meeting<br> &emsp;&bull; Contact | The following are the only valid inputs:<br>&emsp;&bull;`db` (Dashboard)<br> &emsp;&bull;`dv` (Deliverable)<br> &emsp;&bull;`m` (Meeting)<br> &emsp;&bull;`c` (Contact)
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** How the commands will be executed depend on which mode you are currently in, 
 e.g. `delete 1` in meeting mode deletes the 1st meeting shown.). 
@@ -188,14 +220,17 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 #### 3.1.2 Viewing help: `help`
 
-Shows a message directing you to this User Guide.
+Shows a message directing you to this User Guide.<br>
 
+<div align = "left">
 <p align="center">
    
-<img src="images/helpMessage.JPG" alt="Help message">
+<img src="images/helpMessage.JPG" alt="Help message"><br>
 <i>Figure 3: Help</i>
    
 </p>
+</div>
+<br>
 
 Format: `help`
 
@@ -222,7 +257,7 @@ The Overall Completion Percentage (OCP) will be displayed in the left panel. The
 Your schedule will be displayed in the right panel. The schedule contains all your deliverables and meetings, chronologically sorted.
 
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** There are no commands specific to the dashboard. 
 You can only use commands found under [General](#31-general). 
@@ -237,8 +272,9 @@ You can only use commands found under [General](#31-general).
 <i>Figure 4: Initial display of a deliverable list</i>
   
 </p>
+<br>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** You must be in the deliverable mode to execute the following commands. 
 Refer to [switch](#311-switching-modes---switch-) for more information.
@@ -267,7 +303,7 @@ Parameter      | Description                   | Example(s)
 
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
 
@@ -290,7 +326,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable you wish to edit in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`1`: Represents the 1st deliverable in your list
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Notes:**
 
@@ -322,7 +358,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable you wish to mark as completed in your displayed deliverable list. <br><br>Detail: <br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
 
@@ -341,7 +377,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`        | The index number of the deliverable you wish to mark as on-going in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. |`2`: Represents the 2nd deliverable in your list
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
 
@@ -407,7 +443,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the deliverable you wish to delete in your displayed deliverable list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd deliverable in your list
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
 
@@ -422,7 +458,7 @@ Clears all deliverables from your deliverable list, if any.
 
 Format: `clear`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s OCP and Schedule will be updated accordingly.
 
@@ -436,8 +472,9 @@ Format: `clear`
 <i>Figure 6: Initial display of a meeting list</i>
  
 </p>
+<br>
    
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** You must be in the meeting mode to execute the following commands. 
 Refer to [switch](#311-switching-modes---switch-) for more information.
@@ -459,7 +496,7 @@ Parameter      | Description                   | Example(s)
 `LOCATION`     | The location of your meeting. | `Meeting room 1B`
 `DESCRIPTION`  | Any additional information about your meeting.|`Remember to plan the agenda before the meeting`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:warning: Warning:**<br>
 
@@ -467,7 +504,7 @@ Parameter      | Description                   | Example(s)
   
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
 
@@ -497,7 +534,7 @@ Parameter      | Description                   | Example
 
 </div>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Notes:**
 
@@ -538,6 +575,7 @@ Example:
 <i>Figure 7: Viewing a meeting</i>
  
 </p>
+<br>
 
 #### 3.4.4 Finding meetings: `find`
 
@@ -575,7 +613,7 @@ Parameter      | Description                   | Example
 ---------------|-------------------------------|--------------------------------
 `INDEX`     | The index number of the meeting you wish to delete in your displayed meeting list. <br><br>Detail:<br>It must be a positive integer. | `2`: Represents the 2nd meeting in your list
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
 
@@ -590,7 +628,7 @@ Clears all meetings from your meeting list, if any.
 
 Format: `clear`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** The dashboard’s Schedule will be updated accordingly.
 
@@ -604,8 +642,9 @@ Format: `clear`
 <i>Figure 8: Initial display of a contact list</i>
  
 </p>
+<br>
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:** You must be in the contact mode to execute the following commands. 
 Refer to [switch](#311-switching-modes---switch-) for more information.
@@ -655,7 +694,7 @@ Parameter      | Description                   | Example
 `INDEX`        | The index number of the contact you wish to edit in your displayed deliverable list. <br><br>Details:<br>It must be a positive integer. |`1`: Represents the 1st contact in your list
 
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-success">
 
 **:information_source: Note:**
 
@@ -695,6 +734,7 @@ Example:
 <i>Figure 9: Viewing a contact</i>
  
 </p>
+<br>
 
 #### 3.5.4 Finding contacts: `find`
 
