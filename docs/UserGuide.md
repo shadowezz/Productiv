@@ -81,7 +81,7 @@ Icon/Text Style | Description
 ----------------|-------------------------------------------------
 [hyperlink]()   | Clicking it takes you to the relevant section in this guide (except [here]() hyperlinks, which takes you to other sites).
 `Markdown`      | Represents a command/part of a command.
-(some icon)     | Clicking it takes you back to the Table of Contents.
+<img src="images/Deliverable.png" style="width:30px;height:30px;" alt="duck">     | Clicking it takes you back to the Table of Contents.
 <div markdown="block" class="alert alert-info">:information_source:</div> | Represents a note for your information.
 <div markdown="block" class="alert alert-warning">:warning:</div> | Represents a warning for your caution.
 <div markdown="span" class="alert alert-primary">:bulb:</div> | Represents a tip for your benefit.
@@ -167,7 +167,7 @@ For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILE
 
 </div>
 
-### 3.1 General   [<img src="images/Deliverable.png" style="float:right;width:45px;height:45px;" alt="duck">](#table-of-contents)
+### 3.1 General   [<img src="images/Deliverable.png" style="float:right;width:30px;height:30px;" alt="duck">](#table-of-contents)
 
 #### 3.1.1 Switching modes: `switch`
 
