@@ -3,32 +3,64 @@ layout: page
 title: User Guide
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div>
-    <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="500px" height="500px">
+<p align = "center">
+    <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="300px" height="300px">
+</p>
 </div>
 
 <div>
-    <p style= "text-align: left">
+    <p style= "text-align: center">
     <h1>
-    <span style = "color: #28a745;">Productiv
+    <span style = "color: #00c853; font-size: 60px" >Productiv
     </span>
     </h1>
     </p>
 </div>
 
 <div>
-    <p style= "text-align: left">
-    <span style = "color: #28a745;">Get quackin with productiv!
+    <p style= "text-align: center">
+    <span style = "font-size: 30px">Get Quacking with
+    </span>
+    <span style = "font-size: 30px; color : #00c853"> Productiv!
     </span>
     </p>
 </div>
 
+<div>
+    <p style= "text-align: center">
+    <h1 style = "color: #e46c0a">Contributors
+    </h1>
+    <ul>
+        <li>Merlin Lim</li>
+        <li>Gabriel Tan</li>
+        <li>Chrystal Quek</li>
+        <li>Clara Adora</li>
+        <li>Cao Wenjie</li>
+        <li><br></li>
+    </ul>
+    </p>
+</div>
+
 Contributors
-- Merlin Lim En Sheng
-- Gabriel
-- Chrystal
-- Clara
-- Wenjie 
+- Merlin Lim
+- Gabriel Tan
+- Chrystal Quek
+- Clara Adora
+- Cao Wenjie 
 
 <div style="page-break-after: always;"></div>
 
@@ -219,10 +251,10 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 Shows a message directing you to this User Guide.<br>
 
-<p align="center">
+<p align="left">
    
 <img src="images/helpMessage.JPG" alt="Help message"><br>
-<i>Figure 3: Help</i>
+<i><strong>Figure 3: Help</strong></i>
    
 </p>
 <br>
