@@ -108,6 +108,7 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
+  color: #2e7d32;
 }
 
 
@@ -252,6 +253,9 @@ table {
   border-collapse: collapse;
   border: 1px solid $table-border-color;
   tr {
+    &:nth-child(odd) {
+      background-color: $table-zebra-color-odd;
+    }
     &:nth-child(even) {
       background-color: $table-zebra-color;
     }
