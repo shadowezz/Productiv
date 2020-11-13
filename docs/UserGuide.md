@@ -2,20 +2,12 @@
 layout: page
 title: User Guide
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div>
 <p align = "center">
     <img style="-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;" src="images/productivDuck.png" width="300px" height="300px">
@@ -24,7 +16,7 @@ title: User Guide
 
 <div>
     <p style= "text-align: center">
-    <h1>
+    <h1 style = "text-align: center">
     <span style = "color: #00c853; font-size: 60px" >Productiv
     </span>
     </h1>
@@ -41,26 +33,13 @@ title: User Guide
 </div>
 
 <div>
-    <p style= "text-align: center">
-    <h1 style = "color: #e46c0a">Contributors
-    </h1>
-    <ul>
-        <li>Merlin Lim</li>
-        <li>Gabriel Tan</li>
-        <li>Chrystal Quek</li>
-        <li>Clara Adora</li>
-        <li>Cao Wenjie</li>
-        <li><br></li>
-    </ul>
-    </p>
+    <h1 style = "text-align: center; color: #e46c0a">Contributors</h1>
+    <p style= "text-align: center">Merlin Lim</p>
+    <p style= "text-align: center">Gabriel Tan</p>
+    <p style= "text-align: center">Chrystal Quek</p>
+    <p style= "text-align: center">Clara Adora</p>
+    <p style= "text-align: center">Cao Wenjie</p>
 </div>
-
-Contributors
-- Merlin Lim
-- Gabriel Tan
-- Chrystal Quek
-- Clara Adora
-- Cao Wenjie 
 
 <div style="page-break-after: always;"></div>
 
