@@ -152,7 +152,8 @@ You can only use commands found under [General](#general).
   
 </div>
 
-### Deliverable [<img src="images/Deliverable.png" style="float:right;width:45px;height:45px;" alt="duck">](#table-of-contents)
+### Deliverable 
+[<img src="images/Deliverable.png" style="float:right;width:45px;height:45px;" alt="duck">](#table-of-contents)
 
    ![Ui](images/Deliverable.png)
    <figcaption>Initial display of a deliverable list </figcaption>
