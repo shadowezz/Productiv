@@ -222,12 +222,14 @@ e.g. `delete 1` in meeting mode deletes the 1st meeting shown.).
 
 Shows a message directing you to this User Guide.<br>
 
-<p align="left">
+<div align = "left">
+<p align="center">
    
 <img src="images/helpMessage.JPG" alt="Help message"><br>
-<i><strong>Figure 3: Help</strong></i>
+<i>Figure 3: Help</i>
    
 </p>
+</div>
 <br>
 
 Format: `help`
