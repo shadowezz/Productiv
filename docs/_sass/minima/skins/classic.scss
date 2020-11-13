@@ -5,14 +5,14 @@ $brand-color-light:     lighten($brand-color, 40%) !default;
 $brand-color-dark:      darken($brand-color, 25%) !default;
 
 $text-color:            #111 !default;
-$background-color: #dfecdf !default;
+$background-color: #e9efe9 !default;
 $code-background-color: #eef !default;
 
 $link-base-color:       #2a7ae2 !default;
 $link-visited-color:    darken($link-base-color, 15%) !default;
 
 $table-text-color:      lighten($text-color, 18%) !default;
-$table-zebra-color-odd: #eef !default;
+$table-zebra-color-odd: #f5f5f6 !default;
 $table-zebra-color:     lighten($brand-color, 46%) !default;
 $table-header-bg-color: lighten($brand-color, 43%) !default;
 $table-header-border:   lighten($brand-color, 36%) !default;
