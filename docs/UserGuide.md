@@ -167,7 +167,7 @@ For example, here's the breakdown of the command `add t/TITLE by/DEADLINE m/MILE
 
 </div>
 
-### 3.1 General
+### 3.1 General   [<img src="images/Deliverable.png" style="float:right;width:45px;height:45px;" alt="duck">](#table-of-contents)
 
 #### 3.1.1 Switching modes: `switch`
 
